@@ -24,8 +24,8 @@
                 <dt style="font-weight: bold;">INITIAL ORIENTATION:</dt>
                 <dd id="orient">loading...</dd>
                 <p style="text-align: center;">-----------------------</p>
-                <dt style="font-weight: bold;">WEB BUILD:</dt>
-                <dd>V1</dd>
+                <dt style="font-weight: bold;">WEB VERSION:</dt>
+                <dd>N1.1</dd>
             </dl>
         </div>
     </div>
@@ -48,7 +48,7 @@
             </div>
             </div>
 
-            <button class="sidebut" style="right: 10px; cursor: not-allowed; display: none;" id="rbut">></button>
+            <button class="sidebut" style="right: 10px; display: none;" id="rbut">></button>
             <button class="sidebut" style="left: 10px; display: block;" id="lbut"><</button>
             <button style="top: 88%; background-color: transparent; padding: 0px; cursor:default; transition: 0.5s;" id="dbut">v</button>
             <div id="prog1" style="position: absolute; height: 8px; width: 48.5%; bottom: 95px; background-color: #fff; z-index: 4; border-radius: 10px; opacity: 0.7; margin: 10px; right: 0; transition: 0.3s;"></div>
@@ -89,10 +89,10 @@
 
          <div class="bottomtile" id="exptile" style="overflow-y: scroll;">
              <img src="icons/icons.png" alt="error" id="expimg" style="transition: 0.7s; position: absolute; height: 50%; width: auto; right: 10px; top: 10%; display: block;">
-             <h1 id="bottiletxt" style="position: absolute; left: 10px; top: 0%; transition: 0.6s; z-index: 4;">EXPAND IMAGE TEST<br><p style="opacity: 1; transition: 0.2s;" id="tiltxt">test stuff</p></h1>
+             <h1 id="bottiletxt" style="position: absolute; left: 10px; top: 0%; transition: 0.6s; z-index: 4;">COMING SOON<br><p style="opacity: 1; transition: 0.2s;" id="tiltxt">COMING SOON</p></h1>
              <div id="textboxexp">
-                 <h1>esf</h1>
-                 <p>esfsg</p>
+                 <h1>COMING SOON</h1>
+                 <p>COMING SOON</p>
              </div>
                  
              
@@ -101,7 +101,7 @@
 
 
         <div class="otherpa" style="text-align: center;">
-            //working on it
+            //coming soon
         </div>
 
 
@@ -354,16 +354,14 @@
                     }, 400);
                     setTimeout(function() {
                         $('#tilebtn').css('opacity','1');
-                        $('#tilemenu1').css('opacity','1');
-                        $('#tilemenu1').css('top','60px');
+                        $('#tilemenu1').css({'opacity':'1','top':'60px'});
                     }, 500);
                     setTimeout(function() {
                         $('#tilemenu1').css('display','block');
                         $('#tilebtn').css('display','block');
                         $('#menutxtback').css('display','block');
                     }, 400);
-                    $('.tiles').css('top','0px');
-                    $('.tiles').css('opacity','0');
+                    $('.tiles').css({'top':'0px','opacity':'0'});
                     $('#menubackg').css('top','-31%'); 
                 });
 
@@ -372,8 +370,7 @@
                         $('#tilemenu1').css('display','none');
                     }, 400);
                     setTimeout(function() {
-                        $('.tiles').css('opacity','1');
-                        $('.tiles').css('top','60px');
+                        $('.tiles').css({'opacity':'1','top':'60px'});
                         $('#tilebtn').css('display','none');
                         $('#menutxtback').css('display','none');
                     }, 500);
@@ -381,11 +378,9 @@
                         $('.tiles').css('display','block');
                         $('#menubackg').css('top','-80.5%');
                     }, 400);
-                    $('#tilemenu1').css('top','0px');
-                    $('#tilemenu1').css('opacity','0'); 
+                    $('#tilemenu1').css({'top':'0px','opacity':'0'});
                     $('#tilebtn').css('opacity','0');
                 });
-
 
                 $('#tile2').click(function(){
                     setTimeout(function() {
@@ -393,8 +388,7 @@
                     }, 400);
                     setTimeout(function() {
                         $('#tilebtn').css('opacity','1');
-                        $('#tilemenu2').css('opacity','1');
-                        $('#tilemenu2').css('top','60px');
+                        $('#tilemenu2').css({'opacity':'1','top':'60px'});
                         $('.downbtnlayer').css('width','70%');
                     }, 500);
                     setTimeout(function() {
@@ -406,8 +400,7 @@
                         $('#tilebtn').css('display','block');
                         $('#menutxtback').css('display','block');
                     }, 400);
-                    $('.tiles').css('top','0px');
-                    $('.tiles').css('opacity','0');
+                    $('.tiles').css({'top':'0px','opacity':'0'});
                     $('#menubackg').css('top','-31%'); 
                 });
 
@@ -425,14 +418,11 @@
                         $('.tiles').css('display','block');
                         
                     }, 400);
-                    $('#tilemenu2').css('top','0px');
+                    $('#tilemenu2').css({'top':'0px','opacity':'0'});
                     $('.youtext').css('opacity','0');
                     $('.downbtnlayer').css('width','0%');
-                    $('#tilemenu2').css('opacity','0'); 
                     $('#tilebtn').css('opacity','0');
                 });
-
-
 
                 $('#tile3').click(function(){
                     setTimeout(function() {
@@ -440,17 +430,14 @@
                     }, 400);
                     setTimeout(function() {
                         $('#tilebtn').css('opacity','1');
-                        $('#tilemenu3').css('opacity','1');
-                        $('#tilemenu3').css('top','60px');
-                        
+                        $('#tilemenu3').css({'opacity':'1','top':'60px'});        
                     }, 500);
                     setTimeout(function() {
                         $('#tilemenu3').css('display','block');
                         $('#tilebtn').css('display','block');
                         $('#menutxtback').css('display','block');
                     }, 400);
-                    $('.tiles').css('top','0px');
-                    $('.tiles').css('opacity','0');
+                    $('.tiles').css({'top':'0px','opacity':'0'});
                     $('#menubackg').css('top','-31%'); 
                 });
 
@@ -459,8 +446,7 @@
                         $('#tilemenu3').css('display','none');
                     }, 400);
                     setTimeout(function() {
-                        $('.tiles').css('opacity','1');
-                        $('.tiles').css('top','60px');
+                        $('.tiles').css({'opacity':'1','top':'60px'});
                         $('#tilebtn').css('display','none');
                         $('#menutxtback').css('display','none');
                     }, 500);
@@ -468,8 +454,7 @@
                         $('.tiles').css('display','block');
                         
                     }, 400);
-                    $('#tilemenu3').css('top','0px');
-                    $('#tilemenu3').css('opacity','0'); 
+                    $('#tilemenu3').css({'top':'0px','opacity':'0'});
                     $('#tilebtn').css('opacity','0');
                 });
 
@@ -484,8 +469,7 @@
                     setTimeout(function() {
                         $('#backplate').css('display','none'); 
                     }, 400);
-                    $('#backplate').css('display','block');
-                    $('#backplate').css('opacity','0');
+                    $('#backplate').css({'display':'block','opacity':'0'});
                 });
 
                 $('#lbut').click(function(){
@@ -495,10 +479,8 @@
                     },400);
                     $('#page2').css('display','block')
                     $('#page1').css('opacity','0')
-                    $('#lbut').css('cursor','not-allowed')
                     $('#lbut').css('display','none')
                     $('#rbut').css('display','block')
-                    $('#rbut').css('cursor','pointer')
                     $('#prog1').css('opacity','0.1')
                     $('#prog2').css('opacity','0.7')
                     document.getElementById('home1').style.backgroundImage = "url(tile2.png)"
@@ -511,10 +493,8 @@
                     },400);
                     $('#page1').css('display','block')
                     $('#page2').css('opacity','0')
-                    $('#rbut').css('cursor','not-allowed')
                     $('#lbut').css('display','block')
                     $('#rbut').css('display','none')
-                    $('#lbut').css('cursor','pointer')
                     $('#prog1').css('opacity','0.7')
                     $('#prog2').css('opacity','0.1')
                     document.getElementById('home1').style.backgroundImage = "url(tile3.png)"
@@ -563,17 +543,12 @@
                 setTimeout(function(){
                     e = 1
                 },1000)
-                $('#exptile').css('width','100%')
-                $('#exptile').css('top','100vh')
-                $('#exptile').css('height','100vh')
-                $('#exptile').css('border-radius','0px')
-                $('#exptile').css('transition','0.7s')
-                $('#exptile').css('filter','grayscale(0)')
+                $('#exptile').css({'width':'100%','top':'100vh','height':'100vh','border-radius':'0px','transition':'0.7s','filter':'grayscale(0)'})
                 $('#tiltxt').css('opacity','0')
                 $('#exptilein').css('height','400%')
                 $('#bottiletxt').css('top','8%')
-                $('#expimg').css('height','8%')
-                $('#expimg').css('top','8%')
+                $('#expimg').css({'height':'8%','top':'8%'})
+                $('#expimg').css()
                 $('#textboxexp').css('opacity','1')
                 $('#topbar').css('opacity','0')
 
@@ -582,19 +557,15 @@
 
             function detec(){
                 if (window.matchMedia("(orientation: portrait)").matches) {
-                    $('.downbtn').css('width','100%');
-                    $('.downbtn').css('margin-bottom','100%');
+                    $('.downbtn').css({'width':'100%','margin-bottom':'100%'});
                     $('.downbtn.down').css('margin-bottom','56.25%');
                     $('#quickmenu').css('display','none');
-                    $('.tilecontainer').css('width','400px');
-                    $('.tilecontainer').css('height','400px');
-                    $('.tilecontainer').css('margin','20px 5px');
+                    $('.tilecontainer').css({'width':'400px','height':'400px','margin':'20px 5px'});
                     $('.tiles').css('max-width','825px');
                     $('#expimg').css('display','none')
                     document.getElementById('orient').innerHTML = "Portrait"
             }   if (window.matchMedia("(orientation: landscape)").matches) {
-                    $('.downbtn').css('width','48%');
-                    $('.downbtn').css('margin-bottom','48%');
+                    $('.downbtn').css({'width':'48%','margin-bottom':'48%'});
                     $('.tilecontainer').css('width','180px');
                     document.getElementById('orient').innerHTML = "Landscape"
             }
@@ -633,29 +604,21 @@
 
             window.onscroll = function(){
             if(window.scrollY!=0){
-                document.getElementById('topbar').style.height = '50px';
-                document.getElementById('topbar').style.background = 'rgba(40, 40, 40, 0.7)';
-                document.getElementById('barsep').style.opacity = '1';
-                $('.topbuttons').css('opacity','1')
+                $('#barsep').css('opacity','1');
+                $('#topbar').css({'height':'50px','background':'rgba(40, 40, 40, 0.7)'});
+                $('.topbuttons').css('opacity','1');
             }else if (window.scrollY>=0){
-                document.getElementById('topbar').style.height = '100px';
-                document.getElementById('topbar').style.background = 'transparent';
-                document.getElementById('barsep').style.opacity = '0';
+                $('#topbar').css({'height':'100px','background':'transparent'});
+                $('#barsep').css('opacity','0');
                 $('#dbut').css('opacity','1')
                 $('.topbuttons').css('opacity','0')
             }if (window.scrollY>=300 && e != 0){
-                $('.bottomtile').css('top','110vh');
-                $('.bottomtile').css('width','60%')
-                $('.bottomtile').css('height','67%')
-                $('.bottomtile').css('border-radius','20px')
+                $('#exptile').css({'top':'110vh','width':'60%','height':'67%','border-radius':'20px','filter':'grayscale(1)'});
                 $('#tiltxt').css('opacity','1')
-                $('.exptin').css('height','0%')
                 $('#bottiletxt').css('top','0%')
-                $('#exptile').css('filter','grayscale(1)')
                 $('#dbut').css('opacity','0')
-                $('#expimg').css('height','50%')
+                $('#expimg').css({'height':'50%','top':'10%'})
                 $('#textboxexp').css('opacity','0')
-                $('#expimg').css('top','10%')
                 $('#topbar').css('opacity','1')
                 
                 
