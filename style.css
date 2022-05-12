@@ -59,6 +59,7 @@ body
     height: 100px;
     width: 100%;
     top: 0;
+    opacity: 1;
     z-index: 3;
     transition: 0.5s ease;
 }

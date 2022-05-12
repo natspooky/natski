@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
      <head>
-		 <title>Natspooky | Home</title>
+		 <title id="title">Natspooky | Home</title>
 	<meta charset="utf-8" content="width=device-width, initial-scale=1"> 
 		 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		 <link rel="shortcut icon" type="image/png" sizes="100x100" href="icons/icons.png"/>
@@ -88,7 +88,7 @@
 
 
          <div class="bottomtile" id="exptile" style="overflow-y: scroll;">
-             <img src="icons/icons.png" alt="error" id="expimg" style="transition: 0.7s; position: absolute; height: 50%; width: auto; right: 10px; top: 50%; display: block;">
+             <img src="icons/icons.png" alt="error" id="expimg" style="transition: 0.7s; position: absolute; height: 50%; width: auto; right: 10px; top: 10%; display: block;">
              <h1 id="bottiletxt" style="position: absolute; left: 10px; top: 0%; transition: 0.6s; z-index: 4;">EXPAND IMAGE TEST<br><p style="opacity: 1; transition: 0.2s;" id="tiltxt">test stuff</p></h1>
              <div id="textboxexp">
                  <h1>esf</h1>
@@ -575,6 +575,7 @@
                 $('#expimg').css('height','8%')
                 $('#expimg').css('top','8%')
                 $('#textboxexp').css('opacity','1')
+                $('#topbar').css('opacity','0')
 
                 e = 0
             });
@@ -603,7 +604,7 @@
             if (navigator.appVersion.indexOf("Win") != -1) Name = 
                 "Windows";
             if (navigator.appVersion.indexOf("Mac") != -1) Name = 
-                "Mac";
+                "IOS";
             if (navigator.appVersion.indexOf("X11") != -1) Name = 
                 "Unix";
             if (navigator.appVersion.indexOf("Linux") != -1) Name = 
@@ -655,6 +656,7 @@
                 $('#expimg').css('height','50%')
                 $('#textboxexp').css('opacity','0')
                 $('#expimg').css('top','10%')
+                $('#topbar').css('opacity','1')
                 
                 
             }
