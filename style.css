@@ -605,7 +605,7 @@ body
     background-image: url('tile59.png');
     filter: grayscale(1);
     background-size: cover;
-    background-position: top center;
+    background-position:center;
     font-size: larger;
     box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
 }
