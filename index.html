@@ -55,13 +55,12 @@
             <div id="prog2" style="position: absolute; height: 8px; width: 48.5%; bottom: 95px; background-color: #fff; z-index: 4; border-radius: 10px; opacity: 0.1; margin: 10px; left: 0; transition: 0.3s;"></div>
         <div id="topbar">
             <img id="nicon" src="icons/icons.png" alt="N" onclick="SmoothVerticalScrolling(vid, 275, 'top');">
-            <div id="barsep" style="position: relative; height: 100%; transition: 0.5s ease; opacity: 0; width: 2px; background-color: rgba(255, 255, 255, 0.7); display: inline-block;"></div> 
             <button class="topbuttons" id="portbutton2">PORTFOLIO</button>
             <button class="topbuttons" id="portbutton3">TEMP</button>
         </div>
 
         <div id="vid">
-             
+            
                 
                 <div class="homeimg" id="home1"></div>
              
@@ -91,8 +90,8 @@
              <img src="icons/icons.png" alt="error" id="expimg" style="transition: 0.5s; position: absolute; height: 50%; width: auto; right: 10px; top: 10%; display: block;">
              <h1 id="bottiletxt" style="position: absolute; left: 10px; top: 0%; transition: 0.5s; z-index: 4;">TEST PANEL<br><p style="opacity: 1; transition: 0.2s;" id="tiltxt">test tab for features</p></h1>
              <div id="textboxexp">
-                 <h1>nothing is here yet</h1>
-                 <p>how spooky</p>
+                 <h1 style="margin: 0px 15px;">nothing is here yet</h1>
+                 <p style="margin: 0px 15px;">how spooky</p>
              </div>
                  
              
@@ -465,7 +464,7 @@
                     $('#backplate').css('display','block'); 
                 });
                 
-                $('#power3').click(function(){
+                $('#power3,#backplate').click(function(){
                     setTimeout(function() {
                         $('#backplate').css('display','none'); 
                     }, 400);
@@ -614,12 +613,10 @@ function SVS_B(eAmt, where) {
 
             window.onscroll = function(){
             if(window.scrollY!=0){
-                $('#barsep').css('opacity','1');
                 $('#topbar').css({'height':'50px','background':'rgba(40, 40, 40, 0.7)'});
                 $('.topbuttons').css('opacity','1');
             }else if (window.scrollY>=0){
                 $('#topbar').css({'height':'100px','background':'transparent'});
-                $('#barsep').css('opacity','0');
                 $('#dbut').css('opacity','1')
                 $('.topbuttons').css('opacity','0')
             }if (window.scrollY>=300 && f != 0){
