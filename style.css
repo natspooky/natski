@@ -8,7 +8,7 @@
 }
 :root 
 {
-	--blue: #0f0c34;
+	--blue: #130e43;
 	--pink: #E49EE6;
 	--black: #000;
 	--alblack: #000;
@@ -606,6 +606,7 @@ body
     filter: grayscale(1);
     background-size: cover;
     background-position:center;
+    background-attachment: fixed;
     font-size: larger;
     box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
 }
