@@ -37,14 +37,14 @@
         <div class="butcon" id="page1">
         <div style="position: relative; font-size: 40px; padding: 20px;" id="selector">
             <h1 id="porttxt" class="port" style="transition: 1s ease;">PORTFOLIO</h1>
-            <button class="menubtn" id="portbutton" onclick="smoothScroll('vid')">ENTER</button>
+            <button class="menubtn" id="portbutton" onclick="SmoothVerticalScrolling(vid, 275, 'top');">ENTER</button>
         </div>
         </div>
 
         <div class="butcon" id="page2" style="opacity: 0; display: none;">
             <div style="position: relative; font-size: 40px; padding: 20px;" id="selector">
                 <h1 id="porttxt" class="port" style="transition: 1s ease;">OTHER PAGE</h1>
-                <button class="menubtn" id="otherbut" onclick="smoothScroll('vid')">ENTER</button>
+                <button class="menubtn" id="otherbut" onclick="SmoothVerticalScrolling(vid, 275, 'top');">ENTER</button>
             </div>
             </div>
 
@@ -54,7 +54,7 @@
             <div id="prog1" style="position: absolute; height: 8px; width: 48.5%; bottom: 95px; background-color: #fff; z-index: 4; border-radius: 10px; opacity: 0.7; margin: 10px; right: 0; transition: 0.3s;"></div>
             <div id="prog2" style="position: absolute; height: 8px; width: 48.5%; bottom: 95px; background-color: #fff; z-index: 4; border-radius: 10px; opacity: 0.1; margin: 10px; left: 0; transition: 0.3s;"></div>
         <div id="topbar">
-            <img id="nicon" src="icons/icons.png" alt="N" onclick="smoothScroll('vid');">
+            <img id="nicon" src="icons/icons.png" alt="N" onclick="SmoothVerticalScrolling(vid, 275, 'top');">
             <div id="barsep" style="position: relative; height: 100%; transition: 0.5s ease; opacity: 0; width: 2px; background-color: rgba(255, 255, 255, 0.7); display: inline-block;"></div> 
             <button class="topbuttons" id="portbutton2">PORTFOLIO</button>
             <button class="topbuttons" id="portbutton3">TEMP</button>
@@ -77,7 +77,7 @@
          <div class="menu">
              <div id="menubackg"></div>
             <div class="menucont">
-            <button id="homebtn" class="button" onclick="smoothScroll('vid');"></button>
+            <button id="homebtn" class="button" onclick="SmoothVerticalScrolling(vid, 275, 'top');"></button>
             <p class="menutxt">Home</p>
             </div>
             <div class="menucont">
@@ -524,9 +524,6 @@
                     }, 300);
                 });
 
-            function smoothScroll(i){
-                document.getElementById(i).scrollIntoView({behavior: "smooth"});
-            }
             function slidescroll(i){
                 document.getElementById("slide"+i).scrollIntoView({behavior: "smooth", inline: 'center', block: 'center'});
                 $('.slide').css('opacity','0.2');
@@ -535,13 +532,13 @@
                     $('.slide').css('opacity','1');
                 });
             }
-            var e = 1
+            var f = 1
             $('#exptile').click(function(){
                 setTimeout(function(){
-                    document.getElementById('exptile').scrollIntoView({behavior: "smooth"});
+                    SmoothVerticalScrolling(exptile, 275, 'top');
                 },60)
                 setTimeout(function(){
-                    e = 1
+                    f = 1
                 },1000)
                 $('#exptile').css({'width':'100%','top':'100vh','height':'100vh','border-radius':'0px','transition':'0.5s','filter':'grayscale(0)'})
                 $('#tiltxt').css('opacity','0')
@@ -551,9 +548,25 @@
                 $('#textboxexp').css('opacity','1')
                 $('#topbar').css('opacity','0')
 
-                e = 0
+                f = 0
             });
 
+            function SmoothVerticalScrolling(e, time, where) {
+    var eTop = e.getBoundingClientRect().top;
+    var eAmt = eTop / 100;
+    var curTime = 0;
+    while (curTime <= time) {
+        window.setTimeout(SVS_B, curTime, eAmt, where);
+        curTime += time / 100;
+    }
+}
+
+function SVS_B(eAmt, where) {
+    if(where == "center" || where == "")
+        window.scrollBy(0, eAmt / 2);
+    if (where == "top")
+        window.scrollBy(0, eAmt);
+}
             function detec(){
                 if (window.matchMedia("(orientation: portrait)").matches) {
                     $('.downbtn').css({'width':'100%','margin-bottom':'100%'});
@@ -574,7 +587,7 @@
             if (navigator.appVersion.indexOf("Win") != -1) Name = 
                 "Windows";
             if (navigator.appVersion.indexOf("Mac") != -1) Name = 
-                "IOS";
+                "Ios";
             if (navigator.appVersion.indexOf("X11") != -1) Name = 
                 "Unix";
             if (navigator.appVersion.indexOf("Linux") != -1) Name = 
@@ -611,7 +624,7 @@
                 $('#barsep').css('opacity','0');
                 $('#dbut').css('opacity','1')
                 $('.topbuttons').css('opacity','0')
-            }if (window.scrollY>=300 && e != 0){
+            }if (window.scrollY>=300 && f != 0){
                 $('#exptile').css({'top':'110vh','width':'60%','height':'67%','border-radius':'20px','filter':'grayscale(1)'});
                 $('#tiltxt').css('opacity','1')
                 $('#bottiletxt').css('top','0%')
