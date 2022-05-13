@@ -8,7 +8,7 @@
 }
 :root 
 {
-	--blue: #130e43;
+	--blue: #1b1174;
 	--pink: #E49EE6;
 	--black: #000;
 	--alblack: #000;
@@ -141,7 +141,7 @@ body
     left: 0;
     height: 110%;
     width: 110%;
-    opacity: 0.3;
+    opacity: 0.1;
     background-image: url('tile3.png');
     background-size: cover;
     background-position: center;
@@ -526,11 +526,7 @@ body
     border-radius: 10px;
     overflow-y: scroll;
     box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
-    background-color: rgb(245, 245, 245);
-    background-image: url('icons/icons.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
+    background-image: linear-gradient(to right, rgb(245, 245, 245), rgb(115, 115, 115));
 }
 #backplate
 {
@@ -598,15 +594,15 @@ body
     width: 60%;
     height: 67%;
     background-color: #2a1f8c;
-    top: 110vh;
+    top: 100vh;
     color: #fff;
     border-radius: 20px;
     transition: 1.5s ease;
     background-image: url('tile59.png');
-    filter: grayscale(1);
+    filter: grayscale(0.5);
     background-size: cover;
     background-position:center;
-    background-attachment: fixed;
+    background-attachment:fixed;
     font-size: larger;
     box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
 }
