@@ -591,8 +591,8 @@ body
 .bottomtile
 {
     position: absolute;
-    width: 60%;
-    height: 67%;
+    width: 50%;
+    height: 55%;
     background-color: #2a1f8c;
     top: 100vh;
     color: #fff;
