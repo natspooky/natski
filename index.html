@@ -87,8 +87,8 @@
 
 
          <div class="bottomtile" id="exptile" style="overflow-y: scroll;">
-             <img src="icons/icons.png" alt="error" id="expimg" style="transition: 0.5s; position: absolute; height: 50%; width: auto; right: 10px; top: 25%; display: block;">
-             <h1 id="bottiletxt" style="position: absolute; left: 10px; top: 0%; transition: 0.5s; z-index: 4;">TEST PANEL<br><p style="opacity: 1; transition: 0.2s;" id="tiltxt">test tab for features</p></h1>
+             <img src="icons/icons.png" alt="error" id="expimg" style="transition: 0.5s; position: absolute; height: 50%; width: auto; right: 10px; top: 70px; display: block;  transform: scale(1); opacity: 1;">
+             <h1 id="bottiletxt" style="position: absolute; left: 10px; top: 0%; transition: 0.5s; z-index: 4;">TEST PANEL<br><p style="opacity: 1; transition: 0.2s; z-index: 2;" id="tiltxt">test tab for features</p></h1>
              <div id="textboxexp">
                  <h1 style="margin: 0px 15px;">nothing is here yet</h1>
                  <p style="margin: 0px 15px;">how spooky</p>
@@ -526,39 +526,24 @@
                     $('.slide').css('opacity','1');
                 });
             }
-            var f = 1
             $('#exptile').click(function(){
-                    document.getElementById('exptile').scrollIntoView({behavior: "smooth"});
-                setTimeout(function(){
-                    f = 1
-                },1000)
-                $('#exptile').css({'width':'100%','height':'100vh','border-radius':'0px','transition':'0.5s','filter':'grayscale(0)'})
+                    
+                $('#exptile').css({'transform':'scale(1.9)','border-radius':'10px','transition':'0.5s','filter':'grayscale(0)'})
                 $('#tiltxt').css('opacity','0')
-                $('#exptilein').css('height','400%')
-                $('#bottiletxt').css('top','8%')
-                $('#expimg').css({'height':'8%','top':'8%'})
+                $('#expimg').css({'transform':'scale(0.6)','opacity':'0'})
                 $('#textboxexp').css('opacity','1')
                 $('#topbar').css('opacity','0')
-
-                f = 0
             });
 
-            function SmoothVerticalScrolling(e, time, where) {
-    var eTop = e.getBoundingClientRect().top;
-    var eAmt = eTop / 100;
-    var curTime = 0;
-    while (curTime <= time) {
-        window.setTimeout(SVS_B, curTime, eAmt, where);
-        curTime += time / 100;
-    }
-}
 
-function SVS_B(eAmt, where) {
-    if(where == "center" || where == "")
-        window.scrollBy(0, eAmt / 2);
-    if (where == "top")
-        window.scrollBy(0, eAmt);
-}
+            $('#exptile').mouseleave(function(){
+                $('#exptile').css({'transform':'scale(1)','border-radius':'20px','transition':'0.5s','filter':'grayscale(0.5)'})
+                $('#tiltxt').css('opacity','1')
+                $('#expimg').css({'transform':'scale(1)','opacity':'1'})
+                $('#textboxexp').css('opacity','0')
+                $('#topbar').css('opacity','1')
+            });
+
             function detec(){
                 if (window.matchMedia("(orientation: portrait)").matches) {
                     $('.downbtn').css({'width':'100%','margin-bottom':'100%'});
@@ -613,16 +598,6 @@ function SVS_B(eAmt, where) {
                 $('#topbar').css({'transform':'scale(1)','background-image':'linear-gradient(transparent,transparent)'});
                 $('#dbut').css('opacity','1')
                 $('.topbuttons').css('opacity','0')
-            }if (window.scrollY>=300 && f != 0){
-                $('#exptile').css({'width':'50%','height':'55%','border-radius':'20px','filter':'grayscale(0.5)'});
-                $('#tiltxt').css('opacity','1')
-                $('#bottiletxt').css('top','0%')
-                $('#dbut').css('opacity','0')
-                $('#expimg').css({'height':'50%','top':'25%'})
-                $('#textboxexp').css('opacity','0')
-                $('#topbar').css('opacity','1')
-                
-                
             }
         };
          </script>

@@ -603,17 +603,17 @@ body
 {
     position: absolute;
     width: 50%;
-    height: 55%;
+    height: 50vh;
     background-color: #2a1f8c;
-    top: 100vh;
+    top: 125vh;
     color: #fff;
     border-radius: 20px;
     transition: 1.5s ease;
-    background-image: url('tile59.png');
+    background-image: linear-gradient(to right, var(--blue), var(--purple));
     filter: grayscale(0.5);
+    transform: scale(1);
     background-size: cover;
     background-position:center;
-    background-attachment:fixed;
     font-size: larger;
     box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
 }
