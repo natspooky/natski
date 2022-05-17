@@ -353,14 +353,14 @@
                     }, 400);
                     setTimeout(function() {
                         $('#tilebtn').css('opacity','1');
-                        $('#tilemenu1').css({'opacity':'1','top':'60px'});
+                        $('#tilemenu1').css({'opacity':'1','transform':'translateY(60px)'});
                     }, 500);
                     setTimeout(function() {
                         $('#tilemenu1').css('display','block');
                         $('#tilebtn').css('display','block');
                         $('#menutxtback').css('display','block');
                     }, 400);
-                    $('.tiles').css({'top':'0px','opacity':'0'});
+                    $('.tiles').css({'transform':'translateY(-60px)','opacity':'0'});
                     $('#menubackg').css('top','-31%'); 
                 });
 
@@ -369,7 +369,7 @@
                         $('#tilemenu1').css('display','none');
                     }, 400);
                     setTimeout(function() {
-                        $('.tiles').css({'opacity':'1','top':'60px'});
+                        $('.tiles').css({'opacity':'1','transform':'translateY(-60px)'});
                         $('#tilebtn').css('display','none');
                         $('#menutxtback').css('display','none');
                     }, 500);
@@ -377,7 +377,7 @@
                         $('.tiles').css('display','block');
                         $('#menubackg').css('top','-80.5%');
                     }, 400);
-                    $('#tilemenu1').css({'top':'0px','opacity':'0'});
+                    $('#tilemenu1').css({'transform':'translateY(0px)','opacity':'0'});
                     $('#tilebtn').css('opacity','0');
                 });
 
@@ -387,7 +387,7 @@
                     }, 400);
                     setTimeout(function() {
                         $('#tilebtn').css('opacity','1');
-                        $('#tilemenu2').css({'opacity':'1','top':'60px'});
+                        $('#tilemenu2').css({'opacity':'1','transform':'translateY(60px)'});
                         $('.downbtnlayer').css('width','70%');
                     }, 500);
                     setTimeout(function() {
@@ -399,7 +399,7 @@
                         $('#tilebtn').css('display','block');
                         $('#menutxtback').css('display','block');
                     }, 400);
-                    $('.tiles').css({'top':'0px','opacity':'0'});
+                    $('.tiles').css({'transform':'translateY(-60px)','opacity':'0'});
                     $('#menubackg').css('top','-31%'); 
                 });
 
@@ -408,8 +408,7 @@
                         $('#tilemenu2').css('display','none');
                     }, 400);
                     setTimeout(function() {
-                        $('.tiles').css('opacity','1');
-                        $('.tiles').css('top','60px');
+                        $('.tiles').css({'opacity':'1','transform':'translateY(-60px)'});
                         $('#tilebtn').css('display','none');
                         $('#menutxtback').css('display','none');
                     }, 500);
@@ -417,7 +416,7 @@
                         $('.tiles').css('display','block');
                         
                     }, 400);
-                    $('#tilemenu2').css({'top':'0px','opacity':'0'});
+                    $('#tilemenu2').css({'transform':'translateY(0px)','opacity':'0'});
                     $('.youtext').css('opacity','0');
                     $('.downbtnlayer').css('width','0%');
                     $('#tilebtn').css('opacity','0');
@@ -429,14 +428,14 @@
                     }, 400);
                     setTimeout(function() {
                         $('#tilebtn').css('opacity','1');
-                        $('#tilemenu3').css({'opacity':'1','top':'60px'});        
+                        $('#tilemenu3').css({'opacity':'1','transform':'translateY(60px)'});        
                     }, 500);
                     setTimeout(function() {
                         $('#tilemenu3').css('display','block');
                         $('#tilebtn').css('display','block');
                         $('#menutxtback').css('display','block');
                     }, 400);
-                    $('.tiles').css({'top':'0px','opacity':'0'});
+                    $('.tiles').css({'transform':'translateY(-60px)','opacity':'0'});
                     $('#menubackg').css('top','-31%'); 
                 });
 
@@ -445,7 +444,7 @@
                         $('#tilemenu3').css('display','none');
                     }, 400);
                     setTimeout(function() {
-                        $('.tiles').css({'opacity':'1','top':'60px'});
+                        $('.tiles').css({'opacity':'1','transform':'translateY(0px)'});
                         $('#tilebtn').css('display','none');
                         $('#menutxtback').css('display','none');
                     }, 500);
@@ -453,7 +452,7 @@
                         $('.tiles').css('display','block');
                         
                     }, 400);
-                    $('#tilemenu3').css({'top':'0px','opacity':'0'});
+                    $('#tilemenu3').css({'transform':'translateY(0px)','opacity':'0'});
                     $('#tilebtn').css('opacity','0');
                 });
 
@@ -613,10 +612,10 @@ function SVS_B(eAmt, where) {
 
             window.onscroll = function(){
             if(window.scrollY!=0){
-                $('#topbar').css({'height':'50px','background':'rgba(40, 40, 40, 0.7)'});
+                $('#topbar').css({'transform':'scale(0.65)','background-image':'linear-gradient(to right, rgba(40, 40, 40, 0.7),transparent)'});
                 $('.topbuttons').css('opacity','1');
             }else if (window.scrollY>=0){
-                $('#topbar').css({'height':'100px','background':'transparent'});
+                $('#topbar').css({'transform':'scale(1)','background-image':'linear-gradient(transparent,transparent)'});
                 $('#dbut').css('opacity','1')
                 $('.topbuttons').css('opacity','0')
             }if (window.scrollY>=300 && f != 0){
