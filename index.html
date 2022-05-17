@@ -50,7 +50,7 @@
 
             <button class="sidebut" style="right: 10px; display: none;" id="rbut">></button>
             <button class="sidebut" style="left: 10px; display: block;" id="lbut"><</button>
-            <button style="top: 88%; background-color: transparent; padding: 0px; cursor:default; transition: 0.5s;" id="dbut">v</button>
+            <button style="top: 83%; background-color: transparent; padding: 0px; cursor:default; transition: 0.5s;" id="dbut">v</button>
             <div id="prog1" style="position: absolute; height: 8px; width: 48.5%; bottom: 95px; background-color: #fff; z-index: 4; border-radius: 10px; opacity: 0.7; margin: 10px; right: 0; transition: 0.3s;"></div>
             <div id="prog2" style="position: absolute; height: 8px; width: 48.5%; bottom: 95px; background-color: #fff; z-index: 4; border-radius: 10px; opacity: 0.1; margin: 10px; left: 0; transition: 0.3s;"></div>
         <div id="topbar">
@@ -606,7 +606,7 @@ function SVS_B(eAmt, where) {
 
 
             window.onscroll = function(){
-            if(window.scrollY!=0){
+            if(window.scrollY>1){
                 $('#topbar').css({'transform':'scale(0.65)','background-image':'linear-gradient(to right, rgba(40, 40, 40, 0.7),transparent)'});
                 $('.topbuttons').css('opacity','1');
             }else if (window.scrollY>=0){

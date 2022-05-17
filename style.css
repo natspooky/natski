@@ -59,7 +59,7 @@ body
     transform: scale(1);
     transform-origin: left top;
     opacity: 1;
-    z-index: 3;
+    z-index: 4;
     transition: 0.5s ease;
 }
 .topbuttons
@@ -590,10 +590,10 @@ body
 }
 @keyframes arrow
 {
-    0%{top:84%;}
-    25%{top: 88%;}
-    50%{top:84%;}
-    100%{top:84%;}
+    0%{transform: translateY(0px);}
+    25%{transform: translateY(25px);}
+    50%{transform: translateY(0px);}
+    100%{transform: translateY(0px);}
 }
 .sidebut:hover
 {
