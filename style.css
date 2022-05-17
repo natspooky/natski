@@ -428,16 +428,17 @@ body
     width: auto;
     background-color: #fff;
     border: 3px solid #000;
-    border-radius: 10px 0px 0px 10px;
+    border-radius: 10px;
 }
 .downbtnlayer
 {
     position: absolute;
-    left: 109px;
-    border-radius: 0px 10px 10px 0px;
-    width: 0%;
+    left: 113px;
+    border-radius: 10px;
+    width: 70%;
     height: 110px;
     background-color: var(--alblack);
+    transform: scale(0);
     color: #fff;
     font-size: 20px;
     text-align: center;
