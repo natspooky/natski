@@ -406,10 +406,13 @@ body
     position: fixed;
     right: 1.7%;
     height: 70%;
-    top: 15%;
+    top: 17%;
     width: 12%;
+    display: none;
+    opacity: 0;
     overflow-y: scroll;
     border-radius: 10px;
+    transition: 0.5s;
 }
 .downbtn
 {

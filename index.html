@@ -108,8 +108,6 @@
 
 
         <div class="portfo">
-        <div class="tilemenu" id="tilemenu1">
-            <h1 style="text-align: center; letter-spacing: 15px;">//SLIDES</h1>
             <div id="quickmenu">
                 <h1 style="text-align: center; font-size:medium;">//NAVIGATOR</h1>
                 <img src="slides/1.png" alt="slide" class="slides" onclick="slidescroll(1);">
@@ -153,9 +151,10 @@
                 <img src="slides/39.png" alt="slide" class="slides" onclick="slidescroll(39);">
                 <img src="slides/40.png" alt="slide" class="slides" onclick="slidescroll(40);">
                 <img src="slides/41.png" alt="slide" class="slides" onclick="slidescroll(41);">
-                <img src="slides/42.png" alt="slide" class="slides" onclick="slidescroll(42);">
-                
+                <img src="slides/42.png" alt="slide" class="slides" onclick="slidescroll(42);"> 
             </div>
+        <div class="tilemenu" id="tilemenu1">
+            <h1 style="text-align: center; letter-spacing: 15px;">//SLIDES</h1>
             <img src="slides/1.png" alt="slide" class="slide" id="slide1">
             <img src="slides/2.png" alt="slide" class="slide" id="slide2">
             <img src="slides/3.png" alt="slide" class="slide" id="slide3">
@@ -347,6 +346,7 @@
                     setTimeout(function() {
                         $('#tilebtn').css('opacity','1');
                         $('#tilemenu1').css({'opacity':'1','transform':'translateY(60px)'});
+                        $('#quickmenu').css('opacity','1');
                     }, 500);
                     setTimeout(function() {
                         $('#tilemenu1').css('display','block');
@@ -355,11 +355,13 @@
                     }, 400);
                     $('.tiles').css({'transform':'translateY(-60px)','opacity':'0'});
                     $('#menubackg').css('transform','translateY(-43px)'); 
+                    $('#quickmenu').css('display','block');
                 });
 
                 $('#tilebtn').click(function(){
                     setTimeout(function() {
                         $('#tilemenu1').css('display','none');
+                        $('#quickmenu').css('display','none');
                     }, 400);
                     setTimeout(function() {
                         $('.tiles').css({'opacity':'1','transform':'translateY(-60px)'});
@@ -372,6 +374,7 @@
                     }, 400);
                     $('#tilemenu1').css({'transform':'translateY(0px)','opacity':'0'});
                     $('#tilebtn').css('opacity','0');
+                    $('#quickmenu').css('opacity','0');
                 });
 
                 $('#tile2').click(function(){
@@ -560,7 +563,6 @@ function SVS_B(eAmt, where) {
                 if (window.matchMedia("(orientation: portrait)").matches) {
                     $('.downbtn').css({'width':'100%','margin-bottom':'100%'});
                     $('.downbtn.down').css('margin-bottom','56.25%');
-                    $('#quickmenu').css('display','none');
                     $('.tilecontainer').css({'width':'400px','height':'400px','margin':'20px 5px'});
                     $('.tiles').css('max-width','825px');
                     $('#expimg').css('display','none')
