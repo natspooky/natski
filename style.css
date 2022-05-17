@@ -189,7 +189,8 @@ body
 {
     position: absolute;
     display: block;
-    left: 70px;
+    left: 0px;
+    transform: translateX(70px);
     font-weight: bold;
     top: 0;
     line-height: 50px;
@@ -207,7 +208,7 @@ body
 }
 .button:hover + .menutxt
 {
-    left: 60px;
+    transform: translateX(60px);
     opacity: 1;
 }
 .button
