@@ -164,9 +164,9 @@ body
 .menu
 {
     position: fixed;
-    transform: translateY(0px);
+    transform: translateY(-150px);
     transform-origin: top;
-    top: -150px;
+    top: 0px;
     left: 15px;
     height: auto;
     width: auto;
