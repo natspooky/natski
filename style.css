@@ -165,7 +165,7 @@ body
 {
     position: fixed;
     transform: translateY(-150px);
-    transform-origin: top;
+    transform-origin: top left;
     top: 0px;
     left: 15px;
     height: auto;
