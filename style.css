@@ -18,10 +18,6 @@
 	--purple: #271252;
 	--red: #D31111;
 	--alred: #D31111;
-
-
-
-
     --newgreytop: #2e2e2e;
     --newgreybottom: #232323;
 }
@@ -60,7 +56,7 @@ body
     width: 100%;
     top: 0;
     left: 0;
-    transform: scale(1) translate(0);
+    transform: scale(1);
     transform-origin: left top;
     opacity: 1;
     z-index: 3;
@@ -168,6 +164,8 @@ body
 .menu
 {
     position: fixed;
+    transform: translateY(0px);
+    transform-origin: top;
     top: -150px;
     left: 15px;
     height: auto;
@@ -181,8 +179,9 @@ body
     height: 120%; 
     width: 45%; 
     background-color: var(--gray); 
+    transform: translateY(-113px);
     left: -3.3%; 
-    top: -80.5%; 
+    top: 0px; 
     border-radius: 0px 0px 70px 70px;
     transition: 0.5s ease;
 }
