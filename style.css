@@ -609,8 +609,8 @@ body
     color: #fff;
     border-radius: 20px;
     transition: 1.5s ease;
-    background-image: linear-gradient(to right, var(--blue), var(--purple));
-    filter: grayscale(0.5);
+    background-image: url('tile59.png');
+    filter: grayscale(0.8);
     transform: scale(1);
     background-size: cover;
     background-position:center;
