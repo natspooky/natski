@@ -66,11 +66,12 @@ body
 {
     position: relative;
     display: inline-block;
-    height: 100%;
-    top: -21px;
-    width: 7%;
+    height: inherit;
+    bottom:40px;
+    width: 13%;
     z-index: inherit;
-    bottom: 0;
+    font-size: xx-large;
+    font-weight: bolder;
     background: transparent;
     border: 0px;
     color: rgba(255, 255, 255, 0.7);
@@ -232,7 +233,6 @@ body
 {
     border: 3px solid red;
     transform: scale(0.9);
-
 }
 #homebtn
 {
@@ -336,7 +336,6 @@ body
     bottom: 12%;
     left: 10px;
 }
-
 .tiletxtcontain
 {
     position: absolute;
@@ -537,7 +536,7 @@ body
     border-radius: 10px;
     overflow-y: scroll;
     box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
-    background-image: linear-gradient(to right, rgb(245, 245, 245), rgb(115, 115, 115));
+    background-image: linear-gradient(to right, rgb(245, 245, 245), rgb(165, 165, 165));
 }
 #backplate
 {
