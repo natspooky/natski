@@ -527,7 +527,7 @@
                 });
             }
             $('#exptile').click(function(){
-                    
+                document.getElementById("exptile").scrollIntoView({behavior: "smooth", inline: 'center', block: 'center'});
                 $('#exptile').css({'transform':'scale(1.9)','border-radius':'10px','transition':'0.5s','filter':'grayscale(0)'})
                 $('#tiltxt').css('opacity','0')
                 $('#expimg').css({'transform':'scale(0.6)','opacity':'0'})
