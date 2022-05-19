@@ -505,6 +505,16 @@ canvas
     border-radius: 10px;
     transition: 0.5s;
 }
+#quickmenu::-webkit-scrollbar
+{
+    display: block;
+    width: 7px;
+}
+::-webkit-scrollbar-thumb
+{
+    background-color: rgb(59, 59, 59);
+    border-radius: 10px;
+}
 .downbtn
 {
     position: relative;
