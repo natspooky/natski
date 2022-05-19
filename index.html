@@ -547,7 +547,7 @@
                     document.getElementById('orient').innerHTML = "Portrait"
                     $('#portbutton').removeAttr('disabled');
                     $('#otherbut').removeAttr('disabled');
-                    document.getElementById("copy").value = "N A T S K I";
+                    document.getElementById("copy").value = "N A T S P O O K Y";
                     initScene()
             }   if (window.matchMedia("(orientation: landscape)").matches) {
                     $('.downbtn').css({'width':'48%','margin-bottom':'48%'});
@@ -555,7 +555,7 @@
                     $('#portbutton').removeAttr('disabled');
                     $('#otherbut').removeAttr('disabled');
                     document.getElementById('orient').innerHTML = "Landscape"
-                    document.getElementById("copy").value = "N A T S K I";
+                    document.getElementById("copy").value = "N A T S P O O K Y";
                     initScene()
             }
             HTMLDocument.prototype.e = document.getElementById;
@@ -618,7 +618,7 @@ function Particle(x,y){
   this.vy = (Math.random()-0.5)*20;
   this.accX = 0;
   this.accY = 0;
-  this.friction = Math.random()*0.05 + 0.74;
+  this.friction = Math.random()*0.05 + 0.82;
   this.color = colors[Math.floor(Math.random()*6)];
 }
 Particle.prototype.render = function() {
