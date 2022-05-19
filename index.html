@@ -613,17 +613,17 @@ function Particle(x,y){
     x : x,
     y: y
   };
-  this.r =  Math.random()*5 + 2;
+  this.r =  Math.random()*4 + 2;
   this.vx = (Math.random()-0.5)*20;
   this.vy = (Math.random()-0.5)*20;
   this.accX = 0;
   this.accY = 0;
-  this.friction = Math.random()*0.05 + 0.94;
+  this.friction = Math.random()*0.05 + 0.74;
   this.color = colors[Math.floor(Math.random()*6)];
 }
 Particle.prototype.render = function() {
-  this.accX = (this.dest.x - this.x)/1000;
-  this.accY = (this.dest.y - this.y)/1000;
+  this.accX = (this.dest.x - this.x)/100;
+  this.accY = (this.dest.y - this.y)/100;
   this.vx += this.accX;
   this.vy += this.accY;
   this.vx *= this.friction;
@@ -637,12 +637,6 @@ Particle.prototype.render = function() {
   var a = this.x - mouse.x;
   var b = this.y - mouse.y;
   var distance = Math.sqrt( a*a + b*b );
-  if(distance<(radius*70)){
-    this.accX = (this.x - mouse.x)/100;
-    this.accY = (this.y - mouse.y)/100;
-    this.vx += this.accX;
-    this.vy += this.accY;
-  }
 }
 function initScene(){
   ww = canvas.width = window.innerWidth;
@@ -655,9 +649,9 @@ function initScene(){
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   ctx.globalCompositeOperation = "screen";
   particles = [];
-  for(var i=0;i<ww;i+=Math.round(ww/150)){
-    for(var j=0;j<wh;j+=Math.round(ww/150)){
-      if(data[ ((i + j*ww)*4) + 3] > 150){
+  for(var i=0;i<ww;i+=Math.round(ww/100)){
+    for(var j=0;j<wh;j+=Math.round(ww/100)){
+      if(data[ ((i + j*ww)*4) + 3] > 100){
         particles.push(new Particle(i,j));
       }
     }
