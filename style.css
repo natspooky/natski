@@ -29,7 +29,6 @@ body
 	min-height: 200vh;
     overflow-x: hidden;
 	background-size: cover;
-	background-attachment: fixed;
 	background-repeat: no-repeat;
 	background-color: #232323;
 }
@@ -65,7 +64,7 @@ body
 .topbuttons
 {
     position: relative;
-    display: inline-block;
+    display: none;
     height: inherit;
     bottom:40px;
     width: 13%;
@@ -75,7 +74,6 @@ body
     background: transparent;
     border: 0px;
     color: rgba(255, 255, 255, 0.7);
-    opacity: 0;
 }
 .topbuttons:hover
 {
@@ -234,23 +232,44 @@ body
     border: 3px solid red;
     transform: scale(0.9);
 }
-#homebtn
+.arrowbut
 {
-    background-image: url('icons/home2.png');
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    width: 20px;
+    height: 4px;
+    border-radius: 10px;
+    background-color: #000;
+    transform: rotate(0deg);
+    transition: 0.2s;
 }
-#homebtn:hover
+.arrowbut:after
 {
-    background-image: url('icons/back arrow.png');
+    content: "";
+    position: absolute;
+    width: 20px;
+    left: 0;
+    height: 4px;
+    border-radius: 10px;
+    transform: rotate(0deg);
+    background-color: #000;
+    transition: 0.2s;
+}
+.button:hover .arrowbut
+{
+    background-color: red;
+    transform: rotate(45deg);
+}
+.button:hover .arrowbut:after
+{
+    background-color: red;
+    transform: rotate(90deg);
 }
 #tilebtn
 {
     opacity: 0;
     display: none;
-    background-image: url('icons/x2.png');
-}
-#tilebtn:hover
-{
-    background-image: url('icons/x.png');
 }
 .tiles
 {

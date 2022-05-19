@@ -67,11 +67,15 @@
          <div class="menu">
              <div id="menubackg"></div>
             <div class="menucont">
-            <button id="homebtn" class="button"></button>
+            <button id="homebtn" class="button">
+                <div class="arrowbut"></div>
+            </button>
             <p class="menutxt">Home</p>
             </div>
             <div class="menucont">
-            <button class="button" id="tilebtn"></button>
+            <button class="button" id="tilebtn">
+                <div class="arrowbut"></div>
+            </button>
             <p class="menutxt" id="menutxtback">Back</p>
             </div>
          </div>
@@ -84,7 +88,7 @@
              </div>   
          </div>
         <div class="otherpa" style="text-align: center;">
-            //coming soon
+            
         </div>
         <div class="portfo">
             <div id="quickmenu">
@@ -540,11 +544,10 @@
             window.onscroll = function(){
             if(window.scrollY>1){
                 $('#topbar').css({'transform':'scale(0.65)','background-image':'linear-gradient(to right, rgba(40, 40, 40, 0.7),transparent)'});
-                $('.topbuttons').css('opacity','1');
+                $('.topbuttons').css('display','inline-block');
             }else if (window.scrollY>=0){
                 $('#topbar').css({'transform':'scale(1)','background-image':'linear-gradient(transparent,transparent)'});
-                $('#dbut').css('opacity','1')
-                $('.topbuttons').css('opacity','0')
+                $('.topbuttons').css('display','none')
             }
         };
          </script>
