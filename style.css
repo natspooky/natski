@@ -373,7 +373,7 @@ canvas
     overflow: hidden;
     cursor: pointer;
     box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
-    transition: 0.5s ease;
+    transition: 0.3s;
 }
 .tilecontainer:hover
 {
@@ -621,14 +621,33 @@ canvas
     top: 14%;
     z-index: 30;
     width: 60%;
-    height: 70%;
     font-size: x-large;
     overflow-x: hidden;
     letter-spacing: 5px;
-    border-radius: 10px;
     overflow-y: scroll;
-    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
-    background-image: linear-gradient(to right, rgb(245, 245, 245), rgb(165, 165, 165));
+    height: auto;
+    max-height: 70%;
+    color: #fff;
+}
+dt
+{
+    position: relative;
+    width: 100%;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    height: auto;
+    background-color: rgba(0, 0, 0, 0.179);
+    border-radius: 5px;
+    border: 2px solid #2e2e2e;
+}
+dd
+{
+    position: relative;
+    width: 100%;
+    height: auto;
+    background-color: rgba(0, 0, 0, 0.179);
+    border-radius: 5px;
+    border: 2px solid #2e2e2e;
 }
 #backplate
 {
@@ -638,7 +657,7 @@ canvas
     width: 100%;
     top: 0;
     left: 0;
-    background-color: rgba(65, 44, 197, 0.5);
+    background-color: rgba(7, 0, 55, 0.918);
     opacity: 0;
     display: none;
     transition: 0.4s;
