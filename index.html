@@ -602,7 +602,7 @@
   amount = 0,
   mouse = {x:0,y:0},
   radius = 1;
-var colors = ["#fff", "#C9C9C9"];
+var colors = ["#fff"];
 var copy = document.querySelector("#copy");
 var ww = canvas.width = window.innerWidth;
 var wh = canvas.height = window.innerHeight;
@@ -613,7 +613,7 @@ function Particle(x,y){
     x : x,
     y: y
   };
-  this.r =  Math.random()*4 + 2;
+  this.r =  3;
   this.vx = (Math.random()-0.5)*20;
   this.vy = (Math.random()-0.5)*20;
   this.accX = 0;
