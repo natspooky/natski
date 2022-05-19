@@ -32,6 +32,41 @@ body
 	background-repeat: no-repeat;
 	background-color: #232323;
 }
+canvas{
+    background: transparent;
+    width: 100vw;
+    height: 100vh;
+    transform: translateY(-80vh);
+    z-index: 1;
+  }
+  input{
+    width: 250px;
+    height: 40px;
+    line-height: 40px;
+    position: absolute;
+    bottom: 35px;
+    left: calc(50% - 125px);
+    background: none;
+    color: white;
+    font-size: 30px;
+    font-family: arial;
+    text-align: center;
+    border: 1px solid white;
+    background: rgba(255,255,255,0.2);
+  }
+.ne{
+position: fixed;
+left: 0;
+bottom:5px;
+color: #fff;
+z-index:10;
+font-size:16px;
+font-family: Helvetica, Verdana, sans-serif;
+opacity:0;
+width: 100%;
+text-align: center;
+margin: 0;
+}
 ::-webkit-scrollbar
 {
     display: none;
@@ -143,7 +178,7 @@ body
     background-image: url('tile3.png');
     background-size: cover;
     background-position: center;
-    transition: 1s ease;
+    transition: 0.7s ease;
 }
 .menubtn
 {
@@ -177,7 +212,7 @@ body
     position: absolute; 
     height: 120%; 
     width: 45%; 
-    background-color: var(--gray); 
+    background-color: var(--gray);
     transform: translateY(-113px);
     left: -3.3%; 
     top: 0px; 
@@ -460,7 +495,8 @@ body
     width: 70%;
     height: 110px;
     background-color: var(--alblack);
-    transform: scale(0);
+    transform: scaleX(0);
+    transform-origin: left;
     color: #fff;
     font-size: 20px;
     text-align: center;

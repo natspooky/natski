@@ -8,6 +8,8 @@
 		 <link rel="stylesheet" type="text/css" href="style.css"> 
 	 </head>
      <body onload="detec();">
+        <canvas id="scene"></canvas>
+  <input id="copy" type="text" value="/ / N A T S K I" class="ne"/>
         <div id="power" style="background-image: url('icons/info.png'); z-index: 20;"></div>
         <div id="backplate">
             <div id="power3" style="background-image: url('icons/x.png');"></div>
@@ -30,9 +32,6 @@
         </div>
     </div>
          <p style="position: absolute; top: 5px; right: 5px; color: #fff; z-index: 3;"><b>//early testing</b></p>
-        <div id="title">
-            <h1 style="letter-spacing: 10px;">//NATSKI</h1>
-        </div>
         <div class="butcon" id="page1">
         <div style="position: relative; font-size: 40px; padding: 20px;" id="selector">
             <h1 id="porttxt" class="port" style="transition: 1s ease;">PORTFOLIO</h1>
@@ -85,10 +84,10 @@
              <div id="textboxexp">
                  <h1 style="margin: 0px 15px;">nothing is here yet</h1>
                  <p style="margin: 0px 15px;">how spooky</p>
-             </div>   
+             </div>
          </div>
         <div class="otherpa" style="text-align: center;">
-            
+            <h1 style="position: relative; top: 40vh; font-size: xx-large; padding: 20px; background-image: linear-gradient(to right, rgba(0, 0, 0, 0.053), rgba(0, 0, 0, 0.384),rgba(0, 0, 0, 0.053))">//working on it</h1>
         </div>
         <div class="portfo">
             <div id="quickmenu">
@@ -235,6 +234,7 @@
                 <img src="imgs/5.jpg" class="imgreel" alt="error">
                 <img src="imgs/6.png" class="imgreel" alt="error">
                 <img src="imgs/13.png" class="imgreel" alt="error">
+                <div style="height: 300px;"></div>
             </div>
             <div class="col" style="left: 0;">
                 <img src="imgs/7.png" class="imgreel" alt="error">
@@ -245,6 +245,9 @@
                 <img src="imgs/12.png" class="imgreel" alt="error">
                 <img src="imgs/14.png" class="imgreel" alt="error">
             </div>
+        </div>
+        <div class="tilemenu" id="tilemenu4">
+            //working on it 
         </div>
 		 <div class="tiles">
             <h1 style="text-align: center; letter-spacing: 15px;">//MENU</h1>
@@ -355,7 +358,7 @@
                     setTimeout(function() {
                         $('#tilebtn').css('opacity','1');
                         $('#tilemenu2').css({'opacity':'1','transform':'translateY(60px)'});
-                        $('.downbtnlayer').css('transform','scale(1)');
+                        $('.downbtnlayer').css('transform','scaleX(1)');
                     }, 500);
                     setTimeout(function() {
                         $('.youtext').css('opacity','1');
@@ -383,7 +386,7 @@
                     }, 400);
                     $('#tilemenu2').css({'transform':'translateY(0px)','opacity':'0'});
                     $('.youtext').css('opacity','0');
-                    $('.downbtnlayer').css('transform','scale(0)');
+                    $('.downbtnlayer').css('transform','scaleX(0)');
                     $('#tilebtn').css('opacity','0');
                 });
                 $('#tile3').click(function(){
@@ -415,6 +418,37 @@
                         $('.tiles').css('display','block');      
                     }, 400);
                     $('#tilemenu3').css({'transform':'translateY(0px)','opacity':'0'});
+                    $('#tilebtn').css('opacity','0');
+                });
+                $('#tile4').click(function(){
+                    setTimeout(function() {
+                        $('.tiles').css('display','none');
+                    }, 400);
+                    setTimeout(function() {
+                        $('#tilebtn').css('opacity','1');
+                        $('#tilemenu4').css({'opacity':'1','transform':'translateY(60px)'});        
+                    }, 500);
+                    setTimeout(function() {
+                        $('#tilemenu4').css('display','block');
+                        $('#tilebtn').css('display','block');
+                        $('#menutxtback').css('display','block');
+                    }, 400);
+                    $('.tiles').css({'transform':'translateY(-60px)','opacity':'0'});
+                    $('#menubackg').css('transform','translateY(-43px)'); 
+                });
+                $('#tilebtn').click(function(){
+                    setTimeout(function() {
+                        $('#tilemenu4').css('display','none');
+                    }, 400);
+                    setTimeout(function() {
+                        $('.tiles').css({'opacity':'1','transform':'translateY(0px)'});
+                        $('#tilebtn').css('display','none');
+                        $('#menutxtback').css('display','none');
+                    }, 500);
+                    setTimeout(function() {
+                        $('.tiles').css('display','block');      
+                    }, 400);
+                    $('#tilemenu4').css({'transform':'translateY(0px)','opacity':'0'});
                     $('#tilebtn').css('opacity','0');
                 });
                 $('#power').click(function(){
@@ -550,5 +584,131 @@
                 $('.topbuttons').css('display','none')
             }
         };
+        var canvas = document.querySelector("#scene"),
+  ctx = canvas.getContext("2d"),
+  particles = [],
+  amount = 0,
+  mouse = {x:0,y:0},
+  radius = 1;
+
+var colors = ["#fff", "#C9C9C9"];
+
+var copy = document.querySelector("#copy");
+
+var ww = canvas.width = window.innerWidth;
+var wh = canvas.height = window.innerHeight;
+
+function Particle(x,y){
+  this.x =  Math.random()*ww;
+  this.y =  Math.random()*wh;
+  this.dest = {
+    x : x,
+    y: y
+  };
+  this.r =  Math.random()*5 + 2;
+  this.vx = (Math.random()-0.5)*20;
+  this.vy = (Math.random()-0.5)*20;
+  this.accX = 0;
+  this.accY = 0;
+  this.friction = Math.random()*0.05 + 0.94;
+
+  this.color = colors[Math.floor(Math.random()*6)];
+}
+
+Particle.prototype.render = function() {
+
+
+  this.accX = (this.dest.x - this.x)/1000;
+  this.accY = (this.dest.y - this.y)/1000;
+  this.vx += this.accX;
+  this.vy += this.accY;
+  this.vx *= this.friction;
+  this.vy *= this.friction;
+
+  this.x += this.vx;
+  this.y +=  this.vy;
+
+  ctx.fillStyle = this.color;
+  ctx.beginPath();
+  ctx.arc(this.x, this.y, this.r, Math.PI * 2, false);
+  ctx.fill();
+
+  var a = this.x - mouse.x;
+  var b = this.y - mouse.y;
+
+  var distance = Math.sqrt( a*a + b*b );
+  if(distance<(radius*70)){
+    this.accX = (this.x - mouse.x)/100;
+    this.accY = (this.y - mouse.y)/100;
+    this.vx += this.accX;
+    this.vy += this.accY;
+  }
+
+}
+
+function onMouseMove(e){
+  mouse.x = e.clientX;
+  mouse.y = e.clientY;
+}
+
+function onTouchMove(e){
+  if(e.touches.length > 0 ){
+    mouse.x = e.touches[0].clientX;
+    mouse.y = e.touches[0].clientY;
+  }
+}
+
+function onTouchEnd(e){
+mouse.x = -9999;
+mouse.y = -9999;
+}
+
+function initScene(){
+  ww = canvas.width = window.innerWidth;
+  wh = canvas.height = window.innerHeight;
+
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  ctx.font = "bold "+(ww/10)+"px sans-serif";
+  ctx.textAlign = "center";
+  ctx.fillText(copy.value, ww/2, wh/2);
+
+  var data  = ctx.getImageData(0, 0, ww, wh).data;
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.globalCompositeOperation = "screen";
+
+  particles = [];
+  for(var i=0;i<ww;i+=Math.round(ww/150)){
+    for(var j=0;j<wh;j+=Math.round(ww/150)){
+      if(data[ ((i + j*ww)*4) + 3] > 150){
+        particles.push(new Particle(i,j));
+      }
+    }
+  }
+  amount = particles.length;
+
+}
+
+function onMouseClick(){
+  radius =1;
+}
+
+function render(a) {
+  requestAnimationFrame(render);
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  for (var i = 0; i < amount; i++) {
+    particles[i].render();
+  }
+};
+
+copy.addEventListener("keyup", initScene);
+window.addEventListener("resize", initScene);
+window.addEventListener("mousemove", onMouseMove);
+window.addEventListener("touchmove", onTouchMove);
+window.addEventListener("click", onMouseClick);
+window.addEventListener("touchend", onTouchEnd);
+initScene();
+requestAnimationFrame(render);
+
          </script>
      </body>
