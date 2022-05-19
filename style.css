@@ -263,7 +263,19 @@ canvas
     left: 0;
     height: 4px;
     border-radius: 10px;
-    transform: rotate(0deg);
+    transform: rotate(35deg) translateX(0px) translateY(6px);
+    background-color: #000;
+    transition: 0.2s;
+}
+.arrowbut:before
+{
+    content: "";
+    position: absolute;
+    width: 20px;
+    left: 0;
+    height: 4px;
+    border-radius: 10px;
+    transform: rotate(-35deg) translateX(0px) translateY(-6px);
     background-color: #000;
     transition: 0.2s;
 }
@@ -272,10 +284,59 @@ canvas
     background-color: red;
     transform: rotate(45deg);
 }
-.button:hover .arrowbut:after
+.button:hover .arrowbut:after,.button:hover .arrowbut:before
 {
     background-color: red;
-    transform: rotate(90deg);
+    transform: rotate(90deg) translate(0);
+}
+.arrowbut2
+{
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    width: 20px;
+    height: 4px;
+    border-radius: 10px;
+    background-color: #000;
+    transform: rotate(0deg);
+    transition: 0.2s;
+}
+.arrowbut2:after
+{
+    content: "";
+    position: absolute;
+    width: 20px;
+    left: 0;
+    height: 4px;
+    bottom: 0;
+    border-radius: 10px;
+    transform: rotate(0deg) translateY(-7px);
+    background-color: #000;
+    transition: 0.2s;
+}
+.arrowbut2:before
+{
+    content: "";
+    position: absolute;
+    width: 20px;
+    left: 0;
+    top: 0;
+    height: 4px;
+    bottom: 10px;
+    border-radius: 10px;
+    transform: rotate(0deg) translateY(7px);
+    background-color: #000;
+    transition: 0.2s;
+}
+.button:hover .arrowbut2
+{
+    background-color: red;
+    transform: rotate(45deg);
+}
+.button:hover .arrowbut2:before, .button:hover .arrowbut2:after
+{
+    background-color: red;
+    transform: rotate(90deg) translateY(0px);
 }
 #tilebtn
 {
@@ -659,4 +720,16 @@ canvas
     opacity: 0;
     border-radius: 10px;
     transition: 0.4s;
+}
+#abouttab
+{
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    height: 500px;
+    border-radius: 10px;
+
+    background-color: var(--gray);
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
 }

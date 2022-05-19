@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
      <head>
-		 <title id="title">Natspooky | Home</title>
+		 <title id="title">Natspooky</title>
 	<meta charset="utf-8" content="width=device-width, initial-scale=1"> 
 		 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		 <link rel="shortcut icon" type="image/png" sizes="100x100" href="icons/icons.png"/>
@@ -9,7 +9,7 @@
 	 </head>
      <body onload="detec();">
         <canvas id="scene"></canvas>
-  <input id="copy" type="text" value="/ / N A T S K I" class="ne"/>
+        <input id="copy" type="text" value="loading" class="ne"/>
         <div id="power" style="background-image: url('icons/info.png'); z-index: 20;"></div>
         <div id="backplate">
             <div id="power3" style="background-image: url('icons/x.png');"></div>
@@ -23,11 +23,11 @@
                 <dt style="font-weight: bold;">CURRENT BROWSER:</dt>
                 <dd id="browserdet">loading...</dd>
                 <p style="text-align: center;">-----------------------</p>
-                <dt style="font-weight: bold;">ORIENTATION:</dt>
+                <dt style="font-weight: bold;">INITIAL ORIENTATION:</dt>
                 <dd id="orient">loading...</dd>
                 <p style="text-align: center;">-----------------------</p>
                 <dt style="font-weight: bold;">WEB VERSION:</dt>
-                <dd>N1.1</dd>
+                <dd>N1.2</dd>
             </dl>
         </div>
     </div>
@@ -35,13 +35,13 @@
         <div class="butcon" id="page1">
         <div style="position: relative; font-size: 40px; padding: 20px;" id="selector">
             <h1 id="porttxt" class="port" style="transition: 1s ease;">PORTFOLIO</h1>
-            <button class="menubtn" id="portbutton">ENTER</button>
+            <button class="menubtn" id="portbutton" disabled>ENTER</button>
         </div>
         </div>
         <div class="butcon" id="page2" style="opacity: 0; display: none;">
             <div style="position: relative; font-size: 40px; padding: 20px;" id="selector">
                 <h1 id="porttxt" class="port" style="transition: 1s ease;">OTHER PAGE</h1>
-                <button class="menubtn" id="otherbut">ENTER</button>
+                <button class="menubtn" id="otherbut" disabled>ENTER</button>
             </div>
             </div>
             <button class="sidebut" style="right: 10px; display: none;" id="rbut">></button>
@@ -73,9 +73,9 @@
             </div>
             <div class="menucont">
             <button class="button" id="tilebtn">
-                <div class="arrowbut"></div>
+                <div class="arrowbut2"></div>
             </button>
-            <p class="menutxt" id="menutxtback">Back</p>
+            <p class="menutxt" id="menutxtback">Menu</p>
             </div>
          </div>
          <div class="bottomtile" id="exptile" style="overflow-y: scroll;">
@@ -247,7 +247,9 @@
             </div>
         </div>
         <div class="tilemenu" id="tilemenu4">
-            //working on it 
+            <div id="abouttab">
+                bruh
+            </div>
         </div>
 		 <div class="tiles">
             <h1 style="text-align: center; letter-spacing: 15px;">//MENU</h1>
@@ -535,6 +537,7 @@
                     });
             });    
             function detec(){
+
                 if (window.matchMedia("(orientation: portrait)").matches) {
                     $('.downbtn').css({'width':'100%','margin-bottom':'100%'});
                     $('.downbtn.down').css('margin-bottom','56.25%');
@@ -542,10 +545,18 @@
                     $('.tiles').css('max-width','825px');
                     $('#expimg').css('display','none')
                     document.getElementById('orient').innerHTML = "Portrait"
+                    $('#portbutton').removeAttr('disabled');
+                    $('#otherbut').removeAttr('disabled');
+                    document.getElementById("copy").value = "N A T S K I";
+                    initScene()
             }   if (window.matchMedia("(orientation: landscape)").matches) {
                     $('.downbtn').css({'width':'48%','margin-bottom':'48%'});
                     $('.tilecontainer').css('width','180px');
+                    $('#portbutton').removeAttr('disabled');
+                    $('#otherbut').removeAttr('disabled');
                     document.getElementById('orient').innerHTML = "Landscape"
+                    document.getElementById("copy").value = "N A T S K I";
+                    initScene()
             }
             HTMLDocument.prototype.e = document.getElementById;
             var el_down = document.e("oscheck");
