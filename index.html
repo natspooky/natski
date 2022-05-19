@@ -234,7 +234,7 @@
                 <img src="imgs/5.jpg" class="imgreel" alt="error">
                 <img src="imgs/6.png" class="imgreel" alt="error">
                 <img src="imgs/13.png" class="imgreel" alt="error">
-                <div style="height: 300px;"></div>
+                <div style="height: 400px;"></div>
             </div>
             <div class="col" style="left: 0;">
                 <img src="imgs/7.png" class="imgreel" alt="error">
@@ -506,6 +506,7 @@
                 $('#homebtn').click(function(){
                     $('.menu').css('transform','translateY(0px)');
                     $('.otherpa').css('opacity','0');
+                    initScene();
                     setTimeout(function() {
                         $('.otherpa').css('display','none');
                     }, 300);
