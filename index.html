@@ -88,6 +88,11 @@
         <div class="otherpa" style="text-align: center;">
             <h1 style="position: relative; top: 40vh; font-size: xx-large; padding: 20px; background-image: linear-gradient(to right, rgba(0, 0, 0, 0.053), rgba(0, 0, 0, 0.384),rgba(0, 0, 0, 0.053))">//working on it</h1>
         </div>
+        <div id="youpannel">
+            <iframe width="auto" height="60%" src="https://www.youtube.com/embed/QzBYuU4A0B8?rel=0?version=3&controls=0&showinfo=0" title="Animation" frameborder="0" style="position: absolute; top: 0; left: 0; border-radius: 10px;"></iframe>
+            <iframe width="auto" height="60%" src="https://www.youtube.com/embed/5uszMd7aH3c?rel=0?version=3&controls=0&showinfo=0" title="Animation" frameborder="0" style="position: absolute; top: 0; left: 0; border-radius: 10px;"></iframe>
+            <iframe width="auto" height="60%" src="https://www.youtube.com/embed/0fu_HoRECIU?rel=0?version=3&controls=0&showinfo=0" title="Animation" frameborder="0" style="position: absolute; top: 0; left: 0; border-radius: 10px;"></iframe>
+        </div>
         <div class="portfo">
             <div id="quickmenu">
                 <h1 style="text-align: center; font-size:medium;">//NAVIGATOR</h1>
@@ -183,9 +188,10 @@
             <div class="tilemenu" id="tilemenu2">
                 <h1 style="text-align: center; letter-spacing: 15px;">//ANIMATIONS</h1>
                 <div class="downbtn">
-                    <div class="vids" style="padding-top: 100%">
-                        <img class="videoimage" src="icons/error.png" alt="error">
-                        <div class="playbutton"></div>    
+                    <div class="vids" style="padding-top: 100%" id="animation1">
+                        <img class="videoimage" src="icons/ani1.jpg" alt="error">
+                        <img class="shine" src="icons/shine.png" alt="error">
+                        <div class="playbutton"></div>
                     </div>
                     <div class="downcontain"></div>
                     <div class="downbtnlayer">
@@ -194,8 +200,10 @@
                     <img src="icons/g+.png" class="downbtnimg" alt="error">
                 </div>
                 <div class="downbtn">
-                    <div class="vids" style="padding-top: 100%">
-                        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/5uszMd7aH3c?rel=0?version=3&controls=0&showinfo=0" title="Animation" frameborder="0" style="position: absolute; top: 0; left: 0; border-radius: 10px;"></iframe>
+                    <div class="vids" style="padding-top: 100%" id="animation2">
+                        <img class="videoimage" src="icons/ani2.jpg" alt="error">
+                        <img class="shine" src="icons/shine.png" alt="error">
+                        <div class="playbutton"></div> 
                     </div>
                     <div class="downcontain"></div>
                     <div class="downbtnlayer">
@@ -204,8 +212,10 @@
                     <img src="icons/eye.png" class="downbtnimg" alt="error">
                 </div>
                 <div class="downbtn down">
-                    <div class="vids" style="padding-top: 56.25%">
-                        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/QzBYuU4A0B8?rel=0?version=3&controls=0&showinfo=0" title="Animation" frameborder="0" style="position: absolute; top: 0; left: 0; border-radius: 10px;"></iframe>
+                    <div class="vids" style="padding-top: 56.25%" id="animation3">
+                        <img class="videoimage" src="icons/ani3.jpg" alt="error">
+                        <img class="shine" src="icons/shine.png" alt="error">
+                        <div class="playbutton play"></div> 
                     </div>
                     <div class="downcontain"></div>
                     <div class="downbtnlayer">
@@ -214,8 +224,10 @@
                     <img src="icons/brows.png" class="downbtnimg" alt="error">
                 </div>
                 <div class="downbtn">
-                    <div class="vids" style="padding-top: 56.25%">
-                        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/0fu_HoRECIU?rel=0?version=3&controls=0&showinfo=0" title="Animation" frameborder="0" style="position: absolute; top: 0; left: 0; border-radius: 10px;"></iframe>
+                    <div class="vids" style="padding-top: 56.25%" id="animation4">
+                        <img class="videoimage" src="icons/ani4.jpg" alt="error">
+                        <img class="shine" src="icons/shine.png" alt="error">
+                        <div class="playbutton play"></div> 
                     </div>
                     <div class="downcontain"></div>
                     <div class="downbtnlayer">
@@ -336,7 +348,7 @@
                     $('#menutxtback').css('display','block');
                 }, 400);
                 $('.tiles').css({'transform':'translateY(-60px)','opacity':'0'});
-                $('#menubackg').css('transform','translateY(-43px)'); 
+                $('#menubackg').css('transform','translateY(-43px)');
                 $('#quickmenu').css('display','block');
             });
             $('#tilebtn').click(function(){
@@ -537,7 +549,13 @@
                     $('#textboxexp').css('opacity','0')
                     $('#topbar').css('opacity','1')
                 });
-            });    
+            });
+            $('#animation1').click(function(){
+                setTimeout(function(){
+                    $('#youpannel').css('opacity','1')
+                }, 10);
+                $('#youpannel').css('display','block')
+            });
             function detec(){
                 if(window.matchMedia("(orientation: portrait)").matches){
                     document.getElementById('orient').innerHTML="Portrait"
