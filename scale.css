@@ -1,0 +1,36 @@
+@media (orientation: portrait){
+    .downbtn{
+        width: 100%;
+        margin-bottom: 100%;
+    }
+    .downbtn.down{
+        margin-bottom: 56.25%;
+    }
+    .tilecontainer{
+        width: 400px;
+        height: 400px;
+        margin: 20px 5px;
+    }
+    .tilecontainer.tile1{
+        margin-left: 5px;
+    }
+    .tiles{
+        max-width: 830px;
+    }
+    #aboutimage{
+        height: 30%;
+    }
+    #power2{
+        width: 60%;
+    }
+    #quickmenu{
+        transform: translateX(300px);
+    }
+    #power,#power3{
+        transform: scale(1) translateY(-40px);
+    }
+    #power:hover,#power3:hover{
+        transform: scale(0.9) translateY(-40px);
+        border: 3px solid red;
+    }
+}

@@ -113,10 +113,6 @@ canvas
     background-image: linear-gradient(to right, var(--blue), var(--purple));
     overflow: hidden;
 }
-@keyframes waves {
-    from{background-position-x:0;}
-    to{background-position-x:1000px;}
-}
 .wave {
     position: absolute;
     background-image: url('wave.png');
@@ -366,7 +362,7 @@ canvas
     display: inline-block;
     background-color: #FFF;
     height: 180px;
-    margin: 10px;
+    margin: 10px 10px;
     width: 180px;
     background-position: center;
     background-size: 90%;
@@ -389,7 +385,7 @@ canvas
     display: none;
     overflow-y: scroll;
     overflow-x: hidden;
-    height: 100vh;
+    height: 100%;
     width: 100%;
     align-items: center;
     align-content: center;
@@ -411,7 +407,7 @@ canvas
 }
 .tilecontainer.tile4
 {
-    background-image: url('icons/error.png');
+    background-image: url('icons/about.png');
 }
 .tiletxt
 {
@@ -502,7 +498,7 @@ canvas
     display: none;
     opacity: 0;
     overflow-y: scroll;
-    border-radius: 10px;
+    border-radius: 10px 0px 0px 10px;
     transition: 0.5s;
 }
 #quickmenu::-webkit-scrollbar
@@ -522,8 +518,9 @@ canvas
     position: relative;
     display: inline-block;
     background-color: transparent;
-    width: 47%;
+    width: 48%;
     margin: 5px;
+    margin-bottom: 48%;
     height: 110px;
 }
 .downbtnimg
@@ -570,6 +567,8 @@ canvas
     width: 100%;
     opacity: 0;
     transition: 0.5s;
+    border-radius: 10px;
+    background-color: #1b1174;
 }
 .youtext
 {
@@ -605,7 +604,7 @@ canvas
 #power,#power3
 {
     position: fixed;
-    bottom: 4%;
+    bottom: 10px;
     left: 10px;
     height: 50px;
     width: 50px;
@@ -630,15 +629,15 @@ canvas
     margin-left: auto;
     margin-right: auto;
     position: relative;
-    top: 14%;
+    top: 5%;
     z-index: 30;
-    width: 60%;
+    width: 55%;
     font-size: x-large;
     overflow-x: hidden;
     letter-spacing: 5px;
     overflow-y: scroll;
     height: auto;
-    max-height: 70%;
+    max-height: 85%;
     color: #fff;
 }
 dt
@@ -648,6 +647,7 @@ dt
     margin-top: 30px;
     margin-bottom: 10px;
     height: auto;
+    font-size: xx-large;
     background-color: rgba(0, 0, 0, 0.179);
     border-radius: 5px;
     border: 2px solid #2e2e2e;
@@ -657,6 +657,7 @@ dd
     position: relative;
     width: 100%;
     height: auto;
+    font-size: xx-large;
     background-color: rgba(0, 0, 0, 0.179);
     border-radius: 5px;
     border: 2px solid #2e2e2e;
@@ -674,6 +675,13 @@ dd
     display: none;
     backdrop-filter: blur(10px);
     transition: 0.4s;
+}
+.sysicons
+{
+    position: absolute;
+    height: 100%;
+    width: auto;
+    left: 4px;
 }
 #power:hover,#power3:hover
 {
@@ -710,13 +718,6 @@ dd
 #dbut
 {
     animation: arrow 3s infinite;
-}
-@keyframes arrow
-{
-    0%{transform: translateY(0px);}
-    25%{transform: translateY(25px);}
-    50%{transform: translateY(0px);}
-    100%{transform: translateY(0px);}
 }
 .sidebut:hover
 {
@@ -758,7 +759,8 @@ dd
     position: relative;
     margin-left: auto;
     margin-right: auto;
-    width: 100%;
+    width: 120%;
+    left: -10%;
     height: 81vh;
     border-radius: 10px;
     background-color: var(--gray);
@@ -769,6 +771,23 @@ dd
     float: right;
     height: 50%;
     width: auto;
+    margin-left: 40px;
     border-radius: 60%;
     border: 15px solid #fff;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
+}
+p span
+{
+    float: left;
+    font-size: 300%;
+    width: 0.7em;
+    font-weight: bold;
+    line-height: 90.5%;
+}
+#abouttxt
+{
+    font-size: 200%;
+    margin: 20px;
+    padding-left: 5px;
+    padding-top: 20px;
 }
