@@ -568,7 +568,15 @@ canvas
     opacity: 0;
     transition: 0.5s;
     border-radius: 10px;
+    overflow: hidden;
+    transform: scale(1);
+    z-index: 4;
     background-color: #1b1174;
+    transition: 0.3s;
+}
+.vids:hover
+{
+    transform: scale(1.015);
 }
 .youtext
 {
@@ -790,4 +798,32 @@ p span
     margin: 20px;
     padding-left: 5px;
     padding-top: 20px;
+}
+.videoimage
+{
+    position: absolute;
+    height: 100%;
+    width: auto;
+    left: 0;
+    top: 0;
+}
+.playbutton
+{
+    position: absolute;
+    height: 50%;
+    width: 50%;
+    transform: scale(0.6);
+    top: 25%;
+    left: 25%;
+    border-radius: 50%;
+    border: 8px solid #fff;
+    background-image: url('icons/PLAY.png');
+    background-size: 80%;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: 0.4s;
+}
+.vids:hover .playbutton
+{
+    transform: scale(0.8);
 }
