@@ -9,7 +9,7 @@
     .tilecontainer{
         width: 400px;
         height: 400px;
-        margin: 20px 5px;
+        margin: 5px;
     }
     .tilecontainer.tile1{
         margin-left: 5px;
@@ -28,9 +28,18 @@
     }
     #power,#power3{
         transform: scale(1) translateY(-40px);
+        height: 70px;
+        width: 70px;
     }
     #power:hover,#power3:hover{
         transform: scale(0.9) translateY(-40px);
         border: 3px solid red;
+    }
+    .menubtn{
+        transform: scale(1.5) translateY(20px);
+    }
+    .port
+    {
+        font-size: 310%;
     }
 }
