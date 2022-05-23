@@ -246,7 +246,7 @@ canvas
     left: 0;
     height: 4px;
     border-radius: 10px;
-    transform: rotate(35deg) translateX(0px) translateY(6px);
+    transform: rotate(35deg) translateX(-2px) translateY(6px) scale(0.8);
     background-color: #000;
     transition: 0.2s;
 }
@@ -258,7 +258,7 @@ canvas
     left: 0;
     height: 4px;
     border-radius: 10px;
-    transform: rotate(-35deg) translateX(0px) translateY(-6px);
+    transform: rotate(-35deg) translateX(-2px) translateY(-6px) scale(0.8);
     background-color: #000;
     transition: 0.2s;
 }
@@ -270,7 +270,7 @@ canvas
 .button:hover .arrowbut:after,.button:hover .arrowbut:before
 {
     background-color: red;
-    transform: rotate(90deg) translate(0);
+    transform: rotate(90deg) translate(0) scale(1);
 }
 .arrowbut2
 {
@@ -598,25 +598,6 @@ canvas
     height: 100%;
     width: 49.2%;
 }
-#power,#power3
-{
-    position: fixed;
-    bottom: 10px;
-    left: 10px;
-    height: 50px;
-    width: 50px;
-    background-color: #fff;
-    background-image: url('icons/info.png');
-    background-size: 60%;
-    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
-    background-position: center;
-    background-repeat: no-repeat;
-    border-radius: 50%;
-    transform: scale(1);
-    cursor: pointer;
-    border: 3px solid transparent;
-    transition: 0.3s;
-}
 #power3
 {
     background-size: 80%;
@@ -680,11 +661,6 @@ dd
     width: auto;
     left: 4px;
 }
-#power:hover,#power3:hover
-{
-    transform: scale(0.9);
-    border: 3px solid red;
-}
 .butcon
 {
     width: 100%;
@@ -729,7 +705,7 @@ dd
     top: 125vh;
     color: #fff;
     border-radius: 20px;
-    transition: 1.5s ease;
+    transition: 0.8s ease;
     background-image: url('tile59.png');
     filter: grayscale(0.8);
     transform: scale(1);
@@ -834,14 +810,19 @@ p span
     left: 0;
     z-index: 5;
     opacity: 0;
-    background-color: #130c54eb;
+    background-color: #080337c7;
     backdrop-filter: blur(10px);
     display: none;
-    transition: 0.25s;
+    transition: 0.4s;
 }
 .youplayer
 {
     position: relative;
+    width: 100%;
+    height: 100%;
+    transform: scale(0.7);
+    border-radius: 10px;
+    display: none;
 }
 .shine
 {
@@ -870,4 +851,51 @@ p span
 .infologotxt
 {
     transform: scale(1) translateY(0);
+}
+.sysbuttons
+{
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    width: 20px;
+    height: 4px;
+    border-radius: 10px;
+    background-color: #000;
+    transform: rotate(0deg) translate(7px,8px) scale(0.9);
+    transition: 0.2s;
+}
+.sysbuttons:before
+{
+    position: absolute;
+    content: "";
+    width: 20px;
+    height: 4px;
+    border-radius: 10px;
+    background-color: #000;
+    transform: rotate(45deg) translate(-30px,10px) scale(0.85);
+    transition: 0.2s;
+}
+.sysbuttons:after
+{
+    position: absolute;
+    content: "";
+    width: 20px;
+    height: 4px;
+    border-radius: 10px;
+    background-color: #000;
+    transform: rotate(-45deg) translate(-17px,-23px) scale(0.85);
+    transition: 0.2s;
+}
+#power:hover .sysbuttons
+{
+    background-color: transparent;
+    transform: rotate(0deg) translate(16px,8px) scale(0.85);
+}
+#power:hover .sysbuttons:after,#power:hover .sysbuttons:before
+{
+    background-color: #5948ee;
+}
+#power:hover
+{
+    border: 3px solid #5948ee;
 }
