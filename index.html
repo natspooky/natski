@@ -12,9 +12,9 @@
         <link rel="stylesheet" type="text/css" href="scale.css">
 	</head>
     <body onload="detec();">
-        <div style="position: absolute; top: 210vh; z-index: 2; height: 30vh; text-align: center; width: 50%; transform: scale(1.2);">
-            <img src="icons/icons.png" alt="error" style="height: 70%; position: relative;" class="infologotxt">
-            <h1 style="position: relative; margin-left: auto; margin-right: auto; font-size: 400%; color: #fff; font-weight: bold;">NATSKI</h1>
+        <div  id="backlog">
+            <img src="icons/icons.png" alt="error" style="height: 100%; position: relative; display: inline-block;">
+            <h1 style="position: relative; display: inline-block; margin-left: 10px; font-size: 200%; color: #fff; font-weight: bold;">2022</h1>
         </div>
         <canvas id="scene"></canvas>
         <input id="copy" type="text" value="L O A D I N G" class="ne"/>
@@ -271,8 +271,18 @@
                 <h1 style="text-align: center; letter-spacing: 15px;"><span class="linecol">//</span>ABOUT</h1>
                 <div id="abouttab">
                     <img src="icons/infopageicon.png" alt="error" id="aboutimage">
-                    <p id="abouttxt"><span>T</span>his is the beggining of a paragraph to give this page more substance while its being built because i need to test this shit eventually but i have nothing to put here yet</p>
-                    <button>links here</button>
+                    <p id="abouttxt"><span class="largetxt">T</span>his is the beggining of a paragraph to give this page more substance while its being built because i need to test this shit eventually but i have nothing to put here yet</p>
+                    <div id="linkscont">
+                        <button class="links">
+                            links
+                        </button>
+                        <button class="links">
+                            <div class="linkicon"></div>
+                        </button>
+                        <button class="links">
+                            <div class="linkicon"></div>
+                        </button>
+                    </div>
                 </div>
             </div>
 		    <div class="tiles">
