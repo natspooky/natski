@@ -215,7 +215,6 @@ canvas
     height: 50px;
     width: 50px;
     left: 0;
-    top: 0;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
     transform: scale(1);
     cursor: pointer;
@@ -929,4 +928,9 @@ dd
     text-align: center; 
     width: 50%; 
     transform: scale(1.7); 
+}
+.titlefonts
+{
+    font-size: xx-large;
+    margin-bottom: 20px;
 }

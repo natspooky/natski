@@ -52,4 +52,21 @@
     {
         height: 2vh;
     }
+    .titlefonts
+    {
+        font-size: 450%;
+        margin-bottom: 50px;
+    }
+    .button
+    {
+        transform: scale(1.35);
+    }
+    .button:hover
+    {
+        transform: scale(1.2);
+    }
+    #menubackg
+    {
+        opacity: 0;
+    }
 }
