@@ -10,14 +10,18 @@
 {
 	--blue: #1b1174;
 	--pink: #E49EE6;
-	--black: #000;
+	--black: #fff;
+    --allblack: #000;
 	--alblue: #2a1f8c;
-	--white: #fff;
-	--gray: #C9C9C9;
+    --portgray: #232323;
+	--white: #2e2e2e;
+    --allwhite: #fff;
+	--gray: #1c1c1c;
 	--purple: #271252;
 	--red: #ff0000;
     --darkgray: #2e2e2e;
     --darkergray: #232323;
+    --themecol: #5948ee;
 }
 body
 {
@@ -61,7 +65,7 @@ canvas
 {
     position: absolute;
     top: 10px;
-    color: var(--white);
+    color: var(--allwhite);
     font-weight: bold;
     font-size: 25px;
     letter-spacing: 2px;
@@ -77,6 +81,28 @@ canvas
 	min-height: 100%;
     background-image: linear-gradient(to right, var(--blue), var(--purple));
     overflow: hidden;
+}
+#themes
+{
+    position: absolute;
+    top: 243vh;
+    height: 7vh;
+    width: 100%;
+    background-color: var(--darkgray);
+}
+.themebut
+{
+    position: relative;
+    height: 80%;
+    float: right;
+    margin: 5px 60px 5px 30px;
+    width: 20%;
+    display: block;
+    background-color: var(--darkergray);
+    border: 0px;
+    color: var(--black);
+    font-size: xx-large;
+    font-weight: bold;
 }
 .wave {
     position: absolute;
@@ -120,7 +146,7 @@ canvas
 .menubtn
 {
     padding: 10px 40px;
-    color: var(--white);
+    color: var(--allwhite);
     background-color: rgba(80, 80, 80, 0.5);
     border: solid 5px transparent;
     letter-spacing: 5px;
@@ -165,6 +191,7 @@ canvas
     transform: translateX(70px);
     font-weight: bold;
     top: 0;
+    color: var(--black);
     line-height: 50px;
     font-size: 20px;
     opacity: 0;
@@ -194,7 +221,7 @@ canvas
     height: 50px;
     width: 50px;
     left: 0;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.05);
     transform: scale(1);
     cursor: pointer;
     transition: 0.3s ease;
@@ -343,7 +370,7 @@ canvas
     width: 100%;
     align-items: center;
     align-content: center;
-    background-color: rgb(235, 235, 235);
+    background-color: var(--portgray);
     transition: 0.3s;
 }
 .tilecontainer.tile1
@@ -382,9 +409,9 @@ canvas
     position: absolute;
     height: 110%;
     width: 100%;
-    background-image: linear-gradient(transparent,var(--black));
+    background-image: linear-gradient(transparent,var(--themecol));
     opacity: 0;
-    color: var(--white);
+    color: var(--allwhite);
     top: -10%;
     transition: 0.5s ease;
 }
@@ -460,7 +487,7 @@ canvas
 {
     display: block;
     width: 7px;
-    background-color: #c5c5c5;
+    background-color: var(--gray);
     border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb
@@ -485,7 +512,7 @@ canvas
     left: 0;
     width: auto;
     background-color: var(--white);
-    border: 3px solid var(--black);
+    border: 3px solid var(--allblack);
     border-radius: 10px;
 }
 .downbtnlayer
@@ -495,10 +522,10 @@ canvas
     border-radius: 10px;
     width: 70%;
     height: 110px;
-    background-color: var(--black);
+    background-color: var(--allblack);
     transform: scaleX(0);
     transform-origin: left;
-    color: var(--white);
+    color: var(--allwhite);
     font-size: 20px;
     text-align: center;
     transition: 0.7s ease;
@@ -572,7 +599,7 @@ canvas
     height: 8px; 
     width: 48.5%; 
     bottom: 95px; 
-    background-color: var(--white); 
+    background-color: var(--allwhite); 
     z-index: 4; 
     border-radius: 10px;
     margin: 10px;
@@ -602,7 +629,7 @@ canvas
     overflow-y: scroll;
     height: auto;
     max-height: 85%;
-    color: var(--white);
+    color: var(--allwhite);
 }
 dt
 {
@@ -664,7 +691,7 @@ dd
     font-size: 80px;
     padding: 100px 10px;
     font-weight: bold;
-    color: var(--white);
+    color: var(--allwhite);
     top: 30vh;
     background: rgba(238, 238, 238,0.1);
     border-radius: 10px;
@@ -689,7 +716,7 @@ dd
     height: 50vh;
     background-color: #2a1f8c;
     top: 125vh;
-    color: var(--white);
+    color: var(--allwhite);
     border-radius: 20px;
     transition: 0.8s ease;
     background-image: url('tile59.png');
@@ -742,7 +769,7 @@ dd
     width: 0.7em;
     font-weight: bold;
     color: #5948ee61;
-    text-shadow: 0px 0px 7px rgb(178, 148, 255);
+    text-shadow: 0px 0px 7px rgba(178, 148, 255,0.4);
     line-height: 90%;
 }
 #abouttxt
@@ -751,6 +778,7 @@ dd
     margin: 20px;
     padding-left: 5px;
     padding-top: 20px;
+    color: var(--black);
 }
 .videoimage
 {
@@ -899,7 +927,7 @@ dd
     background-color: #6b5cf25d;
     box-shadow: 0px 0px 20px #5948ee61;
     border-radius: 50px;
-    color: var(--white);
+    color: var(--black);
     font-weight: bold;
     font-size: larger;
     border: 1px solid rgb(228, 228, 228);
@@ -920,5 +948,8 @@ dd
 .titlefonts
 {
     font-size: xx-large;
+    color: var(--black);
     margin-bottom: 20px;
+    text-align: center; 
+    letter-spacing: 15px;
 }

@@ -17,13 +17,17 @@
         <link rel="stylesheet" type="text/css" href="scale.css">
 	</head>
     <body onload="detec();">
-        <div  id="backlog">
-            <img src="icons/icons.png" alt="error" style="height: 100%; position: relative; display: inline-block;">
-            <h1 style="position: relative; display: inline-block; margin-left: 10px; font-size: 200%; color: #fff; font-weight: bold;">2022</h1>
+        <div id="themes">
+            <button class="themebut" id="light">
+                //LIGHT
+            </button>
+            <button class="themebut" id="dark">
+                //DARK
+            </button>
         </div>
         <canvas id="scene"></canvas>
         <input id="copy" type="text" value="L O A D I N G" class="ne"/>
-        <button id="power" class="button" style="position: fixed; z-index: 20; left: 10px; bottom: 6vh; overflow: hidden;">
+        <button id="power" class="button" style="position: fixed; z-index: 20; left: 10px; bottom: 6vh; overflow: hidden; box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.4);">
             <div class="sysbuttons"></div>
         </button>
         <div id="backplate">
@@ -58,7 +62,7 @@
         </div>
         <button class="sidebut" id="rbut">></button>
         <button class="sidebut" id="lbut"><</button>
-        <button style="top: 83%; background-color: transparent; padding: 0px; cursor:default; transition: 0.5s;" id="dbut">v</button>
+        <button style="top: 83%; background-color: transparent; padding: 0px; cursor:default; transition: 0.5s; text-shadow: 0px 0px 7px rgba(0, 0, 0, 0.4);" id="dbut">v</button>
         <div id="prog1" class="prog"></div>
         <div id="prog2" class="prog"></div>
         <div id="vid">      
@@ -95,7 +99,7 @@
             </div>
         </div>
         <div class="otherpa" style="text-align: center;">
-            <h1 style="position: relative; top: 40vh; font-size: xx-large; padding: 20px; background-image: linear-gradient(to right, rgba(0, 0, 0, 0.053), rgba(0, 0, 0, 0.384),rgba(0, 0, 0, 0.053))"><span class="linecol">//</span>working on it</h1>
+            <h1 style="position: relative; top: 40vh; font-size: xx-large; padding: 20px; background-image: linear-gradient(to right, rgba(0, 0, 0, 0.053), rgba(0, 0, 0, 0.384),rgba(0, 0, 0, 0.053)); color: var(--black);"><span class="linecol">//</span>working on it</h1>
         </div>
         <div id="youpannel" onclick="pannel()">
             <button id="youbutton" class="button" style="top: 10px; left: 10px;" onclick="pannel()">
@@ -108,7 +112,7 @@
         </div>
         <div class="portfo">
             <div id="quickmenu">
-                <h1 style="text-align: center; font-size:medium; letter-spacing: 2px;"><span class="linecol">//</span>NAVIGATOR</h1>
+                <h1 style="text-align: center; font-size:medium; letter-spacing: 2px; color: var(--black);"><span class="linecol">//</span>NAVIGATOR</h1>
                 <img src="slides/1.png" alt="slide" class="slides" onclick="slidescroll(1);">
                 <img src="slides/2.png" alt="slide" class="slides" onclick="slidescroll(2);">
                 <img src="slides/3.png" alt="slide" class="slides" onclick="slidescroll(3);">
@@ -153,7 +157,7 @@
                 <img src="slides/42.png" alt="slide" class="slides" onclick="slidescroll(42);"> 
             </div>
             <div class="tilemenu" id="tilemenu1">
-                <h1 style="text-align: center; letter-spacing: 15px;" class="titlefonts"><span class="linecol">//</span>SLIDES</h1>
+                <h1 class="titlefonts"><span class="linecol">//</span>SLIDES</h1>
                 <img src="slides/1.png" alt="slide" class="slide" id="slide1">
                 <img src="slides/2.png" alt="slide" class="slide" id="slide2">
                 <img src="slides/3.png" alt="slide" class="slide" id="slide3">
@@ -199,7 +203,7 @@
                 <h1 style="text-align: center; letter-spacing: 15px; padding-bottom: 20px;">110 / 120</h1>
             </div>
             <div class="tilemenu" id="tilemenu2">
-                <h1 style="text-align: center; letter-spacing: 15px;" class="titlefonts"><span class="linecol">//</span>ANIMATIONS</h1>
+                <h1 class="titlefonts"><span class="linecol">//</span>ANIMATIONS</h1>
                 <div class="downbtn">
                     <div class="vids" style="padding-top: 100%" id="animation1">
                         <img class="videoimage" src="icons/ani1.jpg" alt="error">
@@ -250,7 +254,7 @@
                 </div>
             </div>
             <div class="tilemenu" id="tilemenu3">
-                <h1 style="text-align: center; letter-spacing: 15px;" class="titlefonts"><span class="linecol">//</span>PHOTOSHOP</h1>
+                <h1 class="titlefonts"><span class="linecol">//</span>PHOTOSHOP</h1>
                 <div class="col" id="col1" style="right: 0;">
                     <img src="imgs/1.png" class="imgreel" alt="error">
                     <img src="imgs/11.png" class="imgreel" alt="error">
@@ -271,7 +275,7 @@
                 </div>
             </div>
             <div class="tilemenu" id="tilemenu4">
-                <h1 style="text-align: center; letter-spacing: 15px;" class="titlefonts"><span class="linecol">//</span>ABOUT</h1>
+                <h1 class="titlefonts"><span class="linecol">//</span>ABOUT</h1>
                 <div id="abouttab">
                     <img src="icons/infopageicon.png" alt="error" id="aboutimage">
                     <p id="abouttxt"><span class="largetxt">T</span>emp text</p>
@@ -289,7 +293,7 @@
                 </div>
             </div>
 		    <div class="tiles">
-                <h1 style="text-align: center; letter-spacing: 15px;" class="titlefonts"><span class="linecol">//</span>MENU</h1>
+                <h1 class="titlefonts"><span class="linecol">//</span>MENU</h1>
 			    <div class="tilecontainer tile1" id="tile1">
                     <div class="tiletxtcontain">
                         <p class="tiletxt">Art Portfolio</p>
@@ -552,8 +556,8 @@
                 });
             });
             $('#exptile').hover(function(){
-                $('#bot').css({'opacity':'0','transition':'0.5s','transform':'scaleX(0.85) translateY(4vh)','filter':'blur(0px) grayscale(0.8)'})
-                $('#mid').css({'opacity':'0','transition':'0.4s','transform':'scaleX(0.65) translateY(7.5vh)','filter':'blur(0px) grayscale(0.8)'})
+                $('#bot').css({'opacity':'0','transition':'0.3s','transform':'scaleX(1) translateY(4vh)','filter':'blur(0px) grayscale(0.8)'})
+                $('#mid').css({'opacity':'0','transition':'0.2s','transform':'scaleX(1) translateY(7.5vh)','filter':'blur(0px) grayscale(0.8)'})
             },function(){
                 $('#bot').css({'opacity':'0.8','transition':'0.6s','transform':'scaleX(0.85) translateY(0vh)','filter':'blur(1px) grayscale(0.8)'})
                 $('#mid').css({'opacity':'0.6','transition':'0.9s','transform':'scaleX(0.65) translateY(0vh)','filter':'blur(2px) grayscale(0.8)'})
@@ -581,6 +585,26 @@
                     $('#youpannel').css('opacity','1')
                 }, 10);
                 $('#youpannel,#vid4').css('display','block')
+            });
+            $('#dark').click(function(){
+                document.documentElement.style.setProperty('--white', '#2e2e2e');
+                document.documentElement.style.setProperty('--black', '#fff');
+                document.documentElement.style.setProperty('--portgray', '#232323');
+                document.documentElement.style.setProperty('--themecol', '#5948ee');
+                document.documentElement.style.setProperty('--darkergray', '#232323');
+                document.documentElement.style.setProperty('--darkgray', '#2e2e2e');
+                document.documentElement.style.setProperty('--gray', '#1c1c1c');
+                $('.wave.wave4').css('background-image','url("wave2.png")')
+            });
+            $('#light').click(function(){
+                document.documentElement.style.setProperty('--white', '#fff');
+                document.documentElement.style.setProperty('--black', '#000');
+                document.documentElement.style.setProperty('--portgray', '#ebebeb');
+                document.documentElement.style.setProperty('--themecol', '#000');
+                document.documentElement.style.setProperty('--darkergray', '#fff');
+                document.documentElement.style.setProperty('--darkgray', '#ebebeb');
+                document.documentElement.style.setProperty('--gray', '#C9C9C9');
+                $('.wave.wave4').css('background-image','url("wave.png")')
             });
             function pannel(){
                 setTimeout(function(){
