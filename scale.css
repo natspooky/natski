@@ -111,4 +111,16 @@
         background: transparent;
         border: 0px;
     }
+    .tiletxtcontain
+    {
+        opacity: 0.35;
+    }
+    .tilesubtxt
+    {
+        font-size: xx-large;
+    }
+    .tiletxt
+    {
+        font-size: xx-large;
+    }
 }
