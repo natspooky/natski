@@ -930,7 +930,7 @@ dd
     background-color: var(--themecol);
     box-shadow: 0px 0px 20px var(--themecol);
     border-radius: 50px;
-    color: var(--black);
+    color: var(--allwhite);
     font-weight: bold;
     font-size: larger;
     border: 1px solid rgb(228, 228, 228);
