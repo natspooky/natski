@@ -849,12 +849,12 @@ dd
     left: 0;
     top: 0;
     opacity: 0.5;
-    transform: scale(1.2) translateX(-700px) rotate(10deg);
+    transform: scale(1.2) translateX(-650px) rotate(10deg);
     transition: 0.7s;
 }
 .vids:hover .shine
 {
-    transform: scale(1.2) translateX(600px) rotate(10deg);
+    transform: scale(1.2) translateX(650px) rotate(10deg);
 }
 .linecol
 {
