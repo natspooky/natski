@@ -409,6 +409,7 @@ canvas
     position: absolute;
     height: 110%;
     width: 100%;
+    border-radius: 10px;
     background-image: linear-gradient(transparent,var(--themecol));
     opacity: 0;
     color: var(--allwhite);
@@ -554,7 +555,6 @@ canvas
     cursor: pointer;
     transform: scale(0.85);
     z-index: 4;
-    background-color: #1b1174;
     box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
     transition: 0.3s;
 }
@@ -848,13 +848,14 @@ dd
     width: 100%;
     left: 0;
     top: 0;
-    opacity: 0.5;
+    opacity: 0;
     transform: scale(1.2) translateX(-650px) rotate(10deg);
     transition: 0.7s;
 }
 .vids:hover .shine
 {
     transform: scale(1.2) translateX(650px) rotate(10deg);
+    opacity: 0.5;
 }
 .linecol
 {
