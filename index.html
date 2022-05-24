@@ -5,6 +5,11 @@
 	    <meta charset="UTF-8" content="width=device-width, initial-scale=1">
         <meta name="description" content="portfolio site">
         <meta name="keywords" content="portfolio, natspooky, natski">
+        <meta name="twitter:title" content="Natski portfolio">
+        <meta name="twitter:description" content="work in progress portfolio site">
+        <meta name="twitter:image" content="icons/icons.png">
+        <meta name="twitter:site" content="@nat_isnt_spooky">
+        <meta name="twitter:creator" content="@nat_isnt_spooky">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		<link rel="shortcut icon" type="image/png" sizes="100x100" href="icons/icons.png">
 		<link rel="stylesheet" type="text/css" href="style.css">
@@ -38,19 +43,21 @@
         </div>
         <p style="position: absolute; top: 5px; right: 5px; color: #fff; z-index: 3;"><b>//early testing</b></p>
         <div class="butcon" id="page1">
+            <div class="portraitbuttons" id="portbut1"></div>
             <div style="position: relative; font-size: 40px; padding: 20px;" id="selector">
                 <h1 id="porttxt" class="port" style="transition: 1s ease; text-shadow: 0px 0px 10px #7869ff;">PORTFOLIO</h1>
                 <button class="menubtn" id="portbutton" disabled>ENTER</button>
             </div>
         </div>
-        <div class="butcon" id="page2" style="opacity: 0; display: none;">
+        <div class="butcon" id="page2">
+            <div class="portraitbuttons" id="portbut2"></div>
             <div style="position: relative; font-size: 40px; padding: 20px;" id="selector">
                 <h1 id="porttxt" class="port" style="transition: 1s ease; text-shadow: 0px 0px 10px #7869ff;">OTHER PAGE</h1>
                 <button class="menubtn" id="otherbut" disabled>ENTER</button>
             </div>
         </div>
-        <button class="sidebut" style="right: 10px; display: none;" id="rbut">></button>
-        <button class="sidebut" style="left: 10px; display: block;" id="lbut"><</button>
+        <button class="sidebut" id="rbut">></button>
+        <button class="sidebut" id="lbut"><</button>
         <button style="top: 83%; background-color: transparent; padding: 0px; cursor:default; transition: 0.5s;" id="dbut">v</button>
         <div id="prog1" style="position: absolute; height: 8px; width: 48.5%; bottom: 95px; background-color: #fff; z-index: 4; border-radius: 10px; opacity: 0.7; margin: 10px; right: 0; transition: 0.3s;"></div>
         <div id="prog2" style="position: absolute; height: 8px; width: 48.5%; bottom: 95px; background-color: #fff; z-index: 4; border-radius: 10px; opacity: 0.1; margin: 10px; left: 0; transition: 0.3s;"></div>
@@ -330,7 +337,7 @@
                     $('#home1').css('opacity','0.15');
                     $('.port').css({'letter-spacing':'0px'});
                 });
-                $('#portbutton').click(function(){
+                $('#portbutton,#portbut1').click(function(){
                     $('.menu').css('transform','translateY(15px)');
                     $('.portfo').css('display','block'); 
                     setTimeout(function() {
@@ -526,7 +533,7 @@
                 $('#prog2').css('opacity','0.1')
                 document.getElementById('home1').style.backgroundImage = "url(tile3.png)"
             });
-            $('#otherbut').click(function(){
+            $('#otherbut,#portbut2').click(function(){
                 $('.menu').css('transform','translateY(15px)');
                 $('.otherpa').css('display','block'); 
                 setTimeout(function() {
