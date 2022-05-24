@@ -31,24 +31,17 @@
     #quickmenu{
         transform: translateX(300px);
     }
-    #power,#power3{
-        transform: scale(1) translateY(-40px);
+    #power{
+        transform: scale(1);
         height: 70px;
         width: 70px;
     }
-    #power:hover,#power3:hover{
-        transform: scale(0.9) translateY(-40px);
-        border: 3px solid red;
-    }
     .menubtn{
-        transform: scale(1.5) translateY(20px);
+        transform: scale(1.5);
     }
     .port
     {
         font-size: 310%;
-    }
-    #power:hover{
-        border: 3px solid #5948ee;
     }
     .bottomtile{
         height: 35vh;
@@ -121,5 +114,9 @@
         width: 100%;
         height: 100%;
         z-index: 4;
+    }
+    .prog
+    {
+        display: none;
     }
 }
