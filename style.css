@@ -11,15 +11,13 @@
 	--blue: #1b1174;
 	--pink: #E49EE6;
 	--black: #000;
-	--alblack: #000;
 	--alblue: #2a1f8c;
-	--white: #FFF;
+	--white: #fff;
 	--gray: #C9C9C9;
 	--purple: #271252;
-	--red: #D31111;
-	--alred: #D31111;
-    --newgreytop: #2e2e2e;
-    --newgreybottom: #232323;
+	--red: #ff0000;
+    --darkgray: #2e2e2e;
+    --darkergray: #232323;
 }
 body
 {
@@ -30,7 +28,7 @@ body
     overflow-x: hidden;
 	background-size: cover;
 	background-repeat: no-repeat;
-	background-color: #232323;
+	background-color: var(--darkergray);
 }
 canvas
 {
@@ -63,7 +61,7 @@ canvas
 {
     position: absolute;
     top: 10px;
-    color: #fff;
+    color: var(--white);
     font-weight: bold;
     font-size: 25px;
     letter-spacing: 2px;
@@ -122,7 +120,7 @@ canvas
 .menubtn
 {
     padding: 10px 40px;
-    color: #fff;
+    color: var(--white);
     background-color: rgba(80, 80, 80, 0.5);
     border: solid 5px transparent;
     letter-spacing: 5px;
@@ -190,8 +188,8 @@ canvas
     position: absolute;
     background-size: 100%;
     background-position: center;
-    background-color: #FFF;
-    border: 2px solid #fff;
+    background-color: var(--white);
+    border: 2px solid var(--white);
     border-radius: 50px;
     height: 50px;
     width: 50px;
@@ -203,7 +201,7 @@ canvas
 }
 .button:hover
 {
-    border: 3px solid red;
+    border: 3px solid var(--red);
     transform: scale(0.9);
 }
 .arrowbut
@@ -214,7 +212,7 @@ canvas
     width: 20px;
     height: 4px;
     border-radius: 10px;
-    background-color: #000;
+    background-color: var(--black);
     transform: rotate(0deg) translateX(0.5px);
     transition: 0.2s;
 }
@@ -227,7 +225,7 @@ canvas
     height: 4px;
     border-radius: 10px;
     transform: rotate(35deg) translateX(-2px) translateY(6px) scale(0.8);
-    background-color: #000;
+    background-color: var(--black);
     transition: 0.2s;
 }
 .arrowbut:before
@@ -239,17 +237,17 @@ canvas
     height: 4px;
     border-radius: 10px;
     transform: rotate(-35deg) translateX(-2px) translateY(-6px) scale(0.8);
-    background-color: #000;
+    background-color: var(--black);
     transition: 0.2s;
 }
-.button:hover .arrowbut
+.button:hover .arrowbut,.button:hover .arrowbut2
 {
-    background-color: red;
+    background-color: var(--red);
     transform: rotate(45deg) translateX(0px);
 }
-.button:hover .arrowbut:after,.button:hover .arrowbut:before
+.button:hover .arrowbut:after,.button:hover .arrowbut:before,.button:hover .arrowbut2:before, .button:hover .arrowbut2:after
 {
-    background-color: red;
+    background-color: var(--red);
     transform: rotate(90deg) translate(0) scale(1);
 }
 .arrowbut2
@@ -260,7 +258,7 @@ canvas
     width: 20px;
     height: 4px;
     border-radius: 10px;
-    background-color: #000;
+    background-color: var(--black);
     transform: rotate(0deg);
     transition: 0.2s;
 }
@@ -274,7 +272,7 @@ canvas
     bottom: 0;
     border-radius: 10px;
     transform: rotate(0deg) translateY(-7px);
-    background-color: #000;
+    background-color: var(--black);
     transition: 0.2s;
 }
 .arrowbut2:before
@@ -287,18 +285,8 @@ canvas
     height: 4px;
     border-radius: 10px;
     transform: rotate(0deg) translateY(7px);
-    background-color: #000;
+    background-color: var(--black);
     transition: 0.2s;
-}
-.button:hover .arrowbut2
-{
-    background-color: red;
-    transform: rotate(45deg);
-}
-.button:hover .arrowbut2:before, .button:hover .arrowbut2:after
-{
-    background-color: red;
-    transform: rotate(90deg) translateY(0px);
 }
 #tilebtn
 {
@@ -326,7 +314,7 @@ canvas
     position: relative;
     border-radius: 10px;
     display: inline-block;
-    background-color: #FFF;
+    background-color: var(--white);
     height: 180px;
     margin: 10px 10px;
     width: 180px;
@@ -394,9 +382,9 @@ canvas
     position: absolute;
     height: 110%;
     width: 100%;
-    background-image: linear-gradient(transparent,black);
+    background-image: linear-gradient(transparent,var(--black));
     opacity: 0;
-    color: #fff;
+    color: var(--white);
     top: -10%;
     transition: 0.5s ease;
 }
@@ -430,7 +418,7 @@ canvas
     border-radius: 10px;
     margin: 10px 0px;
     perspective-origin: center;
-    background-color: #fff;
+    background-color: var(--white);
     transform-origin: center;
     box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
     transition: 0.4s ease;
@@ -445,7 +433,7 @@ canvas
     left: 0;
     border-radius: 10px;
     margin: 5px 0px;
-    background-color: #fff;
+    background-color: var(--white);
     transform-origin: center;
     opacity: 1;
     box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.3);
@@ -477,7 +465,7 @@ canvas
 }
 ::-webkit-scrollbar-thumb
 {
-    background-color: rgb(0, 0, 0);
+    background-color: var(--black);
     border-radius: 10px;
 }
 .downbtn
@@ -496,8 +484,8 @@ canvas
     height: 100%;
     left: 0;
     width: auto;
-    background-color: #fff;
-    border: 3px solid #000;
+    background-color: var(--white);
+    border: 3px solid var(--black);
     border-radius: 10px;
 }
 .downbtnlayer
@@ -507,10 +495,10 @@ canvas
     border-radius: 10px;
     width: 70%;
     height: 110px;
-    background-color: var(--alblack);
+    background-color: var(--black);
     transform: scaleX(0);
     transform-origin: left;
-    color: #fff;
+    color: var(--white);
     font-size: 20px;
     text-align: center;
     transition: 0.7s ease;
@@ -563,7 +551,7 @@ canvas
     height: auto;
     border-radius: 10px;
     box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
-    background-color: #fff;
+    background-color: var(--white);
     vertical-align: top;
     transform: scale(1);
     transition: 0.3s;
@@ -584,7 +572,7 @@ canvas
     height: 8px; 
     width: 48.5%; 
     bottom: 95px; 
-    background-color: #fff; 
+    background-color: var(--white); 
     z-index: 4; 
     border-radius: 10px;
     margin: 10px;
@@ -614,7 +602,7 @@ canvas
     overflow-y: scroll;
     height: auto;
     max-height: 85%;
-    color: #fff;
+    color: var(--white);
 }
 dt
 {
@@ -626,7 +614,7 @@ dt
     font-size: xx-large;
     background-color: rgba(0, 0, 0, 0.179);
     border-radius: 5px;
-    border: 2px solid #2e2e2e;
+    border: 2px solid var(--darkgray);
 }
 dd
 {
@@ -636,7 +624,7 @@ dd
     font-size: xx-large;
     background-color: rgba(0, 0, 0, 0.179);
     border-radius: 5px;
-    border: 2px solid #2e2e2e;
+    border: 2px solid var(--darkgray);
 }
 #backplate
 {
@@ -676,7 +664,7 @@ dd
     font-size: 80px;
     padding: 100px 10px;
     font-weight: bold;
-    color: #fff;
+    color: var(--white);
     top: 30vh;
     background: rgba(238, 238, 238,0.1);
     border-radius: 10px;
@@ -701,7 +689,7 @@ dd
     height: 50vh;
     background-color: #2a1f8c;
     top: 125vh;
-    color: #fff;
+    color: var(--white);
     border-radius: 20px;
     transition: 0.8s ease;
     background-image: url('tile59.png');
@@ -719,7 +707,7 @@ dd
     width: 77%;
     left: 10px;
     background-color: #0f0c345a;
-    color: #fff;
+    color: var(--white);
     top: 17%;
     opacity: 0;
     border-radius: 10px;
@@ -744,7 +732,7 @@ dd
     width: auto;
     margin: 20px;
     border-radius: 60%;
-    border: 12px solid #fff;
+    border: 12px solid var(--white);
     box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
 }
 .largetxt
@@ -782,12 +770,12 @@ dd
     top: 35%;
     left: 35%;
     border-radius: 50%;
-    border: 8px solid #fff;
+    border: 8px solid var(--white);
     background-image: url('icons/PLAY.png');
     background-size: 100%;
     background-repeat: no-repeat;
     background-position: center;
-    background-color: #fff;
+    background-color: var(--white);
     transition: 0.4s;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.523);
 }
@@ -858,7 +846,7 @@ dd
     width: 20px;
     height: 4px;
     border-radius: 10px;
-    background-color: #000;
+    background-color: var(--black);
     transform: rotate(0deg) translate(7px,8px) scale(0.9);
     transition: 0.2s;
 }
@@ -869,7 +857,7 @@ dd
     width: 20px;
     height: 4px;
     border-radius: 10px;
-    background-color: #000;
+    background-color: var(--black);
     transform: rotate(45deg) translate(-30px,10px) scale(0.85);
     transition: 0.2s;
 }
@@ -880,7 +868,7 @@ dd
     width: 20px;
     height: 4px;
     border-radius: 10px;
-    background-color: #000;
+    background-color: var(--black);
     transform: rotate(-45deg) translate(-17px,-23px) scale(0.85);
     transition: 0.2s;
 }
@@ -911,7 +899,7 @@ dd
     background-color: #6b5cf25d;
     box-shadow: 0px 0px 20px #5948ee61;
     border-radius: 50px;
-    color: #fff;
+    color: var(--white);
     font-weight: bold;
     font-size: larger;
     border: 1px solid rgb(228, 228, 228);

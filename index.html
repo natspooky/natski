@@ -43,14 +43,14 @@
         </div>
         <p style="position: absolute; top: 5px; right: 5px; color: #fff; z-index: 3;"><b>//early testing</b></p>
         <div class="butcon" id="page1">
-            <div class="portraitbuttons" id="portbut1"></div>
+            <button class="portraitbuttons" id="portbut1" disabled></button>
             <div style="position: relative; font-size: 40px; padding: 20px;" id="selector">
                 <h1 id="porttxt" class="port" style="transition: 1s ease; text-shadow: 0px 0px 10px #7869ff;">PORTFOLIO</h1>
                 <button class="menubtn" id="portbutton" disabled>ENTER</button>
             </div>
         </div>
         <div class="butcon" id="page2">
-            <div class="portraitbuttons" id="portbut2"></div>
+            <button class="portraitbuttons" id="portbut2" disabled></button>
             <div style="position: relative; font-size: 40px; padding: 20px;" id="selector">
                 <h1 id="porttxt" class="port" style="transition: 1s ease; text-shadow: 0px 0px 10px #7869ff;">OTHER PAGE</h1>
                 <button class="menubtn" id="otherbut" disabled>ENTER</button>
@@ -274,7 +274,7 @@
                 <h1 style="text-align: center; letter-spacing: 15px;" class="titlefonts"><span class="linecol">//</span>ABOUT</h1>
                 <div id="abouttab">
                     <img src="icons/infopageicon.png" alt="error" id="aboutimage">
-                    <p id="abouttxt"><span class="largetxt">T</span>his is the beggining of a paragraph to give this page more substance while its being built because i need to test this shit eventually but i have nothing to put here yet</p>
+                    <p id="abouttxt"><span class="largetxt">T</span>emp text</p>
                     <div id="linkscont">
                         <button class="links">
                             links
@@ -591,11 +591,11 @@
             function detec(){
                 if(window.matchMedia("(orientation: portrait)").matches){
                     document.getElementById('orient').innerHTML="Portrait"
-                    $('#otherbut,#portbutton').removeAttr('disabled');
+                    $('#otherbut,#portbutton,.portraitbuttons').removeAttr('disabled');
                     document.getElementById("copy").value="/ / N A T S K I";
                     initScene();
                 }if(window.matchMedia("(orientation: landscape)").matches){
-                    $('#otherbut,#portbutton').removeAttr('disabled');
+                    $('#otherbut,#portbutton,.portraitbuttons').removeAttr('disabled');
                     document.getElementById('orient').innerHTML="Landscape";
                     document.getElementById("copy").value="/ / N A T S K I";
                     initScene();
