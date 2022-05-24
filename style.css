@@ -26,7 +26,7 @@ body
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	min-height: 250%;
+	min-height: 250vh;
     overflow-x: hidden;
 	background-size: cover;
 	background-repeat: no-repeat;
@@ -37,7 +37,7 @@ canvas
     background: transparent;
     width: 100vw;
     height: 100vh;
-    transform: translateY(-32vh);
+    transform: translateY(-105vh);
     z-index: 1;
 }
 #page2
@@ -709,6 +709,10 @@ dd
     opacity: 1;
     transition: 0.4s ease;
 }
+.butcon:after
+{
+    display: none;
+}
 .sidebut,#dbut
 {
     position: absolute;
@@ -961,12 +965,12 @@ dd
 #backlog
 {
     position: absolute; 
-    top: 240vh; 
+    top: 235vh; 
     z-index: 2;
     height: 3.5vh;
     text-align: center; 
     width: 50%; 
-    transform: scale(1.7); 
+    transform: scale(1.4); 
 }
 .titlefonts
 {
