@@ -503,6 +503,7 @@ canvas
     display: none;
     opacity: 0;
     overflow-y: scroll;
+    overflow-x: hidden;
     border-radius: 10px 0px 0px 10px;
     transition: 0.5s;
 }
