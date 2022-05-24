@@ -1,8 +1,3 @@
-@media screen and (max-width:1280px) {
-	#backlog{
-        height: 3vh;
-	}
-}
 @media (orientation: portrait){
     .downbtn{
         width: 100%;
@@ -37,13 +32,9 @@
     .menubtn{
         transform: scale(1.5);
     }
-    .port,.tiletxt
+    .port
     {
         font-size: 310%;
-    }
-    .tiletxt
-    {
-        bottom: 0;
     }
     .bottomtile{
         height: 35vh;

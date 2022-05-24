@@ -10,17 +10,17 @@
 {
 	--blue: #1b1174;
 	--pink: #E49EE6;
-	--black: #fff;
+	--black: #000;
     --allblack: #000;
 	--alblue: #2a1f8c;
-    --portgray: #232323;
-	--white: #2e2e2e;
+    --portgray: #ebebeb;
+	--white: #fff;
     --allwhite: #fff;
-	--gray: #1c1c1c;
+	--gray: #c9c9c9;
 	--purple: #271252;
 	--red: #ff0000;
-    --darkgray: #2e2e2e;
-    --darkergray: #232323;
+    --darkgray: #ebebeb;
+    --darkergray: #fff;
     --themecol: #5948ee;
 }
 body
@@ -127,7 +127,7 @@ canvas
 {
     bottom: -20px;
     opacity: 1;
-    background-image: url('wave2.png');
+    background-image: url('wave.png');
     filter: blur(1px);
 }
 .homeimg
@@ -493,7 +493,7 @@ canvas
 }
 ::-webkit-scrollbar-thumb
 {
-    background-color: var(--black);
+    background-color: var(--themecol);
     border-radius: 10px;
 }
 .downbtn
@@ -641,7 +641,7 @@ dt
     font-size: xx-large;
     background-color: rgba(0, 0, 0, 0.179);
     border-radius: 5px;
-    border: 2px solid var(--darkgray);
+    border: 2px solid #2e2e2e;
 }
 dd
 {
@@ -651,7 +651,7 @@ dd
     font-size: xx-large;
     background-color: rgba(0, 0, 0, 0.179);
     border-radius: 5px;
-    border: 2px solid var(--darkgray);
+    border: 2px solid #2e2e2e;
 }
 #backplate
 {
@@ -768,7 +768,7 @@ dd
     font-size: 300%;
     width: 0.7em;
     font-weight: bold;
-    color: #5948ee61;
+    color: var(--themecol);
     text-shadow: 0px 0px 7px rgba(178, 148, 255,0.4);
     line-height: 90%;
 }
@@ -827,7 +827,7 @@ dd
     left: 0;
     z-index: 5;
     opacity: 0;
-    background-color: #080337c7;
+    background-color: var(--themecol);
     backdrop-filter: blur(10px);
     display: none;
     transition: 0.4s;
@@ -859,13 +859,15 @@ dd
 }
 .linecol
 {
-    color: rgb(149, 149, 255);
-    text-shadow: 0px 0px 7px rgb(178, 148, 255);
+    color: var(--themecol);
+    text-shadow: 0px 0px 7px var(--themecol);
 }
 .port
 {
     font-size: 300%;
     margin: 0px;
+    text-shadow: 0px 0px 10px var(--themecol);
+    transition: 1s ease;
 }
 .sysbuttons
 {
@@ -908,11 +910,11 @@ dd
 }
 #power:hover .sysbuttons:after,#power:hover .sysbuttons:before
 {
-    background-color: #5948ee;
+    background-color: var(--themecol);
 }
 #power:hover
 {
-    border: 3px solid #5948ee;
+    border: 3px solid var(--themecol);
 }
 #linkscont
 {
@@ -925,8 +927,8 @@ dd
     position: relative;
     margin: 2px;
     padding: 10px 12px;
-    background-color: #6b5cf25d;
-    box-shadow: 0px 0px 20px #5948ee61;
+    background-color: var(--themecol);
+    box-shadow: 0px 0px 20px var(--themecol);
     border-radius: 50px;
     color: var(--black);
     font-weight: bold;
