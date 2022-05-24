@@ -74,11 +74,11 @@
     {
         opacity: 1;
         display: block;
-        top: 53vh;
+        top: 48vh;
     }
     #page1
     {
-        top: 16vh;
+        top: 10vh;
     }
     #rbut,#lbut,#dbut
     {
@@ -86,7 +86,7 @@
     }
     .butcon
     {
-        background-color: #5948eeea;
+        background-color: #5948ee;
         height: 30vh;
         width: 90%;
         left: 5%;
