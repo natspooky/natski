@@ -43,6 +43,10 @@
     {
         font-size: 310%;
     }
+    .tiletxt
+    {
+        bottom: 0;
+    }
     .bottomtile{
         height: 35vh;
     }
