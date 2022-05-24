@@ -26,7 +26,7 @@ body
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	min-height: 250vh;
+	min-height: 250%;
     overflow-x: hidden;
 	background-size: cover;
 	background-repeat: no-repeat;
@@ -37,7 +37,7 @@ canvas
     background: transparent;
     width: 100vw;
     height: 100vh;
-    transform: translateY(-105vh);
+    transform: translateY(-32vh);
     z-index: 1;
 }
 #page2
