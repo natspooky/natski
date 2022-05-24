@@ -39,7 +39,7 @@
     .menubtn{
         transform: scale(1.5);
     }
-    .port
+    .port,.tiletxt
     {
         font-size: 310%;
     }
@@ -75,7 +75,7 @@
         top: 10vh;
         background-image: url('tile3.png');
     }
-    #rbut,#lbut,#dbut,.menubtn,.prog,canvas,#menubackg
+    #rbut,#lbut,#dbut,.menubtn,.prog,canvas,#menubackg,.tilesubtxt
     {
         display: none;
     }
@@ -113,14 +113,6 @@
     }
     .tiletxtcontain
     {
-        opacity: 0.35;
-    }
-    .tilesubtxt
-    {
-        font-size: xx-large;
-    }
-    .tiletxt
-    {
-        font-size: xx-large;
+        opacity: 0.4;
     }
 }
