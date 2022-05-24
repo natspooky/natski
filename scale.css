@@ -80,7 +80,7 @@
     {
         top: 10vh;
     }
-    #rbut,#lbut,#dbut
+    #rbut,#lbut,#dbut,.menubtn,.prog
     {
         display: none;
     }
@@ -135,10 +135,6 @@
     {
         margin-top: 70px;
     }
-    .menubtn
-    {
-        display: none;
-    }
     .portraitbuttons
     {
         display: block;
@@ -149,9 +145,5 @@
         border-radius: 10px;
         opacity: 0.4;
         z-index: 4;
-    }
-    .prog
-    {
-        display: none;
     }
 }

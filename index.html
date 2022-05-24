@@ -61,10 +61,6 @@
         <button style="top: 83%; background-color: transparent; padding: 0px; cursor:default; transition: 0.5s;" id="dbut">v</button>
         <div id="prog1" class="prog"></div>
         <div id="prog2" class="prog"></div>
-        <div id="topbar">
-            <button class="topbuttons" id="portbutton2">PORTFOLIO</button>
-            <button class="topbuttons" id="portbutton3">TEMP</button>
-        </div>
         <div id="vid">      
             <div class="homeimg" id="home1"></div>
             <section>
@@ -364,14 +360,11 @@
                     $('.tiles').css('display','none');
                 }, 400);
                 setTimeout(function() {
-                    $('#tilebtn').css('opacity','1');
+                    $('#tilebtn,#quickmenu').css('opacity','1');
                     $('#tilemenu1').css({'opacity':'1','transform':'translateY(60px)'});
-                    $('#quickmenu').css('opacity','1');
                 }, 500);
                 setTimeout(function() {
-                    $('#tilemenu1').css('display','block');
-                    $('#tilebtn').css('display','block');
-                    $('#menutxtback').css('display','block');
+                    $('#tilemenu1,#menutxtback,#tilebtn').css('display','block');
                 }, 400);
                 $('.tiles').css({'transform':'translateY(-60px)','opacity':'0'});
                 $('#menubackg').css('transform','translateY(-43px)');
@@ -379,21 +372,18 @@
             });
             $('#tilebtn').click(function(){
                 setTimeout(function() {
-                    $('#tilemenu1').css('display','none');
-                    $('#quickmenu').css('display','none');
+                    $('#tilemenu1,#quickmenu').css('display','none');
                 }, 400);
                 setTimeout(function() {
                     $('.tiles').css({'opacity':'1','transform':'translateY(-60px)'});
-                    $('#tilebtn').css('display','none');
-                    $('#menutxtback').css('display','none');
+                    $('#tilebtn,#menutxtback').css('display','none');
                 }, 500);
                 setTimeout(function() {
                     $('.tiles').css('display','block');
                     $('#menubackg').css('transform','translateY(-113px)');
                 }, 400);
                 $('#tilemenu1').css({'transform':'translateY(0px)','opacity':'0'});
-                $('#tilebtn').css('opacity','0');
-                $('#quickmenu').css('opacity','0');
+                $('#tilebtn,#quickmenu').css('opacity','0');
             });
             $('#tile2').click(function(){
                 setTimeout(function() {
@@ -405,13 +395,10 @@
                     $('.downbtnlayer').css('transform','scaleX(1)');
                 }, 500);
                 setTimeout(function() {
-                    $('.youtext').css('opacity','1');
-                    $('.vids').css('opacity','1');
+                    $('.youtext,.vids').css('opacity','1');
                 }, 900);
                 setTimeout(function() {
-                    $('#tilemenu2').css('display','block');
-                    $('#tilebtn').css('display','block');
-                    $('#menutxtback').css('display','block');
+                    $('#tilemenu2,#menutxtback,#tilebtn').css('display','block');
                 }, 400);
                 $('.tiles').css({'transform':'translateY(-60px)','opacity':'0'});
                 $('#menubackg').css('transform','translateY(-43px)'); 
@@ -422,16 +409,14 @@
                 }, 400);
                 setTimeout(function() {
                     $('.tiles').css({'opacity':'1','transform':'translateY(-60px)'});
-                    $('#tilebtn').css('display','none');
-                    $('#menutxtback').css('display','none');
+                    $('#tilebtn,#menutxtback').css('display','none');
                 }, 500);
                 setTimeout(function() {
                     $('.tiles').css('display','block');      
                 }, 400);
                 $('#tilemenu2').css({'transform':'translateY(0px)','opacity':'0'});
-                $('.youtext').css('opacity','0');
+                $('.youtext,#tilebtn').css('opacity','0');
                 $('.downbtnlayer').css('transform','scaleX(0)');
-                $('#tilebtn').css('opacity','0');
             });
             $('#tile3').click(function(){
                 setTimeout(function() {
@@ -442,9 +427,7 @@
                     $('#tilemenu3').css({'opacity':'1','transform':'translateY(60px)'});        
                 }, 500);
                 setTimeout(function() {
-                    $('#tilemenu3').css('display','block');
-                    $('#tilebtn').css('display','block');
-                    $('#menutxtback').css('display','block');
+                    $('#tilemenu3,#menutxtback,#tilebtn').css('display','block');
                 }, 400);
                 $('.tiles').css({'transform':'translateY(-60px)','opacity':'0'});
                 $('#menubackg').css('transform','translateY(-43px)'); 
@@ -455,8 +438,7 @@
                 }, 400);
                 setTimeout(function() {
                     $('.tiles').css({'opacity':'1','transform':'translateY(0px)'});
-                    $('#tilebtn').css('display','none');
-                    $('#menutxtback').css('display','none');
+                    $('#tilebtn,#menutxtback').css('display','none');
                 }, 500);
                 setTimeout(function() {
                     $('.tiles').css('display','block');      
@@ -473,9 +455,7 @@
                     $('#tilemenu4').css({'opacity':'1','transform':'translateY(60px)'});        
                 }, 500);
                 setTimeout(function() {
-                    $('#tilemenu4').css('display','block');
-                    $('#tilebtn').css('display','block');
-                    $('#menutxtback').css('display','block');
+                    $('#tilemenu4,#menutxtback,#tilebtn').css('display','block');
                 }, 400);
                 $('.tiles').css({'transform':'translateY(-60px)','opacity':'0'});
                 $('#menubackg').css('transform','translateY(-43px)'); 
@@ -486,8 +466,7 @@
                 }, 400);
                 setTimeout(function() {
                     $('.tiles').css({'opacity':'1','transform':'translateY(0px)'});
-                    $('#tilebtn').css('display','none');
-                    $('#menutxtback').css('display','none');
+                    $('#tilebtn,#menutxtback').css('display','none');
                 }, 500);
                 setTimeout(function() {
                     $('.tiles').css('display','block');      
@@ -512,10 +491,9 @@
                     $('#page1').css('display','none')
                     $('#page2').css('opacity','1')
                 },400);
-                $('#page2').css('display','block')
+                $('#page2,#rbut').css('display','block')
                 $('#page1').css('opacity','0')
                 $('#lbut').css('display','none')
-                $('#rbut').css('display','block')
                 $('#prog1').css('opacity','0.1')
                 $('#prog2').css('opacity','0.7')
                 document.getElementById('home1').style.backgroundImage = "url(tile2.png)"
@@ -525,9 +503,8 @@
                     $('#page2').css('display','none')
                     $('#page1').css('opacity','1')
                 },400);
-                $('#page1').css('display','block')
+                $('#page1,#lbut').css('display','block')
                 $('#page2').css('opacity','0')
-                $('#lbut').css('display','block')
                 $('#rbut').css('display','none')
                 $('#prog1').css('opacity','0.7')
                 $('#prog2').css('opacity','0.1')
@@ -568,12 +545,10 @@
                 $('#exptile').css({'transform':'scale(1.7)','border-radius':'10px','transition':'0.5s','filter':'grayscale(0)'})
                 $('#tiltxt').css('opacity','0')
                 $('#textboxexp').css('opacity','1')
-                $('#topbar').css('opacity','0')
                 $('#exptile').mouseleave(function(){
                     $('#exptile').css({'transform':'scale(1)','border-radius':'20px','transition':'0.5s','filter':'grayscale(0.8)'})
                     $('#tiltxt').css('opacity','1')
                     $('#textboxexp').css('opacity','0')
-                    $('#topbar').css('opacity','1')
                 });
             });
             $('#exptile').hover(function(){
@@ -587,50 +562,40 @@
                 setTimeout(function(){
                     $('#youpannel').css('opacity','1')
                 }, 20);
-                $('#youpannel').css('display','block')
-                $('#vid1').css('display','block')
+                $('#youpannel,#vid1').css('display','block')
             });
             $('#animation2').click(function(){
                 setTimeout(function(){
                     $('#youpannel').css('opacity','1')
                 }, 20);
-                $('#youpannel').css('display','block')
-                $('#vid2').css('display','block')
+                $('#youpannel,#vid2').css('display','block')
             });
             $('#animation3').click(function(){
                 setTimeout(function(){
                     $('#youpannel').css('opacity','1')
                 }, 20);
-                $('#youpannel').css('display','block')
-                $('#vid3').css('display','block')
+                $('#youpannel,#vid3').css('display','block')
             });
             $('#animation4').click(function(){
                 setTimeout(function(){
                     $('#youpannel').css('opacity','1')
-                }, 20);
-                $('#youpannel').css('display','block')
-                $('#vid4').css('display','block')
+                }, 10);
+                $('#youpannel,#vid4').css('display','block')
             });
             function pannel(){
                 setTimeout(function(){
-                    $('#youpannel').css('display','none')
-                    $('#vid1').css('display','none')
-                    $('#vid2').css('display','none')
-                    $('#vid3').css('display','none')
-                    $('#vid4').css('display','none')
+                    $('#vid1,#vid2,#vid3,#vid4,#youpannel').css('display','none')
                 }, 400);
                 $('#youpannel').css('opacity','0')
             };
             function detec(){
                 if(window.matchMedia("(orientation: portrait)").matches){
                     document.getElementById('orient').innerHTML="Portrait"
-                    $('#portbutton').removeAttr('disabled');
-                    $('#otherbut').removeAttr('disabled');
+                    $('#otherbut,#portbutton').removeAttr('disabled');
                     document.getElementById("copy").value="/ / N A T S K I";
                     initScene();
                 }if(window.matchMedia("(orientation: landscape)").matches){
-                    $('#portbutton').removeAttr('disabled');
-                    $('#otherbut').removeAttr('disabled');
+                    $('#otherbut,#portbutton').removeAttr('disabled');
                     document.getElementById('orient').innerHTML="Landscape";
                     document.getElementById("copy").value="/ / N A T S K I";
                     initScene();
@@ -652,7 +617,7 @@
                 if(userAgent.match(/edg/i)){
                     browserName="Edge";
                 }else if(userAgent.match(/chrome|chromium|crios/i)){
-                    browserName="Chrome";
+                    browserName="Chrome/Chromium";
                 }else if(userAgent.match(/firefox|fxios/i)){
                     browserName="Firefox";
                 }else if(userAgent.match(/safari/i)){
@@ -663,15 +628,6 @@
                     browserName="unable to identify :(";
                 }
                 document.getElementById('browserdet').innerHTML=browserName;
-            };
-            window.onscroll=function(){
-                if(window.scrollY>1){
-                    $('#topbar').css({'transform':'scale(0.65)','background-image':'linear-gradient(to right, rgba(40, 40, 40, 0.7),transparent)'});
-                    $('.topbuttons').css('display','inline-block');
-                }else if(window.scrollY>=0){
-                    $('#topbar').css({'transform':'scale(1)','background-image':'linear-gradient(transparent,transparent)'});
-                    $('.topbuttons').css('display','none')
-                }
             };
             var canvas=document.querySelector("#scene"),
             ctx=canvas.getContext("2d"),

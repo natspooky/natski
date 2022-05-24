@@ -55,10 +55,7 @@ canvas
     left: 10px; 
     display: block;
 }
-.ne{
-    display: none;
-}
-::-webkit-scrollbar
+.ne,::-webkit-scrollbar,.butcon:after,.portraitbuttons
 {
     display: none;
 }
@@ -73,37 +70,6 @@ canvas
     z-index: 3;
     text-align: center;
     transition: 0.3s;
-}
-#topbar
-{
-    position: fixed;
-    height: 100px;
-    width: 100%;
-    top: 0;
-    left: 0;
-    transform: scale(1);
-    transform-origin: left top;
-    opacity: 1;
-    z-index: 4;
-    transition: 0.5s ease;
-}
-.topbuttons
-{
-    position: relative;
-    display: none;
-    height: inherit;
-    bottom:0px;
-    width: 25%;
-    z-index: inherit;
-    font-size: xx-large;
-    font-weight: bolder;
-    background: transparent;
-    border: 0px;
-    color: rgba(255, 255, 255, 0.7);
-}
-.topbuttons:hover
-{
-    filter: brightness(0.5);
 }
 #vid
 {
@@ -180,10 +146,6 @@ canvas
     width: auto;
     z-index: 5;
     transition: 0.5s ease
-}
-.portraitbuttons
-{
-    display: none;
 }
 #menubackg
 {
@@ -323,7 +285,6 @@ canvas
     left: 0;
     top: 0;
     height: 4px;
-    bottom: 10px;
     border-radius: 10px;
     transform: rotate(0deg) translateY(7px);
     background-color: #000;
@@ -708,10 +669,6 @@ dd
     z-index: 1;
     opacity: 1;
     transition: 0.4s ease;
-}
-.butcon:after
-{
-    display: none;
 }
 .sidebut,#dbut
 {
