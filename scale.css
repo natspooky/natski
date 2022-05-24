@@ -83,6 +83,10 @@
     {
         display: none;
     }
+    .menutxt
+    {
+        color: transparent;
+    }
     .butcon
     {
         background-color: #322886;
