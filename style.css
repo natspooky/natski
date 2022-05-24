@@ -734,7 +734,7 @@ dd
     width: 77%;
     left: 10px;
     background-color: #0f0c345a;
-    color: var(--white);
+    color: var(--allwhite);
     top: 17%;
     opacity: 0;
     border-radius: 10px;
@@ -849,7 +849,7 @@ dd
     left: 0;
     top: 0;
     opacity: 0.5;
-    transform: scale(1.2) translateX(-600px) rotate(10deg);
+    transform: scale(1.2) translateX(-700px) rotate(10deg);
     transition: 0.7s;
 }
 .vids:hover .shine
