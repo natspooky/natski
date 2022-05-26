@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
     <head>
-		<title id="title">Natspooky</title>
+		<title>Natspooky</title>
 	    <meta charset="UTF-8" content="width=device-width, initial-scale=1">
         <meta name="description" content="portfolio site">
         <meta name="keywords" content="portfolio, natspooky, natski">
@@ -25,8 +25,32 @@
                 //DARK
             </button>
         </div>
-        <canvas id="scene"></canvas>
-        <input id="copy" type="text" value="L O A D I N G" class="ne"/>
+        <div id="themebox">
+            <button id="colbutton" class="button" style="top: 17px; left: 17px;" onclick="pannel()">
+                <div class="arrowbut"></div>
+            </button>
+            <div id="power2">
+                <h1 style="text-align: center; background-color: rgba(0, 0, 0, 0.249); border-radius: 10px;"><span class="linecol">//</span>CUSTOM HIGHLIGHT</h1>
+                <ul>
+                    <dt>
+                        <label for="redcol">RED:</label>
+                        <input id="redcol" type="number" min="0" max="255" value="0">
+                    </dt>
+                    <dt>
+                        <label for="greencol">GREEN:</label>
+                        <input id="greencol" type="number" min="0" max="255" value="0">
+                    </dt>
+                    <dt>
+                        <label for="bluecol">BLUE:</label>
+                        <input id="bluecol" type="number" min="0" max="255" value="0">
+                    </dt>
+                    <dt>
+                        <label for="hexcol">HEX:</label>
+                        <input id="hexcol" type="text" value="#">
+                    </dt>
+                </ul>
+            </div>
+        </div>
         <button id="power" class="button" style="position: fixed; z-index: 20; left: 10px; bottom: 10px; overflow: hidden; box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.4);">
             <div class="sysbuttons"></div>
         </button>
@@ -68,12 +92,10 @@
         <div id="vid">      
             <div class="homeimg" id="home1"></div>
             <section>
-                <div class="wave wave1"></div>
-                <div class="wave wave2"></div>
-                <div class="wave wave3"></div>
-                <div class="wave wave4"></div>
+                <div class="wave"></div>
             </section>
         </div>
+        <h1 id="loads">L O A D I N G . . .</h1>
         <div class="menu">
             <div id="menubackg"></div>
             <div class="menucont">
@@ -346,9 +368,9 @@
                 });
                 $('#homebtn').click(function(){
                     $('.menu').css('transform','translateY(-230px)');
-                    $('.portfo').css('opacity','0');
+                    $('.portfo,.otherpa').css('opacity','0');
                     setTimeout(function() {
-                        $('.portfo').css('display','none');
+                        $('.portfo,.otherpa').css('display','none');
                     }, 300);
                 });
             });
@@ -446,7 +468,7 @@
                 setTimeout(function() {
                     $('#backplate').css('display','none'); 
                 }, 400);
-                $('#backplate').css({'display':'block','opacity':'0'});
+                $('#backplate').css('opacity','0');
             });
             $('#lbut').click(function(){
                 setTimeout(function() {
@@ -485,14 +507,6 @@
                 setTimeout(function() {
                     $('.otherpa').css('opacity','1');
                 }, 10);
-            });
-            $('#homebtn').click(function(){
-                $('.menu').css('transform','translateY(0px)');
-                $('.otherpa').css('opacity','0');
-                initScene();
-                setTimeout(function() {
-                    $('.otherpa').css('display','none');
-                }, 300);
             });
             function slidescroll(i){
                 document.getElementById("slide"+i).scrollIntoView({behavior: "smooth", inline: 'center', block: 'center'});
@@ -552,35 +566,30 @@
                 document.documentElement.style.setProperty('--darkergray', '#232323');
                 document.documentElement.style.setProperty('--darkgray', '#2e2e2e');
                 document.documentElement.style.setProperty('--gray', '#1c1c1c');
-                $('.wave.wave4').css('background-image','url("wave2.png")')
+                $('.wave').css('background-image','url("wave2.png")')
             });
             $('#light').click(function(){
                 document.documentElement.style.setProperty('--white', '#fff');
                 document.documentElement.style.setProperty('--black', '#000');
                 document.documentElement.style.setProperty('--portgray', '#ebebeb');
-                document.documentElement.style.setProperty('--themecol', '#000');
+                document.documentElement.style.setProperty('--themecol', '#a59cff');
                 document.documentElement.style.setProperty('--darkergray', '#fff');
                 document.documentElement.style.setProperty('--darkgray', '#ebebeb');
                 document.documentElement.style.setProperty('--gray', '#C9C9C9');
-                $('.wave.wave4').css('background-image','url("wave.png")')
+                $('.wave').css('background-image','url("wave.png")')
             });
-            function pannel(){
+            $('#youpannel,#youbutton,#colbutton').click(function(){
                 setTimeout(function(){
-                    $('#vid1,#vid2,#vid3,#vid4,#youpannel').css('display','none')
+                    $('#vid1,#vid2,#vid3,#vid4,#youpannel,#themebox').css('display','none')
                 }, 400);
-                $('#youpannel').css('opacity','0')
-            };
+                $('#youpannel,#themebox').css('opacity','0')
+            });
             function detec(){
                 if(window.matchMedia("(orientation: portrait)").matches){
-                    document.getElementById('orient').innerHTML="Portrait"
-                    $('#otherbut,#portbutton,.portraitbuttons').removeAttr('disabled');
-                    document.getElementById("copy").value="/ / N A T S K I";
-                    initScene();
+                    document.getElementById('orient').innerHTML="Portrait";
                 }if(window.matchMedia("(orientation: landscape)").matches){
-                    $('#otherbut,#portbutton,.portraitbuttons').removeAttr('disabled');
                     document.getElementById('orient').innerHTML="Landscape";
-                    document.getElementById("copy").value="/ / N A T S K I";
-                    initScene();
+                    $('#lbut,#dbut').css('display','block')
                 }
                 HTMLDocument.prototype.e=document.getElementById;
                 var el_down=document.e("oscheck");
@@ -610,77 +619,23 @@
                     browserName="unable to identify :(";
                 }
                 document.getElementById('browserdet').innerHTML=browserName;
+                $('#loads').html("/ / N A T S K I")
+                $('#otherbut,#portbutton,.portraitbuttons').removeAttr('disabled');
+                $('#page1').css({'display':'block'})
+                $('.butcon').css({'animation':'fadeinup 0.5s ease'})
+                $('.sidebut').css({'animation':'fadein 0.5s ease'})
             };
-            var canvas=document.querySelector("#scene"),
-            ctx=canvas.getContext("2d"),
-            particles=[],
-            amount=0,
-            mouse={x:0,y:0},
-            radius=1;
-            var colors=["#fff"];
-            var copy=document.querySelector("#copy");
-            var ww=canvas.width=window.innerWidth;
-            var wh=canvas.height=window.innerHeight;
-            function Particle(x,y){
-                this.x=Math.random()*ww;
-                this.y=Math.random()*wh;
-                this.dest={
-                    x:x,
-                    y:y
-                };
-                this.r=3;
-                this.vx=(Math.random()-0.5)*20;
-                this.vy=(Math.random()-0.5)*20;
-                this.accX=0;
-                this.accY=0;
-                this.friction=Math.random()*0.05+0.82;
-                this.color=colors[Math.floor(Math.random()*6)];
-            }
-            Particle.prototype.render=function() {
-                this.accX=(this.dest.x-this.x)/100;
-                this.accY=(this.dest.y-this.y)/100;
-                this.vx+=this.accX;
-                this.vy+=this.accY;
-                this.vx*=this.friction;
-                this.vy*=this.friction;
-                this.x+=this.vx;
-                this.y+=this.vy;
-                ctx.fillStyle=this.color;
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.r, Math.PI*2, false);
-                ctx.fill();
-                var a=this.x-mouse.x;
-                var b=this.y-mouse.y;
-                var distance=Math.sqrt(a*a+b*b);
-            }
-            function initScene(){
-                ww=canvas.width=window.innerWidth;
-                wh=canvas.height=window.innerHeight;
-                ctx.clearRect(0,0, canvas.width, canvas.height);
-                ctx.font="bold "+(ww/10)+"px sans-serif";
-                ctx.textAlign="center";
-                ctx.fillText(copy.value, ww/2, wh/2);
-                var data=ctx.getImageData(0,0, ww, wh).data;
-                ctx.clearRect(0,0, canvas.width, canvas.height);
-                ctx.globalCompositeOperation="screen";
-                particles=[];
-                for(var i=0;i<ww;i+=Math.round(ww/100)){
-                    for(var j=0;j<wh;j+=Math.round(ww/100)){
-                        if(data[((i+j*ww)*4)+3]>100){
-                            particles.push(new Particle(i,j));
-                        }
-                    }
-                }
-                amount=particles.length;
-            }
-            function render(a){
-                requestAnimationFrame(render);
-                ctx.clearRect(0,0, canvas.width, canvas.height);
-                for(var i=0;i<amount;i++) {
-                    particles[i].render();
-                }
-            };
-            initScene();
-            requestAnimationFrame(render);
+            $("#redcol,#greencol,#bluecol").on("input", function(){
+                var r = document.getElementById("redcol").value;
+                var g = document.getElementById("greencol").value;
+                var b = document.getElementById("bluecol").value;
+                var col = 'rgb('+r+','+g+','+b+')'
+                $(':root').css('--themecol', col);
+            });
+            $("#hexcol").on("input", function(){
+                var hex = document.getElementById("hexcol").value;
+                $(':root').css('--themecol', hex);
+            });
+
         </script>
     </body>

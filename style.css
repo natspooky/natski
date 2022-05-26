@@ -21,7 +21,7 @@
 	--red: #ff0000;
     --darkgray: #ebebeb;
     --darkergray: #fff;
-    --themecol: #5948ee;
+    --themecol: #a59cff;
 }
 body
 {
@@ -34,34 +34,25 @@ body
 	background-repeat: no-repeat;
 	background-color: var(--darkergray);
 }
-canvas
+#loads
 {
-    background: transparent;
-    width: 100vw;
-    height: 100vh;
-    transform: translateY(-105vh);
-    z-index: 1;
-}
-#page2
-{
-    opacity: 0; 
-    display: none;
+    position: absolute;
+    top: 10px;
+    color: var(--allwhite);
 }
 #rbut
 {
     right: 10px; 
-    display: none;
 }
 #lbut
 {
     left: 10px; 
-    display: block;
 }
-.ne,::-webkit-scrollbar,.butcon:after,.portraitbuttons
+::-webkit-scrollbar,.butcon:after,.portraitbuttons,#page2
 {
     display: none;
 }
-#title, #selector
+#selector
 {
     position: absolute;
     top: 10px;
@@ -93,13 +84,13 @@ canvas
 .themebut
 {
     position: relative;
-    height: 80%;
+    height: 100%;
     float: right;
-    margin: 5px 60px 5px 30px;
     width: 20%;
+    margin: 0px 20px;
     display: block;
     background-color: var(--darkergray);
-    border: 0px;
+    border: 5px solid var(--darkgray);
     color: var(--black);
     font-size: xx-large;
     font-weight: bold;
@@ -107,28 +98,15 @@ canvas
 .wave {
     position: absolute;
     background-image: url('wave.png');
-    opacity: 0.02;
+    opacity: 1;
     width: 100%;
     height: 100px;
     left: 0;
-    bottom: 0;
+    filter: blur(1px);
+    bottom: -20px;
     background-size: 1000px 100px;
     transition: 1.2s;
     animation: waves 3s linear infinite;
-}
-.wave.wave2{
-    bottom: -10px;
-}
-.wave.wave3
-{
-    bottom: 10px;
-}
-.wave.wave4
-{
-    bottom: -20px;
-    opacity: 1;
-    background-image: url('wave.png');
-    filter: blur(1px);
 }
 .homeimg
 {
@@ -243,29 +221,21 @@ canvas
     transform: rotate(0deg) translateX(0.5px);
     transition: 0.2s;
 }
-.arrowbut:after
+.arrowbut:after,.arrowbut:before
 {
     content: "";
     position: absolute;
-    width: 20px;
     left: 0;
-    height: 4px;
-    border-radius: 10px;
+    width: inherit;
+    height: inherit;
+    border-radius: inherit;
     transform: rotate(35deg) translateX(-2px) translateY(6px) scale(0.8);
     background-color: var(--black);
-    transition: 0.2s;
+    transition: inherit;
 }
 .arrowbut:before
 {
-    content: "";
-    position: absolute;
-    width: 20px;
-    left: 0;
-    height: 4px;
-    border-radius: 10px;
     transform: rotate(-35deg) translateX(-2px) translateY(-6px) scale(0.8);
-    background-color: var(--black);
-    transition: 0.2s;
 }
 .button:hover .arrowbut,.button:hover .arrowbut2
 {
@@ -289,31 +259,22 @@ canvas
     transform: rotate(0deg);
     transition: 0.2s;
 }
-.arrowbut2:after
+.arrowbut2:after,.arrowbut2:before
 {
     content: "";
     position: absolute;
-    width: 20px;
+    top: 0;
     left: 0;
-    height: 4px;
-    bottom: 0;
-    border-radius: 10px;
+    width: inherit;
+    height: inherit;
+    border-radius: inherit;
     transform: rotate(0deg) translateY(-7px);
     background-color: var(--black);
-    transition: 0.2s;
+    transition: inherit;
 }
 .arrowbut2:before
 {
-    content: "";
-    position: absolute;
-    width: 20px;
-    left: 0;
-    top: 0;
-    height: 4px;
-    border-radius: 10px;
     transform: rotate(0deg) translateY(7px);
-    background-color: var(--black);
-    transition: 0.2s;
 }
 #tilebtn
 {
@@ -436,7 +397,7 @@ canvas
     border-radius: 10px;
     transition: 0.5s ease;
 }
-.slide
+.slide,.slides
 {
     position: relative;
     display: inline-block;
@@ -453,16 +414,9 @@ canvas
 }
 .slides
 {
-    position: relative;
-    display: inline-block;
-    height: auto;
     width: 97%;
     cursor: pointer;
-    left: 0;
-    border-radius: 10px;
     margin: 5px 0px;
-    background-color: var(--white);
-    transform-origin: center;
     opacity: 1;
     box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.3);
 }
@@ -631,29 +585,41 @@ canvas
     max-height: 85%;
     color: var(--allwhite);
 }
+dd,dt
+{
+    position: relative;
+    cursor: default;
+    width: 100%;
+    height: auto;
+    font-size: xx-large;
+    background-color: rgba(0, 0, 0, 0.179);
+    border-radius: 5px;
+    border: 2px solid #2e2e2e;
+}
 dt
 {
-    position: relative;
-    width: 100%;
     margin-top: 30px;
     margin-bottom: 10px;
-    height: auto;
-    font-size: xx-large;
-    background-color: rgba(0, 0, 0, 0.179);
-    border-radius: 5px;
-    border: 2px solid #2e2e2e;
 }
-dd
+dt input
 {
-    position: relative;
+    padding: 10px;
     width: 100%;
-    height: auto;
-    font-size: xx-large;
-    background-color: rgba(0, 0, 0, 0.179);
-    border-radius: 5px;
-    border: 2px solid #2e2e2e;
+    background-color: transparent;
+    border: 0px;
+    color: #fff;
+    position: relative;
+    font-size: large;
 }
-#backplate
+label
+{
+    margin-left: 10px;
+}
+p,h1
+{
+    cursor: default;
+}
+#backplate,#themebox
 {
     position: fixed;
     z-index: 29;
@@ -666,6 +632,10 @@ dd
     display: none;
     backdrop-filter: blur(10px);
     transition: 0.4s;
+}
+#themebox
+{
+    background-color: var(--themecol);
 }
 .sysicons
 {
@@ -680,10 +650,9 @@ dd
     height: 20vh;
     top: 33vh;
     left: 0;
+    display: none;
     position: absolute;
     z-index: 1;
-    opacity: 1;
-    transition: 0.4s ease;
 }
 .sidebut,#dbut
 {
@@ -698,6 +667,7 @@ dd
     border: 0px;
     z-index: 4;
     opacity: 1;
+    display: none;
     cursor: pointer;
     transition: 0s;
 }
@@ -769,7 +739,7 @@ dd
     width: 0.7em;
     font-weight: bold;
     color: var(--themecol);
-    text-shadow: 0px 0px 7px rgba(178, 148, 255,0.4);
+    text-shadow: 0px 0px 7px var(--themecol);
     line-height: 90%;
 }
 #abouttxt
@@ -844,10 +814,10 @@ dd
 .shine
 {
     position: absolute;
-    height: 100%;
-    width: 100%;
     left: 0;
     top: 0;
+    height: 100%;
+    width: 100%;
     opacity: 0;
     transform: scale(1.2) translateX(-650px) rotate(10deg);
     transition: 0.7s;
@@ -866,6 +836,7 @@ dd
 {
     font-size: 300%;
     margin: 0px;
+    cursor: default;
     text-shadow: 0px 0px 10px var(--themecol);
     transition: 1s ease;
 }
@@ -881,27 +852,20 @@ dd
     transform: rotate(0deg) translate(7px,8px) scale(0.9);
     transition: 0.2s;
 }
-.sysbuttons:before
+.sysbuttons:before,.sysbuttons:after
 {
     position: absolute;
     content: "";
-    width: 20px;
-    height: 4px;
-    border-radius: 10px;
+    width: inherit;
+    height: inherit;
+    border-radius: inherit;
     background-color: var(--black);
     transform: rotate(45deg) translate(-30px,10px) scale(0.85);
     transition: 0.2s;
 }
 .sysbuttons:after
 {
-    position: absolute;
-    content: "";
-    width: 20px;
-    height: 4px;
-    border-radius: 10px;
-    background-color: var(--black);
     transform: rotate(-45deg) translate(-17px,-23px) scale(0.85);
-    transition: 0.2s;
 }
 #power:hover .sysbuttons
 {

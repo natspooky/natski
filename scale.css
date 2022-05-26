@@ -26,9 +26,6 @@
     #quickmenu{
         transform: translateX(300px);
     }
-    #power{
-        transform: scale(2) translate(10px 10px);
-    }
     .menubtn{
         transform: scale(1.5);
     }
@@ -52,7 +49,7 @@
     {
         transform: scale(2) translate(10px,30px);
     }
-    #homebtn,#youbutton
+    #homebtn,#youbutton,#colbutton
     {
         transform: scale(2) translate(10px,10px);
     }
@@ -60,7 +57,6 @@
     {
         opacity: 1;
         background-image: url('tile2.png');
-        display: block;
         top: 48vh;
     }
     #page1
@@ -68,7 +64,7 @@
         top: 10vh;
         background-image: url('tile3.png');
     }
-    #rbut,#lbut,#dbut,.menubtn,.prog,canvas,#menubackg,.tilesubtxt,.tiletxtcontain
+    #dbut,.menubtn,.prog,#menubackg,.tilesubtxt,.tiletxtcontain
     {
         display: none;
     }
