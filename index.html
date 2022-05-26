@@ -381,23 +381,6 @@
                     $('.portfo').css('opacity','1');
                 }, 10);
             });
-
-
-            $('#tile1').click(function(){
-                setTimeout(function() {
-                    $('#tilebtn').css('opacity','1');
-                }, 400);
-                setTimeout(function(){
-                    $('#quickmenu').css('opacity','1');
-                },100)
-                $('.tiles').css('display','none');
-                $('#tilemenu1').css('animation','tilemenu2 0.5s ease');
-                $('#tilemenu1,#menutxtback,#tilebtn').css('display','block');
-                $('#menubackg').css('transform','translateY(-43px)');
-                $('#quickmenu').css('display','block');
-            });
-
-
             $('#tilebtn').click(function(){
                 setTimeout(function() {
                     $('#tilemenu1,#quickmenu,#tilemenu2,#tilemenu3,#tilemenu4').css('display','none');
@@ -411,44 +394,63 @@
                 }, 510);
                 $('#tilemenu1,#tilemenu2,#tilemenu3,#tilemenu4').css('animation','tilemenu3 0.5s ease-in');
                 $('#tilebtn,#quickmenu,.youtext').css('opacity','0');
+                $('.tiles').css('animation','tilemenu 0.5s ease');
             });
 
-
+            $('#tile1').click(function(){
+                setTimeout(function() {
+                    $('#tilebtn').css('opacity','1');
+                    $('#quickmenu').css('opacity','1');
+                    $('#tilemenu1,#menutxtback,#tilebtn').css('display','block');
+                }, 505);
+                setTimeout(function(){
+                    $('.tiles').css('display','none');  
+                },500)
+                $('.tiles').css('animation','tilemenu4 0.5s ease-in');
+                $('#tilemenu1').css('animation','tilemenu2 0.5s ease-out');
+                $('#menubackg').css('transform','translateY(-43px)');
+                $('#quickmenu').css('display','block');
+            });
 
 
             $('#tile2').click(function(){
                 setTimeout(function() {
                     $('#tilebtn').css('opacity','1');
-                }, 400);
+                    $('#tilemenu2,#menutxtback,#tilebtn').css('display','block');
+                }, 505);
                 setTimeout(function() {
                     $('.youtext,.vids').css('opacity','1');
-                }, 100);
+                    $('.tiles').css('display','none');
+                },500);
+                $('.tiles').css('animation','tilemenu4 0.5s ease-in');
                 $('.downbtnlayer').css('transform','scaleX(1)');
-                $('#tilemenu2,#menutxtback,#tilebtn').css('display','block');
-                $('.tiles').css('display','none');
-                $('#tilemenu2').css('animation','tilemenu2 0.5s ease');
+                $('#tilemenu2').css('animation','tilemenu2 0.5s ease-out');
                 $('#menubackg').css('transform','translateY(-43px)'); 
             });
 
 
             $('#tile3').click(function(){
                 setTimeout(function() {
-                    $('#tilebtn').css('opacity','1');        
-                }, 400);
-                $('#tilemenu3,#menutxtback,#tilebtn').css('display','block');
-                $('.tiles').css('display','none');
-                $('#tilemenu3').css('animation','tilemenu2 0.5s ease');
+                    $('#tilebtn').css('opacity','1');
+                    $('#tilemenu3,#menutxtback,#tilebtn').css('display','block');
+                }, 505);
+                setTimeout(function() {
+                    $('.tiles').css('display','none');
+                },500);
+                $('.tiles').css('animation','tilemenu4 0.5s ease-in');
+                $('#tilemenu3').css('animation','tilemenu2 0.5s ease-out');
                 $('#menubackg').css('transform','translateY(-43px)'); 
             });
-
-
             $('#tile4').click(function(){
                 setTimeout(function() {
-                    $('#tilebtn').css('opacity','1');       
-                }, 400);
-                $('#tilemenu4,#menutxtback,#tilebtn').css('display','block');
-                $('#tilemenu4').css('animation','tilemenu2 0.5s ease');
-                $('.tiles').css('display','none');
+                    $('#tilebtn').css('opacity','1');
+                    $('#tilemenu4,#menutxtback,#tilebtn').css('display','block');
+                }, 505);
+                setTimeout(function() {
+                    $('.tiles').css('display','none');
+                },500);
+                $('.tiles').css('animation','tilemenu4 0.5s ease-in');
+                $('#tilemenu4').css('animation','tilemenu2 0.5s ease-out');
                 $('#menubackg').css('transform','translateY(-43px)'); 
             });
             $('#power').click(function(){
