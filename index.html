@@ -381,81 +381,74 @@
                     $('.portfo').css('opacity','1');
                 }, 10);
             });
+
+
             $('#tile1').click(function(){
                 setTimeout(function() {
-                    $('.tiles').css('display','none');
+                    $('#tilebtn').css('opacity','1');
                 }, 400);
-                setTimeout(function() {
-                    $('#tilebtn,#quickmenu').css('opacity','1');
-                    $('#tilemenu1').css({'opacity':'1','transform':'translateY(60px)'});
-                }, 500);
-                setTimeout(function() {
-                    $('#tilemenu1,#menutxtback,#tilebtn').css('display','block');
-                }, 400);
-                $('.tiles').css({'transform':'translateY(-60px)','opacity':'0'});
+                setTimeout(function(){
+                    $('#quickmenu').css('opacity','1');
+                },100)
+                $('.tiles').css('display','none');
+                $('#tilemenu1').css('animation','tilemenu2 0.5s ease');
+                $('#tilemenu1,#menutxtback,#tilebtn').css('display','block');
                 $('#menubackg').css('transform','translateY(-43px)');
                 $('#quickmenu').css('display','block');
             });
+
+
             $('#tilebtn').click(function(){
                 setTimeout(function() {
                     $('#tilemenu1,#quickmenu,#tilemenu2,#tilemenu3,#tilemenu4').css('display','none');
-                }, 400);
-                setTimeout(function() {
-                    $('.tiles').css({'opacity':'1','transform':'translateY(1px)'});
-                    $('#tilebtn,#menutxtback').css('display','none');
                 }, 500);
                 setTimeout(function() {
-                    $('.tiles').css('display','block');
-                    $('#menubackg').css('transform','translateY(-113px)');
+                    $('#tilebtn,#menutxtback').css('display','none');
                 }, 400);
-                $('#tilemenu1,#tilemenu2,#tilemenu3,#tilemenu4').css({'transform':'translateY(0px)','opacity':'0'});
+                setTimeout(function() {
+                    $('.tiles').css({'display':'block','animation':'tilemenu 0.5s ease'});
+                    $('#menubackg').css('transform','translateY(-113px)');
+                }, 510);
+                $('#tilemenu1,#tilemenu2,#tilemenu3,#tilemenu4').css('animation','tilemenu3 0.5s ease-in');
                 $('#tilebtn,#quickmenu,.youtext').css('opacity','0');
-                $('.downbtnlayer').css('transform','scaleX(0)');
             });
+
+
+
+
             $('#tile2').click(function(){
                 setTimeout(function() {
-                    $('.tiles').css('display','none');
-                }, 400);
-                setTimeout(function() {
                     $('#tilebtn').css('opacity','1');
-                    $('#tilemenu2').css({'opacity':'1','transform':'translateY(60px)'});
-                    $('.downbtnlayer').css('transform','scaleX(1)');
-                }, 500);
+                }, 400);
                 setTimeout(function() {
                     $('.youtext,.vids').css('opacity','1');
-                }, 900);
-                setTimeout(function() {
-                    $('#tilemenu2,#menutxtback,#tilebtn').css('display','block');
-                }, 400);
-                $('.tiles').css({'transform':'translateY(-60px)','opacity':'0'});
+                }, 100);
+                $('.downbtnlayer').css('transform','scaleX(1)');
+                $('#tilemenu2,#menutxtback,#tilebtn').css('display','block');
+                $('.tiles').css('display','none');
+                $('#tilemenu2').css('animation','tilemenu2 0.5s ease');
                 $('#menubackg').css('transform','translateY(-43px)'); 
             });
+
+
             $('#tile3').click(function(){
                 setTimeout(function() {
-                    $('.tiles').css('display','none');
+                    $('#tilebtn').css('opacity','1');        
                 }, 400);
-                setTimeout(function() {
-                    $('#tilebtn').css('opacity','1');
-                    $('#tilemenu3').css({'opacity':'1','transform':'translateY(60px)'});        
-                }, 500);
-                setTimeout(function() {
-                    $('#tilemenu3,#menutxtback,#tilebtn').css('display','block');
-                }, 400);
-                $('.tiles').css({'transform':'translateY(-60px)','opacity':'0'});
+                $('#tilemenu3,#menutxtback,#tilebtn').css('display','block');
+                $('.tiles').css('display','none');
+                $('#tilemenu3').css('animation','tilemenu2 0.5s ease');
                 $('#menubackg').css('transform','translateY(-43px)'); 
             });
+
+
             $('#tile4').click(function(){
                 setTimeout(function() {
-                    $('.tiles').css('display','none');
+                    $('#tilebtn').css('opacity','1');       
                 }, 400);
-                setTimeout(function() {
-                    $('#tilebtn').css('opacity','1');
-                    $('#tilemenu4').css({'opacity':'1','transform':'translateY(60px)'});        
-                }, 500);
-                setTimeout(function() {
-                    $('#tilemenu4,#menutxtback,#tilebtn').css('display','block');
-                }, 400);
-                $('.tiles').css({'transform':'translateY(-60px)','opacity':'0'});
+                $('#tilemenu4,#menutxtback,#tilebtn').css('display','block');
+                $('#tilemenu4').css('animation','tilemenu2 0.5s ease');
+                $('.tiles').css('display','none');
                 $('#menubackg').css('transform','translateY(-43px)'); 
             });
             $('#power').click(function(){

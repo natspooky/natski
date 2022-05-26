@@ -19,3 +19,15 @@
     from{opacity: 0; transform: translateY(50px);}
     to{opacity: 1; transform: translateY(0px);}
 }
+@keyframes tilemenu {
+    from{opacity: 0; transform: translateY(60px);}
+    to{opacity: 1; transform: translateY(0px);}
+}
+@keyframes tilemenu2 {
+    from{opacity: 0; transform: translateY(0px);}
+    to{opacity: 1; transform: translateY(60px);}
+}
+@keyframes tilemenu3 {
+    from{opacity: 1; transform: translateY(60px);}
+    to{opacity: 0; transform: translateY(0px);}
+}
