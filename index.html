@@ -370,10 +370,12 @@
                     $('#tilemenu1,#quickmenu,#tilemenu2,#tilemenu3,#tilemenu4').css('display','none');
                 }, 500);
                 setTimeout(function() {
+                    $('#tilebtn,#menutxtback').css('display','none');
+                    $('#menubackg').css('transform','translateY(-113px)');
+                }, 200);
+                setTimeout(function() {
                     $('.tiles').css('display','block');
                 }, 510);
-                $('#menubackg').css('transform','translateY(-113px)');
-                $('#tilebtn,#menutxtback').css('display','none');
                 $('#tilemenu1,#tilemenu2,#tilemenu3,#tilemenu4').css('animation','tilemenu3 0.5s ease-in');
                 $('#quickmenu').css('animation','fadeout 0.5s');
                 $('.youtext').css('opacity','0');
