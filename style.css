@@ -100,6 +100,7 @@ body
     opacity: 0.1;
     background-image: url('tile3.png');
     background-size: cover;
+    background-attachment: fixed;
     background-position: center;
     transition: 0.7s ease;
 }
