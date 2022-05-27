@@ -29,7 +29,7 @@ body
 	justify-content: center;
 	align-items: center;
 	height: 100vh;
-    overflow: hidden;
+    overflow-x: hidden;
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-color: var(--darkergray);
@@ -674,6 +674,7 @@ p,h1
     transform: scale(1);
     font-size: larger;
     opacity: 0.5;
+    display: none;
     box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
 }
 #textboxexp
