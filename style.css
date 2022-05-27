@@ -225,7 +225,7 @@ body
     border: 3px solid var(--red);
     transform: scale(0.9);
 }
-.arrowbut
+.arrowbut,.arrowbut2
 {
     position: relative;
     margin-left: auto;
@@ -234,8 +234,16 @@ body
     height: 4px;
     border-radius: 10px;
     background-color: var(--black);
-    transform: rotate(0deg) translateX(0.5px);
+    transform: rotate(0deg) translateX(0);
     transition: 0.2s;
+}
+.buttonhelper
+{
+    position: absolute;
+    top: -10%;
+    left: -10%;
+    height: 120%;
+    width: 120%;
 }
 .arrowbut:after,.arrowbut:before
 {
@@ -262,18 +270,6 @@ body
 {
     background-color: var(--red);
     transform: rotate(90deg) translate(0) scale(1);
-}
-.arrowbut2
-{
-    position: relative;
-    margin-left: auto;
-    margin-right: auto;
-    width: 20px;
-    height: 4px;
-    border-radius: 10px;
-    background-color: var(--black);
-    transform: rotate(0deg);
-    transition: 0.2s;
 }
 .arrowbut2:after,.arrowbut2:before
 {

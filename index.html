@@ -20,6 +20,7 @@
         <div id="themebox">
             <button id="colbutton" class="button" style="top: 17px; left: 17px;" onclick="pannel()">
                 <div class="arrowbut"></div>
+                <div class="buttonhelper" onclick="pannel()"></div>
             </button>
             <div id="power2">
                 <h1 style="text-align: center; background-color: rgba(0, 0, 0, 0.249); border-radius: 10px;"><span class="linecol">//</span>CUSTOM HIGHLIGHT</h1>
@@ -93,6 +94,7 @@
             <div class="menucont">
                 <button id="homebtn" class="button">
                     <div class="arrowbut"></div>
+                    <div class="buttonhelper" id="homebtn"></div>
                 </button>
                 <p class="menutxt">Home</p>
             </div>
@@ -349,7 +351,7 @@
                         $('.portfo').css('opacity','1');
                     }, 10);
                 });
-                $('#homebtn').click(function(){
+                $('#homebtn,.arrowbut').click(function(){
                     $('.menu').css('transform','translateY(-230px)');
                     $('.portfo,.otherpa').css('opacity','0');
                     setTimeout(function() {
@@ -364,7 +366,7 @@
                     $('.portfo').css('opacity','1');
                 }, 10);
             });
-            $('#tilebtn').click(function(){
+            $('#tilebtn,.arrowbut2').click(function(){
                 setTimeout(function() {
                     $('#tilemenu1,#quickmenu,#tilemenu2,#tilemenu3,#tilemenu4').css('display','none');
                 }, 500);
