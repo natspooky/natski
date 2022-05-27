@@ -284,6 +284,7 @@ body
 {
     opacity: 0;
     display: none;
+    animation: fadein 0.5s;
 }
 .tiles
 {

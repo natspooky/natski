@@ -76,14 +76,14 @@
     }
     #homebtn,#youbutton,#colbutton,#tilebtn
     {
-        top: 10px;
-        left: 10px;
+        top: 25px;
+        left: 25px;
         transform: scale(2);
         border-radius: 20px;
     }
     #tilebtn
     {
-        top: 55px;
+        top: 65px;
     }
     .arrowbut,.arrowbut2
     {
