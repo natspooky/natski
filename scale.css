@@ -64,7 +64,7 @@
         top: 15%;
         background-image: url('tile3.png');
     }
-    #dbut,.menubtn,.prog,#menubackg,.tilesubtxt,.tiletxtcontain
+    .menubtn,.prog,#menubackg,.tiletxtcontain
     {
         display: none;
     }

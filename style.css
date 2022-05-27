@@ -665,6 +665,7 @@ p,h1
 {
     position: fixed;
     width: 50%;
+    display: none;
     height: 50vh;
     z-index: 4;
     bottom: 10vh;
