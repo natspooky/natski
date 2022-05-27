@@ -34,8 +34,7 @@
         font-size: 310%;
     }
     .bottomtile{
-        height: 35vh;
-        bottom: -30vh;
+        display: none;
     }
     #backlog
     {
