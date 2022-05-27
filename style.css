@@ -665,7 +665,7 @@ p,h1
     width: 50%;
     height: 50vh;
     z-index: 4;
-    bottom: -42vh;
+    bottom: 10vh;
     color: var(--allwhite);
     border-radius: 20px;
     transition: 0.25s ease;
