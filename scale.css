@@ -113,6 +113,6 @@
     {
         display: block;
         top: -20px;
-        transform: rotate(180deg);
+        transform: scaleY(-1);
     }
 }
