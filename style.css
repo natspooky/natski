@@ -40,18 +40,15 @@ h1,p,button
     font-weight: bold;
     color: var(--allwhite);
 }
-h1,dd,dt
+h1,dd,dt,button
 {
     font-size: xx-large;
     text-align: center;
+    color: var(--allwhite);
 }
 p
 {
     font-size: 20px;
-}
-button
-{
-    text-align: center;
 }
 dd,dt
 {
@@ -107,12 +104,20 @@ label
 }
 #selector
 {
-    position: absolute;
+    position: relative;
     top: 10px;
     letter-spacing: 2px;
     z-index: 3;
     text-align: center;
     transition: 0.3s;
+}
+.port
+{
+    font-size: 300%;
+    margin: 0px;
+    cursor: default;
+    text-shadow: 0px 0px 10px var(--themecol);
+    transition: 1s ease;
 }
 #vid
 {
@@ -187,6 +192,7 @@ label
     background-color: rgba(80, 80, 80, 0.5);
     border: solid 5px transparent;
     letter-spacing: 5px;
+    font-size: 20px;
     transform: scale(1) translateY(0);
     border-radius: 50px;
     cursor: pointer;
@@ -762,14 +768,6 @@ label
 {
     color: var(--themecol);
     text-shadow: 0px 0px 7px var(--themecol);
-}
-.port
-{
-    font-size: 300%;
-    margin: 0px;
-    cursor: default;
-    text-shadow: 0px 0px 10px var(--themecol);
-    transition: 1s ease;
 }
 .sysbuttons
 {
