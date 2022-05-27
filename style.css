@@ -237,14 +237,6 @@ body
     transform: rotate(0deg) translateX(0);
     transition: 0.2s;
 }
-.buttonhelper
-{
-    position: absolute;
-    top: -10%;
-    left: -10%;
-    height: 120%;
-    width: 120%;
-}
 .arrowbut:after,.arrowbut:before
 {
     content: "";

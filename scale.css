@@ -76,28 +76,18 @@
     }
     #homebtn,#youbutton,#colbutton,#tilebtn
     {
-        transform: translate(2px,2px);
-        border-radius: 25px;
-        width: 100px;
-        height: 100px;
+        top: 15px;
+        left: 15px;
+        transform: scale(2);
+        border-radius: 20px;
     }
     #tilebtn
     {
-        transform: translate(2px,40px);
-        border-radius: 25px;
+        top: 55px;
     }
     .menubtn,.prog,#menubackg,.tiletxtcontain
     {
         display: none;
-    }
-    .arrowbut,.arrowbut2
-    {
-        transform: scale(2);
-    }
-    .button:hover .arrowbut,.button:hover .arrowbut2
-    {
-        background-color: var(--red);
-        transform: rotate(45deg) translateX(0px) scale(2);
     }
     .menutxt
     {
