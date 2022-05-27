@@ -74,19 +74,30 @@
         font-size: 450%;
         margin-bottom: 50px;
     }
+    #homebtn,#youbutton,#colbutton,#tilebtn
+    {
+        transform: translate(2px,2px);
+        border-radius: 25px;
+        width: 100px;
+        height: 100px;
+    }
     #tilebtn
     {
-        transform: scale(2) translate(10px,30px);
-        border-radius: 10px;
-    }
-    #homebtn,#youbutton,#colbutton
-    {
-        transform: scale(2) translate(10px,10px);
-        border-radius: 10px;
+        transform: translate(2px,40px);
+        border-radius: 25px;
     }
     .menubtn,.prog,#menubackg,.tiletxtcontain
     {
         display: none;
+    }
+    .arrowbut,.arrowbut2
+    {
+        transform: scale(2);
+    }
+    .button:hover .arrowbut,.button:hover .arrowbut2
+    {
+        background-color: var(--red);
+        transform: rotate(45deg) translateX(0px) scale(2);
     }
     .menutxt
     {
