@@ -76,8 +76,8 @@
     }
     #homebtn,#youbutton,#colbutton,#tilebtn
     {
-        top: 15px;
-        left: 15px;
+        top: 10px;
+        left: 10px;
         transform: scale(2);
         border-radius: 20px;
     }
