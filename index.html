@@ -54,7 +54,7 @@
                     <dd id="oscheck">loading...</dd>
                     <dt style="font-weight: bold;"><img class="sysicons" src="icons/BROWSER.png" alt="error">CURRENT BROWSER:</dt>
                     <dd id="browserdet">loading...</dd>
-                    <dt style="font-weight: bold;"><img class="sysicons" src="icons/ORIENTATION.png" alt="error">INITIAL ORIENTATION:</dt>
+                    <dt style="font-weight: bold;"><img class="sysicons" src="icons/ORIENTATION.png" alt="error">ORIENTATION:</dt>
                     <dd id="orient">loading...</dd>
                     <dt style="font-weight: bold;"><img class="sysicons" src="icons/VERSION.png" alt="error">VERSION:</dt>
                     <dd>N1.2</dd>
@@ -101,13 +101,6 @@
                     <div class="arrowbut2"></div>
                 </button>
                 <p class="menutxt" id="menutxtback">Menu</p>
-            </div>
-        </div>
-        <div class="bottomtile" id="exptile" style="overflow-y: scroll;">
-            <h1 id="bottiletxt" style="position: absolute; left: 10px; top: 0%; transition: 0.5s; z-index: 4;">TEST PANEL</h1>
-            <div id="textboxexp">
-                <h1 style="margin: 0px 15px;">nothing is here yet</h1>
-                <p style="margin: 0px 15px;">how spooky</p>
             </div>
         </div>
         <div class="otherpa" style="text-align: center;">
@@ -491,15 +484,6 @@
                     $('.slide').css('opacity','1');
                 });
             };
-            $('#exptile').click(function(){
-                document.getElementById("exptile").scrollIntoView({behavior: "smooth", inline: 'center', block: 'center'});
-                $('#exptile').css({'transform':'scale(1.7) translateY(-36vh)','border-radius':'10px','filter':'grayscale(0)','opacity':'1'})
-                $('#textboxexp').css('opacity','1')
-                $('#exptile').mouseleave(function(){
-                    $('#exptile').css({'transform':'scale(1)','border-radius':'20px','filter':'grayscale(0.8)','opacity':'0.5'})
-                    $('#textboxexp').css('opacity','0')
-                });
-            });
             $('#animation1').click(function(){
                 setTimeout(function(){
                     $('#youpannel').css('opacity','1')
@@ -552,15 +536,15 @@
             });
             window.addEventListener("orientationchange", function() {
                 if(window.matchMedia("(orientation: portrait)").matches){
-                    document.getElementById('orient').innerHTML="Portrait";
+                    document.getElementById('orient').innerHTML="Landscape";
                     $('#page2').css('display','none')
                     $('#lbut').css('display','block')
                 }if(window.matchMedia("(orientation: landscape)").matches){
-                    document.getElementById('orient').innerHTML="Landscape";
+                    document.getElementById('orient').innerHTML="Portrait";
                     $('#page2,#page1').css('display','block')
                     $('#lbut,#rbut').css('display','none')
                 }
-            }, false);
+            });
             $("#redcol,#greencol,#bluecol").on("input", function(){
                 var r = document.getElementById("redcol").value;
                 var g = document.getElementById("greencol").value;
