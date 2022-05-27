@@ -28,7 +28,7 @@ body
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	min-height: 250vh;
+	min-height: 100vh;
     overflow-x: hidden;
 	background-size: cover;
 	background-repeat: no-repeat;
@@ -72,28 +72,6 @@ body
 	min-height: 100%;
     background-image: linear-gradient(to right, var(--blue), var(--purple));
     overflow: hidden;
-}
-#themes
-{
-    position: absolute;
-    top: 243vh;
-    height: 7vh;
-    width: 100%;
-    background-color: var(--darkgray);
-}
-.themebut
-{
-    position: relative;
-    height: 100%;
-    float: right;
-    width: 20%;
-    margin: 0px 20px;
-    display: block;
-    background-color: var(--darkergray);
-    border: 5px solid var(--darkgray);
-    color: var(--black);
-    font-size: xx-large;
-    font-weight: bold;
 }
 .wave {
     position: absolute;
@@ -655,7 +633,7 @@ p,h1
     position: absolute;
     z-index: 1;
 }
-.sidebut,#dbut
+.sidebut
 {
     position: absolute;
     font-size: 80px;
@@ -672,30 +650,26 @@ p,h1
     cursor: pointer;
     transition: 0s;
 }
-#dbut
-{
-    animation: arrow 3s infinite;
-}
 .sidebut:hover
 {
     opacity: 0.5;
 }
 .bottomtile
 {
-    position: absolute;
+    position: fixed;
     width: 50%;
     height: 50vh;
     background-color: #2a1f8c;
-    top: 125vh;
+    z-index: 4;
+    top: 93vh;
     color: var(--allwhite);
     border-radius: 20px;
-    transition: 0.8s ease;
-    background-image: url('tile59.png');
+    transition: 0.25s ease;
+    background-color: var(--themecol);
     filter: grayscale(0.8);
     transform: scale(1);
-    background-size: cover;
-    background-position:center;
     font-size: larger;
+    opacity: 0.5;
     box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
 }
 #textboxexp

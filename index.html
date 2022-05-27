@@ -17,14 +17,6 @@
         <link rel="stylesheet" type="text/css" href="scale.css">
 	</head>
     <body onload="detec();">
-        <div id="themes">
-            <button class="themebut" id="light">
-                //LIGHT
-            </button>
-            <button class="themebut" id="dark">
-                //DARK
-            </button>
-        </div>
         <div id="themebox">
             <button id="colbutton" class="button" style="top: 17px; left: 17px;" onclick="pannel()">
                 <div class="arrowbut"></div>
@@ -111,10 +103,8 @@
                 <p class="menutxt" id="menutxtback">Menu</p>
             </div>
         </div>
-        <div class="bottomtile" id="bot" style="top: 121vh; filter: blur(1px) grayscale(0.8); transform: scaleX(0.85) translateY(0); opacity: 0.8; transition: 0.6s;"></div>
-        <div class="bottomtile" id="mid" style="top: 117.5vh; filter: blur(2px) grayscale(0.8); transform: scaleX(0.65) translateY(0); opacity: 0.6; z-index: -1; transition: 0.9s;"></div>
         <div class="bottomtile" id="exptile" style="overflow-y: scroll;">
-            <h1 id="bottiletxt" style="position: absolute; left: 10px; top: 0%; transition: 0.5s; z-index: 4;">TEST PANEL<br><p style="opacity: 1; transition: 0.2s; z-index: 2;" id="tiltxt">test tab for features</p></h1>
+            <h1 id="bottiletxt" style="position: absolute; left: 10px; top: 0%; transition: 0.5s; z-index: 4;">TEST PANEL</h1>
             <div id="textboxexp">
                 <h1 style="margin: 0px 15px;">nothing is here yet</h1>
                 <p style="margin: 0px 15px;">how spooky</p>
@@ -513,21 +503,12 @@
             };
             $('#exptile').click(function(){
                 document.getElementById("exptile").scrollIntoView({behavior: "smooth", inline: 'center', block: 'center'});
-                $('#exptile').css({'transform':'scale(1.7)','border-radius':'10px','transition':'0.5s','filter':'grayscale(0)'})
-                $('#tiltxt').css('opacity','0')
+                $('#exptile').css({'transform':'scale(1.7) translateY(-36vh)','border-radius':'10px','filter':'grayscale(0)','opacity':'1'})
                 $('#textboxexp').css('opacity','1')
                 $('#exptile').mouseleave(function(){
-                    $('#exptile').css({'transform':'scale(1)','border-radius':'20px','transition':'0.5s','filter':'grayscale(0.8)'})
-                    $('#tiltxt').css('opacity','1')
+                    $('#exptile').css({'transform':'scale(1)','border-radius':'20px','filter':'grayscale(0.8)','opacity':'0.5'})
                     $('#textboxexp').css('opacity','0')
                 });
-            });
-            $('#exptile').hover(function(){
-                $('#bot').css({'opacity':'0','transition':'0.3s','transform':'scaleX(1) translateY(4vh)','filter':'blur(0px) grayscale(0.8)'})
-                $('#mid').css({'opacity':'0','transition':'0.2s','transform':'scaleX(1) translateY(7.5vh)','filter':'blur(0px) grayscale(0.8)'})
-            },function(){
-                $('#bot').css({'opacity':'0.8','transition':'0.6s','transform':'scaleX(0.85) translateY(0vh)','filter':'blur(1px) grayscale(0.8)'})
-                $('#mid').css({'opacity':'0.6','transition':'0.9s','transform':'scaleX(0.65) translateY(0vh)','filter':'blur(2px) grayscale(0.8)'})
             });
             $('#animation1').click(function(){
                 setTimeout(function(){
@@ -582,6 +563,7 @@
             function detec(){
                 if(window.matchMedia("(orientation: portrait)").matches){
                     document.getElementById('orient').innerHTML="Portrait";
+                    $('#page2').css('display','block')
                 }if(window.matchMedia("(orientation: landscape)").matches){
                     document.getElementById('orient').innerHTML="Landscape";
                     $('#lbut,#dbut').css('display','block')
