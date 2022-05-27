@@ -113,7 +113,7 @@
     .wave.wave2
     {
         display: block;
-        top: -10px;
+        top: -20px;
         transform: scaleY(-1);
     }
 }
