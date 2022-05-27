@@ -34,13 +34,59 @@ body
 	background-repeat: no-repeat;
 	background-color: var(--darkergray);
 }
+h1,p,button
+{
+    cursor: default;
+    font-weight: bold;
+    color: var(--allwhite);
+}
+h1,dd,dt
+{
+    font-size: xx-large;
+    text-align: center;
+}
+p
+{
+    font-size: 20px;
+}
+button
+{
+    text-align: center;
+}
+dd,dt
+{
+    position: relative;
+    cursor: default;
+    width: 100%;
+    height: auto;
+    background-color: rgba(0, 0, 0, 0.179);
+    border-radius: 5px;
+    border: 2px solid #2e2e2e;
+}
+dt
+{
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+dt input
+{
+    padding: 10px;
+    width: 100%;
+    background-color: transparent;
+    border: 0px;
+    color: #fff;
+    position: relative;
+    font-size: large;
+}
+label
+{
+    margin-left: 10px;
+}
 #loads
 {
     position: absolute;
     top: 7%;
     width: 100%;
-    text-align: center;
-    color: var(--allwhite);
 }
 #rbut
 {
@@ -54,13 +100,15 @@ body
 {
     display: none;
 }
+::-webkit-scrollbar-thumb
+{
+    background-color: var(--themecol);
+    border-radius: 10px;
+}
 #selector
 {
     position: absolute;
     top: 10px;
-    color: var(--allwhite);
-    font-weight: bold;
-    font-size: 25px;
     letter-spacing: 2px;
     z-index: 3;
     text-align: center;
@@ -97,14 +145,13 @@ body
     position: absolute;
     top: 0;
     left: 0;
-    height: 110%;
-    width: 110%;
+    height: 100%;
+    width: 100%;
     opacity: 0.1;
     background-image: url('tile3.png');
     background-size: cover;
-    background-attachment: fixed;
     background-position: center;
-    transition: 0.7s ease;
+    transition: 0.6s ease;
 }
 .butcon
 {
@@ -121,8 +168,6 @@ body
     position: absolute;
     font-size: 80px;
     padding: 100px 10px;
-    font-weight: bold;
-    color: var(--allwhite);
     top: 30vh;
     background: rgba(238, 238, 238,0.1);
     border-radius: 10px;
@@ -131,7 +176,6 @@ body
     opacity: 1;
     display: none;
     cursor: pointer;
-    transition: 0s;
 }
 .sidebut:hover
 {
@@ -140,11 +184,9 @@ body
 .menubtn
 {
     padding: 10px 40px;
-    color: var(--allwhite);
     background-color: rgba(80, 80, 80, 0.5);
     border: solid 5px transparent;
     letter-spacing: 5px;
-    font-size: 20px;
     transform: scale(1) translateY(0);
     border-radius: 50px;
     cursor: pointer;
@@ -173,7 +215,7 @@ body
     background-color: var(--gray);
     transform: translateY(-113px);
     left: -3.3%; 
-    top: 0px; 
+    top: 0; 
     border-radius: 0px 0px 70px 70px;
     transition: 0.5s ease;
 }
@@ -181,13 +223,11 @@ body
 {
     position: absolute;
     display: block;
-    left: 0px;
+    left: 0;
     transform: translateX(70px);
-    font-weight: bold;
     top: 0;
     color: var(--black);
     line-height: 50px;
-    font-size: 20px;
     opacity: 0;
     transition: 0.3s ease;
 }
@@ -212,8 +252,6 @@ body
 .button
 {
     position: absolute;
-    background-size: 100%;
-    background-position: center;
     background-color: var(--white);
     border: 2px solid var(--white);
     border-radius: 50px;
@@ -292,7 +330,7 @@ body
     margin-left: auto;
     margin-right: auto;
     display: block;
-    transform: translateY(0px);
+    transform: translateY(0);
     transform-origin: top center;
     max-width: 1020px;
     width: auto;
@@ -360,14 +398,13 @@ body
     position: absolute;
     left: 10px;
     bottom: 22%;
-    font-size: 20px;
-    font-weight: bold;
 }
 .tilesubtxt
 {
     position: absolute;
     bottom: 12%;
     left: 10px;
+    font-size: 15px;
 }
 .tiletxtcontain
 {
@@ -377,7 +414,6 @@ body
     border-radius: 10px;
     background-image: linear-gradient(transparent,var(--themecol));
     opacity: 0;
-    color: var(--allwhite);
     top: -10%;
     transition: 0.5s ease;
 }
@@ -397,7 +433,7 @@ body
     opacity: 1;
     width: 70%;
     height: auto;
-    top: 0px;
+    top: 0;
     border-radius: 10px;
     transition: 0.5s ease;
     animation: tilemenu2 0.5s ease;
@@ -450,11 +486,6 @@ body
     background-color: var(--gray);
     border-radius: 10px;
 }
-::-webkit-scrollbar-thumb
-{
-    background-color: var(--themecol);
-    border-radius: 10px;
-}
 .downbtn
 {
     position: relative;
@@ -485,9 +516,6 @@ body
     background-color: var(--allblack);
     transform: scaleX(0);
     transform-origin: left;
-    color: var(--allwhite);
-    font-size: 20px;
-    text-align: center;
     transition: 0.7s ease;
 }
 .downcontain
@@ -582,47 +610,11 @@ body
     top: 5%;
     z-index: 30;
     width: 55%;
-    font-size: x-large;
     overflow-x: hidden;
     letter-spacing: 5px;
     overflow-y: scroll;
     height: auto;
     max-height: 85%;
-    color: var(--allwhite);
-}
-dd,dt
-{
-    position: relative;
-    cursor: default;
-    width: 100%;
-    height: auto;
-    font-size: xx-large;
-    background-color: rgba(0, 0, 0, 0.179);
-    border-radius: 5px;
-    border: 2px solid #2e2e2e;
-}
-dt
-{
-    margin-top: 30px;
-    margin-bottom: 10px;
-}
-dt input
-{
-    padding: 10px;
-    width: 100%;
-    background-color: transparent;
-    border: 0px;
-    color: #fff;
-    position: relative;
-    font-size: large;
-}
-label
-{
-    margin-left: 10px;
-}
-p,h1
-{
-    cursor: default;
 }
 #backplate,#themebox
 {
@@ -833,8 +825,6 @@ p,h1
     background-color: var(--themecol);
     box-shadow: 0px 0px 20px var(--themecol);
     border-radius: 50px;
-    color: var(--allwhite);
-    font-weight: bold;
     font-size: larger;
     border: 1px solid rgb(228, 228, 228);
     overflow: hidden;
@@ -843,9 +833,7 @@ p,h1
 }
 .titlefonts
 {
-    font-size: xx-large;
     color: var(--black);
     margin-bottom: 20px;
-    text-align: center; 
     letter-spacing: 15px;
 }

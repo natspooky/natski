@@ -357,7 +357,7 @@
                         $('.portfo,.otherpa').css('display','none');
                     }, 300);
                 });
-            });
+            
             $('#portbutton2').click(function(){
                 $('.menu').css('transform','translateY(15px)');
                 $('.portfo').css('display','block'); 
@@ -465,13 +465,6 @@
                     $('.otherpa').css('opacity','1');
                 }, 10);
             });
-            $('#portbutton3').click(function(){
-                $('.menu').css('transform','translateY(15px)');
-                $('.otherpa').css('display','block'); 
-                setTimeout(function() {
-                    $('.otherpa').css('opacity','1');
-                }, 10);
-            });
             function slidescroll(i){
                 document.getElementById("slide"+i).scrollIntoView({behavior: "smooth", inline: 'center', block: 'center'});
                 $('.slide').css('opacity','0.2');
@@ -542,7 +535,7 @@
                 $(':root').css('--themecol', hex);
             });
 
-
+        });
             function detec(){
                 if(window.matchMedia("(orientation: portrait)").matches){
                     document.getElementById('orient').innerHTML="Portrait";
