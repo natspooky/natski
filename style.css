@@ -199,6 +199,11 @@ body
     height: 50px;
     width: 130px;
 }
+#tilebtn
+{
+    display: none;
+    animation: fadein 0.5s;
+}
 .button:hover + .menutxt
 {
     transform: translateX(60px);
@@ -279,12 +284,6 @@ body
 .arrowbut2:before
 {
     transform: rotate(0deg) translateY(7px);
-}
-#tilebtn
-{
-    opacity: 0;
-    display: none;
-    animation: fadein 0.5s;
 }
 .tiles
 {
@@ -438,11 +437,11 @@ body
     top: 17%;
     width: 12%;
     display: none;
-    opacity: 0;
     overflow-y: scroll;
     overflow-x: hidden;
     border-radius: 10px 0px 0px 10px;
     transition: 0.5s;
+    animation: fadein 0.5s ease;
 }
 #quickmenu::-webkit-scrollbar
 {

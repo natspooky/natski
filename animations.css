@@ -2,6 +2,10 @@
     from{background-position-x:0;}
     to{background-position-x:1000px;}
 }
+@keyframes fadeout {
+    from{opacity: 1;}
+    to{opacity: 0;}
+}
 @keyframes fadein
 {
     from{opacity: 0;}

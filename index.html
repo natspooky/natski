@@ -54,7 +54,7 @@
                     <dd id="oscheck">loading...</dd>
                     <dt style="font-weight: bold;"><img class="sysicons" src="icons/BROWSER.png" alt="error">CURRENT BROWSER:</dt>
                     <dd id="browserdet">loading...</dd>
-                    <dt style="font-weight: bold;"><img class="sysicons" src="icons/ORIENTATION.png" alt="error">ORIENTATION:</dt>
+                    <dt style="font-weight: bold;"><img class="sysicons" src="icons/ORIENTATION.png" alt="error">STARTING ORIENTATION:</dt>
                     <dd id="orient">loading...</dd>
                     <dt style="font-weight: bold;"><img class="sysicons" src="icons/VERSION.png" alt="error">VERSION:</dt>
                     <dd>N1.2</dd>
@@ -377,14 +377,14 @@
                     $('#menubackg').css('transform','translateY(-113px)');
                 }, 510);
                 $('#tilemenu1,#tilemenu2,#tilemenu3,#tilemenu4').css('animation','tilemenu3 0.5s ease-in');
-                $('#tilebtn,#quickmenu,.youtext').css('opacity','0');
+                $('#quickmenu').css('animation','fadeout 0.5s');
+                $('.youtext').css('opacity','0');
                 $('.tiles').css('animation','tilemenu 0.5s ease');
             });
 
             $('#tile1').click(function(){
                 setTimeout(function() {
-                    $('#tilebtn').css('opacity','1');
-                    $('#quickmenu').css('opacity','1');
+                    $('#quickmenu').css('display','block');
                     $('#tilemenu1,#menutxtback,#tilebtn').css('display','block');
                 }, 505);
                 setTimeout(function(){
@@ -392,14 +392,13 @@
                 },500)
                 $('.tiles').css('animation','tilemenu4 0.5s ease-in');
                 $('#tilemenu1').css('animation','tilemenu2 0.5s ease-out');
+                $('#quickmenu').css('animation','fadein 0.5s');
                 $('#menubackg').css('transform','translateY(-43px)');
-                $('#quickmenu').css('display','block');
             });
 
 
             $('#tile2').click(function(){
                 setTimeout(function() {
-                    $('#tilebtn').css('opacity','1');
                     $('#tilemenu2,#menutxtback,#tilebtn').css('display','block');
                 }, 505);
                 setTimeout(function() {
@@ -411,11 +410,8 @@
                 $('#tilemenu2').css('animation','tilemenu2 0.5s ease-out');
                 $('#menubackg').css('transform','translateY(-43px)'); 
             });
-
-
             $('#tile3').click(function(){
                 setTimeout(function() {
-                    $('#tilebtn').css('opacity','1');
                     $('#tilemenu3,#menutxtback,#tilebtn').css('display','block');
                 }, 505);
                 setTimeout(function() {
@@ -427,7 +423,6 @@
             });
             $('#tile4').click(function(){
                 setTimeout(function() {
-                    $('#tilebtn').css('opacity','1');
                     $('#tilemenu4,#menutxtback,#tilebtn').css('display','block');
                 }, 505);
                 setTimeout(function() {
@@ -534,17 +529,6 @@
                     $('#vid1,#vid2,#vid3,#vid4,#youpannel,#themebox').css('display','none')
                 }, 400);
                 $('#youpannel,#themebox').css('opacity','0')
-            });
-            window.addEventListener("orientationchange", function() {
-                if(window.matchMedia("(orientation: portrait)").matches){
-                    document.getElementById('orient').innerHTML="Landscape";
-                    $('#page2').css('display','none')
-                    $('#lbut').css('display','block')
-                }if(window.matchMedia("(orientation: landscape)").matches){
-                    document.getElementById('orient').innerHTML="Portrait";
-                    $('#page2,#page1').css('display','block')
-                    $('#lbut,#rbut').css('display','none')
-                }
             });
             $("#redcol,#greencol,#bluecol").on("input", function(){
                 var r = document.getElementById("redcol").value;
