@@ -58,11 +58,11 @@
     {
         opacity: 1;
         background-image: url('tile2.png');
-        top: 53vh;
+        top: 15%;
     }
     #page1
     {
-        top: 15vh;
+        top: 50%;
         background-image: url('tile3.png');
     }
     #dbut,.menubtn,.prog,#menubackg,.tilesubtxt,.tiletxtcontain
