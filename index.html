@@ -456,25 +456,15 @@
                 $('#backplate').css('opacity','0');
             });
             $('#lbut').click(function(){
-                setTimeout(function() {
-                    $('#page1').css('display','none')
-                    $('#page2').css('opacity','1')
-                },400);
                 $('#page2,#rbut').css('display','block')
-                $('#page1').css('opacity','0')
-                $('#lbut').css('display','none')
+                $('#lbut,#page1').css('display','none')
                 $('#prog1').css('opacity','0.1')
                 $('#prog2').css('opacity','0.7')
                 document.getElementById('home1').style.backgroundImage = "url(tile2.png)"
             });
             $('#rbut').click(function(){
-                setTimeout(function() {
-                    $('#page2').css('display','none')
-                    $('#page1').css('opacity','1')
-                },400);
                 $('#page1,#lbut').css('display','block')
-                $('#page2').css('opacity','0')
-                $('#rbut').css('display','none')
+                $('#rbut,#page2').css('display','none')
                 $('#prog1').css('opacity','0.7')
                 $('#prog2').css('opacity','0.1')
                 document.getElementById('home1').style.backgroundImage = "url(tile3.png)"
@@ -560,6 +550,30 @@
                 }, 400);
                 $('#youpannel,#themebox').css('opacity','0')
             });
+            window.addEventListener("orientationchange", function() {
+                if(window.matchMedia("(orientation: portrait)").matches){
+                    document.getElementById('orient').innerHTML="Portrait";
+                    $('#page2').css('display','none')
+                    $('#lbut').css('display','block')
+                }if(window.matchMedia("(orientation: landscape)").matches){
+                    document.getElementById('orient').innerHTML="Landscape";
+                    $('#page2,#page1').css('display','block')
+                    $('#lbut,#rbut').css('display','none')
+                }
+            }, false);
+            $("#redcol,#greencol,#bluecol").on("input", function(){
+                var r = document.getElementById("redcol").value;
+                var g = document.getElementById("greencol").value;
+                var b = document.getElementById("bluecol").value;
+                var col = 'rgb('+r+','+g+','+b+')'
+                $(':root').css('--themecol', col);
+            });
+            $("#hexcol").on("input", function(){
+                var hex = document.getElementById("hexcol").value;
+                $(':root').css('--themecol', hex);
+            });
+
+
             function detec(){
                 if(window.matchMedia("(orientation: portrait)").matches){
                     document.getElementById('orient').innerHTML="Portrait";
@@ -602,17 +616,5 @@
                 $('.butcon').css({'animation':'tilemenu 0.5s ease'})
                 $('.sidebut').css({'animation':'fadein 0.5s ease'})
             };
-            $("#redcol,#greencol,#bluecol").on("input", function(){
-                var r = document.getElementById("redcol").value;
-                var g = document.getElementById("greencol").value;
-                var b = document.getElementById("bluecol").value;
-                var col = 'rgb('+r+','+g+','+b+')'
-                $(':root').css('--themecol', col);
-            });
-            $("#hexcol").on("input", function(){
-                var hex = document.getElementById("hexcol").value;
-                $(':root').css('--themecol', hex);
-            });
-
         </script>
     </body>
