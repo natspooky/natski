@@ -86,6 +86,9 @@
             <section>
                 <div class="wave"></div>
             </section>
+            <section>
+                <div class="wave wave2"></div>
+            </section>
         </div>
         <h1 id="loads">L O A D I N G . . .</h1>
         <div class="menu">
@@ -542,7 +545,7 @@
                 document.documentElement.style.setProperty('--darkergray', '#232323');
                 document.documentElement.style.setProperty('--darkgray', '#2e2e2e');
                 document.documentElement.style.setProperty('--gray', '#1c1c1c');
-                $('.wave').css('background-image','url("wave2.png")')
+                $('.wave,.wave.wave2').css('background-image','url("wave2.png")')
             });
             $('#light').click(function(){
                 document.documentElement.style.setProperty('--white', '#fff');
@@ -552,7 +555,7 @@
                 document.documentElement.style.setProperty('--darkergray', '#fff');
                 document.documentElement.style.setProperty('--darkgray', '#ebebeb');
                 document.documentElement.style.setProperty('--gray', '#C9C9C9');
-                $('.wave').css('background-image','url("wave.png")')
+                $('.wave,.wave.wave2').css('background-image','url("wave.png")')
             });
             $('#youpannel,#youbutton,#colbutton').click(function(){
                 setTimeout(function(){
@@ -576,7 +579,7 @@
                 if(navigator.appVersion.indexOf("Mac")!=-1)
                     Name="Ios";
                 if(navigator.appVersion.indexOf("X11")!=-1)
-                    Name="Unix";
+                    Name="Unix/Unix-like";
                 if(navigator.appVersion.indexOf("Linux")!=-1)
                     Name="Linux";
                 el_down.innerHTML=Name;

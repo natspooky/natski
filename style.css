@@ -37,7 +37,7 @@ body
 #loads
 {
     position: absolute;
-    top: 10px;
+    top: 7%;
     color: var(--allwhite);
 }
 #rbut
@@ -85,6 +85,10 @@ body
     background-size: 1000px 100px;
     transition: 1.2s;
     animation: waves 3s linear infinite;
+}
+.wave.wave2
+{
+    display: none;
 }
 .homeimg
 {
@@ -659,7 +663,6 @@ p,h1
     position: fixed;
     width: 50%;
     height: 50vh;
-    background-color: #2a1f8c;
     z-index: 4;
     top: 93vh;
     color: var(--allwhite);

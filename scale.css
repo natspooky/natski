@@ -57,11 +57,11 @@
     {
         opacity: 1;
         background-image: url('tile2.png');
-        top: 48vh;
+        top: 53vh;
     }
     #page1
     {
-        top: 10vh;
+        top: 15vh;
         background-image: url('tile3.png');
     }
     #dbut,.menubtn,.prog,#menubackg,.tilesubtxt,.tiletxtcontain
@@ -108,5 +108,11 @@
     {
         background-color: transparent;
         box-shadow: 0px 0px 0px transparent;
+    }
+    .wave.wave2
+    {
+        display: block;
+        top: -20px;
+        transform: rotate(180deg);
     }
 }
