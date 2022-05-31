@@ -6,57 +6,832 @@
 	box-sizing: border-box;
 	font-family: 'Nunito', sans-serif;
 }
+:root 
+{
+	--blue: #1b1174;
+	--pink: #E49EE6;
+	--black: #000;
+    --allblack: #000;
+	--alblue: #2a1f8c;
+    --portgray: #ebebeb;
+	--white: #fff;
+    --allwhite: #fff;
+	--gray: #c9c9c9;
+	--purple: #271252;
+	--red: #ff0000;
+    --darkgray: #ebebeb;
+    --darkergray: #fff;
+    --themecol: #a59cff;
+}
 body
 {
+	display: contents;
 	justify-content: center;
 	align-items: center;
 	height: 100vh;
     overflow-x: hidden;
-	background-color: white;
-}
-h1
-{
-	position: absolute;
-    font-size: xx-large;
-	letter-spacing: 7px;
-	color: #000;
-	width: 100%;
-	top: 5vh;
-	text-align: center;
-}
-@keyframes load{
-	from{transform: rotate(0);}
-	to{transform: rotate(360deg);}
-}
-#img
-{
-	position: relative;
-	top: 15vh;
-	margin-left: auto;
-	margin-right: auto;
-	align-self: center;
-	background-image: url('icons.png');
-	height: 400px;
-	width: 400px;
-	background-color: #000;
-	border-radius: 20px;
-	background-position: center;
-	background-size: 90%;
+	background-size: cover;
 	background-repeat: no-repeat;
+	background-color: var(--darkergray);
 }
-#load
+h1,p,button
 {
-	position: relative;
-	top: 20vh;
-	margin-left: auto;
-	margin-right: auto;
-	align-self: center;
-	height: 100px;
-	width: 100px;
-	border-radius: 50%;
-	border-top: 10px solid #000;
-	border-bottom: 10px solid rgba(128, 128, 128, 0.4);
-	border-left: 10px solid rgba(128, 128, 128, 0.4);
-	border-right: 10px solid rgba(128, 128, 128, 0.4);
-	animation: load 1s linear infinite;
+    cursor: default;
+    font-weight: bold;
+    color: var(--allwhite);
+}
+h1,dd,dt,button
+{
+    font-size: xx-large;
+    text-align: center;
+    color: var(--allwhite);
+}
+p
+{
+    font-size: 20px;
+}
+dd,dt
+{
+    position: relative;
+    cursor: default;
+    width: 100%;
+    height: auto;
+    background-color: rgba(0, 0, 0, 0.179);
+    border-radius: 5px;
+    border: 2px solid #2e2e2e;
+}
+dt
+{
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+dt input
+{
+    padding: 10px;
+    width: 100%;
+    background-color: transparent;
+    border: 0px;
+    color: #fff;
+    position: relative;
+    font-size: large;
+}
+label
+{
+    margin-left: 10px;
+}
+#loads
+{
+    position: absolute;
+    top: 7%;
+    width: 100%;
+}
+#rbut
+{
+    right: 10px; 
+}
+#lbut
+{
+    left: 10px; 
+}
+::-webkit-scrollbar,.portraitbuttons,#page2
+{
+    display: none;
+}
+::-webkit-scrollbar-thumb
+{
+    background-color: var(--themecol);
+    border-radius: 10px;
+}
+#selector
+{
+    position: relative;
+    top: 10px;
+    letter-spacing: 2px;
+    z-index: 3;
+    text-align: center;
+    transition: 0.3s;
+}
+.port
+{
+    font-size: 300%;
+    margin: 0px;
+    cursor: default;
+    text-shadow: 0px 0px 10px var(--themecol);
+    transition: 1s ease;
+}
+#vid
+{
+    position: absolute;
+	top: 0;
+	min-width: 100%; 
+	min-height: 100%;
+    background-image: linear-gradient(to right, var(--blue), var(--purple));
+    overflow: hidden;
+}
+.wave {
+    position: absolute;
+    background-image: url('wave.png');
+    opacity: 1;
+    width: 100%;
+    height: 100px;
+    left: 0;
+    filter: blur(1px);
+    bottom: -20px;
+    background-size: 1000px 100px;
+    transition: 1.2s;
+    animation: waves 3s linear infinite;
+}
+.wave.wave2
+{
+    display: none;
+}
+.homeimg
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0.1;
+    background-image: url('tile3.png');
+    background-size: cover;
+    background-position: center;
+    transition: 0.6s ease;
+}
+.butcon
+{
+    width: 100%;
+    height: 20vh;
+    top: 33vh;
+    left: 0;
+    display: none;
+    position: absolute;
+    z-index: 1;
+}
+.sidebut
+{
+    position: absolute;
+    font-size: 80px;
+    padding: 100px 10px;
+    top: 30vh;
+    background: rgba(238, 238, 238,0.1);
+    border-radius: 10px;
+    border: 0px;
+    z-index: 4;
+    opacity: 1;
+    display: none;
+    cursor: pointer;
+}
+.sidebut:hover
+{
+    opacity: 0.5;
+}
+.menubtn
+{
+    padding: 10px 40px;
+    background-color: rgba(80, 80, 80, 0.5);
+    border: solid 5px transparent;
+    letter-spacing: 5px;
+    font-size: 20px;
+    transform: scale(1) translateY(0);
+    border-radius: 50px;
+    cursor: pointer;
+}
+.menubtn:hover
+{
+    border: solid 5px rgba(80, 80, 80, 0.5);
+}
+.menu
+{
+    position: fixed;
+    transform: translateY(-150px);
+    transform-origin: top left;
+    top: 0px;
+    left: 15px;
+    height: auto;
+    width: auto;
+    z-index: 5;
+    transition: 0.5s ease
+}
+#menubackg
+{
+    position: absolute; 
+    height: 120%; 
+    width: 45%; 
+    background-color: var(--gray);
+    transform: translateY(-113px);
+    left: -3.3%; 
+    top: 0; 
+    border-radius: 0px 0px 70px 70px;
+    transition: 0.5s ease;
+}
+.menutxt
+{
+    position: absolute;
+    display: block;
+    left: 0;
+    transform: translateX(70px);
+    top: 0;
+    color: var(--black);
+    line-height: 50px;
+    opacity: 0;
+    transition: 0.3s ease;
+}
+.menucont
+{
+    position: relative;
+    display: block;
+    margin-bottom: 20px;
+    height: 50px;
+    width: 130px;
+}
+#tilebtn
+{
+    display: none;
+    animation: fadein 0.5s;
+}
+.button:hover + .menutxt
+{
+    transform: translateX(60px);
+    opacity: 1;
+}
+.button
+{
+    position: absolute;
+    background-color: var(--white);
+    border: 2px solid var(--white);
+    border-radius: 50px;
+    height: 50px;
+    width: 50px;
+    left: 0;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.05);
+    transform: scale(1);
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+.button:hover
+{
+    border: 3px solid var(--red);
+    transform: scale(0.9);
+}
+.arrowbut,.arrowbut2
+{
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    width: 20px;
+    height: 4px;
+    border-radius: 10px;
+    background-color: var(--black);
+    transform: rotate(0deg) translateX(0);
+    transition: 0.2s;
+}
+.arrowbut:after,.arrowbut:before
+{
+    content: "";
+    position: absolute;
+    left: 0;
+    width: inherit;
+    height: inherit;
+    border-radius: inherit;
+    transform: rotate(35deg) translateX(-2px) translateY(6px) scale(0.8);
+    background-color: var(--black);
+    transition: inherit;
+}
+.arrowbut:before
+{
+    transform: rotate(-35deg) translateX(-2px) translateY(-6px) scale(0.8);
+}
+.button:hover .arrowbut,.button:hover .arrowbut2
+{
+    background-color: var(--red);
+    transform: rotate(45deg) translateX(0px);
+}
+.button:hover .arrowbut:after,.button:hover .arrowbut:before,.button:hover .arrowbut2:before, .button:hover .arrowbut2:after
+{
+    background-color: var(--red);
+    transform: rotate(90deg) translate(0) scale(1);
+}
+.arrowbut2:after,.arrowbut2:before
+{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: inherit;
+    height: inherit;
+    border-radius: inherit;
+    transform: rotate(0deg) translateY(-7px);
+    background-color: var(--black);
+    transition: inherit;
+}
+.arrowbut2:before
+{
+    transform: rotate(0deg) translateY(7px);
+}
+.tiles
+{
+    position: relative;
+    z-index: 3;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    transform: translateY(0);
+    transform-origin: top center;
+    max-width: 1020px;
+    width: auto;
+    opacity: 1;
+    height: auto;
+    top: 60px;
+    animation: tilemenu 0.5s ease;
+}
+.tilecontainer
+{
+    position: relative;
+    border-radius: 10px;
+    display: inline-block;
+    background-color: var(--white);
+    height: 180px;
+    margin: 10px 10px;
+    width: 180px;
+    background-position: center;
+    background-size: 90%;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
+    transition: 0.3s;
+}
+.tilecontainer:hover
+{
+    background-size: 105%;
+}
+.portfo, .otherpa
+{
+    position: fixed;
+    top: 0;
+    z-index: 4;
+    left: 0;
+    opacity: 0;
+    display: none;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    align-content: center;
+    background-color: var(--portgray);
+    transition: 0.3s;
+}
+.tilecontainer.tile1
+{
+    margin-left: 10%;
+    background-image: url('icons/portfolio.png');
+}
+.tilecontainer.tile2
+{
+    background-image: url('icons/animations.png');
+}
+.tilecontainer.tile3
+{
+    background-image: url('icons/photoshop.png');
+}
+.tilecontainer.tile4
+{
+    background-image: url('icons/about.png');
+}
+.tiletxt
+{
+    position: absolute;
+    left: 10px;
+    bottom: 22%;
+}
+.tilesubtxt
+{
+    position: absolute;
+    bottom: 12%;
+    left: 10px;
+    font-size: 15px;
+}
+.tiletxtcontain
+{
+    position: absolute;
+    height: 110%;
+    width: 100%;
+    border-radius: 10px;
+    background-image: linear-gradient(transparent,var(--themecol));
+    opacity: 0;
+    top: -10%;
+    transition: 0.5s ease;
+}
+.tilecontainer:hover .tiletxtcontain
+{
+    opacity: 0.7;
+}
+.tilemenu
+{
+    position: relative;
+    z-index: 3;
+    margin-left: auto;
+    margin-right: auto;
+    display: none;
+    transform-origin: top center;
+    transform: translateY(60px);
+    opacity: 1;
+    width: 70%;
+    height: auto;
+    top: 0;
+    border-radius: 10px;
+    transition: 0.5s ease;
+    animation: tilemenu2 0.5s ease;
+}
+.slide,.slides
+{
+    position: relative;
+    display: inline-block;
+    height: auto;
+    width: 100%;
+    left: 0;
+    border-radius: 10px;
+    margin: 10px 0px;
+    perspective-origin: center;
+    background-color: var(--white);
+    transform-origin: center;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
+    transition: 0.4s ease;
+}
+.slides
+{
+    width: 97%;
+    cursor: pointer;
+    margin: 5px 0px;
+    opacity: 1;
+    box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.3);
+}
+.slides:hover
+{
+    opacity: 0.8;
+}
+#quickmenu
+{
+    position: fixed;
+    right: 1.7%;
+    height: 70%;
+    top: 17%;
+    width: 12%;
+    display: none;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    border-radius: 10px 0px 0px 10px;
+    transition: 0.5s;
+    animation: fadein 0.5s ease;
+}
+#quickmenu::-webkit-scrollbar
+{
+    display: block;
+    width: 7px;
+    background-color: var(--gray);
+    border-radius: 10px;
+}
+.downbtn
+{
+    position: relative;
+    display: inline-block;
+    background-color: transparent;
+    width: 48%;
+    margin: 5px;
+    margin-bottom: 48%;
+    height: 110px;
+}
+.downbtnimg
+{
+    position: absolute;
+    height: 100%;
+    left: 0;
+    width: auto;
+    background-color: var(--white);
+    border: 3px solid var(--allblack);
+    border-radius: 10px;
+}
+.downbtnlayer
+{
+    position: absolute;
+    left: 113px;
+    border-radius: 10px;
+    width: 70%;
+    height: 110px;
+    background-color: var(--allblack);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: 0.7s ease;
+}
+.downcontain
+{
+    position: absolute;
+    right: 0;
+    height: 110px;
+    width: 100%;
+    background-color: var(--gray);
+    border-radius: 10px;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
+}
+.vids
+{
+    position: absolute;
+    right: 0;
+    top: 115px;
+    border: 0;
+    width: 100%;
+    opacity: 0;
+    transition: 0.5s;
+    border-radius: 20px;
+    overflow: hidden;
+    cursor: pointer;
+    transform: scale(0.85);
+    z-index: 4;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
+    transition: 0.3s;
+}
+.vids:hover
+{
+    transform: scale(0.9);
+}
+.youtext
+{
+    padding-left: 1px;
+    opacity: 0;
+    line-height: 110px;
+    transition: 0.3s;
+}
+.imgreel
+{
+    position: relative;
+    margin: 10px 0px;
+    width: 100%;
+    display: inline;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
+    background-color: var(--white);
+    vertical-align: top;
+    transform: scale(1);
+    transition: 0.3s;
+}
+.imgreel:hover
+{
+    transform: scale(1.025);
+}
+.col
+{
+    position: absolute;
+    height: 100%;
+    width: 49.2%;
+}
+.prog
+{
+    position: absolute; 
+    height: 8px; 
+    width: 48.5%; 
+    bottom: 95px; 
+    background-color: var(--allwhite); 
+    z-index: 4; 
+    border-radius: 10px;
+    margin: 10px;
+    transition: 0.3s;
+}
+#prog1
+{
+    opacity: 0.7; 
+    right: 0;
+}
+#prog2
+{
+    opacity: 0.1; 
+    left: 0;
+}
+#power2
+{
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    top: 5%;
+    z-index: 30;
+    width: 55%;
+    overflow-x: hidden;
+    letter-spacing: 5px;
+    overflow-y: scroll;
+    height: auto;
+    max-height: 85%;
+}
+#backplate,#themebox
+{
+    position: fixed;
+    z-index: 29;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(7, 0, 55, 0.715);
+    opacity: 0;
+    display: none;
+    backdrop-filter: blur(10px);
+    transition: 0.4s;
+}
+#themebox
+{
+    background-color: var(--themecol);
+}
+.sysicons
+{
+    position: absolute;
+    height: 100%;
+    width: auto;
+    left: 4px;
+}
+#abouttab
+{
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    width: 120%;
+    left: -10%;
+    height: 81vh;
+    border-radius: 20px;
+    background-image: linear-gradient(to bottom,#5948ee11,transparent);
+}
+#aboutimage
+{
+    position: relative;
+    float: right;
+    height: 50%;
+    width: auto;
+    margin: 20px;
+    border-radius: 60%;
+    border: 12px solid var(--white);
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
+}
+.largetxt
+{
+    float: left;
+    font-size: 300%;
+    width: 0.7em;
+    font-weight: bold;
+    color: var(--themecol);
+    text-shadow: 0px 0px 7px var(--themecol);
+    line-height: 90%;
+}
+#abouttxt
+{
+    font-size: 200%;
+    margin: 20px;
+    padding-left: 5px;
+    padding-top: 20px;
+    color: var(--black);
+}
+.videoimage
+{
+    position: absolute;
+    height: 100%;
+    width: auto;
+    left: 0;
+    top: 0;
+    border-radius: 20px;
+}
+.playbutton
+{
+    position: absolute;
+    height: 30%;
+    width: 30%;
+    transform: scale(0.6);
+    top: 35%;
+    left: 35%;
+    border-radius: 50%;
+    border: 8px solid var(--white);
+    background-image: url('icons/PLAY.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: var(--white);
+    transition: 0.4s;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.523);
+}
+.playbutton.play
+{
+    width: 28.25%;
+    top: 25%;
+    height: 50%;
+    left: 36%;
+}
+.vids:hover .playbutton
+{
+    transform: scale(0.8);
+}
+#youpannel
+{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    opacity: 0;
+    background-color: var(--themecol);
+    backdrop-filter: blur(10px);
+    display: none;
+    transition: 0.4s;
+}
+.youplayer
+{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform: scale(0.7);
+    border-radius: 10px;
+    display: none;
+}
+.shine
+{
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transform: scale(1.2) translateX(-650px) rotate(10deg);
+    transition: 0.7s;
+}
+.vids:hover .shine
+{
+    transform: scale(1.2) translateX(650px) rotate(10deg);
+    opacity: 0.5;
+}
+.linecol
+{
+    color: var(--themecol);
+    text-shadow: 0px 0px 7px var(--themecol);
+}
+.sysbuttons
+{
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    width: 20px;
+    height: 4px;
+    border-radius: 10px;
+    background-color: var(--black);
+    transform: rotate(0deg) translate(7px,8px) scale(0.9);
+    transition: 0.2s;
+}
+.sysbuttons:before,.sysbuttons:after
+{
+    position: absolute;
+    content: "";
+    width: inherit;
+    height: inherit;
+    border-radius: inherit;
+    background-color: var(--black);
+    transform: rotate(45deg) translate(-30px,10px) scale(0.85);
+    transition: 0.2s;
+}
+.sysbuttons:after
+{
+    transform: rotate(-45deg) translate(-17px,-23px) scale(0.85);
+}
+#power:hover .sysbuttons
+{
+    background-color: transparent;
+    transform: rotate(0deg) translate(16px,8px) scale(0.85);
+}
+#power:hover .sysbuttons:after,#power:hover .sysbuttons:before
+{
+    background-color: var(--themecol);
+}
+#power:hover
+{
+    border: 3px solid var(--themecol);
+}
+#linkscont
+{
+    position: relative;
+    margin: 10px;
+    padding: 10px;
+}
+.links
+{
+    position: relative;
+    margin: 2px;
+    padding: 10px 12px;
+    background-color: var(--themecol);
+    box-shadow: 0px 0px 20px var(--themecol);
+    border-radius: 50px;
+    font-size: larger;
+    border: 1px solid rgb(228, 228, 228);
+    overflow: hidden;
+    transform: scale(0.9);
+    transition: 0.1s;
+}
+.titlefonts
+{
+    color: var(--black);
+    margin-bottom: 20px;
+    letter-spacing: 15px;
 }
