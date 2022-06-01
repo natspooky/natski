@@ -79,7 +79,7 @@ h1
 	height: 100px;
 	width: 100px;
 	opacity: 0;
-	transform: rotate(-45deg) translate(25px,-25px);
+	transform: rotate(-45deg) translate(32px,-32px) scale(1.2);
 	transition: 0.3s;
 }
 #auth::after
