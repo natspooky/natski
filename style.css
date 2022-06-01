@@ -10,6 +10,10 @@
 	from{transform: rotate(0);}
 	to{transform: rotate(360deg);}
 }
+@keyframes load2 {
+	from{transform: translateY(100px); opacity: 0;}
+	to{transform: translateY(0px); opacity: 1;}
+}
 body
 {
 	height: 100vh;
@@ -39,6 +43,7 @@ h1
 	background-size: 90%;
 	background-repeat: no-repeat;
 	background-image: url('icons.png');
+	animation: load2 0.4s ease;
 }
 #contain
 {
@@ -50,6 +55,7 @@ h1
 	height: 124px;
 	border-radius: 20px;
 	border: 2px solid #000;
+	animation: load2 0.5s ease;
 }
 #load
 {
@@ -72,7 +78,9 @@ h1
 	margin: 10px;
 	height: 100px;
 	width: 100px;
+	opacity: 0;
 	transform: rotate(-45deg) translate(25px,-25px);
+	transition: 0.3s;
 }
 #auth::after
 {
@@ -94,23 +102,3 @@ h1
 	width: 10px;
 	background-color: green;
 }
-/*
-#auth::after
-{
-	position: absolute;
-	content: "";
-	top: 45%;
-	height: 10px;
-	width: 100px;
-	background-color: red;
-}
-#auth::before
-{
-	position: absolute;
-	content: "";
-	left: 45%;
-	height: 100px;
-	width: 10px;
-	background-color: red;
-}
-*/

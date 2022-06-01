@@ -11,11 +11,16 @@
         <div id="img"></div>
         <div id="contain">
             <div id="load"></div>
-            <div id="auth"></div>
+            <div id="auth">
+                <div id="auth2"></div>
+                <div id="auth3"></div>
+            </div>
         </div>
-        <script>
-            
+        <script>   
             $(document).ready(function(){
+                setTimeout(function(){
+                    $('#auth').css('opacity','1');
+                },600);
                 setTimeout(function(){
                     window.location.href='https://earle-estates.sumupstore.com';
                 },1500);
