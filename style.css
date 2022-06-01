@@ -17,18 +17,18 @@ body
 }
 h1
 {
-	position: absolute;
+	position: relative;
     font-size: xx-large;
+	top: 2vh;
 	letter-spacing: 7px;
 	color: #000;
 	width: 100%;
-	top: 5vh;
 	text-align: center;
 }
 #img
 {
 	position: relative;
-	top: 15vh;
+	top: 5vh;
 	margin-left: auto;
 	margin-right: auto;
 	height: 400px;
@@ -40,12 +40,22 @@ h1
 	background-repeat: no-repeat;
 	background-image: url('icons.png');
 }
+#contain
+{
+	position: relative;
+	top: 10vh;
+	margin-left: auto;
+	margin-right: auto;
+	width: 350px;
+	height: 124px;
+	border-radius: 20px;
+	border: 2px solid #000;
+}
 #load
 {
 	position: relative;
-	top: 20vh;
-	margin-left: auto;
-	margin-right: auto;
+	display: inline-block;
+	margin: 10px 43px;
 	height: 100px;
 	width: 100px;
 	border-radius: 50%;
@@ -55,3 +65,52 @@ h1
 	border-right: 10px solid rgba(128, 128, 128, 0.4);
 	animation: load 1s linear infinite;
 }
+#auth
+{
+	position: relative;
+	display: inline-block;
+	margin: 10px;
+	height: 100px;
+	width: 100px;
+	transform: rotate(-45deg) translate(25px,-25px);
+}
+#auth::after
+{
+	position: absolute;
+	content: "";
+	bottom: 0%;
+	left: 0;
+	height: 10px;
+	width: 70px;
+	background-color: green;
+}
+#auth::before
+{
+	position: absolute;
+	content: "";
+	left: 0%;
+	bottom: 0;
+	height: 50px;
+	width: 10px;
+	background-color: green;
+}
+/*
+#auth::after
+{
+	position: absolute;
+	content: "";
+	top: 45%;
+	height: 10px;
+	width: 100px;
+	background-color: red;
+}
+#auth::before
+{
+	position: absolute;
+	content: "";
+	left: 45%;
+	height: 100px;
+	width: 10px;
+	background-color: red;
+}
+*/
