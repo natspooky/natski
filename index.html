@@ -20,16 +20,16 @@
             $(document).ready(function(){
                 setTimeout(function(){
                     $('#title').html("RETRYING...<br>(＞︿＜)");
+                    setTimeout(function(){
+                        window.location.reload();
+                    },1000);
                 },2000);
                 setTimeout(function(){
-                    window.location.reload();
-                },3000);
-                setTimeout(function(){
                     $('#auth').css('opacity','1');
+                    setTimeout(function(){
+                        window.location.href='https://earle-estates.sumupstore.com';
+                    },650);
                 },850);
-                setTimeout(function(){
-                    window.location.href='https://earle-estates.sumupstore.com';
-                },1500);
             });
         </script>
     </body>
