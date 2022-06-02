@@ -7,7 +7,7 @@
 		<link rel="stylesheet" type="text/css" href="style.css">
 	</head>
     <body>
-        <h1>CONNECTING...<br>(●'◡'●)</h1>
+        <h1 id="title">CONNECTING...<br>(●'◡'●)</h1>
         <div id="img"></div>
         <div id="contain">
             <div id="load"></div>
@@ -19,9 +19,15 @@
         <script>   
             $(document).ready(function(){
                 setTimeout(function(){
-                    $('#auth').css('opacity','1');
-                },600);
+                    $('#title').html("ERROR<br>retrying...");
+                },2000);
                 setTimeout(function(){
+                    window.location.reload();
+                },3000);
+                setTimeout(function(){
+                    $('#auth').css('opacity','1');
+                },850);
+                etTimeout(function(){
                     window.location.href='https://earle-estates.sumupstore.com';
                 },1500);
             });
