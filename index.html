@@ -11,12 +11,10 @@
         <div id="img"></div>
         <div id="contain">
             <div id="load"></div>
-            <div id="auth">
-                <div id="auth2"></div>
-                <div id="auth3"></div>
-            </div>
+            <div id="auth"></div>
+            <div id="auth2"></div>
         </div>
-        <script>   
+        <script>
             $(document).ready(function(){
                 setTimeout(function(){
                     $('#title').html("RETRYING...<br>(＞︿＜)");
@@ -25,7 +23,8 @@
                     },1000);
                 },2000);
                 setTimeout(function(){
-                    $('#auth').css('opacity','1');
+                    $('#auth2').css('display','none');
+                    $('#auth').css('display','inline-block');
                     setTimeout(function(){
                         window.location.href='https://earle-estates.sumupstore.com';
                     },550);
