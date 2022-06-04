@@ -44,24 +44,13 @@ h1
 	background-repeat: no-repeat;
 	background-image: url('icons.png');
 }
-#contain
-{
-	position: relative;
-	top: 10vh;
-	margin-left: auto;
-	margin-right: auto;
-	width: 350px;
-	height: 124px;
-	border-radius: 20px;
-	border: 2px solid #000;
-	animation: fadein 0.5s;
-}
 #load
 {
 	position: relative;
-	display: inline-block;
-	margin: 10px 40px;
+	margin-left: auto;
+	margin-right: auto;
 	height: 100px;
+	top: 10vh;
 	width: 100px;
 	border-radius: 50%;
 	border-top: 10px solid #000;
@@ -69,62 +58,4 @@ h1
 	border-left: 10px solid rgba(128, 128, 128, 0.4);
 	border-right: 10px solid rgba(128, 128, 128, 0.4);
 	animation: load 1s linear infinite;
-}
-#auth,#auth2
-{
-	position: relative;
-	display: inline-block;
-	margin: 10px;
-	height: 100px;
-	width: 100px;
-	opacity: 1;
-	transform: rotate(-45deg) translate(34px,-34px) scale(1.2);
-}
-#auth
-{
-	display: none;
-	animation: fadein 0.4s;
-}
-#auth2
-{
-	display: inline-block;
-	transform: rotate(-45deg) translate(5px,5px) scale(1.2);
-}
-#auth::after
-{
-	height: 10px;
-	width: 70px;
-}
-#auth::before
-{
-	height: 50px;
-	width: 10px;
-}
-#auth::before,#auth::after
-{
-	position: absolute;
-	content: "";
-	left: 0;
-	bottom: 0;
-	border-radius: 40px;
-	background-color: green;
-}
-#auth2::after
-{
-	height: 10px;
-	top: 45%;
-	width: 100px;
-}
-#auth2::before
-{
-	height: 100px;
-	left: 45%;
-	width: 10px;
-}
-#auth2::before,#auth2::after
-{
-	position: absolute;
-	content: "";
-	border-radius: 40px;
-	background-color: red;
 }

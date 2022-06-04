@@ -7,13 +7,9 @@
 		<link rel="stylesheet" type="text/css" href="style.css">
 	</head>
     <body>
-        <h1 id="title">CONNECTING...<br>(●'◡'●)</h1>
+        <h1 id="title">CONNECTING...</h1>
         <div id="img"></div>
-        <div id="contain">
-            <div id="load"></div>
-            <div id="auth"></div>
-            <div id="auth2"></div>
-        </div>
+        <div id="load"></div>
         <script>
             $(document).ready(function(){
                 setTimeout(function(){
@@ -23,12 +19,8 @@
                     },1000);
                 },2000);
                 setTimeout(function(){
-                    $('#auth2').css('display','none');
-                    $('#auth').css('display','inline-block');
-                    setTimeout(function(){
-                        window.location.href='https://earle-estates.sumupstore.com';
-                    },550);
-                },650);
+                    window.location.href='https://earle-estates.sumupstore.com';
+                },1050);
             });
         </script>
     </body>
