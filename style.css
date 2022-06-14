@@ -164,6 +164,7 @@ body
 	position: relative;
 	height: 80%;
 	width: 70%;
+	display: none;
 	background-color: #a59cff;
 	animation: fadein 0.5s;
 }
@@ -172,6 +173,7 @@ body
 	position: relative;
 	height: 80%;
 	width: 70%;
+	display: none;
 	background-color: #a59cff;
 	animation: fadein 0.5s;
 }
