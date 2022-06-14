@@ -1,28 +1,183 @@
 <!doctype html>
 <html>
     <head>
-		<title>EARLE ESTATES</title>
+		<title>NATSKI (●'◡'●)</title>
 	    <meta charset="UTF-8" content="width=device-width, initial-scale=1">
+        <meta name="description" content="portfolio site">
+        <meta name="keywords" content="portfolio, natspooky, natski">
+        <meta name="twitter:title" content="Natski portfolio">
+        <meta name="twitter:description" content="work in progress portfolio site">
+        <meta name="twitter:image" content="icons/icons.png">
+        <meta name="twitter:site" content="@nat_isnt_spooky">
+        <meta name="twitter:creator" content="@nat_isnt_spooky">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <link rel="shortcut icon" type="image/png" sizes="100x100" href="pog.png">
+		<link rel="shortcut icon" type="image/png" sizes="100x100" href="icons/icons.png">
 		<link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" type="text/css" href="animations.css">
+        <link rel="stylesheet" type="text/css" href="scale.css">
 	</head>
-    <body>
-        <h1 id="title">CONNECTING...</h1>
-        <div id="img"></div>
-        <div id="load"></div>
+    <body onload="load()">
+        
+        <svg id="wave" style="transform:rotate(0deg); transition: 0.3s" viewBox="0 0 1440 490" version="1.1" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="sw-gradient-0" x1="0" x2="0" y1="1" y2="0"><stop stop-color="rgba(140.531, 129.084, 255, 1)" offset="0%"></stop><stop stop-color="rgba(182.418, 175.159, 255, 1)" offset="100%"></stop></linearGradient></defs><path style="transform:translate(0, 0px); opacity:1" fill="url(#sw-gradient-0)" d="M0,98L34.3,106.2C68.6,114,137,131,206,155.2C274.3,180,343,212,411,220.5C480,229,549,212,617,187.8C685.7,163,754,131,823,163.3C891.4,196,960,294,1029,343C1097.1,392,1166,392,1234,375.7C1302.9,359,1371,327,1440,285.8C1508.6,245,1577,196,1646,204.2C1714.3,212,1783,278,1851,302.2C1920,327,1989,310,2057,285.8C2125.7,261,2194,229,2263,245C2331.4,261,2400,327,2469,318.5C2537.1,310,2606,229,2674,236.8C2742.9,245,2811,343,2880,367.5C2948.6,392,3017,343,3086,302.2C3154.3,261,3223,229,3291,187.8C3360,147,3429,98,3497,98C3565.7,98,3634,147,3703,171.5C3771.4,196,3840,196,3909,212.3C3977.1,229,4046,261,4114,269.5C4182.9,278,4251,261,4320,220.5C4388.6,180,4457,114,4526,106.2C4594.3,98,4663,147,4731,187.8C4800,229,4869,261,4903,277.7L4937.1,294L4937.1,490L4902.9,490C4868.6,490,4800,490,4731,490C4662.9,490,4594,490,4526,490C4457.1,490,4389,490,4320,490C4251.4,490,4183,490,4114,490C4045.7,490,3977,490,3909,490C3840,490,3771,490,3703,490C3634.3,490,3566,490,3497,490C3428.6,490,3360,490,3291,490C3222.9,490,3154,490,3086,490C3017.1,490,2949,490,2880,490C2811.4,490,2743,490,2674,490C2605.7,490,2537,490,2469,490C2400,490,2331,490,2263,490C2194.3,490,2126,490,2057,490C1988.6,490,1920,490,1851,490C1782.9,490,1714,490,1646,490C1577.1,490,1509,490,1440,490C1371.4,490,1303,490,1234,490C1165.7,490,1097,490,1029,490C960,490,891,490,823,490C754.3,490,686,490,617,490C548.6,490,480,490,411,490C342.9,490,274,490,206,490C137.1,490,69,490,34,490L0,490Z"></path></svg>
+        <!--?xml version="1.0" standalone="no"?-->              <svg id="blob" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">                    <defs>                         <linearGradient id="sw-gradient" x1="0" x2="1" y1="1" y2="0">                            <stop id="stop1" stop-color="rgba(192.235, 185.958, 255, 1)" offset="0%"></stop>                            <stop id="stop2" stop-color="rgba(132.022, 119.725, 255, 1)" offset="100%"></stop>                        </linearGradient>                    </defs>                <path fill="none" d="M20.7,-29.1C24.5,-21.5,23.6,-12.7,25.5,-4.2C27.3,4.4,31.9,12.7,29.7,17.7C27.5,22.7,18.4,24.2,10.5,25.9C2.5,27.5,-4.4,29.2,-11.8,28.3C-19.3,27.4,-27.3,23.9,-33.2,17.4C-39,10.9,-42.7,1.3,-39.1,-4.7C-35.4,-10.8,-24.4,-13.4,-16.7,-20.4C-9,-27.3,-4.5,-38.6,2,-41C8.4,-43.3,16.9,-36.8,20.7,-29.1Z" width="100%" height="100%" transform="translate(50 50)" stroke-width="1" style="transition: all 0.3s ease 0s;" stroke="url(#sw-gradient)"></path>              </svg>
+        <!--?xml version="1.0" standalone="no"?-->              <svg id="blob" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">                    <defs>                         <linearGradient id="sw-gradient" x1="0" x2="1" y1="1" y2="0">                            <stop id="stop1" stop-color="rgba(192.235, 185.958, 255, 1)" offset="0%"></stop>                            <stop id="stop2" stop-color="rgba(132.022, 119.725, 255, 1)" offset="100%"></stop>                        </linearGradient>                    </defs>                <path fill="none" d="M18,-22.6C22.2,-17.9,23.7,-11.2,23,-5.5C22.3,0.2,19.4,4.9,16.6,9.4C13.8,13.9,11,18.3,6.8,20.8C2.5,23.3,-3.2,24,-11,23.9C-18.8,23.8,-28.6,23,-34.2,17.6C-39.9,12.3,-41.4,2.4,-37.7,-4.6C-34.1,-11.6,-25.3,-15.6,-18.1,-19.7C-11,-23.8,-5.5,-28.1,0.7,-28.9C6.9,-29.7,13.8,-27.2,18,-22.6Z" width="100%" height="100%" transform="translate(50 50)" stroke-width="1" style="transition: all 0.3s ease 0s;" stroke="url(#sw-gradient)"></path>              </svg>
+        <div class="container">
+            
+            <div id="home">
+                <h1>home section</h1>
+                <p>poggers</p>
+            </div>
+            <div id="portfolio"></div>
+            <div id="about">
+                <p><span>T</span>his is some cool text</p>
+                <img src="icons/aboutimg.png" alt="" class="aboutimage">
+                <div class="links">
+                    <a href="#"><ion-icon name="logo-instagram"></ion-icon></a>
+                    <a href="#"><ion-icon name="logo-twitter"></ion-icon></a>
+                    <a href="#"><ion-icon name="logo-discord"></ion-icon></a>
+                </div>
+            </div>
+
+            <div id="settings">
+                <dl>
+                    <dt><span class="sysicon"><ion-icon name="desktop-outline"></ion-icon></span>OPERATING SYSTEM</dt>
+                    <dd id="oscheck">loading...</dd>
+                    <dt><span class="sysicon"><ion-icon name="browsers-outline"></ion-icon></span>BROWSER</dt>
+                    <dd id="browserdet">loading...</dd>
+                    <dt><span class="sysicon"><ion-icon name="code-slash-outline"></ion-icon></span>VERSION</dt>
+                    <dd id="browserdet">N 1.2</dd>
+                    <dt><span class="sysicon"><ion-icon name="color-palette-outline"></ion-icon></span>THEME COLOUR</dt>
+                    <dd>
+                        <input id="hexcol" type="text" value="#a59cff">
+                    </dd>
+                </dl>
+            </div>
+            <div id="test"></div>
+        </div>
+
+
+        <div class="navigator">
+            <ul>
+                <li class="list active">
+                    <a href="#" value="#home">
+                        <span class="icon">
+                            <ion-icon name="home-outline"></ion-icon>
+                        </span>
+                        <span class="text">home</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="#" value="#portfolio">
+                        <span class="icon">
+                            <ion-icon name="cube-outline"></ion-icon>
+                        </span>
+                        <span class="text">portfolio</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="#" value="#about">
+                        <span class="icon">
+                            <ion-icon name="person-outline"></ion-icon>
+                        </span>
+                        <span class="text">about</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="#" value="#settings">
+                        <span class="icon">
+                            <ion-icon name="settings-outline"></ion-icon>
+                        </span>
+                        <span class="text">settings</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="#" value="#test">
+                        <span class="icon">
+                            <ion-icon name="terminal-outline"></ion-icon>
+                        </span>
+                        <span class="text">unused</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="#" value="#">
+                        <span class="icon">
+                            <ion-icon name="search-outline"></ion-icon>
+                        </span>
+                        <span class="text">search</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="toggle">
+            <ion-icon name="menu" class="open"></ion-icon>
+            <ion-icon name="close" class="close"></ion-icon>
+        </div>
+
+        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
         <script>
-            $(document).ready(function(){
-                setTimeout(function(){
-                    $('#title').html("RETRYING...<br>(＞︿＜)");
-                    setTimeout(function(){
-                        window.location.reload();
-                    },1000);
-                },2000);
-                setTimeout(function(){
-                    window.location.href='https://earle-estates.sumupstore.com';
-                },1050);
+            let menuToggle = document.querySelector('.toggle');
+            let menuOpen = document.querySelector('.navigator');
+            menuToggle.onclick = function(){
+                menuToggle.classList.toggle('active')
+                menuOpen.classList.toggle('active')
+            }
+
+            let list = document.querySelectorAll('.list');
+            for(let i = 0; i<list.length; i++){
+                list[i].onclick = function(){
+                    let j = 0;
+                    while(j < list.length){
+                        list[j++].className = 'list';
+                    }
+                    list[i].className = 'list active';
+                }
+            }
+        function load(){
+            HTMLDocument.prototype.e=document.getElementById;
+                var el_down=document.e("oscheck");
+                var Name="Unknown";
+                if(navigator.appVersion.indexOf("Win")!=-1)
+                    Name="Windows";
+                if(navigator.appVersion.indexOf("Mac")!=-1)
+                    Name="Ios";
+                if(navigator.appVersion.indexOf("X11")!=-1)
+                    Name="Unix/Unix-like";
+                if(navigator.appVersion.indexOf("Linux")!=-1)
+                    Name="Linux";
+                el_down.innerHTML=Name;
+                let userAgent=navigator.userAgent;
+                let browserName;
+                if(userAgent.match(/edg/i)){
+                    browserName="Edge";
+                }else if(userAgent.match(/chrome|chromium|crios/i)){
+                    browserName="Chrome/Chromium";
+                }else if(userAgent.match(/firefox|fxios/i)){
+                    browserName="Firefox";
+                }else if(userAgent.match(/safari/i)){
+                    browserName="Safari";
+                }else if(userAgent.match(/opr\//i)){
+                    browserName="Opera";
+                }else{
+                    browserName="unable to identify :(";
+                }
+                document.getElementById('browserdet').innerHTML=browserName;
+            }
+            $("#hexcol").on("input", function(){
+                var hex = document.getElementById("hexcol").value;
+                if (/^#([0-9A-F]{3}){1,2}$/i.test(hex) == false){
+                    hex = '#a59cff';
+                }
+                $(':root').css('--themecol', hex);
+                $('stop').html('stop-color', hex);
             });
+
+            $("a").click(function(){
+                var value = $(this).attr('value');
+                $('#settings,#home,#about,#portfolio,#test').css('display','none')
+                $(value).css('display','block')
+            })
         </script>
     </body>
 </html>
