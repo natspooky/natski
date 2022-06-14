@@ -1,150 +1,27 @@
 <!doctype html>
 <html>
     <head>
-		<title>Natspooky</title>
+		<title>EARLE ESTATES</title>
 	    <meta charset="UTF-8" content="width=device-width, initial-scale=1">
-        <meta name="description" content="portfolio site">
-        <meta name="keywords" content="portfolio, natspooky, natski">
-        <meta name="twitter:title" content="Natski portfolio">
-        <meta name="twitter:description" content="work in progress portfolio site">
-        <meta name="twitter:image" content="icons/icons.png">
-        <meta name="twitter:site" content="@nat_isnt_spooky">
-        <meta name="twitter:creator" content="@nat_isnt_spooky">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-		<link rel="shortcut icon" type="image/png" sizes="100x100" href="icons/icons.png">
 		<link rel="stylesheet" type="text/css" href="style.css">
-        <link rel="stylesheet" type="text/css" href="animations.css">
-        <link rel="stylesheet" type="text/css" href="scale.css">
 	</head>
-    <body onload="load()">
-        <div class="container">
-
-            <div id="home"></div>
-            <div id="portfolio"></div>
-            <div id="about"></div>
-
-            <div id="settings">
-                <dl>
-                    <dt><span class="sysicon"><ion-icon name="desktop-outline"></ion-icon></span>OPERATING SYSTEM</dt>
-                    <dd id="oscheck">loading...</dd>
-                    <dt><span class="sysicon"><ion-icon name="browsers-outline"></ion-icon></span>BROWSER</dt>
-                    <dd id="browserdet">loading...</dd>
-                    <dt><span class="sysicon"><ion-icon name="code-slash-outline"></ion-icon></span>VERSION</dt>
-                    <dd id="browserdet">N 1.2</dd>
-                    <dt><span class="sysicon"><ion-icon name="color-palette-outline"></ion-icon></span>THEME COLOUR</dt>
-                    <dd>
-                        <input id="hexcol" type="text" value="#a59cff">
-                    </dd>
-                </dl>
-            </div>
-        </div>
-
-
-        <div class="navigator">
-            <ul>
-                <li class="list active">
-                    <a href="#" value="#home">
-                        <span class="icon">
-                            <ion-icon name="home-outline"></ion-icon>
-                        </span>
-                        <span class="text">home</span>
-                    </a>
-                </li>
-                <li class="list">
-                    <a href="#" value="#portfolio">
-                        <span class="icon">
-                            <ion-icon name="cube-outline"></ion-icon>
-                        </span>
-                        <span class="text">portfolio</span>
-                    </a>
-                </li>
-                <li class="list">
-                    <a href="#" value="#about">
-                        <span class="icon">
-                            <ion-icon name="person-outline"></ion-icon>
-                        </span>
-                        <span class="text">about</span>
-                    </a>
-                </li>
-                <li class="list">
-                    <a href="#" value="#settings">
-                        <span class="icon">
-                            <ion-icon name="settings-outline"></ion-icon>
-                        </span>
-                        <span class="text">settings</span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-
-        <div class="toggle">
-            <ion-icon name="menu" class="open"></ion-icon>
-            <ion-icon name="close" class="close"></ion-icon>
-        </div>
-
-        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-        <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <body>
+        <h1 id="title">CONNECTING...</h1>
+        <div id="img"></div>
+        <div id="load"></div>
         <script>
-            let menuToggle = document.querySelector('.toggle');
-            let menuOpen = document.querySelector('.navigator');
-            menuToggle.onclick = function(){
-                menuToggle.classList.toggle('active')
-                menuOpen.classList.toggle('active')
-            }
-
-            let list = document.querySelectorAll('.list');
-            for(let i = 0; i<list.length; i++){
-                list[i].onclick = function(){
-                    let j = 0;
-                    while(j < list.length){
-                        list[j++].className = 'list';
-                    }
-                    list[i].className = 'list active';
-                }
-            }
-        function load(){
-            HTMLDocument.prototype.e=document.getElementById;
-                var el_down=document.e("oscheck");
-                var Name="Unknown";
-                if(navigator.appVersion.indexOf("Win")!=-1)
-                    Name="Windows";
-                if(navigator.appVersion.indexOf("Mac")!=-1)
-                    Name="Ios";
-                if(navigator.appVersion.indexOf("X11")!=-1)
-                    Name="Unix/Unix-like";
-                if(navigator.appVersion.indexOf("Linux")!=-1)
-                    Name="Linux";
-                el_down.innerHTML=Name;
-                let userAgent=navigator.userAgent;
-                let browserName;
-                if(userAgent.match(/edg/i)){
-                    browserName="Edge";
-                }else if(userAgent.match(/chrome|chromium|crios/i)){
-                    browserName="Chrome/Chromium";
-                }else if(userAgent.match(/firefox|fxios/i)){
-                    browserName="Firefox";
-                }else if(userAgent.match(/safari/i)){
-                    browserName="Safari";
-                }else if(userAgent.match(/opr\//i)){
-                    browserName="Opera";
-                }else{
-                    browserName="unable to identify :(";
-                }
-                document.getElementById('browserdet').innerHTML=browserName;
-            }
-            $("#hexcol").on("input", function(){
-                var hex = document.getElementById("hexcol").value;
-                if (/^#([0-9A-F]{3}){1,2}$/i.test(hex) == false){
-                    hex = '#a59cff';
-                }
-                $(':root').css('--themecol', hex);
+            $(document).ready(function(){
+                setTimeout(function(){
+                    $('#title').html("RETRYING...<br>(＞︿＜)");
+                    setTimeout(function(){
+                        window.location.reload();
+                    },1000);
+                },2000);
+                setTimeout(function(){
+                    window.location.href='https://earle-estates.sumupstore.com';
+                },1050);
             });
-
-            $("a").click(function(){
-                var value = $(this).attr('value');
-                $('#settings,#home,#about,#portfolio').css('display','none')
-                $(value).css('display','block')
-            })
         </script>
     </body>
 </html>
