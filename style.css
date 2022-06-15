@@ -31,6 +31,10 @@ body
 {
 	display: none;
 }
+::placeholder
+{
+	color: #f1f1f1;
+}
 #wave
 {
 	position: fixed;
@@ -46,6 +50,11 @@ body
 #blob
 {
 	animation: circle 38s infinite;
+}
+#home ion-icon, #test ion-icon, #portfolio ion-icon
+{
+	font-size: 10em;
+	color: #fff;
 }
 .navigator
 {
@@ -247,6 +256,7 @@ body
 {
 	position: relative;
 	height: 300px;
+	width: 300px;
 	margin: 15px;
 	width: auto;
 	border-radius: 50%;
