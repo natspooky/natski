@@ -1,0 +1,28 @@
+@keyframes fadein
+{
+    from{opacity: 0; transform: translateY(60px);}
+    to{opacity: 1; transform: translateY(0px);}
+}
+@keyframes background
+{
+    0%{opacity: 0; transform: scaleX(1) translateY(60px);}
+    25%{opacity: 1; transform: scaleX(1) translateY(0px);}
+    49%{opacity: 0; transform: scaleX(1) translateY(60px);}
+    50%{opacity: 0; transform: scaleX(-1) translateY(60px);}
+    75%{opacity: 1; transform: scaleX(-1) translateY(0px);}
+    100%{opacity: 0; transform: scaleX(-1) translateY(60px);}
+}
+@keyframes background2
+{
+    0%{opacity: 0; transform: scaleX(1) rotate(180deg) translateY(60px);}
+    25%{opacity: 1; transform: scaleX(1) rotate(180deg) translateY(0px);}
+    49%{opacity: 0; transform: scaleX(1) rotate(180deg) translateY(60px);}
+    50%{opacity: 0; transform: scaleX(-1) rotate(180deg) translateY(60px);}
+    75%{opacity: 1; transform: scaleX(-1) rotate(180deg) translateY(0px);}
+    100%{opacity: 0; transform: scaleX(-1) rotate(180deg) translateY(60px);}
+}
+@keyframes circle
+{
+    0%{transform: translateY(-20%) translateX(50%) rotate(0deg) scale(1);}
+    100%{transform: translateY(-20%) translateX(50%) rotate(360deg) scale(1);}
+}
