@@ -15,8 +15,10 @@
 	--white: #fff;
 	--gray: #c9c9c9;
 	--red: #ff0000;
-    --themecol: #a59cff;
-	--accentcol: #a49cff90;
+	--themecol: #180947;
+	--accentcol: #18094790;
+    --themecolOLD: #a59cff;
+	--accentcolOLD: #a49cff90;
 }
 [type="search"]::-webkit-search-cancel-button {
 	-webkit-appearance: none;
