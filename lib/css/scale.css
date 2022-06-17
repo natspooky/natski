@@ -7,9 +7,10 @@
     {
         position: fixed;
         left: 15%;
-        top: 80px;
+        top: 20px;
 	    bottom: 20px;
         height: auto;
+        align-items: center;
     }
     #about
     {
@@ -21,14 +22,25 @@
     }
     #about .content
     {
+        margin-top: 30px;
         transform-origin: top;
-        transform: scale(1.6);
         flex-direction: row;
-        height: 300px;
-        width: 400px;
+        height: 480px;
+        width: 640px;
     }
     #about .content .links
     {
         flex-direction: column;
+    }
+    #about .content .links a
+    {
+        margin: 20px;
+        height: 80px;
+        width: 80px;
+        font-size: 3em;
+    }
+    #about .content img
+    {
+        height: inherit;
     }
 }
