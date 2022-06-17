@@ -25,6 +25,7 @@ body
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	overflow: hidden;
 	transition: 0.2s;
 }
 ::-webkit-scrollbar
@@ -174,6 +175,8 @@ body
 #home,#portfolio,#about,#test,#settings,#search
 {
 	position: relative;
+	display: flex;
+	justify-content: center;
 	height: 84vh;
 	width: 81%;
 	left: 4.5%;
@@ -229,6 +232,10 @@ body
 	text-align: center;
 	cursor: pointer;
 }
+#about
+{
+	align-items: center;
+}
 #about p
 {
 	margin: 15px;
@@ -244,41 +251,24 @@ body
 	line-height: 90%;
 	float: left;
 }
-#about img
-{
-	position: relative;
-	height: 300px;
-	width: 300px;
-	margin: 15px;
-	border-radius: 50%;
-	border: #fff solid 10px;
-	float: right;
-}
-#search input,#search button
-{
-	width: 90%;
-	padding: 10px;
-	font-size: 1.3em;
-	background: var(--accentcol);
-	color: #fff;
-	font-weight: bolder;
-	outline: none;
-	border-radius: 10px;
-	border: 2px solid var(--themecol);
-	text-align: center;
-	cursor: pointer;
-}
-#search button
-{
-	width: 5%;
-}
-.links
+#about .content
 {
 	display: flex;
+	vertical-align: top;
+	justify-content: center;
+	flex-direction: column;
+	width: 320px;
+	float: right;
+}
+#about .content .links
+{
+	position: relative;
+	display: flex;
+	justify-content: center;
 	flex-direction: row;
 	color: white;
 }
-.links a
+#about .content .links a
 {
 	position: relative;
 	height: 50px;
@@ -295,8 +285,48 @@ body
 	background: var(--themecol);
 	transition: 0.2s;
 }
-.links a:hover
+#about .content .links a:hover
 {
 	background: var(--accentcol);
 	border: 2px solid var(--themecol);
+}
+#about .content img
+{
+	position: relative;
+	height: 300px;
+	width: 300px;
+	border-radius: 50%;
+	border: #fff solid 10px;
+}
+#search .bar
+{
+	position: relative;
+	width: 90%;
+	height: 50px;
+	background-color: #E49EE6;
+}
+#search .bar input,#search .bar button
+{
+	position: absolute;
+	width: 95%;
+	right: 5%;
+	height: 50px;
+	font-size: 1.3em;
+	background: transparent;
+	color: #fff;
+	font-weight: bolder;
+	outline: none;
+	border: 0px;
+	text-align: center;
+	cursor: pointer;
+	background-color: #2a1f8c;
+}
+#search .bar button
+{
+	right: 0;
+	width: 5%;
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }

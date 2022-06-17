@@ -50,12 +50,14 @@
             <ion-icon name="warning-outline"></ion-icon>
         </div>
         <div id="about">
-            <p><span>T</span>his is some cool text</p>
-            <img src="icon/img/aboutimg.png" alt="" class="aboutimage">
-            <div class="links">
-                <a href="#"><ion-icon name="logo-instagram"></ion-icon></a>
-                <a href="#"><ion-icon name="logo-twitter"></ion-icon></a>
-                <a href="#"><ion-icon name="logo-discord"></ion-icon></a>
+            <p><span>T</span>his is some cool text that is used to see if the flexbox will work on the website or if i will have to remove it later because of positioning issues with the displays and text this is some cool text that is used to see if the flexbox will work on the website or if i will have to remove it later because of positioning issues with the displays and text</p>
+            <div class="content">
+                <img src="icon/img/aboutimg.png" alt="" class="aboutimage">
+                <div class="links">
+                    <a href="#"><ion-icon name="logo-instagram"></ion-icon></a>
+                    <a href="#"><ion-icon name="logo-twitter"></ion-icon></a>
+                    <a href="#"><ion-icon name="logo-discord"></ion-icon></a>
+                </div>
             </div>
         </div>
 
@@ -77,12 +79,14 @@
             <ion-icon name="warning-outline"></ion-icon>
         </div>
         <div id="search">
-            <form action="lib/php/main.php">
-                <input type="text" autocomplete="off" placeholder="search...">
-                <button type="submit">
-                    <ion-icon name="search"></ion-icon>
-                </button>
-            </form>
+            <div class="bar">
+                <form action="lib/php/main.php">
+                    <input type="text" autocomplete="off" placeholder="search...">
+                    <button type="submit">
+                        <ion-icon name="search"></ion-icon>
+                    </button>
+                </form>
+            </div>
         </div>
 
 
@@ -211,7 +215,7 @@
             $("a").click(function(){
                 var value = $(this).attr('value');
                 $('#settings,#home,#about,#portfolio,#test,#search').css('display','none')
-                $(value).css('display','block')
+                $(value).css('display','flex')
             })
         </script>
     </body>

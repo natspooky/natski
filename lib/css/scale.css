@@ -3,4 +3,12 @@
     {
         width: 70px;
     }
+    #home,#portfolio,#about,#test,#settings,#search
+    {
+        position: fixed;
+        left: 15%;
+        top: 80px;
+	    bottom: 20px;
+        height: auto;
+    }
 }
