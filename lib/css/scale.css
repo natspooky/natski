@@ -11,4 +11,26 @@
 	    bottom: 20px;
         height: auto;
     }
+    #about
+    {
+        
+        text-align: center;
+	    flex-direction: column;
+    }
+    #about p,#about p span
+    {
+        font-size: 3em;
+    }
+    #about .content
+    {
+        transform-origin: top;
+        transform: scale(1.6);
+        flex-direction: row;
+        height: 300px;
+        width: 400px;
+    }
+    #about .content .links
+    {
+        flex-direction: column;
+    }
 }

@@ -235,6 +235,7 @@ body
 #about
 {
 	align-items: center;
+	flex-direction: row;
 }
 #about p
 {
@@ -257,14 +258,15 @@ body
 	vertical-align: top;
 	justify-content: center;
 	flex-direction: column;
-	width: 320px;
+	width: 310px;
+	height: 400px;
 	float: right;
 }
 #about .content .links
 {
 	position: relative;
 	display: flex;
-	justify-content: center;
+	justify-content: space-around;
 	flex-direction: row;
 	color: white;
 }
@@ -302,8 +304,10 @@ body
 {
 	position: relative;
 	width: 90%;
-	height: 50px;
-	background-color: #E49EE6;
+	height: 54px;
+	background-color: var(--accentcol);
+	border: 2px solid var(--themecol);
+	border-radius: 10px;
 }
 #search .bar input,#search .bar button
 {
@@ -319,7 +323,6 @@ body
 	border: 0px;
 	text-align: center;
 	cursor: pointer;
-	background-color: #2a1f8c;
 }
 #search .bar button
 {
