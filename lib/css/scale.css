@@ -13,13 +13,11 @@
     }
     #about
     {
-        
-        text-align: center;
 	    flex-direction: column;
     }
-    #about p,#about p span
+    #about p span
     {
-        font-size: 3em;
+        font-size: 3.7em;
     }
     #about .content
     {
