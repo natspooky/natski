@@ -23,6 +23,11 @@
 }
 @keyframes circle
 {
-    0%{transform: translateY(-20%) translateX(50%) rotate(0deg) scale(1);}
-    100%{transform: translateY(-20%) translateX(50%) rotate(360deg) scale(1);}
+    from{transform: translateY(-20%) translateX(50%) rotate(0deg) scale(1);}
+    to{transform: translateY(-20%) translateX(50%) rotate(360deg) scale(1);}
+}
+@keyframes load
+{
+    from{transform: rotate(0deg) scale(2);}
+    to{transform: rotate(360deg) scale(2);}
 }

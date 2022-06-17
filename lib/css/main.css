@@ -184,6 +184,16 @@ body
 	overflow-y: scroll;
 	border-radius: 10px;
 	animation: fadein 0.5s;
+	align-items: center;
+}
+.load
+{
+	height: 50px;
+	width: 50px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	animation: load 2s infinite;
 }
 #portfolio,#about,#settings,#test,#search
 {
