@@ -1,0 +1,6 @@
+@media (orientation: portrait){
+    .navigator:hover
+    {
+        width: 70px;
+    }
+}
