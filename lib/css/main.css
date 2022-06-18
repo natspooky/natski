@@ -32,7 +32,7 @@
 #pannel/*  delete later  */
 {
 	position: fixed;
-	display: none;
+	display: flex;
 	background-color: #fff;
 	height: 100vh;
 	width: 100%;
@@ -68,7 +68,7 @@ body
 {
 	color: #f1f1f1;
 }
-#particles-js
+#particles-js,#screen
 {
 	position: fixed;
 	width: 100%;
