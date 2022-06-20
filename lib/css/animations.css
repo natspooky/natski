@@ -28,11 +28,6 @@
 }
 @keyframes load
 {
-    from{transform: rotate(0deg);}
-    to{transform: rotate(360deg);}
-}
-@keyframes revload
-{
-    from{transform: rotate(0deg);}
-    to{transform: rotate(-360deg);}
+    from{transform: rotate(0deg) scale(1.5);}
+    to{transform: rotate(360deg) scale(1.5);}
 }

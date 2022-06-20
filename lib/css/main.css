@@ -235,15 +235,9 @@ body
 	display: flex;
 	border-radius: 50%;
 	border: 8px dashed #fff;
+	font-size: 12em;
 	justify-content: center;
 	align-items: center;
-	animation: load 6s linear infinite;
-}
-.socialicons.two
-{
-	animation: revload 6s linear infinite;
-	font-size: 14em;
-	border: 0px;
 }
 #settings
 {

@@ -11,7 +11,6 @@
 	    bottom: 20px;
         height: auto;
         align-items: center;
-        animation: unset;
     }
     #about
     {
@@ -43,5 +42,10 @@
     #about .content img
     {
         height: inherit;
+    }
+    .socialicons
+    {
+        transform-origin: bottom;
+        transform: scale(1.5);
     }
 }
