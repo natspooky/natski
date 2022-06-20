@@ -11,6 +11,7 @@
 	    bottom: 20px;
         height: auto;
         align-items: center;
+        animation: unset;
     }
     #about
     {

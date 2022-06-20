@@ -210,7 +210,7 @@ body
 {
 	display: none;
 }
-#home,#portfolio,#about,#test,#settings,#search
+#home,#portfolio,#about,#test,#settings,#search,#insta,#discord,#twitter
 {
 	position: relative;
 	display: flex;
@@ -221,12 +221,29 @@ body
 	color: white;
 	overflow-y: scroll;
 	border-radius: 10px;
-	animation: fadein 0.5s 0.0001ms;
+	animation: fadein 0.5s;
 	align-items: center;
 }
-#portfolio,#about,#settings,#test,#search
+#portfolio,#about,#settings,#test,#search,#insta,#discord,#twitter
 {
 	display: none;
+}
+.socialicons
+{
+	height: 300px;
+	width: 300px;
+	display: flex;
+	border-radius: 50%;
+	border: 8px dashed #fff;
+	justify-content: center;
+	align-items: center;
+	animation: load 6s linear infinite;
+}
+.socialicons.two
+{
+	animation: revload 6s linear infinite;
+	font-size: 14em;
+	border: 0px;
 }
 #settings
 {
@@ -334,7 +351,7 @@ body
 {
 	background: var(--accentcol);
 	border: 2px solid var(--themecol);
-	transform: scale(1.2);
+	transform: scale(1.1);
 }
 #about .content img
 {
