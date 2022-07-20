@@ -46,17 +46,21 @@
         <div id="particles-js"></div>
         <div id="screen"></div>
         <div id="home">
-            <div class="imgcont">
+            <div class="itemcont">
                 <img src="icon/img/js.png" class="splashimg" id="loadimg2">
                 <img src="icon/img/css.png" class="splashimg" id="loadimg3">
                 <img src="icon/img/Nhome.png" class="splashimg" id="loadimg1">
             </div>
+            <h1>NATSKI</h1>
+            <P>UGHDFDHFGD</P>
         </div>
-        <div id="portfolio">
-            <div class="load">
-                <ion-icon name="reload-circle"></ion-icon>
+        <div id="sys">
+            <div class="outercircle">
+                <div class="innercircle">
+                </div>
             </div>
         </div>
+        <div id="portfolio"></div>
         <div id="about">
             <p><span>T</span>his is some text used to text the functionality of scaleable text using larger and smaller letters in a sequence</p>
             <div class="content">
@@ -81,16 +85,6 @@
                     <input id="hexcol" type="text" value="#180947" autocomplete="off">
                 </dd>
             </dl>
-        </div>
-        <div id="search">
-            <div class="bar">
-                <form id="form" role="search">
-                    <input type="search" id="query" name="q" autocomplete="off" placeholder="search...">
-                    <button type="submit">
-                        <ion-icon name="search"></ion-icon>
-                    </button>
-                </form>
-            </div>
         </div>
         <div id="discord">
             <div class="socialicons">
@@ -118,7 +112,7 @@
                     </a>
                 </li>
                 <li class="list">
-                    <a href="#" value="#portfolio">
+                    <a href="portfolio.html" value="#portfolio">
                         <span class="icon">
                             <ion-icon name="document-text-outline"></ion-icon>
                         </span>
@@ -134,19 +128,19 @@
                     </a>
                 </li>
                 <li class="list">
-                    <a href="#" value="#search">
-                        <span class="icon">
-                            <ion-icon name="search-outline"></ion-icon>
-                        </span>
-                        <span class="text">search</span>
-                    </a>
-                </li>
-                <li class="list">
                     <a href="#" value="#settings">
                         <span class="icon">
                             <ion-icon name="settings-outline"></ion-icon>
                         </span>
                         <span class="text">settings</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="#" value="#sys">
+                        <span class="icon">
+                            <ion-icon name="hardware-chip-outline"></ion-icon>
+                        </span>
+                        <span class="text">sys</span>
                     </a>
                 </li>
             </ul>
@@ -190,6 +184,6 @@
                     document.getElementById('browserdet').innerHTML=browserName;
             }
         </script>
-        <div style="background: white; height: 100vh; width: 100%; position: fixed; display: flex; align-items: center; justify-content: center;"><img height="400px" src="icon/img/Nhome.png" style="filter: invert(1);"></div>
+        <div style="background: white; height: 100vh; width: 100%; position: fixed; display: none; align-items: center; justify-content: center;"><img height="400px" src="icon/img/Nhome.png" style="filter: invert(1);"></div>
     </body>
 </html>
