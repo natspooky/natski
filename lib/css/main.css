@@ -239,6 +239,34 @@ body
 	justify-content: center;
 	align-items: center;
 }
+#home
+{
+	animation: unset;
+}
+#home .imgcont
+{
+	width: 300px;
+	height: 300px;
+}
+#home .imgcont .splashimg
+{
+	position: absolute;
+	transform-origin: bottom;
+}
+#home .imgcont #loadimg1
+{
+	animation: home1 0.5s;
+}
+#home .imgcont #loadimg2
+{
+	animation: home2 0.5s;
+	opacity: 1; transform: scale(0.8) translateY(-40px) translateX(140px) rotate(40deg);
+}
+#home .imgcont #loadimg3
+{
+	animation: home3 0.5s;
+	opacity: 1; transform: scale(0.8) translateY(-40px) translateX(-140px) rotate(-40deg);
+}
 #settings
 {
 	align-items: unset;
