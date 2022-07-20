@@ -177,7 +177,7 @@ body
 {
 	display: none;
 }
-#home,#portfolio,#about,#settings,#insta,#discord,#twitter,#sys
+#home,#portfolio,#about,#settings,#insta,#discord,#twitter,#sys,#images,#videos,#slides
 {
 	position: relative;
 	display: flex;
@@ -190,8 +190,9 @@ body
 	border-radius: 10px;
 	animation: fadein 0.5s;
 	align-items: center;
+	background-color: #180947;
 }
-#portfolio,#about,#settings,#insta,#discord,#twitter,#sys
+#portfolio,#about,#settings,#insta,#discord,#twitter,#sys,#images,#videos,#slides
 {
 	display: none;
 }
@@ -210,7 +211,7 @@ body
 {
 	flex-direction: column;
 }
-#home .itemcont,#sys .itemcont
+#home .itemcont
 {
 	width: 300px;
 	height: 300px;
