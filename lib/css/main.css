@@ -90,7 +90,7 @@ body
 {
 	animation: circle 38s infinite;
 }
-#home ion-icon, #test ion-icon, #portfolio ion-icon
+#home ion-icon, #portfolio ion-icon
 {
 	font-size: 10em;
 	color: #fff;
@@ -210,7 +210,7 @@ body
 {
 	display: none;
 }
-#home,#portfolio,#about,#test,#settings,#search,#insta,#discord,#twitter
+#home,#portfolio,#about,#settings,#search,#insta,#discord,#twitter
 {
 	position: relative;
 	display: flex;
@@ -224,7 +224,7 @@ body
 	animation: fadein 0.5s;
 	align-items: center;
 }
-#portfolio,#about,#settings,#test,#search,#insta,#discord,#twitter
+#portfolio,#about,#settings,#search,#insta,#discord,#twitter
 {
 	display: none;
 }
