@@ -57,4 +57,8 @@
     {
         flex-direction: column;
     }
+    .portfo a 
+    {
+        background-color: var(--accentcol);
+    }
 }
