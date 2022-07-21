@@ -187,10 +187,8 @@ body
 	left: 4.5%;
 	color: white;
 	overflow-y: scroll;
-	border-radius: 10px;
 	animation: fadein 0.5s;
 	align-items: center;
-	background-color: #180947;
 }
 #portfolio,#about,#settings,#insta,#discord,#twitter,#sys,#images,#videos,#slides
 {
@@ -234,6 +232,76 @@ body
 {
 	animation: home3 0.5s;
 	opacity: 1; transform: scale(0.8) translateY(-40px) translateX(-140px) rotate(-40deg);
+}
+#portfolio a
+{
+	position: relative;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	font-weight: bolder;
+	color: #fff;
+	text-decoration: none;
+	background-color: transparent;
+	border-radius: 8px;
+	margin: 10px;
+	transform: scale(1);
+	transition: 0.2s;
+}
+#portfolio a .icon
+{
+	position: relative;
+	display: block;
+	height: 190px;
+	line-height: 200px;
+	text-align: center;
+}
+#portfolio a .icon ion-icon
+{
+	font-size: 15em;
+}
+#portfolio a .text
+{
+	position: relative;
+	display: block;
+	height: 140px;
+	line-height: 170px;
+	white-space: normal;
+	font-size: 4em;
+}
+#portfolio a:hover
+{
+	background-color: var(--accentcol);
+	transform: scale(1.05);
+}
+.portfo a
+{
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	display: flex;
+	align-items: center;
+	color: #fff;
+	text-decoration: none;
+}
+.portfo a .icon
+{
+	position: relative;
+	display: block;
+	text-align: center;
+}
+.portfo a .icon ion-icon
+{
+	font-size: 3em;
+}
+.portfo .imgcont
+{
+	position: absolute;
+	right: 0;
+	height: 100%;
+	width: 92%;
+	overflow-y: scroll;
+	background-color: #a59cff;
 }
 #sys .outercircle
 {
