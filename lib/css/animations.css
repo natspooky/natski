@@ -42,6 +42,6 @@
 }
 @keyframes pulse
 {
-    from{transform: scale(1);}
-    to{transform: scale(1.1);}
+    from{transform: scale(0.6);}
+    to{transform: scale(1.25);}
 }

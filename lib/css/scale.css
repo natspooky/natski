@@ -3,14 +3,9 @@
     {
         width: 70px;
     }
-    #home,#portfolio,#about,#settings,#insta,#discord,#twitter,#sys,#images,#videos,#slides
+    #home,#portfolio,#about,#settings,#insta,#discord,#twitter,#twitch,#sys,#images,#videos,#slides
     {
-        position: fixed;
-        left: 15%;
-        top: 20px;
-	    bottom: 20px;
-        height: auto;
-        align-items: center;
+        left: 13%;
     }
     #settings
     {
@@ -60,5 +55,6 @@
     .portfo a 
     {
         background-color: var(--accentcol);
+        transform: scale(1);
     }
 }

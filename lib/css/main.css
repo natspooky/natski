@@ -177,22 +177,20 @@ body
 {
 	display: none;
 }
-#home,#portfolio,#about,#settings,#insta,#discord,#twitter,#sys,#images,#videos,#slides
+.tabs, .portfo
 {
-	position: relative;
-	display: flex;
+	position: fixed;
+	display: none;
 	justify-content: center;
-	height: 84vh;
-	width: 81%;
-	left: 4.5%;
+	top: 20px;
+	bottom: 20px;
+	right: 20px;
+	left: 130px;
+	box-sizing: initial;
 	color: white;
 	overflow-y: scroll;
 	animation: fadein 0.5s;
 	align-items: center;
-}
-#portfolio,#about,#settings,#insta,#discord,#twitter,#sys,#images,#videos,#slides
-{
-	display: none;
 }
 .socialicons
 {
@@ -200,7 +198,8 @@ body
 	width: 300px;
 	display: flex;
 	border-radius: 50%;
-	border: 8px dashed #fff;
+	border: 4px solid #fff;
+	background-color: var(--accentcol);
 	font-size: 12em;
 	justify-content: center;
 	align-items: center;
@@ -208,6 +207,7 @@ body
 #home
 {
 	flex-direction: column;
+	display: flex;
 }
 #home .itemcont
 {
@@ -288,11 +288,13 @@ body
 	height: 100%;
 	width: 5%;
 	background-color: transparent;
+	transform: scale(0.95);
 	transition: 0.2s;
 }
 .portfo a:hover
 {
 	background-color: var(--accentcol);
+	transform: scale(1);
 }
 .portfo a .icon
 {
@@ -311,7 +313,6 @@ body
 	height: 100%;
 	width: 94%;
 	overflow-y: scroll;
-	background-color: #a59cff;
 }
 #sys .outercircle
 {
