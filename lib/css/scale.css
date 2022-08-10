@@ -3,10 +3,6 @@
     {
         width: 70px;
     }
-    #home,#portfolio,#about,#settings,#insta,#discord,#twitter,#twitch,#sys,#images,#videos,#slides
-    {
-        left: 13%;
-    }
     #settings
     {
         margin-top: 100px;
