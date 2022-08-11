@@ -3,7 +3,7 @@
     {
         width: 70px;
     }
-    .tabs
+    .tabs,.portfo
     {
         background-image: none;
     }
@@ -56,6 +56,10 @@
     {
         background-color: var(--accentcol);
         transform: scale(1);
+    }
+    .portfo .imgcont img
+    {
+        width: 100%;
     }
     #footer
     {
