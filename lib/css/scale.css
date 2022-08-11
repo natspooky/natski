@@ -3,6 +3,10 @@
     {
         width: 70px;
     }
+    .tabs
+    {
+        background-image: none;
+    }
     #settings
     {
         margin-top: 100px;
@@ -52,5 +56,9 @@
     {
         background-color: var(--accentcol);
         transform: scale(1);
+    }
+    #footer
+    {
+        display: none;
     }
 }

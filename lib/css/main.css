@@ -32,10 +32,7 @@ body
 {
 	min-height: 100vh;
 	background-color: var(--accentcol);
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	overflow: hidden;
+	overflow: visible;
 	transition: 0.2s;
 }
 #particles-js,#screen
@@ -189,8 +186,10 @@ body
 	box-sizing: initial;
 	color: white;
 	overflow-y: scroll;
+	border-radius: 10px 10px 0px 0px;
 	animation: fadein 0.5s;
 	align-items: center;
+	background-image: linear-gradient(to bottom, var(--accentcol),transparent);
 }
 .socialicons
 {
@@ -340,7 +339,7 @@ body
 }
 #settings dl
 {
-	width: 100%;
+	width: 90%;
 	text-align: center;
 	font-size: 2em;
 	font-weight: bolder;
@@ -351,7 +350,6 @@ body
 {
 	margin: 5px 0px;
 	border-radius: 5px;
-	border: 2px solid var(--themecol);
 	background-color: var(--accentcol);
 	transition: 0.2s;
 }
@@ -359,15 +357,14 @@ body
 {
 	border-radius: 5px;
 	margin-bottom: 20px;
-	border: 2px solid var(--themecol);
 	background-color: var(--accentcol);
 	transition: 0.2s;
 }
 #settings dl dt .sysicon
 {
 	position: absolute;
-	left: 0;
-	padding: 4.5px 8px;
+	left: 5%;
+	padding: 4px 5px;
 }
 #settings dl dd input
 {
@@ -449,4 +446,22 @@ body
 	margin-bottom: 20px;
 	border-radius: 50%;
 	border: #fff solid 10px;
+}
+#footer
+{
+	height: 5vh;
+	position: absolute;
+	width: 100%;
+	display: flex;
+	background-color: rgba(0, 0, 0, 0.9);
+	bottom: -5vh;
+	flex-direction: row;
+	align-items: center;
+	color: #fff;
+	cursor: default;
+}
+#footer img
+{
+	height: 50%;
+	margin: 0px 7px;
 }
