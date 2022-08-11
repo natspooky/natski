@@ -174,7 +174,7 @@ body
 {
 	display: none;
 }
-.tabs, .portfo
+.tabs,.portfo
 {
 	position: fixed;
 	display: none;
@@ -327,30 +327,6 @@ body
 	box-shadow: 0px 0px 10px #00000080;
 	margin: 13px 0px;
 }
-#sys .outercircle
-{
-	width: 400px;
-	height: 400px;
-	border-radius: 50%;
-	background-color: var(--accentcol);
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	animation: pulse 6s ease infinite;
-	animation-direction: alternate;
-}
-#sys .outercircle .innercircle
-{
-	height: 300px;
-	width: 300px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	border-radius: 50%;
-	background-color: var(--accentcol);
-	animation: pulse 8s ease infinite;
-	animation-direction: alternate;
-}
 #settings dl
 {
 	width: 90%;
@@ -422,6 +398,7 @@ body
 	width: 310px;
 	height: 400px;
 	float: right;
+	margin-right: 15px;
 }
 #about .content .links
 {
