@@ -16,6 +16,10 @@
     {
 	    flex-direction: column;
     }
+    #about p
+    {
+        font-size: calc(2em * 2);
+    }
     #about p span
     {
         font-size: 3.7em;
