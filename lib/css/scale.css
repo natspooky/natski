@@ -64,10 +64,16 @@
     }
     .portfo .imgcont img
     {
-        width: 100%;
+        width: 98%;
     }
     #footer
     {
         display: none;
+    }
+    .portfo .imgcont .iframecont
+    {
+        width: 98%;
+        padding-top: 55.5%;
+        margin: 20px 0px;
     }
 }
