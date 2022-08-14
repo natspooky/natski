@@ -20,6 +20,18 @@
     --themecolOLD: #a59cff;
 	--accentcolOLD: #a49cff90;
 }
+::-webkit-scrollbar-thumb
+{
+    background-color: #fff;
+    border-radius: 10px;
+}
+::-webkit-scrollbar
+{
+    display: block;
+    width: 10px;
+    background-color: var(--accentcol);
+    border-radius: 10px;
+}
 body::-webkit-scrollbar,.portfo::-webkit-scrollbar,.tabs::-webkit-scrollbar
 {
 	display: none;
@@ -326,6 +338,7 @@ body
 	position: relative;
 	box-shadow: 0px 0px 10px #00000080;
 	margin: 13px 0px;
+	animation: expand calc(0.2s * var(--i));
 }
 .portfo .imgcont .iframecont
 {
@@ -337,6 +350,7 @@ body
 	background: var(--accentcol);
 	border-radius: 10px;
 	margin: 13px 0px;
+	animation: expand calc(0.2s * var(--i));
 }
 .portfo .imgcont .iframecont iframe
 {
