@@ -388,7 +388,7 @@ body
 	margin: 5px 0px;
 	border-radius: 5px;
 	background-color: var(--accentcol);
-	animation: expand calc(0.2s * var(--i));
+	animation: expand calc(0.1s * var(--i));
 	transition: 0.2s;
 }
 #settings dl dd
@@ -396,7 +396,7 @@ body
 	border-radius: 5px;
 	margin-bottom: 20px;
 	background-color: var(--accentcol);
-	animation: expand calc(0.2s * var(--i));
+	animation: expand calc(0.1s * var(--i));
 	transition: 0.2s;
 }
 #settings dl dt .sysicon
