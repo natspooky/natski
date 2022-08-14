@@ -12,10 +12,6 @@
         margin-top: 100px;
         align-items: unset;
     }
-    #about
-    {
-	    flex-direction: column;
-    }
     #about p
     {
         font-size: calc(2em * 1.5);
@@ -33,7 +29,7 @@
         height: 480px;
         width: 640px;
     }
-    #about .content .links
+    #about .content .links,#portfolio,#about
     {
         flex-direction: column;
     }
@@ -52,10 +48,6 @@
     {
         transform-origin: bottom;
         transform: scale(1.5);
-    }
-    #portfolio
-    {
-        flex-direction: column;
     }
     #portfolio a
     {
@@ -79,5 +71,15 @@
         width: 98%;
         padding-top: 55.5%;
         margin: 20px 0px;
+    }
+    #images .imgcont img
+    {
+        width: 98%;
+        left: 1%;
+        margin: 10px 0px;
+    }
+    #images .imgcont .imgside
+    {
+	    width: 100%;
     }
 }

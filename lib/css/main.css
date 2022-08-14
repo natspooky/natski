@@ -336,9 +336,20 @@ body
 	border-radius: 10px;
 	width: 85%;
 	position: relative;
+	background-color: var(--accentcol);
 	box-shadow: 0px 0px 10px #00000080;
-	margin: 13px 0px;
+	margin: 10px 0px;
 	animation: expand calc(0.2s * var(--i));
+}
+#images .imgcont img
+{
+	width: 48%;
+	margin: 10px 6px;
+}
+#images .imgcont .imgside
+{
+	position: relative;
+	width: 85%;
 }
 .portfo .imgcont .iframecont
 {
@@ -349,7 +360,7 @@ body
 	box-shadow: 0px 0px 10px #00000080;
 	background: var(--accentcol);
 	border-radius: 10px;
-	margin: 13px 0px;
+	margin: 10px 0px;
 	animation: expand calc(0.2s * var(--i));
 }
 .portfo .imgcont .iframecont iframe
