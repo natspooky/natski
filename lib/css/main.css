@@ -236,6 +236,12 @@ body
 	text-shadow: 0px 0px 5px #00000080;
 	cursor: default;
 }
+#home #something
+{
+	position: fixed;
+	bottom: 0px;
+	right: 0px;
+}
 #home .itemcont
 {
 	width: 300px;

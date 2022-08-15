@@ -54,6 +54,8 @@
             </div>
             <h1>NATSKI</h1>
             <P><b>//early build<br>//most features dont work<br>//N1.2</b></P>
+
+            <h1 id="something"></h1>
         </div>
         <div id="sys" class="tabs"></div>
         <div id="about" class="tabs">
@@ -196,6 +198,11 @@
                     }else{
                         document.getElementById("timeofday").innerHTML = "おはよう!";
                     };
+                    let chance = Math.floor(Math.random() * 100);
+                    document.getElementById("something").innerHTML = chance;
+                    if (chance == 1){
+                        window.location.href='something.html';
+                    }
             };
         </script>
         <div style="background: white; height: 100vh; width: 100%; position: fixed; display: none; align-items: center; justify-content: center; flex-direction: column;"><img height="400px" src="icon/img/Nhome.png" style="filter: invert(1);"><h1 style="color: #000; font-size: 6em; font-weight: bolder; margin-top: 40px;">NATSKI</h1></div>
