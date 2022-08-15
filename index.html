@@ -46,7 +46,7 @@
         <div id="particles-js"></div>
         <div id="screen"></div>
         <div id="home" class="tabs">
-            <h1 id="timeofday">test text</h1>
+            <h1 id="timeofday"></h1>
             <div class="itemcont">
                 <img src="icon/img/js.png" class="splashimg" id="loadimg2">
                 <img src="icon/img/css.png" class="splashimg" id="loadimg3">
@@ -185,10 +185,16 @@
                         browserName="Opera";
                     }else{
                         browserName="unable to identify :(";
-                    }
+                    };
                     document.getElementById('browserdet').innerHTML=browserName;
-            }
+                    const d = new Date();
+                    if(d.getHours() > 11){
+                        document.getElementById("timeofday").innerHTML = "こんばんは!";
+                    }else{
+                        document.getElementById("timeofday").innerHTML = "おはよう!";
+                    };
+            };
         </script>
-        <div style="background: white; height: 100vh; width: 100%; position: fixed; display: none; align-items: center; justify-content: center;"><img height="400px" src="icon/img/Nhome.png" style="filter: invert(1);"></div>
+        <div style="background: white; height: 100vh; width: 100%; position: fixed; display: flex; align-items: center; justify-content: center; flex-direction: column;"><img height="400px" src="icon/img/Nhome.png" style="filter: invert(1);"><h1 style="color: #000; font-size: 6em; font-weight: bolder; margin-top: 40px;">NATSKI</h1></div>
     </body>
 </html>

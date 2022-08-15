@@ -7,6 +7,11 @@
     {
         background-image: none;
     }
+    #home #timeofday
+    {
+        margin-bottom: 25vh;
+        margin-top: 5vh;
+    }
     #settings
     {
         margin-top: 100px;
