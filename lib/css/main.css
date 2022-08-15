@@ -64,6 +64,7 @@ body
 {
 	position: fixed;
 	top: 0;
+	border: 0px;
 	animation: background2 15s ease infinite;
 	animation-direction: alternate;
 }
@@ -220,6 +221,12 @@ body
 {
 	flex-direction: column;
 	display: flex;
+}
+#home #timeofday
+{
+	font-size: 5.5em;
+	font-weight: bolder;
+	margin-bottom: 20vh;
 }
 #home .itemcont
 {
