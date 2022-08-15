@@ -41,15 +41,21 @@
                 from{opacity: 0;}
                 to{opacity: 1;}
             }
+            @media (orientation: portrait){
+                img
+                {
+                    transform: scale(2.5);
+                }
+            }
         </style>
 	</head>
     <body>
         <img src="icon/img/something.png" alt="">
-        <h1>something behind you</h1>
+        <h1>something behind you...</h1>
         <script>
-            setTimeout(function(){
+            setTieout(function(){
                 window.location.href='index.html';
-            },4000);
+            },3500);
         </script>
     </body>
 </html>
