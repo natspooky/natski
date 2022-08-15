@@ -188,7 +188,10 @@
                     };
                     document.getElementById('browserdet').innerHTML=browserName;
                     const d = new Date();
-                    if(d.getHours() > 11){
+                    let hours = d.getHours();
+                    if(hours > 11){
+                        document.getElementById("timeofday").innerHTML = "こんにちは!";
+                    }else if(hours > 15){
                         document.getElementById("timeofday").innerHTML = "こんばんは!";
                     }else{
                         document.getElementById("timeofday").innerHTML = "おはよう!";
