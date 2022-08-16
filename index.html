@@ -54,8 +54,6 @@
             </div>
             <h1>NATSKI</h1>
             <P><b>//early build<br>//most features dont work<br>//N1.2</b></P>
-
-            <h1 id="something"></h1>
         </div>
         <div id="sys" class="tabs"></div>
         <div id="about" class="tabs">
@@ -152,6 +150,7 @@
             <ion-icon name="menu" class="open"></ion-icon>
             <ion-icon name="close" class="close"></ion-icon>
         </div>
+        <h1 id="something"></h1>
         <div id="footer">
             <img src="icon/favicon/32.png">
             <p>NATSKI 2022</p>
@@ -189,20 +188,20 @@
                         browserName="unable to identify :(";
                     };
                     document.getElementById('browserdet').innerHTML=browserName;
-                    const d = new Date();
-                    let hours = d.getHours();
-                    if(hours > 11){
-                        document.getElementById("timeofday").innerHTML = "こんにちは!";
-                    }else if(hours > 15){
-                        document.getElementById("timeofday").innerHTML = "こんばんは!";
+                    const d=new Date();
+                    let hours=d.getHours();
+                    if(hours>11){
+                        document.getElementById("timeofday").innerHTML="こんにちは!";
+                    }else if(hours>15){
+                        document.getElementById("timeofday").innerHTML="こんばんは!";
                     }else{
-                        document.getElementById("timeofday").innerHTML = "おはよう!";
+                        document.getElementById("timeofday").innerHTML="おはよう!";
                     };
-                    let chance = Math.floor(Math.random() * 100);
-                    document.getElementById("something").innerHTML = chance;
-                    if (chance == 1){
+                    let chance=Math.floor((Math.random()*89)+10);
+                    document.getElementById("something").innerHTML=chance;
+                    if (chance==11){
                         window.location.href='something.html';
-                    }
+                    };
             };
         </script>
         <div style="background: white; height: 100vh; width: 100%; position: fixed; display: none; align-items: center; justify-content: center; flex-direction: column;"><img height="400px" src="icon/img/Nhome.png" style="filter: invert(1);"><h1 style="color: #000; font-size: 6em; font-weight: bolder; margin-top: 40px;">NATSKI</h1></div>
