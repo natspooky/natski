@@ -56,8 +56,18 @@
 	</head>
     <body>
         <img src="icon/img/something.png" alt="">
-        <h1>there's something behind you...</h1>
+        <h1 id="text"></h1>
         <script>
+            let chance=Math.floor((Math.random()*3));
+                    if(chance==0){
+                        document.getElementById("text").innerHTML="wake up...";
+                    }
+                    if(chance==1){
+                        document.getElementById("text").innerHTML="there's something behind you...";
+                    }
+                    if(chance==2){
+                        document.getElementById("text").innerHTML="don't turn around...";
+                    }
             setTimeout(function(){
                 window.location.href='index.html';
             },3000);

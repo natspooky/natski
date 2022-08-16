@@ -160,48 +160,48 @@
         <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
         <script>
             function load(){
+                const d=new Date();
+                let hours=d.getHours();
+                if(hours>11){
+                    document.getElementById("timeofday").innerHTML="こんにちは!";
+                }else if(hours>15){
+                    document.getElementById("timeofday").innerHTML="こんばんは!";
+                }else{
+                    document.getElementById("timeofday").innerHTML="おはよう!";
+                };
+                let chance=Math.floor((Math.random()*89)+10);
+                document.getElementById("something").innerHTML=chance;
+                if(chance==11){
+                    window.location.href='something.html';
+                };
                 HTMLDocument.prototype.e=document.getElementById;
-                    var el_down=document.e("oscheck");
-                    var Name="Unknown";
-                    if(navigator.appVersion.indexOf("Win")!=-1)
-                        Name="Windows";
-                    if(navigator.appVersion.indexOf("Mac")!=-1)
-                        Name="Ios";
-                    if(navigator.appVersion.indexOf("X11")!=-1)
-                        Name="Unix/Unix-like";
-                    if(navigator.appVersion.indexOf("Linux")!=-1)
-                        Name="Linux";
-                    el_down.innerHTML=Name;
-                    let userAgent=navigator.userAgent;
-                    let browserName;
-                    if(userAgent.match(/edg/i)){
-                        browserName="Edge";
-                    }else if(userAgent.match(/chrome|chromium|crios/i)){
-                        browserName="Chrome/Chromium";
-                    }else if(userAgent.match(/firefox|fxios/i)){
-                        browserName="Firefox";
-                    }else if(userAgent.match(/safari/i)){
-                        browserName="Safari";
-                    }else if(userAgent.match(/opr\//i)){
-                        browserName="Opera";
-                    }else{
-                        browserName="unable to identify :(";
-                    };
-                    document.getElementById('browserdet').innerHTML=browserName;
-                    const d=new Date();
-                    let hours=d.getHours();
-                    if(hours>11){
-                        document.getElementById("timeofday").innerHTML="こんにちは!";
-                    }else if(hours>15){
-                        document.getElementById("timeofday").innerHTML="こんばんは!";
-                    }else{
-                        document.getElementById("timeofday").innerHTML="おはよう!";
-                    };
-                    let chance=Math.floor((Math.random()*89)+10);
-                    document.getElementById("something").innerHTML=chance;
-                    if (chance==11){
-                        window.location.href='something.html';
-                    };
+                var el_down=document.e("oscheck");
+                var Name="Unknown";
+                if(navigator.appVersion.indexOf("Win")!=-1)
+                    Name="Windows";
+                if(navigator.appVersion.indexOf("Mac")!=-1)
+                    Name="Ios";
+                if(navigator.appVersion.indexOf("X11")!=-1)
+                    Name="Unix/Unix-like";
+                if(navigator.appVersion.indexOf("Linux")!=-1)
+                    Name="Linux";
+                el_down.innerHTML=Name;
+                let userAgent=navigator.userAgent;
+                let browserName;
+                if(userAgent.match(/edg/i)){
+                    browserName="Edge";
+                }else if(userAgent.match(/chrome|chromium|crios/i)){
+                    browserName="Chrome/Chromium";
+                }else if(userAgent.match(/firefox|fxios/i)){
+                    browserName="Firefox";
+                }else if(userAgent.match(/safari/i)){
+                    browserName="Safari";
+                }else if(userAgent.match(/opr\//i)){
+                    browserName="Opera";
+                }else{
+                    browserName="unable to identify :(";
+                };
+                document.getElementById('browserdet').innerHTML=browserName;
             };
         </script>
         <div style="background: white; height: 100vh; width: 100%; position: fixed; display: none; align-items: center; justify-content: center; flex-direction: column;"><img height="400px" src="icon/img/Nhome.png" style="filter: invert(1);"><h1 style="color: #000; font-size: 6em; font-weight: bolder; margin-top: 40px;">NATSKI</h1></div>
