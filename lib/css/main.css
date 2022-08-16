@@ -471,7 +471,7 @@ body
 }
 #about p
 {
-	margin: 15px;
+	margin: 15px 15px 15px 150px;
 	position: relative;
 	font-size: 2em;
 	line-height: 1.2;

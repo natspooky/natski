@@ -18,6 +18,7 @@
     }
     #about p
     {
+        margin: 15px;
         font-size: calc(2em * 1.5);
     }
     #about p span
