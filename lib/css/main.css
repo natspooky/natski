@@ -30,7 +30,7 @@
     background-color: var(--accentcol);
     border-radius: 10px;
 }
-body::-webkit-scrollbar,.portfo::-webkit-scrollbar,.tabs::-webkit-scrollbar,.code::-webkit-scrollbar
+body::-webkit-scrollbar,.portfo::-webkit-scrollbar,.tabs::-webkit-scrollbar,.code::-webkit-scrollbar,.navigator::-webkit-scrollbar
 {
 	display: none;
 }
