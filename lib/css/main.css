@@ -228,7 +228,6 @@ body
 #home
 {
 	flex-direction: column;
-	display: flex;
 	justify-content: unset;
 }
 #home #timeofday
