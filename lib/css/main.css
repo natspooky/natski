@@ -17,8 +17,6 @@
 	--red: #ff0000;
 	--themecol: #180947;
 	--accentcol: #18094790;
-    --themecolOLD: #a59cff;
-	--accentcolOLD: #a49cff90;
 }
 ::-webkit-scrollbar-thumb
 {
@@ -411,6 +409,9 @@ body
 #settings dl dt
 {
 	margin: 5px 0px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	border-radius: 5px;
 	background-color: var(--accentcol);
 	animation: expand calc(0.1s * var(--i));
@@ -426,9 +427,11 @@ body
 }
 #settings dl dt .sysicon
 {
-	position: absolute;
-	left: 5%;
-	padding: 4px 5px;
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 10px;
 }
 #settings dl dd input
 {
