@@ -33,7 +33,7 @@
         height: 480px;
         width: 640px;
     }
-    #about .content .links,#portfolio,#about
+    #about .content .links,#portfolio,#about,#sys
     {
         flex-direction: column;
     }
@@ -53,11 +53,11 @@
         transform-origin: bottom;
         transform: scale(1.5);
     }
-    #portfolio a
+    #portfolio a,#sys a
     {
         transition: none;
     }
-    .portfo a 
+    .portfo a,.code a
     {
         background-color: var(--accentcol);
         transform: scale(1);
@@ -85,5 +85,9 @@
     #images .imgcont .imgside
     {
 	    width: 100%;
+    }
+    .code .imgcont
+    {
+        font-size: 1em;
     }
 }

@@ -30,7 +30,17 @@
     background-color: var(--accentcol);
     border-radius: 10px;
 }
-body::-webkit-scrollbar,.portfo::-webkit-scrollbar,.tabs::-webkit-scrollbar
+body::-webkit-scrollbar,.portfo::-webkit-scrollbar,.tabs::-webkit-scrollbar,.code::-webkit-scrollbar
+{
+	display: none;
+}
+#sys::-webkit-scrollbar
+{
+	display: block;
+	height: 10px;
+	width: 0px;
+}
+::-webkit-scrollbar-corner
 {
 	display: none;
 }
@@ -185,7 +195,7 @@ body
 {
 	display: none;
 }
-.tabs,.portfo
+.tabs,.portfo,.code
 {
 	position: fixed;
 	display: none;
@@ -268,7 +278,7 @@ body
 	animation: home3 0.5s;
 	opacity: 1; transform: scale(0.8) translateY(-40px) translateX(-140px) rotate(-40deg);
 }
-#portfolio a
+#portfolio a,#sys a
 {
 	position: relative;
 	display: flex;
@@ -284,7 +294,7 @@ body
 	animation: expand calc(0.3s * var(--i));
 	transition: 0.2s;
 }
-#portfolio a .icon
+#portfolio a .icon,#sys a .icon
 {
 	position: relative;
 	display: block;
@@ -292,25 +302,30 @@ body
 	line-height: 200px;
 	text-align: center;
 }
-#portfolio a .icon ion-icon
+#portfolio a .icon ion-icon,#sys a .icon ion-icon
 {
 	font-size: 15em;
 }
-#portfolio a .text
+#portfolio a .text,#sys a .text
 {
 	position: relative;
 	display: block;
 	height: 140px;
 	line-height: 170px;
 	white-space: normal;
+	padding: 0px 10px;
 	font-size: 4em;
 }
-#portfolio a:hover
+#portfolio a:hover,#sys a:hover
 {
 	background-color: var(--accentcol);
 	transform: scale(1.05);
 }
-.portfo a
+#sys
+{
+	justify-content: unset;
+}
+.portfo a,.code a
 {
 	position: absolute;
 	top: 0;
@@ -327,22 +342,22 @@ body
 	transform: scale(0.95);
 	transition: 0.2s;
 }
-.portfo a:hover
+.portfo a:hover,.code a:hover
 {
 	background-color: var(--accentcol);
 	transform: scale(1);
 }
-.portfo a .icon
+.portfo a .icon,.code a .icon
 {
 	position: relative;
 	display: block;
 	text-align: center;
 }
-.portfo a .icon ion-icon
+.portfo a .icon ion-icon,.code a .icon ion-icon
 {
 	font-size: 3em;
 }
-.portfo .imgcont
+.portfo .imgcont,.code .imgcont
 {
 	position: absolute;
 	display: flex;
@@ -354,6 +369,11 @@ body
 	overscroll-behavior: contain;
 	overflow-x: hidden;
 	overflow-y: scroll;
+}
+.code .imgcont
+{
+	align-items: flex-start;
+	font-size: 1.5em;
 }
 .portfo .imgcont img
 {
@@ -462,7 +482,7 @@ body
 	position: relative;
 	font-weight: bold;
 	font-size: 300%;
-    width: 0.7em;
+    width: 0.3em;
 	line-height: 0.80;
 	float: left;
 }
