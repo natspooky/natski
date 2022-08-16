@@ -1,4 +1,12 @@
 @media (orientation: portrait){
+    .tabs,.portfo,.code
+    {
+        left: 150px;
+    }
+    .navigator
+    {
+        left: 40px;
+    }
     .navigator:hover
     {
         width: 70px;
