@@ -205,7 +205,7 @@
         &lt;div class="navigator active"&gt;
             &lt;ul&gt;
                 &lt;li class="list active"&gt;
-                    &lt;a href="#home" value="#home"&gt;
+                    &lt;a href="#home" value="#home" id="first"&gt;
                         &lt;span class="icon"&gt;
                             &lt;ion-icon name="home-outline"&gt;&lt;/ion-icon&gt;
                         &lt;/span&gt;
@@ -237,7 +237,7 @@
                     &lt;/a&gt;
                 &lt;/li&gt;
                 &lt;li class="list"&gt;
-                    &lt;a href="#settings" value="#settings"&gt;
+                    &lt;a href="#settings" value="#settings" id="last"&gt;
                         &lt;span class="icon"&gt;
                             &lt;ion-icon name="settings-outline"&gt;&lt;/ion-icon&gt;
                         &lt;/span&gt;
@@ -496,7 +496,7 @@
         &lt;div class="navigator active"&gt;
             &lt;ul&gt;
                 &lt;li class="list"&gt;
-                    &lt;a href="index.html#home" value="#home"&gt;
+                    &lt;a href="index.html#home" value="#home" id="first"&gt;
                         &lt;span class="icon"&gt;
                             &lt;ion-icon name="home-outline"&gt;&lt;/ion-icon&gt;
                         &lt;/span&gt;
@@ -645,6 +645,11 @@ body
 {
 	width: 160px;
 }
+.navigator ul hr
+{
+	background-color: #fff;
+	display: none;
+}
 .navigator ul
 {
 	position: absolute;
@@ -672,6 +677,7 @@ body
 }
 .navigator ul li a
 {
+	margin: 10px 0px;
 	position: relative;
 	display: flex;
 	align-items: center;
@@ -680,6 +686,16 @@ body
 	color: #fff;
 	text-decoration: none;
 	transition: 0.2s;
+}
+#first
+{
+	margin-bottom: 10px;
+	margin-top: 0px;
+}
+#last
+{
+	margin-bottom: 0px;
+	margin-top: 10px;
 }
 .navigator ul li a .icon
 {
@@ -1127,7 +1143,11 @@ body
     }
     .navigator ul li a
     {
-        height: 300px;
+        height: 18.6vh;
+    }
+    .navigator ul hr
+    {
+        display: block;
     }
     .tabs,.portfo,.code
     {
@@ -1378,13 +1398,14 @@ $(document).ready(function()&#123;
         <div class="navigator active">
             <ul>
                 <li class="list">
-                    <a href="index.html#home" value="#home">
+                    <a href="index.html#home" value="#home" id="first">
                         <span class="icon">
                             <ion-icon name="home-outline"></ion-icon>
                         </span>
                         <span class="text">home</span>
                     </a>
                 </li>
+                <hr>
                 <li class="list active">
                     <a href="#" value="#sys">
                         <span class="icon">

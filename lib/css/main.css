@@ -103,6 +103,11 @@ body
 {
 	width: 160px;
 }
+.navigator ul hr
+{
+	background-color: #fff;
+	display: none;
+}
 .navigator ul
 {
 	position: absolute;
@@ -130,6 +135,7 @@ body
 }
 .navigator ul li a
 {
+	margin: 10px 0px;
 	position: relative;
 	display: flex;
 	align-items: center;
@@ -138,6 +144,16 @@ body
 	color: #fff;
 	text-decoration: none;
 	transition: 0.2s;
+}
+#first
+{
+	margin-bottom: 10px;
+	margin-top: 0px;
+}
+#last
+{
+	margin-bottom: 0px;
+	margin-top: 10px;
 }
 .navigator ul li a .icon
 {
