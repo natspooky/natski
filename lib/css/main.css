@@ -85,7 +85,7 @@ body
 	overflow-x: hidden;
 	transition: 0.2s;
 	transition-delay: 0s;
-	transform: translateX(-120px);
+	transform: translateX(-140px);
 	border: 10px solid var(--themecol);
 	background-color: var(--themecol);
 }
