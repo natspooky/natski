@@ -156,7 +156,7 @@
         &lt;div id="about" class="tabs"&gt;
             &lt;p&gt;
                 &lt;span&gt;i&lt;/span&gt;
-                am a professional dumbass based in the UK who is learning various coding languages such as: python, html, css and javascript in pursuit of making some cool websites and programs.
+                am a professional dumbass based in the UK who is learning various coding languages such as: python, html, css and javascript in pursuit of making some cool websites and programs.&lt;br&gt;&lt;br&gt;I have also been studying logo design to further expand my creative toolset and increase my productivity in brand design and web development.
             &lt;/p&gt;
             &lt;div class="content"&gt;
                 &lt;img src="icon/avatar/300.png" alt="" class="aboutimage"&gt;
@@ -575,6 +575,12 @@ body::-webkit-scrollbar,.portfo::-webkit-scrollbar,.tabs::-webkit-scrollbar,.cod
 	height: 10px;
 	width: 0px;
 }
+.code .imgcont::-webkit-scrollbar
+{
+	display: block;
+	height: 10px;
+	width: 10px;
+}
 ::-webkit-scrollbar-corner
 {
 	display: none;
@@ -627,7 +633,7 @@ body
 	overflow-x: hidden;
 	transition: 0.2s;
 	transition-delay: 0s;
-	transform: translateX(-120px);
+	transform: translateX(-140px);
 	border: 10px solid var(--themecol);
 	background-color: var(--themecol);
 }
@@ -908,6 +914,8 @@ body
 {
 	align-items: flex-start;
 	font-size: 1.5em;
+	overflow-x: scroll;
+	cursor: default;
 }
 .portfo .imgcont img
 {

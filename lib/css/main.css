@@ -33,6 +33,12 @@ body::-webkit-scrollbar,.portfo::-webkit-scrollbar,.tabs::-webkit-scrollbar,.cod
 	height: 10px;
 	width: 0px;
 }
+.code .imgcont::-webkit-scrollbar
+{
+	display: block;
+	height: 10px;
+	width: 10px;
+}
 ::-webkit-scrollbar-corner
 {
 	display: none;
@@ -366,6 +372,8 @@ body
 {
 	align-items: flex-start;
 	font-size: 1.5em;
+	overflow-x: scroll;
+	cursor: default;
 }
 .portfo .imgcont img
 {
