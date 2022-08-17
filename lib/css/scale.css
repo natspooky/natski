@@ -11,6 +11,10 @@
     {
         width: 70px;
     }
+    .navigator ul li a
+    {
+        height: 300px;
+    }
     .tabs,.portfo,.code
     {
         background-image: none;
