@@ -15,8 +15,8 @@
 }
 @keyframes circle
 {
-    from{transform: translateY(-20%) translateX(50%) rotate(0deg) scale(1);}
-    to{transform: translateY(-20%) translateX(50%) rotate(360deg) scale(1);}
+    from{transform: translateY(-20%) translateX(50%) rotate(0deg);}
+    to{transform: translateY(-20%) translateX(50%) rotate(360deg);}
 }
 @keyframes home1
 {
