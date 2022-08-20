@@ -1371,11 +1371,6 @@ $(document).ready(function()&#123;
         $('.tabs,.portfo,.code').css('display','none')
         $(value).css('display','flex')
     &#125;);
-    const scrollContainer=document.querySelector("#sys");
-    scrollContainer.addEventListener("wheel",(evt)=&gt;{
-        evt.preventDefault();
-        scrollContainer.scrollLeft+=evt.deltaY;
-    });
     particlesJS("particles-js", &#123;
         "particles": &#123;
             "number": &#123;
@@ -1434,6 +1429,11 @@ $(document).ready(function()&#123;
             &#125;
         &#125; 
     &#125;);
+    const scrollContainer=document.querySelector("#sys");
+    scrollContainer.addEventListener("wheel",(evt)=&gt;{
+        evt.preventDefault();
+        scrollContainer.scrollLeft+=evt.deltaY;
+    });
 &#125;);
                     </pre>
                 </code>
