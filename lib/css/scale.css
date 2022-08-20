@@ -62,7 +62,6 @@
     }
     .socialicons
     {
-        transform-origin: bottom;
         transform: scale(1.5);
     }
     #portfolio a,#sys a
@@ -78,15 +77,15 @@
     {
         width: 98%;
     }
-    #footer
-    {
-        display: none;
-    }
     .portfo .imgcont .iframecont
     {
         width: 98%;
         padding-top: 55.5%;
         margin: 20px 0px;
+    }
+    #footer
+    {
+        font-size: 2em;
     }
     #images .imgcont img
     {

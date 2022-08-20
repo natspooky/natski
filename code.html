@@ -250,19 +250,9 @@
             &lt;ion-icon name="close" class="close"&gt;&lt;/ion-icon&gt;
         &lt;/div&gt;
         &lt;h1 id="something"&gt;&lt;/h1&gt;
-        &lt;div id="footer"&gt;
-            &lt;img src="icon/favicon/32.png"&gt;
-            &lt;p&gt;©2022 NATSKI&lt;/p&gt;
-        &lt;/div&gt;
         &lt;noscript&gt;
             &lt;h1&gt;javascript is disabled :(&lt;/h1&gt;
             &lt;p&gt;this website requires javascript to run.&lt;br&gt;please enable the use of javascript to see this page :)&lt;/p&gt;
-            &lt;style&gt;
-                #footer
-                {
-                    display: none;
-                }
-            &lt;/style&gt;
         &lt;/noscript&gt;
         &lt;script src="lib/js/main.js"&gt;&lt;/script&gt;
         &lt;script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"&gt;&lt;/script&gt;
@@ -523,19 +513,9 @@
             &lt;ion-icon name="menu" class="open"&gt;&lt;/ion-icon&gt;
             &lt;ion-icon name="close" class="close"&gt;&lt;/ion-icon&gt;
         &lt;/div&gt;
-        &lt;div id="footer"&gt;
-            &lt;img src="icon/favicon/32.png"&gt;
-            &lt;p&gt;©2022 NATSKI&lt;/p&gt;
-        &lt;/div&gt;
         &lt;noscript&gt;
             &lt;h1&gt;javascript is disabled :(&lt;/h1&gt;
             &lt;p&gt;this website requires javascript to run.&lt;br&gt;please enable the use of javascript to see this page :)&lt;/p&gt;
-            &lt;style&gt;
-                #footer
-                {
-                    display: none;
-                }
-            &lt;/style&gt;
         &lt;/noscript&gt;
         &lt;script src="lib/js/main.js"&gt;&lt;/script&gt;
         &lt;script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"&gt;&lt;/script&gt;
@@ -1120,21 +1100,24 @@ body
 }
 #footer
 {
-	height: 5vh;
 	position: absolute;
-	width: 100%;
+	padding: 2px 30px;
+	border-radius: 50px;
+	bottom: 0;
+	font-size: 1.3em;
 	display: flex;
-	background-color: rgba(0, 0, 0, 0.9);
-	bottom: -5vh;
+	background-color: rgba(0, 0, 0, 0.7);
 	flex-direction: row;
 	align-items: center;
+	justify-content: center;
 	color: #fff;
 	cursor: default;
 }
 #footer img
 {
-	height: 50%;
-	margin: 0px 7px;
+	height: 1em;
+	border-radius: 1px;
+	margin: 0px 7px 0px 0px;
 }
 noscript
 {
@@ -1254,7 +1237,7 @@ noscript p
     }
     #footer
     {
-        display: none;
+        font-size: 2em;
     }
     .portfo .imgcont .iframecont
     {
@@ -1464,19 +1447,9 @@ $(document).ready(function()&#123;
             <ion-icon name="menu" class="open"></ion-icon>
             <ion-icon name="close" class="close"></ion-icon>
         </div>
-        <div id="footer">
-            <img src="icon/favicon/32.png">
-            <p>©2022 NATSKI</p>
-        </div>
         <noscript>
             <h1>javascript is disabled :(</h1>
             <p>this website requires javascript to run.<br>please enable the use of javascript to see this page :)</p>
-            <style>
-                #footer
-                {
-                    display: none;
-                }
-            </style>
         </noscript>
         <script src="lib/js/main.js"></script>
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
