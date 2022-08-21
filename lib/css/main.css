@@ -306,7 +306,9 @@ body
 	text-decoration: none;
 	background-color: transparent;
 	border-radius: 8px;
+	border: 2px solid transparent;
 	margin: 10px;
+	box-shadow: 0px 0px 0px #00000080;
 	transform: scale(1);
 	animation: expand calc(0.3s * var(--i));
 	transition: 0.2s;
@@ -336,6 +338,8 @@ body
 #portfolio a:hover,#sys a:hover
 {
 	background-color: var(--accentcol);
+	box-shadow: 0px 0px 5px #00000080;
+	border: 2px solid #fff;
 	transform: scale(1.05);
 }
 #sys
@@ -556,7 +560,7 @@ body
 #about .content .links a:hover
 {
 	background: var(--accentcol);
-	border: 2px solid var(--themecol);
+	border: 2px solid #fff;
 	transform: scale(1.1);
 }
 #about .content img
@@ -566,7 +570,7 @@ body
 	margin-bottom: 20px;
 	border-radius: 50%;
 	box-shadow: 0px 0px 10px #00000080;
-	border: #fff solid 10px;
+	border: #fff solid 12px;
 	animation: expand 0.5s;
 }
 .footer
