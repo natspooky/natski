@@ -352,6 +352,7 @@ body
 	top: 0;
 	left: 0;
 	border-radius: 8px;
+	border: 2px solid transparent;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -367,6 +368,7 @@ body
 {
 	background-color: var(--accentcol);
 	transform: scale(1);
+	border: 2px solid #fff;
 }
 .portfo a .icon,.code a .icon
 {
