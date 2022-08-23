@@ -252,7 +252,7 @@ body
 {
 	font-size: 3em;
 	font-weight: bolder;
-	padding: 5px 50px;
+	padding: 5px 35px 5px 50px;
 	border-radius: 50px;
 	letter-spacing: 20px;
 	background-color: var(--accentcol);
@@ -267,7 +267,7 @@ body
 	top: 20px;
 	font-size: 3em;
 	font-weight: bolder;
-	padding: 5px 50px;
+	padding: 5px 35px 5px 50px;
 	border-radius: 50px;
 	letter-spacing: 20px;
 	background-color: var(--accentcol);
