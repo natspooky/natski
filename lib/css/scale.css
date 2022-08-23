@@ -45,7 +45,7 @@
         height: 480px;
         width: 640px;
     }
-    #about .content .links,#portfolio,#about,#sys
+    #about .content .links,#portfolio,#about,#sys,#settings
     {
         flex-direction: column;
     }
@@ -100,5 +100,16 @@
     .code .imgcont
     {
         font-size: 1em;
+    }
+    .toptext
+    {
+        display: block;
+    }
+    #home #timeofday
+    {
+        position: relative;
+        top: 20px;
+        margin-top: 0vh;
+        margin-bottom: 34vh;
     }
 }
