@@ -229,6 +229,7 @@ body
 	animation: fadein 0.5s;
 	align-items: center;
 	background-image: linear-gradient(to bottom, var(--accentcol),transparent);
+	transition: 0.2s;
 }
 .socialicons
 {
