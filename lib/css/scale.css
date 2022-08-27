@@ -92,6 +92,13 @@
         width: 98%;
         left: 1%;
         margin: 10px 0px;
+        border: 0px;
+        transform: scale(1);
+        animation: expand calc(0.2s * var(--i));
+    }
+    #images .imgcont img:hover
+    {
+        border: 0px;
     }
     #images .imgcont .imgside
     {

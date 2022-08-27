@@ -361,7 +361,6 @@ body
 	background-color: var(--accentcol);
 	box-shadow: 0px 0px 5px #00000080;
 	border: 2px solid #fff;
-	transform: scale(1.05);
 }
 #sys
 {
@@ -435,6 +434,15 @@ body
 {
 	width: 48%;
 	margin: 10px 6px;
+	transform: scale(0.9);
+	border: 2px solid transparent;
+	animation: expand2 calc(0.2s * var(--i));
+	transition: 0.2s;
+}
+#images .imgcont img:hover
+{
+	transform: scale(1);
+	border: 2px solid #fff;
 }
 #images .imgcont .imgside
 {
@@ -492,6 +500,7 @@ body
 	border-radius: 5px;
 	background-color: var(--accentcol);
 	animation: expand calc(0.1s * var(--i));
+	overflow: hidden;
 	transition: 0.2s;
 }
 #settings dl dd
@@ -500,6 +509,7 @@ body
 	margin-bottom: 20px;
 	background-color: var(--accentcol);
 	animation: expand calc(0.1s * var(--i));
+	overflow: hidden;
 	transition: 0.2s;
 }
 #settings dl dt .sysicon
@@ -529,7 +539,7 @@ body
 }
 #about p
 {
-	margin: 15px 15px 15px 150px;
+	margin: 15px 15px 15px 8%;
 	position: relative;
 	font-size: 2em;
 	line-height: 1.2;
@@ -552,7 +562,7 @@ body
 	width: 310px;
 	height: 400px;
 	float: right;
-	margin-right: 15px;
+	margin-right: 1.5%;
 }
 #about .content .links
 {
