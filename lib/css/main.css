@@ -508,7 +508,7 @@ body
 }
 #settings dl dd input
 {
-	width: 100%;
+	width: min-content;
 	background-color: transparent;
 	border: 0px;
 	color: #fff;
