@@ -94,8 +94,9 @@ body
 	transition: 0.2s;
 	transition-delay: 0s;
 	transform: translateX(-140px);
-	border: 10px solid var(--themecol);
-	background-color: var(--themecol);
+	border: 10px solid transparent;
+	background-color: var(--accentcol);
+	backdrop-filter: blur(5px);
 }
 .navigator.active
 {
