@@ -264,7 +264,7 @@ body
 }
 .toptext
 {
-	position: absolute;
+	position: relative;
 	top: 20px;
 	font-size: 3em;
 	font-weight: bolder;
@@ -277,10 +277,6 @@ body
 	text-shadow: 0px 0px 5px #00000080;
 	cursor: default;
 	display: none;
-}
-#sys .toptext
-{
-	position: relative;
 }
 #something
 {
@@ -428,6 +424,7 @@ body
 	background-color: var(--accentcol);
 	box-shadow: 0px 0px 10px #00000080;
 	margin: 10px 0px;
+	border: 5px solid transparent;
 	animation: expand calc(0.2s * var(--i));
 }
 #images .imgcont img
@@ -435,14 +432,14 @@ body
 	width: 48%;
 	margin: 10px 6px;
 	transform: scale(0.9);
-	border: 2px solid transparent;
+	border: 5px solid transparent;
 	animation: expand2 calc(0.2s * var(--i));
 	transition: 0.2s;
 }
 #images .imgcont img:hover
 {
 	transform: scale(1);
-	border: 2px solid #fff;
+	border: 3px solid #fff;
 }
 #images .imgcont .imgside
 {
@@ -536,6 +533,7 @@ body
 	position: relative;
 	background-color: var(--accentcol);
 	border-radius: 10px;
+	box-shadow: 0px 0px 10px #00000080;
 	padding: 20px;
 	font-size: 2em;
 	line-height: 1.2;
@@ -598,9 +596,16 @@ body
 	height: 300px;
 	margin-bottom: 20px;
 	border-radius: 50%;
+	transform: scale(1);
 	box-shadow: 0px 0px 10px #00000080;
-	border: #fff solid 12px;
+	border: 12px solid var(--accentcol);
 	animation: expand 0.5s;
+	transition: 0.2s;
+}
+#about .content img:hover
+{
+	border: 12px solid #fff;
+	transform: scale(1.05);
 }
 .footer
 {
@@ -621,7 +626,7 @@ body
 .footer img
 {
 	height: 1em;
-	border-radius: 1px;
+	border-radius: 2px;
 	margin: 0px 7px 0px 0px;
 }
 noscript

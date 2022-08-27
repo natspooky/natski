@@ -64,7 +64,8 @@
             <h1 class="toptext">ABOUT</h1>
             <p>
                 <span>i</span>
-                am a professional dumbass based in the UK who is learning various coding languages such as: python, html, css and javascript in pursuit of making some cool websites and programs.<br><br>I have also been studying logo design to further expand my creative toolset and increase my productivity in brand design and web development.
+                am a professional dumbass based in the UK who is learning various coding languages such as: python, html, css and javascript in pursuit of making some cool websites and programs.
+                <br><br>I have also been studying logo design to further expand my creative toolset and increase my productivity in brand design and web development.
             </p>
             <div class="content">
                 <img src="icon/avatar/300.png" alt="" class="aboutimage">
@@ -117,6 +118,12 @@
             </div>
             <h1 style="margin-left: 30px;">page under<br>development</h1>
         </div>
+        <div id="error" class="tabs">
+            <div class="socialicons">
+                <ion-icon name="warning"></ion-icon>
+            </div>
+            <h1 style="margin-left: 30px;">page under<br>development</h1>
+        </div>
         <div class="navigator active">
             <ul>
                 <li class="list active">
@@ -147,7 +154,7 @@
                 </li>
                 <hr>
                 <li class="list">
-                    <a href="code.html#" value="#sys">
+                    <a href="#error" value="#error">
                         <span class="icon">
                             <ion-icon name="git-branch-outline"></ion-icon>
                         </span>
@@ -179,7 +186,14 @@
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
         <script>
+            if(localStorage.getItem("theme")===null){
+                var cat='#180947'
+                }else{
+                    var cat=localStorage.getItem('theme');
+                };
+                $("#hexcol").val(cat)
             function load(){
+                $(':root').css({'--themecol':cat,'--accentcol':cat+"90"});
                 const d=new Date();
                 let hours=d.getHours();
                 if(hours>11){
@@ -193,6 +207,8 @@
                 document.getElementById("something").innerHTML=chance;
                 if(chance==11){
                     window.location.href='something.html';
+                }if(chance==66){
+                    window.location.href='somethingworse.html';
                 };
                 HTMLDocument.prototype.e=document.getElementById;
                 var el_down=document.e("oscheck");
