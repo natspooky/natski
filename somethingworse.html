@@ -31,62 +31,28 @@
             {
                 font-size: 3em;
                 letter-spacing: 3px;
-                position: relative;
+                position: absolute;
                 color: #fff;
+                text-align: center;
+                cursor: default;
             }
         </style>
 	</head>
     <body>
-        <h1 id="text">help help help help help help help help help help help help help help help help
-             help help help help help help help help help help help help help help help help help help help help help help help help help 
-             help help help help help help help
-             help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help
-             help help help help help help help help help help help help help help help help help help help help help help help help help 
-             help help help help help help help
-             help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help
-             help help help help help help help help help help help help help help help help help help help help help help help help help 
-             help help help help help help help
-             help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help
-             help help help help help help help help help help help help help help help help help help help help help help help help help 
-             help help help help help help help
-             help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help
-             help help help help help help help help help help help help help help help help help help help help help help help help help 
-             help help help help help help help
-             help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help
-             help help help help help help help help help help help help help help help help help help help help help help help help help 
-             help help help help help help help
-             help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help
-             help help help help help help help help help help help help help help help help help help help help help help help help help 
-             help help help help help help help
-             help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help
-             help help help help help help help help help help help help help help help help help help help help help help help help help 
-             help help help help help help help
-             help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help
-             help help help help help help help help help help help help help help help help help help help help help help help help help 
-             help help help help help help help
-             help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help
-             help help help help help help help help help help help help help help help help help help help help help help help help help 
-             help help help help help help help
-             help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help
-             help help help help help help help help help help help help help help help help help help help help help help help help help 
-             help help help help help help help
-             help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help
-             help help help help help help help help help help help help help help help help help help help help help help help help help 
-             help help help help help help help
-             help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help
-             help help help help help help help help help help help help help help help help help help help help help help help help help 
-             help help help help help help help
-             help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help
-             help help help help help help help help help help help help help help help help help help help help help help help help help 
-             help help help help help help help
-             help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help
-             help help help help help help help help help help help help help help help help help help help help help help help help help 
-             help help help help help help help
-             help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help help
-             help help help help help help help help help help help help help help help help help help help help help help help help help 
-             help help help help help help help
-             help help help help help help help help help help help help help help help help help help help help help help help </h1>
+        <h1 id="text"></h1>
         <script>
+            var help1='help help help help help help help help help help help help help help help help\n'
+            var text=help1.repeat(20)
+            var array=text.split("")
+            for (x=0;x<array.length;x++){
+                var y=Math.floor(Math.random()*Math.floor(2));
+                if(y==0){
+                    array[x]=array[x].toLowerCase();
+                }else{
+                    array[x]=array[x].toUpperCase();
+                }
+                document.getElementById("text").innerHTML=array.join("");
+            };
             setTimeout(function(){
                 window.location.href='index.html';
             },3000);
