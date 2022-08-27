@@ -256,6 +256,7 @@ body
 	padding: 5px 35px 5px 50px;
 	border-radius: 50px;
 	letter-spacing: 20px;
+	text-align: center;
 	background-color: var(--accentcol);
 	margin-top: 5vh;
 	margin-bottom: 12vh;
