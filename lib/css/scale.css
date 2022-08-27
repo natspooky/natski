@@ -119,4 +119,8 @@
         margin-top: 0vh;
         margin-bottom: 29vh;
     }
+    #settings dl dd:hover,#settings dl dt:hover
+    {
+        border: 2px solid var(--accentcol);
+    }
 }
