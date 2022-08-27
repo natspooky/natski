@@ -55,7 +55,7 @@
                 <img src="icon/img/html.png" class="splashimg" id="loadimg1">
             </div>
             <h1 style="margin-top: 5vh; font-size: 3em;">NATSKI</h1>
-            <a href="#details" value="#details" class="footer">
+            <a href="#error" value="#error" class="footer">
                 <img src="icon/img/Nicon.png">
                 <p>©2022 NATSKI</p>
             </a>
@@ -112,15 +112,10 @@
                 <ion-icon name="logo-twitter"></ion-icon>
             </div>
         </div>
-        <div id="details" class="tabs">
+        <div id="details" class="tabs"></div>
+        <div id="error" class="tabs">
             <div class="socialicons" style="animation: rotate 7s linear infinite;">
                 <ion-icon name="settings"></ion-icon>
-            </div>
-            <h1 style="margin-left: 30px;">page under<br>development</h1>
-        </div>
-        <div id="error" class="tabs">
-            <div class="socialicons">
-                <ion-icon name="warning"></ion-icon>
             </div>
             <h1 style="margin-left: 30px;">page under<br>development</h1>
         </div>
@@ -197,11 +192,11 @@
                 const d=new Date();
                 let hours=d.getHours();
                 if(hours>11){
-                    document.getElementById("timeofday").innerHTML="こんにちは!";
-                }else if(hours>15){
-                    document.getElementById("timeofday").innerHTML="こんばんは!";
+                    document.getElementById("timeofday").innerHTML="GOOD AFTERNOON!";
+                }if(hours>15){
+                    document.getElementById("timeofday").innerHTML="GOOD EVENING!";
                 }else{
-                    document.getElementById("timeofday").innerHTML="おはよう!";
+                    document.getElementById("timeofday").innerHTML="GOOD MORNING!";
                 };
                 let chance=Math.floor((Math.random()*89)+10);
                 document.getElementById("something").innerHTML=chance;

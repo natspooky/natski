@@ -107,10 +107,6 @@
         transform: scale(1);
         animation: expand calc(0.2s * var(--i));
     }
-    #images .imgcont img:hover
-    {
-        border: 0px;
-    }
     #images .imgcont .imgside
     {
 	    width: 100%;

@@ -436,11 +436,6 @@ body
 	animation: expand2 calc(0.2s * var(--i));
 	transition: 0.2s;
 }
-#images .imgcont img:hover
-{
-	transform: scale(1);
-	border: 3px solid #fff;
-}
 #images .imgcont .imgside
 {
 	position: relative;
