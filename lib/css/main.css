@@ -433,9 +433,8 @@ body
 	width: 48%;
 	margin: 10px 6px;
 	transform: scale(0.9);
-	border: 5px solid transparent;
+	border: 7px solid transparent;
 	animation: expand2 calc(0.2s * var(--i));
-	transition: 0.2s;
 }
 #images .imgcont .imgside
 {
