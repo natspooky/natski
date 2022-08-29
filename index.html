@@ -219,7 +219,7 @@
                 if(userAgent.match(/edg/i)){
                     browserName="Edge";
                 }else if(userAgent.match(/chrome|chromium|crios/i)){
-                    browserName="Chrome/Chromium";
+                    browserName="ChromeChromium";
                 }else if(userAgent.match(/firefox|fxios/i)){
                     browserName="Firefox";
                 }else if(userAgent.match(/safari/i)){
@@ -227,7 +227,7 @@
                 }else if(userAgent.match(/opr\//i)){
                     browserName="Opera";
                 }else{
-                    browserName="unable to identify :(\nplease use a supported browser for the best experience";
+                    browserName="unable to identify :(<br>please use a supported browser for the best experience";
                 };
                 document.getElementById('browserdet').innerHTML=browserName;
             };
