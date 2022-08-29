@@ -27,10 +27,6 @@
     {
         margin-bottom: 25vh;
     }
-    #about
-    {
-        justify-content: center;
-    }
     #about p
     {
         margin: 15px 25px;
@@ -129,7 +125,7 @@
         border: 2px solid var(--accentcol);
     }
 }
-@media screen and (max-height: 1500px) and (min-height: 980px)
+@media screen and (max-height: 1500px) and (min-height: 1000px)
 {
     .toptext
     {
@@ -138,5 +134,12 @@
     #about
     {
         justify-content: unset;
+    }
+}
+@media screen and (max-width: 1200px) and (min-width: 1000px)
+{
+    .navigator:hover
+    {
+        width: 70px;
     }
 }
