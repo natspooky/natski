@@ -46,7 +46,7 @@
         width: 640px;
         margin-bottom: 30px;
     }
-    #about .content .links,#portfolio,#about,#sys,#settings
+    #about .content .links,#portfolio,#about,#sys,#settings,#css,#html,#js
     {
         flex-direction: column;
     }
@@ -70,11 +70,11 @@
     {
         transform: scale(1.5);
     }
-    #portfolio a,#sys a
+    #portfolio a,#sys a,section a
     {
         transition: none;
     }
-    .portfo a,.code a
+    .portfo a,.code a,section a
     {
         background-color: var(--accentcol);
         transform: scale(1);
@@ -111,10 +111,6 @@
     {
         font-size: 1em;
     }
-    #systext
-    {
-        display: block;
-    }
     #home #timeofday
     {
         margin-top: 0vh;
@@ -128,10 +124,6 @@
 @media screen and (max-height: 1500px) and (min-height: 1000px)
 {
     .toptext
-    {
-        display: none;
-    }
-    #systext
     {
         display: none;
     }

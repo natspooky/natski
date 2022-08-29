@@ -27,12 +27,6 @@ body::-webkit-scrollbar,.portfo::-webkit-scrollbar,.tabs::-webkit-scrollbar,.cod
 {
 	display: none;
 }
-#sys::-webkit-scrollbar
-{
-	display: block;
-	height: 10px;
-	width: 0px;
-}
 .code .imgcont::-webkit-scrollbar
 {
 	display: block;
@@ -244,7 +238,7 @@ body
 	justify-content: center;
 	align-items: center;
 }
-#home
+#home,#errorcode,#errordetails
 {
 	flex-direction: column;
 }
@@ -262,23 +256,6 @@ body
 	border: 2px solid var(--accentcol);
 	box-shadow: 0px 0px 5px #00000080;
 	cursor: default;
-}
-#systext
-{
-	position: relative;
-	top: 20px;
-	font-size: 3em;
-	font-weight: bolder;
-	padding: 5px 35px 5px 50px;
-	border-radius: 50px;
-	letter-spacing: 20px;
-	background-color: var(--accentcol);
-	border: 2px solid var(--accentcol);
-	margin-top: 0vh;
-	margin-bottom: 5vh;
-	box-shadow: 0px 0px 5px #00000080;
-	cursor: default;
-	display: none;
 }
 #something
 {
@@ -314,7 +291,7 @@ body
 	animation: home3 0.5s;
 	opacity: 1; transform: scale(0.8) translateY(-40px) translateX(-140px) rotate(-40deg);
 }
-#portfolio a,#sys a
+#portfolio a,#sys a,#html .tiles,#js .tiles,#css .tiles
 {
 	position: relative;
 	display: flex;
@@ -332,7 +309,7 @@ body
 	animation: expand calc(0.3s * var(--i));
 	transition: 0.2s;
 }
-#portfolio a .icon,#sys a .icon
+#portfolio a .icon,#sys a .icon,#html .tiles .icon,#js .tiles .icon,#css .tiles .icon
 {
 	position: relative;
 	display: block;
@@ -340,11 +317,11 @@ body
 	line-height: 200px;
 	text-align: center;
 }
-#portfolio a .icon ion-icon,#sys a .icon ion-icon
+#portfolio a .icon ion-icon,#sys a .icon ion-icon,#html .tiles .icon ion-icon,#js .tiles .icon ion-icon,#css .tiles .icon ion-icon
 {
 	font-size: 15em;
 }
-#portfolio a .text,#sys a .text
+#portfolio a .text,#sys a .text,#html .tiles .text,#js .tiles .text,#css .tiles .text
 {
 	position: relative;
 	display: block;
@@ -354,17 +331,13 @@ body
 	padding: 0px 10px;
 	font-size: 4em;
 }
-#portfolio a:hover,#sys a:hover
+#portfolio a:hover,#sys a:hover,#html .tiles:hover,#js .tiles:hover,#css .tiles:hover
 {
 	background-color: var(--accentcol);
 	box-shadow: 0px 0px 5px #00000080;
 	border: 2px solid #fff;
 }
-#sys
-{
-	justify-content: unset;
-}
-.portfo a,.code a
+.portfo a,.code a,section a
 {
 	position: absolute;
 	top: 0;
@@ -382,19 +355,19 @@ body
 	transform: scale(0.95);
 	transition: 0.2s;
 }
-.portfo a:hover,.code a:hover
+.portfo a:hover,.code a:hover,section a:hover
 {
 	background-color: var(--accentcol);
 	transform: scale(1);
 	border: 2px solid #fff;
 }
-.portfo a .icon,.code a .icon
+.portfo a .icon,.code a .icon,section a .icon
 {
 	position: relative;
 	display: block;
 	text-align: center;
 }
-.portfo a .icon ion-icon,.code a .icon ion-icon
+.portfo a .icon ion-icon,.code a .icon ion-icon,section a .icon ion-icon
 {
 	font-size: 3em;
 }

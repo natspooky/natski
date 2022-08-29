@@ -55,7 +55,7 @@
             </div>
             <h1 style="margin-top: 3vh; font-size: 3em;">NATSKI 1.2</h1>
             <p style="font-size: 1.6em;">ground up web project</p>
-            <a href="#details" value="#error" class="footer">
+            <a href="#details" value="#errordetails" class="footer">
                 <img src="icon/img/Nicon.png">
                 <p>©2022 NATSKI</p>
             </a>
@@ -114,11 +114,25 @@
             </div>
         </div>
         <div id="details" class="tabs"></div>
-        <div id="error" class="tabs">
+        <div id="errorcode" class="tabs">
             <div class="socialicons" style="animation: rotate 7s linear infinite;">
                 <ion-icon name="settings"></ion-icon>
             </div>
-            <h1 style="margin-left: 30px;">page under<br>development</h1>
+            <h1 style="margin-top: 10px;">page under development</h1>
+            <p style="margin-bottom: 40px; font-size: 1.5em;">this page may be unuseable or missing content</p>
+            <a href="code.html" value="#code" style="font-size: 2em; text-decoration: none; color: #fff; background: var(--accentcol); padding: 5px 30px; border-radius: 50px; border: 2px solid var(--accentcol);">
+                <span>continue anyway</span>
+            </a>
+        </div>
+        <div id="errordetails" class="tabs">
+            <div class="socialicons" style="animation: rotate 7s linear infinite;">
+                <ion-icon name="settings"></ion-icon>
+            </div>
+            <h1 style="margin-top: 10px;">page under development</h1>
+            <p style="margin-bottom: 40px; font-size: 1.5em;">this page may be unuseable or missing content</p>
+            <a href="#details" value="#details" style="font-size: 2em; text-decoration: none; color: #fff; background: var(--accentcol); padding: 5px 30px; border-radius: 50px; border: 2px solid var(--accentcol);">
+                <span>continue anyway</span>
+            </a>
         </div>
         <div class="navigator active">
             <ul>
@@ -150,7 +164,7 @@
                 </li>
                 <hr>
                 <li class="list">
-                    <a href="#code" value="#error">
+                    <a href="#code" value="#errorcode">
                         <span class="icon">
                             <ion-icon name="git-branch-outline"></ion-icon>
                         </span>
