@@ -84,7 +84,7 @@
                 <dd id="oscheck" style="--i:2;">loading...</dd>
                 <dt style="--i:3;"><span class="sysicon"><ion-icon name="browsers-outline"></ion-icon></span>BROWSER</dt>
                 <dd id="browserdet" style="--i:4;">loading...</dd>
-                <dt style="--i:5;"><span class="sysicon"><ion-icon name="code-slash-outline"></ion-icon></span>WEB VERSION</dt>
+                <dt style="--i:5;" id="browsermain"><span class="sysicon"><ion-icon name="code-slash-outline"></ion-icon></span>WEB VERSION</dt>
                 <dd id="browserdet" style="--i:6;">N 1.2</dd>
                 <dt style="--i:7;"><span class="sysicon"><ion-icon name="color-palette-outline"></ion-icon></span>THEME COLOUR</dt>
                 <dd style="--i:8;">
@@ -228,6 +228,7 @@
                     browserName="Opera";
                 }else{
                     browserName="unable to identify :(<br>please use a supported browser for the best experience";
+                    $('#browserdet,#browsermain').css('background','#d3111190')
                 };
                 document.getElementById('browserdet').innerHTML=browserName;
             };
