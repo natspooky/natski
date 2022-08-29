@@ -598,6 +598,21 @@ body
 	border-radius: 2px;
 	margin: 0px 7px 0px 0px;
 }
+.devbutton
+{
+	font-size: 2em;
+	text-decoration: none;
+	color: #fff;
+	background: var(--accentcol);
+	padding: 5px 30px;
+	border-radius: 50px;
+	border: 2px solid var(--accentcol);
+	transition: 0.2s;
+}
+.devbutton:hover
+{
+	border: 2px solid #fff;
+}
 noscript
 {
 	position: fixed;
