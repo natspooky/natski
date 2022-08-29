@@ -29,7 +29,7 @@
     }
     #about
     {
-        justify-content: unset;
+        justify-content: center;
     }
     #about p
     {
@@ -115,19 +115,28 @@
     {
         font-size: 1em;
     }
-    .toptext
+    #systext
     {
         display: block;
     }
     #home #timeofday
     {
-        position: relative;
-        top: 20px;
         margin-top: 0vh;
         margin-bottom: 29vh;
     }
     #settings dl dd:hover,#settings dl dt:hover
     {
         border: 2px solid var(--accentcol);
+    }
+}
+@media screen and (max-height: 1500px) and (min-height: 980px)
+{
+    .toptext
+    {
+        display: none;
+    }
+    #about
+    {
+        justify-content: unset;
     }
 }

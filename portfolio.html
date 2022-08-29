@@ -49,7 +49,6 @@
         <div id="screen"></div>
 
         <div id="portfolio"  class="tabs">
-            <h1 class="toptext">PORTFOLIO</h1>
             <a href="#images" value="#images" style="--i:1;" data-tilt data-tilt-scale="1.05">
                 <span class="icon">
                     <ion-icon name="image-outline"></ion-icon>
@@ -68,6 +67,7 @@
                 </span>
                 <span class="text">Slides</span>
             </a>
+            <h1 class="toptext">PORTFOLIO</h1>
         </div>
         <div id="images" class="portfo">
             <a href="#" value="#portfolio">
@@ -207,12 +207,6 @@
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
         <script>
-            if (localStorage.getItem("theme")===null){
-                    var cat='#271252'
-                }else{
-                    var cat=localStorage.getItem('theme');
-                };
-            $(':root').css({'--themecol':cat,'--accentcol':cat+"90"});
             function load(){
                 $('#portfolio').css('display','flex');
             };

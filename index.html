@@ -48,20 +48,20 @@
         <div id="particles-js"></div>
         <div id="screen"></div>
         <div id="home" class="tabs">
-            <h1 id="timeofday"></h1>
             <div class="itemcont">
                 <img src="icon/img/js.png" class="splashimg" id="loadimg2">
                 <img src="icon/img/css.png" class="splashimg" id="loadimg3">
                 <img src="icon/img/html.png" class="splashimg" id="loadimg1">
             </div>
-            <h1 style="margin-top: 5vh; font-size: 3em;">NATSKI</h1>
-            <a href="#error" value="#error" class="footer">
+            <h1 style="margin-top: 3vh; font-size: 3em;">NATSKI 1.2</h1>
+            <p style="font-size: 1.6em;">ground up web project</p>
+            <a href="#details" value="#error" class="footer">
                 <img src="icon/img/Nicon.png">
                 <p>©2022 NATSKI</p>
             </a>
+            <h1 id="timeofday"></h1>
         </div>
         <div id="about" class="tabs">
-            <h1 class="toptext">ABOUT</h1>
             <p>
                 <span>i</span>
                 am a professional dumbass based in the UK who is learning various coding languages such as: python, html, css, javascript and others in pursuit of making some cool websites and programs.
@@ -76,9 +76,9 @@
                     <a href="https://twitch.tv/nat_spooky" target=”_blank” value="#twitch" style="--i:4;"><ion-icon name="logo-twitch"></ion-icon></a>
                 </div>
             </div>
+            <h1 class="toptext">ABOUT</h1>
         </div>
         <div id="settings" class="tabs">
-            <h1 class="toptext">SETTINGS</h1>
             <dl>
                 <dt style="--i:1;"><span class="sysicon"><ion-icon name="desktop-outline"></ion-icon></span>OPERATING SYSTEM</dt>
                 <dd id="oscheck" style="--i:2;">loading...</dd>
@@ -91,6 +91,7 @@
                     <input id="hexcol" type="text" value="#180947" autocomplete="off">
                 </dd>
             </dl>
+            <h1 class="toptext">SETTINGS</h1>
         </div>
         <div id="steam" class="tabs">
             <div class="socialicons">
@@ -149,7 +150,7 @@
                 </li>
                 <hr>
                 <li class="list">
-                    <a href="#error" value="#error">
+                    <a href="#code" value="#error">
                         <span class="icon">
                             <ion-icon name="git-branch-outline"></ion-icon>
                         </span>
@@ -158,7 +159,7 @@
                 </li>
                 <hr>
                 <li class="list">
-                    <a href="#settings" value="#settings" id="last">
+                    <a href="#settings" value="#settings" id="last" onclick="settings()">
                         <span class="icon">
                             <ion-icon name="settings-outline"></ion-icon>
                         </span>
@@ -181,30 +182,26 @@
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
         <script>
-            if(localStorage.getItem("theme")===null){
-                var cat='#271252'
-                }else{
-                    var cat=localStorage.getItem('theme');
-                };
-                $("#hexcol").val(cat)
+            const d=new Date();
+            let hours=d.getHours();
+            if(hours>11){
+                document.getElementById("timeofday").innerHTML="GOOD AFTERNOON!";
+            }if(hours>15){
+                document.getElementById("timeofday").innerHTML="GOOD EVENING!";
+            }if(hours<11){
+                document.getElementById("timeofday").innerHTML="GOOD MORNING!";
+            };
+            let chance=Math.floor((Math.random()*89)+10);
+            document.getElementById("something").innerHTML=chance;
+            if(chance==11){
+                window.location.href='something.html';
+            }if(chance==66){
+                window.location.href='somethingworse.html';
+            };
             function load(){
-                $(':root').css({'--themecol':cat,'--accentcol':cat+"90"});
-                const d=new Date();
-                let hours=d.getHours();
-                if(hours>11){
-                    document.getElementById("timeofday").innerHTML="GOOD AFTERNOON!";
-                }if(hours>15){
-                    document.getElementById("timeofday").innerHTML="GOOD EVENING!";
-                }else{
-                    document.getElementById("timeofday").innerHTML="GOOD MORNING!";
-                };
-                let chance=Math.floor((Math.random()*89)+10);
-                document.getElementById("something").innerHTML=chance;
-                if(chance==11){
-                    window.location.href='something.html';
-                }if(chance==66){
-                    window.location.href='somethingworse.html';
-                };
+                $('#home').css('display','flex');
+            };
+            function settings(){
                 HTMLDocument.prototype.e=document.getElementById;
                 var el_down=document.e("oscheck");
                 var Name="Unknown";
@@ -233,7 +230,6 @@
                     browserName="unable to identify :(";
                 };
                 document.getElementById('browserdet').innerHTML=browserName;
-                $('#home').css('display','flex');
             };
         </script>
     </body>
