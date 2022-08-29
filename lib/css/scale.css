@@ -131,6 +131,10 @@
     {
         display: none;
     }
+    #systext
+    {
+        display: none;
+    }
     #about
     {
         justify-content: unset;

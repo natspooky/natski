@@ -248,20 +248,6 @@ body
 {
 	flex-direction: column;
 }
-#home #timeofday
-{
-	position: absolute;
-	top: 20px;
-	font-size: 3em;
-	font-weight: bolder;
-	padding: 5px 35px 5px 50px;
-	border-radius: 50px;
-	letter-spacing: 20px;
-	text-align: center;
-	background-color: var(--accentcol);
-	text-shadow: 0px 0px 5px #00000080;
-	cursor: default;
-}
 .toptext
 {
 	position: absolute;
@@ -273,7 +259,8 @@ body
 	letter-spacing: 20px;
 	text-align: center;
 	background-color: var(--accentcol);
-	text-shadow: 0px 0px 5px #00000080;
+	border: 2px solid var(--accentcol);
+	box-shadow: 0px 0px 5px #00000080;
 	cursor: default;
 }
 #systext
@@ -286,9 +273,10 @@ body
 	border-radius: 50px;
 	letter-spacing: 20px;
 	background-color: var(--accentcol);
+	border: 2px solid var(--accentcol);
 	margin-top: 0vh;
 	margin-bottom: 5vh;
-	text-shadow: 0px 0px 5px #00000080;
+	box-shadow: 0px 0px 5px #00000080;
 	cursor: default;
 	display: none;
 }
