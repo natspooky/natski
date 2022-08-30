@@ -45,3 +45,7 @@
     from{transform: rotate(0);}
     to{transform: rotate(360deg);}
 }
+@keyframes rotate2 {
+    from{transform: rotate(0) scale(0.5);}
+    to{transform: rotate(360deg) scale(0.5);}
+}
