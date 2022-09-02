@@ -409,6 +409,7 @@ body
 #images .imgcont img
 {
 	width: 48%;
+	border-radius: 13px;
 	margin: 10px 6px;
 	transform: scale(0.9);
 	border: 6px solid transparent;
