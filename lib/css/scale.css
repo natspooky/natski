@@ -61,11 +61,6 @@
     {
         height: inherit;
     }
-    #about .content img:hover
-    {
-        border: 12px solid var(--accentcol);
-	    transform: scale(1);
-    }
     .socialicons
     {
         transform: scale(1.5);
