@@ -219,7 +219,9 @@
                 window.location.href='somethingworse.html';
             };
             function load(){
-                $('#home').css('display','flex');
+                $(document).ready(function(){
+                    $('#home').css('display','flex');
+                });
             };
             function settings(){
                 HTMLDocument.prototype.e=document.getElementById;
