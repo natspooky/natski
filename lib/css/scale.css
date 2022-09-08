@@ -3,9 +3,14 @@
     {
         left: 150px;
     }
+    #portfolio a,#sys a,#html .tiles,#js .tiles,#css .tiles
+    {
+        transition: 0s;
+    }
     .navigator
     {
         left: 40px;
+        transition: 0s;
     }
     .navigator:hover
     {
@@ -56,10 +61,12 @@
         height: 80px;
         width: 80px;
         font-size: 3em;
+        transition: 0s;
     }
     #about .content img
     {
         height: inherit;
+        transition: 0s;
     }
     .socialicons
     {
@@ -67,6 +74,7 @@
     }
     .portfo a,.code a,section a
     {
+        transition: 0s;
         background-color: var(--accentcol);
     }
     .portfo .imgcont img
@@ -83,6 +91,11 @@
     .footer
     {
         font-size: 2em;
+        transition: 0s;
+    }
+    .devbutton
+    {
+        transition: 0s;
     }
     #images .imgcont img
     {
