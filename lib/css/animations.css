@@ -73,3 +73,9 @@
     68%{background: #fff; transform: scale(1);}
     100%{background: #fff; transform: scale(1);}
 }
+@keyframes fade4
+{
+    60%{color: #fff;}
+    68%{color: #000;}
+    100%{color: #000;}
+}
