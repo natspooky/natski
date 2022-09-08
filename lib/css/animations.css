@@ -3,7 +3,6 @@
     from{opacity: 0; transform: translateY(60px);}
     to{opacity: 1; transform: translateY(0px);}
 }
-
 @keyframes background1
 {
     0%,100%{opacity: 0.1; transform: translateY(60px);}
@@ -34,19 +33,43 @@
     from{opacity: 0; transform: scale(0.7) translateY(70px) translateX(-70px) rotate(0deg);}
     to{opacity: 1; transform: scale(0.8) translateY(-40px) translateX(-140px) rotate(-40deg);}
 }
-@keyframes expand {
+@keyframes expand
+{
     from{opacity: 0; transform: scale(0.8);}
     to{opacity: 1; transform: scale(1);}
 }
-@keyframes expand2 {
+@keyframes expand2
+{
     from{opacity: 0; transform: scale(0.7);}
     to{opacity: 1; transform: scale(0.9);}
 }
-@keyframes rotate {
+@keyframes rotate
+{
     from{transform: rotate(0);}
     to{transform: rotate(360deg);}
 }
-@keyframes rotate2 {
+@keyframes rotate2
+{
     from{transform: rotate(0) scale(0.5);}
     to{transform: rotate(360deg) scale(0.5);}
+}
+@keyframes fade
+{
+    0%{opacity: 0; transform: translateY(60px); left: 20px;}
+    20%{opacity: 1; transform: translateY(0px); left: 20px;}
+    50%{opacity: 1; transform: translateY(0px); left: 130px;}
+    100%{opacity: 1; transform: translateY(0px); left: 130px;}
+}
+@keyframes fade2
+{
+    0%{transform: translateX(-200px);}
+    20%{transform: translateX(-200px);}
+    50%{transform: translateX(0px);}
+    100%{transform: translateX(0px);}
+}
+@keyframes fade3
+{
+    60%{background: transparent; transform: scale(0.97);}
+    68%{background: #fff; transform: scale(1);}
+    100%{background: #fff; transform: scale(1);}
 }
