@@ -225,7 +225,7 @@ body
 	border-radius: 10px;
 	animation: fadein 0.5s;
 	align-items: center;
-	background-image: linear-gradient(to bottom, transparent,var(--accentcol),transparent);
+	background-image: linear-gradient(to bottom, transparent,var(--accentcol),var(--accentcol),transparent);
 	transition: 0.2s;
 }
 .socialicons
@@ -510,6 +510,7 @@ body
 	padding: 20px;
 	font-size: 2em;
 	line-height: 1.2;
+	cursor: default;
 }
 #about p span
 {
