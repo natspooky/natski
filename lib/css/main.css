@@ -21,7 +21,7 @@
     display: block;
     width: 10px;
     background-color: var(--accentcol);
-    border-radius: 10px;
+    border-radius: 10px 10px 10px 0px;
 }
 body::-webkit-scrollbar,.portfo::-webkit-scrollbar,.tabs::-webkit-scrollbar,.code::-webkit-scrollbar,.navigator::-webkit-scrollbar
 {
@@ -222,10 +222,10 @@ body
 	box-sizing: initial;
 	color: white;
 	overflow-y: scroll;
-	border-radius: 10px 10px 0px 0px;
+	border-radius: 10px;
 	animation: fadein 0.5s;
 	align-items: center;
-	background-image: linear-gradient(to bottom, var(--accentcol),transparent);
+	background-image: linear-gradient(to bottom, transparent,var(--accentcol));
 	transition: 0.2s;
 }
 .socialicons
@@ -584,7 +584,7 @@ body
 	position: absolute;
 	padding: 2px 30px;
 	border-radius: 50px;
-	bottom: 0;
+	bottom: 10px;
 	font-size: 1.3em;
 	display: flex;
 	background-color: rgba(0, 0, 0, 0.7);
