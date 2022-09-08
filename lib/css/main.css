@@ -585,7 +585,7 @@ body
 	position: absolute;
 	padding: 2px 30px;
 	border-radius: 50px;
-	bottom: 10px;
+	bottom: 0px;
 	font-size: 1.3em;
 	display: flex;
 	background-color: rgba(0, 0, 0, 0.7);
