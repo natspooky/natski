@@ -20,6 +20,15 @@
         <link rel="apple-touch-icon"sizes="120x120" href="icon/mobile/120.png"/>
         <link rel="apple-touch-icon"sizes="144x144" href="icon/mobile/144.png"/>
         <link rel="apple-touch-icon"sizes="152x152" href="icon/mobile/152.png"/>
+        <meta property="og:title" content="Natspooky"/>
+        <meta property="og:description" content="ground up website for fun"/>
+        <meta property="og:image" content="https://natski.netlify.com/icon/avatar/400.png"/>
+        <meta property="og:image:width" content="400"/>
+        <meta property="og:image:height" content="400"/>
+        <meta property="og:url" content="https://natski.netlify.com"/>
+        <meta property="og:locale" content="en_US"/>
+        <meta property="og:type" content="website"/>
+        <meta property="og:site_name" content="NATSKI"/>
         <link rel="stylesheet" type="text/css" href="lib/css/main.css"/>
         <link rel="stylesheet" type="text/css" href="lib/css/animations.css"/>
         <link rel="stylesheet" type="text/css" href="lib/css/scale.css"/>
@@ -32,137 +41,196 @@
         <svg id="blob" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="sw-gradient" x1="0" x2="1" y1="1" y2="0"><stop id="stop1" stop-color="rgba(255, 255, 255, 0)" offset="0%"></stop><stop id="stop2" stop-color="rgba(255, 255, 255, 0.2)" offset="100%"></stop></linearGradient></defs><path fill="url(#sw-gradient)" d="M19.7,-23.2C25.9,-18.2,31.7,-12.4,34.2,-5C36.7,2.3,35.8,11.3,32.2,19.5C28.5,27.7,22,35.1,14.4,36.5C6.9,37.8,-1.7,33.1,-8.9,28.7C-16.1,24.3,-21.9,20.1,-24.4,14.7C-26.9,9.2,-26,2.4,-26.5,-6.4C-26.9,-15.1,-28.7,-25.7,-24.5,-31.1C-20.4,-36.5,-10.2,-36.6,-1.7,-34.6C6.7,-32.5,13.4,-28.3,19.7,-23.2Z" width="100%" height="100%" transform="translate(50 50)" stroke-width="0" style="transition: all 0.3s ease 0s;"></path></svg>
         <div id="particles-js"></div>
         <div id="screen"></div>
-        <div id="loading" class="tabs" style="flex-direction: column; text-align: center; background-image: none; animation: unset;">
-            <div class="socialicons" style="animation: rotate2 2s linear infinite;">
-                <ion-icon name="sync"></ion-icon>
-            </div>
-            <h1>loading...</h1>
+        <div id="sys" class="tabs">
+            <a href="#html" value="#html" style="--i:1;" data-tilt data-tilt-scale="1.05">
+                <span class="icon">
+                    <ion-icon name="logo-html5"></ion-icon>
+                </span>
+                <span class="text">HTML</span>
+            </a>
+            <a href="#css" value="#css" style="--i:2;" data-tilt data-tilt-scale="1.05">
+                <span class="icon">
+                    <ion-icon name="logo-css3"></ion-icon>
+                </span>
+                <span class="text">CSS</span>
+            </a>
+            <a href="#js" value="#js" style="--i:3;" data-tilt data-tilt-scale="1.05">
+                <span class="icon">
+                    <ion-icon name="logo-javascript"></ion-icon>
+                </span>
+                <span class="text">JS</span>
+            </a>
+            <h1 class="toptext">CODE</h1>
         </div>
-        <div id="portfolio"  class="tabs">
-            <a href="#images" value="#images" style="--i:1;" data-tilt data-tilt-scale="1.05">
+        <div id="html" class="tabs">
+            <a href="#index" value="#code1" class="tiles" style="--i:1;" data-tilt data-tilt-scale="1.05">
                 <span class="icon">
-                    <ion-icon name="image-outline"></ion-icon>
+                    <ion-icon name="logo-html5"></ion-icon>
                 </span>
-                <span class="text">Images</span>
+                <span class="text">index</span>
             </a>
-            <a href="#videos" value="#videos" style="--i:2;" data-tilt data-tilt-scale="1.05">
+            <a href="#portfolio" value="#code2" class="tiles" style="--i:2;" data-tilt data-tilt-scale="1.05">
                 <span class="icon">
-                    <ion-icon name="film-outline"></ion-icon>
+                    <ion-icon name="logo-html5"></ion-icon>
                 </span>
-                <span class="text">Videos</span>
+                <span class="text">portfolio</span>
             </a>
-            <a href="#slides" value="#slides" style="--i:3;" data-tilt data-tilt-scale="1.05">
+            <a href="#code" value="#code7" class="tiles" style="--i:3;" data-tilt data-tilt-scale="1.05">
                 <span class="icon">
-                    <ion-icon name="albums-outline"></ion-icon>
+                    <ion-icon name="logo-html5"></ion-icon>
                 </span>
-                <span class="text">Slides</span>
+                <span class="text">code</span>
             </a>
-            <h1 class="toptext">PORTFOLIO</h1>
+            <h1 class="toptext">HTML</h1>
+            <section>
+                <a href="#" value="#sys">
+                    <span class="icon">
+                        <ion-icon name="chevron-back-outline"></ion-icon>
+                    </span>
+                </a>
+            </section>
         </div>
-        <div id="images" class="portfo">
-            <a href="#" value="#portfolio">
+        <div id="css" class="tabs">
+            <a href="#main" value="#code3" class="tiles" style="--i:1;" data-tilt data-tilt-scale="1.05">
+                <span class="icon">
+                    <ion-icon name="logo-css3"></ion-icon>
+                </span>
+                <span class="text">main</span>
+            </a>
+            <a href="#animations" value="#code5" class="tiles" style="--i:3;" data-tilt data-tilt-scale="1.05">
+                <span class="icon">
+                    <ion-icon name="logo-css3"></ion-icon>
+                </span>
+                <span class="text">animations</span>
+            </a>
+            <a href="#scale" value="#code4" class="tiles" style="--i:2;" data-tilt data-tilt-scale="1.05">
+                <span class="icon">
+                    <ion-icon name="logo-css3"></ion-icon>
+                </span>
+                <span class="text">scale</span>
+            </a>
+            <h1 class="toptext">CSS</h1>
+            <section>
+                <a href="#" value="#sys">
+                    <span class="icon">
+                        <ion-icon name="chevron-back-outline"></ion-icon>
+                    </span>
+                </a>
+            </section>
+        </div>
+        <div id="js" class="tabs">
+            <a href="#main" value="#code6" class="tiles" style="--i:1;" data-tilt data-tilt-scale="1.05">
+                <span class="icon">
+                    <ion-icon name="logo-javascript"></ion-icon>
+                </span>
+                <span class="text">main</span>
+            </a>
+            <h1 class="toptext">JAVASCRIPT</h1>
+            <section>
+                <a href="#" value="#sys">
+                    <span class="icon">
+                        <ion-icon name="chevron-back-outline"></ion-icon>
+                    </span>
+                </a>
+            </section>
+        </div>
+        <div id="code1" class="code">
+            <a href="#html" value="#html">
                 <span class="icon">
                     <ion-icon name="chevron-back-outline"></ion-icon>
                 </span>
             </a>
             <div class="imgcont">
-                <div class="imgside">
-                    <img src="icon/portimg/1.png" style="--i:2;">
-                    <img src="icon/portimg/2.png" style="--i:3;">
-                    <img src="icon/portimg/3.png" style="--i:4;">
-                    <img src="icon/portimg/4.png" style="--i:5;">
-                    <img src="icon/portimg/6.png" loading="lazy">
-                    <img src="icon/portimg/8.png" loading="lazy">
-                    <img src="icon/portimg/21.png" loading="lazy">
-                    <img src="icon/portimg/22.png" loading="lazy">
-                    <img src="icon/portimg/9.png" loading="lazy">
-                    <img src="icon/portimg/19.png" loading="lazy">
-                    <img src="icon/portimg/11.png" loading="lazy">
-                    <img src="icon/portimg/12.png" loading="lazy">
-                    <img src="icon/portimg/15.png" loading="lazy">
-                    <img src="icon/portimg/20.png" loading="lazy">
-                    <img src="icon/portimg/14.png" loading="lazy">
-                    <img src="icon/portimg/17.png" loading="lazy">
-                    <img src="icon/portimg/18.png" loading="lazy">
-                    <img src="icon/portimg/10.png" loading="lazy">
-                    <img src="icon/portimg/13.png" loading="lazy">
-                    <img src="icon/portimg/7.png" loading="lazy">
-                    <img src="icon/portimg/5.png" loading="lazy">
-                    <img src="icon/portimg/16.png" loading="lazy">
-                </div>    
+                <iframe srcdoc="index.html"></iframe>
+                <code>
+                    <pre>
+index.html
+                    </pre>
+                </code>
             </div>
         </div>
-        <div id="videos" class="portfo">
-            <a href="#" value="#portfolio">
+        <div id="code2" class="code">
+            <a href="#html" value="#html">
                 <span class="icon">
                     <ion-icon name="chevron-back-outline"></ion-icon>
                 </span>
             </a>
             <div class="imgcont">
-                <div class="iframecont" style="--i: 2;">
-                    <iframe src="https://www.youtube.com/embed/0fu_HoRECIU?controls=0" title="Q-2020" frameborder="0" allow="accelerometer; gyroscope;" loading="lazy"></iframe>
-                </div>
-                <div class="iframecont" style="--i: 3;">
-                    <iframe src="https://www.youtube.com/embed/QzBYuU4A0B8?controls=0" title="R-2021" frameborder="0" allow="accelerometer; gyroscope;" loading="lazy"></iframe>
-                </div>
-                <div class="iframecont" style="--i: 4;">
-                    <iframe src="https://www.youtube.com/embed/wvCtucOSCn0?controls=0" title="E-2021" frameborder="0" allow="accelerometer; gyroscope;" loading="lazy"></iframe>
-                </div>
-                <div class="iframecont" style="--i: 5;">
-                    <iframe src="https://www.youtube.com/embed/5uszMd7aH3c?controls=0" title="S-2022" frameborder="0" allow="accelerometer; gyroscope;" loading="lazy"></iframe>
-                </div>
+                <code>
+                    <pre>
+portfolio.html
+                    </pre>
+                </code>
             </div>
         </div>
-        <div id="slides" class="portfo">
-            <a href="#" value="#portfolio">
+        <div id="code3" class="code">
+            <a href="#css" value="#css">
                 <span class="icon">
                     <ion-icon name="chevron-back-outline"></ion-icon>
                 </span>
             </a>
             <div class="imgcont">
-                <img src="icon/slides/1.png" style="--i:2;">
-                <img src="icon/slides/2.png" style="--i:3;">
-                <img src="icon/slides/3.png" style="--i:4;">
-                <img src="icon/slides/3.png" style="--i:5;">
-                <img src="icon/slides/4.png" style="--i:6;">
-                <img src="icon/slides/5.png" loading="lazy">
-                <img src="icon/slides/6.png" loading="lazy">
-                <img src="icon/slides/7.png" loading="lazy">
-                <img src="icon/slides/8.png" loading="lazy">
-                <img src="icon/slides/9.png" loading="lazy">
-                <img src="icon/slides/10.png" loading="lazy">
-                <img src="icon/slides/11.png" loading="lazy">
-                <img src="icon/slides/12.png" loading="lazy">
-                <img src="icon/slides/13.png" loading="lazy">
-                <img src="icon/slides/14.png" loading="lazy">
-                <img src="icon/slides/15.png" loading="lazy">
-                <img src="icon/slides/16.png" loading="lazy">
-                <img src="icon/slides/17.png" loading="lazy">
-                <img src="icon/slides/18.png" loading="lazy">
-                <img src="icon/slides/19.png" loading="lazy">
-                <img src="icon/slides/20.png" loading="lazy">
-                <img src="icon/slides/21.png" loading="lazy">
-                <img src="icon/slides/22.png" loading="lazy">
-                <img src="icon/slides/23.png" loading="lazy">
-                <img src="icon/slides/24.png" loading="lazy">
-                <img src="icon/slides/25.png" loading="lazy">
-                <img src="icon/slides/26.png" loading="lazy">
-                <img src="icon/slides/27.png" loading="lazy">
-                <img src="icon/slides/28.png" loading="lazy">
-                <img src="icon/slides/29.png" loading="lazy">
-                <img src="icon/slides/30.png" loading="lazy">
-                <img src="icon/slides/31.png" loading="lazy">
-                <img src="icon/slides/32.png" loading="lazy">
-                <img src="icon/slides/33.png" loading="lazy">
-                <img src="icon/slides/34.png" loading="lazy">
-                <img src="icon/slides/35.png" loading="lazy">
-                <img src="icon/slides/36.png" loading="lazy">
-                <img src="icon/slides/37.png" loading="lazy">
-                <img src="icon/slides/38.png" loading="lazy">
-                <img src="icon/slides/39.png" loading="lazy">
-                <img src="icon/slides/40.png" loading="lazy">
-                <img src="icon/slides/41.png" loading="lazy">
-                <img src="icon/slides/42.png" loading="lazy">
+                <code>
+                    <pre>
+main.css
+                    </pre>
+                </code>
+            </div>
+        </div>
+        <div id="code4" class="code">
+            <a href="#css" value="#css">
+                <span class="icon">
+                    <ion-icon name="chevron-back-outline"></ion-icon>
+                </span>
+            </a>
+            <div class="imgcont">
+                <code>
+                    <pre>
+scale.css
+                    </pre>
+                </code>
+            </div>
+        </div>
+        <div id="code5" class="code">
+            <a href="#css" value="#css">
+                <span class="icon">
+                    <ion-icon name="chevron-back-outline"></ion-icon>
+                </span>
+            </a>
+            <div class="imgcont">
+                <code>
+                    <pre>
+animations.css
+                    </pre>
+                </code>
+            </div>
+        </div>
+        <div id="code6" class="code">
+            <a href="#js" value="#js">
+                <span class="icon">
+                    <ion-icon name="chevron-back-outline"></ion-icon>
+                </span>
+            </a>
+            <div class="imgcont">
+                <code>
+                    <pre>
+main.js
+                    </pre>
+                </code>
+            </div>
+        </div>
+        <div id="code7" class="code">
+            <a href="#html" value="#html">
+                <span class="icon">
+                    <ion-icon name="chevron-back-outline"></ion-icon>
+                </span>
+            </a>
+            <div class="imgcont">
+                <code>
+                    <pre>
+code.html
+                    </pre>
+                </code>
             </div>
         </div>
         <div class="navigator active">
@@ -177,11 +245,11 @@
                 </li>
                 <hr>
                 <li class="list active">
-                    <a href="#" value="#portfolio">
+                    <a href="#" value="#sys">
                         <span class="icon">
-                            <ion-icon name="document-text-outline"></ion-icon>
+                            <ion-icon name="git-branch-outline"></ion-icon>
                         </span>
-                        <span class="text">portfolio</span>
+                        <span class="text">code</span>
                     </a>
                 </li>
             </ul>
@@ -200,8 +268,9 @@
         <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
         <script>
             function load(){
-                $('#loading').css('display','none');
-                $('#portfolio').css('display','flex');
+                $(document).ready(function(){
+                    $('#sys').css('display','flex');
+                });
             };
         </script>
     </body>
