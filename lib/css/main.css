@@ -269,6 +269,7 @@ body
 	border-radius: 10px;
 	bottom: 2vh;
 	right: 20px;
+	animation: fadein 0.5s;
 }
 #home .itemcont
 {
