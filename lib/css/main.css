@@ -606,6 +606,16 @@ body
 	border: 5px solid #fff;
 	border-radius: 32px;
 }
+#websites .iframecont a
+{
+	position: absolute;
+	bottom: 22px;
+	left: 22px;
+	padding: 5px;
+	font-size: 1.5em;
+	text-decoration: none;
+	color: #fff;
+}
 .footer
 {
 	position: absolute;
