@@ -53,6 +53,7 @@
 {
     .middlepoint
     {
+        justify-content: unset;
         align-items: unset;
     }
 }
