@@ -17,7 +17,7 @@
     }
     .navigator ul li a
     {
-        height: 17.2vh;
+        height: 14.05vh;
     }
     .navigator ul hr
     {
@@ -50,7 +50,7 @@
         width: 640px;
         margin-bottom: 30px;
     }
-    #about .content .links,#portfolio,#about,#sys,#settings,#css,#html,#js
+    #about .content .links,#portfolio,#about,#sys,#settings,#css,#html,#js,#websites
     {
         flex-direction: column;
     }
@@ -125,6 +125,12 @@
     #settings dl dd:hover,#settings dl dt:hover
     {
         border: 2px solid var(--accentcol);
+    }
+    #websites .iframecont
+    {
+        width: 98%;
+        padding-top: 80%;
+        margin: 20px 0px;
     }
 }
 @media screen and (max-height: 1500px) and (min-height: 1000px)

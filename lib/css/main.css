@@ -134,7 +134,7 @@ body
 	position: relative;
 	display: flex;
 	align-items: center;
-	height: 17.8vh;
+	height: 14.55vh;
 	width: 100%;
 	font-weight: bolder;
 	color: #fff;
@@ -580,6 +580,32 @@ body
 {
 	border: 12px solid #fff;
 	transform: scale(1.05);
+}
+#websites
+{
+	align-items: flex-end;
+}
+#websites .iframecont
+{
+	position: relative;
+	width: 49%;
+	overflow: hidden;
+    padding-top: 45%;
+	box-shadow: 0px 0px 10px #00000080;
+	background: #fff;
+	border-radius: 27px;
+	margin: 10px;
+	animation: expand calc(0.2s * var(--i));
+}
+#websites .iframecont iframe
+{
+	position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+	border-radius: 27px;
 }
 .footer
 {

@@ -1,0 +1,40 @@
+@media (orientation: portrait){
+    .container
+    {
+	    width: 80%;
+    }
+    .container .topbar
+    {
+        height: 300px;
+    }
+    .container .topbar img
+    {
+        margin-top: 20px;
+        height: 120%;
+        border: 6px solid transparent;
+    }
+    .container .middlebar
+    {
+        height: 130px;
+    }
+    .container .middlebar p
+    {
+        font-size: 2em;
+    }
+    .container .middlebar span
+    {
+        margin-left: 10.5px;
+        margin-bottom: 7.5px;
+    }
+    .container .bottombar .sociallinks
+    {
+        margin: 30px 0px;
+        width: 60%;
+        transform: scale(1.5);
+        animation: socialfadeinmobile calc(0.3s * var(--i));;
+    }
+    .credits .footer
+    {
+        transform: scale(1.2);
+    }
+}
