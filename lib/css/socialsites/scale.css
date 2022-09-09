@@ -49,9 +49,9 @@
         width: 85%;
     }
 }
-@media screen and (max-width: 400px) and (min-width: 90px;)
+@media screen and (max-width: 400px) and (min-width: 90px)
 {
-    #websites
+    .middlepoint
     {
         align-items: unset;
     }
