@@ -61,4 +61,8 @@
     {
         height: 90%;
     }
+    .container
+    {
+        transform: scale(0.7);
+    }
 }
