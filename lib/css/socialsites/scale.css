@@ -38,3 +38,14 @@
         transform: scale(1.2);
     }
 }
+@media screen and (max-height: 1500px) and (min-height: 1000px)
+{
+
+}
+@media screen and (max-width: 1200px) and (min-width: 1000px)
+{
+    .container
+    {
+        width: 85%;
+    }
+}
