@@ -132,6 +132,10 @@
         padding-top: 80%;
         margin: 20px 0px;
     }
+    #websites
+    {
+        align-items: center;
+    }
 }
 @media screen and (max-height: 1500px) and (min-height: 1000px)
 {
