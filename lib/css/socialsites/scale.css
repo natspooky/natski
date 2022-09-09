@@ -54,8 +54,11 @@
     .middlepoint
     {
         justify-content: unset;
-        align-items: unset;
         overflow-y: scroll;
         overflow-x: hidden;
+    }
+    .container .topbar img
+    {
+        height: 100%;
     }
 }
