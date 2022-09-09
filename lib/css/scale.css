@@ -10,7 +10,6 @@
     .navigator
     {
         left: 40px;
-        transition: 0s;
     }
     .navigator:hover
     {
@@ -54,6 +53,11 @@
     #about .content .links,#portfolio,#about,#sys,#settings,#css,#html,#js
     {
         flex-direction: column;
+    }
+    #about .content .links
+    {
+        transform-origin: top left;
+        transform: scale(1.09);
     }
     #about .content .links a
     {
