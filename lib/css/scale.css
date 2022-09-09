@@ -159,4 +159,8 @@
         margin: 15px 15px;
         padding: 10px;
     }
+    #websites .iframecont
+    {
+        padding-top: 70%;
+    }
 }

@@ -49,3 +49,10 @@
         width: 85%;
     }
 }
+@media screen and (min-width: 400px)
+{
+    #websites
+    {
+        align-items: unset;
+    }
+}
