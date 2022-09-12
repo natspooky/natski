@@ -10,9 +10,7 @@
     .container .topbar img
     {
         margin-top: 20px;
-        width: 50%;
-        height: auto;
-
+        height: 120%;
         border: 6px solid transparent;
     }
     .container .middlebar
