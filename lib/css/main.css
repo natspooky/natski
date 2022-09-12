@@ -226,7 +226,7 @@ body
 	box-sizing: initial;
 	color: white;
 	overflow-y: scroll;
-	border-radius: 10px;
+	border-radius: 0px 15px 0px 0px;
 	animation: fadein 0.5s;
 	align-items: center;
 	background-image: linear-gradient(to bottom, transparent,var(--accentcol),var(--accentcol),transparent);
@@ -615,10 +615,12 @@ body
 {
 	position: absolute;
 	bottom: 22px;
-	left: 22px;
+	left: 23px;
 	padding: 0px 4px;
-	font-size: 2em;
+	font-size: 1.7em;
 	text-decoration: none;
+	background-color: var(--themecol);
+	border-radius: 12px;
 	color: #fff;
 }
 .footer
