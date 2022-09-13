@@ -57,25 +57,20 @@
 {
     0%{opacity: 0; transform: translateY(60px); left: 20px;}
     20%{opacity: 1; transform: translateY(0px); left: 20px;}
-    50%{opacity: 1; transform: translateY(0px); left: 130px;}
-    100%{opacity: 1; transform: translateY(0px); left: 130px;}
+    50%,100%{opacity: 1; transform: translateY(0px); left: 130px;}
 }
 @keyframes fade2
 {
-    0%{transform: translateX(-200px);}
-    20%{transform: translateX(-200px);}
-    50%{transform: translateX(0px);}
-    100%{transform: translateX(0px);}
+    0%,20%{transform: translateX(-200px);}
+    50%,100%{transform: translateX(0px);}
 }
 @keyframes fade3
-{
-    60%{background: transparent; transform: scale(0.97);}
-    65%{background: #fff; transform: scale(1);}
-    100%{background: #fff; transform: scale(1);}
+{   
+    0%,60%{background: transparent; transform: scale(0.97);}
+    65%,100%{background: #fff; transform: scale(1);}
 }
 @keyframes fade4
 {
-    60%{color: #fff;}
-    65%{color: #000;}
-    100%{color: #000;}
+    0%,60%{color: #fff;}
+    65%,100%{color: #000;}
 }
