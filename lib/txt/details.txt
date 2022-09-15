@@ -1,0 +1,3 @@
+Author : Natski - natski.netlify.com
+MIT license: http://opensource.org/licenses/MIT
+v1.2.0
