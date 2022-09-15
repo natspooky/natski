@@ -136,7 +136,7 @@ body
 	position: relative;
 	display: flex;
 	align-items: center;
-	height: 14.53vh;
+	height: 14.45vh;
 	width: 100%;
 	font-weight: bolder;
 	color: #fff;
@@ -664,8 +664,6 @@ body
 	height: 100%;
 	border-radius: 10px;
 	background-color: var(--accentcol);
-	color: #fff;
-	font-size: 6em;
 }
 noscript
 {
