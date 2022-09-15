@@ -31,6 +31,10 @@ body::-webkit-scrollbar,.portfo::-webkit-scrollbar,.tabs::-webkit-scrollbar,.cod
 {
 	display: none;
 }
+.code .imgcont::-webkit-scrollbar
+{
+	display: none;
+}
 ::placeholder
 {
 	color: #f1f1f1;
@@ -383,13 +387,6 @@ body
 	overscroll-behavior: contain;
 	overflow-x: hidden;
 	overflow-y: scroll;
-}
-.code .imgcont
-{
-	align-items: flex-start;
-	font-size: 1.5em;
-	overflow-x: scroll;
-	cursor: default;
 }
 .portfo .imgcont img
 {
