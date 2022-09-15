@@ -657,7 +657,7 @@ body
 {
 	border: 2px solid #fff;
 }
-#details iframe,.imgcont iframe
+.imgcont iframe
 {
 	border: 0px;
 	width: 100%;
