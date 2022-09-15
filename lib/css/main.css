@@ -664,6 +664,8 @@ body
 	height: 100%;
 	border-radius: 10px;
 	background-color: var(--accentcol);
+	color: #fff;
+	font-size: 6em;
 }
 noscript
 {
