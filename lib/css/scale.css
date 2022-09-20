@@ -140,10 +140,6 @@
     {
         font-size: 2.3em;
     }
-    #websites .iframecont img
-    {
-        top: -20%;
-    }
 }
 @media screen and (max-height: 1500px) and (min-height: 1000px)
 {
