@@ -614,19 +614,27 @@ body
 	border-radius: 0px 10px 0px 0px;
 	color: #fff;
 }
-#websites .iframecont img
+#websites .iframecont .img
 {
 	width: 100%;
-	opacity: 1;
+	height: 100%;
 	position: absolute;
-	top: 0%;
+	top: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	transition: 0.3s;
+}
+#websites .iframecont .img img
+{
+	position: relative;
+	height: 50%;
 }
 #websites .iframecont:hover
 {
 	transform: scale(1);
 }
-#websites .iframecont:hover img
+#websites .iframecont:hover .img
 {
 	opacity: 0;
 }
