@@ -58,24 +58,3 @@
     from{transform: rotate(0) scale(0.5);}
     to{transform: rotate(360deg) scale(0.5);}
 }
-@keyframes fade
-{
-    0%{opacity: 0; transform: translateY(60px); left: 20px;}
-    20%{opacity: 1; transform: translateY(0px); left: 20px;}
-    50%,100%{opacity: 1; transform: translateY(0px); left: 130px;}
-}
-@keyframes fade2
-{
-    0%,20%{transform: translateX(-200px);}
-    50%,100%{transform: translateX(0px);}
-}
-@keyframes fade3
-{   
-    0%,60%{background: transparent; transform: scale(0.97);}
-    65%,100%{background: #fff; transform: scale(1);}
-}
-@keyframes fade4
-{
-    0%,60%{color: #fff;}
-    65%,100%{color: #000;}
-}
