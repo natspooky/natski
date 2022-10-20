@@ -507,6 +507,20 @@ header .bottombar #N
 	background-color: #fff;
 	width: 100%;
 }
+.img
+{
+	width: 67%;
+	margin: 20px;
+	border-radius: 15px;
+	opacity: 0;
+	transform: scale(0.8);
+	transition: 0.4s;
+}
+.img.active
+{
+	opacity: 1;
+	transform: scale(1);
+}
 .abouttext
 {
 	margin: 4vw 0px;

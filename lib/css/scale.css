@@ -213,6 +213,10 @@
     {
         aspect-ratio: 9 / 16;
     }
+    .img
+    {
+        width: 95%;
+    }
 }
 @media screen and (max-width: 1200px) and (min-width: 1000px)
 {
