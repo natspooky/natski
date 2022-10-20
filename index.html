@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en-US">
     <head>
-		<title>NATSKI</title>
+		<title>Natski</title>
         <meta charset="UTF-8" content="width=device-width, initial-scale=1"/>
         <meta name="description" content="ground up website for fun"/>
         <meta name="keywords" content="portfolio, natspooky, natski"/>
@@ -38,155 +38,260 @@
         <link rel="stylesheet" type="text/css" href="lib/css/main.css"/>
         <link rel="stylesheet" type="text/css" href="lib/css/animations.css"/>
         <link rel="stylesheet" type="text/css" href="lib/css/scale.css"/>
-        <script src="lib/js/particles.js"></script>
         <script src="lib/js/jquery.js"></script>
 	</head>
-    <body onload="load()">
-        <svg id="wave2" style="transform:rotate(180deg); transition: 0.3s" viewBox="0 0 1440 490" version="1.1" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="sw-gradient-0" x1="0" x2="0" y1="1" y2="0"><stop stop-color="rgba(255, 255, 255, 0.3)" offset="0%"></stop><stop stop-color="rgba(255, 255, 255, 0.05)" offset="100%"></stop></linearGradient></defs><path style="transform:translate(0, 0px); opacity:1" fill="url(#sw-gradient-0)" d="M0,98L34.3,106.2C68.6,114,137,131,206,155.2C274.3,180,343,212,411,220.5C480,229,549,212,617,187.8C685.7,163,754,131,823,163.3C891.4,196,960,294,1029,343C1097.1,392,1166,392,1234,375.7C1302.9,359,1371,327,1440,285.8C1508.6,245,1577,196,1646,204.2C1714.3,212,1783,278,1851,302.2C1920,327,1989,310,2057,285.8C2125.7,261,2194,229,2263,245C2331.4,261,2400,327,2469,318.5C2537.1,310,2606,229,2674,236.8C2742.9,245,2811,343,2880,367.5C2948.6,392,3017,343,3086,302.2C3154.3,261,3223,229,3291,187.8C3360,147,3429,98,3497,98C3565.7,98,3634,147,3703,171.5C3771.4,196,3840,196,3909,212.3C3977.1,229,4046,261,4114,269.5C4182.9,278,4251,261,4320,220.5C4388.6,180,4457,114,4526,106.2C4594.3,98,4663,147,4731,187.8C4800,229,4869,261,4903,277.7L4937.1,294L4937.1,490L4902.9,490C4868.6,490,4800,490,4731,490C4662.9,490,4594,490,4526,490C4457.1,490,4389,490,4320,490C4251.4,490,4183,490,4114,490C4045.7,490,3977,490,3909,490C3840,490,3771,490,3703,490C3634.3,490,3566,490,3497,490C3428.6,490,3360,490,3291,490C3222.9,490,3154,490,3086,490C3017.1,490,2949,490,2880,490C2811.4,490,2743,490,2674,490C2605.7,490,2537,490,2469,490C2400,490,2331,490,2263,490C2194.3,490,2126,490,2057,490C1988.6,490,1920,490,1851,490C1782.9,490,1714,490,1646,490C1577.1,490,1509,490,1440,490C1371.4,490,1303,490,1234,490C1165.7,490,1097,490,1029,490C960,490,891,490,823,490C754.3,490,686,490,617,490C548.6,490,480,490,411,490C342.9,490,274,490,206,490C137.1,490,69,490,34,490L0,490Z"></path></svg>
-        <svg id="wave" style="transform:rotate(0deg); transition: 0.3s" viewBox="0 0 1440 490" version="1.1" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="sw-gradient-0" x1="0" x2="0" y1="1" y2="0"><stop stop-color="rgba(255, 255, 255, 0.3)" offset="0%"></stop><stop stop-color="rgba(255, 255, 255, 0.05)" offset="100%"></stop></linearGradient></defs><path style="transform:translate(0, 0px); opacity:1" fill="url(#sw-gradient-0)" d="M0,98L34.3,106.2C68.6,114,137,131,206,155.2C274.3,180,343,212,411,220.5C480,229,549,212,617,187.8C685.7,163,754,131,823,163.3C891.4,196,960,294,1029,343C1097.1,392,1166,392,1234,375.7C1302.9,359,1371,327,1440,285.8C1508.6,245,1577,196,1646,204.2C1714.3,212,1783,278,1851,302.2C1920,327,1989,310,2057,285.8C2125.7,261,2194,229,2263,245C2331.4,261,2400,327,2469,318.5C2537.1,310,2606,229,2674,236.8C2742.9,245,2811,343,2880,367.5C2948.6,392,3017,343,3086,302.2C3154.3,261,3223,229,3291,187.8C3360,147,3429,98,3497,98C3565.7,98,3634,147,3703,171.5C3771.4,196,3840,196,3909,212.3C3977.1,229,4046,261,4114,269.5C4182.9,278,4251,261,4320,220.5C4388.6,180,4457,114,4526,106.2C4594.3,98,4663,147,4731,187.8C4800,229,4869,261,4903,277.7L4937.1,294L4937.1,490L4902.9,490C4868.6,490,4800,490,4731,490C4662.9,490,4594,490,4526,490C4457.1,490,4389,490,4320,490C4251.4,490,4183,490,4114,490C4045.7,490,3977,490,3909,490C3840,490,3771,490,3703,490C3634.3,490,3566,490,3497,490C3428.6,490,3360,490,3291,490C3222.9,490,3154,490,3086,490C3017.1,490,2949,490,2880,490C2811.4,490,2743,490,2674,490C2605.7,490,2537,490,2469,490C2400,490,2331,490,2263,490C2194.3,490,2126,490,2057,490C1988.6,490,1920,490,1851,490C1782.9,490,1714,490,1646,490C1577.1,490,1509,490,1440,490C1371.4,490,1303,490,1234,490C1165.7,490,1097,490,1029,490C960,490,891,490,823,490C754.3,490,686,490,617,490C548.6,490,480,490,411,490C342.9,490,274,490,206,490C137.1,490,69,490,34,490L0,490Z"></path></svg>
-        <svg id="blob" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="sw-gradient" x1="0" x2="1" y1="1" y2="0"><stop id="stop1" stop-color="rgba(255, 255, 255, 0)" offset="0%"></stop><stop id="stop2" stop-color="rgba(255, 255, 255, 0.2)" offset="100%"></stop></linearGradient></defs><path fill="url(#sw-gradient)" d="M19.7,-23.2C25.9,-18.2,31.7,-12.4,34.2,-5C36.7,2.3,35.8,11.3,32.2,19.5C28.5,27.7,22,35.1,14.4,36.5C6.9,37.8,-1.7,33.1,-8.9,28.7C-16.1,24.3,-21.9,20.1,-24.4,14.7C-26.9,9.2,-26,2.4,-26.5,-6.4C-26.9,-15.1,-28.7,-25.7,-24.5,-31.1C-20.4,-36.5,-10.2,-36.6,-1.7,-34.6C6.7,-32.5,13.4,-28.3,19.7,-23.2Z" width="100%" height="100%" transform="translate(50 50)" stroke-width="0" style="transition: all 0.3s ease 0s;"></path></svg>
-        <div id="particles-js"></div>
-        <div id="screen"></div>
-        <div id="home" class="tabs">
-            <div class="itemcont">
-                <img src="icon/img/js.png" class="splashimg" id="loadimg2">
-                <img src="icon/img/css.png" class="splashimg" id="loadimg3">
-                <img src="icon/img/html.png" class="splashimg" id="loadimg1">
+    <body>
+        <div class="loaderback">
+            <div class="loadcont">
+                <div id="loader"></div>
             </div>
-            <h1 style="margin-top: 3vh; font-size: 3em;">NATSKI 1.2</h1>
-            <p style="font-size: 1.6em; text-align: center;">ground up web project<br>midnight colours update!</p>
-            <a href="details.html#" class="footer">
-                <img src="icon/img/Nicon.png">
-                <p>©2022 NATSKI</p>
-            </a>
-            <h1 id="timeofday" class="toptext"></h1>
         </div>
-        <div id="about" class="tabs">
-            <p>
-                <span>i</span>
-                am a professional dumbass under the alias of natski/natspooky and am based in the UK, learning various coding languages such as: python, html, css, javascript and others in pursuit of making some cool websites and programs.
-                <br><br>I have also been studying logo design to further expand my creative toolset and increase my productivity in brand design and web development.
-            </p>
-            <div class="content">
-                <a href="https://natskisocial.netlify.com">
-                    <img src="icon/avatar/300.png" alt="">
-                </a>
-                <div class="links">
-                    <a href="https://instagram.com/natspooky_" target=”_blank” value="#insta" style="--i:1;"><ion-icon name="logo-instagram"></ion-icon></a>
-                    <a href="https://twitter.com/natspooky_" target=”_blank” value="#twitter" style="--i:2;"><ion-icon name="logo-twitter"></ion-icon></a>
-                    <a href="https://steamcommunity.com/id/natski_/" target=”_blank” value="#steam" style="--i:3;"><ion-icon name="logo-steam"></ion-icon></a>
-                    <a href="https://twitch.tv/nat_spooky" target=”_blank” value="#twitch" style="--i:4;"><ion-icon name="logo-twitch"></ion-icon></a>
+        <header>
+            <div class="pannel" style="background-image: url('icon/img/1.png');">
+                <div class="pannelinfo">
+                    <h1>Art Portfolio</h1>
+                    <p>A collection of art for GCSE/Alevel</p>
+                    <div class="panneltext">
+                        GCSE/Alevel artwork and slides throughout the whole project detailing creation setps, formats and assets used
+                    </div>
+                    <a class="pannelbutton" onClick='document.getElementById("ifr").src="portfolio.html";'>
+                        enter
+                    </a>
                 </div>
             </div>
-            <h1 class="toptext">ABOUT</h1>
-        </div>
-        <div id="settings" class="tabs">
-            <dl>
-                <dt style="--i:1;"><span class="sysicon"><ion-icon name="desktop-outline"></ion-icon></span>OPERATING SYSTEM</dt>
-                <dd id="oscheck" style="--i:2;">loading...</dd>
-                <dt style="--i:3;" id="browsermain"><span class="sysicon"><ion-icon name="browsers-outline"></ion-icon></span>BROWSER</dt>
-                <dd id="browserdet" style="--i:4;">loading...</dd>
-                <dt style="--i:5;"><span class="sysicon"><ion-icon name="code-slash-outline"></ion-icon></span>WEB N_DB</dt>
-                <dd style="--i:6;">Version N1.2</dd>
-                <dt style="--i:7;"><span class="sysicon"><ion-icon name="color-palette-outline"></ion-icon></span>THEME COLOUR</dt>
-                <dd style="--i:8;">
-                    <input id="hexcol" type="text" value="#180947" autocomplete="off">
-                </dd>
-            </dl>
-            <h1 class="toptext">SETTINGS</h1>
-        </div>
-        <div id="steam" class="tabs">
-            <div class="socialicons">
-                <ion-icon name="logo-steam"></ion-icon>
+            <div class="pannel" style="background-image: url('icon/img/2.png');">
+                <div class="pannelinfo">
+                    <h1>Websites</h1>
+                    <p>Web projects for brands/personal</p>
+                    <div class="panneltext">
+                        Websites built for either general use such as social linking sites or for brand specific jobs
+                    </div>
+                    <a class="pannelbutton" onClick='document.getElementById("ifr").src="websites.html";'>
+                        enter
+                    </a>
+                </div>
             </div>
-        </div>
-        <div id="twitch" class="tabs">
-            <div class="socialicons">
-                <ion-icon name="logo-twitch"></ion-icon>
+            <div class="pannel" style="background-image: url('icon/img/3.png');">
+                <div class="pannelinfo">
+                    <h1>Source Code</h1>
+                    <p>Code recources created for websites</p>
+                    <div class="panneltext">
+                        change this
+                    </div>
+                    <a class="pannelbutton" onClick='document.getElementById("ifr").src="code.html";'>
+                        enter
+                    </a>
+                </div>
             </div>
-        </div>
-        <div id="insta" class="tabs">
-            <div class="socialicons">
-                <ion-icon name="logo-instagram"></ion-icon>
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+            <section class="pannelselector">
+                <a class="panneltile" onclick="currentSlide(1)" style="background-image: url('icon/img/1.png');"></a>
+                <a class="panneltile" onclick="currentSlide(2)" style="background-image: url('icon/img/2.png');"></a>
+                <a class="panneltile" onclick="currentSlide(3)" style="background-image: url('icon/img/3.png');"></a>
+            </section>
+            <div class="progress">
+                <div class="progress-bar" id="progress-bar"></div>
             </div>
-        </div>
-        <div id="twitter" class="tabs">
-            <div class="socialicons">
-                <ion-icon name="logo-twitter"></ion-icon>
+        </header>
+            <script>
+                var slideIndex=1;
+                var time;
+                var slideshowContainer;
+                var elem=document.getElementById("progress-bar");
+                var width=1;
+                var interval;
+                window.addEventListener("load",function(){
+                    showSlides(slideIndex);
+                    time=setInterval(function(){plusSlides(1)},10000);
+                    slideshowContainer=document.getElementsByClassName('pannelbutton');
+                    for(let i=0;i<slideshowContainer.length;i++){
+                        slideshowContainer[i].addEventListener('mouseenter',pause)
+                        slideshowContainer[i].addEventListener('mouseleave',resume)
+                    }
+                })
+                function progressBar(){
+                    elem.style.transition='0.1s linear';
+                    interval=setInterval(frame,100);
+                    function frame(){
+                        if(width>=100){
+                            clearInterval(interval);
+                        }else{
+                            width++;
+                            elem.style.width=width+'%';
+                        }
+                    }
+                }
+                    function resetProgressBar(){
+                        elem.style.transition='0s';
+                        width=0;
+                        clearInterval(interval)
+                        elem.style.width=width+'%';
+                    }
+                function plusSlides(n){
+                    clearInterval(time);
+                    if(n<0){
+                        showSlides(slideIndex-=1);
+                    }else{
+                        showSlides(slideIndex+=1); 
+                    }
+                    if(n===-1){
+                        time=setInterval(function(){plusSlides(n+2)},10000);
+                    }else{
+                        time=setInterval(function(){plusSlides(n+1)},10000);
+                    }
+                }
+                function currentSlide(n){
+                    clearInterval(time);
+                    time=setInterval(function(){plusSlides(n+1)},10000);
+                    showSlides(slideIndex=n);
+                }
+                function showSlides(n){
+                    var i;
+                    var slides=document.getElementsByClassName("pannel");
+                    var dots=document.getElementsByClassName("panneltile");
+                    if(n>slides.length){slideIndex=1}
+                    if(n<1){slideIndex=slides.length}
+                    for(i=0;i<slides.length;i++){
+                        slides[i].style.display="none";
+                    }
+                    for(i=0;i<dots.length;i++){
+                        dots[i].className=dots[i].className.replace(" active","");
+                    }
+                    slides[slideIndex-1].style.display="flex";
+                    dots[slideIndex-1].className+=" active";
+                    resetProgressBar();
+                    progressBar();
+                }
+                pause=()=>{
+                    clearInterval(time);
+                    resetProgressBar();
+                }
+                resume=()=>{
+                    clearInterval(time);
+                    time=setInterval(function(){plusSlides(slideIndex)},10000);
+                    progressBar();
+                }
+                function scrolltop(){
+                    setTimeout(function(){
+                        document.body.scrollTop=0;
+                        document.documentElement.scrollTop=0;
+                    },200);
+                }
+            </script>
+        <div class="descriptionbar">Featured</div>
+        <main class="middle">
+            <a class="beforemiddleimg" onclick="currentSlide(1); scrolltop();">
+                <div class="middlebutton">visit</div>
+                <?xml version="1.0" encoding="UTF-8"?>
+                <svg id="N" data-name="N" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560.95 560.95">
+                <path class="cls-1" d="M560.95,31.69v497.57c0,17.5-14.19,31.69-31.69,31.69h-113.37c-12.09,0-23.51-5.54-30.99-15.04l-160.64-204.04c-19.74-25.08-60.05-11.12-60.05,20.8v166.6c0,17.5-14.18,31.68-31.68,31.68H31.68c-17.5,0-31.68-14.18-31.68-31.68V31.68C0,14.18,14.18,0,31.68,0h113.38c12.09,0,23.51,5.54,31,15.04l160.6,203.88c19.76,25.09,60.08,11.11,60.08-20.82V31.69c0-17.5,14.19-31.69,31.69-31.69h100.83c17.5,0,31.69,14.19,31.69,31.69Z"/>
+                </svg>
+                <div class="text">
+                    <h1>Art Portfolio</h1>
+                    <p>A collection of artwork for GCSE/Alevel</p>
+                </div>
+                <div class="middleimg" style="background-image: url('icon/img/1.png');">
+                    <p>NEW</p>
+                    <h1>Art Portfolio</h1>
+                </div>
+            </a>
+            <a class="beforemiddleimg" onclick="currentSlide(2); scrolltop();">
+                <div class="middlebutton">visit</div>
+                <?xml version="1.0" encoding="UTF-8"?>
+                <svg id="N" data-name="N" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560.95 560.95">
+                <path class="cls-1" d="M560.95,31.69v497.57c0,17.5-14.19,31.69-31.69,31.69h-113.37c-12.09,0-23.51-5.54-30.99-15.04l-160.64-204.04c-19.74-25.08-60.05-11.12-60.05,20.8v166.6c0,17.5-14.18,31.68-31.68,31.68H31.68c-17.5,0-31.68-14.18-31.68-31.68V31.68C0,14.18,14.18,0,31.68,0h113.38c12.09,0,23.51,5.54,31,15.04l160.6,203.88c19.76,25.09,60.08,11.11,60.08-20.82V31.69c0-17.5,14.19-31.69,31.69-31.69h100.83c17.5,0,31.69,14.19,31.69,31.69Z"/>
+                </svg>
+                <div class="text">
+                    <h1>Websites</h1>
+                    <p>Web projects for brands/personal</p>
+                </div>
+                <div class="middleimg" style="background-image: url('icon/img/2.png');">
+                    <p>NEW</p>
+                    <h1>Websites</h1>
+                </div>
+            </a>
+        </main>
+        <footer>
+            <div class="linkbar">
+                <a href="index.html">Home</a>
+                <div class="bar"></div>
+                <a href="about.html">About Us</a>
+                <div class="bar"></div>
+                <a href="#">temp</a>
+                <div class="bar"></div>
+                <a href="#">Privacy Policy</a>
+                <div class="bar"></div>
+                <a href="#">Licence</a>
             </div>
-        </div>
-        <div id="errorcode" class="tabs">
-            <div class="socialicons" style="animation: rotate 7s linear infinite;">
-                <ion-icon name="settings"></ion-icon>
+            <?xml version="1.0" encoding="UTF-8"?>
+                <svg id="N" data-name="N" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560.95 560.95">
+                <defs>
+                    <style>
+                    .cls-1 {
+                        fill: #fff;
+                    }
+                    </style>
+                </defs>
+                <path class="cls-1" d="M560.95,31.69v497.57c0,17.5-14.19,31.69-31.69,31.69h-113.37c-12.09,0-23.51-5.54-30.99-15.04l-160.64-204.04c-19.74-25.08-60.05-11.12-60.05,20.8v166.6c0,17.5-14.18,31.68-31.68,31.68H31.68c-17.5,0-31.68-14.18-31.68-31.68V31.68C0,14.18,14.18,0,31.68,0h113.38c12.09,0,23.51,5.54,31,15.04l160.6,203.88c19.76,25.09,60.08,11.11,60.08-20.82V31.69c0-17.5,14.19-31.69,31.69-31.69h100.83c17.5,0,31.69,14.19,31.69,31.69Z"/>
+                </svg>
+            <p>©2022 NATSKI</p>
+        </footer>
+        <nav class="navbar active">
+            <a class="navbarleft" href="index.html">
+                <?xml version="1.0" encoding="UTF-8"?>
+                <svg id="N" data-name="N" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560.95 560.95">
+                <defs>
+                    <style>
+                    .cls-1 {
+                        fill: #fff;
+                    }
+                    </style>
+                </defs>
+                <path class="cls-1" d="M560.95,31.69v497.57c0,17.5-14.19,31.69-31.69,31.69h-113.37c-12.09,0-23.51-5.54-30.99-15.04l-160.64-204.04c-19.74-25.08-60.05-11.12-60.05,20.8v166.6c0,17.5-14.18,31.68-31.68,31.68H31.68c-17.5,0-31.68-14.18-31.68-31.68V31.68C0,14.18,14.18,0,31.68,0h113.38c12.09,0,23.51,5.54,31,15.04l160.6,203.88c19.76,25.09,60.08,11.11,60.08-20.82V31.69c0-17.5,14.19-31.69,31.69-31.69h100.83c17.5,0,31.69,14.19,31.69,31.69Z"/>
+                </svg>
+                <h1>NATSKI</h1>
+            </a>
+            <div class="navbarright">
+                <a class="toggle">
+                    <ion-icon name="reorder-four"></ion-icon>
+                </a>
+                <a class="navbutton active" style="cursor: pointer;">
+                    Home
+                    <div class="selector"></div>
+                </a>
+                <a class="navbutton" href="about.html">
+                    About Us
+                    <div class="selector"></div>
+                </a>
+                <a class="navbutton" href="#">
+                    Temp
+                    <div class="selector"></div>
+                </a>
             </div>
-            <h1 style="margin-top: 10px;">page under development</h1>
-            <p style="margin-bottom: 40px; font-size: 1.5em;">this page may be unuseable or missing content</p>
-            <a href="code.html" value="#code" class="devbutton">
-                <span>continue anyway</span>
+        </nav>
+        <div class="pagecontainer">
+            <iframe id="ifr"></iframe>
+            <a class="closer" onClick='document.getElementById("ifr").src="";'>
+                <ion-icon name="close"></ion-icon>
             </a>
         </div>
-        <div class="navigator active">
-            <ul>
-                <li class="list active">
-                    <a href="#home" value="#home" id="first">
-                        <span class="icon">
-                            <ion-icon name="home"></ion-icon>
-                        </span>
-                        <span class="text">home</span>
-                    </a>
-                </li>
-                <hr>
-                <li class="list">
-                    <a href="portfolio.html#">
-                        <span class="icon">
-                            <ion-icon name="document-text"></ion-icon>
-                        </span>
-                        <span class="text">portfolio</span>
-                    </a>
-                </li>
-                <hr>
-                <li class="list">
-                    <a href="#about" value="#about">
-                        <span class="icon">
-                            <ion-icon name="person"></ion-icon>
-                        </span>
-                        <span class="text">about</span>
-                    </a>
-                </li>
-                <hr>
-                <li class="list">
-                    <a href="#code" value="#errorcode">
-                        <span class="icon">
-                            <ion-icon name="git-branch"></ion-icon>
-                        </span>
-                        <span class="text">code</span>
-                    </a>
-                </li>
-                <hr>
-                <li class="list">
-                    <a href="website.html#">
-                        <span class="icon">
-                            <ion-icon name="browsers"></ion-icon>
-                        </span>
-                        <span class="text">websites</span>
-                    </a>
-                </li>
-                <hr>
-                <li class="list">
-                    <a href="#settings" value="#settings" id="last" onclick="settings()">
-                        <span class="icon">
-                            <ion-icon name="settings"></ion-icon>
-                        </span>
-                        <span class="text">settings</span>
-                    </a>
-                </li>
-            </ul>
+        <div class="slidemenu">
+            <div class="menubar">
+                <a class="menubutton active">
+                    Home
+                    <div class="selector"></div>
+                </a>
+                <a class="menubutton" href="about.html">
+                    About
+                    <div class="selector"></div>
+                </a>
+                <a class="menubutton">
+                    Temp
+                    <div class="selector"></div>
+                </a>
+            </div>
         </div>
-        <div class="toggle active">
-            <ion-icon name="menu" class="open"></ion-icon>
-            <ion-icon name="close" class="close"></ion-icon>
-        </div>
-        <h1 id="something"></h1>
         <noscript>
             <h1>javascript is disabled :(</h1>
             <p>this website requires javascript to run.<br>please enable the use of javascript to see this page :)</p>
@@ -195,59 +300,5 @@
         <script src="lib/js/tilt.js"></script>
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-        <script>
-            const d=new Date();
-            let hours=d.getHours();
-            if(hours>11){
-                document.getElementById("timeofday").innerHTML="GOOD AFTERNOON!";
-            }if(hours>15){
-                document.getElementById("timeofday").innerHTML="GOOD EVENING!";
-            }if(hours<11){
-                document.getElementById("timeofday").innerHTML="GOOD MORNING!";
-            };
-            let chance=Math.floor((Math.random()*89)+10);
-            document.getElementById("something").innerHTML=chance;
-            if(chance==11){
-                window.location.href='something.html';
-            }if(chance==66){
-                window.location.href='somethingworse.html';
-            };
-            function load(){
-                $(document).ready(function(){
-                    $('#home').css('display','flex');
-                });
-            };
-            function settings(){
-                HTMLDocument.prototype.e=document.getElementById;
-                var el_down=document.e("oscheck");
-                var Name="unable to identify :(";
-                if(navigator.appVersion.indexOf("Win")!=-1)
-                    Name="Windows";
-                if(navigator.appVersion.indexOf("Mac")!=-1)
-                    Name="IOS";
-                if(navigator.appVersion.indexOf("X11")!=-1)
-                    Name="Unix/Unix-like";
-                if(navigator.appVersion.indexOf("Linux")!=-1)
-                    Name="Linux";
-                el_down.innerHTML=Name;
-                let userAgent=navigator.userAgent;
-                let browserName;
-                if(userAgent.match(/edg/i)){
-                    browserName="Edge";
-                }else if(userAgent.match(/chrome|chromium|crios/i)){
-                    browserName="Chrome/Chromium";
-                }else if(userAgent.match(/firefox|fxios/i)){
-                    browserName="Firefox";
-                }else if(userAgent.match(/safari/i)){
-                    browserName="Safari";
-                }else if(userAgent.match(/opr\//i)){
-                    browserName="Opera";
-                }else{
-                    browserName="unable to identify :(<br>please use a supported browser for the best experience";
-                    $('#browserdet,#browsermain').css('background','#f3000090')
-                };
-                document.getElementById('browserdet').innerHTML=browserName;
-            };
-        </script>
     </body>
 </html>

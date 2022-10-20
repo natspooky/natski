@@ -1,0 +1,59 @@
+@media (orientation: portrait)
+{
+    .bottombar .bottombarleft
+    {
+        transform: scale(2);
+        left: 40px;
+    }
+    .bottombar .bottombarright
+    {
+        transform: scale(2);
+        right: 25px;
+    }
+    nav .topbarleft
+    {
+        transform: scale(1.15);
+    }
+    nav .topbarright
+    {
+        transform: scale(1.15);
+    }
+    header .center
+    {
+        transform: scale(1.8);
+    }
+    .button
+    {
+        margin: 0px;
+    }
+}
+@media screen and (max-height: 1500px) and (min-height: 1000px)
+{
+
+}
+@media screen and (max-width: 1200px) and (min-width: 1000px)
+{
+
+}
+@media screen and (max-width: 600px)
+{
+
+}
+@media screen and (max-width: 900px) and (min-width: 500px)
+{
+    nav .topbarleft
+    {
+        display: none;
+    }
+    nav .topbarright
+    {
+        left: unset;
+        position: relative;
+    }
+    nav
+    {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}

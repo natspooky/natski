@@ -1,192 +1,253 @@
 @media (orientation: portrait){
-    .tabs,.portfo,.code
+    .navbar
     {
-        left: 150px;
+        height: 10vw;
+        background-color: #000;
+        backdrop-filter: blur(0px);
+        -webkit-backdrop-filter: blur(0px);
     }
-    #portfolio a,#sys a,#html .tiles,#js .tiles,#css .tiles
+    .navbar .navbarleft
     {
-        transition: 0s;
+        left: 3vw;
     }
-    .navigator
+    .navbar .navbarleft #N
     {
-        left: 40px;
+        margin-right: 2vw;
     }
-    .navigator:hover
+    .navbar .navbarleft h1
     {
-        width: 70px;
+        font-size: 4vw;
+        margin-top: 0.15vw;
     }
-    .navigator ul li a
+    .navbar .navbarleft:hover #N
     {
-        height: 14.05vh;
+        transform: scale(1) translateX(0px);
     }
-    .navigator ul hr
+    .navbar .navbarleft:hover h1
+    {
+        transform: translateX(0px);
+        opacity: 1;
+    }
+    .navbar .navbarright
+    {
+        right: 2vw;
+    }
+    .navbutton
+    {
+        display: none;
+    }
+    .toggle
+    {
+        display: flex;
+    }
+    .slidemenu
     {
         display: block;
     }
-    .tabs,.portfo,.code
+    .prev,.next
     {
-        background-image: none;
+        display: none;
     }
-    #home #timeofday
+    .pannelselector
     {
-        margin-bottom: 25vh;
-    }
-    #about p
-    {
-        margin: 15px 25px;
-        font-size: calc(2em * 1.5);
-    }
-    #about p span
-    {
-        font-size: 2.7em;
-        line-height: 0.85;
-    }
-    #about .content
-    {
-        margin-top: 15px;
-        transform-origin: top;
-        flex-direction: row;
-        height: 480px;
-        width: 640px;
-        margin-bottom: 30px;
-    }
-    #about .content .links,#portfolio,#about,#sys,#settings,#css,#html,#js,#websites
-    {
-        flex-direction: column;
-    }
-    #about .content .links
-    {
-        transform-origin: top left;
-        transform: scale(1.09);
-    }
-    #about .content .links a
-    {
-        margin: 20px;
-        height: 80px;
-        width: 80px;
-        font-size: 3em;
-        transition: 0s;
-    }
-    #about .content img
-    {
-        height: inherit;
-    }
-    .socialicons
-    {
-        transform: scale(1.5);
-    }
-    .portfo a,.code a,section a
-    {
-        transition: 0s;
-        background-color: var(--accentcol);
-    }
-    .portfo .imgcont img
-    {
-        width: 98%;
-        border: 0px;
-    }
-    .portfo .imgcont .iframecont
-    {
-        width: 98%;
-        padding-top: 55.5%;
-        margin: 20px 0px;
-    }
-    .footer
-    {
-        font-size: 2em;
-        transition: 0s;
-    }
-    .devbutton
-    {
-        transition: 0s;
-    }
-    #images .imgcont img
-    {
-        width: 98%;
-        left: 1%;
-        margin: 10px 0px;
-        border: 0px;
-        transform: scale(1);
-        animation: expand calc(0.2s * var(--i));
-    }
-    #images .imgcont .imgside
-    {
-	    width: 100%;
-    }
-    .code .imgcont
-    {
-        font-size: 1em;
-    }
-    #home #timeofday
-    {
-        margin-top: 0vh;
-        margin-bottom: 29vh;
-    }
-    #settings dl dd:hover,#settings dl dt:hover
-    {
-        border: 2px solid var(--accentcol);
-    }
-    #websites .iframecont
-    {
-        width: 98%;
-        padding-top: 97%;
-        margin: 20px 0px;
-    }
-    #websites
-    {
+        right: unset;
+        width: 100%;
+        justify-content: center;
         align-items: center;
+        bottom: 1vw;
     }
-    #websites .iframecont a
+    .panneltile
     {
-        font-size: 2.3em;
+        height: 14.5vw;
+        border-radius: 20px;
+        margin: 2vw 3vw;
+        border: 8px solid #000;
     }
-}
-@media screen and (max-width: 1200px) and (min-width: 1000px)
-{
-    .navigator:hover
+    .pannel
     {
-        width: 70px;
+        justify-content: center;
+        background-size: cover;
+        animation: fade 1s;
     }
-    #about p
+    .pannelinfo
     {
-        margin: 15px;
-        padding: 10px;
+        left: unset;
+        margin-top: unset;
+        width: 90%;
+        height: 30%;
+        font-size: 5vw;
+        border-radius: 50px;
+        background-color: #000000c0;
+        animation: unset;
     }
-    #websites .toptext
+    .pannelinfo p
     {
-        position: relative;
+        padding-bottom: 7.5vw;
     }
-    #websites .iframecont
+    .pannelbutton
     {
-        width: 98%;
-        padding-top: 97%;
-        margin: 0px;
+        transform: scale(3);
+        transform-origin: bottom;
+        bottom: 4vw;
+        padding: .3vw 4vw;
+        background-color: #efefefe0;
     }
-    #websites
-    {
-        align-items: center;
-        justify-content: unset;
-        flex-direction: column;
-    }
-    #websites .iframecont a
-    {
-        font-size: 2.3em;
-    }
-}
-
-@media screen and (max-height: 1500px) and (min-height: 1000px)
-{
-    .toptext
+    .panneltext
     {
         display: none;
     }
     #about
     {
-        justify-content: unset;
+        height: 45%;
+        min-height: 45%;
     }
-    #websites
+    #other
     {
-        justify-content: unset;
+        height: 20%;
+        min-height: 20%;
     }
-
+    header .topbar h1
+    {
+        font-size: 6vw;
+        left: 7vw;
+        margin-top: 9.5vw;
+    }
+    .middle
+    {
+        flex-direction: column;
+    }
+    .abouttext
+    {
+        border-radius: 20px;
+    }
+    .middle .beforemiddleimg .middleimg
+    {
+        width: 100%;
+        height: 100%;
+        border-radius: 15px;
+        transition: unset;
+    }
+    .middle .beforemiddleimg .middleimg p
+    {
+        transform: scale(1.5);
+        transform-origin: top right;
+    }
+    .middlebutton
+    {
+        display: none;
+    }
+    .middle .beforemiddleimg
+    {
+        width: 90vw;
+        height: 49vw;
+        margin: 4vw 2vw;
+    }
+    .middle .beforemiddleimg img
+    {
+       display: none;
+    }
+    .middle .beforemiddleimg .text
+    {
+        display: none;
+    }
+    .middle .beforemiddleimg .middleimg h1
+    {
+        display: block;
+    }
+    .descriptionbar
+    {
+        font-size: 6vw;
+        height: 10vw;
+    }
+    footer
+    {
+        padding: 40px 0px;
+    }
+    footer #N
+    {
+        height: 12vw;
+        margin: 4vw 0;
+    }
+    footer p
+    {
+        font-size: 3vw;
+    }
+    footer .linkbar a
+    {
+        margin: 0px 2.5vw;
+        font-size: 3.2vw;
+    }
+    .pagecontainer .closer
+    {
+        right: 2.25vw;
+        top: 12.25vw;
+        height: 6vw;
+        width: 6vw;
+        background-color: #000;
+    }
+    .pagecontainer .closer ion-icon
+    {
+        font-size: 6vw;
+    }
+    .backpage
+    {
+        right: 2.25vw;
+        top: 20.25vw;
+        height: 6vw;
+        width: 6vw;
+        background-color: #000;
+    }
+    .backpage ion-icon
+    {
+        font-size: 6vw;
+    }
+    .pagecontainer
+    {
+        opacity: 0;
+        border-radius: 10px;
+    }
+    .pagecontainer.active
+    {
+        opacity: 1;
+        border-radius: 0px;
+    }
+    .iframecont
+    {
+        aspect-ratio: 9 / 16;
+    }
+}
+@media screen and (max-width: 1200px) and (min-width: 1000px)
+{
+    
+}
+@media screen and (max-height: 1500px) and (min-height: 1000px)
+{
+    
+}
+@media screen and (max-width: 950px) and (min-width: 746px)
+{
+    .pannel
+    {
+        background-size: cover;
+        animation: fade 1s;
+    }
+    .pannelinfo
+    {
+        width: 60vw;
+        margin-top: 2.3vw;
+        left: 6vw;
+        font-size: 3vw;
+    }
+    .pannelbutton
+    {
+        bottom: 4vw;
+        padding: 1.1vw 5.2vw;
+        border-radius: 45px;
+        font-size: 2.5vw;
+    }
+    .pannelselector
+    {
+        transform: scale(1.5);
+        transform-origin: bottom right;
+    }
 }
