@@ -400,8 +400,8 @@ footer
 }
 .mask1
 {
-	-webkit-mask-image: url(https://natski.netlify.com/lib/site_DB/icons/imgs/sneaker_stash/mask1.png);
-	mask-image: url(https://natski.netlify.com/lib/site_DB/icons/imgs/sneaker_stash/mask1.png);
+	-webkit-mask-image: url('https://natski.netlify.com/lib/site_DB/icons/imgs/sneaker_stash/mask1.png');
+	mask-image: url('https://natski.netlify.com/lib/site_DB/icons/imgs/sneaker_stash/mask1.png');
 	-webkit-mask-repeat: no-repeat;
 	mask-repeat: no-repeat;
 	mask-size: 100vmin;
