@@ -398,6 +398,18 @@ footer
 	font-size: 4.5vw;
 	line-height: 80px;
 }
+.mask1
+{
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	height: 40vw;
+	aspect-ratio: 269 / 334;
+	-webkit-mask-repeat: no-repeat;
+	mask-repeat: no-repeat;
+	mask-size: cover;
+	mask-position: right bottom;
+}
 .mask1 img
 {
 	position: relative;
