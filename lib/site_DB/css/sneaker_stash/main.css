@@ -400,6 +400,10 @@ footer
 }
 .mask1
 {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	height: 600px;
 	-webkit-mask-image: url(https://natski.netlify.com/lib/site_DB/icons/imgs/sneaker_stash/mask1.png);
 	mask-image: url(https://natski.netlify.com/lib/site_DB/icons/imgs/sneaker_stash/mask1.png);
 	-webkit-mask-size: 70%;
