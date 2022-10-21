@@ -421,15 +421,6 @@ footer
 	font-size: 5.3vw;
 	margin-right: 1.4vw;
 }
-.mask1
-{
-	-webkit-mask-image: url('https://natski.netlify.com/lib/site_DB/svg/sneaker_stash/blob1.svg');
-  	mask-image: url('https://natski.netlify.com/lib/site_DB/svg/sneaker_stash/blob1.svg');
-  	-webkit-mask-size: 70%;
-  	mask-size: 70%;
-  	-webkit-mask-repeat: no-repeat;
-  	mask-repeat: no-repeat;  
-}
 footer
 {
 	position: relative;
