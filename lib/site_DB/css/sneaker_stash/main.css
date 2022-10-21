@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,500;1,300;1,500&display=swap');
 .loaderback
 {
 	position: fixed;
@@ -99,7 +100,7 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	font-family: Lemon, sans-serif;
+	font-family: 'Rubik', sans-serif;
 }
 :root 
 {
@@ -172,7 +173,6 @@ header .center
 	height: 500px;
 	width: 500px;
 	align-items: center;
-
 }
 header .center .logo
 {
@@ -198,6 +198,10 @@ header .center .buttoncont:hover
 header .center .buttoncont .button
 {
 	margin: 0px 10px;
+}
+.splashtxt
+{
+	font-family: Lemon;
 }
 header .center h1
 {
@@ -326,6 +330,7 @@ nav .topbarright
 	font-weight: 100;
 	font-size: 0.75em;
 	letter-spacing: 0.5px;
+	font-family: Lemon;
 	transform-origin: bottom left;
 }
 .bottombar .bottombarright
@@ -337,6 +342,7 @@ nav .topbarright
 	align-items: center;
 	flex-direction: column;
 	font-weight: 100;
+	font-family: Lemon;
 	transform-origin: bottom right;
 }
 .bottombar .bottombarright .socials
