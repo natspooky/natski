@@ -1,27 +1,3 @@
-@font-face
-{
-	font-family: lemon;
-	src: url('https://natski.netlify.com/lib/site_DB/fonts/sneaker_stash/LemonMilkBold.otf');
-	font-weight: 900;
-}
-@font-face
-{
-	font-family: lemon;
-	src: url('https://natski.netlify.com/lib/site_DB/fonts/sneaker_stash/LemonMilkMedium.otf');
-	font-weight: 700;
-}
-@font-face
-{
-	font-family: lemon;
-	src: url('https://natski.netlify.com/lib/site_DB/fonts/sneaker_stash/LemonMilkLight.otf');
-	font-weight: 100;
-}
-@font-face
-{
-	font-family: lemon;
-	src: url('https://natski.netlify.com/lib/site_DB/fonts/sneaker_stash/LemonMilkRegular.otf');
-	font-weight: 400;
-}
 .loaderback
 {
 	position: fixed;
@@ -117,6 +93,30 @@
 		opacity: 1;
 	  	transform: scale(1.5);
 	}
+}
+@font-face
+{
+	font-family: lemon;
+	src: url('https://natski.netlify.com/lib/site_DB/fonts/sneaker_stash/LemonMilkBold.ttf');
+	font-weight: bolder;
+}
+@font-face
+{
+	font-family: lemon;
+	src: url('https://natski.netlify.com/lib/site_DB/fonts/sneaker_stash/LemonMilkMedium.ttf');
+	font-weight: bold;
+}
+@font-face
+{
+	font-family: lemon;
+	src: url('https://natski.netlify.com/lib/site_DB/fonts/sneaker_stash/LemonMilkLight.ttf');
+	font-weight: lighter;
+}
+@font-face
+{
+	font-family: lemon;
+	src: url('https://natski.netlify.com/lib/site_DB/fonts/sneaker_stash/LemonMilkRegular.ttf');
+	font-weight: 400;
 }
 *
 {
