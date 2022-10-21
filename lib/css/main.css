@@ -141,8 +141,6 @@ html,body
 .navbar.active
 {
 	background-color: transparent;
-	backdrop-filter: blur(0px);
-	-webkit-backdrop-filter: blur(0px);
 	background-color: #00000050;
 }
 .navbar .navbarleft
@@ -512,12 +510,45 @@ header .bottombar #N
 	border-radius: 15px;
 	opacity: 0;
 	transform: scale(0.8);
+	background-color: #729ef650;
+	border: 5px solid transparent;
+	aspect-ratio: 16 / 9;
 	transition: 0.4s;
 }
 .img.active
 {
 	opacity: 0;
 	transform: scale(0.8);
+}
+#top
+{
+	position: fixed;
+	z-index: 999;
+	right: 1vw;
+	bottom: 1vw;
+	height: 4vw;
+	width: 4vw;
+	background-color: #00000050;
+	border: 2px solid #00000050;
+	display: none;
+	border-radius: 50%;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+}
+#top.active
+{
+	display: flex;
+}
+#top:hover
+{
+	background-color: #000000c0;
+}
+#top ion-icon
+{
+	position: relative;
+	font-size: 2vw;
+	color: #fff;
 }
 .abouttext
 {

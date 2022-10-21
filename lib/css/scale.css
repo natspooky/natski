@@ -3,8 +3,8 @@
     {
         height: 10vw;
         background-color: #000;
-        backdrop-filter: blur(0px);
-        -webkit-backdrop-filter: blur(0px);
+        backdrop-filter: blur(5px);
+	    -webkit-backdrop-filter: blur(5px);
     }
     .navbar .navbarleft
     {
@@ -199,6 +199,18 @@
     {
         font-size: 6vw;
     }
+    #top
+    {
+        right: 2.25vw;
+        bottom: 2.25vw;
+        height: 8vw;
+        width: 8vw;
+        border-radius: 25px;
+    }
+    #top ion-icon
+    {
+        font-size: 6vw;
+    }
     .pagecontainer
     {
         opacity: 0;
@@ -216,6 +228,8 @@
     .img
     {
         width: 95%;
+        border-radius: 30px;
+        border: 10px solid transparent;
     }
     .img.active
     {
