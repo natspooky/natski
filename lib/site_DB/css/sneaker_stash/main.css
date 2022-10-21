@@ -210,30 +210,16 @@ header .center h1
 	cursor: pointer;
 	transition: 0.2s;
 }
-.buttonactive
+.button.active
 {
-	font-size: 1.1em;
-	padding: 5px 18px;
-	border-radius: 50px;
-	margin: 0px 7px;
-	font-weight: 400;
-	border: 2px solid transparent;
-	color: #fff;
-	background: transparent;
-	cursor: pointer;
-	transition: 0.2s;
 	background-image: linear-gradient(to top right, var(--shine2),var(--shine2),var(--shine1),var(--shine2),var(--shine1),var(--shine1));
 	color: #000;
 }
-.button.current
+.button:hover
 {
 	background-color: #222;
 }
-.button:hover
-{
-	border: 2px solid var(--themecol);
-}
-.buttonactive:hover
+.button.active:hover
 {
 	border: 2px solid #fff;
 }
@@ -379,7 +365,6 @@ footer
 	height: 100px;
 	display: flex;
 	align-items: center;
-	justify-content: center;
 }
 .content-wrapper
 {
