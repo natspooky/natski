@@ -7,19 +7,19 @@
 @font-face
 {
 	font-family: lemon;
-	src: url('https://natski.netlify.com/lib/site_DB/fonts/sneaker_stash/LemonMilkMedium.ttf') format('truetype');
+	src: url('fonts/LemonMilkMedium.ttf') format('truetype');
 	font-weight: bold;
 }
 @font-face
 {
 	font-family: lemon;
-	src: url('https://natski.netlify.com/lib/site_DB/fonts/sneaker_stash/LemonMilkLight.ttf') format('truetype');
+	src: url('fonts/LemonMilkLight.ttf') format('truetype');
 	font-weight: lighter;
 }
 @font-face
 {
 	font-family: lemon;
-	src: url('https://natski.netlify.com/lib/site_DB/fonts/sneaker_stash/LemonMilkRegular.ttf') format('truetype');
+	src: url('fonts/LemonMilkRegular.ttf') format('truetype');
 	font-weight: 400;
 }
 *
@@ -27,7 +27,7 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	font-family: Lemon, Monospace;
+	font-family: Lemon, sans-serif;
 }
 .loaderback
 {
