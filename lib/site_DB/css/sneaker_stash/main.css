@@ -400,6 +400,9 @@ footer
 }
 .mask1
 {
+	
+	height: 50vw;
+	width: 50vw;
 	-webkit-mask-image: url('img/mask1.png');
 	mask-image: url('img/mask1.png');
 	-webkit-mask-repeat: no-repeat;
