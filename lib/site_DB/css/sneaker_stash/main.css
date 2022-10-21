@@ -401,7 +401,7 @@ footer
 .mask1
 {
 	transform-origin: bottom right;
-	transform: scale(1.2);
+	transform: scale(1);
 	position: absolute;
 	right: 0;
 	bottom: 0;
@@ -419,7 +419,7 @@ footer
 .mask2
 {
 	transform-origin: top right;
-	transform: scale(1.2);
+	transform: scale(1);
 	position: absolute;
 	right: 0;
 	top: 0;
@@ -431,13 +431,14 @@ footer
 }
 .mask2 img
 {
+	top: 0;
 	position: relative;
 	height: 173px;
 }
 .mask3
 {
 	transform-origin: bottom right;
-	transform: scale(1.2);
+	transform: scale(1);
 	position: absolute;
 	right: 0;
 	bottom: 0;
