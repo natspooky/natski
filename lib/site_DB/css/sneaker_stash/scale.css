@@ -10,10 +10,6 @@
         transform: scale(2);
         right: 25px;
     }
-    nav .topbarleft
-    {
-        transform: scale(1.15);
-    }
     nav .topbarright
     {
         transform: scale(1.15);
