@@ -214,6 +214,11 @@ header .center h1
 	text-decoration: none;
 	transition: 0.2s;
 }
+.button ion-icon
+{
+	color: #000;
+	text-decoration: none;
+}
 .button.active
 {
 	background-image: linear-gradient(to top right, var(--shine2),var(--shine2),var(--shine1),var(--shine2),var(--shine1),var(--shine1));
@@ -390,15 +395,15 @@ footer
 .textbar h1
 {
 	font-weight: bold;
-	margin-left: 1vw;
+	margin-left: 0.7vw;
 	font-size: 4vw;
 	line-height: 80px;
 }
 .textbar h1 span
 {
 	float: left;
-	font-size: 5vw;
-	margin-right: 0.5vw;
+	font-size: 5.3vw;
+	margin-right: 0.7vw;
 }
 footer
 {
