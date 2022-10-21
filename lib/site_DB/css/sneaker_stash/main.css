@@ -413,24 +413,6 @@ footer
 	height: 50vw;
 
 }
-.mask1
-{
-	-webkit-mask-image: url(w3logo.png);
-	mask-image: url(w3logo.png);
-	-webkit-mask-size: 70%;
-	mask-size: 70%;
-	-webkit-mask-repeat: no-repeat;
-	mask-repeat: no-repeat;
-}
-.mask1
-{
-	-webkit-mask-image: url(w3logo.png);
-	mask-image: url(w3logo.png);
-	-webkit-mask-size: 70%;
-	mask-size: 70%;
-	-webkit-mask-repeat: no-repeat;
-	mask-repeat: no-repeat;
-}
 footer
 {
 	position: relative;
