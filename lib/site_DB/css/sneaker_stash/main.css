@@ -1,34 +1,3 @@
-@font-face
-{
-	font-family: lemon;
-	src: url('https://natski.netlify.com/lib/site_DB/fonts/sneaker_stash/LemonMilkBold.ttf') format('truetype');
-	font-weight: bolder;
-}
-@font-face
-{
-	font-family: lemon;
-	src: url('fonts/LemonMilkMedium.ttf') format('truetype');
-	font-weight: bold;
-}
-@font-face
-{
-	font-family: lemon;
-	src: url('fonts/LemonMilkLight.ttf') format('truetype');
-	font-weight: lighter;
-}
-@font-face
-{
-	font-family: lemon;
-	src: url('fonts/LemonMilkRegular.ttf') format('truetype');
-	font-weight: 400;
-}
-*
-{
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-	font-family: Lemon, sans-serif;
-}
 .loaderback
 {
 	position: fixed;
@@ -124,6 +93,13 @@
 		opacity: 1;
 	  	transform: scale(1.5);
 	}
+}
+*
+{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: Lemon, sans-serif;
 }
 :root 
 {
@@ -302,6 +278,7 @@ nav .topbarleft .textbox .sub
 	position: relative;
 	font-size: 0.7em;
 	font-weight: 100;
+	letter-spacing: 2px;
 }
 nav .topbarright
 {
