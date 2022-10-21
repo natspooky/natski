@@ -1,4 +1,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,500;1,300;1,500&display=swap');
+@font-face
+{
+	font-family: lemon;
+	src: url('https://natski.netlify.com/lib/site_DB/fonts/sneaker_stash/LemonMilkBold.otf');
+	font-weight: bolder;
+}
+@font-face
+{
+	font-family: lemon;
+	src: url('https://natski.netlify.com/lib/site_DB/fonts/sneaker_stash/LemonMilkMedium.otf');
+	font-weight: bold;
+}
+@font-face
+{
+	font-family: lemon;
+	src: url('https://natski.netlify.com/lib/site_DB/fonts/sneaker_stash/LemonMilkLight.otf');
+	font-weight: lighter;
+}
+@font-face
+{
+	font-family: lemon;
+	src: url('https://natski.netlify.com/lib/site_DB/fonts/sneaker_stash/LemonMilkRegular.otf');
+	font-weight: 400;
+}
 .loaderback
 {
 	position: fixed;
@@ -100,7 +124,7 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	font-family: 'Rubik', sans-serif;
+	font-family: 'Lemon', sans-serif;
 }
 :root 
 {
@@ -227,11 +251,6 @@ a
 	align-items: center;
 	cursor: pointer;
 	transition: 0.2s;
-}
-.button ion-icon
-{
-	color: #000;
-	text-decoration: none;
 }
 .button.active
 {
@@ -415,12 +434,6 @@ footer
 	margin-left: 0.7vw;
 	font-size: 3.6vw;
 	line-height: 80px;
-}
-.textbar h1 span
-{
-	float: left;
-	font-size: 5.3vw;
-	margin-right: 1.4vw;
 }
 footer
 {
