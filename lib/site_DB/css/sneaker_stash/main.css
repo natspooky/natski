@@ -198,6 +198,10 @@ header .center h1
 	font-size: 1.5em;
 	letter-spacing: 1px;
 }
+a
+{
+	text-decoration: none;
+}
 .button
 {
 	font-size: 1.1em;
@@ -211,7 +215,6 @@ header .center h1
 	display: flex;
 	align-items: center;
 	cursor: pointer;
-	text-decoration: none;
 	transition: 0.2s;
 }
 .button ion-icon
@@ -396,14 +399,14 @@ footer
 {
 	font-weight: bold;
 	margin-left: 0.7vw;
-	font-size: 4vw;
+	font-size: 3.6vw;
 	line-height: 80px;
 }
 .textbar h1 span
 {
 	float: left;
 	font-size: 5.3vw;
-	margin-right: 0.7vw;
+	margin-right: 1.4vw;
 }
 footer
 {
