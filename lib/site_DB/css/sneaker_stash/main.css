@@ -405,7 +405,6 @@ footer
 	position: absolute;
 	right: 0;
 	bottom: 0;
-	aspect-ratio: 269 / 334;
 	-webkit-mask-repeat: no-repeat;
 	mask-repeat: no-repeat;
 	mask-size: 100%;
@@ -418,12 +417,11 @@ footer
 }
 .mask2
 {
-	transform-origin: top right;
+	transform-origin: right top;
 	transform: scale(1);
 	position: absolute;
 	right: 0;
 	top: 0;
-	aspect-ratio: 235 / 173;
 	-webkit-mask-repeat: no-repeat;
 	mask-repeat: no-repeat;
 	mask-size: 100%;
@@ -436,16 +434,15 @@ footer
 }
 .mask3
 {
-	transform-origin: bottom right;
+	transform-origin: bottom left;
 	transform: scale(1);
 	position: absolute;
 	right: 0;
 	bottom: 0;
-	aspect-ratio: 269 / 334;
 	-webkit-mask-repeat: no-repeat;
 	mask-repeat: no-repeat;
 	mask-size: 100%;
-	mask-position: right bottom;
+	mask-position: bottom left;
 }
 .mask3 img
 {
