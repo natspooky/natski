@@ -392,10 +392,38 @@ footer
 }
 .textbar h1
 {
+	font-family: sans-serif;
 	font-weight: bold;
 	margin-left: 0.7vw;
 	font-size: 4.5vw;
 	line-height: 80px;
+}
+.mask1
+{
+	-webkit-mask-image: url(https://natski.netlify.com/lib/site_DB/icons/imgs/sneaker_stash/mask1.png);
+	mask-image: url(https://natski.netlify.com/lib/site_DB/icons/imgs/sneaker_stash/mask1.png);
+	-webkit-mask-size: 70%;
+	mask-size: 70%;
+	-webkit-mask-repeat: no-repeat;
+	mask-repeat: no-repeat;
+}
+.mask1
+{
+	-webkit-mask-image: url(w3logo.png);
+	mask-image: url(w3logo.png);
+	-webkit-mask-size: 70%;
+	mask-size: 70%;
+	-webkit-mask-repeat: no-repeat;
+	mask-repeat: no-repeat;
+}
+.mask1
+{
+	-webkit-mask-image: url(w3logo.png);
+	mask-image: url(w3logo.png);
+	-webkit-mask-size: 70%;
+	mask-size: 70%;
+	-webkit-mask-repeat: no-repeat;
+	mask-repeat: no-repeat;
 }
 footer
 {
