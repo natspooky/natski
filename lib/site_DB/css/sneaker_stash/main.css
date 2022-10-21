@@ -400,11 +400,9 @@ footer
 }
 .mask1 img
 {
-	top: 0;
-	right: 0;
-	position: absolute;
+	
+	position: relative;
 	height: 50vw;
-
 }
 footer
 {
