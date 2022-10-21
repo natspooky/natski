@@ -365,6 +365,7 @@ footer
 	height: 100px;
 	display: flex;
 	align-items: center;
+	justify-content: center;
 }
 .content-wrapper
 {
@@ -380,17 +381,20 @@ footer
 	height: 80px;
 	background-color: #222;
 	display: flex;
-	justify-content: center;
 	align-items: center;
 	color: #fff;
 }
 .textbar h1
 {
 	font-weight: bold;
+	margin-left: 2vw;
+	font-size: 12vw;
 }
 .textbar h1 span
 {
 	float: left;
+	font-size: 14vw;
+	margin-right: 1vw;
 }
 .credit
 {
