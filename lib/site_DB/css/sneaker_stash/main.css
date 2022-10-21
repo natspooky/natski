@@ -134,6 +134,14 @@ body
 	width: 100%;
 	margin: 0;
 }
+main
+{
+	
+	height: 100%;
+	width: 100%;
+	overflow: scroll;
+	scroll-snap-type: y mandatory;
+}
 #particles-js,#screen
 {
 	top: 0;
