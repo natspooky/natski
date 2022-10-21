@@ -1,21 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,500;1,300;1,500&display=swap');
 @font-face
 {
 	font-family: lemon;
 	src: url('https://natski.netlify.com/lib/site_DB/fonts/sneaker_stash/LemonMilkBold.otf');
-	font-weight: bolder;
+	font-weight: 900;
 }
 @font-face
 {
 	font-family: lemon;
 	src: url('https://natski.netlify.com/lib/site_DB/fonts/sneaker_stash/LemonMilkMedium.otf');
-	font-weight: bold;
+	font-weight: 700;
 }
 @font-face
 {
 	font-family: lemon;
 	src: url('https://natski.netlify.com/lib/site_DB/fonts/sneaker_stash/LemonMilkLight.otf');
-	font-weight: lighter;
+	font-weight: 100;
 }
 @font-face
 {
@@ -124,7 +123,7 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	font-family: 'Lemon';
+	font-family: Lemon;
 }
 :root 
 {
