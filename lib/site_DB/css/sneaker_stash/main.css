@@ -411,6 +411,10 @@ footer
 	-webkit-mask-repeat: no-repeat;
 	mask-repeat: no-repeat;
 }
+.mask1 img
+{
+	height: 100%;
+}
 .mask1
 {
 	-webkit-mask-image: url(w3logo.png);
