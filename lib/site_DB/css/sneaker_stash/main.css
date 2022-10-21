@@ -403,11 +403,10 @@ footer
 	position: absolute;
 	right: 0;
 	bottom: 0;
-	height: 40vw;
 	aspect-ratio: 269 / 334;
 	-webkit-mask-repeat: no-repeat;
 	mask-repeat: no-repeat;
-	mask-size: cover;
+	mask-size: 100%;
 	mask-position: right bottom;
 }
 .mask1 img
