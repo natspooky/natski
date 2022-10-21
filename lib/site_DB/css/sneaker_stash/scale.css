@@ -41,19 +41,5 @@
 }
 @media screen and (max-width: 900px) and (min-width: 500px)
 {
-    nav .topbarleft
-    {
-        display: none;
-    }
-    nav .topbarright
-    {
-        left: unset;
-        position: relative;
-    }
-    nav
-    {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
+
 }
