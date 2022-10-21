@@ -270,6 +270,8 @@ nav .topbarleft .icon
 nav .topbarleft .textbox
 {
 	height: 60%;
+	transform-origin: left center;
+	transform: scale(0.9);
 }
 nav .topbarleft .textbox .head
 {
