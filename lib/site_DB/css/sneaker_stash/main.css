@@ -141,6 +141,7 @@ main
 	height: 100%;
 	width: 100%;
 	overflow: scroll;
+	scroll-behavior: smooth;
 	scroll-snap-type: y mandatory;
 }
 #particles-js,#screen
@@ -161,7 +162,7 @@ header
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	scroll-snap-align: start;
+	scroll-snap-align: center;
 	border-bottom: 2px solid var(--themecol);
 }
 header .center
@@ -381,6 +382,7 @@ nav .topbarright
 }
 footer
 {
+	scroll-snap-align: start;
 	position: relative;
 	width: 100%;
 	background-image: linear-gradient(to bottom,#f6eb7254,transparent,transparent);
@@ -394,7 +396,7 @@ footer
 	position: relative;
 	width: 100%;
 	height: 100%;
-	scroll-snap-align: start;
+	scroll-snap-align: center;
 }
 .textbar
 {
