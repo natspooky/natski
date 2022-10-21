@@ -161,6 +161,7 @@ header
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	scroll-snap-align: start;
 	border-bottom: 2px solid var(--themecol);
 }
 header .center
