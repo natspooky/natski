@@ -398,15 +398,6 @@ footer
 	font-size: 4.5vw;
 	line-height: 80px;
 }
-.mask1
-{
-	-webkit-mask-image: url('img/mask1.png');
-	mask-image: url('img/mask1.png');
-	-webkit-mask-repeat: no-repeat;
-	mask-repeat: no-repeat;
-	mask-size: 100vmin;
-  	mask-position: center;
-}
 .mask1 img
 {
 	position: relative;
