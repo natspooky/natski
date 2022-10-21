@@ -400,20 +400,18 @@ footer
 }
 .mask1
 {
-
-	height: 50vw;
-	width: 50vw;
-	-webkit-mask-image: url('https://sneaker-stash.netlify.com//img/mask1.png');
-	mask-image: url('https://sneaker-stash.netlify.com/img/mask1.png');
+	-webkit-mask-image: url('https://natski.netlify.com/lib/site_DB/icons/img/sneaker_stash/mask1.png');
+	mask-image: url('https://natski.netlify.com/lib/site_DB/icons/img/sneaker_stash/mask1.png');
 	-webkit-mask-repeat: no-repeat;
 	mask-repeat: no-repeat;
-	mask-size: 100%;
+	mask-size: 100vmin;
   	mask-position: center;
 }
 .mask1 img
 {
 	position: relative;
 	height: 50vw;
+
 }
 footer
 {
