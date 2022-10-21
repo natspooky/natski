@@ -255,8 +255,8 @@ nav .topbarleft
 	position: absolute;
 	transform-origin: top left;
 	left: 0;
-	top: 5%;
-	height: 90%;
+	top: 10%;
+	height: 150%;
 }
 nav .topbarright
 {
