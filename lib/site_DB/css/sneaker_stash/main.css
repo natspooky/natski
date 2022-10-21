@@ -264,7 +264,7 @@ nav .topbarleft .icon
 {
 	position: relative;
 	float: left;
-	height: 90%;
+	height: 85%;
 	margin: 0px 10px;
 }
 nav .topbarleft .textbox
@@ -277,6 +277,7 @@ nav .topbarleft .textbox .head
 	font-size: 1.7em;
 	line-height: 20px;
 	letter-spacing: .5px;
+	font-family: Lemon;
 }
 nav .topbarleft .textbox .sub
 {
@@ -284,6 +285,7 @@ nav .topbarleft .textbox .sub
 	font-size: 0.7em;
 	font-weight: 100;
 	letter-spacing: 2px;
+	font-family: Lemon;
 }
 nav .topbarright
 {
@@ -330,8 +332,11 @@ nav .topbarright
 	font-weight: 100;
 	font-size: 0.75em;
 	letter-spacing: 0.5px;
-	font-family: Lemon;
 	transform-origin: bottom left;
+}
+.bottombar .bottombarleft a
+{
+	font-family: Lemon;
 }
 .bottombar .bottombarright
 {
@@ -342,8 +347,11 @@ nav .topbarright
 	align-items: center;
 	flex-direction: column;
 	font-weight: 100;
-	font-family: Lemon;
 	transform-origin: bottom right;
+}
+.bottombarright p
+{
+	font-family: Lemon;
 }
 .bottombar .bottombarright .socials
 {
