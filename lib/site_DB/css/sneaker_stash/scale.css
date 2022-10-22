@@ -61,9 +61,16 @@
     }
     .content-wrapper p
     {
+        top: unset;
+        position: relative;
         font-weight: 400;
         margin-left: 2.5vw;
         font-size: 3vw;
+    }
+    #how-it-works
+    {
+        display: flex;
+        align-items: center;
     }
 }
 @media screen and (max-height: 1500px) and (min-height: 1000px)
