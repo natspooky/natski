@@ -131,17 +131,12 @@ html,body
 	top: 0;
 	height: 3.5vw;
 	width: 100%;
-	background-color: #000000c0;
+	background-color: #00000050;
 	backdrop-filter: blur(5px);
 	-webkit-backdrop-filter: blur(5px);
 	z-index: 99999;
 	border-bottom: 2px solid #00000050;
 	transition: 0.3s;
-}
-.navbar.active
-{
-	background-color: transparent;
-	background-color: #00000050;
 }
 .navbar .navbarleft
 {
@@ -519,36 +514,6 @@ header .bottombar #N
 {
 	opacity: 0;
 	transform: scale(0.8);
-}
-#top
-{
-	position: fixed;
-	z-index: 999;
-	right: 1vw;
-	bottom: 1vw;
-	height: 4vw;
-	width: 4vw;
-	background-color: #00000050;
-	border: 2px solid #00000050;
-	display: none;
-	border-radius: 50%;
-	justify-content: center;
-	align-items: center;
-	cursor: pointer;
-}
-#top.active
-{
-	display: flex;
-}
-#top:hover
-{
-	background-color: #000000c0;
-}
-#top ion-icon
-{
-	position: relative;
-	font-size: 2vw;
-	color: #fff;
 }
 .abouttext
 {
