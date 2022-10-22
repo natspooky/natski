@@ -42,7 +42,8 @@
     }
     .mask1
     {
-        transform: scale(1.5);
+        transform: scale(1.7);
+        bottom: -2px;
     }
     .mask2
     {
@@ -50,7 +51,7 @@
     }
     .mask3
     {
-        transform: scale(0.8);
+        transform: scale(1.2);
     }
 }
 @media screen and (max-height: 1500px) and (min-height: 1000px)

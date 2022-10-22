@@ -404,7 +404,7 @@ footer
 	transform: scale(1.5);
 	position: absolute;
 	right: 0;
-	bottom: -2px;
+	bottom: -4px;
 	-webkit-mask-repeat: no-repeat;
 	mask-repeat: no-repeat;
 	mask-size: 100%;
