@@ -398,22 +398,53 @@ footer
 	font-size: 4.5vw;
 	line-height: 80px;
 }
-.mask1,.mask2,.mask3
+.mask1
 {
+	transform-origin: bottom right;
+	transform: scale(1.5);
 	position: absolute;
+	right: 0;
+	bottom: 0;
+	aspect-ratio: 269 / 334;
 	-webkit-mask-repeat: no-repeat;
 	mask-repeat: no-repeat;
 	mask-size: 100%;
+	mask-position: right bottom;
 }
 .mask1 img
 {
 	position: relative;
 	height: 269px;
 }
+.mask2
+{
+	transform-origin: top right;
+	transform: scale(1);
+	position: absolute;
+	right: 0;
+	top: 0;
+	aspect-ratio: 235 / 173;
+	-webkit-mask-repeat: no-repeat;
+	mask-repeat: no-repeat;
+	mask-size: 100%;
+	mask-position: right top;
+}
 .mask2 img
 {
 	position: relative;
 	height: 346px;
+}
+.mask3
+{
+	transform-origin: bottom left;
+	transform: scale(1);
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	-webkit-mask-repeat: no-repeat;
+	mask-repeat: no-repeat;
+	mask-size: 100%;
+	mask-position: left bottom;
 }
 .mask3 img
 {
