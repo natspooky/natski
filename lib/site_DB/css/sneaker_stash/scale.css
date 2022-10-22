@@ -53,6 +53,12 @@
     {
         transform: scale(1.2);
     }
+    .textbar h1
+    {
+        margin-left: 1.2vw;
+        font-size: 6.2vw;
+        line-height: 80px;
+    }
 }
 @media screen and (max-height: 1500px) and (min-height: 1000px)
 {
