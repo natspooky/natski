@@ -1,7 +1,14 @@
 @media (orientation: portrait){
     .navbar
     {
-        height: 10vw;
+        left: 10px;
+        right: 10px;
+        top: 10px;
+        width: unset;
+        box-sizing: initial;
+        border: 2px solid #00000050;
+        height: calc(10vw - 10px);
+        border-radius: 10px;
         background-color: #000;
         backdrop-filter: blur(5px);
 	    -webkit-backdrop-filter: blur(5px);
@@ -179,7 +186,7 @@
     }
     .pagecontainer .closer
     {
-        right: 2.25vw;
+        right: calc(2.25vw + 10px);
         top: 12.25vw;
         height: 6vw;
         width: 6vw;
@@ -190,7 +197,7 @@
     }
     .backpage
     {
-        right: 2.25vw;
+        right: calc(2.25vw + 10px);
         top: 20.25vw;
         height: 6vw;
         width: 6vw;
@@ -201,8 +208,8 @@
     }
     #top
     {
-        right: 2.25vw;
-        bottom: 2.25vw;
+        right: calc(2.25vw + 10px);
+        bottom: calc(2.25vw + 10px);
         height: 8vw;
         width: 8vw;
         border-radius: 25px;
