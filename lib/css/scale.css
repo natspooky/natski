@@ -134,8 +134,7 @@
     }
     .middle .beforemiddleimg .middleimg p
     {
-        transform: scale(1.5);
-        transform-origin: top right;
+        transform: scale(2);
     }
     .middlebutton
     {

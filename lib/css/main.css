@@ -408,9 +408,9 @@ header .bottombar #N
 	position: relative;
 	height: 2.85vw;
 	aspect-ratio: 16 / 9;
+	box-sizing: initial;
 	border-radius: 5px;
 	margin: 10px;
-	filter: brightness(0.3);
 	background-size: cover;
 	border: 3px solid #000;
 	background-position: center;
@@ -419,11 +419,7 @@ header .bottombar #N
 }
 .panneltile.active
 {
-	filter: brightness(1.5);
-}
-.panneltile:hover
-{
-	filter: brightness(1.5);
+	border: 3px solid #fff;
 }
 .pannel
 {
@@ -596,6 +592,7 @@ header .bottombar #N
 {
 	position: absolute;
 	top: 0px;
+	transform-origin: top right;
 	right: 0px;
 	color: #fff;
 	background-color: #729ef6;
@@ -760,7 +757,7 @@ footer .linkbar a:hover
 	top: 4.5vw;
 	height: 2vw;
 	width: 2vw;
-	background-color: #00000050;
+	background-color: #00000090;
 	border: 2px solid #00000050;
 	display: none;
 	border-radius: 50%;
@@ -768,7 +765,7 @@ footer .linkbar a:hover
 	align-items: center;
 	cursor: pointer;
 }
-.pagecontainer .closer:hover
+.pagecontainer .closer:hover,.backpage:hover
 {
 	background-color: #000000c0;
 }
@@ -785,6 +782,7 @@ footer .linkbar a:hover
 .iframecont
 {
     width: 100%;
+	box-sizing: initial;
     aspect-ratio: 16 / 9;
 	background-color: #000;
 }
@@ -805,17 +803,13 @@ footer .linkbar a:hover
 	top: 7.5vw;
 	height: 2vw;
 	width: 2vw;
-	background-color: #00000050;
+	background-color: #00000090;
 	border: 2px solid #00000050;
 	display: flex;
 	border-radius: 50%;
 	justify-content: center;
 	align-items: center;
 	cursor: pointer;
-}
-.backpage:hover
-{
-	background-color: #000000c0;
 }
 .backpage ion-icon
 {
