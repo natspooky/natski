@@ -68,6 +68,10 @@
         margin: 2vw 3vw;
         border: 8px solid #000;
     }
+    .panneltile.active
+    {
+        border: 8px solid #fff;
+    }
     .pannel
     {
         justify-content: center;
