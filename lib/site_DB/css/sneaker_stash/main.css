@@ -401,6 +401,7 @@ footer
 .content-wrapper p
 {
 	color: #fff;
+	width: 60%;
 	font-weight: 400;
 	margin-left: 1.5vw;
 	font-size: 2vw;
