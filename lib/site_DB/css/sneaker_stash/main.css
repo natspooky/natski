@@ -398,6 +398,16 @@ footer
 	font-size: 4.5vw;
 	line-height: 80px;
 }
+.content-wrapper p
+{
+	color: #fff;
+	font-weight: 400;
+	margin-left: 1.5vw;
+	font-size: 2vw;
+	position: absolute;
+	left: 0;
+	top: 150px;
+}
 .mask1
 {
 	transform-origin: bottom right;
