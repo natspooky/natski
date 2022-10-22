@@ -65,7 +65,8 @@
         position: relative;
         font-weight: 400;
         margin-left: 2.5vw;
-        font-size: 3vw;
+        font-size: 4vw;
+        width: 85%;
     }
     #how-it-works
     {
