@@ -6,7 +6,8 @@
         top: 10px;
         width: unset;
         box-sizing: initial;
-        border: 2px solid #00000090;
+        border: 2px solid #00000050;
+        background-color: #000;
         height: calc(10vw - 10px);
         border-radius: 15px;
     }
@@ -183,10 +184,11 @@
     }
     .pagecontainer .closer
     {
-        right: calc(2.25vw + 10px);
+        right: calc(2.25vw + 11px);
         top: 12.25vw;
         height: 6vw;
         width: 6vw;
+        background-color: #000;
     }
     .pagecontainer .closer ion-icon
     {
@@ -194,24 +196,13 @@
     }
     .backpage
     {
-        right: calc(2.25vw + 10px);
+        right: calc(2.25vw + 11px);
         top: 20.25vw;
         height: 6vw;
         width: 6vw;
+        background-color: #000;
     }
     .backpage ion-icon
-    {
-        font-size: 6vw;
-    }
-    #top
-    {
-        right: calc(2.25vw + 10px);
-        bottom: calc(2.25vw + 10px);
-        height: 8vw;
-        width: 8vw;
-        border-radius: 25px;
-    }
-    #top ion-icon
     {
         font-size: 6vw;
     }
