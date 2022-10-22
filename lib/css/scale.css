@@ -234,6 +234,14 @@
         opacity: 1;
         transform: scale(1);
     }
+    .top
+    {
+        height: calc(10vw - 10px);
+        width: 95%;
+        border-radius: 30px;
+        border: 10px solid #729ef654;
+        font-size: 6vw;
+    }
 }
 @media screen and (max-width: 1200px) and (min-width: 1000px)
 {
