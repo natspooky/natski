@@ -40,6 +40,18 @@
         margin: 0px 2.5vw;
         font-size: 3.2vw;
     }
+    .mask1
+    {
+        transform: scale(1.5);
+    }
+    .mask2
+    {
+        transform: scale(1);
+    }
+    .mask3
+    {
+        transform: scale(0.8);
+    }
 }
 @media screen and (max-height: 1500px) and (min-height: 1000px)
 {
