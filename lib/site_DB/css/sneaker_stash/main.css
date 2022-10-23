@@ -460,6 +460,34 @@ footer
 	position: relative;
 	height: 430px;
 }
+form
+{
+	margin: 10px;
+	width: 40%;
+	border-radius: 10px;
+	position: relative;
+	display:flex;
+	flex-direction:row;
+	border:1px solid grey;
+	padding:2px;
+} 
+input[type=text]
+{
+	flex-grow:2;
+	border:none;
+}
+
+input[type=text]:focus
+{
+	outline: none;
+} 
+.inputbutton
+{
+	border-radius: 10px;
+	border:1px solid white;
+	background:white;
+	color: #fff;
+}
 footer
 {
 	position: relative;
