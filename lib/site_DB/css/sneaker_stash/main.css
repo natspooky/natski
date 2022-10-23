@@ -219,7 +219,7 @@ header .center h1
 header .center p
 {
 	color: #fff;
-	font-size: 2.5vw;
+	font-size: 1.2vw;
 }
 a
 {
@@ -489,6 +489,7 @@ input
 	margin: 5px;
 	margin-left: 2vw;
 	height: 3vw;
+	color: #fff;
 	background: transparent;
 }
 input:focus
@@ -502,8 +503,8 @@ input:focus
 	width: 6vw;
 	margin: 5px;
 	font-size: 1vw;
-	border:1px solid white;
-	background:white;
+	border:1px solid #fff;
+	background:#fff;
 	color: #000;
 }
 footer
