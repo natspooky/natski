@@ -494,6 +494,12 @@ header .bottombar #N
 	background-color: #fff;
 	width: 100%;
 }
+img
+{
+	background-image: url('icon/img/error.png');
+	background-position: center;
+	background-size: cover;
+}
 .img
 {
 	width: 67%;
