@@ -472,15 +472,16 @@ form
 	background-color: #666;
 	padding:2px;
 } 
-input[type=text]
+input
 {
 	flex-grow:2;
 	border:none;
 	width: 30vw;
+	margin: 5px;
 	height: 3vw;
 	background: transparent;
 }
-input[type=text]:focus
+input:focus
 {
 	outline: none;
 } 
