@@ -506,6 +506,11 @@ header .bottombar #N
 	aspect-ratio: 16 / 9;
 	transition: 0.4s;
 }
+#revealed
+{
+	opacity: 1;
+	transform: scale(1);
+}
 .img.active
 {
 	opacity: 0;

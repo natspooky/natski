@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en-US">
     <head>
-		<title>Natski</title>
+		<title>Natski | Home</title>
         <meta charset="UTF-8" content="width=device-width, initial-scale=1"/>
         <meta name="description" content="ground up website for fun"/>
         <meta name="keywords" content="portfolio, natspooky, natski"/>
@@ -54,7 +54,7 @@
                     <div class="panneltext">
                         GCSE/Alevel artwork and slides throughout the whole project detailing creation setps, formats and assets used
                     </div>
-                    <a class="pannelbutton" onClick='document.getElementById("ifr").src="portfolio.html";'>
+                    <a class="pannelbutton" onClick='document.getElementById("ifr").src="portfolio.html"; document.title="Natski | Art Portfolio";'>
                         enter
                     </a>
                 </div>
@@ -66,7 +66,7 @@
                     <div class="panneltext">
                         Websites built for either general use such as social linking sites or for brand specific jobs
                     </div>
-                    <a class="pannelbutton" onClick='document.getElementById("ifr").src="websites.html";'>
+                    <a class="pannelbutton" onClick='document.getElementById("ifr").src="websites.html"; document.title="Natski | Websites";'>
                         enter
                     </a>
                 </div>
@@ -78,7 +78,7 @@
                     <div class="panneltext">
                         ENCORE database (N_DB 2.0) powered by H.A.C.A engine used to run ©NATSKI websites
                     </div>
-                    <a class="pannelbutton" onClick='document.getElementById("ifr").src="code.html";'>
+                    <a class="pannelbutton" onClick='document.getElementById("ifr").src="encore.html"; document.title="Natski | Database";'>
                         enter
                     </a>
                 </div>
@@ -237,7 +237,7 @@
                 </svg>
             <p id="footerdate"></p>
         </footer>
-        <nav class="navbar active">
+        <nav class="navbar">
             <a class="navbarleft" href="index.html">
                 <?xml version="1.0" encoding="UTF-8"?>
                 <svg id="N" data-name="N" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560.95 560.95">
@@ -272,7 +272,7 @@
         </nav>
         <div class="pagecontainer">
             <iframe id="ifr"></iframe>
-            <a class="closer" onClick='document.getElementById("ifr").src="";'>
+            <a class="closer" onClick='document.getElementById("ifr").src=""; document.title="Natski | Home";'>
                 <ion-icon name="close"></ion-icon>
             </a>
         </div>
