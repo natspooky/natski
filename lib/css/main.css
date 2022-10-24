@@ -402,6 +402,10 @@ header .bottombar #N
 {
 	background-color: rgba(0,0,0,0.8);
 }
+.prev ion-icon,.next ion-icon
+{
+	font-size: 1.2vw;
+}
 .pannelselector
 {
 	position: absolute;
@@ -826,7 +830,7 @@ footer .linkbar a:hover
 {
     width: 100%;
 	box-sizing: initial;
-    aspect-ratio: 16 / 9;
+    aspect-ratio: 16 / 6.5;
 	background-color: #000;
 }
 .iframecont iframe,.iframecont a

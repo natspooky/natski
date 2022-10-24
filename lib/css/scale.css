@@ -221,7 +221,7 @@
     }
     .iframecont
     {
-        aspect-ratio: 9 / 16;
+        aspect-ratio: 4 / 6.2;
     }
     .img
     {
@@ -236,11 +236,7 @@
     }
     .top
     {
-        height: calc(10vw - 10px);
-        width: 95%;
-        border-radius: 30px;
-        border: 10px solid #729ef654;
-        font-size: 6vw;
+        display: none;
     }
     .logframe
     {
@@ -280,5 +276,9 @@
     {
         transform: scale(1.5);
         transform-origin: bottom right;
+    }
+    .prev ion-icon,.next ion-icon
+    {
+        font-size: 2vw;
     }
 }
