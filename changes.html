@@ -57,14 +57,33 @@
                 pageindex+=n
                 if(pageindex<1){pageindex=1}
                 document.getElementById("ifr").src='lib/txt/log'+pageindex+'.txt';
-                document.getElementById('pagecounter').innerHTML=pageindex+'/9';
+                document.getElementById('pagecounter').innerHTML=pageindex+'/x';
+                readTextFile('lib/txt/log'+pageindex+'.txt');
             }
+            function readTextFile(file)
+            {
+                var rawFile = new XMLHttpRequest();
+                rawFile.open("GET", file, false);
+                rawFile.onreadystatechange = function ()
+                {
+                    if(rawFile.readyState === 4)
+                    {
+                        if(rawFile.status === 200 || rawFile.status == 0)
+                        {
+                            var allText = rawFile.responseText;
+                            alert(allText);
+                        }
+                    }
+                }
+                rawFile.send(null);
+            }
+            readTextFile('lib/txt/log'+pageindex+'.txt');
         </script>
         <div class="pagechanger">
             <button id="backpg" onclick="changepage(-1)">
                 <ion-icon name="arrow-back"></ion-icon>
             </button>
-            <p id="pagecounter">1/9</p>
+            <p id="pagecounter">1/x</p>
             <button id="forwardpg" onclick="changepage(1)">
                 <ion-icon name="arrow-forward"></ion-icon>
             </button>
