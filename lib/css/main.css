@@ -112,7 +112,6 @@
 }
 html,body
 {
-	position: unset;
 	background-color: #000;
 	height: 100%;
 	width: 100%;
@@ -231,13 +230,13 @@ html,body
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
-	width: 34vw;
+	width: 93vw;
 	transform: translateX(200vw);
 	transition: 0.4s;
 }
 .slidemenu.active .menubar
 {
-	transform: translateX(-59vw);
+	transform: translateX(0vw);
 }
 .navbutton, .menubutton
 {
@@ -292,6 +291,14 @@ html,body
 	bottom: 0;
 	height: 1.5vw;
 	border-radius: 20px;
+}
+.wrapper
+{
+	width: 100%;
+	height: 100%;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	scroll-snap-type: y mandatory;
 }
 header
 {
@@ -646,7 +653,7 @@ header .bottombar #N
 	font-size: 4vw;
 	left: 10vw;
 }
-.descriptionbar
+.descriptionbar,.pagechanger
 {
 	width: 100%;
 	font-size: 1.4vw;

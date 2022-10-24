@@ -94,93 +94,93 @@
                 <div class="progress-bar" id="progress-bar"></div>
             </div>
         </header>
-            <script>
-                var slideIndex=1;
-                var time;
-                var slideshowContainer;
-                var elem=document.getElementById("progress-bar");
-                var width=1;
-                var interval;
-                window.addEventListener("load",function(){
-                    showSlides(slideIndex);
-                    time=setInterval(function(){plusSlides(1)},10000);
-                    slideshowContainer=document.getElementsByClassName('pannelbutton');
-                    for(let i=0;i<slideshowContainer.length;i++){
-                        slideshowContainer[i].addEventListener('mouseenter',pause)
-                        slideshowContainer[i].addEventListener('mouseleave',resume)
-                    }
-                })
-                function progressBar(){
-                    elem.style.transition='0.1s linear';
-                    interval=setInterval(frame,100);
-                    function frame(){
-                        if(width>=100){
-                            clearInterval(interval);
-                        }else{
-                            width++;
-                            elem.style.width=width+'%';
-                        }
-                    }
+        <script>
+            var slideIndex=1;
+            var time;
+            var slideshowContainer;
+            var elem=document.getElementById("progress-bar");
+            var width=1;
+            var interval;
+            window.addEventListener("load",function(){
+                showSlides(slideIndex);
+                time=setInterval(function(){plusSlides(1)},10000);
+                slideshowContainer=document.getElementsByClassName('pannelbutton');
+                for(let i=0;i<slideshowContainer.length;i++){
+                    slideshowContainer[i].addEventListener('mouseenter',pause)
+                    slideshowContainer[i].addEventListener('mouseleave',resume)
                 }
-                    function resetProgressBar(){
-                        elem.style.transition='0s';
-                        width=0;
-                        clearInterval(interval)
+            })
+            function progressBar(){
+                elem.style.transition='0.1s linear';
+                interval=setInterval(frame,100);
+                function frame(){
+                    if(width>=100){
+                        clearInterval(interval);
+                    }else{
+                        width++;
                         elem.style.width=width+'%';
                     }
-                function plusSlides(n){
-                    clearInterval(time);
-                    if(n<0){
-                        showSlides(slideIndex-=1);
-                    }else{
-                        showSlides(slideIndex+=1); 
-                    }
-                    if(n===-1){
-                        time=setInterval(function(){plusSlides(n+2)},10000);
-                    }else{
-                        time=setInterval(function(){plusSlides(n+1)},10000);
-                    }
                 }
-                function currentSlide(n){
-                    clearInterval(time);
+            }
+                function resetProgressBar(){
+                    elem.style.transition='0s';
+                    width=0;
+                    clearInterval(interval)
+                    elem.style.width=width+'%';
+                }
+            function plusSlides(n){
+                clearInterval(time);
+                if(n<0){
+                    showSlides(slideIndex-=1);
+                }else{
+                    showSlides(slideIndex+=1); 
+                }
+                if(n===-1){
+                    time=setInterval(function(){plusSlides(n+2)},10000);
+                }else{
                     time=setInterval(function(){plusSlides(n+1)},10000);
-                    showSlides(slideIndex=n);
                 }
-                function showSlides(n){
-                    var i;
-                    var slides=document.getElementsByClassName("pannel");
-                    var dots=document.getElementsByClassName("panneltile");
-                    if(n>slides.length){slideIndex=1}
-                    if(n<1){slideIndex=slides.length}
-                    for(i=0;i<slides.length;i++){
-                        slides[i].style.display="none";
-                    }
-                    for(i=0;i<dots.length;i++){
-                        dots[i].className=dots[i].className.replace(" active","");
-                    }
-                    slides[slideIndex-1].style.display="flex";
-                    dots[slideIndex-1].className+=" active";
-                    resetProgressBar();
-                    progressBar();
+            }
+            function currentSlide(n){
+                clearInterval(time);
+                time=setInterval(function(){plusSlides(n+1)},10000);
+                showSlides(slideIndex=n);
+            }
+            function showSlides(n){
+                var i;
+                var slides=document.getElementsByClassName("pannel");
+                var dots=document.getElementsByClassName("panneltile");
+                if(n>slides.length){slideIndex=1}
+                if(n<1){slideIndex=slides.length}
+                for(i=0;i<slides.length;i++){
+                    slides[i].style.display="none";
                 }
-                pause=()=>{
-                    clearInterval(time);
-                    resetProgressBar();
+                for(i=0;i<dots.length;i++){
+                    dots[i].className=dots[i].className.replace(" active","");
                 }
-                resume=()=>{
-                    clearInterval(time);
-                    time=setInterval(function(){plusSlides(slideIndex)},10000);
-                    progressBar();
-                }
-                function scrolltop(){
-                    setTimeout(function(){
-                        document.body.scrollTop=0;
-                        document.documentElement.scrollTop=0;
-                    },200);
-                }
-            </script>
+                slides[slideIndex-1].style.display="flex";
+                dots[slideIndex-1].className+=" active";
+                resetProgressBar();
+                progressBar();
+            }
+            pause=()=>{
+                clearInterval(time);
+                resetProgressBar();
+            }
+            resume=()=>{
+                clearInterval(time);
+                time=setInterval(function(){plusSlides(slideIndex)},10000);
+                progressBar();
+            }
+            function scrolltop(){
+                setTimeout(function(){
+                    document.body.scrollTop=0;
+                    document.documentElement.scrollTop=0;
+                },200);
+            }
+        </script>
         <div class="descriptionbar">Featured</div>
-        <main class="middle">
+        <main class="middle" id="middle">
             <a class="beforemiddleimg" onclick="currentSlide(1); scrolltop();">
                 <div class="middlebutton">visit</div>
                 <?xml version="1.0" encoding="UTF-8"?>
@@ -212,13 +212,13 @@
                 </div>
             </a>
         </main>
-        <footer>
+        <footer class="footer">
             <div class="linkbar">
                 <a href="index.html">Home</a>
                 <div class="bar"></div>
                 <a href="about.html">About Us</a>
                 <div class="bar"></div>
-                <a href="#">temp</a>
+                <a href="changes.html">Change Log</a>
                 <div class="bar"></div>
                 <a href="#">Privacy Policy</a>
                 <div class="bar"></div>
@@ -256,7 +256,7 @@
                 <a class="toggle">
                     <ion-icon name="reorder-four"></ion-icon>
                 </a>
-                <a class="navbutton active" style="cursor: pointer;">
+                <a class="navbutton active" style="cursor: pointer;" id="log">
                     Home
                     <div class="selector"></div>
                 </a>
@@ -264,8 +264,8 @@
                     About Us
                     <div class="selector"></div>
                 </a>
-                <a class="navbutton" href="#">
-                    Temp
+                <a class="navbutton" href="changes.html">
+                    Change Log
                     <div class="selector"></div>
                 </a>
             </div>
@@ -278,7 +278,7 @@
         </div>
         <div class="slidemenu">
             <div class="menubar">
-                <a class="menubutton active">
+                <a class="menubutton active" id="log">
                     Home
                     <div class="selector"></div>
                 </a>
@@ -286,8 +286,8 @@
                     About
                     <div class="selector"></div>
                 </a>
-                <a class="menubutton">
-                    Temp
+                <a class="menubutton" href="changes.html">
+                    Change log
                     <div class="selector"></div>
                 </a>
             </div>
