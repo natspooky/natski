@@ -61,7 +61,7 @@
                     document.getElementById("pagecounter").innerHTML='log'+pageindex;
                 }
             </script>
-            <main class="middle" style="flex-direction: column; scroll-snap-align: center;">
+            <main class="middle" style="flex-direction: column; scroll-snap-align: end;">
                 <div class="pagechanger">
                     <button id="backpg" onclick="changepage(-1)">
                         <ion-icon name="chevron-back"></ion-icon>
@@ -73,7 +73,7 @@
                 </div>
                 <iframe id="ifr" class="logframe" src="lib/html/log1.html"></iframe>
             </main>
-            <footer style="scroll-snap-align: center;">
+            <footer style="scroll-snap-align: end;">
                 <div class="linkbar">
                     <a href="index.html">Home</a>
                     <div class="bar"></div>

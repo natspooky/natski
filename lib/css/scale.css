@@ -245,11 +245,25 @@
 }
 @media screen and (max-width: 1200px) and (min-width: 1000px)
 {
-    
+    .logframe
+    {
+        aspect-ratio: 4 / 4;
+    }
+    .iframecont
+    {
+        aspect-ratio: 4 / 4;
+    }
 }
 @media screen and (max-height: 1500px) and (min-height: 1000px)
 {
-    
+    .logframe
+    {
+        aspect-ratio: 4 / 4;
+    }
+    .iframecont
+    {
+        aspect-ratio: 4 / 4;
+    }
 }
 @media screen and (max-width: 950px) and (min-width: 746px)
 {
