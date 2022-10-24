@@ -219,8 +219,9 @@ html,body
 .slidemenu .menubar
 {
 	position: absolute;
-	right: 3vw;
 	top: 12.5vw;
+	left: 3vw;
+	right: 3vw;
 	bottom: 3vw;
 	border-radius: 3vw;
 	box-sizing: initial;
@@ -230,7 +231,6 @@ html,body
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
-	width: 93vw;
 	transform: translateX(200vw);
 	transition: 0.4s;
 }

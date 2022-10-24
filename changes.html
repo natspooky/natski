@@ -52,22 +52,13 @@
             </div>
         </header>
         <script>
-            var pageindex = 1
+            var pageindex=1
             function changepage(n){
                 pageindex+=n
-                if(pageindex<1){
-                    pageindex = 1
-                }
-                $('#log').load('https://natski.netlify.com/lib/txt/log'+pageindex+'.txt');
+                if(pageindex<1){pageindex=1}
                 document.getElementById("ifr").src='lib/txt/log'+pageindex+'.txt';
-                document.getElementById('pagecounter').innerHTML= pageindex+'/9';
-                alert(logfile)
+                document.getElementById('pagecounter').innerHTML=pageindex+'/9';
             }
-            var cssLink = document.createElement("link");
-            cssLink.href = "main.css"; 
-            cssLink.rel = "stylesheet"; 
-            cssLink.type = "text/css"; 
-            frames['ifr'].document.head.appendChild(cssLink);
         </script>
         <div class="pagechanger">
             <button id="backpg" onclick="changepage(-1)">
@@ -79,7 +70,7 @@
             </button>
         </div>
         <main class="middle">
-            <p id="log"></p>
+            <iframe id="ifr" name="ifr" src="lib/txt/log1.txt"></iframe>
         </main>
         <footer>
             <div class="linkbar">
