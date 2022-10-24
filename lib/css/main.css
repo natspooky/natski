@@ -758,7 +758,7 @@ footer .linkbar a:hover
 	border-radius: 50% 50% 0px 0px;
 	overscroll-behavior: contain;
 	overflow: hidden;
-	transition: 0.3s, background-colour 0s;
+	transition: 0.3s;
 }
 .pagecontainer.active
 {

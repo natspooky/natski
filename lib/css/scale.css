@@ -213,11 +213,28 @@
     {
         opacity: 0;
         border-radius: 10px;
+        position: fixed;
+        top: calc(10vw + 10px);
+        left: 10px;
+        bottom: 10px;
+        right: 10px;
+        box-sizing: inherit;
+        height: unset;
+        width: unset;
+        transform: translateY(100.5vh);
+        background-color: transparent;
+        overscroll-behavior: contain;
+        overflow: hidden;
+        transition: 0.3s;
     }
     .pagecontainer.active
     {
         opacity: 1;
         border-radius: 0px;
+    }
+    .pagecontainer iframe
+    {
+        border-radius: 10px;
     }
     .iframecont
     {
