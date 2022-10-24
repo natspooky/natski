@@ -667,6 +667,17 @@ header .bottombar #N
 	font-weight: 900;
 	cursor: default;
 }
+.pagechanger p
+{
+	width: 10vw;
+	text-align: center;
+}
+.logframe
+{
+	width: 100%;
+	aspect-ratio: 16 / 6;
+	border: 0px;
+}
 .linear-wipe
 {
 	position: absolute;
@@ -848,6 +859,13 @@ footer .linkbar a:hover
 	position: relative;
 	font-size: 2vw;
 	color: #fff;
+}
+.snapcontainer
+{
+	height: 100%;
+	width: 100%;
+	overflow: scroll;
+	scroll-snap-type: y mandatory;
 }
 noscript
 {

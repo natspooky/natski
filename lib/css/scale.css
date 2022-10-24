@@ -242,6 +242,10 @@
         border: 10px solid #729ef654;
         font-size: 6vw;
     }
+    .logframe
+    {
+        aspect-ratio: 4 / 6;
+    }
 }
 @media screen and (max-width: 1200px) and (min-width: 1000px)
 {
