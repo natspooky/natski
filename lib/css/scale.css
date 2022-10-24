@@ -242,12 +242,27 @@
     {
         aspect-ratio: 4 / 6;
     }
+    .pagechanger
+    {
+        height: 10vw;
+        background-color: #555;
+    }
+    .pagechanger p
+    {
+        font-size: 5vw;
+        width: 25vw;
+    }
+    .pagechanger button
+    {
+        font-size: 5vw;
+        padding: 10px;
+    }
 }
 @media screen and (max-width: 1200px) and (min-width: 1000px)
 {
     .logframe
     {
-        aspect-ratio: 4 / 4;
+        aspect-ratio: 4 / 4.65;
     }
     .iframecont
     {
@@ -258,7 +273,7 @@
 {
     .logframe
     {
-        aspect-ratio: 4 / 4;
+        aspect-ratio: 4 / 4.65;
     }
     .iframecont
     {

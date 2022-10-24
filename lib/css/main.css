@@ -674,7 +674,23 @@ header .bottombar #N
 .pagechanger p
 {
 	width: 10vw;
+	font-size: 2.5vw;
 	text-align: center;
+}
+.pagechanger button
+{
+	font-size: 3vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: transparent;
+	border: 0px;
+	border-radius: 10px;
+	cursor: pointer;
+}
+.pagechanger button:hover
+{
+	background-color: #00000020;
 }
 .logframe
 {
