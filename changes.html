@@ -57,11 +57,9 @@
                 pageindex+=n
                 if(pageindex<1){pageindex=1}
                 document.getElementById("ifr").src='lib/txt/log'+pageindex+'.txt';
-                document.getElementById('pagecounter').innerHTML=pageindex+'/x';
                 readTextFile('lib/txt/log'+pageindex+'.txt');
             }
-            function readTextFile(file)
-            {
+            function readTextFile(file){
                 var rawFile = new XMLHttpRequest();
                 rawFile.open("GET", file, false);
                 rawFile.onreadystatechange = function ()
@@ -72,7 +70,9 @@
                         {
                             var allText = rawFile.responseText;
                             alert(allText);
-                            var firstLine = allText.split('\n').shift();
+                            document.getElementById('log').innerHTML=allText;
+                            var firstLine = (rawFile.responseText).split('\n').shift();
+                            document.getElementById('pagecounter').innerHTML=firstLine;
                             alert(firstLine)
                         }
                     }
@@ -85,13 +85,14 @@
             <button id="backpg" onclick="changepage(-1)">
                 <ion-icon name="arrow-back"></ion-icon>
             </button>
-            <p id="pagecounter">1/x</p>
+            <p id="pagecounter">loading...</p>
             <button id="forwardpg" onclick="changepage(1)">
                 <ion-icon name="arrow-forward"></ion-icon>
             </button>
         </div>
         <main class="middle">
             <iframe id="ifr" name="ifr" src="lib/txt/log1.txt"></iframe>
+            <h1 id="log">loading...</h1>
         </main>
         <footer>
             <div class="linkbar">
