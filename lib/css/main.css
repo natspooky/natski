@@ -697,6 +697,7 @@ header .bottombar #N
 	width: 100%;
 	aspect-ratio: 16 / 6;
 	border: 0px;
+	background-color: #fff;
 }
 .linear-wipe
 {
@@ -848,6 +849,7 @@ footer .linkbar a:hover
 	box-sizing: initial;
     aspect-ratio: 16 / 6.5;
 	background-color: #000;
+	scroll-snap-align: end;
 }
 .iframecont iframe,.iframecont a
 {
