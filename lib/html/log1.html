@@ -7,18 +7,19 @@
         <link rel="stylesheet" type="text/css" href="https://natski.netlify.com/lib/css/scale.css"/>
         <script src="https://natski.netlify.com/lib/js/jquery.js"></script>
 	</head>
-    <body style="background-color: #fff;" onload="httpGet('lib/txt/log1.txt')">
+    <body style="background-color: #fff;" onload="httpGet()">
         <div class="loaderback" style="background-color: #fff;">
             <div class="loadcont" style="background-color: #efefef;">
                 <div id="loader"></div>
             </div>
         </div>
         <script>
-            function httpGet(theUrl)
+            function httpGet()
             {
                 alert('o k')
+                url = 'https://natski.netlify.com/lib/txt/log1.txt'
                 var xmlHttp = new XMLHttpRequest();
-                xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
+                xmlHttp.open( "GET", url, false ); // false for synchronous request
                 xmlHttp.send( null );
                 document.getElementById('time').innerHTML=xmlHttp.responseText;
                 alert('o k 2')
