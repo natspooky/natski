@@ -7,7 +7,7 @@
         <link rel="stylesheet" type="text/css" href="https://natski.netlify.com/lib/css/scale.css"/>
         <script src="https://natski.netlify.com/lib/js/jquery.js"></script>
 	</head>
-    <body style="background-color: #fff;">
+    <body style="background-color: #fff;" onload="httpGet('lib/txt/log1.txt')">
         <div class="loaderback" style="background-color: #fff;">
             <div class="loadcont" style="background-color: #efefef;">
                 <div id="loader"></div>
@@ -16,12 +16,13 @@
         <script>
             function httpGet(theUrl)
             {
+                alert('o k')
                 var xmlHttp = new XMLHttpRequest();
                 xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
                 xmlHttp.send( null );
-                return xmlHttp.responseText;
+                x= xmlHttp.responseText;
             }
-            document.getElementById('time').innerHTML=httpGet('/lib/txt/log1.txt')
+            document.getElementById('time').innerHTML=x
         </script>
         <main>
             <h1 id="time">loading</h1>
