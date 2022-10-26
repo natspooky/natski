@@ -13,20 +13,8 @@
                 <div id="loader"></div>
             </div>
         </div>
-        <script>
-            function httpGet()
-            {
-                alert('o k')
-                url = 'https://natski.netlify.com/lib/txt/log1.txt'
-                var xmlHttp = new XMLHttpRequest();
-                xmlHttp.open( "GET", url, false ); // false for synchronous request
-                xmlHttp.send( null );
-                document.getElementById('time').innerHTML=xmlHttp.responseText;
-                alert('o k 2')
-            }
-        </script>
         <main>
-            <h1 id="time">loading</h1>
+            <h1>times</h1>
             <dl>
                 <dt>code</dt>
                 <dd><ion-icon name="checkmark-circle"></ion-icon>test</dd>
