@@ -14,7 +14,17 @@
             </div>
         </div>
         <script>
+            const Fs = require('fs')
 
+            function createdDate (file) {  
+            const { birthtime } = Fs.statSync(file)
+
+            return birthtime
+            }
+
+            console.log(  
+            createdDate('./lib/html/log1.html')
+            )
         </script>
         <main>
             <h1 id="time">Changes {date}</h1>
