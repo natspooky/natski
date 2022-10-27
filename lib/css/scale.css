@@ -191,7 +191,7 @@
         top: 12.25vw;
         height: 6vw;
         width: 6vw;
-        border-radius: 10px;
+        border-radius: 15px;
         background-color: #000;
     }
     .pagecontainer .closer ion-icon
@@ -204,7 +204,7 @@
         top: 20.25vw;
         height: 6vw;
         width: 6vw;
-        border-radius: 10px;
+        border-radius: 15px;
         background-color: #000;
         animation: backpagemobile 0.5s ease;
     }
@@ -215,7 +215,8 @@
     .pagecontainer
     {
         opacity: 0;
-        border-radius: 10px;
+        border-radius: 0px;
+        transition: 0.5s;
     }
     .pagecontainer.active
     {
