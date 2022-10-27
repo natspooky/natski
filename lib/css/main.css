@@ -533,20 +533,29 @@ header .bottombar #N
 	position: relative;
 	margin: 20px 20px 40px 20px;
 	width: 67%;
-	height: 4vw;
+	aspect-ratio: 16 / 9;
 	border: 5px solid #729ef654;
 	background-color: transparent;
 	border-radius: 15px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	flex-direction: column;
 	color: #729ef654;
 	font-size: 3vw;
 	transition: 0.15s;
 }
+.top ion-icon
+{
+	transition: 0.15s;
+}
 .top:hover
 {
-	background-color: #729ef654;
+	background-color: #729ef620;
+}
+.top:hover ion-icon
+{
+	transform: translateY(-30px);
 }
 .abouttext
 {
