@@ -216,7 +216,7 @@
     {
         opacity: 0;
         border-radius: 0px;
-        transition: 0.5s;
+        transition: 0.45s;
     }
     .pagecontainer.active
     {
