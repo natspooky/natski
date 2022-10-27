@@ -205,14 +205,14 @@ html,body
 	right: 0;
 	top: 0;
 	background-color: #000000;
-	transform: translateX(-100vw);
-	opacity: 0;
-	border-radius: 0px 50% 50% 0px;
-	transition: 0.4s;
+	transform: translateY(-120vh);
+	opacity: 1;
+	border-radius: 0px 0px 50% 50%;
+	transition: 0.5s ease;
 }
 .slidemenu.active
 {
-	transform: translateX(0);
+	transform: translateY(0);
 	border-radius: 0px;
 	opacity: 1;
 }
@@ -223,7 +223,7 @@ html,body
 	left: 3vw;
 	right: 3vw;
 	bottom: 3vw;
-	border-radius: 3vw;
+	border-radius: 4.5vw;
 	box-sizing: initial;
 	background-color: #111111;
 	border: 3px solid #222222;
@@ -231,12 +231,12 @@ html,body
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
-	transform: translateX(200vw);
-	transition: 0.4s;
+	transform: translateY(230vh);
+	transition: 0.5s ease;
 }
 .slidemenu.active .menubar
 {
-	transform: translateX(0vw);
+	transform: translateY(0px);
 }
 .navbutton, .menubutton
 {
