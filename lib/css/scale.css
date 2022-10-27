@@ -55,17 +55,15 @@
     }
     .pannelselector
     {
-        right: unset;
         width: 100%;
-        justify-content: center;
         align-items: center;
+        background-color: #000;
         bottom: 1vw;
     }
     .panneltile
     {
         height: 14.5vw;
         border-radius: 20px;
-        margin: 2vw 3vw;
         border: 8px solid #000;
     }
     .panneltile.active
