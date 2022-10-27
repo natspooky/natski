@@ -227,7 +227,7 @@
     .img
     {
         width: 95%;
-        border-radius: 30px;
+        border-radius: 42px;
         border: 10px solid transparent;
     }
     .img.active
