@@ -203,11 +203,12 @@ html,body
 	height: 100%;
 	width: 100%;
 	right: 0;
-	top: 0;
+	bottom: 0;
 	background-color: #000000;
-	transform: translateY(-120vh);
+	transform: translateY(120vh);
 	opacity: 1;
-	border-radius: 0px 0px 50% 50%;
+	border-radius: 50% 50% 0px 0px;
+	overflow: hidden;
 	transition: 0.5s ease;
 }
 .slidemenu.active
@@ -232,7 +233,7 @@ html,body
 	align-items: center;
 	flex-direction: column;
 	transform: translateY(230vh);
-	transition: 0.5s ease;
+	transition: 0.7s ease;
 }
 .slidemenu.active .menubar
 {
