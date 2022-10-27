@@ -509,7 +509,7 @@ header .bottombar #N
 {
 	width: 67%;
 	margin: 20px;
-	border-radius: 15px;
+	border-radius: 25px;
 	opacity: 0;
 	transform: scale(0.8);
 	background-color: #729ef650;
@@ -536,7 +536,7 @@ header .bottombar #N
 	aspect-ratio: 16 / 9;
 	border: 5px solid #729ef654;
 	background-color: transparent;
-	border-radius: 15px;
+	border-radius: 25px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
