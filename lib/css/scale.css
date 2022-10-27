@@ -191,6 +191,7 @@
         top: 12.25vw;
         height: 6vw;
         width: 6vw;
+        border-radius: 10px;
         background-color: #000;
     }
     .pagecontainer .closer ion-icon
@@ -203,7 +204,9 @@
         top: 20.25vw;
         height: 6vw;
         width: 6vw;
+        border-radius: 10px;
         background-color: #000;
+        animation: backpagemobile 0.5s ease;
     }
     .backpage ion-icon
     {
@@ -301,5 +304,9 @@
     .prev ion-icon,.next ion-icon
     {
         font-size: 2vw;
+    }
+    .iframecont
+    {
+        aspect-ratio: 8 / 6;
     }
 }

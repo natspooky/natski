@@ -83,16 +83,26 @@
                     </a>
                 </div>
             </div>
-            <a class="prev" onclick="plusSlides(-1)">
-                <ion-icon name="chevron-back"></ion-icon>
+            <a onclick="plusSlides(-1)">
+                <button class="prev">
+                    <ion-icon name="chevron-back"></ion-icon>
+                </button>
             </a>
-            <a class="next" onclick="plusSlides(1)">
-                <ion-icon name="chevron-forward"></ion-icon>
+            <a onclick="plusSlides(1)">
+                <button class="next">
+                    <ion-icon name="chevron-forward"></ion-icon>
+                </button>
             </a>
             <section class="pannelselector">
-                <a class="panneltile" onclick="currentSlide(1)" style="background-image: url('icon/img/1.png'),url('icon/img/error.png');"></a>
-                <a class="panneltile" onclick="currentSlide(2)" style="background-image: url('icon/img/2.png'),url('icon/img/error.png');"></a>
-                <a class="panneltile" onclick="currentSlide(3)" style="background-image: url('icon/img/3.png'),url('icon/img/error.png');"></a>
+                <a onclick="currentSlide(1)">
+                    <button class="panneltile" style="background-image: url('icon/img/1.png'),url('icon/img/error.png');"></button>
+                </a>
+                <a onclick="currentSlide(2)">
+                    <button class="panneltile" style="background-image: url('icon/img/2.png'),url('icon/img/error.png');"></button>
+                </a>
+                <a onclick="currentSlide(3)">
+                    <button class="panneltile" style="background-image: url('icon/img/3.png'),url('icon/img/error.png');"></button>
+                </a>
             </section>
             <div class="progress">
                 <div class="progress-bar" id="progress-bar"></div>
