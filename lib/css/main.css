@@ -834,7 +834,7 @@ footer .linkbar a:hover
 {
 	position: absolute;
 	z-index: 999;
-	right: 1vw;
+	left: 1vw;
 	top: 4.5vw;
 	height: 2vw;
 	width: 2vw;
@@ -881,7 +881,7 @@ footer .linkbar a:hover
 {
 	position: fixed;
 	z-index: 9999;
-	right: 1vw;
+	left: 1vw;
 	top: 7.5vw;
 	height: 2vw;
 	width: 2vw;

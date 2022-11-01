@@ -23,6 +23,6 @@
 }
 @keyframes backpage
 {
-	from{transform: translateX(3vw);}
+	from{transform: translateX(-3vw);}
 	to{transform: translateX(0px);}
 }

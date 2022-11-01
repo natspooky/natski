@@ -184,6 +184,7 @@
     }
     .pagecontainer .closer
     {
+        left: unset;
         right: calc(2.25vw + 11px);
         top: 12.25vw;
         height: 6vw;
@@ -197,6 +198,7 @@
     }
     .backpage
     {
+        left: unset;
         right: calc(2.25vw + 11px);
         top: 20.25vw;
         height: 6vw;
