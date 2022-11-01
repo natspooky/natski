@@ -508,7 +508,7 @@ header .bottombar #N
 	display: flex;
 	flex-direction: row;
 	align-items: center;
-	justify-content: center;
+	justify-content: space-around;
 	background-color: #fff;
 	width: 100%;
 }
@@ -582,7 +582,6 @@ header .bottombar #N
 	padding: .4vw 2.9vw;
 	letter-spacing: 2px;
 	color: #729ef6;
-	transition: unset;
 }
 .middle .beforemiddleimg
 {
@@ -590,7 +589,7 @@ header .bottombar #N
 	width: 45vw;
 	height: 30vw;
 	background-color: #f8f9fa;
-	margin: 4vw 2vw;
+	margin: 4vw 0px;
 	overflow: hidden;
 	border: 2px solid #bbbbbb50;
 	border-radius: 18px 0px 18px 18px;
@@ -639,7 +638,7 @@ header .bottombar #N
 	width: 100%;
 	height: 73%;
 	background-color: #eeeeee;
-	transition: 1s;
+	transition: 0.5s ease;
 }
 .middle .beforemiddleimg .middleimg p
 {
