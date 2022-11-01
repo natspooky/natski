@@ -109,12 +109,12 @@
             </div>
         </header>
         <script>
-            var slideIndex=1;
-            var time;
-            var slideshowContainer;
-            var elem=document.getElementById("progress-bar");
-            var width=1;
-            var interval;
+            var slideIndex=1,
+            time,
+            slideshowContainer,
+            elem=document.getElementById("progress-bar"),
+            width=1,
+            interval;
             window.addEventListener("load",function(){
                 showSlides(slideIndex);
                 time=setInterval(function(){plusSlides(1)},10000);
@@ -151,9 +151,9 @@
                 showSlides(slideIndex=n);
             }
             function showSlides(n){
-                var i;
-                var slides=document.getElementsByClassName("pannel");
-                var dots=document.getElementsByClassName("panneltile");
+                var i,
+                slides=document.getElementsByClassName("pannel"),
+                dots=document.getElementsByClassName("panneltile");
                 if(n>slides.length){slideIndex=1}
                 if(n<1){slideIndex=slides.length}
                 for(i=0;i<slides.length;i++){slides[i].style.display="none";}
@@ -179,8 +179,8 @@
                 },200);
             }
         </script>
-        <div class="descriptionbar">Featured</div>
         <main class="middle" id="middle">
+            <div class="descriptionbar" style="background-color: transparent;">Featured</div>
             <a class="beforemiddleimg" onclick="currentSlide(1); scrolltop();">
                 <div class="middlebutton">visit</div>
                 <?xml version="1.0" encoding="UTF-8"?>
