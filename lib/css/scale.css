@@ -10,6 +10,18 @@
         background-color: #000;
         height: calc(10vw - 10px);
         border-radius: 15px;
+        transition: 0.45s;
+    }
+    .navbar.active
+    {
+        left: 0px;
+        right: 0px;
+        top: 0px;
+        width: unset;
+        box-sizing: initial;
+        border: 0px solid #00000050;
+        height: 10vw;
+        border-radius: 0px;
     }
     .navbar .navbarleft
     {
@@ -86,10 +98,6 @@
         background-color: #000000c0;
         animation: unset;
     }
-    .pannelinfo p
-    {
-        padding-bottom: 7.5vw;
-    }
     .pannelbutton
     {
         transform: scale(3);
@@ -101,6 +109,14 @@
     .panneltext
     {
         display: none;
+    }
+    .pannelinfo .panneltitle
+    {
+        top: 15%;
+    }
+    .pannelinfo .pannelsubtext
+    {
+        top: 47%;
     }
     #about
     {
@@ -131,7 +147,7 @@
         width: 100%;
         height: 100%;
         border-radius: 15px;
-        transition: unset;
+        transition: 0.2s;
     }
     .middle .beforemiddleimg .middleimg p
     {
@@ -185,7 +201,7 @@
     .pagecontainer .closer
     {
         left: unset;
-        right: calc(2.25vw + 11px);
+        right: calc(2.25vw);
         top: 12.25vw;
         height: 6vw;
         width: 6vw;
@@ -199,7 +215,7 @@
     .backpage
     {
         left: unset;
-        right: calc(2.25vw + 11px);
+        right: calc(2.25vw);
         top: 20.25vw;
         height: 6vw;
         width: 6vw;
@@ -213,14 +229,12 @@
     }
     .pagecontainer
     {
-        opacity: 0;
-        border-radius: 0px;
+        border-radius: 5vw 5vw 0px 0px;
         transition: 0.45s;
     }
     .pagecontainer.active
     {
-        opacity: 1;
-        border-radius: 0px;
+        border-radius: 5vw 5vw 0px 0px;
     }
     .iframecont
     {

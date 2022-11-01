@@ -473,6 +473,18 @@ header .bottombar #N
 	animation: fadein 1s;
 	transition: 0.4s;
 }
+.pannelinfo .panneltitle
+{
+	position: absolute;
+	top: 40%;
+	transition: 0.4s ,color 0s;
+}
+.pannelinfo .pannelsubtext
+{
+	position: absolute;
+	top: 58%;
+	transition: 0.4s ,color 0s;
+}
 .panneltext
 {
 	position: relative;
@@ -483,7 +495,7 @@ header .bottombar #N
 	display: flex;
 	border-radius: 15px;
 	width: 90%;
-	height: 0;
+	height: 45%;
 	opacity: 0;
 	transition: 0.4s;
 }
