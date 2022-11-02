@@ -384,8 +384,8 @@ header .bottombar #N
 {
 	cursor: pointer;
 	position: absolute;
-	top: 0;
-	height: 100%;
+	bottom: 0;
+	height: calc(100% - 3.5vw);
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -405,7 +405,7 @@ header .bottombar #N
 }
 .prev:hover,.next:hover
 {
-	background-color: rgba(0,0,0,0.8);
+	background-color: rgba(0,0,0,0.4);
 }
 .prev ion-icon,.next ion-icon
 {
@@ -487,14 +487,12 @@ header .bottombar #N
 }
 .panneltext
 {
-	position: relative;
+	position: absolute;
 	color: #000;
 	text-align: center;
-	justify-content: center;
-	align-items: center;
 	display: flex;
-	border-radius: 15px;
 	width: 90%;
+	top: 35%;
 	height: 45%;
 	opacity: 0;
 	transition: 0.4s;
@@ -715,10 +713,15 @@ header .bottombar #N
 	border: 0px;
 	border-radius: 10px;
 	cursor: pointer;
+	transition: 0.1s;
 }
 .pagechanger button:hover
 {
 	background-color: #00000020;
+}
+.pagechanger button:active, .backpage:active, .closer:active
+{
+	transform: scale(0.85);
 }
 .logframe
 {
@@ -856,6 +859,7 @@ footer .linkbar a:hover
 	justify-content: center;
 	align-items: center;
 	cursor: pointer;
+	transition: 0.1s;
 }
 .pagecontainer .closer:hover,.backpage:hover
 {
@@ -903,6 +907,7 @@ footer .linkbar a:hover
 	justify-content: center;
 	align-items: center;
 	cursor: pointer;
+	transition: 0.1s;
 	animation: backpage 0.5s ease;
 }
 .backpage ion-icon

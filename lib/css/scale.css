@@ -305,6 +305,10 @@
         left: 6vw;
         font-size: 3vw;
     }
+    .panneltext
+    {
+        top: 50%;
+    }
     .pannelbutton
     {
         bottom: 4vw;
