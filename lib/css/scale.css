@@ -31,16 +31,12 @@
     }
     .navbar .navbarleft #N
     {
-        margin-right: 2vw;
+        display: none;
     }
     .navbar .navbarleft h1
     {
         font-size: 4vw;
         margin-top: 0.15vw;
-    }
-    .navbar .navbarleft:hover #N
-    {
-        transform: scale(1) translateX(0px);
     }
     .navbar .navbarleft:hover h1
     {

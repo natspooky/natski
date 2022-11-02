@@ -150,6 +150,7 @@ html,body
 .navbar .navbarleft #N
 {
 	position: relative;
+	display: block;
 	height: 50%;
 	margin-right: 0.5vw;
 	transition: 0.35s;
