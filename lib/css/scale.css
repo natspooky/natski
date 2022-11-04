@@ -70,7 +70,7 @@
     .panneltile
     {
         height: 14.5vw;
-        border-radius: 20px;
+        border-radius: 35px;
         border: 8px solid var(--accentcol);
     }
     .panneltile.active
