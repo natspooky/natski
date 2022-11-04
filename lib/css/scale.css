@@ -6,8 +6,8 @@
         top: 20px;
         width: unset;
         box-sizing: initial;
-        border: 2px solid #00000050;
-        background-color: #000;
+        border: 0px;
+        background-color: var(--accentcol);
         height: calc(10vw - 10px);
         border-radius: 15px;
         box-shadow: 0px 0px 0px transparent;
@@ -19,8 +19,6 @@
         right: 0px;
         top: 0px;
         width: unset;
-        box-sizing: initial;
-        border: 0px solid #00000050;
         height: 10vw;
         border-radius: 0px;
         box-shadow: 0px 0px 25px #00000070;
@@ -73,11 +71,11 @@
     {
         height: 14.5vw;
         border-radius: 20px;
-        border: 8px solid #000;
+        border: 8px solid var(--accentcol);
     }
     .panneltile.active
     {
-        border: 8px solid #fff;
+        border: 8px solid var(--maincol);
     }
     .pannel
     {
@@ -144,7 +142,7 @@
     {
         width: 100%;
         height: 100%;
-        border-radius: 15px;
+        border-radius: 50px;
         transition: 0.2s;
     }
     .middle .beforemiddleimg .middleimg p
@@ -158,10 +156,11 @@
     .middle .beforemiddleimg
     {
         width: 90vw;
+        border-radius: 50px;
         height: 49vw;
-        margin: 4vw 2vw;
+        margin: 1.5vw 0px;
     }
-    .middle .beforemiddleimg img
+    .middle .beforemiddleimg #N
     {
        display: none;
     }
@@ -177,6 +176,11 @@
     {
         font-size: 6vw;
         height: 10vw;
+    }
+    .descriptionbar span
+    {
+        margin-top: 3.8vw;
+        margin-left: 6vw;
     }
     footer
     {
@@ -204,7 +208,7 @@
         height: 6vw;
         width: 6vw;
         border-radius: 15px;
-        background-color: #000;
+        background-color: var(--accentcol);
     }
     .pagecontainer .closer ion-icon
     {
@@ -218,7 +222,7 @@
         height: 6vw;
         width: 6vw;
         border-radius: 15px;
-        background-color: #000;
+        background-color: var(--accentcol);
         animation: backpagemobile 0.5s ease;
     }
     .backpage ion-icon
