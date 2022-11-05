@@ -147,6 +147,9 @@
     }
     .middle .beforemiddleimg .middleimg p
     {
+        top: 25px;
+        right: 25px;
+        border-radius: 13px;
         transform: scale(2);
     }
     .middlebutton
