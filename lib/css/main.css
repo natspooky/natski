@@ -572,7 +572,7 @@ header .bottombar #N
 	width: 47vw;
 	height: 30vw;
 	background-color: #f8f9fa;
-	margin: 0.5vw 0px;
+	margin: 0px 0px 1.5vw 0px;
 	overflow: hidden;
 	border: 2px solid #bbbbbb50;
 	border-radius: 18px;
