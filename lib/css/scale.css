@@ -90,7 +90,7 @@
         width: 90%;
         height: 30%;
         font-size: 5vw;
-        border-radius: 50px;
+        border-radius: 70px;
         background-color: #000000c0;
         animation: unset;
     }
@@ -130,13 +130,13 @@
         left: 7vw;
         margin-top: 9.5vw;
     }
-    .middle
-    {
-        flex-direction: column;
-    }
     .abouttext
     {
         border-radius: 20px;
+    }
+    .middle
+    {
+        flex-direction: column;
     }
     .middle .beforemiddleimg .middleimg
     {
@@ -158,10 +158,10 @@
     }
     .middle .beforemiddleimg
     {
-        width: 90vw;
+        width: 92vw;
         border-radius: 50px;
-        height: 49vw;
-        margin: 1.5vw 0px;
+        height: 46vw;
+        margin: 0px 0px 4vw 0px;
     }
     .middle .beforemiddleimg #N
     {
