@@ -22,11 +22,9 @@
 }
 #loader 
 {
-	position: absolute;
-	top: 5px;
-	left: 5px;
-	right: 5px;
-	bottom: 5px;
+	position: relative;
+	height: 45px;
+	width: 45px;
 	border: 2px solid transparent;
 	border-top-color: #729ef6;
 	border-bottom-color: #729ef6;
@@ -34,7 +32,6 @@
 	-webkit-animation: spin 1s ease infinite;
 	animation: spin 1s ease infinite;
 }
-
 @-webkit-keyframes spin {
 	from {
 	  	-webkit-transform: rotate(0deg);
