@@ -138,6 +138,13 @@
     {
         flex-direction: column;
     }
+    .middle .beforemiddleimg
+    {
+        width: 92vw;
+        border-radius: 50px;
+        height: 48vw;
+        margin: 0px 0px 4vw 0px;
+    }
     .middle .beforemiddleimg .middleimg
     {
         width: 100%;
@@ -155,13 +162,6 @@
     .middlebutton
     {
         display: none;
-    }
-    .middle .beforemiddleimg
-    {
-        width: 92vw;
-        border-radius: 50px;
-        height: 46vw;
-        margin: 0px 0px 4vw 0px;
     }
     .middle .beforemiddleimg #N
     {
