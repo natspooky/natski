@@ -130,6 +130,7 @@
                 function frame(){
                     if(width>=100){clearInterval(interval);}
                     else{width++;elem.style.width=width+'%';}
+                    if (width == 95){$('.pannelinfo').css({'opacity':'0','transform':'translateY(-60px)'})}
                 }
             }
                 function resetProgressBar(){
@@ -159,6 +160,7 @@
                 for(i=0;i<slides.length;i++){slides[i].style.display="none";}
                 for(i=0;i<dots.length;i++){dots[i].className=dots[i].className.replace(" active","");}
                 slides[slideIndex-1].style.display="flex";
+                $('.pannelinfo').css({'opacity':'1','transform':'translateY(0px)'});
                 dots[slideIndex-1].className+=" active";
                 resetProgressBar();
                 progressBar();
@@ -261,7 +263,8 @@
             </a>
             <div class="navbarright">
                 <a class="toggle">
-                    <ion-icon name="reorder-four"></ion-icon>
+                    <ion-icon class="open" name="reorder-four"></ion-icon>
+                    <ion-icon class="close" name="close"></ion-icon>
                 </a>
                 <a class="navbutton active" style="cursor: pointer;">
                     Home

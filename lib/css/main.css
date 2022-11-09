@@ -168,6 +168,22 @@ html,body
 {
 	color: #729ef6;
 }
+.toggle .open
+{
+	display: block;
+}
+.toggle.active .open
+{
+	display: none;
+}
+.toggle .close
+{
+	display: none;
+}
+.toggle.active .close
+{
+	display: block;
+}
 .slidemenu
 {
 	position: fixed;
@@ -482,6 +498,10 @@ header .bottombar #N
 	text-decoration: none;
 	color: #729ef6;
 	transition: 0.2s;
+}
+.pannelbutton:active
+{
+	transform: scale(0.85);
 }
 .middle
 {

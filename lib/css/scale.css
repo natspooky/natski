@@ -88,19 +88,26 @@
         left: unset;
         margin-top: unset;
         width: 90%;
-        height: 30%;
+        height: 35%;
         font-size: 5vw;
         border-radius: 70px;
         background-color: #000000c0;
-        animation: unset;
+        transition: 0.5s ease;
+        animation: fadein 0.5s ease;
     }
     .pannelbutton
     {
         transform: scale(3);
         transform-origin: bottom;
         bottom: 4vw;
-        padding: .3vw 4vw;
-        background-color: #efefefe0;
+        padding: .8vw 4vw;
+        color: #e9e9e9;
+        border: none;
+        background-image: linear-gradient(to right, #729ef6,#132241);
+    }
+    .pannelbutton:active
+    {
+        transform: scale(2.7);
     }
     .panneltext
     {
