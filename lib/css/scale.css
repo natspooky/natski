@@ -107,7 +107,7 @@
     }
     .pannelbutton:active
     {
-        transform: scale(2.7);
+        transform: scale(3);
     }
     .panneltext
     {
