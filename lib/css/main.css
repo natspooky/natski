@@ -511,7 +511,7 @@ header .bottombar #N
 	flex-direction: row;
 	flex-wrap: wrap;
 	align-items: center;
-	justify-content: space-evenly;
+	justify-content: center;
 	background-color: var(--maincol);
 	width: 100%;
 }
@@ -589,10 +589,10 @@ header .bottombar #N
 .middle .beforemiddleimg
 {
 	position: relative;
-	width: 47vw;
+	width: 40vw;
 	height: 30vw;
 	background-color: #f8f9fa;
-	margin: 0px 0px 2vw 0px;
+	margin: 0vw 0.7vw 1.4vw 0.7vw;
 	overflow: hidden;
 	border: 2px solid #bbbbbb50;
 	border-radius: 18px;
@@ -624,9 +624,9 @@ header .bottombar #N
 	font-size: 1vw;
 	height: 5vw;
 	width: 22vw;
-	left: 9.9vw;
+	left: 7.8vw;
 	color: #444444;
-	bottom: 0.9vw;
+	bottom: 1vw;
 }
 .middle .beforemiddleimg .middleimg
 {
@@ -694,7 +694,7 @@ header .bottombar #N
 .descriptionbar span
 {
 	margin-top: 1.2vw;
-	margin-left: 2.3vw;
+	margin-left: 10vw;
 }
 .pagechanger
 {
