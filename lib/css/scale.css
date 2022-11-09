@@ -166,6 +166,10 @@
         border-radius: 13px;
         transform: scale(2);
     }
+    .middle .beforemiddleimg .middleimg span
+    {
+        display: block;
+    }
     .middlebutton
     {
         display: none;

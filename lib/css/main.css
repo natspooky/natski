@@ -636,6 +636,7 @@ header .bottombar #N
 	background-size: 100%;
 	background-position: center;
 	display: flex;
+	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 	border-radius: 18px;
@@ -674,7 +675,15 @@ header .bottombar #N
 	position: relative;
 	display: none;
 	color: var(--maincol);
-	font-size: 4vw;
+	font-size: 6vw;
+	margin-bottom: 1vw;
+}
+.middle .beforemiddleimg .middleimg span
+{
+	display: none;
+	position: relative;
+	color: var(--maincol);
+	font-size: 4.5vw;
 }
 .descriptionbar,.pagechanger
 {
