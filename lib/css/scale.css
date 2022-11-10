@@ -289,9 +289,9 @@
     }
     dl
     {
-        width: calc(100vw - 20px);
+        width: 85vw;
         height: calc(100% - 20px);
-        margin-top: 20px;
+        margin-top: 80px;
         padding-top: 20px;
         border-radius: 30px;
         background-color: #f2f2f2;
