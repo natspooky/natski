@@ -951,6 +951,7 @@ dl
 	width: 65vw;
 	height: calc(100% - 20px);
 	margin-top: 20px;
+	padding-top: 10px;
 	border-radius: 10px 10px 0px 0px;
 	background-color: #f2f2f2;
 }
