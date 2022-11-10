@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en-US">
+<html lang="en-US" style="background-color: var(--maincol);">
     <head>
 		<title>Natski | logs</title>
         <link rel="stylesheet" type="text/css" href="https://natski.netlify.com/lib/css/main.css"/>
@@ -7,13 +7,18 @@
         <link rel="stylesheet" type="text/css" href="https://natski.netlify.com/lib/css/scale.css"/>
         <script src="https://natski.netlify.com/lib/js/jquery.js"></script>
 	</head>
-    <body style="background-color: var(--maincol); display: flex; justify-content: center; height: fit-content;">
+    <body style="background-color: var(--maincol);" style="overflow: scroll; height: 100%;">
         <div class="loaderback" style="background-color: var(--maincol);">
             <div class="loadcont" style="background-color: #efefef;">
                 <div id="loader"></div>
             </div>
         </div>
-        <main>
+        <header id="other">
+            <div class="topbar">
+                <h1>Changelog</h1>
+            </div>
+        </header>
+        <main class="middle">
             <dl>
                 <dt>script 1</dt>
                 <dd><ion-icon name="close" style="color: #f44336;"></ion-icon>title testing to see if it will all wrap correctly</dd>
