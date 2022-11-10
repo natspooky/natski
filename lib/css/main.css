@@ -738,8 +738,8 @@ header .bottombar #N
 .logframe
 {
 	width: 100%;
-	height: auto;
 	border: 0px;
+	aspect-ratio: 16/5;
 	background-color: var(--maincol);
 }
 .linear-wipe
@@ -952,7 +952,7 @@ dl dt
 {
 	font-size: 1.6vw;
 	font-weight: bold;
-	margin-left: 2.5vw;
+	margin-left: 2.9vw;
 	margin-bottom: 0.5vw;
 }
 dl dd
