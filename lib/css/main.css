@@ -952,6 +952,7 @@ dl dt
 {
 	font-size: 1.8vw;
 	font-weight: bold;
+	text-decoration: underline;
 }
 dl dd
 {
