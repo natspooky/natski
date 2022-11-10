@@ -945,7 +945,7 @@ hr
 }
 dl
 {
-	width: 50vw;
+	width: 65vw;
 	background-color: #444444;
 }
 dl dt
@@ -958,7 +958,12 @@ dl dd
 	font-size: 1.2vw;
 	display: flex;
 	align-items: center;
-	margin-left: 0.5vw;
+	margin-left: 1vw;
+	margin-top: 0.3vw;
+}
+dl dd ion-icon
+{
+	margin: 0vw 0.3vw;
 }
 noscript
 {
