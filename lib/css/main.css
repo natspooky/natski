@@ -944,12 +944,13 @@ hr
 	width: 100%;
 	height: 2px;
 	border: none;
-	background-color: #dcdcdc;
+	background-color: var(--maincol);
 }
 dl
 {
 	width: 65vw;
-	height: 100%;
+	height: calc(100% - 20px);
+	margin-top: 20px;
 	background-color: #f2f2f2;
 }
 dl dt
