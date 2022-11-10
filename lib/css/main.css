@@ -738,7 +738,7 @@ header .bottombar #N
 .logframe
 {
 	width: 100%;
-	aspect-ratio: 16 / 6;
+	height: auto;
 	border: 0px;
 	background-color: var(--maincol);
 }
@@ -950,17 +950,17 @@ dl
 }
 dl dt
 {
-	font-size: 1.8vw;
+	font-size: 1.6vw;
 	font-weight: bold;
-	margin-left: 1.2vw;
-	text-decoration: underline;
+	margin-left: 2.5vw;
+	margin-bottom: 0.5vw;
 }
 dl dd
 {
 	font-size: 1.2vw;
 	display: flex;
 	align-items: center;
-	margin-left: 0.2vw;
+	margin-left: 1.2vw;
 	margin-top: 0.6vw;
 	margin-bottom: 0.6vw;
 }
