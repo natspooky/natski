@@ -957,9 +957,8 @@ dl dd
 {
 	font-size: 1.2vw;
 	display: flex;
-	justify-content: center;
 	align-items: center;
-	margin-left: 0.4vw;
+	margin-left: 0.5vw;
 }
 noscript
 {
