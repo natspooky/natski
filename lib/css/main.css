@@ -950,12 +950,12 @@ dl
 }
 dl dt
 {
-	font-size: 1.5vw;
+	font-size: 1.8vw;
 	font-weight: bold;
 }
 dl dd
 {
-	font-size: 0.9vw;
+	font-size: 1.2vw;
 	display: flex;
 	justify-content: center;
 	align-items: center;
