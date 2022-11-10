@@ -946,6 +946,7 @@ hr
 dl
 {
 	width: 50%;
+	background-color: #444444;
 }
 dl dt
 {
@@ -955,6 +956,10 @@ dl dt
 dl dd
 {
 	font-size: 0.9vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-left: 0.4vw;
 }
 noscript
 {
