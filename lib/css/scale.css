@@ -287,6 +287,36 @@
         font-size: 5vw;
         padding: 10px;
     }
+    dl
+    {
+        width: 85vw;
+        height: calc(100% - 20px);
+        margin-top: 20px;
+        padding-top: 20px;
+        border-radius: 30px;
+        background-color: #f2f2f2;
+    }
+    dl dt
+    {
+        font-size: 3.6vw;
+        font-weight: bold;
+        margin-left: 3.9vw;
+        margin-bottom: 2.5vw;
+    }
+    dl dd
+    {
+        font-size: 3.2vw;
+        display: flex;
+        align-items: center;
+        margin-left: 3.2vw;
+        margin-top: 2.6vw;
+        margin-bottom: 2.6vw;
+    }
+    dl dd ion-icon
+    {
+        font-size: 3vw;
+        margin: 0vw 2.2vw;
+    }
 }
 @media screen and (max-width: 1200px) and (min-width: 1000px)
 {
