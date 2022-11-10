@@ -950,6 +950,7 @@ hr
 }
 dl
 {
+	bottom: 0;
 	width: 65vw;
 	height: calc(100% - 20px);
 	margin-top: 20px;
@@ -977,6 +978,14 @@ dl dd ion-icon
 {
 	font-size: 1vw;
 	margin: 0vw 0.2vw;
+}
+.red
+{
+	color: #f44336;
+}
+.green
+{
+	color: green;
 }
 noscript
 {
