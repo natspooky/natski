@@ -40,7 +40,7 @@
         <link rel="stylesheet" type="text/css" href="lib/css/scale.css"/>
         <script src="lib/js/jquery.js"></script>
 	</head>
-    <body>
+    <body onload="load()">
         <div class="loaderback">
             <div class="loadcont">
                 <div id="loader"></div>
@@ -48,13 +48,16 @@
         </div>
         <script>
             var pageindex=1,
-            index=5;
+            index=2;
+            function load(){
+            document.getElementById("pagecounter").innerHTML=pageindex+'/'+index;
+            }
             function changepage(n){
                 pageindex+=n
                 if(pageindex<1){pageindex=1}
                 if(pageindex>index){pageindex=index}
                 document.getElementById("ifr").src='lib/html/log'+pageindex+'.html';
-                document.getElementById("pagecounter").innerHTML='log'+pageindex;
+                document.getElementById("pagecounter").innerHTML=pageindex+'/'+index;
             }
         </script>
         <nav class="navbar">
@@ -96,7 +99,7 @@
                 <button id="backpg" onclick="changepage(-1)">
                     <ion-icon name="chevron-back"></ion-icon>
                 </button>
-                <p id="pagecounter">log1</p>
+                <p id="pagecounter"></p>
                 <button id="forwardpg" onclick="changepage(1)">
                     <ion-icon name="chevron-forward"></ion-icon>
                 </button>
