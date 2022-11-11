@@ -47,10 +47,30 @@
             </div>
         </div>
         <script>
-            var pageindex=1
+            function readTextFile(file)
+            {
+                var rawFile = new XMLHttpRequest();
+                rawFile.open("GET", file, false);
+                rawFile.onreadystatechange = function ()
+                {
+                    if(rawFile.readyState === 4)
+                    {
+                        if(rawFile.status === 200 || rawFile.status == 0)
+                        {
+                            var allText = rawFile.responseText;
+                            alert(allText);
+                        }
+                    }
+                }
+                rawFile.send(null);
+            }
+
+            var pageindex=1,
+            index = readTextFile("https://natski.netlify.com/lib/html/index.txt");
             function changepage(n){
                 pageindex+=n
                 if(pageindex<1){pageindex=1}
+                if(pageindex>index){pageindex=index}
                 document.getElementById("ifr").src='lib/html/log'+pageindex+'.html';
                 document.getElementById("pagecounter").innerHTML='log'+pageindex;
             }

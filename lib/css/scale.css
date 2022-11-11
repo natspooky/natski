@@ -186,11 +186,20 @@
     {
         display: block;
     }
+    .middle.artpage
+    {
+        flex-direction: column;
+        justify-content: center;
+        align-items: unset;
+    }
+    .imgcolumn
+    {
+        width: 100vw;
+    }
     .descriptionbar
     {
         font-size: 6vw;
         height: 10vw;
-        border-top: 0px solid #dcdcdc;
     }
     .descriptionbar span
     {

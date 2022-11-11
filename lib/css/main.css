@@ -527,6 +527,19 @@ header .bottombar #N
 	scroll-snap-align: center;
 	transition: 0.4s;
 }
+.noaspect
+{
+	aspect-ratio: unset;
+	width: 90%;
+}
+.imgcolumn
+{
+	width: 45vw;
+	height: auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
 #revealed
 {
 	opacity: 1;
@@ -684,6 +697,12 @@ header .bottombar #N
 	color: var(--maincol);
 	font-size: 4.5vw;
 }
+.middle.artpage
+{
+	flex-direction: row;
+	justify-content: center;
+	align-items: unset;
+}
 .descriptionbar,.pagechanger
 {
 	width: 100%;
@@ -694,7 +713,6 @@ header .bottombar #N
 	justify-content: flex-start;
 	align-items: center;
 	height: 3.5vw;
-	border-top: 2px solid #dcdcdc;
 	letter-spacing: 4px;
 	font-weight: 900;
 	user-select: none;
@@ -943,7 +961,7 @@ hr
 	margin: 1vw 0vw;
 	position: relative;
 	width: 100%;
-	height: 2px;
+	height: 3px;
 	border: none;
 	background-color: var(--maincol);
 }
