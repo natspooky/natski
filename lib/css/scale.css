@@ -147,10 +147,10 @@
     }
     .middle .beforemiddleimg
     {
-        width: 92vw;
+        width: 85vw;
         border-radius: 50px;
         height: 48vw;
-        margin: 0px 0px 4vw 0px;
+        margin: 0px 0px 7.5vw 0px;
     }
     .middle .beforemiddleimg .middleimg
     {
@@ -194,8 +194,8 @@
     }
     .descriptionbar span
     {
-        margin-top: 3.8vw;
-        margin-left: 6vw;
+        margin-top: 1vw;
+        margin-left: 9vw;
     }
     footer
     {

@@ -164,13 +164,10 @@ html,body
 	font-size: 6.3vw;
 	transition: 0.2s;
 }
-.toggle.active
-{
-	color: #729ef6;
-}
 .toggle .open
 {
 	display: block;
+	animation: fade 0.2s;
 }
 .toggle.active .open
 {
@@ -179,6 +176,8 @@ html,body
 .toggle .close
 {
 	display: none;
+	color: #729ef6;
+	animation: fade 0.2s;
 }
 .toggle.active .close
 {
