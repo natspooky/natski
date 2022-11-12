@@ -161,10 +161,10 @@ html,body
 	position: relative;
 	margin: 50px auto;
 	margin-right: 0.6vw;
-	-webkit-transform: rotate(0deg) scale(0.85);
-	-moz-transform: rotate(0deg) scale(0.85);
-	-o-transform: rotate(0deg) scale(0.85);
-	transform: rotate(0deg) scale(0.85);
+	-webkit-transform: rotate(0deg) scale(0.9);
+	-moz-transform: rotate(0deg) scale(0.9);
+	-o-transform: rotate(0deg) scale(0.9);
+	transform: rotate(0deg) scale(0.9);
 	-webkit-transition: .5s ease-in-out;
 	-moz-transition: .5s ease-in-out;
 	-o-transition: .5s ease-in-out;
@@ -181,10 +181,10 @@ html,body
 	border-radius: 9px;
 	opacity: 1;
 	left: 0;
-	-webkit-transform: rotate(0deg) scale(0.85);
-	-moz-transform: rotate(0deg) scale(0.85);
-	-o-transform: rotate(0deg) scale(0.85);
-	transform: rotate(0deg) scale(0.85);
+	-webkit-transform: rotate(0deg) scale(0.9);
+	-moz-transform: rotate(0deg) scale(0.9);
+	-o-transform: rotate(0deg) scale(0.9);
+	transform: rotate(0deg) scale(0.9);
 	-webkit-transition: .25s ease-in-out;
 	-moz-transition: .25s ease-in-out;
 	-o-transition: .25s ease-in-out;
@@ -205,10 +205,10 @@ html,body
 .toggle.open span:nth-child(1)
 {
 	top: 18px;
-	-webkit-transform: rotate(135deg) scale(0.85);
-	-moz-transform: rotate(135deg) scale(0.85);
-	-o-transform: rotate(135deg) scale(0.85);
-	transform: rotate(135deg) scale(0.85);
+	-webkit-transform: rotate(135deg) scale(0.9);
+	-moz-transform: rotate(135deg) scale(0.9);
+	-o-transform: rotate(135deg) scale(0.9);
+	transform: rotate(135deg) scale(0.9);
 }
 .toggle.open span:nth-child(2)
 {
@@ -218,10 +218,10 @@ html,body
 .toggle.open span:nth-child(3)
 {
 	top: 18px;
-	-webkit-transform: rotate(-135deg) scale(0.85);
-	-moz-transform: rotate(-135deg) scale(0.85);
-	-o-transform: rotate(-135deg) scale(0.85);
-	transform: rotate(-135deg) scale(0.85);
+	-webkit-transform: rotate(-135deg) scale(0.9);
+	-moz-transform: rotate(-135deg) scale(0.9);
+	-o-transform: rotate(-135deg) scale(0.9);
+	transform: rotate(-135deg) scale(0.9);
 }
 .toggle.open span
 {
