@@ -1022,7 +1022,7 @@ dl dt
 {
 	font-size: 1.6vw;
 	font-weight: bold;
-	margin-left: 3.1vw;
+	margin-left: 1.1vw;
 	margin-bottom: 0.5vw;
 }
 dl dd
@@ -1030,7 +1030,7 @@ dl dd
 	font-size: 1.2vw;
 	display: flex;
 	align-items: center;
-	margin-left: 1.2vw;
+	margin-left: 2vw;
 	margin-top: 0.6vw;
 	margin-bottom: 0.6vw;
 }
