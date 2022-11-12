@@ -51,7 +51,7 @@
     }
     .toggle
     {
-        display: flex;
+        display: block;
     }
     .slidemenu
     {
