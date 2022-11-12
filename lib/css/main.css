@@ -156,11 +156,11 @@ html,body
 .toggle
 {
 	display: none;
-	width: 55px;
+    width: 6vw;
 	height: 45px;
 	position: relative;
 	margin: 50px auto;
-	margin-right: 0.6vw;
+	margin-right: 0.4vw;
 	-webkit-transform: rotate(0deg) scale(0.9);
 	-moz-transform: rotate(0deg) scale(0.9);
 	-o-transform: rotate(0deg) scale(0.9);
