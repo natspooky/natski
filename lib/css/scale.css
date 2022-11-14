@@ -139,7 +139,13 @@
     }
     .abouttext
     {
+        font-size: 3vw;
         border-radius: 20px;
+    }
+    .abouttext span
+    {
+        font-size: 11vw;
+        margin-right: 1vw;
     }
     .middle
     {

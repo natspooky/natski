@@ -633,6 +633,14 @@ header .bottombar #N
 	border-radius: 10px;
 	background-color: var(--maincol);
 }
+.abouttext span
+{
+	font-weight: bold;
+	font-size: 5vw;
+	line-height: 90%;
+	margin-right: 0.5vw;
+	float: left;
+}
 .middlebutton
 {
 	right: 2vw;
