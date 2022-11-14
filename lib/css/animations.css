@@ -10,7 +10,7 @@
 }
 @keyframes fadezoom {
 	from{opacity: 0.4; background-size: 100%;}
-	to{opacity: 1; background-size: 108%;}
+	to{opacity: 1; background-size: 106%;}
 }
 @keyframes fade {
 	from{opacity: 0.4;}
