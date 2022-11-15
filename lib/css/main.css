@@ -103,7 +103,12 @@ html,body
 	width: 100%;
 	background-color: var(--accentcol);
 	z-index: 99999;
+	box-shadow: 0px 0px 0px transparent;
 	transition: 0.3s;
+}
+.navbar:hover
+{
+	box-shadow: 0px 0px 100px #0a0a0a;
 }
 .navbar .navbarleft
 {
