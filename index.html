@@ -191,17 +191,21 @@
                             document.getElementById('naviright').classList.add('active');
                             document.getElementById('notifmenu').classList.add('active');
                         }
-                    },6000);
+                    },4000);
                 }
             });
             function remove(el){
                 var element=el;
-                element.remove();
-                if(document.getElementById("notifbar").childElementCount==0){
-                    localStorage.setItem('notifications','True');
-                    document.getElementById('notifmenu').classList.remove('active');
-                    document.getElementById('naviright').classList.remove('active');
-                }
+                element.style.transform = 'translateX(-5vw) rotate(-6deg) translateY(0.5vw)';
+                element.style.opacity = '0';
+                setTimeout(function(){
+                    element.remove();
+                    if(document.getElementById("notifbar").childElementCount==0){
+                        localStorage.setItem('notifications','True');
+                        document.getElementById('notifmenu').classList.remove('active');
+                        document.getElementById('naviright').classList.remove('active');
+                    }
+                },350)
             };
             function notiftbaroggle(){
                 document.getElementById('notifbar').classList.toggle('active');
@@ -340,7 +344,7 @@
                 <div class="alert">
                     <ion-icon name="checkmark"></ion-icon>
                 </div>
-                <p class="notifinfo">task completed notification test</p>
+                <p class="notifinfo">Successfully running N 2.0</p>
                 <button class="notifclose" onclick="remove(this.parentNode)">
                     <ion-icon name="close"></ion-icon>
                 </button>
@@ -349,7 +353,7 @@
                 <div class="alert active">
                     <ion-icon name="alert"></ion-icon>
                 </div>
-                <p class="notifinfo">error notification test</p>
+                <p class="notifinfo">Error retrieving thumbnails<br>retrying...</p>
                 <button class="notifclose" onclick="remove(this.parentNode)">
                     <ion-icon name="close"></ion-icon>
                 </button>
