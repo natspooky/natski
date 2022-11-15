@@ -152,6 +152,40 @@ html,body
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	transform: translateX(0);
+	transition: 0.3s;
+}
+.navbar .navbarright.active
+{
+	transform: translateX(-3vw);
+}
+.navbar .notiftoggle
+{
+	position: absolute;
+	top: 0;
+	right: 1vw;
+	transform: translateX(6vw) scale(1);
+	height: 100%;
+	display: grid;
+	place-content: center;
+	color: var(--maincol);
+	border: none;
+	background-color: transparent;
+	font-size: 2.2vw;
+	transition: 0.3s;
+	cursor: pointer;
+}
+.navbar .notiftoggle:hover
+{
+	color: #ca8300;
+}
+.navbar .notiftoggle.active:active
+{
+	transform: translateX(0) scale(0.8);
+}
+.navbar .notiftoggle.active
+{
+	transform: translateX(0) scale(1);
 }
 .toggle
 {
@@ -227,6 +261,87 @@ html,body
 {
 	background: #729ef6;
 }
+.notifcont
+{
+	position: fixed;
+	display: none;
+	top: calc(3.5vw + 20px);
+	right: 20px;
+	height: auto;
+	width: 22vw;
+	transform: translate(0);
+	opacity: 1;
+	transition: 0.3s;
+}
+.notifcont.active
+{
+	transform: translateX(25vw);
+	opacity: 0;
+}
+.notifcont .notif
+{
+	position: relative;
+	height: 5vw;
+	width: 100%;
+	background-color: #444444;
+	border-radius: 10px;
+	display: grid;
+	margin-bottom: 20px;
+	place-content: center;
+	animation: notif calc(0.5s * var(--i));
+	text-decoration: none;
+	transition: 0.2s;
+	overflow: hidden;
+}
+.notifcont .notif:hover
+{
+	background-color: #555555;
+}
+.notifcont .notif .alert
+{
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 100%;
+	display: grid;
+	place-content: center;
+	font-size: 2.5vw;
+	color: green;
+	background-image: linear-gradient(to top, #002c00, #0a0a0a);
+	aspect-ratio: 10 / 16;
+}
+.notifcont .notif .alert.active
+{
+	color: red;
+	background-image: linear-gradient(to top, #310000, #0a0a0a);
+}
+.notifcont .notif .notifinfo
+{
+	position: relative;
+	width: 15vw;
+	font-size: 1.1vw;
+	color: var(--maincol);
+}
+.notifcont .notif .notifclose
+{
+	position: absolute;
+	top: 0;
+	right: 0;
+	height: 100%;
+	border: none;
+	background-color: transparent;
+	font-size: 2.2vw;
+	color: #333333;
+	aspect-ratio: 6 / 16;
+	display: grid;
+	place-content: center;
+	transition: 0.2s;
+	cursor: pointer;
+}
+.notifcont .notif .notifclose:hover
+{
+	background-color: #474747;
+}
 .slidemenu
 {
 	position: fixed;
@@ -280,7 +395,6 @@ html,body
 	letter-spacing: 1px;
 	font-size: 1.3vw;
 	font-weight: bold;
-	line-height: 2.2vw;
 	text-align: center;
 	display: flex;
 	justify-content: center;
@@ -300,6 +414,13 @@ html,body
 	background-color: transparent;
 	border-radius: 5px;
 	transition: 0.3s;
+}
+.navbutton .selector
+{
+	position: absolute;
+	bottom: 0;
+	height: 0.1vw;
+	border-radius: 0px;
 }
 .navbutton:hover .selector
 {
@@ -456,13 +577,9 @@ header .bottombar #N
 .panneltile
 {
 	position: relative;
-	height: 2.85vw;
-	aspect-ratio: 16 / 9;
-	box-sizing: initial;
+	height: 3vw;
 	border-radius: 8px;
-	background-size: cover;
 	border: 3px solid var(--accentcol);
-	background-position: center;
 	cursor: pointer;
 	transition: 0.3s;
 }
@@ -492,7 +609,7 @@ header .bottombar #N
 	width: 35vw;
 	margin-top: 1vw;
 	height: 75%;
-	left: 3vw;
+	left: 3.7vw;
 	border-radius: 12px;
 	display: flex;
 	align-items: center;
@@ -593,35 +710,6 @@ header .bottombar #N
 {
 	opacity: 0;
 	transform: scale(0.8);
-}
-.top
-{
-	position: relative;
-	margin: 20px 20px 40px 20px;
-	width: 67%;
-	aspect-ratio: 16 / 9;
-	border: 5px solid #729ef654;
-	background-color: transparent;
-	border-radius: 25px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-	color: #729ef654;
-	font-size: 3vw;
-	transition: 0.15s;
-}
-.top ion-icon
-{
-	transition: 0.15s;
-}
-.top:hover
-{
-	background-color: #729ef620;
-}
-.top:hover ion-icon
-{
-	transform: translateY(-30px);
 }
 .abouttext
 {
@@ -808,13 +896,6 @@ header .bottombar #N
 {
 	transform: scale(0.85);
 }
-.logframe
-{
-	width: 100%;
-	border: 0px;
-	aspect-ratio: 16/6;
-	background-color: var(--maincol);
-}
 .linear-wipe
 {
 	position: absolute;
@@ -963,8 +1044,7 @@ footer .linkbar a:hover
 .iframecont
 {
     width: 100%;
-	box-sizing: initial;
-    aspect-ratio: 16 / 6.5;
+    padding-top: 40%;
 	background-color: var(--maincol);
 	scroll-snap-align: end;
 }

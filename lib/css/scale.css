@@ -11,6 +11,7 @@
         height: calc(10vw - 10px);
         border-radius: 15px;
         box-shadow: 0px 0px 0px transparent;
+        overflow: hidden;
         transition: 0.5s ease, border-radius 0.35s;
     }
     .navbar.active
@@ -45,6 +46,18 @@
     {
         right: 2vw;
     }
+    .navbar .navbarright.active
+    {
+        transform: translateX(-7vw);
+    }
+    .navbar .notiftoggle
+    {
+        right: 2vw;
+        transform: translateX(8vw) scale(1);
+        font-size: 6vw;
+        transition: 0.3s;
+        cursor: pointer;
+    }
     .navbutton
     {
         display: none;
@@ -52,6 +65,36 @@
     .toggle
     {
         display: block;
+    }
+    .notifcont
+    {
+        top: calc(10vw + 40px);
+        right: 30px;
+        width: 85vw;
+        transition: 0.3s;
+    }
+    .notifcont.active
+    {
+        transform: translateX(90vw);
+    }
+    .notifcont .notif
+    {
+        height: 15vw;
+        border-radius: 30px;
+        margin-bottom: 30px;
+    }
+    .notifcont .notif .alert
+    {
+        font-size: 5.5vw;
+    }
+    .notifcont .notif .notifinfo
+    {
+        width: 64vw;
+        font-size: 3vw;
+    }
+    .notifcont .notif .notifclose
+    {
+        font-size: 5.5vw;
     }
     .slidemenu
     {
@@ -70,7 +113,7 @@
     .panneltile
     {
         height: 14.5vw;
-        border-radius: 35px;
+        border-radius: 30px;
         border: 8px solid var(--accentcol);
     }
     .panneltile.active
@@ -270,7 +313,7 @@
     }
     .iframecont
     {
-        aspect-ratio: 1 / 1;
+        padding-top: 100%;
         scroll-snap-align: center;
     }
     .img
@@ -283,10 +326,6 @@
     {
         opacity: 1;
         transform: scale(1);
-    }
-    .top
-    {
-        display: none;
     }
     .pagechanger
     {
@@ -373,8 +412,209 @@
     {
         font-size: 2vw;
     }
+    .pannelselector
+    {
+        width: 25%;
+        bottom: 2vw;
+    }
+    .panneltile
+    {
+        height: 4vw;
+        border-radius: 8px;
+        border: 3px solid var(--accentcol);
+    }
+    .panneltile.active
+    {
+        border: 3px solid var(--maincol);
+    }
     .iframecont
     {
-        aspect-ratio: 8 / 6;
+        padding-top: 75%;
+    }
+    .navbar
+    {
+        height: 7vw;
+    }
+    .navbar .navbarleft #N
+    {
+        margin-right: 1.3vw;
+    }
+    .navbar .navbarleft h1
+    {
+        font-size: 3.2vw;
+        margin-top: 0.2vw;
+    }
+    .navbutton
+    {
+        font-size: 2.3vw;
+    }
+    .navbar .navbarright.active
+    {
+        transform: translateX(-3.1vw);
+    }
+    .navbar .notiftoggle
+    {
+        font-size: 3vw;
+    }
+    .notifcont
+    {
+        top: calc(7vw + 10px);
+        right: 10px;
+        width: 40vw;
+    }
+    .notifcont.active
+    {
+        transform: translateX(43vw);
+    }
+    .notifcont .notif
+    {
+        height: 8vw;
+        border-radius: 10px;
+        margin-bottom: 10px;
+    }
+    .notifcont .notif .alert
+    {
+        font-size: 3.3vw;
+    }
+    .notifcont .notif .notifinfo
+    {
+        width: 28vw;
+        font-size: 1.9vw;
+    }
+    .notifcont .notif .notifclose
+    {
+        font-size: 3.2vw;
+    }
+    header .topbar h1
+    {
+        font-size: 6vw;
+        margin-top: 5vw;
+    }
+    .abouttext
+    {
+        font-size: 3vw;
+        border-radius: 20px;
+    }
+    .abouttext span
+    {
+        font-size: 11vw;
+        margin-right: 1vw;
+    }
+    .middle
+    {
+        flex-direction: column;
+    }
+    .middle .beforemiddleimg
+    {
+        width: 85vw;
+        border-radius: 50px;
+        height: 48vw;
+        margin: 0px 0px 7.5vw 0px;
+        transform: scale(0.9);
+    }
+    .middle .beforemiddleimg .middleimg
+    {
+        width: 100%;
+        height: 100%;
+        border-radius: 50px;
+        transition: 0.2s;
+    }
+    .middle .beforemiddleimg .middleimg p
+    {
+        top: 25px;
+        right: 25px;
+        border-radius: 13px;
+        transform: scale(2);
+    }
+    .middle .beforemiddleimg .middleimg span,.middle .beforemiddleimg .middleimg h1
+    {
+        display: block;
+    }
+    .middlebutton,.middle .beforemiddleimg .text,.middle .beforemiddleimg #N
+    {
+        display: none;
+    }
+    .middle.artpage
+    {
+        flex-direction: column;
+        justify-content: center;
+        align-items: unset;
+    }
+    .imgcolumn
+    {
+        width: 100vw;
+    }
+    .descriptionbar
+    {
+        font-size: 6vw;
+        height: 10vw;
+    }
+    .descriptionbar span
+    {
+        margin-top: 1vw;
+        margin-left: 6vw;
+    }
+    footer
+    {
+        padding: 40px 0px;
+    }
+    footer #N
+    {
+        height: 7vw;
+        margin: 2vw 0;
+    }
+    footer p
+    {
+        font-size: 2vw;
+    }
+    footer .linkbar a
+    {
+        margin: 0px 2.5vw;
+        font-size: 2.2vw;
+    }
+    .pagecontainer .closer
+    {
+        top: calc(7vw + 10px);
+        height: 4.5vw;
+        width: 4.5vw;
+        border-radius: 10px;
+        background-color: var(--accentcol);
+    }
+    .pagecontainer .closer ion-icon,.backpage ion-icon
+    {
+        font-size: 6vw;
+    }
+    .backpage
+    {
+        top: calc(11.5vw + 20px);
+        height: 4.5vw;
+        width: 4.5vw;
+        border-radius: 10px;
+        background-color: var(--accentcol);
+    }
+    .iframecont
+    {
+        padding-top: 80%;
+        scroll-snap-align: end;
+    }
+    .img
+    {
+        width: 85%;
+        border-radius: 20px;
+        border: 5px solid transparent;
+    }
+    .pagechanger
+    {
+        height: 10%;
+    }
+    .pagechanger p
+    {
+        font-size: 4vw;
+        width: 25vw;
+    }
+    .pagechanger button
+    {
+        font-size: 5vw;
+        padding: 10px;
     }
 }

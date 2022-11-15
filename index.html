@@ -49,10 +49,10 @@
         <header>
             <div class="pannel" style="background-image: url('icon/img/1.png'),linear-gradient(to top right,#581a92,#3800a9)">
                 <div class="pannelinfo">
-                    <h1 class="panneltitle">Art Portfolio</h1>
-                    <p class="pannelsubtext">A collection of art for GCSE/Alevel</p>
+                    <h1 class="panneltitle">Portfolio</h1>
+                    <p class="pannelsubtext">A collection of work from GCSE/Alevel</p>
                     <div class="panneltext">
-                        GCSE/Alevel artwork and slides throughout the whole project detailing creation setps, formats and assets used
+                        a collection of work made during the GCSE / Alevel timeframe including: artwork, research documents and progression slides to keep track of in order to archive all of the work created
                     </div>
                     <a class="pannelbutton" onClick='document.getElementById("ifr").src="portfolio.html"; document.title="Natski | Art Portfolio";'>
                         enter
@@ -78,7 +78,7 @@
                     <div class="panneltext">
                         ENCORE database (N_DB 2.0) powered by H.A.C.A engine used to run ©NATSKI websites
                     </div>
-                    <a class="pannelbutton" onClick='document.getElementById("ifr").src="encore.html"; document.title="Natski | Database";'>
+                    <a class="pannelbutton" onClick='document.getElementById("ifr").src=""; document.title="Natski | Database";'>
                         enter
                     </a>
                 </div>
@@ -95,13 +95,13 @@
             </a>
             <section class="pannelselector">
                 <a onclick="currentSlide(1)">
-                    <button class="panneltile" style="background-image: url('icon/img/1.png'),linear-gradient(to top right,#581a92,#3800a9)"></button>
+                    <img src="icon/img/1.png" class="panneltile" style="background-image: linear-gradient(to top right,#581a92,#3800a9)">
                 </a>
                 <a onclick="currentSlide(2)">
-                    <button class="panneltile" style="background-image: url('icon/img/2.png'),linear-gradient(to top right,#581a92,#3800a9)"></button>
+                    <img src="icon/img/2.png" class="panneltile" style="background-image: linear-gradient(to top right,#581a92,#3800a9)">
                 </a>
                 <a onclick="currentSlide(3)">
-                    <button class="panneltile" style="background-image: url('icon/img/3.png'),linear-gradient(to top right,#581a92,#3800a9)"></button>
+                    <img src="icon/img/3.png" class="panneltile" style="background-image: linear-gradient(to top right,#581a92,#3800a9)">
                 </a>
             </section>
             <div class="progress">
@@ -136,7 +136,7 @@
                 function resetProgressBar(){
                     elem.style.transition='0s';
                     width=0;
-                    clearInterval(interval)
+                    clearInterval(interval);
                     elem.style.width=width+'%';
                 }
             function plusSlides(n){
@@ -179,7 +179,33 @@
                     document.body.scrollTop=0;
                     document.documentElement.scrollTop=0;
                 },200);
-            }
+            };
+            $(document).ready(function(){
+                if(localStorage.getItem("notifications")==='True'){//change to null later
+                    setTimeout(function(){
+                        document.getElementById('notifbar').style.display="block";
+                    },600);
+                    setTimeout(function(){
+                        if(document.getElementById("notifbar").childElementCount!=0){
+                            document.getElementById('notifbar').classList.add('active');
+                            document.getElementById('naviright').classList.add('active');
+                            document.getElementById('notifmenu').classList.add('active');
+                        }
+                    },6000);
+                }
+            });
+            function remove(el){
+                var element=el;
+                element.remove();
+                if(document.getElementById("notifbar").childElementCount==0){
+                    localStorage.setItem('notifications','True');
+                    document.getElementById('notifmenu').classList.remove('active');
+                    document.getElementById('naviright').classList.remove('active');
+                }
+            };
+            function notiftbaroggle(){
+                document.getElementById('notifbar').classList.toggle('active');
+            };
         </script>
         <main style="background-color: var(--maincol);">
             <div class="descriptionbar"><span>Featured</span></div>
@@ -222,7 +248,7 @@
             <div class="linkbar" id="linker">
                 <a href="index.html">Home</a>
                 <div class="bar"></div>
-                <a href="about.html">About Us</a>
+                <a href="about.html">About</a>
                 <div class="bar"></div>
                 <a href="changes.html">Changelog</a>
                 <div class="bar"></div>
@@ -249,6 +275,9 @@
             <p id="footerdate"></p>
         </footer>
         <nav class="navbar">
+            <button class="notiftoggle" id="notifmenu" onclick="notiftbaroggle()">
+                <ion-icon name="alert-circle-outline"></ion-icon>
+            </button>
             <a class="navbarleft" href="index.html">
                 <?xml version="1.0" encoding="UTF-8"?>
                 <svg id="N" data-name="N" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560.95 560.95">
@@ -263,7 +292,7 @@
                 </svg>
                 <h1>NATSKI</h1>
             </a>
-            <div class="navbarright">
+            <div class="navbarright" id="naviright">
                 <a class="toggle">
                     <span></span>
                     <span></span>
@@ -274,7 +303,7 @@
                     <div class="selector"></div>
                 </a>
                 <a class="navbutton" href="about.html">
-                    About Us
+                    About
                     <div class="selector"></div>
                 </a>
                 <a class="navbutton" href="changes.html">
@@ -305,6 +334,26 @@
                     <div class="selector"></div>
                 </a>
             </div>
+        </div>
+        <div class="notifcont" id="notifbar">
+            <a class="notif" href="#" style="--i: 1;">
+                <div class="alert">
+                    <ion-icon name="checkmark"></ion-icon>
+                </div>
+                <p class="notifinfo">task completed notification test</p>
+                <button class="notifclose" onclick="remove(this.parentNode)">
+                    <ion-icon name="close"></ion-icon>
+                </button>
+            </a>
+            <a class="notif" href="#" style="--i: 1.5;">
+                <div class="alert active">
+                    <ion-icon name="alert"></ion-icon>
+                </div>
+                <p class="notifinfo">error notification test</p>
+                <button class="notifclose" onclick="remove(this.parentNode)">
+                    <ion-icon name="close"></ion-icon>
+                </button>
+            </a>
         </div>
         <noscript>
             <h1>javascript is disabled :(</h1>
