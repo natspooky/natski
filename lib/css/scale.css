@@ -28,10 +28,6 @@
     {
         left: 3vw;
     }
-    .navbar .navbarleft #N
-    {
-        display: none;
-    }
     .navbar .navbarleft h1
     {
         font-size: 4vw;
@@ -58,11 +54,15 @@
         transition: 0.3s;
         cursor: pointer;
     }
-    .navbutton
+    .navbar .notiftoggle:hover
+    {
+        color: var(--maincol);
+    }
+    .navbutton,.navbar .navbarleft #N,.prev,.next,.panneltext,.middle .beforemiddleimg .text,.middle .beforemiddleimg #N,.middlebutton
     {
         display: none;
     }
-    .toggle
+    .toggle,.slidemenu,.middle .beforemiddleimg .middleimg h1,.middle .beforemiddleimg .middleimg span
     {
         display: block;
     }
@@ -95,14 +95,6 @@
     .notifcont .notif .notifclose
     {
         font-size: 6.5vw;
-    }
-    .slidemenu
-    {
-        display: block;
-    }
-    .prev,.next
-    {
-        display: none;
     }
     .pannelselector
     {
@@ -151,10 +143,6 @@
     .pannelbutton:active
     {
         transform: scale(3);
-    }
-    .panneltext
-    {
-        display: none;
     }
     .pannelinfo .panneltitle
     {
@@ -214,26 +202,6 @@
         right: 25px;
         border-radius: 13px;
         transform: scale(2);
-    }
-    .middle .beforemiddleimg .middleimg span
-    {
-        display: block;
-    }
-    .middlebutton
-    {
-        display: none;
-    }
-    .middle .beforemiddleimg #N
-    {
-       display: none;
-    }
-    .middle .beforemiddleimg .text
-    {
-        display: none;
-    }
-    .middle .beforemiddleimg .middleimg h1
-    {
-        display: block;
     }
     .middle.artpage
     {
