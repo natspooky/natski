@@ -409,20 +409,15 @@ html,body
 }
 .navbutton .selector,.menubutton .selector
 {
-	position: relative;
-	width: 0%;
-	height: 0.25vw;
-	background-color: transparent;
-	border-radius: 5px;
-	transition: 0.3s;
-}
-.navbutton .selector
-{
 	position: absolute;
-	bottom: 0;
+	width: 0%;
 	height: 0.1vw;
 	border-radius: 0px;
+	bottom: 0;
+	background-color: transparent;
+	transition: 0.3s;
 }
+
 .navbutton:hover .selector
 {
 	width: 100%;
@@ -438,13 +433,6 @@ html,body
 	font-size: 8vw;
 	margin: 5vw;
 	height: 13vw;
-}
-.menubutton .selector
-{
-	position: absolute;
-	bottom: 0;
-	height: 1.5vw;
-	border-radius: 20px;
 }
 .wrapper
 {
