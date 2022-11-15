@@ -101,11 +101,8 @@ html,body
 	top: 0;
 	height: 3.5vw;
 	width: 100%;
-	background-color: #00000090;
-	backdrop-filter: blur(5px);
-	-webkit-backdrop-filter: blur(5px);
+	background-color: var(--accentcol);
 	z-index: 99999;
-	border-bottom: 2px solid #00000050;
 	transition: 0.3s;
 }
 .navbar .navbarleft
@@ -157,14 +154,14 @@ html,body
 }
 .navbar .navbarright.active
 {
-	transform: translateX(-3vw);
+	transform: translateX(-4vw);
 }
 .navbar .notiftoggle
 {
 	position: absolute;
 	top: 0;
-	right: 1vw;
-	transform: translateX(6vw) scale(1);
+	right: 2vw;
+	transform: translateX(7vw) scale(1);
 	height: 100%;
 	display: grid;
 	place-content: center;
@@ -1007,12 +1004,10 @@ footer .linkbar a:hover
 	top: 4.5vw;
 	height: 2vw;
 	width: 2vw;
-	background-color: #00000090;
-	border: 2px solid #00000050;
+	background-color: var(--accentcol);
 	display: none;
-	border-radius: 50%;
-	justify-content: center;
-	align-items: center;
+	border-radius: 10px;
+	place-content: center;
 	cursor: pointer;
 	transition: 0.1s;
 }
@@ -1022,7 +1017,7 @@ footer .linkbar a:hover
 }
 .pagecontainer.active .closer
 {
-	display: flex;
+	display: grid;
 }
 .pagecontainer .closer ion-icon
 {
@@ -1054,12 +1049,10 @@ footer .linkbar a:hover
 	top: 7.5vw;
 	height: 2vw;
 	width: 2vw;
-	background-color: #00000090;
-	border: 2px solid #00000050;
-	display: flex;
-	border-radius: 50%;
-	justify-content: center;
-	align-items: center;
+	background-color: var(--accentcol);
+	display: grid;
+	border-radius: 10px;
+	place-content: center;
 	cursor: pointer;
 	transition: 0.1s;
 	animation: backpage 0.5s ease;
