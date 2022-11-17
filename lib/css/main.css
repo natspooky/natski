@@ -358,6 +358,17 @@ html,body
 {
 	background-color: #373737;
 }
+.notifcont .notif .notifprog
+{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	height: 7%;
+	width: 100%;
+	background-color: var(--maincol);
+	transform: scaleX(1);
+	transition: 0.3s;
+}
 .slidemenu
 {
 	position: fixed;
@@ -1063,7 +1074,7 @@ footer .linkbar a:hover
 {
 	transform: translateY(0) translateX(-50%);
 	border-radius: 0px;
-	box-shadow: 0px 0px 50px #0a0a0a;
+	box-shadow: 0px 0px 25px #0a0a0a;
 }
 .changelogframe iframe
 {
@@ -1078,6 +1089,20 @@ footer .linkbar a:hover
 	transition: 0.3s;
 }
 .changelogframe.active iframe
+{
+	display: block;
+}
+.backpanel
+{
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	display: none;
+	background-color: #0a0a0a90;
+}
+.backpanel.active
 {
 	display: block;
 }

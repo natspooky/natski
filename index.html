@@ -324,12 +324,13 @@
                     About
                     <div class="selector"></div>
                 </a>
-                <a class="navbutton" id="log" style="cursor: pointer;" onClick='document.getElementById("logframe").src="lib/html/log1.html"; document.title="Natski | Changelog"; load();'>
+                <a class="navbutton" id="log" style="cursor: pointer;" onClick='document.getElementById("logframe").src="lib/html/log1.html"; load();'>
                     Changelog
                     <div class="selector"></div>
                 </a>
             </div>
         </nav>
+        <div class="backpanel" id="backcloser"></div>
         <div class="changelogframe">
             <iframe id="logframe"></iframe>
             <div class="pagechanger" style="border-top: 2px solid #dcdcdc;">
@@ -392,6 +393,7 @@
                 <button class="notifclose" onclick="remove(this.parentNode)">
                     <ion-icon name="close"></ion-icon>
                 </button>
+                <div class="notifprog"></div>
             </a>
         </div>
         <noscript>

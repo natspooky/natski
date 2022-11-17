@@ -59,7 +59,7 @@
         transition: 0.3s;
         cursor: pointer;
     }
-    .navbutton,.navbar .navbarleft #N,.prev,.next,.panneltext,.middle .beforemiddleimg .text,.middle .beforemiddleimg #N,.middlebutton
+    .navbutton,.navbar .navbarleft #N,.prev,.next,.panneltext,.middle .beforemiddleimg .text,.middle .beforemiddleimg #N,.middlebutton,.backpanel.active,.changelogframe
     {
         display: none;
     }
@@ -216,10 +216,6 @@
         flex-direction: column;
         justify-content: center;
         align-items: unset;
-    }
-    .changelogframe
-    {
-        display: none;
     }
     .imgcolumn
     {
