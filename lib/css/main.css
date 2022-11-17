@@ -907,7 +907,7 @@ header .bottombar #N
 {
 	background-color: #00000020;
 }
-.pagechanger button:active, .backpage:active, .closer:active
+.pagechanger button:active, .backpage:active, .closer:active,.logcloser:active
 {
 	transform: scale(0.85);
 }
@@ -1025,7 +1025,7 @@ footer .linkbar a:hover
 {
 	display: block;
 }
-.pagecontainer .closer
+.pagecontainer .closer,.changelogframe .logcloser
 {
 	position: absolute;
 	z-index: 999;
@@ -1033,6 +1033,7 @@ footer .linkbar a:hover
 	top: 4.5vw;
 	height: 2vw;
 	width: 2vw;
+	border: none;
 	background-color: var(--accentcol);
 	display: none;
 	border-radius: 10px;
@@ -1040,15 +1041,19 @@ footer .linkbar a:hover
 	cursor: pointer;
 	transition: 0.1s;
 }
-.pagecontainer .closer:hover,.backpage:hover
+.changelogframe .logcloser
+{
+	top: 1vw;
+}
+.pagecontainer .closer:hover,.backpage:hover,.changelogframe .logcloser:hover
 {
 	background-color: #000000c0;
 }
-.pagecontainer.active .closer
+.pagecontainer.active .closer,.changelogframe.active .logcloser
 {
 	display: grid;
 }
-.pagecontainer .closer ion-icon
+.pagecontainer .closer ion-icon,.changelogframe .logcloser ion-icon
 {
 	position: relative;
 	font-size: 2vw;
