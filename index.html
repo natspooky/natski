@@ -191,12 +191,12 @@
                             document.getElementById('naviright').classList.add('active');
                             document.getElementById('notifmenu').classList.add('active');
                         }
-                    },4000);
+                    },2500);
                 }
             });
             function remove(el){
                 var element=el;
-                element.style.transform = 'translateX(-5vw) rotate(-6deg) translateY(0.5vw)';
+                element.style.transform = 'translateX(-27%) rotate(-6deg) translateY(0.5vw)';
                 element.style.opacity = '0';
                 setTimeout(function(){
                     element.remove();
@@ -209,6 +209,20 @@
             };
             function notiftbaroggle(){
                 document.getElementById('notifbar').classList.toggle('active');
+            };
+            //make changelog in main page
+            //make slides and image pages interact with parent page
+            var pageindex=1,
+            index=1;
+            function load(){
+                document.getElementById("pagecounter").innerHTML=pageindex+'/'+index;
+            }
+            function changepage(n){
+                pageindex+=n
+                if(pageindex<1){pageindex=1}
+                if(pageindex>index){pageindex=index}
+                document.getElementById("logframe").src='lib/html/log'+pageindex+'.html';
+                document.getElementById("pagecounter").innerHTML=pageindex+'/'+index;
             };
         </script>
         <main style="background-color: var(--maincol);">
@@ -302,7 +316,7 @@
                     <span></span>
                     <span></span>
                 </a>
-                <a class="navbutton active" style="cursor: pointer;">
+                <a class="navbutton active" style="cursor: pointer;" id="home" onclick='document.getElementById("logframe").src=""; document.getElementById("ifr").src=""; document.title="Natski | Home";''>
                     Home
                     <div class="selector"></div>
                 </a>
@@ -310,12 +324,24 @@
                     About
                     <div class="selector"></div>
                 </a>
-                <a class="navbutton" href="changes.html">
+                <a class="navbutton" id="log" style="cursor: pointer;" onClick='document.getElementById("logframe").src="lib/html/log1.html"; document.title="Natski | Changelog"; load();'>
                     Changelog
                     <div class="selector"></div>
                 </a>
             </div>
         </nav>
+        <div class="changelogframe">
+            <iframe id="logframe"></iframe>
+            <div class="pagechanger" style="border-top: 2px solid #dcdcdc;">
+                <button id="backpg" onclick="changepage(-1)">
+                    <ion-icon name="chevron-back"></ion-icon>
+                </button>
+                <p id="pagecounter"></p>
+                <button id="forwardpg" onclick="changepage(1)">
+                    <ion-icon name="chevron-forward"></ion-icon>
+                </button>
+            </div>
+        </div>
         <div class="pagecontainerstyle"></div>
         <div class="pagecontainer">
             <iframe id="ifr"></iframe>
@@ -341,7 +367,7 @@
         </div>
         <div class="notifcont" id="notifbar">
             <a class="notif" style="--i: 1;">
-                <div class="alert">
+                <div class="alert green">
                     <ion-icon name="checkmark"></ion-icon>
                 </div>
                 <p class="notifinfo">Successfully running N 2.0</p>
@@ -350,10 +376,19 @@
                 </button>
             </a>
             <a class="notif" style="--i: 1.5;">
-                <div class="alert active">
+                <div class="alert red">
                     <ion-icon name="alert"></ion-icon>
                 </div>
                 <p class="notifinfo">Error retrieving thumbnails<br>retrying...</p>
+                <button class="notifclose" onclick="remove(this.parentNode)">
+                    <ion-icon name="close"></ion-icon>
+                </button>
+            </a>
+            <a class="notif" style="--i: 2;">
+                <div class="alert white">
+                    <div></div>
+                </div>
+                <p class="notifinfo">loader test</p>
                 <button class="notifclose" onclick="remove(this.parentNode)">
                     <ion-icon name="close"></ion-icon>
                 </button>

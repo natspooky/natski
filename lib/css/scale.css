@@ -34,6 +34,7 @@
     }
     .navbar .navbarleft h1
     {
+        display: block;
         font-size: 4vw;
         margin-top: 0.15vw;
     }
@@ -57,10 +58,6 @@
         font-size: 6vw;
         transition: 0.3s;
         cursor: pointer;
-    }
-    .navbar .notiftoggle:hover
-    {
-        color: var(--maincol);
     }
     .navbutton,.navbar .navbarleft #N,.prev,.next,.panneltext,.middle .beforemiddleimg .text,.middle .beforemiddleimg #N,.middlebutton
     {
@@ -90,6 +87,13 @@
     .notifcont .notif .alert
     {
         font-size: 5.5vw;
+    }
+    .notifcont .notif .alert div
+    {
+        height: 35px;
+        width: 35px;
+        border: 5px solid var(--maincol);
+        border-left: 5px solid transparent;
     }
     .notifcont .notif .notifinfo
     {
@@ -213,6 +217,10 @@
         justify-content: center;
         align-items: unset;
     }
+    .changelogframe
+    {
+        display: none;
+    }
     .imgcolumn
     {
         width: 100vw;
@@ -319,6 +327,7 @@
         height: calc(100% - 20px);
         margin-top: 80px;
         padding-top: 20px;
+        margin-bottom: 30px;
         border-radius: 30px;
         background-color: #f2f2f2;
     }
@@ -437,6 +446,11 @@
     .notifcont.active
     {
         transform: translateX(43vw);
+    }
+    .navbar .notiftoggle
+    {
+        right: 0.5vw;
+        transform: translateX(4vw) scale(1);
     }
     .notifcont .notif
     {
@@ -588,5 +602,13 @@
     {
         font-size: 5vw;
         padding: 10px;
+    }
+    .changelogframe
+    {
+        transform: translateY(100.5vh) translateX(-60%);
+    }
+    .changelogframe.active
+    {
+        transform: translateY(0) translateX(-60%);
     }
 }
