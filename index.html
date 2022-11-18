@@ -212,7 +212,7 @@
             function notiftbaroggle(){
                 document.getElementById('notifbar').classList.toggle('active');
             };
-            function loadernotif(){
+            function loadernotif(x){
                 var elemm = document.getElementById('notifbar').appendChild(document.createElement('div')),
                 elemm2 = elemm.appendChild(document.createElement('div')),
                 elemm3 = elemm2.appendChild(document.createElement('div')),
@@ -224,13 +224,13 @@
                 elemm.id = 'loadingnotif';
                 elemm2.className = 'alert white';
                 elemm4.className = 'notifinfo';
-                elemm4.innerText='loading image';
+                elemm4.innerText='loading image '+x;
                 elemm5.className = 'notifclose';
                 elemm5.onclick = function(){remove(this.parentNode)};
                 elemm6.name = 'close';
                 elemm7.className = 'notifprog';
             }
-            function notifcomplete(){
+            function notifcomplete(x){
                 var elem = document.getElementById('notifbar').appendChild(document.createElement('div')),
                 elem2 = elem.appendChild(document.createElement('div')),
                 elem4 = elem.appendChild(document.createElement('p')),
@@ -240,17 +240,17 @@
                 elem.className = 'notif active';
                 elem2.className = 'alert green';
                 elem4.className = 'notifinfo';
-                elem4.innerText='task complete';
+                elem4.innerText='task complete '+x;
                 elem5.className = 'notifclose';
                 elem5.onclick = function(){remove(this.parentNode)};
                 elem6.name = 'close';
                 elem7.name = 'checkmark';
             }
-            function addnotif() {
-                loadernotif()
+            function addnotif(x) {
+                loadernotif(x)
                 setTimeout(function(){
                     document.getElementById('loadingnotif').remove()
-                    notifcomplete()
+                    notifcomplete(x)
                 },2000)
                 }
             function imgloader(x){
@@ -258,7 +258,7 @@
                 document.getElementById('notifbar').classList.remove('active');
                 document.getElementById('notifmenu').classList.add('active');
                         document.getElementById('naviright').classList.add('active');
-                addnotif()
+                addnotif(x)
             }
             //make changelog in main page
             //make slides and image pages interact with parent page
