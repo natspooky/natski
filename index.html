@@ -251,14 +251,23 @@
                 setTimeout(function(){
                     document.getElementById('loadingnotif').remove()
                     notifcomplete(x)
+                    download(x, 'img.png');
                 },2000)
-                }
+            }
+            function download(path, filename){
+                const anchor = document.createElement('a');
+                anchor.href = path;
+                anchor.download = filename;
+                document.body.appendChild(anchor);
+                anchor.click();
+                document.body.removeChild(anchor);
+            }; 
             function imgloader(x){
                 document.getElementById('notifbar').style.display="block";
                 document.getElementById('notifbar').classList.add('full');
                 document.getElementById('notifbar').classList.remove('active');
                 document.getElementById('notifmenu').classList.add('active');
-                        document.getElementById('naviright').classList.add('active');
+                document.getElementById('naviright').classList.add('active');
                 addnotif(x)
             }
             //make changelog in main page
