@@ -31,6 +31,11 @@
 	from{transform: translateX(4vw); opacity: 0;}
 	to{transform: translateX(0); opacity: 1;}
 }
+@keyframes notifload
+{
+	from{transform: scaleX(0);}
+	to{transform: scaleX(1);}
+}
 @keyframes rotate
 {
 	from{transform: rotate(0);}

@@ -282,12 +282,17 @@ html,body
 	border-radius: 10px;
 	display: grid;
 	margin-bottom: 20px;
+	transform: scale(1);
 	place-content: center;
-	transform-origin: top right;
 	animation: notif calc(0.5s * var(--i));
 	text-decoration: none;
-	transition: 0.2s;
+	user-select: none;
+	transition: 0.15s;
 	overflow: hidden;
+}
+.notifcont .notif:active
+{
+	transform: scale(0.97);
 }
 .notifcont .notif:hover
 {
@@ -351,8 +356,12 @@ html,body
 	aspect-ratio: 6 / 16;
 	display: grid;
 	place-content: center;
-	transition: 0.2s;
+	transition: 0.1s;
 	cursor: pointer;
+}
+.notifcont .notif .notifclose:active
+{
+	color: var(--maincol);
 }
 .notifcont .notif .notifclose:hover
 {
@@ -367,6 +376,8 @@ html,body
 	width: 100%;
 	background-color: var(--maincol);
 	transform: scaleX(1);
+	transform-origin: left;
+	animation: notifload 2s linear;
 	transition: 0.3s;
 }
 .slidemenu
@@ -1102,10 +1113,11 @@ footer .linkbar a:hover
 	position: fixed;
 	top: 0;
 	left: 0;
+	z-index: 99999;
 	height: 100%;
 	width: 100%;
 	display: none;
-	background-color: #0a0a0a90;
+	background-color: #0a0a0a94;
 }
 .backpanel.active
 {
