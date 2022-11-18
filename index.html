@@ -220,39 +220,40 @@
                 elemm5 = elemm.appendChild(document.createElement('button')),
                 elemm6 = elemm5.appendChild(document.createElement('ion-icon')),
                 elemm7 = elemm.appendChild(document.createElement('div'))
-                elemm.className = 'notif';
+                elemm.className = 'notif active';
+                elemm.id = 'loadingnotif';
                 elemm2.className = 'alert white';
                 elemm4.className = 'notifinfo';
                 elemm4.innerText='loading image';
                 elemm5.className = 'notifclose';
+                elemm5.onclick = function(){remove(this.parentNode)};
                 elemm6.name = 'close';
                 elemm7.className = 'notifprog';
             }
             function notifcomplete(){
                 var elem = document.getElementById('notifbar').appendChild(document.createElement('div')),
                 elem2 = elem.appendChild(document.createElement('div')),
-                elem3 = elem2.appendChild(document.createElement('div')),
                 elem4 = elem.appendChild(document.createElement('p')),
                 elem5 = elem.appendChild(document.createElement('button')),
                 elem6 = elem5.appendChild(document.createElement('ion-icon')),
                 elem7 = elem2.appendChild(document.createElement('ion-icon'))
-                elem.className = 'notif';
+                elem.className = 'notif active';
                 elem2.className = 'alert green';
                 elem4.className = 'notifinfo';
                 elem4.innerText='task complete';
                 elem5.className = 'notifclose';
-                elemm5.onclick = remove(this.parentNode);
+                elem5.onclick = function(){remove(this.parentNode)};
                 elem6.name = 'close';
                 elem7.name = 'checkmark';
             }
             function addnotif() {
                 loadernotif()
                 setTimeout(function(){
-                    elemm.remove()
+                    document.getElementById('loadingnotif').remove()
                     notifcomplete()
                 },2000)
                 }
-            function imgloader(x){
+            function imgloader(){
                 document.getElementById('notifbar').style.display="block";
                 document.getElementById('notifbar').classList.remove('active');
                 addnotif()

@@ -302,6 +302,10 @@ html,body
 	transition: 0.15s;
 	overflow: hidden;
 }
+.notifcont .notif.active
+{
+	animation: notif 0.5s;
+}
 .notifcont .notif:active
 {
 	transform: scale(0.97);
