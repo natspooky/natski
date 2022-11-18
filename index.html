@@ -181,7 +181,7 @@
                 },200);
             };
             $(document).ready(function(){
-                if(localStorage.getItem("notifications")==='True'||localStorage.getItem("notifications")===null){
+                if(localStorage.getItem("notifications")===null){
                     setTimeout(function(){
                         document.getElementById('notifbar').style.display="block";
                     },600);
@@ -255,6 +255,7 @@
                 }
             function imgloader(x){
                 document.getElementById('notifbar').style.display="block";
+                document.getElementById('notifbar').classList.add('full');
                 document.getElementById('notifbar').classList.remove('active');
                 document.getElementById('notifmenu').classList.add('active');
                         document.getElementById('naviright').classList.add('active');
@@ -433,20 +434,10 @@
                 <div class="alert red">
                     <ion-icon name="alert"></ion-icon>
                 </div>
-                <p class="notifinfo">Error retrieving thumbnails<br>retrying...</p>
+                <p class="notifinfo">Error retrieving thumbnails</p>
                 <button class="notifclose" onclick="remove(this.parentNode)">
                     <ion-icon name="close"></ion-icon>
                 </button>
-            </a>
-            <a class="notif" style="--i: 2;">
-                <div class="alert white">
-                    <div></div>
-                </div>
-                <p class="notifinfo">loader test</p>
-                <button class="notifclose" onclick="remove(this.parentNode)">
-                    <ion-icon name="close"></ion-icon>
-                </button>
-                <div class="notifprog"></div>
             </a>
         </div>
         <noscript>
