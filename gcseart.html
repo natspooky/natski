@@ -59,7 +59,7 @@
         <div class="descriptionbar" style="justify-content: center;"><span style="margin: unset;">Artwork</span></div>
         <main class="middle artpage">
             <div class="imgcolumn">
-                <img src="icon/portimg/8.png" class="img active noaspect" id="revealed" onclick="img()">
+                <img src="icon/portimg/8.png" class="img active noaspect" id="revealed" onclick="img(this)">
                 <img src="icon/portimg/13.png" class="img noaspect">
                 <img src="icon/portimg/2.png" class="img noaspect">
                 <img src="icon/portimg/4.png" class="img noaspect">
@@ -85,9 +85,8 @@
                 <img src="icon/portimg/1.png" class="img noaspect">
             </div>
             <script>
-                function img(){
-                    alert('mhm')
-                    parent.imgloader();
+                function img(x){
+                    parent.imgloader(x.src);
                 };
         </script>
         </main>
