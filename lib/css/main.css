@@ -358,6 +358,7 @@ html,body
 	width: 13.5vw;
 	letter-spacing: 0.5px;
 	font-weight: 100;
+	word-wrap: break-word;
 	font-size: 1vw;
 	color: var(--maincol);
 }
