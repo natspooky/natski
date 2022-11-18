@@ -78,6 +78,16 @@
     {
         transform: translateX(90vw);
     }
+    .notifcont.full
+    {
+        top: calc(10vw + 40px);
+        right: 30px;
+        height: auto;
+        width: 85vw;
+        box-shadow: 0px 0px 0px transparent;
+        padding: 0px;
+        background-color: transparent;
+    }
     .notifcont .notif
     {
         height: 15vw;
@@ -443,6 +453,11 @@
     {
         transform: translateX(43vw);
     }
+    .notifcont.full
+    {
+        top: 7vw;
+        padding: 10px;
+    }
     .navbar .notiftoggle
     {
         right: 0.5vw;
@@ -460,7 +475,7 @@
     }
     .notifcont .notif .notifinfo
     {
-        width: 28vw;
+        width: 26.5vw;
         font-size: 1.9vw;
     }
     .notifcont .notif .notifclose

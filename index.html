@@ -188,6 +188,7 @@
                     setTimeout(function(){
                         if(document.getElementById("notifbar").childElementCount!=0){
                             document.getElementById('notifbar').classList.add('active');
+                            document.getElementById('notifbar').classList.add('full');
                             document.getElementById('naviright').classList.add('active');
                             document.getElementById('notifmenu').classList.add('active');
                         }
@@ -196,12 +197,13 @@
             });
             function remove(el){
                 var element=el;
-                element.style.transform = 'translateX(-27%) rotate(-6deg) translateY(0.5vw)';
+                element.style.transform = 'translateX(80%)';
                 element.style.opacity = '0';
                 setTimeout(function(){
                     element.remove();
                     if(document.getElementById("notifbar").childElementCount==0){
                         localStorage.setItem('notifications','True');
+                        document.getElementById('notifbar').classList.add('active');
                         document.getElementById('notifmenu').classList.remove('active');
                         document.getElementById('naviright').classList.remove('active');
                     }
