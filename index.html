@@ -193,7 +193,7 @@
                             document.getElementById('notifmenu').classList.add('active');
                         }
                     },2500);
-                }
+                }else{document.getElementById('version').remove()}
             });
             function remove(el){
                 var element=el;
@@ -421,20 +421,11 @@
             </div>
         </div>
         <div class="notifcont" id="notifbar">
-            <a class="notif" style="--i: 1;">
+            <a class="notif" style="--i: 1;" id="version">
                 <div class="alert green">
                     <ion-icon name="checkmark"></ion-icon>
                 </div>
                 <p class="notifinfo">Successfully running N 2.0</p>
-                <button class="notifclose" onclick="remove(this.parentNode)">
-                    <ion-icon name="close"></ion-icon>
-                </button>
-            </a>
-            <a class="notif" style="--i: 1.5;">
-                <div class="alert red">
-                    <ion-icon name="alert"></ion-icon>
-                </div>
-                <p class="notifinfo">Error retrieving thumbnails</p>
                 <button class="notifclose" onclick="remove(this.parentNode)">
                     <ion-icon name="close"></ion-icon>
                 </button>
