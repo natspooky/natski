@@ -246,29 +246,29 @@
                 elem6.name = 'close';
                 elem7.name = 'checkmark';
             }
-            function addnotif(x) {
+            function addnotif(x,y) {
                 loadernotif(x)
                 setTimeout(function(){
                     document.getElementById('loadingnotif').remove()
                     notifcomplete(x)
-                    download(x, 'img.png');
+                    download(x,y);
                 },2000)
             }
             function download(path, filename){
                 const anchor = document.createElement('a');
                 anchor.href = path;
-                anchor.download = filename;
+                anchor.download = filename+'.png';
                 document.body.appendChild(anchor);
                 anchor.click();
                 document.body.removeChild(anchor);
             }; 
-            function imgloader(x){
+            function imgloader(x,y){
                 document.getElementById('notifbar').style.display="block";
                 document.getElementById('notifbar').classList.add('full');
                 document.getElementById('notifbar').classList.remove('active');
                 document.getElementById('notifmenu').classList.add('active');
                 document.getElementById('naviright').classList.add('active');
-                addnotif(x)
+                addnotif(x,y)
             }
             //make changelog in main page
             //make slides and image pages interact with parent page
