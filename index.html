@@ -230,7 +230,7 @@
                 elemm6.name = 'close';
                 elemm7.className = 'notifprog';
             }
-            function notifcomplete(x){
+            function notifcomplete(x,y){
                 var elem = document.getElementById('notifbar').appendChild(document.createElement('div')),
                 elem2 = elem.appendChild(document.createElement('div')),
                 elem4 = elem.appendChild(document.createElement('p')),
@@ -250,7 +250,7 @@
                 loadernotif(x,y)
                 setTimeout(function(){
                     document.getElementById('loadingnotif').remove()
-                    notifcomplete(x)
+                    notifcomplete(x,y)
                     download(x,y);
                     setTimeout(function(){
                         document.getElementById('notifbar').classList.add('active');
