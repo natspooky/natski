@@ -252,6 +252,9 @@
                     document.getElementById('loadingnotif').remove()
                     notifcomplete(x)
                     download(x,y);
+                    setTimeout(function(){
+                        document.getElementById('notifbar').classList.add('active');
+                    },1000)
                 },2000)
             }
             function download(path, filename){

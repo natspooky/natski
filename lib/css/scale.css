@@ -281,6 +281,7 @@
         height: 6vw;
         width: 6vw;
         border-radius: 15px;
+        opacity: 1;
         background-color: var(--accentcol);
         animation: backpagemobile 0.5s ease;
     }
