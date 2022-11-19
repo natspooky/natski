@@ -212,7 +212,7 @@
             function notiftbaroggle(){
                 document.getElementById('notifbar').classList.toggle('active');
             };
-            function loadernotif(x){
+            function loadernotif(x,y){
                 var elemm = document.getElementById('notifbar').appendChild(document.createElement('div')),
                 elemm2 = elemm.appendChild(document.createElement('div')),
                 elemm3 = elemm2.appendChild(document.createElement('div')),
@@ -224,7 +224,7 @@
                 elemm.id = 'loadingnotif';
                 elemm2.className = 'alert white';
                 elemm4.className = 'notifinfo';
-                elemm4.innerText='loading file: '+x;
+                elemm4.innerText='loading file: '+y+'.png';
                 elemm5.className = 'notifclose';
                 elemm5.onclick = function(){remove(this.parentNode)};
                 elemm6.name = 'close';
@@ -240,14 +240,14 @@
                 elem.className = 'notif active';
                 elem2.className = 'alert green';
                 elem4.className = 'notifinfo';
-                elem4.innerText='task complete: '+x;
+                elem4.innerText='task complete: '+y+'.png';
                 elem5.className = 'notifclose';
                 elem5.onclick = function(){remove(this.parentNode)};
                 elem6.name = 'close';
                 elem7.name = 'checkmark';
             }
             function addnotif(x,y) {
-                loadernotif(x)
+                loadernotif(x,y)
                 setTimeout(function(){
                     document.getElementById('loadingnotif').remove()
                     notifcomplete(x)
@@ -257,10 +257,10 @@
                     },2000)
                 },2000)
             }
-            function download(path, filename){
-                const anchor = document.createElement('a');
-                anchor.href = path;
-                anchor.download = filename+'.png';
+            function download(x,y){
+                const anchor=document.createElement('a');
+                anchor.href=x;
+                anchor.download=y+'.png';
                 document.body.appendChild(anchor);
                 anchor.click();
                 document.body.removeChild(anchor);

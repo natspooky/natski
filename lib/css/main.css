@@ -730,7 +730,7 @@ header .bottombar #N
 	background-color: #729ef650;
 	border: 5px solid transparent;
 	aspect-ratio: 16 / 9;
-	scroll-snap-align: center;
+	cursor: pointer;
 	transition: 0.4s;
 }
 .noaspect
