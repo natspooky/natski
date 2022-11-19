@@ -252,9 +252,11 @@
                     document.getElementById('loadingnotif').remove()
                     notifcomplete(x,y)
                     download(x,y);
-                    setTimeout(function(){
-                        document.getElementById('notifbar').classList.add('active');
-                    },1500)
+                    if(document.getElementById('notifbar').className!='notifcont active'){
+                        setTimeout(function(){
+                            document.getElementById('notifbar').classList.add('active');
+                        },1500)
+                    }
                 },2000)
             }
             function download(x,y){
