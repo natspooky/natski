@@ -56,39 +56,44 @@
                 <h1>GCSE Art</h1>
             </div>
         </header>
-        <div class="descriptionbar" style="justify-content: center;"><span style="margin: unset;">Artwork</span></div>
-        <main class="middle artpage">
-            <div class="imgcolumn">
-                <img src="icon/portimg/8.png" class="img active noaspect" id="revealed" onclick="img(this)" name="cage" title="download">
-                <img src="icon/portimg/13.png" class="img noaspect" onclick="img(this)" name="cage" title="download">
-                <img src="icon/portimg/2.png" class="img noaspect" onclick="img(this)" name="cage" title="download">
-                <img src="icon/portimg/4.png" class="img noaspect" onclick="img(this)" name="cage" title="download">
-                <img src="icon/portimg/3.png" class="img noaspect" onclick="img(this)" name="cage" title="download">
-                <img src="icon/portimg/20.png" class="img noaspect" onclick="img(this)" name="cage" title="download">
-                <img src="icon/portimg/5.png" class="img noaspect" onclick="img(this)" name="cage" title="download">
-                <img src="icon/portimg/18.png" class="img noaspect" onclick="img(this)" name="cage" title="download">
-                <img src="icon/portimg/15.png" class="img noaspect" onclick="img(this)" name="cage" title="download">
-                <img src="icon/portimg/17.png" class="img noaspect" onclick="img(this)" name="cage" title="download">
-                <img src="icon/portimg/19.png" class="img noaspect" onclick="img(this)" name="cage" title="download">
+        <main style="background-color: var(--maincol);">
+            <div class="descriptionbar" style="justify-content: center;"><span style="margin: unset;">Images</span></div>
+            <div class="middle artpage">
+                <div class="imgcolumn">
+                    <img src="icon/portimg/8.png" class="img active noaspect" id="revealed" onclick="img(this)" name="cage" title="download">
+                    <img src="icon/portimg/13.png" class="img noaspect" onclick="img(this)" name="cage" title="download">
+                    <img src="icon/portimg/2.png" class="img noaspect" onclick="img(this)" name="cage" title="download">
+                    <img src="icon/portimg/4.png" class="img noaspect" onclick="img(this)" name="cage" title="download">
+                    <img src="icon/portimg/3.png" class="img noaspect" onclick="img(this)" name="cage" title="download">
+                    <img src="icon/portimg/20.png" class="img noaspect" onclick="img(this)" name="cage" title="download">
+                    <img src="icon/portimg/5.png" class="img noaspect" onclick="img(this)" name="cage" title="download">
+                    <img src="icon/portimg/18.png" class="img noaspect" onclick="img(this)" name="cage" title="download">
+                    <img src="icon/portimg/15.png" class="img noaspect" onclick="img(this)" name="cage" title="download">
+                    <img src="icon/portimg/17.png" class="img noaspect" onclick="img(this)" name="cage" title="download">
+                    <img src="icon/portimg/19.png" class="img noaspect" onclick="img(this)" name="cage" title="download">
+                </div>
+                <div class="imgcolumn">
+                    <img src="icon/portimg/6.png" class="img noaspect" id="revealed">
+                    <img src="icon/portimg/21.png" class="img noaspect">
+                    <img src="icon/portimg/14.png" class="img noaspect">
+                    <img src="icon/portimg/16.png" class="img noaspect">
+                    <img src="icon/portimg/22.png" class="img noaspect">
+                    <img src="icon/portimg/10.png" class="img noaspect">
+                    <img src="icon/portimg/12.png" class="img noaspect">
+                    <img src="icon/portimg/11.png" class="img noaspect">
+                    <img src="icon/portimg/7.png" class="img noaspect">
+                    <img src="icon/portimg/9.png" class="img noaspect">
+                    <img src="icon/portimg/1.png" class="img noaspect">
+                </div>
+                <script>
+                    function img(x){
+                        parent.imgloader(x.src,x.name);
+                    };
+                </script>
             </div>
-            <div class="imgcolumn">
-                <img src="icon/portimg/6.png" class="img noaspect" id="revealed">
-                <img src="icon/portimg/21.png" class="img noaspect">
-                <img src="icon/portimg/14.png" class="img noaspect">
-                <img src="icon/portimg/16.png" class="img noaspect">
-                <img src="icon/portimg/22.png" class="img noaspect">
-                <img src="icon/portimg/10.png" class="img noaspect">
-                <img src="icon/portimg/12.png" class="img noaspect">
-                <img src="icon/portimg/11.png" class="img noaspect">
-                <img src="icon/portimg/7.png" class="img noaspect">
-                <img src="icon/portimg/9.png" class="img noaspect">
-                <img src="icon/portimg/1.png" class="img noaspect">
-            </div>
-            <script>
-                function img(x){
-                    parent.imgloader(x.src,x.name);
-                };
-        </script>
+            <hr style="background-color: #dcdcdc;">
+            <div class="descriptionbar" style="justify-content: center;"><span style="margin: unset;">Videos</span></div>
+            <div class="middle"></div>
         </main>
         <footer>
             <div class="linkbar" id="linker">
