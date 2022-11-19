@@ -145,7 +145,6 @@
         height: 35%;
         font-size: 5vw;
         border-radius: 70px;
-        color: var(--accentcol);
         background-color: transparent;
         transition: 0.5s ease;
         animation: fadein 0.5s ease;

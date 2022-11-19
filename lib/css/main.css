@@ -690,13 +690,13 @@ header .bottombar #N
 {
 	position: absolute;
 	top: 40%;
-	transition: 0.4s ,color 0s;
+	transition: 0.4s, color 0s;
 }
 .pannelinfo .pannelsubtext
 {
 	position: absolute;
 	top: 58%;
-	transition: 0.4s ,color 0s;
+	transition: 0.4s, color 0s;
 }
 .panneltext
 {
