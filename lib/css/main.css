@@ -87,6 +87,7 @@ html,body
 	background-color: var(--accentcol);
 	height: 100%;
 	width: 100%;
+	user-select: none;
 	scroll-behavior: smooth;
 }
 .static,.staticmenu
@@ -120,24 +121,24 @@ html,body
 	position: absolute;
 	text-decoration: none;
 	height: 100%;
-	left: 1vw;
+	padding: 0 0.75vw;
+	left: 0.35vw;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	transition: 0.1s;
 }
 .navbar .navbarleft #N
 {
 	position: relative;
 	display: block;
-	height: 60%;
-	transition: 0.35s;
+	height: 55%;
 }
 .navbar .navbarleft h1
 {
 	display: none;
 	color: var(--maincol);
 	letter-spacing: 1px;
-	transition: 0.35s;
 }
 .navbar .navbarright
 {
@@ -148,18 +149,19 @@ html,body
 	justify-content: center;
 	align-items: center;
 	transform: translateX(0);
-	transition: 0.15s;
+	transition: 0.1s;
 }
 .navbar .navbarright.active
 {
-	transform: translateX(-3vw);
+	transform: translateX(-4vw);
 }
 .navbar .notiftoggle
 {
 	position: absolute;
 	top: 0;
-	right: 1vw;
-	transform: translateX(3vw) scale(1);
+	right: 0.55vw;
+	padding: 0 0.55vw;
+	transform: translateX(3.55vw) scale(1);
 	height: 100%;
 	display: grid;
 	place-content: center;
@@ -167,16 +169,12 @@ html,body
 	border: none;
 	background-color: transparent;
 	font-size: 2.2vw;
-	transition: 0.15s;
+	transition: 0.1s;
 	cursor: pointer;
 }
 .navbar .notiftoggle:hover
 {
 	color: #ca8300;
-}
-.navbar .notiftoggle.active:active
-{
-	transform: translateX(0) scale(0.8);
 }
 .navbar .notiftoggle.active
 {
@@ -299,7 +297,6 @@ html,body
 	place-content: center;
 	animation: notif calc(0.5s * var(--i));
 	text-decoration: none;
-	user-select: none;
 	transition: 0.15s;
 	overflow: hidden;
 }
@@ -310,6 +307,13 @@ html,body
 .notifcont .notif:active
 {
 	transform: scale(0.97);
+	transition: 0s;
+}
+.notifcont.full .notif:active
+{
+	transform: scale(0.97);
+	box-shadow: 0px 0px 20px var(--accentcol);
+	transition: 0s;
 }
 .notifcont .notif:hover
 {
@@ -460,6 +464,7 @@ html,body
 	justify-content: center;
 	align-items: center;
 	position: relative;
+	overflow: hidden;
 	transition: 0.1s;
 }
 .menubutton
@@ -467,9 +472,15 @@ html,body
 	border-radius: 25px;
 	padding: 0vw 4vw;
 }
-.navbutton:hover
+.navbutton:hover,.navbar .navbarleft:hover,.navbar .notiftoggle:hover
 {
 	background-color: #33333350;
+}
+.navbutton:active,.navbar .notiftoggle.active:active,.navbar .navbarleft:active
+{
+	transform: scale(0.9);
+	border-radius: 10px;
+	transition: 0s;
 }
 .navbutton.active,.menubutton.active
 {
@@ -548,7 +559,6 @@ header .topbar
 	background-size: cover;
 	height: 100%;
 	width: 100%;
-	user-select: none;
 }
 header .topbar h1
 {
@@ -571,7 +581,6 @@ header .bottombar
 	background-position: center;
 	text-align: center;
 	overflow: hidden;
-	user-select: none;
 }
 header .bottombar #N
 {
@@ -606,7 +615,6 @@ header .bottombar #N
 	font-weight: bold;
 	font-size: 18px;
 	transition: 0.3s;
-	user-select: none;
 }
 .next
 {
@@ -673,7 +681,6 @@ header .bottombar #N
 	flex-direction: column;
 	font-size: 2vw;
 	color: var(--maincol);
-	user-select: none;
 	justify-content: center;
 	animation: fadein 1s;
 	transition: 0.4s;
@@ -912,7 +919,6 @@ header .bottombar #N
 	height: 3.5vw;
 	letter-spacing: 4px;
 	font-weight: 900;
-	user-select: none;
 }
 .descriptionbar span
 {
