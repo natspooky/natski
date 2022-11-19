@@ -477,8 +477,9 @@ html,body
 {
 	background-color: #33333350;
 }
-.navbutton:active,.navbar .notiftoggle.active:active,.navbar .navbarleft:active
+.navbutton:hover:active,.navbar .navbarleft:hover:active,.navbar .notiftoggle:hover:active
 {
+	background-color: #729ef650;
 	transform: scale(0.9);
 	border-radius: 10px;
 	transition: 0s;
@@ -722,11 +723,11 @@ header .bottombar #N
 	cursor: pointer;
 	text-decoration: none;
 	color: var(--themecol);
-	transition: 0.2s;
+	transition: 0.1s;
 }
 .pannelbutton:active
 {
-	transform: scale(0.85);
+	transform: scale(0.9);
 }
 .middle
 {
@@ -957,7 +958,7 @@ header .bottombar #N
 {
 	background-color: #00000020;
 }
-.pagechanger button:active, .backpage:active, .closer:active,.logcloser:active
+.pagechanger button:active,.backpage:active,.pagecontainer .closer:active,.logcloser:active,.changelogframe .logcloser:active
 {
 	transform: scale(0.85);
 }
