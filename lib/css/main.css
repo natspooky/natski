@@ -958,6 +958,11 @@ header .bottombar #N
 {
 	background-color: #00000020;
 }
+.pagechanger button:hover:active
+{
+	background-color: #729ef650;
+	transition: 0s;
+}
 .pagechanger button:active,.backpage:active,.pagecontainer .closer:active,.logcloser:active,.changelogframe .logcloser:active
 {
 	transform: scale(0.85);
