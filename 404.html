@@ -41,7 +41,7 @@
         <script src="https://natski.netlify.com/lib/js/jquery.js"></script>
 
 	</head>
-    <body>
+    <body onload="error('page not found')">
         <div class="loaderback">
             <div class="loadcont">
                 <div id="loader"></div>
@@ -137,10 +137,9 @@
             </div>
         </div>
         <script>
-            $(document).ready(function(){
-                x = 'page not found'
+            function error(x){
                 parent.notiferror(x)
-            });
+            };
         </script>
         <noscript>
             <h1>javascript is disabled :(</h1>
