@@ -753,12 +753,12 @@ header .bottombar #N
 	background-color: #729ef650;
 	border: 5px solid transparent;
 	aspect-ratio: 16 / 9;
-	cursor: pointer;
 	transition: 0.4s;
 }
 .noaspect
 {
 	aspect-ratio: unset;
+	cursor: pointer;
 	width: 65%;
 }
 .imgcolumn
@@ -945,10 +945,11 @@ header .bottombar #N
 }
 .pagechanger button
 {
-	font-size: 3vw;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+	font-size: 2vw;
+	height: 3vw;
+	width: 3vw;
+	display: grid;
+	place-items: center;
 	background-color: transparent;
 	border: 0px;
 	color: var(--accentcol);

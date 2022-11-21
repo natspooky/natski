@@ -325,8 +325,10 @@
     }
     .pagechanger button
     {
-        font-size: 5vw;
-        padding: 10px;
+        font-size: 6vw;
+        height: 8vw;
+        width: 8vw;
+        border-radius: 15px;
     }
     dl
     {
@@ -427,10 +429,6 @@
     .navbar
     {
         height: 7vw;
-    }
-    .navbar .navbarleft #N
-    {
-        margin-right: 1.3vw;
     }
     .navbar .navbarleft h1
     {
@@ -578,20 +576,27 @@
     .pagecontainer .closer
     {
         top: calc(7vw + 10px);
-        height: 4.5vw;
-        width: 4.5vw;
+        height: 4vw;
+        width: 4vw;
         border-radius: 10px;
         background-color: var(--accentcol);
     }
-    .pagecontainer .closer ion-icon,.backpage ion-icon
+    .changelogframe .logcloser
     {
-        font-size: 6vw;
+        height: 4vw;
+        width: 4vw;
+        border-radius: 10px;
+        background-color: var(--accentcol);
+    }
+    .pagecontainer .closer ion-icon,.backpage ion-icon,.changelogframe .logcloser ion-icon
+    {
+        font-size: 4vw;
     }
     .backpage
     {
-        top: calc(11.5vw + 20px);
-        height: 4.5vw;
-        width: 4.5vw;
+        top: calc(11vw + 20px);
+        height: 4vw;
+        width: 4vw;
         border-radius: 10px;
         background-color: var(--accentcol);
     }
@@ -617,15 +622,9 @@
     }
     .pagechanger button
     {
-        font-size: 5vw;
-        padding: 10px;
-    }
-    .changelogframe
-    {
-        transform: translateY(100.5vh) translateX(-60%);
-    }
-    .changelogframe.active
-    {
-        transform: translateY(0) translateX(-60%);
+        font-size: 4vw;
+        height: 6vw;
+        width: 6vw;
+        border-radius: 10px;
     }
 }
