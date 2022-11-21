@@ -477,7 +477,7 @@ html,body
 {
 	background-color: #33333350;
 }
-.navbutton:hover:active,.navbar .navbarleft:hover:active,.navbar .notiftoggle:hover:active
+.navbutton:hover:active,.navbar .navbarleft:hover:active,.navbar .notiftoggle:hover:active,.prev:hover:active,.next:hover:active
 {
 	background-color: #729ef650;
 	transform: scale(0.9);
@@ -604,27 +604,29 @@ header .bottombar #N
 {
 	cursor: pointer;
 	position: absolute;
-	bottom: 0;
-	height: calc(100% - 3.5vw);
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	width: auto;
-	background-color: transparent;
+	height: 5vw;
+	width: 2vw;
+	border-radius: 7px;
+	display: grid;
+	place-content: center;
+	background-color: var(--accentcol);
 	border: none;
-	padding: 16px;
 	color: var(--maincol);
 	font-weight: bold;
 	font-size: 18px;
 	transition: 0.3s;
 }
+.prev
+{
+	left: 0.5vw;
+}
 .next
 {
-	right: 0;
+	right: 0.5vw;
 }
 .prev:hover,.next:hover
 {
-	background-color: rgba(0,0,0,0.4);
+	background-color: #2e2e2e;
 }
 .prev ion-icon,.next ion-icon
 {
