@@ -246,6 +246,22 @@
                 elem6.name = 'close';
                 elem7.name = 'checkmark';
             }
+            function notiferror(x){
+                var elem = document.getElementById('notifbar').appendChild(document.createElement('div')),
+                elem2 = elem.appendChild(document.createElement('div')),
+                elem4 = elem.appendChild(document.createElement('p')),
+                elem5 = elem.appendChild(document.createElement('button')),
+                elem6 = elem5.appendChild(document.createElement('ion-icon')),
+                elem7 = elem2.appendChild(document.createElement('ion-icon'))
+                elem.className = 'notif active';
+                elem2.className = 'alert green';
+                elem4.className = 'notifinfo';
+                elem4.innerText=x;
+                elem5.className = 'notifclose';
+                elem5.onclick = function(){remove(this.parentNode)};
+                elem6.name = 'close';
+                elem7.name = 'checkmark';
+            }
             function addnotif(x,y) {
                 loadernotif(x,y)
                 setTimeout(function(){
