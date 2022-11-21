@@ -261,6 +261,7 @@
                 elem5.onclick = function(){remove(this.parentNode)};
                 elem6.name = 'close';
                 elem7.name = 'checkmark';
+                notifcloser()
             }
             function addnotif(x,y) {
                 loadernotif(x,y)
@@ -268,10 +269,13 @@
                     document.getElementById('loadingnotif').remove()
                     notifcomplete(x,y)
                     download(x,y);
-                    setTimeout(function(){
-                        document.getElementById('notifbar').classList.add('active');
-                    },1500)
+                    notifcloser()
                 },2000)
+            }
+            function notifcloser(){
+                setTimeout(function(){
+                    document.getElementById('notifbar').classList.add('active');
+                },1500)
             }
             function download(x,y){
                 const anchor=document.createElement('a');
