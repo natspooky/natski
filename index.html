@@ -406,13 +406,13 @@
                     About
                     <div class="selector"></div>
                 </a>
-                <a class="navbutton" id="log" style="cursor: pointer;" onClick='document.getElementById("logframe").src="lib/html/log1.html"; load();'>
+                <a class="navbutton" id="log" style="cursor: pointer;" onClick='document.getElementById("logframe").src="lib/html/log1.html"; load(); document.title="Natski | Changelog";'>
                     Changelog
                     <div class="selector"></div>
                 </a>
             </div>
         </nav>
-        <div class="backpanel" id="backcloser"></div>
+        <div class="backpanel" id="backcloser" onClick='document.getElementById("logframe").src=""; document.title="Natski | Home";'></div>
         <div class="changelogframe">
             <iframe id="logframe"></iframe>
             <div class="pagechanger" style="border-top: 2px solid #dcdcdc;">
@@ -424,7 +424,7 @@
                     <ion-icon name="caret-forward"></ion-icon>
                 </button>
             </div>
-            <button class="logcloser">
+            <button class="logcloser" onClick='document.getElementById("logframe").src=""; document.title="Natski | Home";'>
                 <ion-icon name="close"></ion-icon>
             </button>
         </div>
