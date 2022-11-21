@@ -247,6 +247,11 @@
                 elem7.name = 'checkmark';
             }
             function notiferror(x){
+                document.getElementById('notifbar').style.display="block";
+                document.getElementById('notifbar').classList.add('full');
+                document.getElementById('notifbar').classList.remove('active');
+                document.getElementById('notifmenu').classList.add('active');
+                document.getElementById('naviright').classList.add('active');
                 var elem = document.getElementById('notifbar').appendChild(document.createElement('div')),
                 elem2 = elem.appendChild(document.createElement('div')),
                 elem4 = elem.appendChild(document.createElement('p')),
@@ -254,13 +259,13 @@
                 elem6 = elem5.appendChild(document.createElement('ion-icon')),
                 elem7 = elem2.appendChild(document.createElement('ion-icon'))
                 elem.className = 'notif active';
-                elem2.className = 'alert green';
+                elem2.className = 'alert red';
                 elem4.className = 'notifinfo';
                 elem4.innerText=x;
                 elem5.className = 'notifclose';
                 elem5.onclick = function(){remove(this.parentNode)};
                 elem6.name = 'close';
-                elem7.name = 'checkmark';
+                elem7.name = 'alert';
                 notifcloser()
             }
             function addnotif(x,y) {
