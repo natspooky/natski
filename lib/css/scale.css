@@ -396,6 +396,11 @@
         transform: scale(1.5);
         transform-origin: bottom right;
     }
+    .prev,.next
+    {
+        height: 9vw;
+        width: 3vw;
+    }
     .prev ion-icon,.next ion-icon
     {
         font-size: 2vw;

@@ -187,10 +187,7 @@
                     },600);
                     setTimeout(function(){
                         if(document.getElementById("notifbar").childElementCount!=0){
-                            document.getElementById('notifbar').classList.add('active');
-                            document.getElementById('notifbar').classList.add('full');
-                            document.getElementById('naviright').classList.add('active');
-                            document.getElementById('notifmenu').classList.add('active');
+                            notifopener()
                         }
                     },2500);
                 }else{document.getElementById('version').remove()}
@@ -247,11 +244,7 @@
                 elem7.name = 'checkmark';
             }
             function notiferror(x){
-                document.getElementById('notifbar').style.display="block";
-                document.getElementById('notifbar').classList.add('full');
-                document.getElementById('notifbar').classList.remove('active');
-                document.getElementById('notifmenu').classList.add('active');
-                document.getElementById('naviright').classList.add('active');
+                notifopener()
                 var elem = document.getElementById('notifbar').appendChild(document.createElement('div')),
                 elem2 = elem.appendChild(document.createElement('div')),
                 elem4 = elem.appendChild(document.createElement('p')),
@@ -282,6 +275,13 @@
                     document.getElementById('notifbar').classList.add('active');
                 },1500)
             }
+            function notifopener(){
+                document.getElementById('notifbar').style.display="block";
+                document.getElementById('notifbar').classList.add('full');
+                document.getElementById('notifbar').classList.remove('active');
+                document.getElementById('notifmenu').classList.add('active');
+                document.getElementById('naviright').classList.add('active');
+            }
             function download(x,y){
                 const anchor=document.createElement('a');
                 anchor.href=x;
@@ -291,11 +291,7 @@
                 document.body.removeChild(anchor);
             }; 
             function imgloader(x,y){
-                document.getElementById('notifbar').style.display="block";
-                document.getElementById('notifbar').classList.add('full');
-                document.getElementById('notifbar').classList.remove('active');
-                document.getElementById('notifmenu').classList.add('active');
-                document.getElementById('naviright').classList.add('active');
+                notifopener()
                 addnotif(x,y)
             }
             //make changelog in main page
