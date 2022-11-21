@@ -187,7 +187,7 @@
                     },600);
                     setTimeout(function(){
                         if(document.getElementById("notifbar").childElementCount!=0){
-                            notifopener()
+                            notifopener();
                         }
                     },2500);
                 }else{document.getElementById('version').remove()}
@@ -226,7 +226,7 @@
                 elemm5.onclick = function(){remove(this.parentNode)};
                 elemm6.name = 'close';
                 elemm7.className = 'notifprog';
-            }
+            };
             function notifcomplete(x,y){
                 var elem = document.getElementById('notifbar').appendChild(document.createElement('div')),
                 elem2 = elem.appendChild(document.createElement('div')),
@@ -242,9 +242,9 @@
                 elem5.onclick = function(){remove(this.parentNode)};
                 elem6.name = 'close';
                 elem7.name = 'checkmark';
-            }
+            };
             function notiferror(x){
-                notifopener()
+                notifopener();
                 var elem = document.getElementById('notifbar').appendChild(document.createElement('div')),
                 elem2 = elem.appendChild(document.createElement('div')),
                 elem4 = elem.appendChild(document.createElement('p')),
@@ -259,8 +259,8 @@
                 elem5.onclick = function(){remove(this.parentNode)};
                 elem6.name = 'close';
                 elem7.name = 'alert';
-                notifcloser()
-            }
+                notifcloser();
+            };
             function addnotif(x,y) {
                 loadernotif(x,y)
                 setTimeout(function(){
@@ -269,19 +269,19 @@
                     download(x,y);
                     notifcloser()
                 },2000)
-            }
+            };
             function notifcloser(){
                 setTimeout(function(){
                     document.getElementById('notifbar').classList.add('active');
                 },1500)
-            }
+            };
             function notifopener(){
                 document.getElementById('notifbar').style.display="block";
                 document.getElementById('notifbar').classList.add('full');
                 document.getElementById('notifbar').classList.remove('active');
                 document.getElementById('notifmenu').classList.add('active');
                 document.getElementById('naviright').classList.add('active');
-            }
+            };
             function download(x,y){
                 const anchor=document.createElement('a');
                 anchor.href=x;
@@ -293,9 +293,7 @@
             function imgloader(x,y){
                 notifopener()
                 addnotif(x,y)
-            }
-            //make changelog in main page
-            //make slides and image pages interact with parent page
+            };
             var pageindex=1,
             index=2;
             function load(){
@@ -419,11 +417,11 @@
             <iframe id="logframe"></iframe>
             <div class="pagechanger" style="border-top: 2px solid #dcdcdc;">
                 <button id="backpg" onclick="changepage(-1)">
-                    <ion-icon name="chevron-back"></ion-icon>
+                    <ion-icon name="caret-back"></ion-icon>
                 </button>
                 <p id="pagecounter"></p>
                 <button id="forwardpg" onclick="changepage(1)">
-                    <ion-icon name="chevron-forward"></ion-icon>
+                    <ion-icon name="caret-forward"></ion-icon>
                 </button>
             </div>
             <button class="logcloser">
