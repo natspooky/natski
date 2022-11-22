@@ -242,6 +242,7 @@
                 elem5.onclick = function(){remove(this.parentNode)};
                 elem6.name = 'close';
                 elem7.name = 'checkmark';
+                notifcloser();
             };
             function notiferror(x){
                 notifopener();
@@ -267,7 +268,6 @@
                     document.getElementById('loadingnotif').remove()
                     notifcomplete(x,y)
                     download(x,y);
-                    notifcloser()
                 },2000)
             };
             function notifcloser(){

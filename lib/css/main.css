@@ -648,6 +648,7 @@ header .bottombar #N
 	position: relative;
 	height: 3vw;
 	border-radius: 8px;
+	background-color: var(--accentcol);
 	border: 3px solid var(--accentcol);
 	cursor: pointer;
 	transition: 0.3s;
@@ -655,6 +656,7 @@ header .bottombar #N
 .panneltile.active
 {
 	border: 3px solid var(--maincol);
+	background-color: var(--maincol);
 }
 .pannel
 {
