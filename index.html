@@ -180,18 +180,6 @@
                     document.documentElement.scrollTop=0;
                 },200);
             };
-            $(document).ready(function(){
-                if(localStorage.getItem("notifications")===null){
-                    setTimeout(function(){
-                        document.getElementById('notifbar').style.display="block";
-                    },600);
-                    setTimeout(function(){
-                        if(document.getElementById("notifbar").childElementCount!=0){
-                            notifopener();
-                        }
-                    },2500);
-                }else{document.getElementById('version').remove()}
-            });
             function remove(el){
                 var element=el;
                 element.style.transform = 'translateX(80%)';
@@ -199,12 +187,11 @@
                 setTimeout(function(){
                     element.remove();
                     if(document.getElementById("notifbar").childElementCount==0){
-                        localStorage.setItem('notifications','True');
                         document.getElementById('notifbar').classList.add('active');
                         document.getElementById('notifmenu').classList.remove('active');
                         document.getElementById('naviright').classList.remove('active');
                     }
-                },350)
+                },350);
             };
             function notiftbaroggle(){
                 document.getElementById('notifbar').classList.toggle('active');
@@ -291,8 +278,8 @@
                 document.body.removeChild(anchor);
             }; 
             function imgloader(x,y){
-                notifopener()
-                addnotif(x,y)
+                notifopener();
+                addnotif(x,y);
             };
             var pageindex=1,
             index=2;
@@ -449,17 +436,7 @@
                 </a>
             </div>
         </div>
-        <div class="notifcont" id="notifbar">
-            <a class="notif" style="--i: 1;" id="version">
-                <div class="alert green">
-                    <ion-icon name="checkmark"></ion-icon>
-                </div>
-                <p class="notifinfo">Successfully running N 2.0</p>
-                <button class="notifclose" onclick="remove(this.parentNode)">
-                    <ion-icon name="close"></ion-icon>
-                </button>
-            </a>
-        </div>
+        <div class="notifcont" id="notifbar"></div>
         <noscript>
             <h1>javascript is disabled :(</h1>
             <p>this website requires javascript to run.<br>please enable the use of javascript to see this page :)</p>
