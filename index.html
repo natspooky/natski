@@ -130,7 +130,7 @@
                 function frame(){
                     if(width>=100){clearInterval(interval);}
                     else{width++;elem.style.width=width+'%';}
-                    if (width == 95){$('.pannelinfo').css({'opacity':'0','transform':'translateY(-60px)'})}
+                    if (width==95){$('.pannelinfo').css({'opacity':'0','transform':'translateY(-60px)'})}
                 }
             }
             function resetProgressBar(){
@@ -182,8 +182,8 @@
             };
             function remove(el){
                 var element=el;
-                element.style.transform = 'translateX(80%)';
-                element.style.opacity = '0';
+                element.style.transform='translateX(80%)';
+                element.style.opacity='0';
                 setTimeout(function(){
                     element.remove();
                     if(document.getElementById("notifbar").childElementCount==0){
@@ -197,56 +197,56 @@
                 document.getElementById('notifbar').classList.toggle('active');
             };
             function loadernotif(x,y){
-                var elemm = document.getElementById('notifbar').appendChild(document.createElement('div')),
-                elemm2 = elemm.appendChild(document.createElement('div')),
-                elemm3 = elemm2.appendChild(document.createElement('div')),
-                elemm4 = elemm.appendChild(document.createElement('p')),
-                elemm5 = elemm.appendChild(document.createElement('button')),
-                elemm6 = elemm5.appendChild(document.createElement('ion-icon')),
-                elemm7 = elemm.appendChild(document.createElement('div'))
-                elemm.className = 'notif active';
-                elemm.id = 'loadingnotif';
-                elemm2.className = 'alert blue';
-                elemm4.className = 'notifinfo';
+                var elemm=document.getElementById('notifbar').appendChild(document.createElement('div')),
+                elemm2=elemm.appendChild(document.createElement('div')),
+                elemm3=elemm2.appendChild(document.createElement('div')),
+                elemm4=elemm.appendChild(document.createElement('p')),
+                elemm5=elemm.appendChild(document.createElement('button')),
+                elemm6=elemm5.appendChild(document.createElement('ion-icon')),
+                elemm7=elemm.appendChild(document.createElement('div'))
+                elemm.className='notif active';
+                elemm.id='loadingnotif';
+                elemm2.className='alert blue';
+                elemm4.className='notifinfo';
                 elemm4.innerText='fetching file: '+y+'.png';
-                elemm5.className = 'notifclose';
-                elemm5.onclick = function(){remove(this.parentNode)};
-                elemm6.name = 'close';
-                elemm7.className = 'notifprog';
+                elemm5.className='notifclose';
+                elemm5.onclick=function(){remove(this.parentNode)};
+                elemm6.name='close';
+                elemm7.className='notifprog';
             };
             function notifcomplete(x,y){
-                var elem = document.getElementById('notifbar').appendChild(document.createElement('div')),
-                elem2 = elem.appendChild(document.createElement('div')),
-                elem4 = elem.appendChild(document.createElement('p')),
-                elem5 = elem.appendChild(document.createElement('button')),
-                elem6 = elem5.appendChild(document.createElement('ion-icon')),
-                elem7 = elem2.appendChild(document.createElement('ion-icon'))
-                elem.className = 'notif active';
-                elem2.className = 'alert green';
-                elem4.className = 'notifinfo';
+                var elem=document.getElementById('notifbar').appendChild(document.createElement('div')),
+                elem2=elem.appendChild(document.createElement('div')),
+                elem4=elem.appendChild(document.createElement('p')),
+                elem5=elem.appendChild(document.createElement('button')),
+                elem6=elem5.appendChild(document.createElement('ion-icon')),
+                elem7=elem2.appendChild(document.createElement('ion-icon'))
+                elem.className='notif active';
+                elem2.className='alert green';
+                elem4.className='notifinfo';
                 elem4.innerText='task complete: '+y+'.png';
-                elem5.className = 'notifclose';
-                elem5.onclick = function(){remove(this.parentNode)};
-                elem6.name = 'close';
-                elem7.name = 'checkmark';
+                elem5.className='notifclose';
+                elem5.onclick=function(){remove(this.parentNode)};
+                elem6.name='close';
+                elem7.name='checkmark';
                 notifcloser();
             };
             function notiferror(x){
                 notifopener();
-                var elem = document.getElementById('notifbar').appendChild(document.createElement('div')),
-                elem2 = elem.appendChild(document.createElement('div')),
-                elem4 = elem.appendChild(document.createElement('p')),
-                elem5 = elem.appendChild(document.createElement('button')),
-                elem6 = elem5.appendChild(document.createElement('ion-icon')),
-                elem7 = elem2.appendChild(document.createElement('ion-icon'))
-                elem.className = 'notif active';
-                elem2.className = 'alert red';
-                elem4.className = 'notifinfo';
+                var elem=document.getElementById('notifbar').appendChild(document.createElement('div')),
+                elem2=elem.appendChild(document.createElement('div')),
+                elem4=elem.appendChild(document.createElement('p')),
+                elem5=elem.appendChild(document.createElement('button')),
+                elem6=elem5.appendChild(document.createElement('ion-icon')),
+                elem7=elem2.appendChild(document.createElement('ion-icon'))
+                elem.className='notif active';
+                elem2.className='alert red';
+                elem4.className='notifinfo';
                 elem4.innerText=x;
-                elem5.className = 'notifclose';
-                elem5.onclick = function(){remove(this.parentNode)};
-                elem6.name = 'close';
-                elem7.name = 'alert';
+                elem5.className='notifclose';
+                elem5.onclick=function(){remove(this.parentNode)};
+                elem6.name='close';
+                elem7.name='alert';
                 notifcloser();
             };
             function addnotif(x,y) {
