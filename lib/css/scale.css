@@ -177,10 +177,12 @@
     .pannelinfo .panneltitle
     {
         top: 15%;
+        transition: unset;
     }
     .pannelinfo .pannelsubtext
     {
         top: 47%;
+        transition: unset;
     }
     #about
     {
