@@ -71,7 +71,7 @@
         transition: 0.3s;
         cursor: pointer;
     }
-    .navbutton,.prev,.next,.panneltext,.middle .beforemiddleimg .text,.middlebutton,.backpanel.active,.changelogframe
+    .navbutton,.prev,.next,.panneltext,.middle .beforemiddleimg .text,.middlebutton,.backpanel.active,.changelogframe,.notifcont h1
     {
         display: none;
     }
@@ -84,21 +84,15 @@
         top: calc(10vw + 40px);
         right: 30px;
         width: 85vw;
+        padding: unset;
+        height: auto;
+        background-color: transparent;
+        box-shadow: 0px 0px 0px transparent;
         transition: 0.3s;
     }
     .notifcont.active
     {
         transform: translateX(90vw);
-    }
-    .notifcont.full
-    {
-        top: calc(10vw + 40px);
-        right: 30px;
-        height: auto;
-        width: 85vw;
-        box-shadow: 0px 0px 0px transparent;
-        padding: 0px;
-        background-color: transparent;
     }
     .notifcont .notif
     {
@@ -452,11 +446,6 @@
     .notifcont.active
     {
         transform: translateX(43vw);
-    }
-    .notifcont.full
-    {
-        top: 7vw;
-        padding: 10px;
     }
     .navbar .notiftoggle
     {
