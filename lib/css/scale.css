@@ -227,12 +227,11 @@
     .middle.artpage
     {
         flex-direction: column;
-        justify-content: center;
-        align-items: unset;
+        align-items: center;
     }
     .imgcolumn
     {
-        width: 100vw;
+        width: 84vw;
     }
     .descriptionbar
     {

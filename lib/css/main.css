@@ -575,7 +575,6 @@ header .topbar h1
 	left: 10vw;
 	margin-top: 3.3vw;
 }
-
 #other
 {
 	height: 30%;
@@ -740,7 +739,6 @@ header .topbar h1
 .noaspect
 {
 	aspect-ratio: unset;
-	cursor: pointer;
 	width: 65%;
 }
 .imgcolumn
@@ -764,7 +762,7 @@ header .topbar h1
 article
 {
 	text-align: center;
-	margin: 1vw 0px;
+	margin: 10px 0 2vw 0;
 	padding: 1vw;
 	font-size: 18px;
 	width: 60%;
@@ -772,7 +770,7 @@ article
 }
 article h1
 {
-	margin: 10px 0;
+	margin: 0 0 14px 0;
 	letter-spacing: 2px;
 }
 article span
@@ -788,7 +786,7 @@ main .profile
 	height: 175px;
 	margin-top: 2vw;
 	border-radius: 50%;
-	border: 10px solid transparent;
+	border: 7px solid transparent;
 }
 .middlebutton
 {
