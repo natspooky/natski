@@ -40,7 +40,7 @@
         <link rel="stylesheet" type="text/css" href="lib/css/scale.css"/>
         <script src="lib/js/jquery.js"></script>
 	</head>
-    <body>
+    <body onload="averageColor(document.querySelectorAll('img'));">
         <div class="loaderback">
             <div class="loadcont">
                 <div id="loader"></div>
@@ -52,7 +52,7 @@
             </div>
         </header>
         <main class="middle" style="flex-direction: column;">
-            <img src="icon/avatar/300.png" class="profile" id="img" draggable="false" onload="averageColor(this);">
+            <img src="icon/avatar/300.png" class="profile" id="img" draggable="false">
             <article>
                 <h1>title</h1>
                 This website is here to show off both the skills i have developed using HTML, CSS and JS, but also to display artwork and slides from my Alevel and GCSE art courses as a record and archive of the work produced.
