@@ -94,6 +94,8 @@ html,body
 img
 {
 	transition: 0.4s;
+	background-color: rgba(0, 0, 0, 0.7);
+	box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.7);
 }
 .static,.staticmenu
 {
@@ -731,7 +733,6 @@ header .topbar h1
 	border-radius: 25px;
 	opacity: 0;
 	transform: scale(0.8);
-	background-color: transparent;
 	border: 5px solid transparent;
 	aspect-ratio: 16 / 9;
 	transition: 0.4s;
