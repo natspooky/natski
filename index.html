@@ -109,21 +109,15 @@
             </div>
         </header>
         <script>
-            var slideIndex=1,
-            time,
-            slideshowContainer,
-            elem=document.getElementById("progress-bar"),
-            width=1,
-            interval;
+            var slideIndex=1,time,slideshowContainer,elem=document.getElementById("progress-bar"),width=1,interval,pageindex=1,index=2;
             window.addEventListener("load",function(){
                 showSlides(slideIndex);
                 time=setInterval(function(){plusSlides(1)},10000);
                 slideshowContainer=document.getElementsByClassName('pannelbutton');
                 for(let i=0;i<slideshowContainer.length;i++){
-                    slideshowContainer[i].addEventListener('mouseenter',pause)
-                    slideshowContainer[i].addEventListener('mouseleave',resume)
-                }
-            })
+                    slideshowContainer[i].addEventListener('mouseenter',pause);
+                    slideshowContainer[i].addEventListener('mouseleave',resume);
+            }});
             function progressBar(){
                 elem.style.transition='0.1s linear';
                 interval=setInterval(frame,100);
@@ -131,30 +125,27 @@
                     if(width>=100){clearInterval(interval);}
                     else{width++;elem.style.width=width+'%';}
                     if (width==95){$('.pannelinfo').css({'opacity':'0','transform':'translateY(-60px)'})}
-                }
-            }
+            }};
             function resetProgressBar(){
                 elem.style.transition='0s';
                 width=0;
                 clearInterval(interval);
                 elem.style.width=width+'%';
-            }
+            };
             function plusSlides(n){
                 clearInterval(time);
                 if(n<0){showSlides(slideIndex-=1);}
                 else{showSlides(slideIndex+=1);}
                 if(n===-1){time=setInterval(function(){plusSlides(n+2)},10000);}
                 else{time=setInterval(function(){plusSlides(n+1)},10000);}
-            }
+            };
             function currentSlide(n){
                 clearInterval(time);
                 time=setInterval(function(){plusSlides(n+1)},10000);
                 showSlides(slideIndex=n);
-            }
+            };
             function showSlides(n){
-                var i,
-                slides=document.getElementsByClassName("pannel"),
-                dots=document.getElementsByClassName("panneltile");
+                var i,slides=document.getElementsByClassName("pannel"),dots=document.getElementsByClassName("panneltile");
                 if(n>slides.length){slideIndex=1}
                 if(n<1){slideIndex=slides.length}
                 for(i=0;i<slides.length;i++){slides[i].style.display="none";}
@@ -164,38 +155,22 @@
                 dots[slideIndex-1].className+=" active";
                 resetProgressBar();
                 progressBar();
-            }
-            pause=()=>{
-                clearInterval(time);
-                resetProgressBar();
-            }
-            resume=()=>{
-                clearInterval(time);
-                time=setInterval(function(){plusSlides(slideIndex)},10000);
-                progressBar();
-            }
-            function scrolltop(){
-                setTimeout(function(){
-                    document.body.scrollTop=0;
-                    document.documentElement.scrollTop=0;
-                },200);
             };
+            pause=()=>{clearInterval(time);resetProgressBar();};
+            resume=()=>{clearInterval(time);time=setInterval(function(){plusSlides(slideIndex)},10000);progressBar();};
+            function scrolltop(){
+                setTimeout(()=>{document.body.scrollTop=0;document.documentElement.scrollTop=0;},200)};
             function remove(el){
                 var element=el;
                 element.style.transform='translateX(80%)';
                 element.style.opacity='0';
-                setTimeout(function(){
+                setTimeout(()=>{
                     element.remove();
                     if(document.getElementById("notifbar").childElementCount==0){
                         document.getElementById('notifbar').classList.add('active');
-                        document.getElementById('notifmenu').classList.remove('active');
-                        document.getElementById('naviright').classList.remove('active');
-                    }
-                },350);
-            };
-            function notiftbaroggle(){
-                document.getElementById('notifbar').classList.toggle('active');
-            };
+                        document.querySelector('notifmenu','naviright').classList.remove('active');
+                    }},350)};
+            function notiftbaroggle(){document.getElementById('notifbar').classList.toggle('active');};
             function loadernotif(x,y){
                 var elemm=document.getElementById('notifbar').appendChild(document.createElement('div')),
                 elemm2=elemm.appendChild(document.createElement('div')),
@@ -251,16 +226,10 @@
             };
             function addnotif(x,y) {
                 loadernotif(x,y);
-                setTimeout(function(){
-                    document.getElementById('loadingnotif').remove();
-                    notifcomplete(x,y);
-                    download(x,y);
-                },2000)
-            };
+                setTimeout(()=>{document.getElementById('loadingnotif').remove();notifcomplete(x,y);download(x,y);},2000);
+                };
             function notifcloser(){
-                setTimeout(function(){
-                    document.getElementById('notifbar').classList.add('active');
-                },1500)
+                setTimeout(()=>{document.getElementById('notifbar').classList.add('active');},1500);
             };
             function notifopener(){
                 document.getElementById('notifbar').style.display="block";
@@ -277,20 +246,11 @@
                 anchor.click();
                 document.body.removeChild(anchor);
             };
-            /*
-            function imgloader(x,y){
-                notifopener();
-                addnotif(x,y);
-            };
-            */
-            function imgloader(x,y){
-                notiferror('downloads disabled for testing')
-            };
-            var pageindex=1,
-            index=2;
-            function load(){
-                document.getElementById("pagecounter").innerHTML=pageindex+'/'+index;
-            }
+
+            /*function imgloader(x,y){notifopener();addnotif(x,y);};*/
+
+            function imgloader(x,y){notiferror('downloads disabled for testing');};
+            function load(){document.getElementById("pagecounter").innerHTML=pageindex+'/'+index;};
             function changepage(n){
                 pageindex+=n
                 if(pageindex<1){pageindex=1}
