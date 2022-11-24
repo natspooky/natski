@@ -736,7 +736,7 @@ header .topbar h1
 	border-radius: 25px;
 	opacity: 0;
 	transform: scale(0.8);
-	border: 5px solid transparent;
+	border: 8px solid transparent;
 	aspect-ratio: 16 / 9;
 	transition: 0.4s;
 }
