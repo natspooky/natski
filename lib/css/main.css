@@ -774,9 +774,9 @@ article span
 {
 	font-weight: bold;
 }
-article a
+article a ion-icon
 {
-	
+	margin-left: 5px;
 }
 main .profile
 {
