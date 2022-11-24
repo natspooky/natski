@@ -276,10 +276,15 @@
                 document.body.appendChild(anchor);
                 anchor.click();
                 document.body.removeChild(anchor);
-            }; 
+            };
+            /*
             function imgloader(x,y){
                 notifopener();
                 addnotif(x,y);
+            };
+            */
+            function imgloader(x,y){
+                notiferror('downloads disabled for testing')
             };
             var pageindex=1,
             index=2;
