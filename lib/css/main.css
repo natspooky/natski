@@ -765,9 +765,18 @@ article
 	width: 60%;
 	height: auto;
 }
+article h1
+{
+	margin: 10px 0;
+	letter-spacing: 2px;
+}
 article span
 {
 	font-weight: bold;
+}
+article a
+{
+
 }
 main .profile
 {
