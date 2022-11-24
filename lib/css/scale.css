@@ -435,6 +435,11 @@
     {
         transform: translateX(-3.1vw);
     }
+    .navbar .navbarleft a #N
+    {
+        margin: 0 1vw;
+	    height: 55%;
+    }
     .navbar .notiftoggle
     {
         font-size: 3vw;
