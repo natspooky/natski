@@ -111,6 +111,7 @@
         <script>
             var slideIndex=1,time,slideshowContainer,elem=document.getElementById("progress-bar"),width=1,interval,pageindex=1,index=2;
             window.addEventListener("load",function(){
+                notifcomplete('ok','ok')
                 showSlides(slideIndex);
                 time=setInterval(function(){plusSlides(1)},10000);
                 slideshowContainer=document.getElementsByClassName('pannelbutton');
@@ -158,18 +159,18 @@
             };
             pause=()=>{clearInterval(time);resetProgressBar();};
             resume=()=>{clearInterval(time);time=setInterval(function(){plusSlides(slideIndex)},10000);progressBar();};
-            function scrolltop(){
-                setTimeout(()=>{document.body.scrollTop=0;document.documentElement.scrollTop=0;},200)};
+            function scrolltop(){setTimeout(()=>{document.body.scrollTop=0;document.documentElement.scrollTop=0;},200)};
             function remove(el){
                 var element=el;
                 element.style.transform='translateX(80%)';
                 element.style.opacity='0';
                 setTimeout(()=>{
                     element.remove();
-                    if(document.getElementById("notifbar").childElementCount==0){
+                    if(document.getElementById("notifbar").childElementCount==1){
                         document.getElementById('notifbar').classList.add('active');
-                        document.querySelector('notifmenu','naviright').classList.remove('active');
-                    }},350)};
+                        document.getElementById('notifmenu').classList.remove('active');
+                        document.getElementById('naviright').classList.remove('active');
+            }},350)};
             function notiftbaroggle(){document.getElementById('notifbar').classList.toggle('active');};
             function loadernotif(x,y){
                 var elemm=document.getElementById('notifbar').appendChild(document.createElement('div')),
@@ -183,13 +184,14 @@
                 elemm.id='loadingnotif';
                 elemm2.className='alert blue';
                 elemm4.className='notifinfo';
-                elemm4.innerText='fetching file: '+y+'.png';
+                elemm4.innerText=y;
                 elemm5.className='notifclose';
                 elemm5.onclick=function(){remove(this.parentNode)};
                 elemm6.name='close';
                 elemm7.className='notifprog';
             };
             function notifcomplete(x,y){
+                notifopener();
                 var elem=document.getElementById('notifbar').appendChild(document.createElement('div')),
                 elem2=elem.appendChild(document.createElement('div')),
                 elem4=elem.appendChild(document.createElement('p')),
@@ -199,7 +201,7 @@
                 elem.className='notif active';
                 elem2.className='alert green';
                 elem4.className='notifinfo';
-                elem4.innerText='task complete: '+y+'.png';
+                elem4.innerText=y;
                 elem5.className='notifclose';
                 elem5.onclick=function(){remove(this.parentNode)};
                 elem6.name='close';
@@ -228,12 +230,9 @@
                 loadernotif(x,y);
                 setTimeout(()=>{document.getElementById('loadingnotif').remove();notifcomplete(x,y);download(x,y);},2000);
                 };
-            function notifcloser(){
-                setTimeout(()=>{document.getElementById('notifbar').classList.add('active');},1500);
-            };
+            function notifcloser(){setTimeout(()=>{document.getElementById('notifbar').classList.add('active');},1500);};
             function notifopener(){
                 document.getElementById('notifbar').style.display="block";
-                document.getElementById('notifbar').classList.add('full');
                 document.getElementById('notifbar').classList.remove('active');
                 document.getElementById('notifmenu').classList.add('active');
                 document.getElementById('naviright').classList.add('active');
@@ -248,13 +247,10 @@
             };
 
             /*function imgloader(x,y){notifopener();addnotif(x,y);};*/
-
             function imgloader(x,y){notiferror('downloads disabled for testing');};
+
             function load(){document.getElementById("pagecounter").innerHTML=pageindex+'/'+index;};
-            function changepage(n){
-                pageindex+=n
-                if(pageindex<1){pageindex=1}
-                if(pageindex>index){pageindex=index}
+            function changepage(n){pageindex+=n;if(pageindex<1){pageindex=1}if(pageindex>index){pageindex=index}
                 document.getElementById("logframe").src='lib/html/log'+pageindex+'.html';
                 document.getElementById("pagecounter").innerHTML=pageindex+'/'+index;
             };
@@ -393,7 +389,9 @@
                 </a>
             </div>
         </div>
-        <div class="notifcont" id="notifbar"></div>
+        <div class="notifcont" id="notifbar">
+            <h1>notifications</h1>
+        </div>
         <noscript>
             <h1>javascript is disabled :(</h1>
             <p>this website requires javascript to run.<br>please enable the use of javascript to see this page :)</p>

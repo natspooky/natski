@@ -184,12 +184,12 @@
         top: 47%;
         transition: unset;
     }
-    #other
+    .topbar
     {
         height: 20%;
         min-height: 20%;
     }
-    header .topbar h1
+    .topbar h1
     {
         font-size: 6vw;
         left: 7vw;
@@ -482,7 +482,7 @@
     {
         font-size: 3.2vw;
     }
-    header .topbar h1
+    .topbar h1
     {
         font-size: 6vw;
         margin-top: 5vw;

@@ -267,31 +267,27 @@ img
 {
 	position: fixed;
 	display: none;
-	top: calc(3.5vw + 20px);
-	right: 20px;
-	height: auto;
-	width: 22vw;
-	transform: translate(0);
-	opacity: 1;
-	box-shadow: 0px 0px 0px transparent;
-	transition: 0.3s,background-color 0s;
-}
-.notifcont.active
-{
-	transform: translateX(26vw);
-	opacity: 0;
-}
-.notifcont.full
-{
 	top: 3.5vw;
 	right: 0;
 	height: 100%;
 	overflow: scroll;
 	width: calc(22vw + 20px);
 	padding: 20px;
+	transform: translate(0);
+	opacity: 1;
 	box-shadow: 0px 0px 20px #0a0a0a94;
 	background-color: #282828;
-	transition: 0.3s,background-color 2s;
+	transition: 0.3s;
+}
+.notifcont.active
+{
+	transform: translateX(26vw);
+	opacity: 0;
+}
+.notifcont h1
+{
+	color: var(--maincol);
+	margin-bottom: 10px;
 }
 .notifcont .notif
 {
@@ -313,12 +309,7 @@ img
 {
 	animation: notif 0.5s;
 }
-.notifcont .notif:active
-{
-	transform: scale(0.97);
-	transition: 0s;
-}
-.notifcont.full .notif:active
+.notifcont .notif:hover:active
 {
 	transform: scale(0.97);
 	box-shadow: 0px 0px 20px var(--accentcol);
@@ -523,14 +514,6 @@ img
 	margin: 5vw;
 	height: 12vw;
 }
-.wrapper
-{
-	width: 100%;
-	height: 100%;
-	overflow-y: scroll;
-	overflow-x: hidden;
-	scroll-snap-type: y mandatory;
-}
 header
 {
 	position: relative;
@@ -559,7 +542,7 @@ header .progress .progress-bar
 	background-color: var(--maincol);
 	transition: 0.1s linear;
 }
-header .topbar
+.topbar
 {
 	position: relative;
 	display: flex;
@@ -567,22 +550,17 @@ header .topbar
 	background-position: center;
 	background-image: linear-gradient(to top right, var(--themecol),var(--accentcol));
 	background-size: cover;
-	height: 100%;
+	height: 30%;
+	min-height: 30%;
 	width: 100%;
 }
-header .topbar h1
+.topbar h1
 {
 	position: relative;
 	color: var(--maincol);
 	font-size: 3.7vw;
 	left: 10vw;
 	margin-top: 3.3vw;
-}
-
-#other
-{
-	height: 30%;
-	min-height: 30%;
 }
 .prev,.next
 {
