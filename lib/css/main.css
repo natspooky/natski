@@ -111,7 +111,7 @@ img
 {
 	position: fixed;
 	top: 0;
-	height: 3.5vw;
+	height: 3vw;
 	width: 100%;
 	background-color: var(--accentcol);
 	z-index: 99999;
@@ -146,7 +146,7 @@ img
 .navbar .navbarleft a #N
 {
 	position: relative;
-	height: 2.2vw;
+	height: 1.7vw;
 	margin: 0.75vw;
 }
 .navbar .navbarright
@@ -267,9 +267,9 @@ img
 {
 	position: fixed;
 	display: none;
-	top: 3.5vw;
+	top: 3vw;
 	right: 0;
-	height: 100%;
+	height: calc(100% - 3vw);
 	overflow: scroll;
 	width: calc(22vw + 20px);
 	padding: 20px;
@@ -560,7 +560,7 @@ header .progress .progress-bar
 	color: var(--maincol);
 	font-size: 3.7vw;
 	left: 10vw;
-	margin-top: 3.3vw;
+	margin-top: 3vw;
 }
 .prev,.next
 {
@@ -764,10 +764,6 @@ article span .sourcer
 	font-size: 13px;
 	text-decoration: none;
 }
-article span .sourcer:hover .bibcont
-{
-	
-}
 .bibcont
 {
 	top: 0;
@@ -779,6 +775,9 @@ article span .sourcer:hover .bibcont
 	border-radius: 10px;
 	transform: translate(-50%,-115%);
 	background-color: var(--accentcol);
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	overflow: hidden;
 	animation: downappear 0.3s;
 }
@@ -803,6 +802,19 @@ article span .sourcer:hover .bibcont
 	position: relative;
 	width: 100%;
 	text-align: center;
+}
+.bibcont div
+{
+	position: relative;
+	margin: 10px auto;
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	border-top: 4px solid var(--maincol);
+	border-bottom: 4px solid var(--maincol);
+	border-left: 4px solid var(--maincol);
+	border-right: 4px solid transparent;
+	animation: rotate 0.5s linear infinite;
 }
 main .profile
 {
@@ -944,8 +956,8 @@ main .profile
 .pagechanger button
 {
 	font-size: 2vw;
-	height: 3vw;
-	width: 3vw;
+	height: 2.5vw;
+	width: 2.5vw;
 	display: grid;
 	place-items: center;
 	background-color: transparent;
@@ -1061,7 +1073,7 @@ footer .linkbar a:hover
 	position: absolute;
 	z-index: 999;
 	left: 1vw;
-	top: 4.5vw;
+	top: 4vw;
 	height: 2vw;
 	width: 2vw;
 	border: none;
@@ -1143,7 +1155,7 @@ footer .linkbar a:hover
 {
 	position: relative;
     width: 100%;
-    height: calc(100% - 7vw);
+    height: calc(100% - 6.5vw);
 	background-color: var(--maincol);
 	scroll-snap-align: end;
 }
@@ -1161,7 +1173,7 @@ footer .linkbar a:hover
 	position: fixed;
 	z-index: 9999;
 	left: 1vw;
-	top: 7.5vw;
+	top: 7vw;
 	height: 2vw;
 	width: 2vw;
 	border: none;
