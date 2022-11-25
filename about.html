@@ -54,7 +54,7 @@
             <article>
                 <h1>title</h1>
                 This website is here to show off both the skills i have developed using HTML, CSS and JS, but also to display artwork and slides from my Alevel and GCSE art courses as a record and archive of the work produced.
-                <span>This is highlighted / <a href="#" title="where the link goes">dont forget<ion-icon name="open-outline"></ion-icon></a></span>
+                <span>This is highlighted / dont forget<a href="#" class="sourcer" title="where the link goes">[1]</a></span>
             </article>
         </main>
         <footer>
@@ -87,6 +87,10 @@
                 </svg>
             <p id="footerdate"></p>
         </footer>
+        <div class="bibcont">
+            <iframe id="bib"></iframe>
+            <p>test</p>
+        </div>
         <nav class="navbar">
             <div class="navbarleft">
                 <a href="index.html">
@@ -141,6 +145,7 @@
             <p>this website requires javascript to run.<br>please enable the use of javascript to see this page :)</p>
         </noscript>
         <script src="lib/js/main.js"></script>
+        <script src="lib/js/iframeresponder.js"></script>
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     </body>
