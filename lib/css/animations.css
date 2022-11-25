@@ -41,3 +41,13 @@
 	from{transform: rotate(0);}
 	to{transform: rotate(360deg);}
 }
+@keyframes downappear
+{
+	from{transform: translate(-50%,-120%); opacity: 0.3;}
+	to{transform: translate(-50%,-115%); opacity: 1;}
+}
+@keyframes upappear
+{
+	from{transform: translate(-50%,20%); opacity: 0.3;}
+	to{transform: translate(-50%,15%); opacity: 1;}
+}
