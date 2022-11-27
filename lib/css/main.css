@@ -9,7 +9,7 @@
 	justify-content: center;
 	align-items: center;
 }
-.loadcont
+.loaderback div
 {
 	transform: scale(2.4);
 	display: flex;
@@ -21,7 +21,7 @@
 	height: 60px;
 	width: 60px;
 }
-#loader 
+.loaderback div div
 {
 	position: relative;
 	height: 45px;
@@ -416,16 +416,14 @@ img
 	bottom: 0;
 	background-color: var(--accentcol);
 	transform: translateY(120vh);
-	opacity: 1;
 	border-radius: 50% 50% 0px 0px;
 	overflow: hidden;
 	transition: 0.5s ease;
 }
-.slidemenu.active
+.slidemenu.active,.pagecontainer.active
 {
 	transform: translateY(0);
 	border-radius: 0px;
-	opacity: 1;
 }
 .slidemenu .menubar
 {
@@ -501,12 +499,7 @@ img
 	background-color: transparent;
 	transition: 0.3s;
 }
-.navbutton:hover .selector
-{
-	width: 100%;
-	background-color: var(--maincol);
-}
-.navbutton.active .selector,.navbutton.active:hover .selector
+.navbutton.active .selector,.navbutton:hover .selector,.navbutton.active:hover .selector
 {
 	width: 100%;
 	background-color: var(--themecol);
@@ -694,10 +687,6 @@ header .progress .progress-bar
 	color: var(--themecol);
 	transition: 0.1s;
 }
-.pannelbutton:active
-{
-	transform: scale(0.9);
-}
 .middle
 {
 	position: relative;
@@ -734,7 +723,7 @@ header .progress .progress-bar
 	flex-direction: column;
 	align-items: center;
 }
-#revealed
+.revealed
 {
 	opacity: 1;
 	transform: scale(1);
@@ -980,7 +969,7 @@ main .profile
 	background-color: var(--themecoltrans);
 	transition: 0s;
 }
-.pagechanger button:active,.backpage:active,.pagecontainer .closer:active,.logcloser:active,.changelogframe .logcloser:active
+.pagechanger button:active,.backpage:active,.pagecontainer .closer:active,.logcloser:active,.changelogframe .logcloser:active,.pannelbutton:active
 {
 	transform: scale(0.9);
 }
@@ -1051,11 +1040,6 @@ footer .linkbar a:hover
 	overflow: hidden;
 	transition: 0.3s;
 }
-.pagecontainer.active
-{
-	transform: translateY(0);
-	border-radius: 0px;
-}
 .pagecontainer iframe
 {
 	position: absolute;
@@ -1068,7 +1052,7 @@ footer .linkbar a:hover
 	display: none;
 	transition: 0.3s;
 }
-.pagecontainer.active iframe
+.pagecontainer.active iframe,.changelogframe.active iframe,.backpanel.active
 {
 	display: block;
 }
@@ -1136,10 +1120,6 @@ footer .linkbar a:hover
 	display: none;
 	transition: 0.3s;
 }
-.changelogframe.active iframe
-{
-	display: block;
-}
 .backpanel
 {
 	position: fixed;
@@ -1150,10 +1130,6 @@ footer .linkbar a:hover
 	width: 100%;
 	display: none;
 	background-color: #0a0a0a94;
-}
-.backpanel.active
-{
-	display: block;
 }
 .iframecont
 {
