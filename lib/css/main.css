@@ -146,7 +146,7 @@ img
 .navbar .navbarleft a #N
 {
 	position: relative;
-	height: 1.7vw;
+	height: 60%;
 	margin: 0.75vw;
 }
 .navbar .navbarright
@@ -206,6 +206,8 @@ img
 	-o-transition: .5s ease-in-out;
 	transition: .5s ease-in-out;
 	cursor: pointer;
+	background-color: transparent;
+	border: none;
 }
 .toggle span
 {
@@ -465,6 +467,7 @@ img
 	align-items: center;
 	position: relative;
 	overflow: hidden;
+	border: none;
 	transition: 0.1s;
 }
 .menubutton
@@ -550,8 +553,8 @@ header .progress .progress-bar
 	background-position: center;
 	background-image: linear-gradient(to top right, var(--themecol),var(--accentcol));
 	background-size: cover;
-	height: 30%;
-	min-height: 30%;
+	height: 25%;
+	min-height: 25%;
 	width: 100%;
 }
 .topbar h1
@@ -671,7 +674,7 @@ header .progress .progress-bar
 	text-align: center;
 	display: flex;
 	width: 90%;
-	top: 35%;
+	top: 38%;
 	height: 45%;
 	opacity: 0;
 	color: #000;
@@ -781,9 +784,10 @@ article span .sourcer
 	overflow: hidden;
 	animation: downappear 0.3s;
 }
-.bibcont.active
+#tooltip
 {
 	transform: translate(-50%,15%);
+	width: auto;
 	animation: upappear 0.3s;
 }
 .bibcont iframe
@@ -978,7 +982,7 @@ main .profile
 }
 .pagechanger button:active,.backpage:active,.pagecontainer .closer:active,.logcloser:active,.changelogframe .logcloser:active
 {
-	transform: scale(0.85);
+	transform: scale(0.9);
 }
 footer
 {

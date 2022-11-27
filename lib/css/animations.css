@@ -48,6 +48,6 @@
 }
 @keyframes upappear
 {
-	from{transform: translate(-50%,20%); opacity: 0.3;}
+	from{transform: translate(-50%,30%); opacity: 0.3;}
 	to{transform: translate(-50%,15%); opacity: 1;}
 }

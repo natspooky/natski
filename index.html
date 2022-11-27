@@ -2,7 +2,8 @@
 <html lang="en-US">
     <head>
 		<title>Natski | Home</title>
-        <meta charset="UTF-8" content="width=device-width, initial-scale=1"/>
+        <meta charset="UTF-8"/>
+        <!--<meta name="viewport" content="width=device-width, initial-scale=1"/>-->
         <meta name="description" content="ground up website for fun"/>
         <meta name="keywords" content="portfolio, natspooky, natski"/>
         <meta name="author" content="NATSKI"/>
@@ -47,52 +48,49 @@
             </div>
         </div>
         <header style="display: flex; align-items: center;">
-            <div class="pannel" style="background-image: url('icon/img/1.png'),linear-gradient(to top right,#581a92,#3800a9)">
+            <div class="pannel" style="background-image: url('icon/img/1.png')">
                 <div class="pannelinfo">
                     <h1 class="panneltitle">Portfolio</h1>
                     <p class="pannelsubtext">A collection of work from GCSE/Alevel</p>
                     <div class="panneltext">
                         a collection of work made during the GCSE / Alevel timeframe including: artwork, research documents and progression slides to keep track of in order to archive all of the work created
                     </div>
-                    <a class="pannelbutton" onClick='document.getElementById("ifr").src="portfolio.html"; document.title="Natski | Art Portfolio";'>
+                    <button class="pannelbutton" onClick='document.getElementById("ifr").src="portfolio.html"; document.title="Natski | Art Portfolio";'>
                         enter
-                    </a>
+                    </button>
                 </div>
             </div>
-            <div class="pannel" style="background-image: url('icon/img/2.png'),linear-gradient(to top right,#581a92,#3800a9)">
+            <div class="pannel" style="background-image: url('icon/img/2.png')">
                 <div class="pannelinfo">
                     <h1 class="panneltitle">Websites</h1>
                     <p class="pannelsubtext">Web projects for brands/personal</p>
                     <div class="panneltext">
                         Websites built for either general use such as social linking sites or for brand specific jobs
                     </div>
-                    <a class="pannelbutton" onClick='document.getElementById("ifr").src="websites.html"; document.title="Natski | Websites";'>
+                    <button class="pannelbutton" onClick='document.getElementById("ifr").src="websites.html"; document.title="Natski | Websites";'>
                         enter
-                    </a>
+                    </button>
                 </div>
             </div>
-            <div class="pannel" style="background-image: url('icon/img/3.png'),linear-gradient(to top right,#581a92,#3800a9)">
+            <div class="pannel" style="background-image: url('icon/img/3.png')">
                 <div class="pannelinfo">
                     <h1 class="panneltitle">ENCORE DB</h1>
                     <p class="pannelsubtext">Database for ©NATSKI</p>
                     <div class="panneltext">
                         ENCORE database (N_DB 2.0) powered by H.A.C.A engine used to run ©NATSKI websites
                     </div>
-                    <a class="pannelbutton" onClick='document.getElementById("ifr").src=""; document.title="Natski | Database";'>
+                    <button class="pannelbutton" onClick='document.getElementById("ifr").src=""; document.title="Natski | Database";'>
                         enter
-                    </a>
+                    </button>
                 </div>
             </div>
-            <a onclick="plusSlides(-1)">
-                <button class="prev">
-                    <ion-icon name="caret-back"></ion-icon>
-                </button>
-            </a>
-            <a onclick="plusSlides(1)">
-                <button class="next">
-                    <ion-icon name="caret-forward"></ion-icon>
-                </button>
-            </a>
+            
+            <button class="prev" onclick="plusSlides(-1)">
+                <ion-icon name="caret-back"></ion-icon>
+            </button>
+            <button class="next" onclick="plusSlides(1)">
+                <ion-icon name="caret-forward"></ion-icon>
+            </button>
             <section class="pannelselector">
                 <a onclick="currentSlide(1)">
                     <img src="icon/img/1.png" class="panneltile">
@@ -257,7 +255,7 @@
         <main style="background-color: var(--maincol);">
             <div class="descriptionbar"><span>Featured</span></div>
             <div class="middle" id="middle">
-                <a class="beforemiddleimg" onclick="currentSlide(1); scrolltop();">
+                <button class="beforemiddleimg" onclick="currentSlide(1); scrolltop();">
                     <div class="middlebutton">visit</div>
                     <div class="text">
                         <h1>Art Portfolio</h1>
@@ -268,8 +266,8 @@
                         <h1>Art Portfolio</h1>
                         <span>A collection of artwork for GCSE/Alevel</span>
                     </div>
-                </a>
-                <a class="beforemiddleimg" onclick="currentSlide(2); scrolltop();">
+                </button>
+                <button class="beforemiddleimg" onclick="currentSlide(2); scrolltop();">
                     <div class="middlebutton">visit</div>
                     <div class="text">
                         <h1>Websites</h1>
@@ -280,7 +278,7 @@
                         <h1>Websites</h1>
                         <span>Web projects for brands/personal</span>
                     </div>
-                </a>
+                </button>
             </div>
         </main>
         <footer class="footer">
@@ -305,7 +303,7 @@
                 <defs>
                     <style>
                     .cls-1 {
-                        fill: #fff;
+                        fill: var(--maincol);
                     }
                     </style>
                 </defs>
@@ -333,23 +331,23 @@
                 </a>
             </div>
             <div class="navbarright" id="naviright">
-                <a class="toggle">
+                <button class="toggle">
                     <span></span>
                     <span></span>
                     <span></span>
-                </a>
-                <a class="navbutton active" style="cursor: pointer;" id="home" onclick='document.getElementById("logframe").src=""; document.getElementById("ifr").src=""; document.title="Natski | Home";'>
+                </button>
+                <button class="navbutton active" style="cursor: pointer;" id="home" onclick='document.getElementById("logframe").src=""; document.getElementById("ifr").src=""; document.title="Natski | Home";'>
                     Home
                     <div class="selector"></div>
-                </a>
+                </button>
                 <a class="navbutton" href="about.html">
                     About
                     <div class="selector"></div>
                 </a>
-                <a class="navbutton" id="log" style="cursor: pointer;" onClick='document.getElementById("logframe").src="lib/html/log1.html"; load(); document.title="Natski | Changelog";'>
+                <button class="navbutton" id="log" style="cursor: pointer;" onClick='document.getElementById("logframe").src="lib/html/log1.html"; load(); document.title="Natski | Changelog";'>
                     Changelog
                     <div class="selector"></div>
-                </a>
+                </button>
             </div>
         </nav>
         <div class="backpanel" id="backcloser" onClick='document.getElementById("logframe").src=""; document.title="Natski | Home";'></div>
@@ -371,15 +369,15 @@
         <div class="pagecontainerstyle"></div>
         <div class="pagecontainer">
             <iframe id="ifr"></iframe>
-            <a class="closer" onClick='document.getElementById("ifr").src=""; document.title="Natski | Home";'>
+            <button class="closer" onClick='document.getElementById("ifr").src=""; document.title="Natski | Home";'>
                 <ion-icon name="close"></ion-icon>
-            </a>
+            </button>
         </div>
         <div class="slidemenu">
             <div class="menubar">
-                <a class="menubutton active">
+                <button class="menubutton active">
                     Home
-                </a>
+                </button>
                 <a class="menubutton" href="about.html">
                     About
                 </a>

@@ -6,7 +6,7 @@
         top: 20px;
         width: unset;
         box-sizing: initial;
-        border: 0px;
+        border: none;
         background-color: var(--accentcol);
         height: calc(10vw - 10px);
         border-radius: 15px;
@@ -180,14 +180,14 @@
     }
     .topbar
     {
-        height: 20%;
-        min-height: 20%;
+        height: 15%;
+        min-height: 15%;
     }
     .topbar h1
     {
         font-size: 6vw;
         left: 7vw;
-        margin-top: 9.5vw;
+        margin-top: 10vw;
     }
     article
     {
@@ -202,6 +202,7 @@
         width: 85vw;
         border-radius: 50px;
         height: 48vw;
+        box-shadow: 0px 10px 20px #00000050;
         margin: 0px 0px 7.5vw 0px;
     }
     .middle .beforemiddleimg .middleimg
@@ -418,7 +419,7 @@
     }
     .navbar
     {
-        height: 7vw;
+        height: 5vw;
     }
     .navbutton
     {
@@ -431,7 +432,6 @@
     .navbar .navbarleft a #N
     {
         margin: 0 1vw;
-	    height: 55%;
     }
     .navbar .notiftoggle
     {
@@ -439,7 +439,8 @@
     }
     .notifcont
     {
-        top: calc(7vw + 10px);
+        top: calc(5vw + 10px);
+        height: calc(100% - 5vw);
         right: 10px;
         width: 40vw;
     }
@@ -486,6 +487,7 @@
         border-radius: 50px;
         height: 48vw;
         margin: 0px 0px 7.5vw 0px;
+        box-shadow: 0px 10px 20px #00000050;
         transform: scale(0.9);
     }
     .middle .beforemiddleimg .middleimg
@@ -513,22 +515,21 @@
     .middle.artpage
     {
         flex-direction: column;
-        justify-content: center;
-        align-items: unset;
+        align-items: center;
     }
     .imgcolumn
     {
-        width: 100vw;
+        width: 65vw;
     }
     .descriptionbar
     {
-        font-size: 6vw;
-        height: 10vw;
+        font-size: 4vw;
+        height: 6vw;
     }
     .descriptionbar span
     {
-        margin-top: 1vw;
-        margin-left: 6vw;
+        margin-top: 2.3vw;
+        margin-left: 12vw;
     }
     footer
     {
@@ -536,7 +537,7 @@
     }
     footer #N
     {
-        height: 7vw;
+        height: 5vw;
         margin: 2vw 0;
     }
     footer p
@@ -550,34 +551,34 @@
     }
     .pagecontainer .closer
     {
-        top: calc(7vw + 10px);
-        height: 4vw;
-        width: 4vw;
-        border-radius: 10px;
+        top: calc(5vw + 10px);
+        height: 3vw;
+        width: 3vw;
+        border-radius: 7px;
         background-color: var(--accentcol);
     }
     .changelogframe .logcloser
     {
-        height: 4vw;
-        width: 4vw;
-        border-radius: 10px;
+        height: 3vw;
+        width: 3vw;
+        border-radius: 7px;
         background-color: var(--accentcol);
     }
     .pagecontainer .closer ion-icon,.backpage ion-icon,.changelogframe .logcloser ion-icon
     {
-        font-size: 4vw;
+        font-size: 3vw;
     }
     .backpage
     {
-        top: calc(11vw + 20px);
-        height: 4vw;
-        width: 4vw;
-        border-radius: 10px;
+        top: calc(8vw + 20px);
+        height: 3vw;
+        width: 3vw;
+        border-radius: 7px;
         background-color: var(--accentcol);
     }
     .iframecont
     {
-        height: calc(100% - 17vw);
+        height: calc(100% - 15vw);
     }
     .img
     {
