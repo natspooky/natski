@@ -790,23 +790,24 @@ article span .sourcer
 	display: none;
 	position: absolute;
 	height: auto;
-	width: 500px;
+	width: auto;
+	max-width: 300px;
 	border-radius: 10px;
-	transform: translate(-50%,-115%);
+	transform: translate(-50%,-150%);
 	background-color: var(--accentcol);
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	overflow: hidden;
-	animation: downappear 0.3s;
 }
-.bibcont iframe
+.bibcont::after
 {
-	position: relative;
-	width: 100%;
-	border: none;
-	border-radius: 10px;
-	height: 230px;
+	content: '';
+	border: 9px solid transparent;
+	border-top: 9px solid var(--accentcol);
+	position: absolute;
+	transform: translateX(-50%) translateY(-1px);
+	top: 100%;
+	left: 50%;
 }
 .bibcont p
 {
