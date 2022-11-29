@@ -9,9 +9,6 @@
         <meta name="author" content="NATSKI"/>
         <meta name="copyright" content="NATSKI">
 		<link rel="icon" type="image/svg+xml" href="icon/svg/favicon.svg"/>
-
-        <!-- make favicon an svg image -->
-
         <link rel="apple-touch-icon"sizes="57x57" href="icon/mobile/57.png"/>
         <link rel="apple-touch-icon"sizes="60x60" href="icon/mobile/60.png"/>
         <link rel="apple-touch-icon"sizes="72x72" href="icon/mobile/72.png"/>
@@ -256,7 +253,6 @@
                 };
             function notifcloser(){setTimeout(()=>{document.getElementById('notifbar').classList.add('active');},1500);};
             function notifopener(){
-                document.getElementById('notifbar').style.display="block";
                 document.getElementById('notifbar').classList.remove('active');
                 document.getElementById('notifmenu').classList.add('active');
                 document.getElementById('naviright').classList.add('active');
@@ -278,6 +274,7 @@
                 document.getElementById("logframe").src='lib/html/log'+pageindex+'.html';
                 document.getElementById("pagecounter").innerHTML=pageindex+'/'+index;
             };
+            notifcomplete('ok')
         </script>
         <main style="background-color: var(--maincol);">
             <div class="descriptionbar"><span>Featured</span></div>
@@ -417,7 +414,7 @@
                 </a>
             </div>
         </div>
-        <div class="notifcont" id="notifbar">
+        <div class="notifcont active" id="notifbar">
             <h1>notifications</h1>
         </div>
         <noscript>
