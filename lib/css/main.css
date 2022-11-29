@@ -2,7 +2,7 @@
 {
 	position: fixed;
 	z-index: 9999;
-	background-color: #1e1e1e;
+	background-color: #1e1e1eef;
 	height: 100%;
 	width: 100%;
 	display: flex;
@@ -11,37 +11,25 @@
 }
 .loaderback div
 {
-	transform: scale(2.4);
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background-color: #11111150;
-	border: 2px solid #222222;
-	border-radius: 50%;
-	height: 60px;
-	width: 60px;
+	background-color: #55555550;
+	border-radius: 20px;
+	height: 155px;
+	width: 155px;
+	animation: spin2 3s infinite;
 }
 .loaderback div div
 {
 	position: relative;
-	height: 45px;
-	width: 45px;
-	border: 2px solid transparent;
-	border-top-color: #729ef6;
-	border-bottom-color: #729ef6;
+	height: 100px;
+	width: 100px;
+	border: 15px solid #fff;
+	border-top-color: transparent;
 	border-radius: 50%;
-	-webkit-animation: spin 1s ease infinite;
-	animation: spin 1s ease infinite;
-}
-@-webkit-keyframes spin {
-	from {
-	  	-webkit-transform: rotate(0deg);
-		transform: rotate(0deg);
-	}
-	to {
-	  	-webkit-transform: rotate(359deg);
-		transform: rotate(359deg);
-	}
+	background-color: transparent;
+	animation: spin 1.5s linear infinite;
 }
 @keyframes spin {
 	from {
@@ -55,6 +43,38 @@
 		transform: rotate(359deg);
 	  	-webkit-transform: rotate(359deg);
 		transform: rotate(359deg);
+	}
+}
+@keyframes spin2 {
+	0% {
+	  	-webkit-transform: rotate(0deg);
+		transform: rotate(0deg);
+	  	-webkit-transform: rotate(0deg);
+		transform: rotate(0deg);
+	}
+	25% {
+	  	-webkit-transform: rotate(90deg);
+		transform: rotate(90deg);
+	  	-webkit-transform: rotate(90deg);
+		transform: rotate(90deg);
+	}
+	50% {
+		-webkit-transform: rotate(180deg);
+	  transform: rotate(180deg);
+		-webkit-transform: rotate(180deg);
+	  transform: rotate(180deg);
+  }
+  75% {
+		-webkit-transform: rotate(270deg);
+	transform: rotate(270deg);
+		-webkit-transform: rotate(270deg);
+	transform: rotate(270deg);
+	}
+	100% {
+		-webkit-transform: rotate(360deg);
+	transform: rotate(360deg);
+		-webkit-transform: rotate(360deg);
+	transform: rotate(360deg);
 	}
 }
 @import url('https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
@@ -793,22 +813,14 @@ article span .sourcer
 	width: auto;
 	max-width: 300px;
 	border-radius: 10px;
-	transform: translate(-50%,-150%);
+	transform: translate(-50%,-160%);
 	background-color: var(--accentcol);
-	box-shadow: 0px 10px 20px var(--maincol);
 	display: flex;
 	justify-content: center;
 	align-items: center;
-}
-.bibcont::after
-{
-	content: '';
-	border: 9px solid transparent;
-	border-top: 9px solid var(--accentcol);
-	position: absolute;
-	transform: translateX(-50%) translateY(-1px);
-	top: 100%;
-	left: 50%;
+	flex-direction: column;
+	box-shadow: 0px 3px 20px var(--maincol);
+	border: 2px solid var(--themecol);
 }
 .bibcont p
 {
@@ -818,6 +830,10 @@ article span .sourcer
 	position: relative;
 	width: 100%;
 	text-align: center;
+}
+.bibcont p ion-icon
+{
+	margin: 0 2px;
 }
 .bibcont img
 {
