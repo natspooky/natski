@@ -192,6 +192,14 @@
                         document.getElementById('notifmenu').classList.remove('active');
                         document.getElementById('naviright').classList.remove('active');
             }},350)};
+            function removeall(){
+                    $('.notif').css({'opacity':'0','transform':'translateX(80%)'});
+                    setTimeout(()=>{
+                        $('.notif').remove();
+                        document.getElementById('notifbar').classList.add('active');
+                        document.getElementById('notifmenu').classList.remove('active');
+                        document.getElementById('naviright').classList.remove('active');
+            },350)};
             function notiftbaroggle(){document.getElementById('notifbar').classList.toggle('active');};
             function loadernotif(y){
                 var elemm=document.getElementById('notifbar').appendChild(document.createElement('div')),
@@ -201,7 +209,7 @@
                 elemm5=elemm.appendChild(document.createElement('button')),
                 elemm6=elemm5.appendChild(document.createElement('ion-icon')),
                 elemm7=elemm.appendChild(document.createElement('div'));
-                elemm.className='notif active';
+                elemm.className='notif';
                 elemm.id='loadingnotif';
                 elemm2.className='alert blue';
                 elemm4.className='notifinfo';
@@ -219,7 +227,7 @@
                 elem5=elem.appendChild(document.createElement('button')),
                 elem6=elem5.appendChild(document.createElement('ion-icon')),
                 elem7=elem2.appendChild(document.createElement('ion-icon'));
-                elem.className='notif active';
+                elem.className='notif';
                 elem2.className='alert green';
                 elem4.className='notifinfo';
                 elem4.innerText=y;
@@ -237,7 +245,7 @@
                 elem5=elem.appendChild(document.createElement('button')),
                 elem6=elem5.appendChild(document.createElement('ion-icon')),
                 elem7=elem2.appendChild(document.createElement('ion-icon'));
-                elem.className='notif active';
+                elem.className='notif';
                 elem2.className='alert red';
                 elem4.className='notifinfo';
                 elem4.innerText=x;
@@ -414,7 +422,7 @@
             </div>
         </div>
         <div class="notifcont active" id="notifbar">
-            <h1>notifications</h1>
+            <h1>notifications <button onclick='removeall()'>clear all</button></h1>
         </div>
         <noscript>
             <h1>javascript is disabled :(</h1>

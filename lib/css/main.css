@@ -323,8 +323,25 @@ img
 }
 .notifcont h1
 {
+	width: 100%;
 	color: var(--maincol);
 	margin-bottom: 10px;
+}
+.notifcont h1 button
+{
+	position: absolute;
+	right: 25px;
+	margin-top: 15px;
+	border: none;
+	font-size: 16px;
+	background: transparent;
+	color: #999;
+	cursor: pointer;
+	transition: 0.2s;
+}
+.notifcont h1 button:hover
+{
+	color: var(--maincol);
 }
 .notifcont .notif
 {
@@ -337,14 +354,10 @@ img
 	margin-bottom: 20px;
 	transform: scale(1);
 	place-content: center;
-	animation: notif calc(0.5s * var(--i));
+	animation: notif 0.5s;
 	text-decoration: none;
 	transition: 0.15s;
 	overflow: hidden;
-}
-.notifcont .notif.active
-{
-	animation: notif 0.5s;
 }
 .notifcont .notif:hover:active
 {
