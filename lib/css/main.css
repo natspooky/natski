@@ -121,6 +121,11 @@
 {
 	border: 3px solid var(--accentcol);
 }
+.notifcont::-webkit-scrollbar
+{
+	height: 0px;
+	width: 0px;
+}
 html,body
 {
 	background-color: var(--accentcol);
