@@ -310,6 +310,7 @@ img
 	width: calc(22vw + 20px);
 	padding: 20px;
 	transform: translate(0);
+	z-index: 99999;
 	opacity: 1;
 	box-shadow: 0px 0px 20px #0a0a0a94;
 	background-color: #282828;
