@@ -1,10 +1,13 @@
 .loaderback
 {
 	position: fixed;
+	top: 100%;
+	left: 100%;
+	transform: translateX(-170%) translateY(-270%);
 	z-index: 9999;
-	background-color: #00000060;
-	height: 100%;
-	width: 100%;
+	border-radius: 50%;
+	height: 155px;
+	width: 155px;
 	display: none;
 	justify-content: center;
 	align-items: center;
