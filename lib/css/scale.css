@@ -199,7 +199,7 @@
     }
     .middle .beforemiddleimg
     {
-        width: 85vw;
+        width: 80vw;
         border-radius: 30px;
         height: 48vw;
         border: 1px solid #bbbbbb50;
@@ -263,7 +263,7 @@
         top: 12.25vw;
         height: 6vw;
         width: 6vw;
-        border-radius: 15px;
+        border-radius: 6px;
         background-color: var(--accentcol);
     }
     .pagecontainer .closer ion-icon
@@ -277,7 +277,7 @@
         top: 20.25vw;
         height: 6vw;
         width: 6vw;
-        border-radius: 15px;
+        border-radius: 6px;
         background-color: var(--accentcol);
         animation: backpagemobile 0.5s ease;
     }
@@ -300,9 +300,10 @@
     }
     .img
     {
-        width: 95%;
-        border-radius: 42px;
-        border: 10px solid transparent;
+        margin: 10px 0;
+        width: 90%;
+        border-radius: 20px;
+        border: 5px solid transparent;
     }
     .img.active
     {
@@ -323,16 +324,16 @@
         font-size: 6vw;
         height: 8vw;
         width: 8vw;
-        border-radius: 15px;
+        border-radius: 6px;
     }
     dl
     {
         width: 85vw;
         height: calc(100% - 20px);
-        margin-top: 80px;
+        margin-top: 30px;
         padding-top: 20px;
         margin-bottom: 30px;
-        border-radius: 30px;
+        border-radius: 20px;
         background-color: #f2f2f2;
     }
     dl dt

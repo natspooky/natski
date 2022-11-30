@@ -518,7 +518,7 @@ img
 }
 .menubutton
 {
-	border-radius: 25px;
+	border-radius: 10px;
 	padding: 0vw 4vw;
 }
 .navbutton:hover,.navbar .navbarleft a:hover,.navbar .notiftoggle:hover
@@ -750,7 +750,7 @@ header .progress .progress-bar
 .img
 {
 	width: 67%;
-	margin: 20px;
+	margin: 20px 0;
 	border-radius: 25px;
 	opacity: 0;
 	transform: scale(0.8);
