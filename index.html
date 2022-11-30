@@ -79,7 +79,7 @@
                     <div class="panneltext">
                         a collection of work made during the GCSE / Alevel timeframe including: artwork, research documents and progression slides to keep track of in order to archive all of the work created
                     </div>
-                    <button class="pannelbutton" onClick='document.getElementById("ifr").src="portfolio.html"; document.title="Natski | Art Portfolio";'>
+                    <button class="pannelbutton" onClick='document.getElementById("ifr").src="portfolio.html"; document.title="Natski | Art Portfolio"; loaderactivate()'>
                         enter
                     </button>
                 </div>
@@ -282,6 +282,12 @@
                 document.getElementById("logframe").src='lib/html/log'+pageindex+'.html';
                 document.getElementById("pagecounter").innerHTML=pageindex+'/'+index;
             };
+            function loaderactivate(){
+                $('.shrink').css({scale: '1',opacity: '1'});$('.loaderback').fadeIn();
+            }
+            function loaderdeactivate(){
+                $('.shrink').css({scale: '0',opacity: '0'});$('.loaderback').fadeOut();
+            }
         </script>
         <main style="background-color: var(--maincol);">
             <div class="descriptionbar"><span>Featured</span></div>
@@ -364,10 +370,12 @@
 
             <!-- make the navbarright into the mobile menu :)  //  use backpannel to make it .slid -->
 
-
             <div class="navbarright" id="naviright">
                 <button class="navbutton active" style="cursor: pointer;" id="home" onclick='document.getElementById("logframe").src=""; document.getElementById("ifr").src=""; document.title="Natski | Home";'>
-                    Home
+                    Home 
+                    
+                    <!-- make all names in navbarright into svg icons -->
+
                     <div class="selector"></div>
                 </button>
                 <a class="navbutton" href="about.html">
