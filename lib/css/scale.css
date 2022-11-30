@@ -97,7 +97,7 @@
     .notifcont .notif
     {
         height: 15vw;
-        border-radius: 7px;
+        border-radius: 10px;
         margin-bottom: 15px;
     }
     .notifcont .notif .alert
