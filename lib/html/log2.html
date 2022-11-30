@@ -82,7 +82,11 @@
                 border: 3px solid var(--maincol);
             }
         </style>
-        <script src="https://natski.netlify.com/lib/js/main.js"></script>
+        <script>
+            $(document).ready(function(){
+                setTimeout(()=>{$('.shrink').css({scale: '0',opacity: '0'});$('.loaderback').fadeOut();},500);
+            });
+        </script>
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     </body>

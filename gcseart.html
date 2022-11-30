@@ -63,7 +63,7 @@
                 </svg>
             </div>
         </div>
-        <a onclick="history.back()">
+        <a onclick="history.back(); parent.loaderactivate();">
             <button class="backpage">
                 <ion-icon name="arrow-back"></ion-icon>
             </button>
@@ -105,7 +105,7 @@
                         parent.imgloader(x.src,x.name);
                     };
                     $(document).ready(function(){
-                        parent.loaderdeactivate();
+                        setTimeout(()=>{parent.loaderdeactivate();},500);
                     });
                 </script>
             </div>

@@ -64,7 +64,7 @@
                 </svg>
             </div>
         </div>
-        <a onclick="history.back()">
+        <a onclick="history.back() onclick="parent.loaderactivate();"">
             <button class="backpage">
                 <ion-icon name="arrow-back"></ion-icon>
             </button>
@@ -156,6 +156,9 @@
             function error(x){
                 parent.notiferror(x)
             };
+            $(document).ready(function(){
+                setTimeout(()=>{parent.loaderdeactivate();},500);
+            });
         </script>
         <noscript>
             <h1>javascript is disabled :(</h1>

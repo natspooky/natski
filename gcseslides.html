@@ -63,7 +63,7 @@
                 </svg>
             </div>
         </div>
-        <a onclick="history.back()">
+        <a onclick="history.back(); parent.loaderactivate();">
             <button class="backpage">
                 <ion-icon name="arrow-back"></ion-icon>
             </button>
@@ -198,6 +198,11 @@
             <h1>javascript is disabled :(</h1>
             <p>this website requires javascript to run.<br>please enable the use of javascript to see this page :)</p>
         </noscript>
+        <script>
+            $(document).ready(function(){
+                setTimeout(()=>{parent.loaderdeactivate();},500);
+            });
+        </script>
         <script src="lib/js/main.js"></script>
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
