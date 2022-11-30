@@ -37,7 +37,7 @@
         <script src="https://natski.netlify.com/lib/js/jquery.js"></script>
 
 	</head>
-    <body onload="error('page not found')">
+    <body>
         <div class="loaderback">
             <div class="shrink">
                 <?xml version="1.0" encoding="UTF-8"?>
@@ -64,7 +64,7 @@
                 </svg>
             </div>
         </div>
-        <a onclick="history.back() onclick="parent.loaderactivate();"">
+        <a onclick="history.back(); parent.loaderactivate();">
             <button class="backpage">
                 <ion-icon name="arrow-back"></ion-icon>
             </button>
@@ -153,11 +153,8 @@
             </div>
         </div>
         <script>
-            function error(x){
-                parent.notiferror(x)
-            };
             $(document).ready(function(){
-                setTimeout(()=>{parent.loaderdeactivate();},500);
+                setTimeout(()=>{parent.loaderdeactivate();parent.notiferror('page not found');},500);
             });
         </script>
         <noscript>
