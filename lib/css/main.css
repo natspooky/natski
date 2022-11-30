@@ -228,8 +228,8 @@ img
 .toggle
 {
 	display: none;
-    width: 55px;
-	height: 45px;
+    width: 27px;
+	height: 20px;
 	position: relative;
 	margin: 50px auto;
 	-webkit-transform: rotate(0deg) scale(0.9);
@@ -248,7 +248,7 @@ img
 {
 	display: block;
 	position: absolute;
-	height: 9px;
+	height: 4px;
 	width: 100%;
 	background: var(--maincol);
 	border-radius: 9px;
@@ -265,19 +265,19 @@ img
 }
 .toggle span:nth-child(1)
 {
-	top: 0px;
+	top: -0.5px;
 }
 .toggle span:nth-child(2)
 {
-	top: 18px;
+	top: 8px;
 }
 .toggle span:nth-child(3)
 {
-	top: 36px;
+	top: 17px;
 }
 .toggle.open span:nth-child(1)
 {
-	top: 18px;
+	top: 8px;
 	-webkit-transform: rotate(135deg) scale(0.9);
 	-moz-transform: rotate(135deg) scale(0.9);
 	-o-transform: rotate(135deg) scale(0.9);
@@ -290,7 +290,7 @@ img
 }
 .toggle.open span:nth-child(3)
 {
-	top: 18px;
+	top: 8px;
 	-webkit-transform: rotate(-135deg) scale(0.9);
 	-moz-transform: rotate(-135deg) scale(0.9);
 	-o-transform: rotate(-135deg) scale(0.9);
