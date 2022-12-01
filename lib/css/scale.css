@@ -258,9 +258,9 @@
         border-radius: 7px;
         background-color: var(--accentcol);
     }
-    .pagecontainer .closer svg,.backpage svg
+    .pagecontainer .closer ion-icon,.backpage ion-icon
     {
-        height: 3.2vw;
+        font-size: 6vw;
     }
     .backpage
     {
@@ -553,9 +553,9 @@
         border-radius: 7px;
         background-color: var(--accentcol);
     }
-    .pagecontainer .closer svg,.changelogframe .logcloser svg,.backpage svg
+    .pagecontainer .closerion-icon,.changelogframe .logcloser ion-icon,.backpage ion-icon
     {
-        height: 1.9vw;
+        font-size: 3.2vw;
     }
     .backpage
     {

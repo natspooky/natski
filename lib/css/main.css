@@ -1146,9 +1146,10 @@ footer .linkbar a:hover
 {
 	display: grid;
 }
-.pagecontainer .closer svg,.changelogframe .logcloser svg,.backpage svg
+.pagecontainer .closer ion-icon,.changelogframe .logcloser ion-icon,.backpage ion-icon
 {
-	height: 1.2vw;
+	color: var(--maincol);
+	font-size: 2vw;
 }
 .changelogframe
 {
