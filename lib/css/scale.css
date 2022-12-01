@@ -81,7 +81,7 @@
     }
     .notifcont
     {
-        top: 60px;
+        top: 50px;
         right: 30px;
         width: 85vw;
         padding: unset;
@@ -430,10 +430,9 @@
     }
     .notifcont
     {
-        top: calc(5vw + 10px);
+        top: 5vw;
         height: calc(100% - 5vw);
-        right: 10px;
-        width: 40vw;
+        width: 45vw;
     }
     .notifcont.active
     {
