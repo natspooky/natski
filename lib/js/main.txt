@@ -48,11 +48,13 @@ $(document).ready(function(){
             $('.banner-button').css({'border':'4px solid var(--themecol)','background-color':'transparent'});
             $('.banner-fg').css({'background-color':'#e9e9e9e0'});
             $('.banner-info').css({'height':'45%','opacity':'1'});
-            $('.banner-title').css({'opacity':'1','transform':'translateY(0)','top':'12px','color':'var(--accentcol)'});
+		    $('.banner-bar').css({'opacity':'0.1'});
+            $('.banner-title').css({'opacity':'1','transform':'translateY(0)','top':'42px','color':'var(--accentcol)'});
         }},function(){
         $('.banner-button').css({'border':'','background-color':''});
         $('.banner-fg').css({'background-color':''});
         $('.banner-info').css({'height':'','opacity':''});
+	    $('.banner-bar').css({'opacity':''});
         $('.banner-title').css({'opacity':'','transform':'','top':'','color':''});
     });
     $(window).scroll(function(){

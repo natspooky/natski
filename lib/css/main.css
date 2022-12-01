@@ -719,6 +719,12 @@ header .progress .progress-bar
 	animation: fadein 1s;
 	transition: 0.4s;
 }
+.banner-fg .banner-bar
+{
+	background-color: var(--accentcol);
+	opacity: 0;
+	transition: 0.4s;
+}
 .banner-fg .banner-title
 {
 	position: absolute;
@@ -734,7 +740,7 @@ header .progress .progress-bar
 {
 	position: relative;
 	opacity: 0;
-	margin: 10px 20px;
+	margin: 40px 20px;
 	text-align: center;
 	color: var(--accentcol);
 	transition: 0.4s;
@@ -743,7 +749,7 @@ header .progress .progress-bar
 {
 	position: relative;
 	display: block;
-	margin: 20px auto;
+	margin: 50px auto;
 	padding: .8vw 3.5vw;
 	border-radius: 45px;
 	font-size: 1.4vw;
