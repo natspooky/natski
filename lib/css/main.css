@@ -672,16 +672,21 @@ header .progress .progress-bar
 {
 	position: relative;
 	height: 3vw;
-	border-radius: 8px;
+	border-radius: 10px;
 	background-color: var(--accentcol);
-	border: 3px solid var(--accentcol);
+	border: 3px solid transparent;
 	cursor: pointer;
+	overflow: hidden;
 	transition: 0.3s;
+}
+.thumbs .thumb img
+{
+	height: 100%;
+	width: 5vw;
 }
 .thumb.active
 {
 	border: 3px solid var(--maincol);
-	background-color: var(--maincol);
 }
 .banner-bg
 {
