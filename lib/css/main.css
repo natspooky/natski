@@ -795,6 +795,7 @@ header .progress .progress-bar
 {
 	opacity: 1;
 	transform: scale(1);
+	animation: expand calc(0.1s * var(--i));
 }
 .img.active
 {
