@@ -257,7 +257,7 @@
     {
         left: unset;
         right: 2.25vw;
-        top: 12.25vw;
+        top: calc(40px + 2.25vw);
         height: 6vw;
         width: 6vw;
         border-radius: 7px;
@@ -271,7 +271,7 @@
     {
         left: unset;
         right: 2.25vw;
-        top: 20.25vw;
+        top: calc(40px + 10.5vw);
         height: 6vw;
         width: 6vw;
         border-radius: 7px;
