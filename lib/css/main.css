@@ -428,6 +428,7 @@ main
 	letter-spacing: 0.5px;
 	font-weight: 100;
 	word-wrap: break-word;
+	font-weight: bold;
 	font-size: 1vw;
 	color: var(--maincol);
 }
