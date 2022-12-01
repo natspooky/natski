@@ -681,8 +681,8 @@ header .progress .progress-bar
 }
 .thumbs .thumb img
 {
-	height: 100%;
-	width: 5vw;
+	height: 3vw;
+	width: 5.34vw;
 }
 .thumbs .thumb.active
 {

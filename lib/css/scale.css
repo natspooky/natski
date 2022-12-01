@@ -134,7 +134,8 @@
     }
     .thumbs .thumb img
     {
-        width: 23.33vw;
+        height: 14.5vw;
+        width: 24.9vw;
     }
     .thumbs .thumb.active
     {
