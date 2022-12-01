@@ -266,9 +266,9 @@
         border-radius: 7px;
         background-color: var(--accentcol);
     }
-    .pagecontainer .closer ion-icon
+    .pagecontainer .closer svg,.backpage svg
     {
-        font-size: 6vw;
+        height: 3.2vw;
     }
     .backpage
     {
@@ -280,10 +280,6 @@
         border-radius: 7px;
         background-color: var(--accentcol);
         animation: backpagemobile 0.5s ease;
-    }
-    .backpage ion-icon
-    {
-        font-size: 6vw;
     }
     .pagecontainer
     {
@@ -565,9 +561,9 @@
         border-radius: 7px;
         background-color: var(--accentcol);
     }
-    .pagecontainer .closer ion-icon,.backpage ion-icon,.changelogframe .logcloser ion-icon
+    .pagecontainer .closer svg,.changelogframe .logcloser svg,.backpage svg
     {
-        font-size: 3vw;
+        height: 1.9vw;
     }
     .backpage
     {

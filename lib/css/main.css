@@ -1127,18 +1127,10 @@ footer .linkbar a:hover
 {
 	display: grid;
 }
-.pagecontainer .closer ion-icon,.changelogframe .logcloser ion-icon,.backpage ion-icon
-{
-	position: relative;
-	font-size: 2vw;
-	color: var(--maincol);
-}
 .pagecontainer .closer svg,.changelogframe .logcloser svg,.backpage svg
 {
 	position: relative;
 	height: 1.2vw;
-	background-color: unset;
-	box-shadow: unset;
 }
 .changelogframe
 {
@@ -1219,12 +1211,6 @@ footer .linkbar a:hover
 	cursor: pointer;
 	transition: 0.1s;
 	animation: backpage 0.5s ease;
-}
-.backpage ion-icon
-{
-	position: relative;
-	font-size: 2vw;
-	color: var(--maincol);
 }
 .snapcontainer
 {
