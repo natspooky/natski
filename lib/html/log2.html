@@ -29,6 +29,8 @@
             <dl>
                 <dt>index.html</dt>
                 <dd><ion-icon name="checkmark" class="green"></ion-icon>fixed wrong display of notifications</dd>
+                <dd><ion-icon name="add" class="green"></ion-icon>Added 'clear all' button to the notification menu</dd>
+                <dd><ion-icon name="add" class="green"></ion-icon>Added cross page loader</dd>
                 <hr>
                 <dt>gcseart.html</dt>
                 <dd><ion-icon name="add" class="green"></ion-icon>Added video section</dd>
@@ -40,10 +42,16 @@
                 <hr>
                 <dt>scale.css</dt>
                 <dd><ion-icon name="checkmark" class="green"></ion-icon>Fixed alignment of notiftoggle button</dd>
+                <dd><ion-icon name="checkmark" class="green"></ion-icon>Adjusted navbar height</dd>
+                <dd><ion-icon name="checkmark" class="green"></ion-icon>Changed button sizes for easier mobile use</dd>
+                <dd><ion-icon name="checkmark" class="green"></ion-icon>Fixed alignment of notiftoggle button</dd>
                 <hr>
                 <dt>main.js</dt>
                 <dd><ion-icon name="add" class="green"></ion-icon>Added background match for average image colour</dd>
                 <dd><ion-icon name="add" class="green"></ion-icon>Added fallback for background match</dd>
+                <dd><ion-icon name="add" class="green"></ion-icon>Added new default font face { EXO 2 }</dd>
+                <dd><ion-icon name="checkmark" class="green"></ion-icon>Redesigned 'banner-bg' to make elements fit better</dd>
+                <dd><ion-icon name="remove" class="red"></ion-icon>Removed page loader for each page</dd>
                 <hr style="margin-bottom: 0px;">
                 <div style="width: 100%; display: flex; justify-content: center; align-items: center; height: 50px;">
                     <p id="footerdate"></p>
@@ -54,7 +62,7 @@
             ::-webkit-scrollbar{width:10px}::-webkit-scrollbar-track{background:var(--maincol)}::-webkit-scrollbar-thumb{border:4px solid var(--maincol);border-radius:20px;background:var(--accentcol)}::-webkit-scrollbar-thumb:hover{border:3px solid var(--maincol)}
         </style>
         <script>
-            $(document).ready(function(){setTimeout(()=>{$('.shrink').css({scale:'0',opacity:'0'});$('.loaderback').fadeOut();},500);});
+            $(document).ready(function(){setTimeout(()=>{$(".shrink").css({scale:"0",opacity:"0"}),$(".loaderback").fadeOut()},500);let e=new Date;e.getFullYear()>2022?document.getElementById("footerdate").innerHTML="\xa9 NATSKI 2022-"+e.getFullYear():document.getElementById("footerdate").innerHTML="\xa9 NATSKI "+e.getFullYear()});
         </script>
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
