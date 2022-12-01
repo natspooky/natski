@@ -34,6 +34,10 @@
         height: 100%;
         width: 40px;
     }
+    .navbar.active .navbarleft
+    {
+        left: 2.25vw;
+    }
     .navbar .navbarleft a
     {
         height: 20px;
@@ -58,6 +62,10 @@
     {
         right: 7px;
         transition: 0.3s;
+    }
+    .navbar.active .navbarright
+    {
+        right: 14px;
     }
     .navbar .navbarright.active
     {
