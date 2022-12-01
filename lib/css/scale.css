@@ -36,7 +36,7 @@
     }
     .navbar.active .navbarleft
     {
-        left: 3px;
+        left: 2.5px;
     }
     .navbar .navbarleft a
     {
@@ -65,7 +65,7 @@
     }
     .navbar.active .navbarright
     {
-        right: 10px;
+        right: 9.5px;
     }
     .navbar .navbarright.active
     {
