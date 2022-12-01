@@ -1127,13 +1127,13 @@ footer .linkbar a:hover
 {
 	display: grid;
 }
-.pagecontainer .closer ion-icon,.changelogframe .logcloser ion-icon
+.pagecontainer .closer ion-icon,.changelogframe .logcloser ion-icon,.backpage ion-icon
 {
 	position: relative;
 	font-size: 2vw;
 	color: var(--maincol);
 }
-.pagecontainer .closer img
+.pagecontainer .closer svg,.changelogframe .logcloser svg,.backpage svg
 {
 	position: relative;
 	height: 1.2vw;
