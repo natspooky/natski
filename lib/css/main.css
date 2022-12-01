@@ -1133,6 +1133,13 @@ footer .linkbar a:hover
 	font-size: 2vw;
 	color: var(--maincol);
 }
+.pagecontainer .closer img
+{
+	position: relative;
+	height: 1.2vw;
+	background-color: unset;
+	box-shadow: unset;
+}
 .changelogframe
 {
 	position: fixed;
