@@ -61,7 +61,7 @@
     }
     .navbar .navbarright.active
     {
-        transform: translateX(-8.2vw);
+        transform: translateX(-7.05vw);
     }
     .navbar .notiftoggle
     {
@@ -418,7 +418,7 @@
     }
     .navbar .navbarright.active
     {
-        transform: translateX(-3.1vw);
+        transform: translateX(-4.1vw);
     }
     .navbar .navbarleft a svg
     {
