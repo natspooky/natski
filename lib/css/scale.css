@@ -169,7 +169,7 @@
     .banner-fg .banner-button
     {
         transform-origin: center;
-        transform: scale(3);
+        transform: scale(3) translateY(3vw);
         padding: 0.8vw 4vw;
         color: #e9e9e9;
         border: none;
@@ -177,7 +177,7 @@
     }
     .banner-fg .banner-button:hover:active,.banner-fg .banner-button:active
     {
-        transform: scale(2.8);
+        transform: scale(3) translateY(3vw);
     }
     .banner-fg .banner-title
     {
