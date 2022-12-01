@@ -38,7 +38,7 @@
     {
         height: 20px;
     }
-    .navbar .navbarleft a #N
+    .navbar .navbarleft a svg
     {
         margin: unset;
 	    height: 20px;
@@ -71,7 +71,7 @@
         transition: 0.3s;
         cursor: pointer;
     }
-    .navbutton,.prev,.next,.panneltext,.middle .beforemiddleimg .text,.middlebutton,.backpanel.active,.changelogframe,.notifcont h1
+    .navbutton,.prev,.next,.banner-info,.middle .beforemiddleimg .text,.middlebutton,.backpanel.active,.changelogframe,.notifcont h1
     {
         display: none;
     }
@@ -120,63 +120,55 @@
     {
         font-size: 6.5vw;
     }
-    .pannelselector
+    .thumbs
     {
         width: 100%;
         align-items: center;
         bottom: 2vw;
     }
-    .panneltile
+    .thumbs .thumb
     {
         height: 14.5vw;
         border-radius: 12px;
         border: 4px solid var(--accentcol);
     }
-    .panneltile.active
+    .thumbs .thumb.active
     {
         border: 4px solid var(--maincol);
     }
-    .pannel
+    .banner-bg
     {
         justify-content: center;
         background-size: cover;
         animation: fade 1s;
     }
-    .pannelinfo
+    .banner-fg
     {
         left: unset;
         margin-top: unset;
         width: 90%;
-        height: 35%;
+        height: 80vw;
         font-size: 5vw;
-        border-radius: 70px;
         background-color: transparent;
         transition: 0.5s ease;
         animation: fadein 0.5s ease;
     }
-    .pannelbutton
+    .banner-fg .banner-button
     {
-        transform: scale(3);
-        transform-origin: bottom;
-        bottom: 4vw;
+        transform-origin: center;
+        transform: scale(3) translateY(10vw);
         padding: 0.8vw 4vw;
         color: #e9e9e9;
         border: none;
         background-image: linear-gradient(to right, #729ef6,#1d325c);
     }
-    .pannelbutton:active
+    .banner-fg .banner-button:hover:active,.banner-fg .banner-button:active
     {
-        transform: scale(3);
+        transform: scale(3) translateY(10vw);
     }
-    .pannelinfo .panneltitle
+    .banner-fg .banner-title
     {
-        top: 15%;
-        transition: unset;
-    }
-    .pannelinfo .pannelsubtext
-    {
-        top: 47%;
-        transition: unset;
+        transform: translateY(-20vw) scale(1.5);
     }
     .topbar
     {
@@ -242,7 +234,7 @@
     {
         padding: 15px 0px;
     }
-    footer #N
+    footer svg
     {
         height: 12vw;
         margin: 4vw 0;
@@ -426,7 +418,7 @@
     {
         transform: translateX(-3.1vw);
     }
-    .navbar .navbarleft a #N
+    .navbar .navbarleft a svg
     {
         margin: 0 1vw;
     }
@@ -505,7 +497,7 @@
     {
         display: block;
     }
-    .middlebutton,.middle .beforemiddleimg .text,.middle .beforemiddleimg #N
+    .middlebutton,.middle .beforemiddleimg .text 
     {
         display: none;
     }
@@ -532,7 +524,7 @@
     {
         padding: 40px 0px;
     }
-    footer #N
+    footer svg
     {
         height: 5vw;
         margin: 2vw 0;

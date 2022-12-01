@@ -133,6 +133,7 @@ html,body
 }
 svg
 {
+	position: relative;
 	display: block;
 }
 img
@@ -140,6 +141,15 @@ img
 	transition: 0.4s;
 	background-color: rgba(0, 0, 0, 0.7);
 	box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.7);
+}
+button
+{
+	background: transparent;
+	border: none;
+}
+main
+{
+	background-color: var(--maincol);
 }
 .static,.staticmenu,.staticlog
 {
@@ -184,9 +194,8 @@ img
 	align-items: center;
 	transition: 0.1s;
 }
-.navbar .navbarleft a #N
+.navbar .navbarleft a svg
 {
-	position: relative;
 	height: 60%;
 	margin: 0.75vw;
 }
@@ -574,7 +583,8 @@ header
 	width: 100%;
 	height: 100%;
 	min-height: 100%;
-	box-sizing: border-box;
+	display: flex;
+	align-items: center;
 	background-color: var(--accentcol);
 	overflow: hidden;
 }
@@ -599,8 +609,7 @@ header .progress .progress-bar
 .topbar
 {
 	position: relative;
-	display: flex;
-	align-items: center;
+	justify-content: unset;
 	background-position: center;
 	background-image: linear-gradient(to top right, var(--themecol),var(--accentcol));
 	background-size: cover;
@@ -648,7 +657,7 @@ header .progress .progress-bar
 {
 	font-size: 1.2vw;
 }
-.pannelselector
+.thumbs
 {
 	position: absolute;
 	bottom: 10px;
@@ -659,7 +668,7 @@ header .progress .progress-bar
 	width: 20%;
 	flex-direction: row;
 }
-.panneltile
+.thumbs .thumb
 {
 	position: relative;
 	height: 3vw;
@@ -669,12 +678,12 @@ header .progress .progress-bar
 	cursor: pointer;
 	transition: 0.3s;
 }
-.panneltile.active
+.thumb.active
 {
 	border: 3px solid var(--maincol);
 	background-color: var(--maincol);
 }
-.pannel
+.banner-bg
 {
 	position: absolute;
 	top: 0;
@@ -690,52 +699,44 @@ header .progress .progress-bar
 	background-color: var(--accentcol);
 	animation: fadezoom 1s;
 }
-.pannelinfo
+.banner-fg
 {
 	position: relative;
 	width: 35vw;
 	margin-top: 1vw;
-	height: 75%;
 	left: 3.7vw;
 	border-radius: 12px;
-	display: flex;
-	align-items: center;
-	flex-direction: column;
 	font-size: 2vw;
 	color: var(--maincol);
-	justify-content: center;
+	overflow: hidden;
 	animation: fadein 1s;
 	transition: 0.4s;
 }
-.pannelinfo .panneltitle
+.banner-fg .banner-title
 {
 	position: absolute;
-	top: 40%;
-	transition: 0.4s, color 0s;
-}
-.pannelinfo .pannelsubtext
-{
-	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 100%;
+	opacity: 1;
 	text-align: center;
-	top: 58%;
-	transition: 0.4s, color 0s;
-}
-.panneltext
-{
-	position: absolute;
-	text-align: center;
-	display: flex;
-	width: 90%;
-	top: 38%;
-	height: 45%;
-	opacity: 0;
-	color: #000;
+	color: var(--maincol);
 	transition: 0.4s;
 }
-.pannelbutton,.middlebutton
+.banner-fg .banner-info,.banner-fg .banner-title-hover
 {
-	position: absolute;
-	bottom: 2vw;
+	position: relative;
+	opacity: 0;
+	margin: 10px 20px;
+	text-align: center;
+	color: var(--accentcol);
+	transition: 0.4s;
+}
+.banner-fg .banner-button
+{
+	position: relative;
+	display: block;
+	margin: 20px auto;
 	padding: .8vw 3.5vw;
 	border-radius: 45px;
 	font-size: 1.4vw;
@@ -873,15 +874,6 @@ main .profile
 	border-radius: 50%;
 	border: 6px solid transparent;
 }
-.middlebutton
-{
-	right: 2vw;
-	bottom: 2.7vw;
-	background-color: var(--maincol);
-	padding: .4vw 2.9vw;
-	letter-spacing: 2px;
-	color: var(--themecol);
-}
 .middle .beforemiddleimg
 {
 	position: relative;
@@ -893,6 +885,23 @@ main .profile
 	border: 2px solid #bbbbbb50;
 	border-radius: 18px;
 	cursor: pointer;
+}
+.middle .beforemiddleimg .middlebutton
+{
+	position: absolute;
+	right: 2vw;
+	bottom: 2.7vw;
+	background-color: var(--maincol);
+	padding: .4vw 2.9vw;
+	letter-spacing: 2px;
+	border-radius: 45px;
+	font-size: 1.4vw;
+	border: 4px solid transparent;
+	cursor: pointer;
+	font-weight: bold;
+	text-decoration: none;
+	color: var(--themecol);
+	transition: 0.1s;
 }
 .middle .beforemiddleimg .text
 {
@@ -1026,7 +1035,7 @@ main .profile
 	background-color: var(--themecoltrans);
 	transition: 0s;
 }
-.pagechanger button:active,.backpage:active,.pagecontainer .closer:active,.logcloser:active,.changelogframe .logcloser:active,.pannelbutton:active
+.pagechanger button:active,.backpage:active,.pagecontainer .closer:active,.logcloser:active,.changelogframe .logcloser:active,.banner-fg .banner-button:active
 {
 	transform: scale(0.9);
 }
@@ -1049,7 +1058,7 @@ footer p
 	margin: 10px 0px;
 	font-size: 1.2vw;
 }
-footer #N
+footer svg
 {
 	height: 4vw;
 	margin: 2vw 0;
@@ -1139,7 +1148,6 @@ footer .linkbar a:hover
 }
 .pagecontainer .closer svg,.changelogframe .logcloser svg,.backpage svg
 {
-	position: relative;
 	height: 1.2vw;
 }
 .changelogframe
