@@ -162,6 +162,7 @@ main
 {
 	position: fixed;
 	top: 0;
+	display: none;
 	height: 3vw;
 	width: 100%;
 	background-color: var(--accentcol);
