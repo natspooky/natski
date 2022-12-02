@@ -831,6 +831,12 @@ article span .sourcer
 {
 	font-size: 13px;
 	text-decoration: none;
+	transition: 0.2s;
+	color: rgb(255, 0, 119);
+}
+article span .sourcer:hover
+{
+	color: var(--themecol);
 }
 .bibliography
 {
@@ -1176,7 +1182,7 @@ footer .linkbar a:hover
 	z-index: 99999;
 	box-shadow: 0px 0px 0px transparent;
 	transform: translateY(100.5vh) translateX(-50%);
-	background-color: var(--accentcol);
+	background-color: var(--maincol);
 	border-radius: 50% 50% 0px 0px;
 	overscroll-behavior: contain;
 	overflow: hidden;
@@ -1186,7 +1192,6 @@ footer .linkbar a:hover
 {
 	transform: translateY(0) translateX(-50%);
 	border-radius: 0px;
-	background-color: var(--maincol);
 	box-shadow: 0px 0px 25px #0a0a0a;
 }
 .changelogframe iframe
