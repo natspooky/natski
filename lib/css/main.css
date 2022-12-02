@@ -827,14 +827,14 @@ article span
 {
 	font-weight: bold;
 }
-article span .sourcer
+article span .sourcer,.bibliography li a
 {
 	font-size: 13px;
 	text-decoration: none;
 	transition: 0.2s;
-	color: rgb(255, 0, 119);
+	color: #ff0077;
 }
-article span .sourcer:hover
+article span .sourcer:hover, .bibliography li a:hover
 {
 	color: var(--themecol);
 }
@@ -846,10 +846,6 @@ article span .sourcer:hover
 .bibliography li
 {
 	margin: 0.5vw 0;
-}
-.bibliography li a
-{
-	
 }
 .bibcont
 {
