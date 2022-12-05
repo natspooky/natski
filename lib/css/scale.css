@@ -194,6 +194,10 @@
         left: 7vw;
         margin-top: 40px;
     }
+    main .profile
+    {
+        margin-top: 25px;
+    }
     article
     {
         width: 80%;
