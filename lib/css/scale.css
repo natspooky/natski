@@ -79,6 +79,10 @@
     {
         background-color: #2e2e2e;
     }
+    .middle .beforemiddleimg:hover
+    {
+        transform: scale(1.02);
+    }
 }
 @media (orientation: portrait){
     .navbar

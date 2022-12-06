@@ -858,10 +858,6 @@ main .profile
 	cursor: pointer;
 	transition: 0.2s;
 }
-.middle .beforemiddleimg:hover
-{
-	transform: scale(1.02);
-}
 .middle .beforemiddleimg .middlebutton
 {
 	position: absolute;
