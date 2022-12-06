@@ -830,7 +830,7 @@ article span .sourcer,.bibliography li a
 	transform: translate(-50%,-160%);
 	color: var(--maincol);
 	background-color: var(--accentcol);
-	box-shadow: 0px 0px 20px var(--themecol);
+	box-shadow: 0px 0px 20px var(--accentcol);
 	border: 2px solid var(--themecol);
 }
 .bibcont ion-icon
