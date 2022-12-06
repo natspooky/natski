@@ -68,8 +68,8 @@
 	  transform: rotate(180deg);
 		-webkit-transform: rotate(180deg);
 	  transform: rotate(180deg);
-  }
-  75% {
+  	}
+  	75% {
 		-webkit-transform: rotate(270deg);
 	transform: rotate(270deg);
 		-webkit-transform: rotate(270deg);
@@ -835,6 +835,7 @@ article span .sourcer,.bibliography li a
 main .profile
 {
 	height: 175px;
+	width: 175px;
 	margin-top: 2vw;
 	border-radius: 50%;
 	border: 6px solid transparent;
