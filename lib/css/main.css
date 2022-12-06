@@ -856,6 +856,11 @@ main .profile
 	border: 2px solid #303030;
 	border-radius: 18px;
 	cursor: pointer;
+	transition: 0.2s;
+}
+.middle .beforemiddleimg:hover
+{
+	transform: scale(1.02);
 }
 .middle .beforemiddleimg .middlebutton
 {
