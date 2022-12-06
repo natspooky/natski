@@ -767,6 +767,12 @@ article
 	font-size: 18px;
 	width: 60%;
 	height: auto;
+	cursor: default;
+	user-select: text;
+}
+article::selection,article span::selection,article span .sourcer::selection
+{
+	background-color: var(--themecol);
 }
 .article-title
 {
@@ -785,6 +791,18 @@ article span .sourcer,.bibliography li a
 	text-decoration: none;
 	transition: 0.2s;
 	color: #ff0077;
+}
+#wordcount
+{
+	position: fixed;
+	bottom: 20px;
+	left: 20px;
+	width: auto;
+	height: auto;
+	border: 2px solid var(--themecol);
+	background-color: var(--maincol);
+	padding: 10px;
+	border-radius: 7px;
 }
 .bibliography
 {
@@ -805,31 +823,15 @@ article span .sourcer,.bibliography li a
 	width: auto;
 	max-width: 300px;
 	border-radius: 10px;
+	padding: 7px;
 	transform: translate(-50%,-160%);
-	background-color: var(--accentcol);
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-	box-shadow: 0px 3px 20px var(--maincol);
+	background-color: var(--maincol);
+	box-shadow: 0px 0px 20px var(--themecol);
 	border: 2px solid var(--themecol);
 }
-.bibcont p
-{
-	padding: 9px;
-	color: var(--maincol);
-	position: relative;
-	width: 100%;
-	text-align: center;
-}
-.bibcont p ion-icon
+.bibcont ion-icon
 {
 	margin: 0 2px;
-}
-.bibcont img
-{
-	position: relative;
-	width: 10%;
 }
 main .profile
 {
