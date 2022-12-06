@@ -762,6 +762,11 @@ article
 	cursor: default;
 	user-select: text;
 }
+article::first-letter
+{
+	font-size: 25px;
+	font-weight: bold;
+}
 article::selection,article span::selection,article span .sourcer::selection
 {
 	background-color: var(--themecol);
@@ -824,6 +829,7 @@ article span .sourcer,.bibliography li a
 	background-color: var(--accentcol);
 	box-shadow: 0px 0px 20px var(--accentcol);
 	border: 2px solid var(--themecol);
+	animation: bib 0.2s;
 }
 .bibcont ion-icon
 {
