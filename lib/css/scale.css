@@ -1,8 +1,4 @@
 @media (hover: hover){
-    article span .sourcer:hover, .bibliography li a:hover
-    {
-        color: var(--themecol);
-    }
     .middle .beforemiddleimg:hover .middleimg
     {
         background-size: 105%;

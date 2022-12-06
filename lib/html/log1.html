@@ -7,8 +7,8 @@
 <link rel=stylesheet type=text/css href="https://natski.netlify.com/lib/css/scale.css"/>
 <script src=https://natski.netlify.com/lib/js/jquery.js></script>
 </head>
-<body style=background-color:var(--maincol);overflow:scroll;height:100%>
-<div class=loaderback style=background-color:var(--maincol);display:flex>
+<body style=overflow:scroll;height:100%>
+<div class=loaderback style=background-color:var(--accentcol);display:flex>
 <div class=shrink>
 <?xml version=1.0 encoding="UTF-8"?>
 <svg xmlns=http://www.w3.org/2000/svg viewBox="0 0 834.61 834.61">
@@ -68,7 +68,6 @@
 </div>
 </dl>
 </main>
-<style>::-webkit-scrollbar{width:10px}::-webkit-scrollbar-track{background:var(--maincol)}::-webkit-scrollbar-thumb{border:4px solid var(--maincol);border-radius:20px;background:var(--accentcol)}::-webkit-scrollbar-thumb:hover{border:3px solid var(--maincol)}</style>
 <script>$(document).ready(function(){setTimeout(()=>{$(".shrink").css({scale:"0",opacity:"0"}),$(".loaderback").fadeOut()},500);let e=new Date;e.getFullYear()>2022?document.getElementById("footerdate").innerHTML="\xa9 NATSKI 2022-"+e.getFullYear():document.getElementById("footerdate").innerHTML="\xa9 NATSKI "+e.getFullYear()});</script>
 <script type=module src=https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js></script>
 <script nomodule src=https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js></script>
