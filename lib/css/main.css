@@ -1193,6 +1193,10 @@ dl
 	background-color: #303030;
 	color: var(--maincol);
 }
+dl hr
+{
+	background-color: var(--accentcol);
+}
 dl dt
 {
 	font-size: 1.6vw;
