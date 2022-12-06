@@ -1225,13 +1225,20 @@ dl dd ion-icon
 {
 	color: green;
 }
+.orange
+{
+	color: orange;
+}
 noscript
 {
 	position: fixed;
+	top: 0;
+	left: 0;
 	height: 100vh;
 	width: 100%;
-	background-color: var(--maincol);
-	color: var(--accentcol);
+	z-index: 9999;
+	color: var(--maincol);
+	background-color: #000000a0;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
