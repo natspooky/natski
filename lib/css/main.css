@@ -816,8 +816,7 @@ article span .sourcer,.bibliography li a
 }
 .bibcont p
 {
-	margin: 3px 0;
-	padding: 5px;
+	padding: 9px;
 	color: var(--maincol);
 	position: relative;
 	width: 100%;
