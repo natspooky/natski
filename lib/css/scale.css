@@ -157,7 +157,7 @@
     .notifcont
     {
         top: 55px;
-        right: 35px;
+        right: 38px;
         width: 85vw;
         padding: unset;
         height: auto;
@@ -167,7 +167,7 @@
     }
     .notifcont.active
     {
-        transform: translateX(95vw);
+        transform: translateX(98vw);
     }
     .notifcont .notif
     {
