@@ -1,3 +1,89 @@
+@media (hover: hover){
+    article span .sourcer:hover, .bibliography li a:hover
+    {
+        color: var(--themecol);
+    }
+    .middle .beforemiddleimg:hover .middleimg
+    {
+        background-size: 105%;
+    }
+    .middle .beforemiddleimg:hover .middlebutton
+    {
+        border: 4px solid var(--themecol);
+    }
+    .middle .beforemiddleimg:hover .text h1
+    {
+        text-decoration: underline;
+    }
+    .pagechanger button:hover
+    {
+        background-color: #00000020;
+    }
+    .pagechanger button:hover:active
+    {
+        background-color: var(--themecoltrans);
+        transition: 0s;
+    }
+    footer .linkbar a:hover
+    {
+        text-decoration: underline;
+    }
+    ::-webkit-scrollbar-thumb:hover
+    {
+        border: 3px solid var(--accentcol);
+    }
+    .navbar:hover
+    {
+        box-shadow: 0px 0px 100px #0a0a0a;
+    }
+    .navbar .notiftoggle:hover
+    {
+        color: #ca8300;
+    }
+    .notifcont h1 button:hover
+    {
+        color: var(--maincol);
+    }
+    .notifcont .notif:hover:active
+    {
+        transform: scale(0.97);
+        box-shadow: 0px 0px 20px var(--accentcol);
+        transition: 0s;
+    }
+    .notifcont .notif:hover
+    {
+        background-color: #444444;
+    }
+    .notifcont .notif .notifclose:hover
+    {
+        background-color: #373737;
+    }
+    .navbutton:hover,.navbar .navbarleft a:hover,.navbar .notiftoggle:hover
+    {
+        background-color: #33333350;
+    }
+    .navbutton:hover:active,.navbar .navbarleft:hover:active,.navbar .notiftoggle:hover:active,.prev:hover:active,.next:hover:active
+    {
+        background-color: var(--themecoltrans);
+        transform: scale(0.9);
+        border-radius: 10px;
+        transition: 0s;
+    }
+    .navbutton:hover .selector
+    {
+        width: 100%;
+        background-color: var(--maincol);
+    }
+    .navbutton.active:hover .selector
+    {
+        width: 100%;
+        background-color: var(--themecol);
+    }
+    .prev:hover,.next:hover
+    {
+        background-color: #2e2e2e;
+    }
+}
 @media (orientation: portrait){
     .navbar
     {
@@ -13,10 +99,6 @@
         box-shadow: 0px 0px 0px transparent;
         overflow: hidden;
         transition: 0.5s ease, border-radius 0.35s;
-    }
-    .navbar:hover
-    {
-        box-shadow: 0px 0px 0px transparent;
     }
     .navbar.active
     {
@@ -46,17 +128,6 @@
     {
         margin: unset;
 	    height: 20px;
-    }
-    .navbar .navbarleft:hover
-    {
-        background-color: unset;
-    }
-    .navbar .navbarleft:hover:active
-    {
-        background-color: unset;
-        transform: unset;
-        border-radius: unset;
-        transition: unset;
     }
     .navbar .navbarright
     {

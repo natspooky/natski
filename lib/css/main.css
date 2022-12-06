@@ -114,10 +114,6 @@
 	border-radius: 20px;
 	background: var(--maincol);
 }
-::-webkit-scrollbar-thumb:hover
-{
-	border: 3px solid var(--accentcol);
-}
 .notifcont::-webkit-scrollbar
 {
 	height: 0px;
@@ -174,10 +170,6 @@ main
 {
 	box-shadow: 0px 0px 25px #00000070;
 }
-.navbar:hover
-{
-	box-shadow: 0px 0px 100px #0a0a0a;
-}
 .navbar .navbarleft
 {
 	position: absolute;
@@ -232,10 +224,6 @@ main
 	font-size: 2.2vw;
 	transition: 0.1s;
 	cursor: pointer;
-}
-.navbar .notiftoggle:hover
-{
-	color: #ca8300;
 }
 .navbar .notiftoggle.active
 {
@@ -355,10 +343,6 @@ main
 	cursor: pointer;
 	transition: 0.2s;
 }
-.notifcont h1 button:hover
-{
-	color: var(--maincol);
-}
 .notifcont .notif
 {
 	position: relative;
@@ -374,16 +358,6 @@ main
 	text-decoration: none;
 	transition: 0.15s;
 	overflow: hidden;
-}
-.notifcont .notif:hover:active
-{
-	transform: scale(0.97);
-	box-shadow: 0px 0px 20px var(--accentcol);
-	transition: 0s;
-}
-.notifcont .notif:hover
-{
-	background-color: #444444;
 }
 .notifcont .notif .alert
 {
@@ -453,10 +427,6 @@ main
 .notifcont .notif .notifclose:active
 {
 	color: var(--maincol);
-}
-.notifcont .notif .notifclose:hover
-{
-	background-color: #373737;
 }
 .notifcont .notif .notifprog
 {
@@ -538,17 +508,6 @@ main
 	border-radius: 10px;
 	padding: 0vw 4vw;
 }
-.navbutton:hover,.navbar .navbarleft a:hover,.navbar .notiftoggle:hover
-{
-	background-color: #33333350;
-}
-.navbutton:hover:active,.navbar .navbarleft:hover:active,.navbar .notiftoggle:hover:active,.prev:hover:active,.next:hover:active
-{
-	background-color: var(--themecoltrans);
-	transform: scale(0.9);
-	border-radius: 10px;
-	transition: 0s;
-}
 .navbutton.active,.menubutton.active
 {
 	color: var(--themecol);
@@ -564,15 +523,10 @@ main
 	background-color: transparent;
 	transition: 0.3s;
 }
-.navbutton.active .selector,.navbutton.active:hover .selector
+.navbutton.active .selector
 {
 	width: 100%;
 	background-color: var(--themecol);
-}
-.navbutton:hover .selector
-{
-	width: 100%;
-	background-color: var(--maincol);
 }
 .menubutton
 {
@@ -651,10 +605,6 @@ header .progress .progress-bar
 .next
 {
 	right: 0.5vw;
-}
-.prev:hover,.next:hover
-{
-	background-color: #2e2e2e;
 }
 .prev ion-icon,.next ion-icon
 {
@@ -812,17 +762,17 @@ header .progress .progress-bar
 article
 {
 	text-align: left;
-	margin: 10px 0 2vw 0;
+	margin: 0 0 2vw 0;
 	padding: 1vw;
 	font-size: 18px;
 	width: 60%;
 	height: auto;
 }
-article h1
+.article-title
 {
 	width: 100%;
 	text-align: center;
-	margin: 0 0 14px 0;
+	margin: 18px 0 10px 0;
 	letter-spacing: 2px;
 }
 article span
@@ -835,10 +785,6 @@ article span .sourcer,.bibliography li a
 	text-decoration: none;
 	transition: 0.2s;
 	color: #ff0077;
-}
-article span .sourcer:hover, .bibliography li a:hover
-{
-	color: var(--themecol);
 }
 .bibliography
 {
@@ -966,18 +912,6 @@ main .profile
 	letter-spacing: 2px;
 	padding: 3px 13px 2px 15px;
 }
-.middle .beforemiddleimg:hover .middleimg
-{
-	background-size: 105%;
-}
-.middle .beforemiddleimg:hover .middlebutton
-{
-	border: 4px solid var(--themecol);
-}
-.middle .beforemiddleimg:hover .text h1
-{
-	text-decoration: underline;
-}
 .middle .beforemiddleimg .middleimg h1
 {
 	position: relative;
@@ -1045,15 +979,6 @@ main .profile
 	cursor: pointer;
 	transition: 0.1s;
 }
-.pagechanger button:hover
-{
-	background-color: #00000020;
-}
-.pagechanger button:hover:active
-{
-	background-color: var(--themecoltrans);
-	transition: 0s;
-}
 .pagechanger button:active,.backpage:active,.pagecontainer .closer:active,.logcloser:active,.changelogframe .logcloser:active,.banner-fg .banner-button:active
 {
 	transform: scale(0.9);
@@ -1106,10 +1031,6 @@ footer .linkbar a
 	margin: 0px 20px;
 	color: #777777;
 	text-decoration: none;
-}
-footer .linkbar a:hover
-{
-	text-decoration: underline;
 }
 .pagecontainer
 {
