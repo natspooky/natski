@@ -269,18 +269,14 @@
                 link[i].addEventListener('mouseover',function() {
                     loader[i].style.display = 'flex'
                     timer = window.setTimeout(function(){
-                        loader[i].style.display = 'none'
                         frames[i].src=link[i].href;
-                }, 1000);
+                }, 500);
                 });
                 link[i].addEventListener('mouseout',function() { 
                     loader[i].style.display = 'none'
                     window.clearTimeout(timer)
                     frames[i].src='';
             })};
-            function notiferror(x){
-                parent.notiferror(x)
-            }
             $(document).ready(function(){setTimeout(()=>{parent.loaderdeactivate();},500);});
         </script>
         <footer>
