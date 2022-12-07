@@ -265,18 +265,19 @@
         </main>
         <script>
             var timer = null, frames = document.getElementsByClassName('iframelookers'), link = document.getElementsByClassName('linkplate'), loader = document.getElementsByClassName('loaderframe');
-            for(let i = 0; i<link.length;i++){
-                link[i].addEventListener('mouseover',function() {
-                    loader[i].style.display = 'flex'
-                    timer = window.setTimeout(function(){
-                        frames[i].src=link[i].href;
-                }, 500);
-                });
-                link[i].addEventListener('mouseout',function() { 
-                    loader[i].style.display = 'none'
-                    window.clearTimeout(timer)
-                    frames[i].src='';
-            })};
+            if(window.innerWidth > window.innerHeight) {
+                for(let i = 0; i<link.length;i++){
+                    link[i].addEventListener('mouseover',function() {
+                        loader[i].style.display = 'flex'
+                        timer = window.setTimeout(function(){
+                            frames[i].src=link[i].href;
+                    }, 500);
+                    });
+                    link[i].addEventListener('mouseout',function() { 
+                        loader[i].style.display = 'none'
+                        window.clearTimeout(timer)
+                        frames[i].src='';
+            })}};
             $(document).ready(function(){setTimeout(()=>{parent.loaderdeactivate();},500);});
         </script>
         <footer>
