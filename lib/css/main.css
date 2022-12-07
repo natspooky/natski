@@ -753,7 +753,7 @@ header .progress .progress-bar
 article
 {
 	text-align: left;
-	line-height: 25px;
+	line-height: 30px;
 	color: var(--maincol);
 	margin: 0 0 2vw 0;
 	padding: 1vw;
