@@ -763,6 +763,17 @@ article
 	cursor: default;
 	user-select: text;
 }
+.articleimg
+{
+	float: right;
+	aspect-ratio: unset;
+	width: unset;
+	transform: scale(1);
+	opacity: 1;
+	margin-top: 5px;
+	height: 200px;
+	border-radius: 10px;
+}
 article::first-letter
 {
 	font-size: 25px;
@@ -1092,7 +1103,7 @@ footer .linkbar a
 {
 	position: fixed;
 	top: 7vw;
-	display: grid;
+	display: none;
 	animation: backpage 0.5s ease;
 }
 .pagecontainer.active .closer,.changelogframe.active .logcloser

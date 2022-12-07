@@ -339,7 +339,7 @@
         margin: 0px 2.5vw;
         font-size: 3.2vw;
     }
-    .pagecontainer .closer
+    .pagecontainer .closer,.backpage
     {
         left: unset;
         right: 2.25vw;
@@ -356,14 +356,7 @@
     }
     .backpage
     {
-        left: unset;
-        right: 2.25vw;
         top: calc(40px + 10.5vw);
-        height: 6vw;
-        width: 6vw;
-        border: 2px solid #303030;
-        border-radius: 7px;
-        background-color: var(--accentcol);
         animation: backpagemobile 0.5s ease;
     }
     .pagecontainer
@@ -390,6 +383,12 @@
     {
         opacity: 1;
         transform: scale(1);
+    }
+    .articleimg
+    {
+        float: unset;
+        width: 100%;
+        height: unset;
     }
     .pagechanger
     {
@@ -607,6 +606,10 @@
     {
         margin-top: 2.3vw;
         margin-left: 12vw;
+    }
+    article
+    {
+        width: 70%;
     }
     footer
     {
