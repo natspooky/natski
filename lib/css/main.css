@@ -752,7 +752,7 @@ header .progress .progress-bar
 }
 article
 {
-	text-align: left;
+	text-align: justify;
 	line-height: 30px;
 	color: var(--maincol);
 	margin: 0 0 2vw 0;
@@ -766,18 +766,26 @@ article
 article img
 { 
 	position: relative;
-	float: right;
 	height: 200px;
-	margin-top: 3px;
 	border: 6px solid transparent;
 	border-radius: 10px;
+}
+.left
+{
+	float: left;
+	margin: 7px 10px 0 0;
+}
+.right
+{
+	float: right;
+	margin: 7px 0 0 10px;
 }
 article::first-letter
 {
 	font-size: 25px;
 	font-weight: bold;
 }
-article::selection,article span::selection,article span .sourcer::selection
+article::selection,article span::selection,article span .sourcer::selection, br::selection,article::first-letter::selection
 {
 	background-color: var(--themecol);
 }
