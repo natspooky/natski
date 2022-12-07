@@ -278,6 +278,10 @@
                     window.clearTimeout(timer)
                     frames[i].src='';
             })};
+            function notiferror(x){
+                parent.notiferror(x)
+            }
+            $(document).ready(function(){setTimeout(()=>{parent.loaderdeactivate();},500);});
         </script>
         <footer>
             <div class="linkbar" id="linker">
@@ -362,9 +366,6 @@
             <h1>javascript is disabled :(</h1>
             <p>this website requires javascript to run.<br>please enable the use of javascript to see this page :)</p>
         </noscript>
-        <script>
-            $(document).ready(function(){setTimeout(()=>{parent.loaderdeactivate();},500);});
-        </script>
         <script src="lib/js/main.js"></script>
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
