@@ -111,6 +111,10 @@
 	height: 0px;
 	width: 0px;
 }
+@media (prefers-color-scheme: dark)
+{
+
+}
 html,body
 {
 	background-color: var(--accentcol);
@@ -935,9 +939,11 @@ main .profile
 	position: absolute;
 	top: 0;
 	left: 0;
-	width: 100%;
-	height: 100%;
-	border-radius: 18px;
+	width: 150%;
+	height: 150%;
+	transform: scale(0.666);
+	transform-origin: top left;
+	border-radius: 27px;
 	border: none;
 	transition: 0.3s;
 }
