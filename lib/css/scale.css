@@ -83,6 +83,10 @@
     {
         transform: scale(1.02);
     }
+    .pagecontainer .closer:hover,.changelogframe .logcloser:hover,.backpage:hover
+    {
+        border: 2px solid #ffffff;
+    }
 }
 @media (orientation: portrait){
     .navbar
