@@ -53,16 +53,12 @@
                 </svg>
             </div>
         </div>
-        <a onclick="history.back(); parent.loaderactivate();">
-            <button class="backpage">
-                <ion-icon name="arrow-back"></ion-icon>
-            </button>
-        </a>
-        <main class="middle" style="height: 100%; color: var(--maincol); font-size: 50px; flex-direction: column;">
+        <main class="middle" style="height: 100%; color: var(--maincol); font-size: 35px; flex-direction: column; text-align: center;">
             <h1>404</h1>
-            <p>looks like you got lost..</p>
+            <p>looks like you got lost...</p>
             <ion-icon name="chevron-down"></ion-icon>
-            <a href="index.html" style="color: var(--themecol);"><p>get back to the main page here</p></a>
+            <a class="maintext" href="index.html" style="color: var(--themecol); display: none;"><p>go back to the main page here</p></a>
+            <a class="iframetext" onclick="history.back(); parent.loaderactivate();" style="color: var(--themecol); display: none;"><p>go back to the previous page here</p></a>
         </main>
         <footer>
             <div class="linkbar" id="linker">
@@ -128,7 +124,7 @@
             </div>
         </div>
         <script>
-            $(document).ready(function(){setTimeout(()=>{parent.loaderdeactivate();parent.notiferror('page not found');},500);});
+            $(document).ready(function(){setTimeout(()=>{parent.loaderdeactivate(),parent.notiferror("page not found")},500),window.location!==window.parent.location?$(".iframetext").css("display","block"):$(".maintext").css("display","block")});
         </script>
         <noscript>
             <h1>javascript is disabled :(</h1>
