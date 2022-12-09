@@ -40,9 +40,9 @@
         <script src="lib/js/jquery.js"></script>
 	</head>
     <body>
-        
+        <!--
         <div class="loaderback" style="display: flex;">
-            <div class="shrink">
+            <div>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 834.61 834.61">
                     <defs>
                         <style>
@@ -54,7 +54,7 @@
                 </svg>
             </div>
         </div>
-
+        -->
         <style>
             ::-webkit-scrollbar{height: 0px;width: 0px;}
         </style>
@@ -92,8 +92,8 @@
                     <div class="banner-info">
                         ENCORE database (N_DB 2.0) powered by H.A.C.A engine used to run ©NATSKI websites (WIP)
                     </div>
-                    <h1 class="banner-title">ENCORE DB</h1>
-                    <button class="banner-button" onClick='document.getElementById("ifr").src="404.html"; document.title="Natski | Database";'>
+                    <h1 class="banner-title">ENCORE DB<br>coming soon</h1>
+                    <button class="banner-button" onClick='document.getElementById("ifr").src="404.html"; document.title="Natski | Database";' disabled>
                         enter
                     </button>
                 </div>
@@ -136,6 +136,7 @@
             };
             /*function imgloader(x,y){notifopener();addnotif(x,y);};*/
             function imgloader(x,y){notiferror('downloads disabled for testing');};
+            function pagename(x){document.title="Natski | "+x;} /* thoughts? */
         </script>
         </script>
         <main>
@@ -150,7 +151,6 @@
                     <div class="middleimg" style="background-image: url('icon/img/1.png'),linear-gradient(to top right,#20005f,var(--accentcol))">
                         <p>New</p>
                         <h1>Portfolio</h1>
-                        <span>A collection of artwork for GCSE/Alevel</span>
                     </div>
                 </button>
                 <button class="beforemiddleimg" onclick="currentSlide(2); scrolltop();">
@@ -162,7 +162,6 @@
                     <div class="middleimg" style="background-image: url('icon/img/2.png'),linear-gradient(to top right,#20005f,var(--accentcol))">
                         <p>New</p>
                         <h1>Websites</h1>
-                        <span>Web projects for brands/personal</span>
                     </div>
                 </button>
             </div>
@@ -210,7 +209,7 @@
                 <button class="navbutton active" style="cursor: pointer;" id="home" onclick='document.getElementById("logframe").src=""; document.getElementById("ifr").src=""; document.title="Natski | Home";'>
                     Home 
                     
-                    <!-- make all names in navbarright into svg icons -->
+                    <!-- make all names in navbarright into svg icons // delayed? -->
 
                     <div class="selector"></div>
                 </button>

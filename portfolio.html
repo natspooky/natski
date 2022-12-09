@@ -40,8 +40,7 @@
 	</head>
     <body>
         <div class="loaderback">
-            <div class="shrink">
-                
+            <div>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 834.61 834.61">
                     <defs>
                         <style>
@@ -57,11 +56,12 @@
             <h1>Portfolio</h1>
         </header>
         <main>
-            <div class="descriptionbar"><span>GCSE</span></div>
+            <div class="descriptionbar"><span>GCSE Art</span></div>
             <div class="middle">
 
                 <!-- gross stacking ahead -->
-                <div class="beforemiddleimg">
+
+                <div class="beforemiddleimg revealed" style="--i: 4;">
                     <div class="middlebutton">visit</div>
                     <div class="text">
                         <h1>Slides</h1>
@@ -85,11 +85,11 @@
                         <p style="background-color: #ff765e;">GCSE</p>
                         <h1>Slides</h1>
                     </div>
-                    <a class="linkplate" href="gcseslides.html" onclick="parent.loaderactivate();"></a>
+                    <a class="linkplate" href="gcseslides.html" onclick="parent.loaderactivate(); parent.pagename('GCSE Slides');"></a>
                 </div>
 
 
-                <div class="beforemiddleimg">
+                <div class="beforemiddleimg revealed" style="--i: 6;">
                     <div class="middlebutton">visit</div>
                     <div class="text">
                         <h1>Art</h1>
@@ -113,7 +113,7 @@
                         <p style="background-color: #ff765e;">GCSE</p>
                         <h1>Art</h1>
                     </div>
-                    <a class="linkplate" href="gcseart.html" onclick="parent.loaderactivate();"></a>
+                    <a class="linkplate" href="gcseart.html" onclick="parent.loaderactivate(); parent.pagename('GCSE Art');"></a>
                 </div>
 
 
@@ -122,12 +122,12 @@
 
             <!-- middle ends here? -->
 
-            <div class="descriptionbar"><span>Alevel</span></div>
+            <div class="descriptionbar"><span>Alevel Art</span></div>
 
-            <!-- shouldnt restart // make into one container -->
+            <!-- .middle shouldnt restart // make into one container -->
 
             <div class="middle">
-                <div class="beforemiddleimg">
+                <div class="beforemiddleimg revealed" style="--i: 8;">
                     <div class="middlebutton">visit</div>
                     <div class="text">
                         <h1>Slides</h1>
@@ -151,7 +151,7 @@
                         <p style="background-color: #5a32a8;">Alevel</p>
                         <h1>Slides</h1>
                     </div>
-                    <a class="linkplate" href="alevelslides.html" onclick="parent.loaderactivate();"></a>
+                    <a class="linkplate" href="alevelslides.html" onclick="parent.loaderactivate(); parent.pagename('Alevel SLides');"></a>
                 </div>
 
 
@@ -179,7 +179,7 @@
                         <p style="background-color: #5a32a8;">Alevel</p>
                         <h1>Art</h1>
                     </div>
-                    <a class="linkplate" href="alevelart.html" onclick="parent.loaderactivate();"></a>
+                    <a class="linkplate" href="alevelart.html" onclick="parent.loaderactivate(); parent.pagename('Alevel Art');"></a>
                 </div>
 
 
@@ -207,7 +207,7 @@
                         <p style="background-color: #5a32a8;">Alevel</p>
                         <h1>Good Or Bad Art</h1>
                     </div>
-                    <a class="linkplate" href="gobaessay.html" onclick="parent.loaderactivate();"></a>
+                    <a class="linkplate" href="gobaessay.html" onclick="parent.loaderactivate(); parent.pagename('Art Essay');"></a>
                 </div>
 
 
@@ -215,7 +215,7 @@
                     <div class="middlebutton">visit</div>
                     <div class="text">
                         <h1>Related Study</h1>
-                        <p>temptxt</p>
+                        <p>Essay produced to relate to the Alevel art project</p>
                     </div>
                     <div class="middleimg" style="background-image: url('icon/img/8.png'),linear-gradient(to top right,#20005f,var(--accentcol))">
                         <div class="loaderframe">
@@ -235,15 +235,21 @@
                         <p style="background-color: #5a32a8;">Alevel</p>
                         <h1>Related Study</h1>
                     </div>
-                    <a class="linkplate" href="relatedstudy.html" onclick="parent.loaderactivate();"></a>
+                    <a class="linkplate" href="relatedstudy.html" onclick="parent.loaderactivate(); parent.pagename('Related Study');"></a>
                 </div>
 
 
+            </div>
+            <hr>
+
+            <div class="descriptionbar"><span>Other</span></div>
+
+            <div class="middle">
                 <div class="beforemiddleimg">
                     <div class="middlebutton">visit</div>
                     <div class="text">
                         <h1>EPQ</h1>
-                        <p>A collection of slides detailing the work done during alevel</p>
+                        <p>EPQ project created during the Alevel period</p>
                     </div>
                     <div class="middleimg" style="background-image: url('icon/img/7.png'),linear-gradient(to top right,#20005f,var(--accentcol))">
                         <div class="loaderframe">
@@ -263,11 +269,36 @@
                         <p style="background-color: #5a32a8;">Alevel</p>
                         <h1>EPQ</h1>
                     </div>
-                    <a class="linkplate" href="epq.html" onclick="parent.loaderactivate();"></a>
+                    <a class="linkplate" href="epq.html" onclick="parent.loaderactivate(); parent.pagename('EPQ');"></a>
+                </div>
+
+                <div class="beforemiddleimg">
+                    <div class="middlebutton">visit</div>
+                    <div class="text">
+                        <h1>???</h1>
+                        <p>Coming soon</p>
+                    </div>
+                    <div class="middleimg" style="background-image: url('icon/img/7.png'),linear-gradient(to top right,#20005f,var(--accentcol))">
+                        <div class="loaderframe">
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 834.61 834.61">
+                                    <defs>
+                                        <style>
+                                        .loadwheel{stroke-linecap: round;stroke-width: 83px;fill: none;stroke: #729ef6;stroke-miterlimit: 10;}
+                                        </style>
+                                    </defs>
+                                    <path class="loadwheel" d="M772.51,540.33c-50.95,147.13-190.73,252.78-355.2,252.78-207.55,0-375.81-168.25-375.81-375.8S209.76,41.5,417.31,41.5c164.47,0,304.25,105.65,355.2,252.79"/>
+                                    <circle fill="none" cx="417.31" cy="417.31" r="375.78"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <iframe class="iframelookers" scrolling="no"></iframe>
+                        <p style="background-color: #000000;">???</p>
+                        <h1>???</h1>
+                    </div>
+                    <a class="linkplate" href="?.html" onclick="parent.loaderactivate(); parent.pagename('???');"></a>
                 </div>
             </div>
-
-
         </main>
         <script>
             var timer = null, frames = document.getElementsByClassName('iframelookers'), link = document.getElementsByClassName('linkplate'), loader = document.getElementsByClassName('loaderframe');
@@ -303,32 +334,16 @@
                 <div class="bar"></div>
                 <a href="#">Licence</a>
             </div>
-            
-                <svg id="N" data-name="N" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560.95 560.95">
-                <defs>
-                    <style>
-                    .cls-1 {
-                        fill: var(--maincol);
-                    }
-                    </style>
-                </defs>
-                <path class="cls-1" d="M560.95,31.69v497.57c0,17.5-14.19,31.69-31.69,31.69h-113.37c-12.09,0-23.51-5.54-30.99-15.04l-160.64-204.04c-19.74-25.08-60.05-11.12-60.05,20.8v166.6c0,17.5-14.18,31.68-31.68,31.68H31.68c-17.5,0-31.68-14.18-31.68-31.68V31.68C0,14.18,14.18,0,31.68,0h113.38c12.09,0,23.51,5.54,31,15.04l160.6,203.88c19.76,25.09,60.08,11.11,60.08-20.82V31.69c0-17.5,14.19-31.69,31.69-31.69h100.83c17.5,0,31.69,14.19,31.69,31.69Z"/>
-                </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560.95 560.95" fill="var(--maincol)">
+                <path d="M560.95,31.69v497.57c0,17.5-14.19,31.69-31.69,31.69h-113.37c-12.09,0-23.51-5.54-30.99-15.04l-160.64-204.04c-19.74-25.08-60.05-11.12-60.05,20.8v166.6c0,17.5-14.18,31.68-31.68,31.68H31.68c-17.5,0-31.68-14.18-31.68-31.68V31.68C0,14.18,14.18,0,31.68,0h113.38c12.09,0,23.51,5.54,31,15.04l160.6,203.88c19.76,25.09,60.08,11.11,60.08-20.82V31.69c0-17.5,14.19-31.69,31.69-31.69h100.83c17.5,0,31.69,14.19,31.69,31.69Z"/>
+            </svg>
             <p id="footerdate"></p>
         </footer>
         <nav class="navbar">
             <div class="navbarleft">
                 <a href="index.html">
-                    
-                    <svg id="N" data-name="N" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560.95 560.95">
-                    <defs>
-                        <style>
-                        .cls-1 {
-                            fill: var(--maincol);
-                        }
-                        </style>
-                    </defs>
-                    <path class="cls-1" d="M560.95,31.69v497.57c0,17.5-14.19,31.69-31.69,31.69h-113.37c-12.09,0-23.51-5.54-30.99-15.04l-160.64-204.04c-19.74-25.08-60.05-11.12-60.05,20.8v166.6c0,17.5-14.18,31.68-31.68,31.68H31.68c-17.5,0-31.68-14.18-31.68-31.68V31.68C0,14.18,14.18,0,31.68,0h113.38c12.09,0,23.51,5.54,31,15.04l160.6,203.88c19.76,25.09,60.08,11.11,60.08-20.82V31.69c0-17.5,14.19-31.69,31.69-31.69h100.83c17.5,0,31.69,14.19,31.69,31.69Z"/>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560.95 560.95" fill="var(--maincol)">
+                        <path d="M560.95,31.69v497.57c0,17.5-14.19,31.69-31.69,31.69h-113.37c-12.09,0-23.51-5.54-30.99-15.04l-160.64-204.04c-19.74-25.08-60.05-11.12-60.05,20.8v166.6c0,17.5-14.18,31.68-31.68,31.68H31.68c-17.5,0-31.68-14.18-31.68-31.68V31.68C0,14.18,14.18,0,31.68,0h113.38c12.09,0,23.51,5.54,31,15.04l160.6,203.88c19.76,25.09,60.08,11.11,60.08-20.82V31.69c0-17.5,14.19-31.69,31.69-31.69h100.83c17.5,0,31.69,14.19,31.69,31.69Z"/>
                     </svg>
                 </a>
             </div>

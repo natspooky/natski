@@ -952,10 +952,11 @@ main .profile
 	right: 15px;
 	color: var(--maincol);
 	background-color: var(--themecol);
-	border-radius: 5px;
+	border-radius: 7px;
 	font-weight: 400;
+	border: 2px solid #000;
 	letter-spacing: 2px;
-	padding: 3px 13px 2px 15px;
+	padding: 3px 15px;
 }
 .middle .beforemiddleimg .middleimg h1
 {
@@ -964,13 +965,6 @@ main .profile
 	color: var(--maincol);
 	font-size: 6vw;
 	margin-bottom: 1vw;
-}
-.middle .beforemiddleimg .middleimg span
-{
-	display: none;
-	position: relative;
-	color: var(--maincol);
-	font-size: 4.5vw;
 }
 .loaderframe
 {
