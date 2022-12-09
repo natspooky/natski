@@ -961,8 +961,10 @@ main .profile
 	position: relative;
 	display: none;
 	color: var(--maincol);
+	padding: 10px 30px;
+	background-color: #303030e7;
+	border-radius: 10px;
 	font-size: 6vw;
-	margin-bottom: 1vw;
 }
 .loaderframe
 {
