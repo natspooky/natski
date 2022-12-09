@@ -936,7 +936,7 @@ main .profile
 	left: 0;
 	width: 150%;
 	height: 150%;
-	transform: scale(0.66666667);
+	transform: scale(0.66667);
 	transform-origin: top left;
 	border-radius: 27px;
 	border: none;
