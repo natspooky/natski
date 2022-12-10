@@ -81,7 +81,8 @@
     }
     .middle .beforemiddleimg:hover
     {
-        transform: scale(1.02);
+        transition-delay: 0.3s;
+        transform: scale(1.06);
     }
     .pagecontainer .closer:hover,.changelogframe .logcloser:hover,.backpage:hover
     {
