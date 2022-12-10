@@ -564,6 +564,7 @@ header .progress .progress-bar
 	height: 25%;
 	min-height: 25%;
 	width: 100%;
+	animation: fade 1.5s;
 }
 .topbar h1
 {
