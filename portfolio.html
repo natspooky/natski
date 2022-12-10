@@ -311,8 +311,8 @@
                     }, 300);
                     });
                     link[i].addEventListener('mouseout',function() { 
-                        loader[i].style.display = 'none'
                         window.clearTimeout(timer)
+                        loader[i].style.display = 'none'
                         frames[i].src='';
             })}};
             $(document).ready(function(){setTimeout(()=>{parent.loaderdeactivate(),parent.pagename('Portfolio');},500);});
