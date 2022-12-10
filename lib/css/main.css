@@ -913,6 +913,7 @@ main .profile
 	background-size: 100%;
 	background-position: center;
 	display: flex;
+	background-color: var(--accentcol);
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
