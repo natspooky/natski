@@ -12,11 +12,18 @@
 	left: 0;
 	z-index: 9999;
 	width: 100%;
-	background-color: #1e1e1ee4;
+	background-color: transparent;
 	height: 100%;
 	display: none;
 	justify-content: center;
 	align-items: center;
+}
+.loaderback p
+{
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	color: var(--themecol);
 }
 .loaderback div
 {
@@ -34,7 +41,7 @@
 	position: relative;
 	height: 100px;
 	width: 100px;
-	animation: spin 1.5s linear infinite;
+	animation: spin 2.5s linear infinite;
 }
 @keyframes spin {
 	from {
