@@ -67,7 +67,7 @@
                         <h1>Slides</h1>
                         <p>A collection of slides detailing the work done during GCSE</p>
                     </div>
-                    <div class="middleimg" style="background-image: url('icon/slides/gcse/1.png')">
+                    <div class="middleimg" style="background-image: url('icon/thumbnails/gcseslides.png')">
                         <div class="loaderframe">
                             <div>
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 834.61 834.61">
@@ -95,7 +95,7 @@
                         <h1>Art</h1>
                         <p>A collection of artwork from GCSE</p>
                     </div>
-                    <div class="middleimg" style="background-image: url('icon/portimg/10.png')">
+                    <div class="middleimg" style="background-image: url('icon/thumbnails/gcseart.png')">
                         <div class="loaderframe">
                             <div>
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 834.61 834.61">
@@ -133,7 +133,7 @@
                         <h1>Slides</h1>
                         <p>A collection of slides detailing the work done during alevel</p>
                     </div>
-                    <div class="middleimg" style="background-image: url('icon/slides/alevel/1.png')">
+                    <div class="middleimg" style="background-image: url('icon/thumbnails/alevelslides.png')">
                         <div class="loaderframe">
                             <div>
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 834.61 834.61">
@@ -278,7 +278,7 @@
                         <h1>???</h1>
                         <p>???????????</p>
                     </div>
-                    <div class="middleimg" style="background-image: url('icon/img/back.png')">
+                    <div class="middleimg" style="background-image: url('icon/thumbnails/unknown.png')">
                         <div class="loaderframe">
                             <div>
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 834.61 834.61">
@@ -293,7 +293,7 @@
                             </div>
                         </div>
                         <div class="iframelookers" scrolling="no"></div>
-                        <p style="background-color: #fff; color: #000;">???</p>
+                        <p style="background-color: #fff; color: #000;">Unknown</p>
                         <h1>???</h1>
                     </div>
                     <a class="linkplate" href="something.html"></a>
@@ -307,7 +307,8 @@
                     link[i].addEventListener('mouseover',function() {
                         loader[i].style.display = 'flex'
                         timer = window.setTimeout(function(){
-                            frames[i].src=link[i].href;
+                            frames[i].src="lib/hovertabs/"+link[i].href;
+                            alert("lib/hovertabs/"+link[i].href)
                     }, 300);
                     });
                     link[i].addEventListener('mouseout',function() { 
