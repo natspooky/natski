@@ -1,62 +1,31 @@
 <!doctype html>
-<html lang="en-US">
-    <head>
-		<title>Natski | Art Essay</title>
-        <meta charset="UTF-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1"/>
-        <meta name="theme-color" content="#1e1e1e"/>
-        <meta name="description" content="ground up website for fun"/>
-        <meta name="keywords" content="portfolio, natspooky, natski"/>
-        <meta name="author" content="NATSKI"/>
-        <meta name="copyright" content="NATSKI">
-		<link rel="icon" type="image/svg+xml" href="icon/svg/favicon.svg"/>
-        <link rel="apple-touch-icon"sizes="57x57" href="icon/mobile/57.png"/>
-        <link rel="apple-touch-icon"sizes="60x60" href="icon/mobile/60.png"/>
-        <link rel="apple-touch-icon"sizes="72x72" href="icon/mobile/72.png"/>
-        <link rel="apple-touch-icon"sizes="76x76" href="icon/mobile/76.png"/>
-        <link rel="apple-touch-icon"sizes="114x114" href="icon/mobile/114.png"/>
-        <link rel="apple-touch-icon"sizes="120x120" href="icon/mobile/120.png"/>
-        <link rel="apple-touch-icon"sizes="144x144" href="icon/mobile/144.png"/>
-        <link rel="apple-touch-icon"sizes="152x152" href="icon/mobile/152.png"/>
-        <meta property="og:title" content="Natspooky"/>
-        <meta property="og:description" content="ground up website for fun"/>
-        <meta property="og:image" content="https://natski.netlify.com/icon/avatar/400.png"/>
-        <meta property="og:image:width" content="400"/>
-        <meta property="og:image:height" content="400"/>
-        <meta property="og:url" content="https://natski.netlify.com"/>
-        <meta property="og:locale" content="en_US"/>
-        <meta property="og:type" content="website"/>
-        <meta property="og:site_name" content="NATSKI"/>
-        <meta name="twitter:title" content="Natspooky">
-        <meta name="twitter:description" content="ground up website for fun">
-        <meta name="twitter:image" content="https://natski.netlify.com/icon/avatar/400.png">
-        <meta name="twitter:site" content="@natspooky_">
-        <meta name="twitter:creator" content="@natspooky_">
-        <meta name="twitter:card" content="summary">
-        <link rel=stylesheet type=text/css href="https://natski.netlify.com/lib/css/main.css"/>
-        <link rel=stylesheet type=text/css href="https://natski.netlify.com/lib/css/animations.css"/>
-        <link rel=stylesheet type=text/css href="https://natski.netlify.com/lib/css/scale.css"/>
-        <script src=https://natski.netlify.com/lib/js/jquery.js></script>
-	</head>
-    <body>
-        <header class="topbar">
-            <h1 style="margin: unset;">Good or Bad Art</h1>
-        </header>
-        <main class="middle" style="flex-direction: column;">
-            <img src="../../icon/img/art.png" class="profile revealed" draggable="false" style="--i: 4;" alt="funny horse">
-            <h1 class="article-title revealed" style="--i: 6;">Is there such a thing as good or bad art?</h1>
-            <article class="revealed" style="--i: 8;">
-                Commonly in art, arguments to whether something is considered good or bad are always foggy due to the subjective nature of the subject itself. Many critics agree that although there is ‘bad’ art, it’s also complicated...
-            </article>
-        </main>
-        <noscript>
-            <h1>javascript is disabled :(</h1>
-            <p>this website requires javascript to run.<br>please enable the use of javascript to see this page :)</p>
-        </noscript>
-        <script>
-            function n(e){for(let t=0;t<e.length;t++){var a,o,c,s,l=document.createElement("canvas"),r=l.getContext&&l.getContext("2d"),n={r:0,g:0,b:0},i=0;c=l.height=e[t].naturalHeight||e[t].offsetHeight||e[t].height,o=l.width=e[t].naturalWidth||e[t].offsetWidth||e[t].width,r.drawImage(e[t],0,0),s=(a=r.getImageData(0,0,o,c)).data.length;for(var g=0;g<s;g+=4)n.r+=a.data[g],n.g+=a.data[g+1],n.b+=a.data[g+2],i++;n.r=Math.floor(n.r/i),n.g=Math.floor(n.g/i),n.b=Math.floor(n.b/i),e[t].style.backgroundColor="rgba("+n.r+","+n.g+","+n.b+",0.7)",e[t].style.boxShadow="0px 0px 20px rgba("+n.r+","+n.g+","+n.b+",0.7)"}}$("#log,#backcloser,.logcloser").click(function(){l.classList.toggle("active"),r.classList.toggle("active"),s.classList.toggle("active"),$("#backcloser").fadeToggle(),document.body.classList.toggle("staticlog")}),notifs=document.getElementById("notifbar"),$("#home").click(function(){notifs.classList.add("active"),r.classList.remove("active"),s.classList.remove("active"),$("#backcloser").fadeOut(),document.body.classList.remove("static"),c.classList.remove("active"),o.classList.remove("active")}),$(".banner-button").hover(function(){screen.availHeight<screen.availWidth&&($(".banner-button").css({border:"4px solid var(--themecol)","background-color":"transparent"}),$(".banner-fg").css({"background-color":"#e9e9e9e0"}),$(".banner-info").css({height:"45%",opacity:"1"}),$(".banner-bar").css({opacity:"0.1"}),$(".banner-title").css({opacity:"1",transform:"translateY(0)",top:"42px",color:"var(--accentcol)"}))},function(){$(".banner-button").css({border:"","background-color":""}),$(".banner-fg").css({"background-color":""}),$(".banner-info").css({height:"",opacity:""}),$(".banner-bar").css({opacity:""}),$(".banner-title").css({opacity:"",transform:"",top:"",color:""})}),$(window).scroll(function(){$(".img").each(function(e){var t=$(this).position().top+$(this).outerHeight()-150;$(window).scrollTop()+$(window).height()>t?$(this).css({opacity:"1",transform:"scale(1)"}):$(this).css({opacity:"0",transform:"scale(0.8)"})})});var i=0,g=$("img").length,d=0;$("img").on("load",function(e){++d==g&&setTimeout(()=>{n(document.querySelectorAll("img"))},1e3)});var b=function(){++i==g&&n(document.querySelectorAll("img"))};$("img").on("load",function(e){return this.complete}).each(b).end().load(b);
-        </script>
-        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-        <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    </body>
+<html lang=en-US>
+<head>
+<title>Natski | Art Essay</title>
+<meta charset="UTF-8"/>
+<meta name=viewport content="width=device-width, initial-scale=1"/>
+<link rel=stylesheet type=text/css href="https://natski.netlify.com/lib/css/main.css"/>
+<link rel=stylesheet type=text/css href="https://natski.netlify.com/lib/css/animations.css"/>
+<link rel=stylesheet type=text/css href="https://natski.netlify.com/lib/css/scale.css"/>
+<script src=https://natski.netlify.com/lib/js/jquery.js></script>
+</head>
+<body>
+<header class=topbar>
+<h1 style=margin:unset>Good or Bad Art</h1>
+</header>
+<main class=middle style=flex-direction:column>
+<img src=../../icon/img/art.png class="profile revealed" draggable=false style=--i:4 alt="funny horse">
+<h1 class="article-title revealed" style=--i:6>Is there such a thing as good or bad art?</h1>
+<article class=revealed style=--i:8>
+Commonly in art, arguments to whether something is considered good or bad are always foggy due to the subjective nature of the subject itself. Many critics agree that although there is ‘bad’ art, it’s also complicated...
+</article>
+</main>
+<noscript>
+<h1>javascript is disabled :(</h1>
+<p>this website requires javascript to run.<br>please enable the use of javascript to see this page :)</p>
+</noscript>
+<script>function n(e){for(let t=0;t<e.length;t++){var a,o,c,s,l=document.createElement("canvas"),r=l.getContext&&l.getContext("2d"),n={r:0,g:0,b:0},i=0;c=l.height=e[t].naturalHeight||e[t].offsetHeight||e[t].height,o=l.width=e[t].naturalWidth||e[t].offsetWidth||e[t].width,r.drawImage(e[t],0,0),s=(a=r.getImageData(0,0,o,c)).data.length;for(var g=0;g<s;g+=4)n.r+=a.data[g],n.g+=a.data[g+1],n.b+=a.data[g+2],i++;n.r=Math.floor(n.r/i),n.g=Math.floor(n.g/i),n.b=Math.floor(n.b/i),e[t].style.backgroundColor="rgba("+n.r+","+n.g+","+n.b+",0.7)",e[t].style.boxShadow="0px 0px 20px rgba("+n.r+","+n.g+","+n.b+",0.7)"}}$("#log,#backcloser,.logcloser").click(function(){l.classList.toggle("active"),r.classList.toggle("active"),s.classList.toggle("active"),$("#backcloser").fadeToggle(),document.body.classList.toggle("staticlog")}),notifs=document.getElementById("notifbar"),$("#home").click(function(){notifs.classList.add("active"),r.classList.remove("active"),s.classList.remove("active"),$("#backcloser").fadeOut(),document.body.classList.remove("static"),c.classList.remove("active"),o.classList.remove("active")}),$(".banner-button").hover(function(){screen.availHeight<screen.availWidth&&($(".banner-button").css({border:"4px solid var(--themecol)","background-color":"transparent"}),$(".banner-fg").css({"background-color":"#e9e9e9e0"}),$(".banner-info").css({height:"45%",opacity:"1"}),$(".banner-bar").css({opacity:"0.1"}),$(".banner-title").css({opacity:"1",transform:"translateY(0)",top:"42px",color:"var(--accentcol)"}))},function(){$(".banner-button").css({border:"","background-color":""}),$(".banner-fg").css({"background-color":""}),$(".banner-info").css({height:"",opacity:""}),$(".banner-bar").css({opacity:""}),$(".banner-title").css({opacity:"",transform:"",top:"",color:""})}),$(window).scroll(function(){$(".img").each(function(e){var t=$(this).position().top+$(this).outerHeight()-150;$(window).scrollTop()+$(window).height()>t?$(this).css({opacity:"1",transform:"scale(1)"}):$(this).css({opacity:"0",transform:"scale(0.8)"})})});var i=0,g=$("img").length,d=0;$("img").on("load",function(e){++d==g&&setTimeout(()=>{n(document.querySelectorAll("img"))},1e3)});var b=function(){++i==g&&n(document.querySelectorAll("img"))};$("img").on("load",function(e){return this.complete}).each(b).end().load(b);</script>
+<script type=module src=https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js></script>
+<script nomodule src=https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js></script>
+</body>
 </html>
