@@ -85,7 +85,7 @@
                         <p style="background-color: #af503f;">GCSE</p>
                         <h1>Slides</h1>
                     </div>
-                    <a class="linkplate" href="gcseslides.html" value="gcseart" onclick="parent.loaderactivate();"></a>
+                    <a class="linkplate" href="gcseslides.html" onclick="parent.loaderactivate();"></a>
                 </div>
 
 
@@ -113,7 +113,7 @@
                         <p style="background-color: #af503f;">GCSE</p>
                         <h1>Art</h1>
                     </div>
-                    <a class="linkplate" href="gcseart.html" value="gcseart" onclick="parent.loaderactivate();"></a>
+                    <a class="linkplate" href="gcseart.html" onclick="parent.loaderactivate();"></a>
                 </div>
 
 
@@ -151,7 +151,7 @@
                         <p style="background-color: #5a32a8;">Alevel</p>
                         <h1>Slides</h1>
                     </div>
-                    <a class="linkplate" href="alevelslides.html" value="gcseart" onclick="parent.loaderactivate();"></a>
+                    <a class="linkplate" href="alevelslides.html" onclick="parent.loaderactivate();"></a>
                 </div>
 
 
@@ -308,7 +308,6 @@
                         loader[i].style.display = 'flex'
                         timer = window.setTimeout(function(){
                             frames[i].src="lib/hovertabs/"+link[i].href.substring(27,link[i].href.length);
-                            alert("lib/hovertabs/"+link[i].href.substring(27,link[i].href.length))
                     }, 300);
                     });
                     link[i].addEventListener('mouseout',function() { 
