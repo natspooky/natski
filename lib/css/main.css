@@ -1170,10 +1170,13 @@ footer .linkbar a
 {
 	display: grid;
 }
-.pagecontainer .closer ion-icon,.changelogframe .logcloser ion-icon,.backpage ion-icon
+.pagecontainer .closer svg,.changelogframe .logcloser svg
 {
-	color: var(--maincol);
-	font-size: 2vw;
+	height: 1.1vw;
+}
+.backpage svg
+{
+	height: 1.2vw;
 }
 .changelogframe
 {

@@ -354,9 +354,13 @@
         border-radius: 7px;
         background-color: var(--accentcol);
     }
-    .pagecontainer .closer ion-icon,.backpage ion-icon
+    .pagecontainer .closer svg
     {
-        font-size: 6vw;
+        height: 3vw;
+    }
+    .backpage svg
+    {
+        height: 3.5vw;
     }
     .backpage
     {
@@ -378,7 +382,7 @@
     }
     .img
     {
-        margin: 10px 0;
+        margin: 10px 10% 10px 0;
         width: 80%;
         border-radius: 20px;
         border: 5px solid transparent;
