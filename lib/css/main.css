@@ -872,12 +872,13 @@ main .profile
 	position: relative;
 	width: 38vw;
 	height: 30vw;
-	background-color: #303030;
+	background-color: #30303050;
 	z-index: 99;
 	margin: 0vw 0.7vw 1.4vw 0.7vw;
 	overflow: hidden;
-	border: 2px solid #303030;
-	border-radius: 18px;
+	border: 10px solid transparent;
+	border-radius: 26px;
+	box-shadow: 0px 0px 10px #00000000;
 	cursor: pointer;
 	transition: 0.2s;
 }
@@ -902,16 +903,16 @@ main .profile
 {
 	position: absolute;
 	display: flex;
-	justify-content: flex-start;
+	justify-content: center;
 	align-items: flex-start;
 	flex-direction: column;
 	text-decoration: none;
 	font-size: 1vw;
-	height: 5vw;
+	height: 29%;
 	width: 22vw;
 	left: 1.5vw;
 	color: var(--maincol);
-	bottom: 1vw;
+	bottom: 0;
 }
 .middle .beforemiddleimg .middleimg
 {
@@ -933,6 +934,7 @@ main .profile
 .middle .beforemiddleimg .linkplate
 {
 	position: absolute;
+	border-radius: 18px;
 	top: 0;
 	left: 0;
 	width: 100%;
@@ -961,7 +963,7 @@ main .profile
 	background-color: var(--themecol);
 	border-radius: 7px;
 	font-weight: 400;
-	border: 2px solid #000;
+	border: 2px solid #303030;
 	letter-spacing: 2px;
 	padding: 3px 15px;
 }
@@ -991,17 +993,17 @@ main .profile
 	display: grid;
 	place-content: center;
 	background-color: #444444;
-	border-radius: 4vw;
-	height: 15vw;
-	width: 15vw;
+	border-radius: 3.4vw;
+	height: 12vw;
+	width: 12vw;
 	transition: 0.3s;
 	animation: spin2 3s infinite;
 }
 .loaderframe div svg
 {
 	position: relative;
-	height: 10vw;
-	width: 10vw;
+	height: 8vw;
+	width: 8vw;
 	animation: spin 1.5s linear infinite;
 }
 .middle.artpage
@@ -1021,6 +1023,7 @@ main .profile
 	height: 3.5vw;
 	letter-spacing: 4px;
 	font-weight: 900;
+	animation: fade 1.5s;
 }
 .descriptionbar span
 {
@@ -1256,6 +1259,7 @@ hr
 	height: 3px;
 	border: none;
 	background-color: #303030;
+	animation: fade 1.5s;
 }
 dl
 {

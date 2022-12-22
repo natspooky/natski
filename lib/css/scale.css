@@ -1,4 +1,10 @@
 @media (hover: hover){
+    .middle .beforemiddleimg:hover
+    {
+        transform: scale(1.02);
+        background-color: var(--j);
+        box-shadow: 0px 0px 20px #00000050;
+    }
     .middle .beforemiddleimg:hover .middleimg
     {
         background-size: 105%;
@@ -78,10 +84,6 @@
     .prev:hover,.next:hover
     {
         background-color: #2e2e2e;
-    }
-    .middle .beforemiddleimg:hover
-    {
-        transform: scale(1.02);
     }
     .pagecontainer .closer:hover,.changelogframe .logcloser:hover,.backpage:hover
     {
