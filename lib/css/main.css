@@ -1023,7 +1023,7 @@ main .profile
 	height: 3.5vw;
 	letter-spacing: 4px;
 	font-weight: 900;
-	animation: fade 1.5s;
+	animation: fade 0.5s;
 }
 .descriptionbar span
 {
@@ -1259,7 +1259,6 @@ hr
 	height: 3px;
 	border: none;
 	background-color: #303030;
-	animation: fade 1.5s;
 }
 dl
 {
