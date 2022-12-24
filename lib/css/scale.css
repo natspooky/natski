@@ -394,6 +394,11 @@
         opacity: 1;
         transform: scale(1);
     }
+    .flex-left,.flex-right
+    {
+        align-items: center;
+        margin: unset;
+    }
     article img
     {
         width: 100%;
