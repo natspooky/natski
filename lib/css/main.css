@@ -597,8 +597,8 @@ header .progress .progress-bar
 {
 	cursor: pointer;
 	position: absolute;
-	height: 5vw;
-	width: 2vw;
+	height: 75px;
+	width: 30px;
 	border-radius: 7px;
 	display: grid;
 	place-content: center;
@@ -611,15 +611,15 @@ header .progress .progress-bar
 }
 .prev
 {
-	left: 0.5vw;
+	left: 9px;
 }
 .next
 {
-	right: 0.5vw;
+	right: 9px;
 }
 .prev ion-icon,.next ion-icon
 {
-	font-size: 1.2vw;
+	font-size: 18px;
 }
 .thumbs
 {
@@ -673,7 +673,7 @@ header .progress .progress-bar
 	position: relative;
 	width: 35vw;
 	margin-top: 1vw;
-	left: 3.7vw;
+	left: 50px;
 	border-radius: 12px;
 	font-size: 2vw;
 	color: var(--maincol);
