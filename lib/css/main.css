@@ -185,7 +185,7 @@ button
 	position: absolute;
 	height: 48px;
 	width: 48px;
-	left: 0.35vw;
+	left: 10px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -208,7 +208,7 @@ button
 {
 	position: absolute;
 	height: 100%;
-	right: 0vw;
+	right: 0;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -318,11 +318,11 @@ button
 .notifcont
 {
 	position: fixed;
-	top: 3vw;
+	top: 48px;
 	right: 0;
-	height: calc(100% - 3vw);
+	height: calc(100% - 48px);
 	overflow: scroll;
-	width: calc(22vw + 20px);
+	width: 350px;
 	padding: 20px;
 	transform: translate(0);
 	z-index: 99999;
@@ -333,7 +333,7 @@ button
 }
 .notifcont.active
 {
-	transform: translateX(26vw);
+	transform: translateX(351px);
 	opacity: 0;
 }
 .notifcont h1
@@ -497,13 +497,13 @@ button
 {
 	width: auto;
 	height: 100%;
-	margin: 0vw 0.55vw;
-	padding: 0vw 0.55vw;
+	margin: 0vw 8px;
+	padding: 0vw 10px;
 	text-decoration: none;
 	color: var(--maincol);
 	background-color: transparent;
 	letter-spacing: 1px;
-	font-size: 1.3vw;
+	font-size: 18px;
 	font-weight: bold;
 	text-align: center;
 	display: flex;
@@ -528,7 +528,7 @@ button
 {
 	position: absolute;
 	width: 0%;
-	height: 0.1vw;
+	height: 2px;
 	border-radius: 0px;
 	bottom: 0;
 	background-color: transparent;
@@ -593,7 +593,7 @@ header .progress .progress-bar
 	color: var(--maincol);
 	font-size: 3.7vw;
 	left: 10vw;
-	margin-top: 3vw;
+	margin-top: 48px;
 }
 .prev,.next
 {
@@ -1168,10 +1168,10 @@ footer .linkbar a
 {
 	position: absolute;
 	z-index: 999;
-	left: 1vw;
-	top: 4vw;
-	height: 2vw;
-	width: 2vw;
+	left: 15px;
+	top: 63px;
+	height: 30px;
+	width: 30px;
 	border: 2px solid #000000;
 	box-shadow: 0px 0px 5px #00000050;
 	background-color: var(--accentcol);
@@ -1183,12 +1183,12 @@ footer .linkbar a
 }
 .changelogframe .logcloser
 {
-	top: 1vw;
+	top: 15px;
 }
 .backpage
 {
 	position: fixed;
-	top: 7vw;
+	top: 108px;
 	display: none;
 	animation: backpage 0.5s ease;
 }
@@ -1198,11 +1198,11 @@ footer .linkbar a
 }
 .pagecontainer .closer svg,.changelogframe .logcloser svg
 {
-	height: 1.1vw;
+	height: 15px;
 }
 .backpage svg
 {
-	height: 1.2vw;
+	height: 16.5px;
 }
 .changelogframe
 {
