@@ -145,13 +145,15 @@
     }
     .navbar .navbarright.active
     {
-        transform: translateX(-7.05vw);
+        transform: translateX(-34px);
     }
     .navbar .notiftoggle
     {
-        right: 1.65vw;
-        transform: translateX(8.5vw) scale(1);
-        font-size: 6vw;
+        right: 0px;
+        transform: translateX(50px) scale(1);
+        font-size: 24px;
+        height: 40px;
+        width: 40px;
         transition: 0.3s;
         cursor: pointer;
     }
