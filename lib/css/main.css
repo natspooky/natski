@@ -217,7 +217,7 @@ button
 }
 .navbar .navbarright.active
 {
-	transform: translateX(-4vw);
+	transform: translateX(60px);
 }
 .navbar .notiftoggle
 {
@@ -322,7 +322,7 @@ button
 	right: 0;
 	height: calc(100% - 48px);
 	overflow: scroll;
-	width: 345px;
+	width: 350px;
 	padding: 20px;
 	transform: translate(0);
 	z-index: 99999;
@@ -333,7 +333,7 @@ button
 }
 .notifcont.active
 {
-	transform: translateX(346px);
+	transform: translateX(351px);
 	opacity: 0;
 }
 .notifcont h1
