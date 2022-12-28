@@ -156,7 +156,7 @@ button
 	position: fixed;
 	top: 0;
 	display: none;
-	height: 3vw;
+	height: 48px;
 	width: 100%;
 	background-color: var(--accentcol);
 	z-index: 99999;
@@ -166,6 +166,18 @@ button
 .navbar.active
 {
 	box-shadow: 0px 0px 25px #00000070;
+}
+.navbar span
+{
+	position: absolute;
+	top: 0;
+	left: 0;
+	text-align: center;
+	line-height: 48px;
+	color: var(--maincol);
+	font-weight: bold;
+	width: 100%;
+	height: 100%;
 }
 .navbar .navbarleft
 {
@@ -460,7 +472,7 @@ button
 .slidemenu .menubar
 {
 	position: absolute;
-	top: 12.5vw;
+	top: 63px;
 	left: 3vw;
 	right: 3vw;
 	bottom: 3vw;
@@ -972,7 +984,7 @@ main .profile
 	background-color: var(--themecol);
 	border-radius: 7px;
 	font-weight: 400;
-	border: 2px solid #303030;
+	border: 1px solid #303030;
 	letter-spacing: 2px;
 	padding: 3px 15px;
 }

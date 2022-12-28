@@ -137,7 +137,7 @@
             function imgloader(x,y){notifopener();addnotif(x,y);};
             */
 
-            function pagename(x){document.title="Natski | "+x;} /* thoughts? */
+            function pagename(x){document.title="Natski | "+x;document.getElementById('pagename').innerHTML=x;} /* thoughts? */
         </script>
         </script>
         <main>
@@ -193,6 +193,7 @@
             <h1>notifications <button onclick='removeall()'>clear all</button></h1>
         </div>
         <nav class="navbar" style="display: block;">
+            <span id="pagename">home</span>
             <button class="notiftoggle" id="notifmenu" onclick="notiftbaroggle()">
                 <ion-icon name="alert-circle-outline"></ion-icon>
             </button>
@@ -203,6 +204,8 @@
                     </svg>
                 </a>
             </div>
+
+
 
             <!-- make the navbarright into the mobile menu :)  //  use backpanel to make it .slid -->
 
