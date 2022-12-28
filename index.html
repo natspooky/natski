@@ -65,7 +65,7 @@
                         a collection of work made during the GCSE / Alevel timeframe including: artwork, research documents and progression slides to keep track of in order to archive all of the work created
                     </div>
                     <h1 class="banner-title">Portfolio</h1>
-                    <button class="banner-button" onClick='document.getElementById("ifr").src="portfolio.html"; document.title="Natski | Portfolio"; loaderactivate();'>
+                    <button class="banner-button" onClick='document.getElementById("ifr").src="portfolio.html"; loaderactivate();'>
                         enter
                     </button>
                 </div>
@@ -78,7 +78,7 @@
                         Websites built for either general use such as social linking sites or for brand specific jobs
                     </div>
                     <h1 class="banner-title">Websites</h1>
-                    <button class="banner-button" onClick='document.getElementById("ifr").src="websites.html"; document.title="Natski | Websites"; loaderactivate();'>
+                    <button class="banner-button" onClick='document.getElementById("ifr").src="websites.html"; loaderactivate();'>
                         enter
                     </button>
                 </div>
@@ -91,7 +91,7 @@
                         ENCORE database (N_DB 2.0) powered by H.A.C.A engine used to run ©NATSKI websites (WIP)
                     </div>
                     <h1 class="banner-title">ENCORE DB</h1>
-                    <button class="banner-button" onClick='document.getElementById("ifr").src="404.html"; document.title="Natski | Database";' disabled>
+                    <button class="banner-button" onClick='document.getElementById("ifr").src="404.html";' disabled>
                         enter
                     </button>
                 </div>
@@ -193,7 +193,7 @@
             <h1>notifications <button onclick='removeall()'>clear all</button></h1>
         </div>
         <nav class="navbar" style="display: block;">
-            <span id="pagename">home</span>
+            <span id="pagename">Home</span>
             <button class="notiftoggle" id="notifmenu" onclick="notiftbaroggle()">
                 <ion-icon name="alert-circle-outline"></ion-icon>
             </button>
@@ -259,7 +259,7 @@
         <div class="pagecontainerstyle"></div>
         <div class="pagecontainer">
             <iframe id="ifr"></iframe>
-            <button class="closer" onClick='document.getElementById("ifr").src=""; document.title="Natski | Home";'>
+            <button class="closer" onClick='document.getElementById("ifr").src=""; document.title="Natski | Home";document.getElementById("pagename").innerHTML="Home";'>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 811.31 811.31">
                     <defs>
                         <style>
