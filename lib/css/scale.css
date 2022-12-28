@@ -255,7 +255,7 @@
     }
     .banner-fg .banner-button:hover:active,.banner-fg .banner-button:active
     {
-        transform: scale(3) translateY(2vw);
+        transform: scale(3) translateY(5vw);
     }
     .banner-fg .banner-title
     {
