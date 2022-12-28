@@ -322,7 +322,7 @@ button
 	right: 0;
 	height: calc(100% - 48px);
 	overflow: scroll;
-	width: 350px;
+	width: 325px;
 	padding: 20px;
 	transform: translate(0);
 	z-index: 99999;
@@ -333,7 +333,7 @@ button
 }
 .notifcont.active
 {
-	transform: translateX(351px);
+	transform: translateX(326px);
 	opacity: 0;
 }
 .notifcont h1
