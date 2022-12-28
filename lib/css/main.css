@@ -223,9 +223,9 @@ button
 {
 	position: absolute;
 	top: 0;
-	right: 0.55vw;
-	padding: 0 8px;
-	transform: translateX(3.55vw) scale(1);
+	right: 10px;
+	padding: 0 10px;
+	transform: translateX(50px) scale(1);
 	height: 100%;
 	display: grid;
 	place-content: center;
@@ -322,7 +322,7 @@ button
 	right: 0;
 	height: calc(100% - 48px);
 	overflow: scroll;
-	width: 325px;
+	width: 345px;
 	padding: 20px;
 	transform: translate(0);
 	z-index: 99999;
@@ -333,7 +333,7 @@ button
 }
 .notifcont.active
 {
-	transform: translateX(326px);
+	transform: translateX(346px);
 	opacity: 0;
 }
 .notifcont h1
