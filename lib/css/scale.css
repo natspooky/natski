@@ -150,7 +150,7 @@
     .navbar .notiftoggle
     {
         right: 1.65vw;
-        transform: translateX(8.25vw) scale(1);
+        transform: translateX(8.5vw) scale(1);
         font-size: 6vw;
         transition: 0.3s;
         cursor: pointer;
