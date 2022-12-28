@@ -986,7 +986,7 @@ main .profile
 	background-color: var(--themecol);
 	border-radius: 7px;
 	font-weight: 400;
-	border: 1px solid #303030;
+	border: 2px solid #303030;
 	letter-spacing: 2px;
 	padding: 3px 15px;
 }
