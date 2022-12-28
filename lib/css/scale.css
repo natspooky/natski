@@ -118,25 +118,20 @@
     }
     .navbar span
     {
-        line-height: 40px;
+        display: block;
     }
     .navbar .navbarleft 
     {
         left: 0px;
-        height: 100%;
+        height: 40px;
         width: 40px;
     }
     .navbar.active .navbarleft
     {
         left: 2.5px;
     }
-    .navbar .navbarleft a
-    {
-        height: 20px;
-    }
     .navbar .navbarleft a svg
     {
-        margin: unset;
 	    height: 20px;
     }
     .navbar .navbarright

@@ -57,6 +57,7 @@
             var pageindex=1,index=3;function load(){document.getElementById("pagecounter").innerHTML=pageindex+"/"+index}function changepage(e){(pageindex+=e)<1&&(pageindex=1),pageindex>index&&(pageindex=index),document.getElementById("ifr").src="lib/html/log"+pageindex+".html",document.getElementById("pagecounter").innerHTML=pageindex+"/"+index}
         </script>
         <nav class="navbar" style="display: block;">
+            <span id="pagename">Changelog</span>
             <div class="navbarleft">
                 <a href="index.html">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560.95 560.95" fill="var(--maincol)">
