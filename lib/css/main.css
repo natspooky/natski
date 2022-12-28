@@ -217,7 +217,7 @@ button
 }
 .navbar .navbarright.active
 {
-	transform: translateX(60px);
+	transform: translateX(-60px);
 }
 .navbar .notiftoggle
 {
