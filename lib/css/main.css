@@ -355,7 +355,7 @@ button
 .notifcont .notif
 {
 	position: relative;
-	height: 5vw;
+	height: 75px;
 	width: 100%;
 	background-color: #373737;
 	border-radius: 10px;
@@ -376,7 +376,7 @@ button
 	height: 100%;
 	display: grid;
 	place-content: center;
-	font-size: 2.5vw;
+	font-size: 30px;
 	color: green;
 	background-image: linear-gradient(to top, #002c00, #0a0a0a);
 	aspect-ratio: 10 / 16;
@@ -409,12 +409,12 @@ button
 .notifcont .notif .notifinfo
 {
 	position: relative;
-	width: 13.5vw;
+	width: 200px;
 	letter-spacing: 0.5px;
 	font-weight: 100;
 	word-wrap: break-word;
 	font-weight: bold;
-	font-size: 1vw;
+	font-size: 15px;
 	color: var(--maincol);
 }
 .notifcont .notif .notifclose
@@ -425,7 +425,7 @@ button
 	height: 100%;
 	border: none;
 	background-color: transparent;
-	font-size: 2.2vw;
+	font-size: 32px;
 	color: #252525;
 	aspect-ratio: 6 / 16;
 	display: grid;
