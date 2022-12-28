@@ -90,6 +90,14 @@
         border: 2px solid #ffffff;
     }
 }
+@media screen and (max-width: 1250px) and (min-width: 0px)
+{
+    .banner-bg
+    {
+        background-size: cover;
+        animation: fade 1s;
+    }
+}
 @media (orientation: portrait){
     .navbar
     {
@@ -209,14 +217,16 @@
     .thumbs
     {
         width: 100%;
+        justify-content: space-around;
         align-items: center;
-        bottom: 2vw;
+        bottom: 30px;
     }
     .thumbs .thumb
     {
         height: 14.5vw;
-        border-radius: 12px;
-        border: 4px solid var(--accentcol);
+        margin: unset;
+        border-radius: 3vw;
+        border: 1vw solid var(--accentcol);
     }
     .thumbs .thumb img
     {
@@ -225,7 +235,7 @@
     }
     .thumbs .thumb.active
     {
-        border: 4px solid var(--maincol);
+        border: 1vw solid var(--maincol);
     }
     .banner-bg
     {
@@ -458,9 +468,6 @@
         font-size: 3vw;
         margin: 0vw 2.2vw;
     }
-}
-@media screen and (max-width: 1200px) and (min-width: 1000px)
-{
 }
 @media screen and (max-height: 1500px) and (min-height: 1000px)
 {
