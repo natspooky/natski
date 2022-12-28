@@ -224,7 +224,7 @@ button
 	position: absolute;
 	top: 0;
 	right: 0.55vw;
-	padding: 0 0.55vw;
+	padding: 0 8px;
 	transform: translateX(3.55vw) scale(1);
 	height: 100%;
 	display: grid;
@@ -232,7 +232,7 @@ button
 	color: var(--maincol);
 	border: none;
 	background-color: transparent;
-	font-size: 24px;
+	font-size: 26px;
 	transition: 0.1s;
 	cursor: pointer;
 }
