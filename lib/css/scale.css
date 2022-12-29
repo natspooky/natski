@@ -394,6 +394,16 @@
     {
         height: calc(100% - 20vw);
     }
+    .iframecont a
+    {
+        background-color: #222;
+        display: grid;
+        place-content: center;
+    }
+    .iframecont a p
+    {
+        display: block;
+    }
     .img
     {
         margin: 10px 0;

@@ -1264,6 +1264,14 @@ footer .linkbar a
 	border: 0px;
 	height: 100%;
 	width: 100%;
+	text-decoration: none;
+}
+.iframecont a p
+{
+	color: var(--maincol);
+	display: none;
+	text-align: center;
+	font-size: 26px;
 }
 .snapcontainer
 {
