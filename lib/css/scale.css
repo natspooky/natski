@@ -99,6 +99,10 @@
     }
 }
 @media (orientation: portrait){
+    ::-webkit-scrollbar
+    {
+        width: 0px;
+    }
     .navbar
     {
         left: 5vw;
