@@ -19,6 +19,14 @@
 	justify-content: center;
 	align-items: center;
 }
+.loadwheel
+{
+	stroke-linecap: round;
+	stroke-width: 83px;
+	fill: none;
+	stroke: #729ef6;
+	stroke-miterlimit: 10;
+}
 .loaderback p
 {
 	position: absolute;

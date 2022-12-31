@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en-US">
     <head>
-		<title>Natski | Search</title>
+		<title>Natski | AI</title>
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <meta name="theme-color" content="#1e1e1e"/>
@@ -42,17 +42,12 @@
         <div class="loaderback">
             <div>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 834.61 834.61">
-                    <defs>
-                        <style>
-                        .loadwheel{stroke-linecap: round;stroke-width: 83px;fill: none;stroke: #729ef6;stroke-miterlimit: 10;}
-                        </style>
-                    </defs>
                     <path class="loadwheel" d="M772.51,540.33c-50.95,147.13-190.73,252.78-355.2,252.78-207.55,0-375.81-168.25-375.81-375.8S209.76,41.5,417.31,41.5c164.47,0,304.25,105.65,355.2,252.79"/>
                     <circle fill="none" cx="417.31" cy="417.31" r="375.78"/>
                 </svg>
             </div>
         </div>
-        <a onclick="history.back(); parent.loaderactivate();">
+        <a href="portfolio.html" onclick="parent.loaderactivate();">
             <button class="backpage">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 833.38 833.38">
                     <defs>
@@ -66,15 +61,20 @@
             </button>
         </a>
         <header class="topbar">
-            <h1>Search</h1>
+            <h1>AI</h1>
         </header>
-        <div class="descriptionbar">Slides</div>
+
         <main class="middle">
-            <form id="form" action="/search.html" method="get"> 
-                <input type="text" id="query" placeholder="Search...">
-                <input type="submit" value="search">Search</input>
+            <form action="message.php">
+                <input type="text" placeholder="message" name="textbox" required></input>
+            
+                <button type="submit">Send</button>
               </form>
         </main>
+
+        <script>
+            $(document).ready(function(){setTimeout(()=>{parent.loaderdeactivate(),parent.pagename('AI');},500);});
+        </script>
         <footer>
             <div class="linkbar" id="linker">
                 <a href="index.html">Home</a>
@@ -98,6 +98,7 @@
             <p id="footerdate"></p>
         </footer>
         <nav class="navbar">
+            <span id="pagename">GCSE Art</span>
             <div class="navbarleft">
                 <a href="index.html">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560.95 560.95" fill="var(--maincol)">
@@ -142,9 +143,6 @@
             <h1>javascript is disabled :(</h1>
             <p>this website requires javascript to run.<br>please enable the use of javascript to see this page :)</p>
         </noscript>
-        <script>
-            $(document).ready(function(){setTimeout(()=>{parent.loaderdeactivate(),parent.pagename('Search');},500);});
-        </script>
         <script src="lib/js/main.js"></script>
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
