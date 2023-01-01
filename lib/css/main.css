@@ -1261,7 +1261,7 @@ footer .linkbar a
 {
 	position: relative;
     width: 100%;
-    height: calc(100% - 6.5vw);
+    height: calc(100% - 92px);
 	background-color: var(--accentcol);
 	scroll-snap-align: end;
 }
