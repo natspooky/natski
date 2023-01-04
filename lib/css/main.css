@@ -155,7 +155,6 @@ button
 }
 .static,.staticmenu,.staticlog
 {
-	position: fixed;
 	height: 100%;
 	margin: 0;
 	overflow: hidden;
@@ -843,6 +842,22 @@ article span .sourcer,.bibliography li a
 	text-decoration: none;
 	transition: 0.2s;
 	color: var(--themecol);
+}
+article div
+{
+	font-weight: bold;
+	font-size: 1.5em;
+	margin: 25px 0 5px 0;
+}
+article div::before
+{
+	content: '';
+	position: relative;
+	top: 2px;
+	left: -5px;
+	border-radius: 10px;
+	background-color: var(--themecol);
+	padding: 0.5px 1.5px;
 }
 #wordcount
 {

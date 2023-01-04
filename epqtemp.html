@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en-US">
     <head>
-		<title>Natski | About</title>
+		<title>Natski | EPQ</title>
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <meta name="theme-color" content="#1e1e1e"/>
@@ -39,7 +39,7 @@
         <script src="lib/js/jquery.js"></script>
 	</head>
     <body>
-        <div class="loaderback" style="display: flex;">
+        <div class="loaderback">
             <div>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 834.61 834.61">
                     <path class="loadwheel" d="M772.51,540.33c-50.95,147.13-190.73,252.78-355.2,252.78-207.55,0-375.81-168.25-375.81-375.8S209.76,41.5,417.31,41.5c164.47,0,304.25,105.65,355.2,252.79"/>
@@ -47,35 +47,85 @@
                 </svg>
             </div>
         </div>
-        <style>
-            ::-webkit-scrollbar{height: 0px;width: 0px;}
-        </style>
+        <a href="portfolio.html" onclick="parent.loaderactivate();">
+            <button class="backpage">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 833.38 833.38">
+                    <defs>
+                        <style>
+                        .back-icon{fill:none;stroke:var(--maincol);stroke-linecap:round;stroke-linejoin:round;stroke-width:120px;}
+                        </style>
+                    </defs>
+                    <polyline class="back-icon" points="416.69 60 60 416.69 416.69 773.38"/>
+                    <line class="back-icon" x1="770.41" y1="416.69" x2="76.58" y2="416.69"/>
+                </svg>
+            </button>
+        </a>
         <header class="topbar">
-            <h1>About</h1>
+            <h1>epq title</h1>
         </header>
         <main class="middle" style="flex-direction: column;">
-            <img src="icon/avatar/300.png" class="profile revealed" draggable="false"  style="--i: 4;">
-            <h1 class="article-title revealed" style="--i: 6;">About</h1>
-            <article class="revealed"  style="--i: 8;">
-                coming soon
+            <img src="" class="profile revealed" draggable="false" style="--i: 4;" alt="">
+            <h1 class="article-title revealed" style="--i: 6;">epq title</h1>
+            <ul class="bibliography revealed" style="--i: 8;">
+                <h2>Chapters</h2>
+                <li>
+                    <a href="#chaptone">1</a>
+                </li>
+                <li>
+                    <a href="#chapttwo">2</a>
+                </li>
+                <li>
+                    <a href="#chaptthree">3</a>
+                </li>
+            </ul>
+            <hr class="revealed" style="--i: 8;">
+            <article class="revealed" id="text-content" style="--i: 10;">
+                <div class="chapter" id="chaptone">chap1</div>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                <div class="chapter" id="chapttwo">chap2</div>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                <div class="chapter" id="chaptthree">chap3</div>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+
+
             </article>
             <hr>
             <ul class="bibliography">
                 <h2>Cites</h2>
                 <li>
-                    error
+                    <a href="https://artsartistsartwork.com/why-there-is-no-such-thing-as-good-art-or-bad-art/" target="_blank">artsartistsartwork.com / why there is no such thing as goof art or bad art</a>
                 </li>
-              </ul>
-              <hr>
-              <ul class="bibliography">
+                <li>
+                    <a href="https://medium.com/p/96c33bf67903" target="_blank">medium.com / did Marcel Duchamp’s 'Fountain' really come completely out of left field?</a>
+                </li>
+                <li>
+                    <a href="https://yourartpath.com/digital-art-vs-traditional-art" target="_blank">yourartpath.com / digital art vs traditional art</a>
+                </li>
+            </ul>
+            <hr>
+            <ul class="bibliography">
                 <h2>Info Gathering</h2>
                 <li>
-                    error
+                    <a href="https://en.wikipedia.org/wiki/Outsider_art" target="_blank">Autsider Art Wikipedia</a>
                 </li>
-              </ul>
+                <li>
+                    <a href="https://en.wikipedia.org/wiki/Comedian_(artwork)" target="_blank">Comedian Wikipedia</a>
+                </li>
+                <li>
+                    <a href="http://museumofbadart.org/poor-traits/" target="_blank">Museum of Bad Art: Poor-Traits</a>
+                </li>
+            </ul>
+            <hr>
+            <ul class="bibliography">
+                <h2>Images Used</h2>
+                <li>
+                    <a href="https://www.khanacademy.org/humanities/art-1010/dada-and-surrealism/dada2/a/introduction-to-dada" target="_blank">Fountain</a>
+                </li>
+                <li>
+                    <a href="https://www.pinterest.co.uk/pin/699324648373177082" target="_blank">Carles Dalmau</a>
+                </li>
+            </ul>
+            <div id="wordcount"></div>
         </main>
         <footer>
-            <div class="linkbar">
+            <div class="linkbar" id="linker">
                 <a href="index.html">Home</a>
                 <div class="bar"></div>
                 <a href="about.html">About</a>
@@ -96,11 +146,9 @@
             </svg>
             <p id="footerdate"></p>
         </footer>
-        <div class="bibcont" id="bibcontainer">
-            <p id="bibtext"></p>
-        </div>
-        <nav class="navbar" style="display: block;">
-            <span id="pagename">About</span>
+        <div class="bibcont" id="bibcontainer"></div>
+        <nav class="navbar">
+            <span id="pagename">Art Essay</span>
             <div class="navbarleft">
                 <a href="index.html">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560.95 560.95" fill="var(--maincol)">
@@ -118,7 +166,7 @@
                     Home
                     <div class="selector"></div>
                 </a>
-                <a class="navbutton active" style="cursor: pointer;">
+                <a class="navbutton" href="about.html">
                     About
                     <div class="selector"></div>
                 </a>
@@ -133,7 +181,7 @@
                 <a class="menubutton" href="index.html">
                     Home
                 </a>
-                <a class="menubutton active">
+                <a class="menubutton" href="about.html">
                     About
                 </a>
                 <a class="menubutton" href="changes.html">
@@ -145,6 +193,9 @@
             <h1>javascript is disabled :(</h1>
             <p>this website requires javascript to run.<br>please enable the use of javascript to see this page :)</p>
         </noscript>
+        <script>
+            $(document).ready(function(){setTimeout(()=>{parent.loaderdeactivate(),parent.pagename('EPQ');},500);});
+        </script>
         <script src="lib/js/main.js"></script>
         <script src="lib/js/iframeresponder.js"></script>
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
