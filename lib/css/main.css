@@ -490,7 +490,7 @@ button
 	right: 5vw;
 	bottom: 15px;
 	width: 130px;
-	border-radius: 20px;
+	border-radius: 15px;
 	box-sizing: initial;
 	background-color: var(--accentcol);
 	border: 10px solid var(--accentcol);
@@ -524,7 +524,7 @@ button
 }
 .menubutton
 {
-	border-radius: 10px;
+	border-radius: 6px;
 	padding: 10px 0;
 	height: unset;
 	width: 100%;
