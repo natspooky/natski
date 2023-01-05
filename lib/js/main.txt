@@ -83,9 +83,7 @@ $(document).ready(function() {
             })
         })
     });
-    var i = 0,
-        g = $("img").length,
-        d = 0;
+    var $images = $('img');
     $images.imagesLoaded()
         .done(function() {
             n(document.querySelectorAll('img'));
