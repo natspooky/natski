@@ -268,7 +268,7 @@
         </div>
         <div class="slidemenu">
             <div class="menubar">
-                <button class="menubutton active" id="homeslide" onclick='document.getElementById("portfolio").classList.remove("active"); document.getElementById("websites").classList.remove("active"); document.getElementById("homeslide").classList.toggle("active");'>
+                <button class="menubutton active">
                     Home
                 </button>
                 <a class="menubutton" href="about.html">
@@ -278,10 +278,10 @@
                     Changelog
                 </a>
                 <hr>
-                <button class="banner-button menubutton" id="portfolio" onClick='document.getElementById("ifr").src="portfolio.html"; loaderactivate(); document.getElementById("portfolio").classList.add("active"); document.getElementById("websites").classList.remove("active"); document.getElementById("homeslide").classList.remove("active");'>
+                <button class="banner-button menubutton" onClick='document.getElementById("ifr").src="portfolio.html"; loaderactivate();'>
                     Portfolio
                 </button>
-                <button class="banner-button menubutton" id="websites" onClick='document.getElementById("ifr").src="websites.html"; loaderactivate(); document.getElementById("portfolio").classList.remove("active"); document.getElementById("websites").classList.add("active"); document.getElementById("homeslide").classList.remove("active");'>
+                <button class="banner-button menubutton" onClick='document.getElementById("ifr").src="websites.html"; loaderactivate();'>
                     Websites
                 </button>
             </div>
