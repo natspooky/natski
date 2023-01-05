@@ -467,7 +467,7 @@ button
 	width: 100%;
 	right: 0;
 	bottom: 0;
-	background-color: #1e1e1ee0;
+	background-color: #1e1e1ea7;
 	overflow: hidden;
 	visibility: hidden;
 	opacity: 0;
@@ -492,8 +492,8 @@ button
 	width: 130px;
 	border-radius: 20px;
 	box-sizing: initial;
-	background-color: #111111;
-	border: 10px solid #111111;
+	background-color: var(--accentcol);
+	border: 10px solid var(--accentcol);
 	transform: translateX(calc(160px + 5vw));
 	transition: 0.3s ease;
 }
