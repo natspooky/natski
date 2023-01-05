@@ -508,13 +508,11 @@ button
 }
 .navbutton, .menubutton
 {
-	width: auto;
 	height: 100%;
 	margin: 0vw 8px;
 	padding: 0vw 10px;
 	text-decoration: none;
 	color: var(--maincol);
-	background-color: transparent;
 	letter-spacing: 1px;
 	font-size: 18px;
 	font-weight: bold;
@@ -524,7 +522,6 @@ button
 	align-items: center;
 	position: relative;
 	overflow: hidden;
-	border: none;
 	transition: 0.1s;
 }
 .menubutton
@@ -536,10 +533,6 @@ button
 	font-size: 20px;
 	margin: 0 0 10px 0;
 	transition: 0.2s;
-}
-.menubutton:hover
-{
-	background-color: #33333350;
 }
 .navbutton.active,.menubutton.active
 {
