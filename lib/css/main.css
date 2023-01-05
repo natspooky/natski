@@ -467,13 +467,18 @@ button
 	width: 100%;
 	right: 0;
 	bottom: 0;
-	background-color: var(--accentcol);
-	transform: translateY(120vh);
-	border-radius: 50vw 50vw 0px 0px;
+	background-color: #1e1e1ee0;
 	overflow: hidden;
+	visibility: hidden;
+	opacity: 0;
 	transition: 0.5s ease;
 }
-.slidemenu.active,.pagecontainer.active
+.slidemenu.active
+{
+	opacity: 1;
+	visibility: visible;
+}
+.pagecontainer.active
 {
 	transform: translateY(0);
 	border-radius: 0px;
@@ -481,24 +486,20 @@ button
 .slidemenu .menubar
 {
 	position: absolute;
-	top: 63px;
-	left: 3vw;
-	right: 3vw;
-	bottom: 3vw;
-	border-radius: 4.5vw;
+	top: 65px;
+	right: 5vw;
+	bottom: 15px;
+	width: 130px;
+	border-radius: 20px;
 	box-sizing: initial;
 	background-color: #111111;
-	border: 3px solid #222222;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-	transform: translateY(230vh);
-	transition: 0.7s ease;
+	border: 10px solid #111111;
+	transform: translateX(calc(160px + 5vw));
+	transition: 0.3s ease;
 }
 .slidemenu.active .menubar
 {
-	transform: translateY(0px);
+	transform: translateX(0px);
 }
 .navbutton, .menubutton
 {
@@ -524,7 +525,16 @@ button
 .menubutton
 {
 	border-radius: 10px;
-	padding: 0vw 4vw;
+	padding: 10px 0;
+	height: unset;
+	width: 100%;
+	font-size: 20px;
+	margin: 0 0 10px 0;
+	transition: 0.2s;
+}
+.menubutton:hover
+{
+	background-color: #33333350;
 }
 .navbutton.active,.menubutton.active
 {
@@ -545,12 +555,6 @@ button
 {
 	width: 100%;
 	background-color: var(--themecol);
-}
-.menubutton
-{
-	font-size: 8vw;
-	margin: 5vw;
-	height: 12vw;
 }
 header
 {

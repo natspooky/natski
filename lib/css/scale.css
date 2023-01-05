@@ -89,6 +89,10 @@
     {
         border: 2px solid #ffffff;
     }
+    .menubutton:hover
+    {
+        background-color: #33333350;
+    }
 }
 @media screen and (max-width: 1250px) and (min-width: 0px)
 {
@@ -168,11 +172,11 @@
         width: 40px;
         transition: 0.3s;
     }
-    .navbutton,.prev,.next,.banner-info,.middle .beforemiddleimg .text,.middlebutton,.backpanel.active,.changelogframe,.notifcont h1
+    .navbutton,.prev,.next,.banner-info,.middle .beforemiddleimg .text,.middlebutton,.backpanel.active,.changelogframe,.notifcont h1, article div::before
     {
         display: none;
     }
-    .toggle,.slidemenu,.middle .beforemiddleimg .middleimg h1,.middle .beforemiddleimg .middleimg span
+    .toggle,.slidemenu,.middle .beforemiddleimg .middleimg h1,.middle .beforemiddleimg .middleimg span, .iframecont a p
     {
         display: block;
     }
@@ -296,10 +300,6 @@
         text-align: center;
         font-size: 20px;
     }
-    article div::before
-    {
-        display: none;
-    }
     .middle
     {
         flex-direction: column;
@@ -406,10 +406,6 @@
         background-color: #222;
         display: grid;
         place-content: center;
-    }
-    .iframecont a p
-    {
-        display: block;
     }
     .img
     {
