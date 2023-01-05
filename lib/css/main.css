@@ -1044,6 +1044,7 @@ main .profile
 	place-content: center;
 	background-color: #000000b0;
 	border: 1px solid var(--maincol);
+	backdrop-filter: blur(5px);
 	border-radius: 3.4vw;
 	height: 12vw;
 	width: 12vw;
