@@ -1065,19 +1065,18 @@ main .profile
 .descriptionbar,.pagechanger
 {
 	width: 100%;
-	font-size: 1.8vw;
+	font-size: 27px;
 	color: var(--maincol);
 	display: flex;
 	justify-content: flex-start;
 	align-items: center;
-	height: 3.5vw;
+	height: 45px;
 	letter-spacing: 4px;
 	font-weight: 900;
 	animation: fade 0.5s;
 }
 .descriptionbar span
 {
-	margin-top: 0.5vw;
 	margin-left: 12vw;
 }
 .pagechanger
@@ -1280,7 +1279,7 @@ footer .linkbar a
 {
 	position: relative;
     width: 100%;
-    height: calc(100% - 92px);
+    height: calc(100% - 90px);
 	background-color: var(--accentcol);
 	scroll-snap-align: end;
 }
