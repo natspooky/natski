@@ -856,10 +856,6 @@ article .code::selection
 	background-color: orange;
 	color: #000000;
 }
-article .code:hover
-{
-	background-color: #00000030;
-}
 article span .sourcer,.bibliography li a
 {
 	font-size: 13px;

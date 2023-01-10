@@ -93,6 +93,10 @@
     {
         background-color: #33333350;
     }
+    article .code:hover
+    {
+        background-color: #00000030;
+    }
 }
 @media screen and (max-width: 1250px) and (min-width: 0px)
 {
