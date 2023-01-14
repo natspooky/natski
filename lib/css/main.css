@@ -592,8 +592,8 @@ header .progress .progress-bar
 	background-image: linear-gradient(to top right, var(--themecol),var(--accentcol));
 	background-size: cover;
 	box-shadow: 0px 0px 200px var(--themecoltrans);
-	height: 25%;
-	min-height: 25%;
+	height: 152px;
+	min-height: 152px;
 	width: 100%;
 	animation: fade 1.5s;
 }
@@ -601,9 +601,9 @@ header .progress .progress-bar
 {
 	position: relative;
 	color: var(--maincol);
-	font-size: 3.7vw;
-	left: 10vw;
-	margin-top: 48px;
+	font-size: 50px;
+	left: 65px;
+	margin-top: 42px;
 }
 .prev,.next
 {

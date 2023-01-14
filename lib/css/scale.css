@@ -284,14 +284,18 @@
     }
     .topbar
     {
-        height: 18%;
-        min-height: 18%;
+        height: 50px;
+        min-height: 50px;
+        background: unset;
+        box-shadow: unset;
+        animation: unset;
     }
     .topbar h1
     {
         font-size: 6vw;
         left: 7vw;
         margin-top: 40px;
+        display: none;
     }
     main .profile
     {
