@@ -938,7 +938,7 @@ main .profile
 	border-radius: 50%;
 	border: 6px solid transparent;
 }
-main video
+main .camera
 {
 	position: absolute;
 	top: 0;
