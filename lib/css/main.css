@@ -874,11 +874,16 @@ article .chapter::before
 {
 	content: '';
 	position: relative;
-	top: 2px;
+	top: 32px;
 	left: -5px;
 	border-radius: 10px;
 	background-color: var(--themecol);
 	padding: 0.5px 1.5px;
+}
+article .chapter div
+{
+	position: relative;
+	top: -70px;
 }
 #wordcount
 {
@@ -932,6 +937,24 @@ main .profile
 	margin-top: 2vw;
 	border-radius: 50%;
 	border: 6px solid transparent;
+}
+main video
+{
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 480px;
+	width: 640px;
+	transform: scaleX(-100%);
+}
+main canvas
+{
+	position: absolute;
+	top: 0;
+	right: 0;
+	height: 480px;
+	width: 640px;
+	transform: scaleX(-100%);
 }
 .middle .beforemiddleimg
 {
