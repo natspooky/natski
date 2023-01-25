@@ -323,7 +323,7 @@
                         loader[i].style.display = 'none'
                         frames[i].src='';
             })}};
-            $(document).ready(function(){setTimeout(()=>{parent.loaderdeactivate(),parent.pagename('Portfolio');},500);});
+            $(document).ready(function(){setTimeout(()=>{parent.loaderdeactivate(),parent.pagename('Portfolio');parent.notiferror('unable to load portfolio thumbnail: N_AI')},500);});
         </script>
         <footer>
             <div class="linkbar" id="linker">
