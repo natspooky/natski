@@ -449,19 +449,6 @@ button
 {
 	color: var(--maincol);
 }
-.notifcont .notif .notifprog
-{
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	height: 7%;
-	width: 100%;
-	background-color: var(--themecol);
-	transform: scaleX(1);
-	transform-origin: left;
-	animation: notifload 2s linear;
-	transition: 0.3s;
-}
 .slidemenu
 {
 	position: fixed;
