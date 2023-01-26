@@ -132,13 +132,14 @@
         <div class="slidesmenu" id="slidechooser"></div>
         <script>
             let slides = document.getElementById("slidecontainer").childElementCount, slidenum = document.getElementById('slidechooser');
-            for(let i = 0; i<slides; i++) {
-                newslide = slidenum.appendChild(document.createElement('div'))
-                newslide.className = 'slidepicker';
-                newslide.name = i;
-                newslide.innerText=(i+1);
-                newslide.style.backgroundImage = "url(icon/slides/gcse/"+(i+1)+".png)";
-                newslide.onclick=function(){scrollslide(this.name)}
+            if(window.innerWidth > window.innerHeight) {
+                for(let i = 0; i<slides; i++) {
+                    newslide = slidenum.appendChild(document.createElement('div'))
+                    newslide.className = 'slidepicker';
+                    newslide.name = i;
+                    newslide.style.backgroundImage = "url(icon/slides/gcse/"+(i+1)+".png)";
+                    newslide.onclick=function(){scrollslide(this.name)}
+                }
             };
             function scrollslide(e) {
                 document.getElementById('slidenumber'+e).scrollIntoView({
