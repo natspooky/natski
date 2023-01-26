@@ -136,16 +136,16 @@
                 newslide = slidenum.appendChild(document.createElement('div'))
                 newslide.className = 'slidepicker';
                 newslide.name = i;
-                newslide.innerText=i
+                newslide.innerText=i;
                 newslide.onclick=function(){scrollslide(this.name)}
-            }
+            };
             function scrollslide(e) {
                 document.getElementById('slidenumber'+e).scrollIntoView({
                     behavior: 'auto',
                     block: 'center',
                     inline: 'center'
                 });
-            }
+            };
         </script>
 
         <nav class="navbar">
