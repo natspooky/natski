@@ -136,7 +136,8 @@
                 newslide = slidenum.appendChild(document.createElement('div'))
                 newslide.className = 'slidepicker';
                 newslide.name = i;
-                newslide.innerText=i;
+                newslide.innerText=(i+1);
+                newslide.style.backgroundImage = "url(icon/slides/gcse/"+(i+1)+".png)";
                 newslide.onclick=function(){scrollslide(this.name)}
             };
             function scrollslide(e) {
