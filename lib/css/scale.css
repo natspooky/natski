@@ -193,7 +193,7 @@
     {
         top: 55px;
         right: 50px;
-        width: 80vw;
+        width: 70vw;
         padding: unset;
         height: auto;
         background-color: transparent;
@@ -223,7 +223,7 @@
     }
     .notifcont .notif .notifinfo
     {
-        width: 64vw;
+        width: 50vw;
         font-size: 3vw;
     }
     .notifcont .notif .notifclose
