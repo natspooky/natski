@@ -245,7 +245,7 @@
             $(".loaderback").fadeOut()
         }
         window.addEventListener("load", function() {
-            showSlides(slideIndex),notifcomplete('Running version N2.0'),notifcomplete('Running version N2.0'),notifcomplete('Running version N2.0'),time = setInterval(function() {
+            showSlides(slideIndex),notifcomplete('Running version N2.0'),time = setInterval(function() {
                 plusSlides(1)
             }, 1e4), slideshowContainer = document.getElementsByClassName("banner-button");
             for (let e = 0; e < slideshowContainer.length; e++) slideshowContainer[e].addEventListener("mouseenter", pause), slideshowContainer[e].addEventListener("mouseleave", resume)
