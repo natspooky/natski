@@ -310,7 +310,7 @@
         </main>
         <script>
             var timer = null, frames = document.getElementsByClassName('iframelookers'), link = document.getElementsByClassName('linkplate'), loader = document.getElementsByClassName('loaderframe');
-            if(!navigator.userAgentData.mobile) {
+            if(window.innerWidth > window.innerHeight) {
                 for(let i = 0; i<link.length;i++){
                     link[i].addEventListener('mouseover',function() {
                         loader[i].style.display = 'flex'
