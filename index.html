@@ -172,6 +172,7 @@
         }
 
         function remove(e) {
+            sfx('delete')
             var t = e;
             t.style.transform = "translateX(80%)", t.style.opacity = "0", setTimeout(() => {
                 t.style.height = "0", t.style.margin = "0"
@@ -214,7 +215,6 @@
                 s = n.appendChild(document.createElement("ion-icon"));
             t.className = "notif", n.className = "alert green", i.className = "notifinfo", i.innerText = e, a.className = "notifclose", a.onclick = function() {
                 remove(this.parentNode)
-                sfx('delete')
             }, l.name = "close", s.name = "alert", notifcloser()
         }
 
@@ -237,6 +237,7 @@
         }
 
         function notifopener() {
+            sfx('appear')
             document.getElementById("notifbar").classList.remove("active"), document.getElementById("notifmenu").classList.add("active"), document.getElementById("naviright").classList.add("active")
         }
 
