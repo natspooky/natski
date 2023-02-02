@@ -92,10 +92,10 @@
                     </button>
                 </div>
             </div>
-            <button class="prev" onclick="plusSlides(-1);sfx('hom')">
+            <button class="prev" onclick="plusSlides(-1);sfx('clicker')">
                 <ion-icon name="caret-back"></ion-icon>
             </button>
-            <button class="next" onclick="plusSlides(1);sfx('hom')">
+            <button class="next" onclick="plusSlides(1);sfx('clicker')">
                 <ion-icon name="caret-forward"></ion-icon>
             </button>
             <section class="thumbs">
@@ -118,7 +118,7 @@
             <audio preload="auto" id="excite" src="lib/audio/excite-open.mp3"></audio>
             <audio preload="auto" id="appear" src="lib/audio/notif-appear.mp3"></audio>
             <audio preload="auto" id="delete" src="lib/audio/notif-delete.mp3"></audio>
-            <audio preload="auto" id="up" src="lib/audio/up-open.mp3"></audio>
+            <audio preload="auto" id="clicker" src="lib/audio/button-click.mp3"></audio>
         </section>
         <script>
             var time, slideshowContainer, interval, slideIndex = 1,
@@ -389,11 +389,11 @@
         <div class="changelogframe">
             <iframe id="logframe"></iframe>
             <div class="pagechanger" style="border-top: 2px solid #303030;">
-                <button id="backpg" onclick="changepage(-1);sfx('hom')">
+                <button id="backpg" onclick="changepage(-1);sfx('clicker')">
                     <ion-icon name="caret-back"></ion-icon>
                 </button>
                 <p id="pagecounter"></p>
-                <button id="forwardpg" onclick="changepage(1);sfx('hom')">
+                <button id="forwardpg" onclick="changepage(1);sfx('clicker')">
                     <ion-icon name="caret-forward"></ion-icon>
                 </button>
             </div>
