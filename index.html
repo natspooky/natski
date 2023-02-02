@@ -176,7 +176,6 @@
             var t = e;
             t.style.transform = "translateX(80%)", t.style.opacity = "0", setTimeout(() => {
                 t.style.height = "0", t.style.margin = "0"
-                console.log(document.getElementById("notifbar").childElementCount)
                 2 >= document.getElementById("notifbar").childElementCount && 
                 (document.getElementById("notifbar").classList.add("active"), 
                 document.getElementById("notifmenu").classList.remove("active"),
@@ -188,8 +187,10 @@
         }
 
         function sfx(e) {
-            let r = document.getElementById(e);
-            r.play()
+            if(!navigator.userAgentData.mobile){
+                let r = document.getElementById(e);
+                r.play();
+            }
         }
 
         function removeall() {
