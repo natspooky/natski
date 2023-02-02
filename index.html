@@ -189,6 +189,7 @@
         function sfx(e) {
             if(!navigator.userAgentData.mobile){
                 let r = document.getElementById(e);
+                r.currentTime = 0
                 r.play();
             }
         }
