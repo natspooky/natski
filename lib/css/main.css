@@ -355,26 +355,21 @@ button
 .slidesmenu .slidepicker
 {
 	position: relative;
-	width: 100%;
-	margin: 10px 0;
+	width: calc(100% - 10px);
+	border-radius: 5px;
+	display: block;
+	margin: 5px auto;
 	height: 79px;
 	background-position: center;
 	background-size: cover;
 	filter: brightness(0.4);
+	border: 2px solid #303030;
 	background-color: transparent;
 	transition: 0.1s;
 }
 .slidesmenu .slidepicker:nth-child(even)
 {
 	background-color: #30303050;
-}
-.slidesmenu .slidepicker:first-child
-{
-	margin-top: 0;
-}
-.slidesmenu .slidepicker:last-child
-{
-	margin-bottom: 0;
 }
 .slidesmenu .slidepicker:hover
 {
