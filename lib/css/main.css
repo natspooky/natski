@@ -1305,7 +1305,8 @@ footer .linkbar a
 	background-color: var(--accentcol);
 	display: none;
 	border-radius: 10px;
-	place-content: center;
+	justify-content: center;
+	align-items: center;
 	cursor: pointer;
 	transition: 0.1s;
 }
