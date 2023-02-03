@@ -61,7 +61,7 @@
                         a collection of work made during the GCSE / Alevel timeframe including: artwork, research documents and progression slides, in order to archive all of it
                     </div>
                     <h1 class="banner-title">Portfolio</h1>
-                    <button class="banner-button" onClick='document.getElementById("ifr").src="portfolio.html"; loaderactivate();sfx("excite");'>
+                    <button class="banner-button" id="portfolio" onClick='pageactive(this.id,"Portfolio","ifr");loaderactivate();sfx("excite");'>
                         enter
                     </button>
                 </div>
@@ -74,7 +74,7 @@
                         Websites built for either general use such as social linking sites or for brand specific jobs
                     </div>
                     <h1 class="banner-title">Websites</h1>
-                    <button class="banner-button" onClick='document.getElementById("ifr").src="websites.html"; loaderactivate();sfx("excite");'>
+                    <button class="banner-button" id="websites" onClick='pageactive(this.id,"Websites","ifr");loaderactivate();sfx("excite");'>
                         enter
                     </button>
                 </div>
@@ -247,7 +247,8 @@
         }
 
         function changepage(e) {
-            (pageindex += e) < 1 && (pageindex = 1), pageindex > index && (pageindex = index), document.getElementById("logframe").src = "lib/html/log" + pageindex + ".html", document.getElementById("pagecounter").innerHTML = pageindex + "/" + index
+            (pageindex += e) < 1 && (pageindex = 1), pageindex > index && (pageindex = index), 
+            document.getElementById("logframe").src = "lib/html/log" + pageindex + ".html", document.getElementById("pagecounter").innerHTML = pageindex + "/" + index
         }
 
         function loaderactivate() {
@@ -262,13 +263,53 @@
 
 
 
-        function makeactivepage(e) {
-            e.classList.add('active')
-            document.getElementById('home').classList.remove('active')
+
+        let buttons = document.getElementsByClassName('navbutton'),
+        changelogframe = document.getElementById("changelogframe")
+        
+
+
+
+
+
+
+        function pageactive(e,x,y) {
+            for(let i = 0; i<buttons.length; i++){
+                buttons[i].classList.remove('active')
+            }
+            document.getElementById(e).classList.add('active')
+            loadframe(e,x,y)
         }
-        function makeactivehome() {
-            document.getElementsByClassName('navbutton').classList.remove('active')
+
+        function homeactive() {
+            for(let i = 0; i<buttons.length; i++){
+                buttons[i].classList.remove('active')
+            }
+            unloadframe('','Home','logframe')
+            unloadframe('','Home','ifr')
+            nostaticpage()
             document.getElementById('home').classList.add('active')
+            document.getElementById("notifbar").classList.add('active')
+        }
+
+
+
+
+        function unloadframe(e,x,y) {
+            if(y=='logframe'){
+                document.body.classList.remove("staticlog"),
+                document.querySelector(".changelogframe").classList.remove("active"),
+                $("#backcloser").fadeOut()
+            }else{
+                document.querySelector(".pagecontainer").classList.remove("active"),
+                document.querySelector(".navbar").classList.remove("active"),
+                document.body.classList.remove("static")}
+                document.getElementById(y).src=e; 
+                document.title="Natski | "+x;
+                for(let i = 0; i<buttons.length; i++){
+                    buttons[i].classList.remove('active')
+                }
+                document.getElementById('home').classList.add('active')
         }
 
 
@@ -277,10 +318,29 @@
 
 
 
-        function loadframe(e,x) {
-            document.getElementById("logframe").src=e; 
-            document.title="Natski | "+x;
+        function loadframe(e,x,y) {
+            if(y=='logframe'){
+                document.body.classList.add("staticlog"),
+                $("#backcloser").fadeIn(),
+                document.querySelector(".changelogframe").classList.add("active")
+            }else{
+                document.querySelector(".pagecontainer").classList.add("active"),
+                document.querySelector(".navbar").classList.add("active")}
+                document.getElementById(y).src=e+'.html';
+                document.title="Natski | "+x+'.html';
         }
+
+
+
+        function nostaticpage() {
+            document.body.classList.remove("staticlog")
+            document.body.classList.remove("static")
+        }
+
+
+
+        
+
 
 
         window.addEventListener("load", function() {
@@ -388,22 +448,22 @@
             <!-- make the navbarright into the mobile menu :)  //  use backpanel to make it .slid -->
 
             <div class="navbarright">
-                <button class="navbutton active" id="home" onclick='document.getElementById("logframe").src=""; document.getElementById("ifr").src=""; document.title="Natski | Home";sfx("hom");'>
+                <button class="navbutton active" id="home" onclick='homeactive();sfx("hom");'>
                     Home 
                     
                     <!-- make all names in navbarright into svg icons // delayed? -->
 
                     <div class="selector"></div>
                 </button>
-                <a class="navbutton" href="about.html">
+                <a class="navbutton" id="about" onClick='pageactive(this.id,"About","ifr");loaderactivate();sfx("excite");'>
                     About
                     <div class="selector"></div>
                 </a>
-                <button class="navbutton" id="log" onClick='document.getElementById("logframe").src="lib/html/log1.html"; load(); document.title="Natski | Changelog";sfx("excite")'>
+                <button class="navbutton" id="changelog" onClick='unloadframe("","Changelog","ifr");pageactive(this.id,"Changelog","logframe");document.getElementById("logframe").src="lib/html/log1.html";load();loaderdeactivate();sfx("excite")'>
                     Changelog
                     <div class="selector"></div>
                 </button>
-                <button class="navbutton" id="settings" onClick='document.getElementById("logframe").src="lib/html/log1.html"; document.title="Natski | Settings";sfx("excite")'>
+                <button class="navbutton" id="settings" onClick='pageactive(this.id,"Settings","ifr");loaderactivate();sfx("excite")'>
                     settings icons pls
                     <div class="selector"></div>
                 </button>
@@ -414,7 +474,7 @@
                 </button>
             </div>
         </nav>
-        <div class="backpanel" id="backcloser" onClick='document.getElementById("logframe").src=""; document.title="Natski | Home";sfx("hom")'></div>
+        <div class="backpanel" id="backcloser" onClick='unloadframe("","Home","logframe");sfx("hom")'></div>
         <div class="changelogframe">
             <iframe id="logframe"></iframe>
             <div class="pagechanger" style="border-top: 2px solid #303030;">
@@ -426,7 +486,7 @@
                     <ion-icon name="caret-forward"></ion-icon>
                 </button>
             </div>
-            <button class="logcloser" onClick='document.getElementById("logframe").src=""; document.title="Natski | Home";sfx("hom")'>
+            <button class="logcloser" onClick='unloadframe("","Home","logframe");sfx("hom")'>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 811.31 811.31">
                     <defs>
                         <style>
@@ -441,7 +501,7 @@
         <div class="pagecontainerstyle"></div>
         <div class="pagecontainer">
             <iframe id="ifr"></iframe>
-            <button class="closer" onClick='document.getElementById("ifr").src=""; document.title="Natski | Home";document.getElementById("pagename").innerHTML="Home";sfx("hom")'>
+            <button class="closer" onClick='unloadframe("","Home","ifr");document.getElementById("pagename").innerHTML="Home";sfx("hom")'>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 811.31 811.31">
                     <defs>
                         <style>
