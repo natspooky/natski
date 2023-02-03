@@ -45,7 +45,7 @@
     }
     .navbar .notiftoggle:hover
     {
-        color: #ca8300;
+        fill: #ca8300;
     }
     .notifcont h1 button:hover
     {
@@ -161,10 +161,13 @@
         margin: 0 10px;
         transition: 0.3s;
     }
+    .navbar .notiftoggle svg
+    {
+        height: 20px;
+    }
     .navbar .notiftoggle
     {
         transform: scale(1);
-        font-size: 24px;
         height: 40px;
         transition: 0.3s;
     }
