@@ -608,6 +608,7 @@ button
 {
 	height: 20px;
 	fill: var(--maincol);
+	transition: 0.1s;
 }
 .navbutton.active svg
 {
