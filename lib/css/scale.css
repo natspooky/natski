@@ -158,7 +158,7 @@
     }
     .navbar .navbarright
     {
-        margin: 0 10px;
+        margin: 0;
         transition: 0.3s;
     }
     .navbar .notiftoggle svg
