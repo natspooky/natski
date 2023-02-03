@@ -228,9 +228,9 @@ button
 }
 .navbar .navbarright
 {
-	position: absolute;
+	position: relative;
 	height: 100%;
-	right: 0;
+	float: right;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -243,12 +243,13 @@ button
 }
 .navbar .notiftoggle
 {
-	position: absolute;
-	top: 0;
-	right: 10px;
-	padding: 0 10px;
-	transform: translateX(50px) scale(1);
+	position: relative;
+	float: right;
+	margin: 0;
+	padding: 0;
+	transform: scale(1);
 	height: 100%;
+	width: 0;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -261,7 +262,9 @@ button
 }
 .navbar .notiftoggle.active
 {
-	transform: translateX(0) scale(1);
+	margin: 0 8px;
+	padding: 0 10px;
+	width: auto;
 }
 .toggle
 {
@@ -557,8 +560,8 @@ button
 .navbutton, .menubutton
 {
 	height: 100%;
-	margin: 0vw 8px;
-	padding: 0vw 10px;
+	margin: 0 8px;
+	padding: 0 10px;
 	text-decoration: none;
 	color: var(--maincol);
 	letter-spacing: 1px;
