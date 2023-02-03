@@ -43,7 +43,7 @@
         box-shadow: 0px 0px 100px #0a0a0a;
         border-bottom: 2px solid transparent;
     }
-    .navbar .notiftoggle:hover
+    .navbar .notiftoggle svg:hover
     {
         fill: #ca8300;
     }
@@ -158,7 +158,7 @@
     }
     .navbar .navbarright
     {
-        margin: 0;
+        margin: 0 10px;
         transition: 0.3s;
     }
     .navbar .notiftoggle svg
@@ -173,7 +173,8 @@
     }
     .navbar .notiftoggle.active
     {
-        width: 40px;
+        width: 20px;
+        margin-right: 7px;
     }
 
 
