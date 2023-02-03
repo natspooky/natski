@@ -144,15 +144,13 @@
         border-radius: 0px;
         box-shadow: 0px 0px 25px #00000070;
     }
+
+
     .navbar .navbarleft 
     {
-        left: 0px;
+        margin: 0 3px;
         height: 40px;
         width: 40px;
-    }
-    .navbar.active .navbarleft
-    {
-        left: 2.5px;
     }
     .navbar .navbarleft a svg
     {
@@ -160,26 +158,23 @@
     }
     .navbar .navbarright
     {
-        right: 7px;
+        margin: 0 10px;
         transition: 0.3s;
-    }
-    .navbar.active .navbarright
-    {
-        right: 9.5px;
-    }
-    .navbar .navbarright.active
-    {
-        transform: translateX(-34px);
     }
     .navbar .notiftoggle
     {
-        right: 0px;
-        transform: translateX(50px) scale(1);
+        transform: scale(1);
         font-size: 24px;
         height: 40px;
-        width: 40px;
         transition: 0.3s;
     }
+    .navbar .notiftoggle.active
+    {
+        width: 40px;
+    }
+
+
+
     .navbutton,.prev,.next,.banner-info,.middle .beforemiddleimg .text,.middlebutton,.backpanel.active,.changelogframe,.notifcont h1, article div::before
     {
         display: none;
