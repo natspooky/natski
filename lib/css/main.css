@@ -36,8 +36,9 @@
 }
 .loaderback div
 {
-	display: grid;
-	place-content: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	background-color: #000000b0;
 	border: 1px solid var(--maincol);
 	border-radius: 40px;
@@ -248,8 +249,9 @@ button
 	padding: 0 10px;
 	transform: translateX(50px) scale(1);
 	height: 100%;
-	display: grid;
-	place-content: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	color: var(--maincol);
 	border: none;
 	background-color: transparent;
@@ -422,10 +424,11 @@ button
 	width: 100%;
 	background-color: #373737;
 	border-radius: 10px;
-	display: grid;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	margin-bottom: 20px;
 	transform: scale(1);
-	place-content: center;
 	animation: notif 0.5s;
 	text-decoration: none;
 	transition: 0.15s ease;
@@ -437,8 +440,9 @@ button
 	left: 0;
 	top: 0;
 	height: 100%;
-	display: grid;
-	place-content: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	font-size: 30px;
 	color: green;
 	background-image: linear-gradient(to top, #002c00, #0a0a0a);
@@ -491,8 +495,9 @@ button
 	font-size: 32px;
 	color: #252525;
 	aspect-ratio: 6 / 16;
-	display: grid;
-	place-content: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	transition: 0.1s;
 	cursor: pointer;
 }
@@ -667,8 +672,9 @@ header .progress .progress-bar
 	height: 75px;
 	width: 30px;
 	border-radius: 7px;
-	display: grid;
-	place-content: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	background-color: var(--accentcol);
 	border: none;
 	color: var(--maincol);
@@ -1134,8 +1140,9 @@ main #canvas
 }
 .loaderframe div
 {
-	display: grid;
-	place-content: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	background-color: #000000b0;
 	border: 1px solid var(--maincol);
 	border-radius: 3.4vw;
@@ -1193,8 +1200,9 @@ main #canvas
 	font-size: 2vw;
 	height: 2.5vw;
 	width: 2.5vw;
-	display: grid;
-	place-items: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	background-color: transparent;
 	border: 0px;
 	color: var(--maincol);
@@ -1314,7 +1322,7 @@ footer .linkbar a
 }
 .pagecontainer.active .closer,.changelogframe.active .logcloser
 {
-	display: grid;
+	display: flex;
 }
 .pagecontainer .closer svg,.changelogframe .logcloser svg
 {

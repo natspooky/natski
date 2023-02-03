@@ -417,8 +417,9 @@
     .iframecont a
     {
         background-color: #222;
-        display: grid;
-        place-content: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
     .img
     {
