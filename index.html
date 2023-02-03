@@ -41,7 +41,6 @@
         <script src="lib/js/images.js"></script>
 	</head>
     <body>
-        
         <div class="loaderback" style="display: flex;">
             <p>//Natski build N2.0</p>
             <div>
@@ -259,19 +258,7 @@
             $(".loaderback").fadeOut()
         }
 
-
-
-
-
-
         let buttons = document.getElementsByClassName('navbutton')
-        
-
-
-
-
-
-
         function pageactive(e,x,y) {
             for(let i = 0; i<buttons.length; i++){
                 buttons[i].classList.remove('active')
@@ -290,9 +277,6 @@
             document.getElementById("notifbar").classList.add('active')
         }
 
-
-
-
         function unloadframe(e,x,y) {
             if(y=='logframe'){
                 document.querySelector(".changelogframe").classList.remove("active"),
@@ -309,12 +293,6 @@
                 document.getElementById('home').classList.add('active')
         }
 
-
-
-
-
-
-
         function loadframe(e,x,y) {
             if(y=='logframe'){
                 $("#backcloser").fadeIn(),
@@ -326,13 +304,7 @@
                 document.getElementById(y).src=e+'.html';
                 document.title="Natski | "+x+'.html';
         }
-
-
-
         
-
-
-
         window.addEventListener("load", function() {
             showSlides(slideIndex),time = setInterval(function() {
                 plusSlides(1)
