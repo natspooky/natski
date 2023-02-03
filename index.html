@@ -187,7 +187,7 @@
         }
 
         function sfx(e) {
-            if(!navigator.userAgentData.mobile){
+            if(window.innerWidth > window.innerHeight){
                 let r = document.getElementById(e);
                 r.currentTime = 0
                 r.play();
