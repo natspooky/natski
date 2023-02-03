@@ -43,7 +43,7 @@
         box-shadow: 0px 0px 100px #0a0a0a;
         border-bottom: 2px solid transparent;
     }
-    .navbar .notiftoggle svg:hover
+    .navbar .notiftoggle:hover svg
     {
         fill: #ca8300;
     }
