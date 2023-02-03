@@ -264,8 +264,7 @@
 
 
 
-        let buttons = document.getElementsByClassName('navbutton'),
-        changelogframe = document.getElementById("changelogframe")
+        let buttons = document.getElementsByClassName('navbutton')
         
 
 
@@ -287,7 +286,6 @@
             }
             unloadframe('','Home','logframe')
             unloadframe('','Home','ifr')
-            nostaticpage()
             document.getElementById('home').classList.add('active')
             document.getElementById("notifbar").classList.add('active')
         }
@@ -297,13 +295,12 @@
 
         function unloadframe(e,x,y) {
             if(y=='logframe'){
-                document.body.classList.remove("staticlog"),
                 document.querySelector(".changelogframe").classList.remove("active"),
                 $("#backcloser").fadeOut()
             }else{
                 document.querySelector(".pagecontainer").classList.remove("active"),
-                document.querySelector(".navbar").classList.remove("active"),
-                document.body.classList.remove("static")}
+                document.querySelector(".navbar").classList.remove("active")}
+                document.body.classList.remove("static")
                 document.getElementById(y).src=e; 
                 document.title="Natski | "+x;
                 for(let i = 0; i<buttons.length; i++){
@@ -320,21 +317,14 @@
 
         function loadframe(e,x,y) {
             if(y=='logframe'){
-                document.body.classList.add("staticlog"),
                 $("#backcloser").fadeIn(),
                 document.querySelector(".changelogframe").classList.add("active")
             }else{
                 document.querySelector(".pagecontainer").classList.add("active"),
                 document.querySelector(".navbar").classList.add("active")}
+                document.body.classList.add("static")
                 document.getElementById(y).src=e+'.html';
                 document.title="Natski | "+x+'.html';
-        }
-
-
-
-        function nostaticpage() {
-            document.body.classList.remove("staticlog")
-            document.body.classList.remove("static")
         }
 
 
