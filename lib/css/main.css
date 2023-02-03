@@ -41,7 +41,7 @@
 	align-items: center;
 	background-color: #000000b0;
 	border: 1px solid var(--maincol);
-	border-radius: 40px;
+	border-radius: 45px;
 	height: 155px;
 	width: 155px;
 	transition: 0.3s;
@@ -366,17 +366,12 @@ button
 	background-size: cover;
 	filter: brightness(0.4);
 	border: 2px solid #303030;
-	background-color: transparent;
+	background-color: #303030;
 	transition: 0.1s;
 }
 .slidesmenu .slidepicker:nth-child(even)
 {
 	background-color: #30303050;
-}
-.slidesmenu .slidepicker:hover
-{
-	background-color: #303030;
-	filter: brightness(1);
 }
 .notifcont
 {
@@ -1145,17 +1140,17 @@ main #canvas
 	align-items: center;
 	background-color: #000000b0;
 	border: 1px solid var(--maincol);
-	border-radius: 3.4vw;
-	height: 12vw;
-	width: 12vw;
+	border-radius: 2.9vw;
+	height: 10vw;
+	width: 10vw;
 	transition: 0.3s;
 	animation: spin2 3s infinite;
 }
 .loaderframe div svg
 {
 	position: relative;
-	height: 8vw;
-	width: 8vw;
+	height: 6.45vw;
+	width: 6.45vw;
 	animation: spin 1.5s linear infinite;
 }
 .middle.artpage
