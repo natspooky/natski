@@ -41,6 +41,14 @@
         <script src="lib/js/images.js"></script>
 	</head>
     <body>
+        <script>
+            if(localStorage.getItem("theme")===null){
+                var theme='#729ef6';
+            }else{
+                var theme=localStorage.getItem('theme');
+            };
+            $(':root').css({'--themecol':theme,'--themecoltrans':theme+"50"});
+        </script>
         <div class="loaderback" style="display: flex;">
             <p>//Natski build N2.0</p>
             <div>

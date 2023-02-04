@@ -39,6 +39,14 @@
         <script src="lib/js/jquery.js"></script>
         <script src="lib/js/images.js"></script>
 	</head>
+    <script>
+        if(localStorage.getItem("theme")===null){
+            var theme='#729ef6';
+        }else{
+            var theme=localStorage.getItem('theme');
+        };
+        $(':root').css({'--themecol':theme,'--themecoltrans':theme+"50"});
+    </script>
     <body>
         <div class="loaderback">
             <div>
