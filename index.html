@@ -321,6 +321,10 @@
                 parent.loaderdeactivate()
             }, 500)
         });
+
+        function changetheme(e) {
+            $(':root').css({'--themecol':e,'--themecoltrans':e+"90"});
+        };
             /*
             function addnotif(x,y){
                 loadernotif(y);

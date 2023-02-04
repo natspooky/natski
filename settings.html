@@ -48,24 +48,32 @@
                 </svg>
             </div>
         </div>
-        <a href="portfolio.html" onclick="parent.loaderactivate();">
-            <button class="backpage">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 833.38 833.38">
-                    <defs>
-                        <style>
-                        .back-icon{fill:none;stroke:var(--maincol);stroke-linecap:round;stroke-linejoin:round;stroke-width:120px;}
-                        </style>
-                    </defs>
-                    <polyline class="back-icon" points="416.69 60 60 416.69 416.69 773.38"/>
-                    <line class="back-icon" x1="770.41" y1="416.69" x2="76.58" y2="416.69"/>
-                </svg>
-            </button>
-        </a>
         <header class="topbar">
             <h1>Settings</h1>
         </header>
     
-        <main style="width: 100vw; height: 100%;"></main>
+        <main style="width: 100vw; height: 100%;">
+            <input type="text" id="themepicker">
+        </main>
+
+
+
+        <script>
+
+            $("#themepicker").on("input",function(){
+                    var hex=document.getElementById("themepicker").value;
+                    if(/^#([0-9A-F]{6})$/i.test(hex)==false||hex=='#ffffff'){
+                        hex='#729ef6';
+                    }
+
+                    localStorage.setItem('theme',hex);
+                    $(':root').css({'--themecol':hex,'--themecoltrans':hex+"90"});
+                    parent.changetheme(hex)
+            });
+
+        </script>
+
+
 
         <footer>
             <div class="linkbar" id="linker">
