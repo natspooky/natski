@@ -104,8 +104,8 @@
 {
 	--maincol: #e9e9e9;
 	--accentcol: #1e1e1e;
-	--themecol: #729ef6;
-	--themecoltrans: #729ef650;
+	--themecol: transparent;
+	--themecoltrans: transparent;
 	--barcol: #dcdcdc;
 	--buttoncol: #f8f9fa;
 }
