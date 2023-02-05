@@ -613,6 +613,7 @@ button
 .navbutton.active svg
 {
 	fill: var(--themecol);
+	animation: rotate 6s linear infinite;
 }
 .navbutton.active .selector
 {
