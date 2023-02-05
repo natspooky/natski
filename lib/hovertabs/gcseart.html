@@ -10,6 +10,14 @@
 <script src=https://natski.netlify.com/lib/js/jquery.js></script>
 </head>
 <body>
+    <script>
+        if(localStorage.getItem("theme")===null){
+            var theme='#729ef6';
+        }else{
+            var theme=localStorage.getItem('theme');
+        };
+        $(':root').css({'--themecol':theme,'--themecoltrans':theme+"50"});
+    </script>
 <header class=topbar>
 <h1 style=margin:unset>GCSE Art</h1>
 </header>
