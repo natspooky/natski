@@ -267,6 +267,7 @@
         }
 
         let buttons = document.getElementsByClassName('navbutton')
+
         function pageactive(e,x,y) {
             for(let i = 0; i<buttons.length; i++){
                 buttons[i].classList.remove('active')
@@ -494,43 +495,18 @@
         </div>
         <div class="slidemenu">
             <div class="menubar">
-                <button class="menubutton active">
+                <button class="menubutton active" onclick='homeactive();'>
                     Home
                 </button>
-                <a class="menubutton" href="about.html">
+                <a class="menubutton" onclick='pageactive("about","About","ifr");loaderactivate();'>
                     About
                 </a>
-                <a class="menubutton" href="changes.html">
+                <a class="menubutton" onclick='pageactive("changelog","Changelog","logframe");load();loaderactivate();'>
                     Changelog
                 </a>
                 <hr>
                 <button class="menubutton" onClick='pageactive("portfolio","Portfolio","ifr");loaderactivate();'>
                     Portfolio
-                </button>
-                <svg class="menuicon" xmlns=http://www.w3.org/2000/svg viewBox="0 0 840 519.7"> <defs> <style>.chev{fill:none;stroke:var(--maincol);stroke-linecap:round;stroke-linejoin:round;stroke-width:120px}</style> </defs> <polyline class=chev points="780 99.7 420 459.7 60 99.7" /> </svg>
-                <button class="menubutton" onClick='pageactive("gcseslides","GCSE Slides","ifr");loaderactivate();'>
-                    GCSE Slides
-                </button>
-                <button class="menubutton" onClick='pageactive("gcseart","GCSE Art","ifr");loaderactivate();'>
-                    GCSE Art
-                </button>
-                <button class="menubutton" onClick='pageactive("alevelslides","Alevel Slides","ifr");loaderactivate();'>
-                    Alevel Slides
-                </button>
-                <button class="menubutton" onClick='pageactive("alevelart","Alevel Art","ifr");loaderactivate();'>
-                    Alevel Art
-                </button>
-                <button class="menubutton" onClick='pageactive("gobaessay","Art Essay","ifr");loaderactivate();'>
-                    Art Essay
-                </button>
-                <button class="menubutton" onClick='pageactive("relatedstudy","Related Study","ifr");loaderactivate();'>
-                    Related Study
-                </button>
-                <button class="menubutton" onClick='pageactive("epq","EPQ","ifr");loaderactivate();'>
-                    EPQ
-                </button>
-                <button class="menubutton" onClick='pageactive("facetracker","Face Tracker","ifr");loaderactivate();'>
-                    Face Tracker
                 </button>
                 <hr>
                 <button class="menubutton" onClick='pageactive("websites","Websites","ifr");loaderactivate();'>

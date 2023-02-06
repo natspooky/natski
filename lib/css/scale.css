@@ -174,13 +174,22 @@
         width: 40px;
         margin-right: 3px;
     }
-    .navbutton,.prev,.next,.banner-info,.middle .beforemiddleimg .text,.middlebutton,.backpanel.active,.changelogframe,.notifcont h1, article div::before
+    .navbutton,.prev,.next,.banner-info,.middle .beforemiddleimg .text,.middlebutton,.backpanel.active,.notifcont h1, article div::before
     {
         display: none;
     }
     .toggle,.slidemenu,.middle .beforemiddleimg .middleimg h1,.middle .beforemiddleimg .middleimg span, .iframecont a p,.navbar span
     {
         display: block;
+    }
+    .changelogframe
+    {
+        width: 100vw;
+        z-index: 0;
+    }
+    .backpanel
+    {
+        z-index: 0;
     }
     .slidesmenu
     {
@@ -379,6 +388,17 @@
         left: unset;
         right: 10px;
         top: 50px;
+        height: 35px;
+        width: 35px;
+        border: 2px solid #303030;
+        border-radius: 7px;
+        background-color: var(--accentcol);
+    }
+    .changelogframe .logcloser
+    {
+        left: unset;
+        right: 10px;
+        top: 60px;
         height: 35px;
         width: 35px;
         border: 2px solid #303030;
