@@ -383,22 +383,11 @@
         margin: 0px 2.5vw;
         font-size: 3.2vw;
     }
-    .pagecontainer .closer,.backpage
+    .pagecontainer .closer,.backpage,.changelogframe .logcloser
     {
         left: unset;
         right: 10px;
         top: 50px;
-        height: 35px;
-        width: 35px;
-        border: 2px solid #303030;
-        border-radius: 7px;
-        background-color: var(--accentcol);
-    }
-    .changelogframe .logcloser
-    {
-        left: unset;
-        right: 10px;
-        top: 60px;
         height: 35px;
         width: 35px;
         border: 2px solid #303030;

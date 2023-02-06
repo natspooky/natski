@@ -290,6 +290,7 @@
         function unloadframe(e,x,y) {
             if(y=='logframe'){
                 document.querySelector(".changelogframe").classList.remove("active"),
+                document.querySelector(".navbar").classList.remove("active"),
                 $("#backcloser").fadeOut()
             }else{
                 document.querySelector(".pagecontainer").classList.remove("active"),
@@ -306,7 +307,8 @@
         function loadframe(e,x,y) {
             if(y=='logframe'){
                 $("#backcloser").fadeIn(),
-                document.querySelector(".changelogframe").classList.add("active")
+                document.querySelector(".changelogframe").classList.add("active"),
+                document.querySelector(".navbar").classList.add("active")
             }else{
                 document.querySelector(".pagecontainer").classList.add("active"),
                 document.querySelector(".navbar").classList.add("active")}
