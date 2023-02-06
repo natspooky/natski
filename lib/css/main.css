@@ -45,6 +45,7 @@
 	height: 155px;
 	width: 155px;
 	transition: 0.3s;
+	box-shadow: 0 0 20px var(--accentcol);
 	animation: spin2 3s infinite;
 }
 .loaderback div svg
@@ -52,7 +53,7 @@
 	position: relative;
 	height: 100px;
 	width: 100px;
-	animation: spin 2.5s linear infinite;
+	animation: spin 3s linear infinite;
 }
 @keyframes spin {
 	from {
@@ -1161,7 +1162,7 @@ main #canvas
 	position: relative;
 	height: 6.45vw;
 	width: 6.45vw;
-	animation: spin 1.5s linear infinite;
+	animation: spin 3s linear infinite;
 }
 .middle.artpage
 {
