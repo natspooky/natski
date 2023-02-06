@@ -793,8 +793,9 @@ header .progress .progress-bar
 	padding: .8vw 3.5vw;
 	border-radius: 45px;
 	font-size: 1.4vw;
-	background-color: #00000050;
-	border: 4px solid transparent;
+	background-color: #1e1e1e20;
+	border: 4px solid var(--themecoltrans);
+	box-shadow: 0 0 10px var(--themecoltrans);
 	cursor: pointer;
 	font-weight: bold;
 	text-decoration: none;
