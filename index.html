@@ -193,7 +193,7 @@
         }
 
         function sfx(e) {
-            if(window.innerWidth > window.innerHeight){
+            if(window.innerWidth > window.innerHeight && (localStorage.getItem("sfx")==='true' || localStorage.getItem("sfx")===null)){
                 let r = document.getElementById(e);
                 r.currentTime = 0
                 r.play();

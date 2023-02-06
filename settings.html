@@ -61,7 +61,13 @@
         </header>
     
         <main class="middle" style="height: 100%;">
-            <input type="text" id="themepicker">
+            <dl>
+                <dt>website theme</dt>
+                <dd><input type="color" id="themepicker"><button onclick="resettheme()">reset</button></dd>
+                <hr>
+                <dt>website sfx (pc only)</dt>
+                <dd><input type="checkbox" id="sfx"></dd>
+            </dl>
         </main>
 
 
@@ -69,13 +75,27 @@
         <script>
             $("#themepicker").val(theme);
             $("#themepicker").on("input",function(){
-                    var hex=document.getElementById("themepicker").value;
+                    let hex=document.getElementById("themepicker").value;
                     if(/^#([0-9A-F]{6})$/i.test(hex)==false||hex=='#ffffff'){
                         hex='#729ef6';
                     }
                     localStorage.setItem('theme',hex);
                     $(':root').css({'--themecol':hex,'--themecoltrans':hex+"50"});
                     parent.changetheme(hex)
+            });
+            function resettheme() {
+                localStorage.setItem('theme','#729ef6');
+                $(':root').css({'--themecol':'#729ef6','--themecoltrans':'#729ef6'+"50"});
+                $("#themepicker").val('#729ef6');
+                parent.changetheme('#729ef6');
+            };
+            if(localStorage.getItem("sfx")===null || localStorage.getItem("sfx")==='true'){
+                document.getElementById("sfx").checked = true;
+            };
+            $("#sfx").on("input",function(){
+                    let sound=document.getElementById("sfx").checked;
+                    console.log(sound)
+                    localStorage.setItem('sfx',sound);
             });
         </script>
 
