@@ -8,6 +8,14 @@
         <script src="https://natski.netlify.com/lib/js/jquery.js"></script>
 	</head>
     <body style="overflow: scroll; height: 100%;">
+        <script>
+            if(localStorage.getItem("theme")===null){
+                var theme='#729ef6';
+            }else{
+                var theme=localStorage.getItem('theme');
+            };
+            $(':root').css({'--themecol':theme,'--themecoltrans':theme+"50"});
+        </script>
         <div class="loaderback" style="background-color: var(--accentcol); display: flex;">
             <div>
                 <?xml version="1.0" encoding="UTF-8"?>
