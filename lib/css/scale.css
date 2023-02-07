@@ -195,6 +195,10 @@
     {
         transform: translateX(20vw);
     }
+    .epqpage
+    {
+        display: none;
+    }
     .notifcont
     {
         top: 55px;
