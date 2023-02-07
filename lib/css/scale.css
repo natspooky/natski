@@ -474,6 +474,11 @@
         width: 8vw;
         border-radius: 6px;
     }
+    .middle canvas
+    {
+        height: unset;
+        width: 80%;
+    }
     dl
     {
         width: 85vw;
