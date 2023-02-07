@@ -159,7 +159,38 @@
             $(document).ready(function(){setTimeout(()=>{parent.loaderdeactivate(),parent.pagename('Face Tracker');},500);});
         </script>
         <script src="lib/js/main.js"></script>
+        
+
+
+
+        <script src="https://cubism.live2d.com/sdk-web/cubismcore/live2dcubismcore.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/dylanNew/live2d/webgl/Live2D/lib/live2d.min.js"></script>
+        <script src="https://pixijs.download/v7.1.2/pixi.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/pixi-live2d-display/dist/index.min.js"></script>
         <script src="lib/js/facetracker.js"></script>
+
+        <script>
+            (async function main() {
+  const app = new PIXI.Application({
+    view: document.getElementById("canvas"),
+    autoStart: true,
+    resizeTo: window
+  });
+
+  const model2 = await PIXI.live2d.Live2DModel.from(cubism2Model);
+  const model4 = await PIXI.live2d.Live2DModel.from(cubism4Model);
+
+  app.stage.addChild(model2);
+  app.stage.addChild(model4);
+
+  model2.scale.set(0.3);
+  model4.scale.set(0.25);
+
+  model4.x = 300;
+})();
+
+        </script>
+
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     </body>
