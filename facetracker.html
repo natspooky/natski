@@ -73,18 +73,19 @@
             <h1>Face Tracker</h1>
         </header>
     
-        <main style="position: relative; width: 100%; height: 480px;">
+        <main class="middle artpage" style="flex-shrink: 0;">
             <canvas class="camera" id="video" autoplay muted playsinline></canvas>
             <canvas id="canvas"></canvas>
         </main>
-        <div style="position: fixed; top: calc(50% - 45px); left: 25px; height: 100px; width: 20px; background-color: var(--accentcol); overflow: hidden; border-radius: 10px; border: 2px solid #303030;">
-            <div id="bar" style="width: 100%; height: 100px; position: relative; background-color: var(--themecol); transform-origin: bottom;"></div>
-            <div id="point" style="position: relative; height: 2px; width: 100%; bottom: 0; background-color: red; transform: translateY(-10px);"></div>
+        <div style="position: relative; height: 20px; width: 90vw; display: block; margin: 10px auto; background-color: var(--accentcol); overflow: hidden; border-radius: 10px; border: 2px solid #303030;">
+            <div id="bar" style="width: 100%; height: 20px; position: relative; background-color: var(--themecol); transform-origin: left;"></div>
+            <div id="point" style="position: absolute; left: 0; top: 0; height: 25px; width: 2px; background-color: red; transform: translateX(10vw)"></div>
         </div>
-        <div>
+
+        <div class="controls">
             <input type="range" id="X" min="-1" max="1" step="0.05" oninput="moveAnchor(this,'x')">
             <input type="range" id="Y" min="-1" max="1" step="0.05" oninput="moveAnchor(this,'y')">
-            <input type="range" id="volume" min="0" max="1" step="0.01" value="0.1" oninput="getRoomNoise(this); document.getElementById('point').style.transform = 'translateY('+this.value*-100+'px)';">
+            <input type="range" id="volume" min="0" max="1" step="0.01" value="0.1" oninput="getRoomNoise(this); document.getElementById('point').style.transform = 'translateX('+    this.value/0.01111111111    +'vw)';">
         </div>
 
         <footer>
@@ -158,38 +159,9 @@
         <script>
             $(document).ready(function(){setTimeout(()=>{parent.loaderdeactivate(),parent.pagename('Face Tracker');},500);});
         </script>
+
         <script src="lib/js/main.js"></script>
-        
-
-
-
-        <script src="https://cubism.live2d.com/sdk-web/cubismcore/live2dcubismcore.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/gh/dylanNew/live2d/webgl/Live2D/lib/live2d.min.js"></script>
-        <script src="https://pixijs.download/v7.1.2/pixi.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/pixi-live2d-display/dist/index.min.js"></script>
         <script src="lib/js/facetracker.js"></script>
-
-        <script>
-            (async function main() {
-  const app = new PIXI.Application({
-    view: document.getElementById("canvas"),
-    autoStart: true,
-    resizeTo: window
-  });
-
-  const model2 = await PIXI.live2d.Live2DModel.from(cubism2Model);
-  const model4 = await PIXI.live2d.Live2DModel.from(cubism4Model);
-
-  app.stage.addChild(model2);
-  app.stage.addChild(model4);
-
-  model2.scale.set(0.3);
-  model4.scale.set(0.25);
-
-  model4.x = 300;
-})();
-
-        </script>
 
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
