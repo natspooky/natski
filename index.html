@@ -341,7 +341,9 @@
                 $(".loaderback").fadeOut()
             }
             
-            
+            window.onerror = function(error) {
+                notiferror(error)
+            };
             /*
                 function addnotif(x,y){
                     loadernotif(y);
