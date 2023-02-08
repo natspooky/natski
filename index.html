@@ -134,228 +134,232 @@
             pageindex = 1,
             index = 3;
 
-        function progressBar() {
-            elem.style.transition = "0.1s linear", interval = setInterval(function e() {
-                width >= 100 ? clearInterval(interval) : (width++, elem.style.width = width + "%"), 95 == width && $(".banner-fg").css({
-                    opacity: "0",
-                    transform: "translateY(-60px)"
-                })
-            }, 100)
-        }
+            function progressBar() {
+                elem.style.transition = "0.1s linear", interval = setInterval(function e() {
+                    width >= 100 ? clearInterval(interval) : (width++, elem.style.width = width + "%"), 95 == width && $(".banner-fg").css({
+                        opacity: "0",
+                        transform: "translateY(-60px)"
+                    })
+                }, 100)
+            }
 
-        function resetProgressBar() {
-            elem.style.transition = "0s", width = 0, clearInterval(interval), elem.style.width = width + "%"
-        }
+            function resetProgressBar() {
+                elem.style.transition = "0s", width = 0, clearInterval(interval), elem.style.width = width + "%"
+            }
 
-        function plusSlides(e) {
-            clearInterval(time), e < 0 ? showSlides(slideIndex -= 1) : showSlides(slideIndex += 1), time = -1 === e ? setInterval(function() {
-                plusSlides(e + 2)
-            }, 1e4) : setInterval(function() {
-                plusSlides(e + 1)
-            }, 1e4)
-        }
+            function plusSlides(e) {
+                clearInterval(time), e < 0 ? showSlides(slideIndex -= 1) : showSlides(slideIndex += 1), time = -1 === e ? setInterval(function() {
+                    plusSlides(e + 2)
+                }, 1e4) : setInterval(function() {
+                    plusSlides(e + 1)
+                }, 1e4)
+            }
 
-        function currentSlide(e) {
-            clearInterval(time), time = setInterval(function() {
-                plusSlides(e + 1)
-            }, 1e4), showSlides(slideIndex = e)
-        }
+            function currentSlide(e) {
+                clearInterval(time), time = setInterval(function() {
+                    plusSlides(e + 1)
+                }, 1e4), showSlides(slideIndex = e)
+            }
 
-        function showSlides(e) {
-            var t, n = document.getElementsByClassName("banner-bg"),
-                i = document.getElementsByClassName("thumb");
-            for (e > n.length && (slideIndex = 1), e < 1 && (slideIndex = n.length), t = 0; t < n.length; t++) n[t].style.display = "none";
-            for (t = 0; t < i.length; t++) i[t].classList.remove("active");
-            n[slideIndex - 1].style.display = "flex", $(".banner-fg").css({
-                opacity: "1",
-                transform: "translateY(0px)"
-            }), i[slideIndex - 1].classList.add("active"), resetProgressBar(), progressBar()
-        }
+            function showSlides(e) {
+                var t, n = document.getElementsByClassName("banner-bg"),
+                    i = document.getElementsByClassName("thumb");
+                for (e > n.length && (slideIndex = 1), e < 1 && (slideIndex = n.length), t = 0; t < n.length; t++) n[t].style.display = "none";
+                for (t = 0; t < i.length; t++) i[t].classList.remove("active");
+                n[slideIndex - 1].style.display = "flex", $(".banner-fg").css({
+                    opacity: "1",
+                    transform: "translateY(0px)"
+                }), i[slideIndex - 1].classList.add("active"), resetProgressBar(), progressBar()
+            }
 
-        function scrolltop() {
-            setTimeout(() => {
-                document.body.scrollTop = 0, document.documentElement.scrollTop = 0
-            }, 200)
-        }
-
-        function remove(e) {
-            sfx('delete')
-            var t = e;
-            t.style.transform = "translateX(80%)", t.style.opacity = "0", setTimeout(() => {
-                t.style.height = "0", t.style.margin = "0"
-                2 >= document.getElementById("notifbar").childElementCount && 
-                (document.getElementById("notifbar").classList.add("active"), 
-                document.getElementById("notifmenu").classList.remove("active"))
+            function scrolltop() {
                 setTimeout(() => {
-                    t.remove();
-                },300)
-            }, 290)
-        }
-
-        function sfx(e) {
-            if(window.innerWidth > window.innerHeight && (localStorage.getItem("sfx")==='true' || localStorage.getItem("sfx")===null)){
-                let r = document.getElementById(e);
-                r.currentTime = 0
-                r.play();
+                    document.body.scrollTop = 0, document.documentElement.scrollTop = 0
+                }, 200)
             }
-        }
 
-        function removeall() {
-            $(".notif").css({
-                opacity: "0",
-                transform: "translateX(80%)"
-            }), setTimeout(() => {
-                $(".notif").remove(), document.getElementById("notifbar").classList.add("active"), document.getElementById("notifmenu").classList.remove("active")
-            }, 290)
-        }
-
-        function notiftbaroggle() {
-            document.getElementById("notifbar").classList.toggle("active")
-        }
-
-        function notifcomplete(e) {
-            notifopener();
-            var t = document.getElementById("notifbar").appendChild(document.createElement("div")),
-                n = t.appendChild(document.createElement("div")),
-                i = t.appendChild(document.createElement("p")),
-                a = t.appendChild(document.createElement("button")),
-                l = a.appendChild(document.createElement("ion-icon")),
-                s = n.appendChild(document.createElement("ion-icon"));
-            t.className = "notif", n.className = "alert green", i.className = "notifinfo", i.innerText = e, a.className = "notifclose", a.onclick = function() {
-                remove(this.parentNode)
-            }, l.name = "close", s.name = "alert", notifcloser()
-        }
-
-        function notiferror(e) {
-            notifopener();
-            var t = document.getElementById("notifbar").appendChild(document.createElement("div")),
-                n = t.appendChild(document.createElement("div")),
-                i = t.appendChild(document.createElement("p")),
-                a = t.appendChild(document.createElement("button")),
-                l = a.appendChild(document.createElement("ion-icon")),
-                s = n.appendChild(document.createElement("ion-icon"));
-            t.className = "notif", n.className = "alert red", i.className = "notifinfo", i.innerText = e, a.className = "notifclose", a.onclick = function() {
-                remove(this.parentNode)
-            }, l.name = "close", s.name = "alert", notifcloser()
-        }
-        function notifcloser() {
-            setTimeout(() => {
-                document.getElementById("notifbar").classList.add("active")
-            }, 1500)
-        }
-
-        function notifopener() {
-            sfx('appear')
-            document.getElementById("notifbar").classList.remove("active"), document.getElementById("notifmenu").classList.add("active")
-        }
-
-        function load() {
-            document.getElementById("pagecounter").innerHTML = pageindex + "/" + index
-        }
-
-        function changepage(e) {
-            (pageindex += e) < 1 && (pageindex = 1), pageindex > index && (pageindex = index), 
-            document.getElementById("logframe").src = "lib/html/log" + pageindex + ".html", document.getElementById("pagecounter").innerHTML = pageindex + "/" + index
-        }
-
-        function loaderactivate() {
-            $(".loaderback").fadeIn()
-        }
-
-        function loaderdeactivate() {
-            $(".loaderback").fadeOut()
-        }
-
-        let buttons = document.getElementsByClassName('navbutton')
-
-        function pageactive(e,x,y) {
-            for(let i = 0; i<buttons.length; i++){
-                buttons[i].classList.remove('active')
+            function remove(e) {
+                sfx('delete')
+                var t = e;
+                t.style.transform = "translateX(80%)", t.style.opacity = "0", setTimeout(() => {
+                    t.style.height = "0", t.style.margin = "0"
+                    2 >= document.getElementById("notifbar").childElementCount && 
+                    (document.getElementById("notifbar").classList.add("active"), 
+                    document.getElementById("notifmenu").classList.remove("active"))
+                    setTimeout(() => {
+                        t.remove();
+                    },300)
+                }, 290)
             }
-            document.getElementById(e).classList.add('active')
-            loadframe(e,x,y)
-        }
 
-        function homeactive() {
-            for(let i = 0; i<buttons.length; i++){
-                buttons[i].classList.remove('active')
+            function sfx(e) {
+                if(window.innerWidth > window.innerHeight && (localStorage.getItem("sfx")==='true' || localStorage.getItem("sfx")===null)){
+                    let r = document.getElementById(e);
+                    r.currentTime = 0
+                    r.play();
+                }
             }
-            unloadframe('','Home','logframe')
-            unloadframe('','Home','ifr')
-            document.getElementById('home').classList.add('active')
-            document.getElementById("notifbar").classList.add('active')
-            loaderdeactivate();
-        }
 
-        function unloadframe(e,x,y) {
-            if(y=='logframe'){
-                document.querySelector(".changelogframe").classList.remove("active"),
-                document.querySelector(".navbar").classList.remove("active"),
-                $("#backcloser").fadeOut()
-            }else{
-                document.querySelector(".pagecontainer").classList.remove("active"),
-                document.querySelector(".navbar").classList.remove("active")}
-                document.body.classList.remove("static")
-                document.getElementById(y).src=e; 
-                document.title="Natski | "+x;
+            function removeall() {
+                $(".notif").css({
+                    opacity: "0",
+                    transform: "translateX(80%)"
+                }), setTimeout(() => {
+                    $(".notif").remove(), document.getElementById("notifbar").classList.add("active"), document.getElementById("notifmenu").classList.remove("active")
+                }, 290)
+            }
+
+            function notiftbaroggle() {
+                document.getElementById("notifbar").classList.toggle("active")
+            }
+
+            function notifcomplete(e) {
+                notifopener();
+                var t = document.getElementById("notifbar").appendChild(document.createElement("div")),
+                    n = t.appendChild(document.createElement("div")),
+                    i = t.appendChild(document.createElement("p")),
+                    a = t.appendChild(document.createElement("button")),
+                    l = a.appendChild(document.createElement("ion-icon")),
+                    s = n.appendChild(document.createElement("ion-icon"));
+                t.className = "notif", n.className = "alert green", i.className = "notifinfo", i.innerText = e, a.className = "notifclose", a.onclick = function() {
+                    remove(this.parentNode)
+                }, l.name = "close", s.name = "alert", notifcloser()
+            }
+
+            function notiferror(e) {
+                notifopener();
+                var t = document.getElementById("notifbar").appendChild(document.createElement("div")),
+                    n = t.appendChild(document.createElement("div")),
+                    i = t.appendChild(document.createElement("p")),
+                    a = t.appendChild(document.createElement("button")),
+                    l = a.appendChild(document.createElement("ion-icon")),
+                    s = n.appendChild(document.createElement("ion-icon"));
+                t.className = "notif", n.className = "alert red", i.className = "notifinfo", i.innerText = e, a.className = "notifclose", a.onclick = function() {
+                    remove(this.parentNode)
+                }, l.name = "close", s.name = "alert", notifcloser()
+            }
+            function notifcloser() {
+                setTimeout(() => {
+                    document.getElementById("notifbar").classList.add("active")
+                }, 1500)
+            }
+
+            function notifopener() {
+                sfx('appear')
+                document.getElementById("notifbar").classList.remove("active"), document.getElementById("notifmenu").classList.add("active")
+            }
+
+            function load() {
+                document.getElementById("pagecounter").innerHTML = pageindex + "/" + index
+            }
+
+            function changepage(e) {
+                (pageindex += e) < 1 && (pageindex = 1), pageindex > index && (pageindex = index), 
+                document.getElementById("logframe").src = "lib/html/log" + pageindex + ".html", document.getElementById("pagecounter").innerHTML = pageindex + "/" + index
+            }
+
+
+            let buttons = document.getElementsByClassName('navbutton')
+
+            function pageactive(e,x,y) {
                 for(let i = 0; i<buttons.length; i++){
                     buttons[i].classList.remove('active')
                 }
+                document.getElementById(e).classList.add('active')
+                loadframe(e,x,y)
+            }
+
+            function homeactive() {
+                for(let i = 0; i<buttons.length; i++){
+                    buttons[i].classList.remove('active')
+                }
+                unloadframe('','Home','logframe')
+                unloadframe('','Home','ifr')
                 document.getElementById('home').classList.add('active')
-        }
+                document.getElementById("notifbar").classList.add('active')
+                loaderdeactivate();
+            }
 
-        function loadframe(e,x,y) {
-            if(y=='logframe'){
-                $("#backcloser").fadeIn(),
-                document.querySelector(".changelogframe").classList.add("active"),
-                document.querySelector(".navbar").classList.add("active")
-            }else{
-                document.querySelector(".pagecontainer").classList.add("active"),
-                document.querySelector(".navbar").classList.add("active")}
-                document.body.classList.add("static")
-                document.getElementById(y).src=e+'.html';
-                document.title="Natski | "+x+'.html';
-        }
-        
-        window.addEventListener("load", function() {
-            showSlides(slideIndex),time = setInterval(function() {
-                plusSlides(1)
-            }, 1e4), slideshowContainer = document.getElementsByClassName("banner-button");
-            for (let e = 0; e < slideshowContainer.length; e++) slideshowContainer[e].addEventListener("mouseenter", pause), slideshowContainer[e].addEventListener("mouseleave", resume)
-        }), pause = () => {
-            clearInterval(time), resetProgressBar()
-        }, resume = () => {
-            clearInterval(time), time = setInterval(function() {
-                plusSlides(slideIndex)
-            }, 1e4), progressBar()
-        }, $(document).ready(function() {
-            setTimeout(() => {
-                parent.loaderdeactivate()
-            }, 500)
-        });
+            function unloadframe(e,x,y) {
+                if(y=='logframe'){
+                    document.querySelector(".changelogframe").classList.remove("active"),
+                    document.querySelector(".navbar").classList.remove("active"),
+                    $("#backcloser").fadeOut()
+                }else{
+                    document.querySelector(".pagecontainer").classList.remove("active"),
+                    document.querySelector(".navbar").classList.remove("active")}
+                    document.body.classList.remove("static")
+                    document.getElementById(y).src=e; 
+                    document.title="Natski | "+x;
+                    for(let i = 0; i<buttons.length; i++){
+                        buttons[i].classList.remove('active')
+                    }
+                    document.getElementById('home').classList.add('active')
+            }
 
-        function changetheme(e) {
-            $(':root').css({'--themecol':e,'--themecoltrans':e+"50"});
-        };
-            /*
-            function addnotif(x,y){
-                loadernotif(y);
-                setTimeout(()=>{document.getElementById('loadingnotif').remove();notifcomplete(y);download(x,y);},2000);
-            };
+            function loadframe(e,x,y) {
+                if(y=='logframe'){
+                    $("#backcloser").fadeIn(),
+                    document.querySelector(".changelogframe").classList.add("active"),
+                    document.querySelector(".navbar").classList.add("active")
+                }else{
+                    document.querySelector(".pagecontainer").classList.add("active"),
+                    document.querySelector(".navbar").classList.add("active")}
+                    document.body.classList.add("static")
+                    document.getElementById(y).src=e+'.html';
+                    document.title="Natski | "+x+'.html';
+            }
             
-            function download(x,y){
-                const anchor=document.createElement('a');
-                anchor.href=x;
-                anchor.download=y+'.png';
-                document.body.appendChild(anchor);
-                anchor.click();
-                document.body.removeChild(anchor);
+            window.addEventListener("load", function() {
+                showSlides(slideIndex),time = setInterval(function() {
+                    plusSlides(1)
+                }, 1e4), slideshowContainer = document.getElementsByClassName("banner-button");
+                for (let e = 0; e < slideshowContainer.length; e++) slideshowContainer[e].addEventListener("mouseenter", pause), slideshowContainer[e].addEventListener("mouseleave", resume)
+            }), pause = () => {
+                clearInterval(time), resetProgressBar()
+            }, resume = () => {
+                clearInterval(time), time = setInterval(function() {
+                    plusSlides(slideIndex)
+                }, 1e4), progressBar()
+            }
+            
+
+
+
+            /* cross site functions */
+            function changetheme(e) {
+                $(':root').css({'--themecol':e,'--themecoltrans':e+"50"});
             };
-            function imgloader(x,y){notifopener();addnotif(x,y);};
-            */
 
             function pagename(x){document.title="Natski | "+x;document.getElementById('pagename').innerHTML=x;} /* thoughts? */
-    
+                
+            function loaderactivate() {
+                $(".loaderback").fadeIn()
+            }
+
+            function loaderdeactivate() {
+                $(".loaderback").fadeOut()
+            }
+            
+            
+            /*
+                function addnotif(x,y){
+                    loadernotif(y);
+                    setTimeout(()=>{document.getElementById('loadingnotif').remove();notifcomplete(y);download(x,y);},2000);
+                };
+                
+                function download(x,y){
+                    const anchor=document.createElement('a');
+                    anchor.href=x;
+                    anchor.download=y+'.png';
+                    document.body.appendChild(anchor);
+                    anchor.click();
+                    document.body.removeChild(anchor);
+                };
+                function imgloader(x,y){notifopener();addnotif(x,y);};
+                */
+
+        
         </script>
         </script>
         <main>

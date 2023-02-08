@@ -365,12 +365,12 @@ button
 	background-size: cover;
 	filter: brightness(0.4);
 	border: 2px solid #303030;
-	background-color: #303030;
+	background-color: #30303050;
 	transition: 0.1s;
 }
 .slidesmenu .slidepicker:nth-child(even)
 {
-	background-color: #30303050;
+	background-color: #30303090;
 }
 .epqpage
 {
