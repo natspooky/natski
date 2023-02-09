@@ -1218,8 +1218,8 @@ input[type=range]:hover::-webkit-slider-runnable-track
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background-color: #00000000;
-	border: 0px solid var(--maincol);
+	background-color: #000000b0;
+	border: 1px solid var(--maincol);
 	border-radius: 2.9vw;
 	height: 10vw;
 	width: 10vw;
@@ -1231,8 +1231,6 @@ input[type=range]:hover::-webkit-slider-runnable-track
 	position: relative;
 	height: 6.45vw;
 	width: 6.45vw;
-	border-radius: 50%;
-	filter: drop-shadow(0 0 10px black);
 	animation: spin 3s linear infinite;
 }
 .middle.artpage
