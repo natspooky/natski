@@ -56,7 +56,7 @@
                 </svg>
             </div>
         </div>
-        <header class="topbar">
+        <header class="topbar" style="box-shadow: none;">
             <h1>Portfolio</h1>
         </header>
         <div style="width: 100%; border-bottom: 2px solid #303030; display: flex; justify-content: center; align-items: center;">
@@ -70,7 +70,7 @@
             {
                 padding: 10px 15px;
                 font-size: 16px;
-                margin: 8px;
+                margin: 8px 0.5vw;
                 color: var(--maincol);
                 border-radius: 6px;
                 transform: scale(1);
@@ -92,15 +92,16 @@
             {
                 color: var(--themecol);
 	            background-color: #33333350;
+                border: 2px solid #303030;
             }
         </style>
         <main style="min-height: 100%;">
             <div class="descriptionbar"><span>GCSE Art</span></div>
-            <div class="middle">
+            <div class="middle revealed" style="--i: 4;">
 
                 <!-- gross stacking ahead -->
 
-                <div class="beforemiddleimg revealed gcse" style="--i: 4;--j:#d3111160;">
+                <div class="beforemiddleimg gcse" style="--j:#d3111160;">
                     <div class="middlebutton">visit</div>
                     <div class="text">
                         <h1>Slides</h1>
@@ -123,7 +124,7 @@
                 </div>
 
 
-                <div class="beforemiddleimg revealed gcse" style="--i: 6;--j:#ff00ff60;">
+                <div class="beforemiddleimg gcse" style="--j:#ff00ff60;">
                     <div class="middlebutton">visit</div>
                     <div class="text">
                         <h1>Art</h1>
@@ -155,8 +156,8 @@
 
             <!-- .middle shouldnt restart // make into one container -->
 
-            <div class="middle">
-                <div class="beforemiddleimg revealed alevel" style="--i: 8;--j:#3c00ff60;">
+            <div class="middle revealed" style="--i: 6;">
+                <div class="beforemiddleimg alevel" style="--j:#3c00ff60;">
                     <div class="middlebutton">visit</div>
                     <div class="text">
                         <h1>Slides</h1>
@@ -179,7 +180,7 @@
                 </div>
 
 
-                <div class="beforemiddleimg revealed alevel" style="--i: 10;--j:#2b774f;">
+                <div class="beforemiddleimg alevel" style="--j:#2b774f;">
                     <div class="middlebutton">visit</div>
                     <div class="text">
                         <h1>Art</h1>
@@ -389,8 +390,7 @@
                 allButtons = document.querySelectorAll('.filterbuttons'),
                 thisButton = document.getElementById(x);
 
-                $('hr').fadeOut(200)
-                $('.descriptionbar').slideUp(200)
+                $('hr,.descriptionbar').slideUp(200)
 
                 for(let i = 0; i < allButtons.length; i++) {
 
@@ -447,8 +447,7 @@
                 allButtons = document.querySelectorAll('.filterbuttons'),
                 thisButton = document.getElementById(e);
                 
-                $('hr').fadeIn(200)
-                $('.descriptionbar').slideDown(200)
+                $('hr,.descriptionbar').slideDown(200)
 
                 for(let i = 0; i < allButtons.length; i++) {
 
@@ -474,7 +473,7 @@
                 }else{
                     for(let i = 0; i < tabs.length; i++) {
 
-                        tabs[i].style.height = "44vw", tabs[i].style.margin = "0 0 7.5vw 0", tabs[i].style.border = "1px solid #bbbbbb50", 
+                        tabs[i].style.height = "44vw", tabs[i].style.margin = "0 0 7.5vw 0", tabs[i].style.border = "10px solid transparent", 
 
                         setTimeout(() => {
 
