@@ -59,13 +59,48 @@
         <header class="topbar">
             <h1>Portfolio</h1>
         </header>
-        <main>
+        <div style="width: 100%; border-bottom: 2px solid #303030; display: flex; justify-content: center; align-items: center;">
+            <button class="filterbuttons active" id="allfilter" onclick="reset(this.id)">ALL</button>
+            <button class="filterbuttons" id="gcsefilter" onclick="filter('.gcse',this.id)">GCSE</button>
+            <button class="filterbuttons" id="alevelfilter" onclick="filter('.alevel',this.id)">ALEVEL</button>
+            <button class="filterbuttons" id="otherfilter" onclick="filter('.other',this.id)">OTHER</button>
+        </div>
+        <style>
+            .filterbuttons
+            {
+                padding: 10px 15px;
+                font-size: 16px;
+                margin: 8px;
+                color: var(--maincol);
+                border-radius: 6px;
+                transform: scale(1);
+                border: 2px solid transparent;
+                cursor: pointer;
+                transition: 0.1s;
+            }
+            .filterbuttons:hover
+            {
+                border: 2px solid var(--themecol);
+            }
+            .filterbuttons:active
+            {
+                transform: scale(0.9);
+                background-color: var(--themecoltrans);
+                transition: 0s;
+            }
+            .filterbuttons.active
+            {
+                color: var(--themecol);
+	            background-color: #33333350;
+            }
+        </style>
+        <main style="min-height: 100%;">
             <div class="descriptionbar"><span>GCSE Art</span></div>
             <div class="middle">
 
                 <!-- gross stacking ahead -->
 
-                <div class="beforemiddleimg revealed" style="--i: 4;--j:#d3111160;">
+                <div class="beforemiddleimg revealed gcse" style="--i: 4;--j:#d3111160;">
                     <div class="middlebutton">visit</div>
                     <div class="text">
                         <h1>Slides</h1>
@@ -88,7 +123,7 @@
                 </div>
 
 
-                <div class="beforemiddleimg revealed" style="--i: 6;--j:#ff00ff60;">
+                <div class="beforemiddleimg revealed gcse" style="--i: 6;--j:#ff00ff60;">
                     <div class="middlebutton">visit</div>
                     <div class="text">
                         <h1>Art</h1>
@@ -121,7 +156,7 @@
             <!-- .middle shouldnt restart // make into one container -->
 
             <div class="middle">
-                <div class="beforemiddleimg revealed" style="--i: 8;--j:#3c00ff60;">
+                <div class="beforemiddleimg revealed alevel" style="--i: 8;--j:#3c00ff60;">
                     <div class="middlebutton">visit</div>
                     <div class="text">
                         <h1>Slides</h1>
@@ -144,7 +179,7 @@
                 </div>
 
 
-                <div class="beforemiddleimg revealed" style="--i: 10;--j:#2b774f;">
+                <div class="beforemiddleimg revealed alevel" style="--i: 10;--j:#2b774f;">
                     <div class="middlebutton">visit</div>
                     <div class="text">
                         <h1>Art</h1>
@@ -167,7 +202,7 @@
                 </div>
 
 
-                <div class="beforemiddleimg" style="--j:#00800060;">
+                <div class="beforemiddleimg alevel" style="--j:#00800060;">
                     <div class="middlebutton">visit</div>
                     <div class="text">
                         <h1>Good Or Bad Art</h1>
@@ -190,7 +225,7 @@
                 </div>
 
 
-                <div class="beforemiddleimg" style="--j:#303030;">
+                <div class="beforemiddleimg alevel" style="--j:#303030;">
                     <div class="middlebutton">visit</div>
                     <div class="text">
                         <h1>Related Study</h1>
@@ -219,7 +254,7 @@
             <div class="descriptionbar"><span>Other</span></div>
 
             <div class="middle">
-                <div class="beforemiddleimg" style="--j:#2b2f3c;">
+                <div class="beforemiddleimg alevel" style="--j:#2b2f3c;">
                     <div class="middlebutton">visit</div>
                     <div class="text">
                         <h1>EPQ</h1>
@@ -243,7 +278,7 @@
 
 
 
-                <div class="beforemiddleimg" style="--j:#303030;">
+                <div class="beforemiddleimg alevel" style="--j:#303030;">
                     <div class="middlebutton">visit</div>
                     <div class="text">
                         <h1>Face Tracker</h1>
@@ -267,7 +302,7 @@
 
 
 
-                <div class="beforemiddleimg" style="--j:#303030;">
+                <div class="beforemiddleimg other" style="--j:#303030;">
                     <div class="middlebutton">visit</div>
                     <div class="text">
                         <h1>N_AI</h1>
@@ -290,7 +325,7 @@
                 </div>
 
 
-                <div class="beforemiddleimg" style="--j:#242424;">
+                <div class="beforemiddleimg other" style="--j:#242424;">
                     <div class="middlebutton" style="color: transparent;">visit</div>
                     <div class="text">
                         <h1 style="border-radius: 100px; color: transparent; background-color: var(--accentcol);">temptxt</h1>
@@ -317,20 +352,104 @@
 
         </main>
         <script>
-            var timer = null, frames = document.getElementsByClassName('iframelookers'), link = document.getElementsByClassName('linkplate'), loader = document.getElementsByClassName('loaderframe');
+            var timer = null, frames = document.getElementsByClassName('iframelookers'), 
+            link = document.getElementsByClassName('linkplate'), 
+            loader = document.getElementsByClassName('loaderframe');
+
             if(window.innerWidth > window.innerHeight) {
+
                 for(let i = 0; i<link.length;i++){
+
                     link[i].addEventListener('mouseover',function() {
+
                         loader[i].style.display = 'flex'
+
                         timer = window.setTimeout(function(){
+
                             frames[i].src="lib/hovertabs/"+link[i].href.substring(27,link[i].href.length);
+
                     }, 300);
+
                     });
+
                     link[i].addEventListener('mouseout',function() { 
+
                         window.clearTimeout(timer)
                         loader[i].style.display = 'none'
                         frames[i].src='';
-            })}};
+
+                    })
+                }
+            };
+
+            function filter(e,x) {
+
+                let tabs = document.querySelectorAll('.beforemiddleimg'),
+                keep = document.querySelectorAll(e),
+                allButtons = document.querySelectorAll('.filterbuttons'),
+                thisButton = document.getElementById(x);
+
+                $('hr').fadeOut(200)
+                $('.descriptionbar').slideUp(200)
+
+                for(let i = 0; i < allButtons.length; i++) {
+
+                    allButtons[i].classList.remove("active");
+
+                }
+
+                thisButton.classList.add('active');
+
+                for(let i = 0; i < tabs.length; i++) {
+
+                    tabs[i].style.opacity = "0", setTimeout(() => {
+
+                        tabs[i].style.height = "0", tabs[i].style.margin = "0", tabs[i].style.border = "0px solid transparent";
+
+                    },200)
+                }
+                setTimeout(() => {
+
+                    for(let i = 0; i < keep.length; i++) {
+
+                        keep[i].style.height = "30vw", keep[i].style.margin = "1.4vw 0.7vw 1.4vw 0.7vw", keep[i].style.border = "10px solid transparent", 
+                        
+                        setTimeout(() => {
+
+                        keep[i].style.opacity = "1";
+                    
+                    },200)
+                }},400)
+            };
+
+            function reset(e) {
+
+                let tabs = document.querySelectorAll('.beforemiddleimg'),
+                allButtons = document.querySelectorAll('.filterbuttons'),
+                thisButton = document.getElementById(e);
+                
+                $('hr').fadeIn(200)
+                $('.descriptionbar').slideDown(200)
+
+                for(let i = 0; i < allButtons.length; i++) {
+
+                    allButtons[i].classList.remove("active");
+
+                }
+
+                thisButton.classList.add('active');
+                
+                for(let i = 0; i < tabs.length; i++) {
+
+                    tabs[i].style.height = "30vw", tabs[i].style.margin = "0vw 0.7vw 1.4vw 0.7vw", tabs[i].style.border = "10px solid transparent", 
+
+                    setTimeout(() => {
+
+                        tabs[i].style.opacity = "1"
+
+                },200)}
+            };
+
             $(document).ready(function(){setTimeout(()=>{parent.pagename('Portfolio');},500);});
         </script>
         <footer>
