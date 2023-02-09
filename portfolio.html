@@ -400,6 +400,7 @@
 
                 thisButton.classList.add('active');
 
+
                 for(let i = 0; i < tabs.length; i++) {
 
                     tabs[i].style.opacity = "0", setTimeout(() => {
@@ -408,18 +409,36 @@
 
                     },200)
                 }
-                setTimeout(() => {
-
-                    for(let i = 0; i < keep.length; i++) {
-
-                        keep[i].style.height = "30vw", keep[i].style.margin = "1.4vw 0.7vw 1.4vw 0.7vw", keep[i].style.border = "10px solid transparent", 
-                        
-                        setTimeout(() => {
-
-                        keep[i].style.opacity = "1";
+                if(window.innerWidth > window.innerHeight) {
                     
-                    },200)
-                }},400)
+                    setTimeout(() => {
+
+                        for(let i = 0; i < keep.length; i++) {
+
+                            keep[i].style.height = "30vw", keep[i].style.margin = "1.4vw 0.7vw 1.4vw 0.7vw", keep[i].style.border = "10px solid transparent", 
+                            
+                            setTimeout(() => {
+
+                                keep[i].style.opacity = "1";
+                        
+                            },200)
+                        }
+                    },400)
+                }else{
+                    setTimeout(() => {
+
+                        for(let i = 0; i < keep.length; i++) {
+
+                            keep[i].style.height = "44vw", keep[i].style.margin = "2.5vw 0 7.5vw 0", keep[i].style.border = "1px solid #bbbbbb50", 
+                            
+                            setTimeout(() => {
+
+                                keep[i].style.opacity = "1";
+
+                            },200)
+                        }
+                        },400)
+                } 
             };
 
             function reset(e) {
@@ -439,15 +458,31 @@
 
                 thisButton.classList.add('active');
                 
-                for(let i = 0; i < tabs.length; i++) {
+                if(window.innerWidth > window.innerHeight) {
 
-                    tabs[i].style.height = "30vw", tabs[i].style.margin = "0vw 0.7vw 1.4vw 0.7vw", tabs[i].style.border = "10px solid transparent", 
+                    for(let i = 0; i < tabs.length; i++) {
 
-                    setTimeout(() => {
+                        tabs[i].style.height = "30vw", tabs[i].style.margin = "0vw 0.7vw 1.4vw 0.7vw", tabs[i].style.border = "10px solid transparent", 
 
-                        tabs[i].style.opacity = "1"
+                        setTimeout(() => {
 
-                },200)}
+                            tabs[i].style.opacity = "1"
+
+                        },200)
+                    }
+
+                }else{
+                    for(let i = 0; i < tabs.length; i++) {
+
+                        tabs[i].style.height = "44vw", tabs[i].style.margin = "0 0 7.5vw 0", tabs[i].style.border = "1px solid #bbbbbb50", 
+
+                        setTimeout(() => {
+
+                            tabs[i].style.opacity = "1"
+
+                        },200)
+                    }
+                }
             };
 
             $(document).ready(function(){setTimeout(()=>{parent.pagename('Portfolio');},500);});
