@@ -494,6 +494,8 @@ button
 {
 	position: relative;
 	width: 200px;
+	max-height: 100%;
+	overflow-y: scroll;
 	letter-spacing: 0.5px;
 	font-weight: 100;
 	word-wrap: break-word;

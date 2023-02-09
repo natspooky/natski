@@ -51,7 +51,7 @@
         <script>
             var pageindex=1,index=3;function load(){document.getElementById("pagecounter").innerHTML=pageindex+"/"+index}function changepage(e){(pageindex+=e)<1&&(pageindex=1),pageindex>index&&(pageindex=index),document.getElementById("ifr").src="lib/html/log"+pageindex+".html",document.getElementById("pagecounter").innerHTML=pageindex+"/"+index}
         </script>
-        <nav class="navbar" style="display: block;">
+        <nav class="navbar">
             <span id="pagename">Changelog</span>
             <div class="navbarleft">
                 <a href="index.html">
@@ -105,6 +105,9 @@
                 </a>
             </div>
         </div>
+        <script>
+            $(document).ready(function(){setTimeout(()=>{parent.pagename('About');},500);});
+        </script>
         <noscript>
             <h1>javascript is disabled :(</h1>
             <p>this website requires javascript to run.<br>please enable the use of javascript to see this page :)</p>
