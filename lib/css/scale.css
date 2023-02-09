@@ -469,10 +469,13 @@
     }
     .pagechanger button
     {
-        font-size: 6vw;
         height: 8vw;
         width: 8vw;
         border-radius: 6px;
+    }
+    .pagechanger button svg
+    {
+        height: 4vw;
     }
     .middle canvas
     {
