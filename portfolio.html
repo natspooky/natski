@@ -405,40 +405,25 @@
 
                     tabs[i].style.opacity = "0", setTimeout(() => {
 
-                        tabs[i].style.height = "0", tabs[i].style.margin = "0", tabs[i].style.border = "0px solid transparent";
+                        tabs[i].classList.add('hidden');
 
                     },200)
                 }
-                if(window.innerWidth > window.innerHeight) {
-                    
-                    setTimeout(() => {
+                
+                setTimeout(() => {
 
-                        for(let i = 0; i < keep.length; i++) {
+                    for(let i = 0; i < keep.length; i++) {
 
-                            keep[i].style.height = "30vw", keep[i].style.margin = "1.4vw 0.7vw 1.4vw 0.7vw", keep[i].style.border = "10px solid transparent", 
-                            
-                            setTimeout(() => {
-
-                                keep[i].style.opacity = "1";
+                        keep[i].classList.remove('hidden'), 
                         
-                            },200)
-                        }
-                    },400)
-                }else{
-                    setTimeout(() => {
+                        setTimeout(() => {
 
-                        for(let i = 0; i < keep.length; i++) {
+                            keep[i].style.opacity = "1";
 
-                            keep[i].style.height = "44vw", keep[i].style.margin = "2.5vw 0 7.5vw 0", keep[i].style.border = "1px solid #bbbbbb50", 
-                            
-                            setTimeout(() => {
-
-                                keep[i].style.opacity = "1";
-
-                            },200)
-                        }
-                        },400)
-                } 
+                        },200)
+                    }
+                },400)
+                
             };
 
             function reset(e) {
@@ -457,31 +442,17 @@
 
                 thisButton.classList.add('active');
                 
-                if(window.innerWidth > window.innerHeight) {
+                for(let i = 0; i < tabs.length; i++) {
 
-                    for(let i = 0; i < tabs.length; i++) {
+                    tabs[i].classList.remove('hidden'), 
 
-                        tabs[i].style.height = "30vw", tabs[i].style.margin = "0vw 0.7vw 1.4vw 0.7vw", tabs[i].style.border = "10px solid transparent", 
+                    setTimeout(() => {
 
-                        setTimeout(() => {
+                        tabs[i].style.opacity = "1"
 
-                            tabs[i].style.opacity = "1"
-
-                        },200)
-                    }
-
-                }else{
-                    for(let i = 0; i < tabs.length; i++) {
-
-                        tabs[i].style.height = "44vw", tabs[i].style.margin = "0 0 7.5vw 0", tabs[i].style.border = "1px solid #bbbbbb50", 
-
-                        setTimeout(() => {
-
-                            tabs[i].style.opacity = "1"
-
-                        },200)
-                    }
+                    },200)
                 }
+                
             };
 
 
