@@ -93,7 +93,7 @@
             <hr class="revealed" style="--i: 8;">
             <article class="revealed" id="text-content" style="--i: 10;">
                 <div class="chapter"><div id="chapters-one"></div>What is HTML, CSS and Javascript</div><br>
-                In this chapter I will be going into the history and the basics of HTML, CSS and Javascript code as these are crucial elements to understanding the difference in complexity and customization that a website coded by hand can have over a website builder.<br><br>
+                In this chapter I will be going into the history and the basics of HTML, CSS and Javascript code as these are crucial elements to understanding the difference in complexity and customization that a website coded by hand can have over a website builder.<br><hr>
                 Websites are composed of many different languages in order to style, structure and run different features both client side and server side. The languages used can be split into two main categories which consist of the ‘frontend’ and ‘backend’ where the frontend is the design and functionality of the client side layout, whereas the backend is the server processing and database of the website.<br>
 
                 The frontend consists of 3 main languages: HTML, CSS and Javascript. These all contribute to the creation of the visual and client side processing of the website.<br><br>
@@ -205,18 +205,19 @@
 
                 <div class="chapter"><div id="chapters-two"></div>What is a website builder</div><br>
                 WIP
+                <iframe src="https://sites.google.com/view/natski/home"></iframe>
                 <div class="chapter"><div id="chapters-three"></div>Humans vs Machines</div><br>
                 WIP
                 <div class="chapter"><div id="chapters-four"></div>How this affects our online activity</div><br>
                 WIP
 
                 <ul class="epqpage" style="list-style: none;">
-                    <p>Chapters:</p>
+                    <p style="width: 100%; text-align: center;">Chapters</p>
                     <hr>
-                    <li><a href="#chapters-one">Chapter 1</a></li>
-                    <li><a href="#chapters-two">Chapter 2</a></li>
-                    <li><a href="#chapters-three">Chapter 3</a></li>
-                    <li><a href="#chapters-four">Chapter 4</a></li>
+                    <li class="chapterpick0"><a href="#chapters-one">Chapter 1</a></li>
+                    <li class="chapterpick1"><a href="#chapters-two">Chapter 2</a></li>
+                    <li class="chapterpick2"><a href="#chapters-three">Chapter 3</a></li>
+                    <li class="chapterpick3"><a href="#chapters-four">Chapter 4</a></li>
                 </ul>
             </article>
             <hr>
@@ -333,6 +334,17 @@
         </noscript>
         <script>
             $(document).ready(function(){setTimeout(()=>{parent.pagename('EPQ');},500);});
+
+            $(window).scroll(function() {
+                $(".chapter").each(function(e) {
+                    var t = $(this).position().top + $(this).outerHeight() + 1300;
+                    $(window).scrollTop() + $(window).height() > t ? $('.chapterpick'+e).css({
+                        backgroundColor: "#303030"
+                    }) : $('.chapterpick'+e).css({
+                        backgroundColor: "transparent"
+                    })
+                })
+            });
         </script>
         <script src="lib/js/main.js"></script>
         <script src="lib/js/iframeresponder.js"></script>
