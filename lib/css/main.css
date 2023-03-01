@@ -148,6 +148,8 @@ html,body
 	width: 100%;
 	user-select: none;
 	scroll-behavior: smooth;
+	-ms-touch-action: manipulation;
+	touch-action: manipulation;
 }
 svg
 {
