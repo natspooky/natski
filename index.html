@@ -132,24 +132,34 @@
             <audio preload="auto" id="clicker" src="lib/audio/button-click.mp3"></audio>
         </section>
         <script>
-            var time, slideshowContainer, interval, slideIndex = 1,
+
+
+            /* main variables */
+
+            var time, slideshowContainer, interval, 
+            slideIndex = 1,
             elem = document.getElementById("progress-bar"),
             width = 1,
             pageindex = 1,
-            index = 3;
+            index = 3,
+            buttons = document.getElementsByClassName('navbutton');
 
-            function progressBar() {
-                elem.style.transition = "0.1s linear", interval = setInterval(function e() {
-                    width >= 100 ? clearInterval(interval) : (width++, elem.style.width = width + "%"), 95 == width && $(".banner-fg").css({
-                        opacity: "0",
-                        transform: "translateY(-60px)"
-                    })
-                }, 100)
+
+            /* banner system */
+
+            window.addEventListener("load", function() {
+                showSlides(slideIndex),time = setInterval(function() {
+                    plusSlides(1)
+                }, 1e4), slideshowContainer = document.getElementsByClassName("banner-button");
+                for (let e = 0; e < slideshowContainer.length; e++) slideshowContainer[e].addEventListener("mouseenter", pause), slideshowContainer[e].addEventListener("mouseleave", resume)
+            }), pause = () => {
+                clearInterval(time), resetProgressBar()
+            }, resume = () => {
+                clearInterval(time), time = setInterval(function() {
+                    plusSlides(slideIndex)
+                }, 1e4), progressBar()
             }
 
-            function resetProgressBar() {
-                elem.style.transition = "0s", width = 0, clearInterval(interval), elem.style.width = width + "%"
-            }
 
             function plusSlides(e) {
                 clearInterval(time), e < 0 ? showSlides(slideIndex -= 1) : showSlides(slideIndex += 1), time = -1 === e ? setInterval(function() {
@@ -176,15 +186,25 @@
                 }), i[slideIndex - 1].classList.add("active"), resetProgressBar(), progressBar()
             }
 
-            function scrolltop() {
-                setTimeout(() => {
-                    document.body.scrollTop = 0, document.documentElement.scrollTop = 0
-                }, 200)
+            function progressBar() {
+                elem.style.transition = "0.1s linear", interval = setInterval(function e() {
+                    width >= 100 ? clearInterval(interval) : (width++, elem.style.width = width + "%"), 95 == width && $(".banner-fg").css({
+                        opacity: "0",
+                        transform: "translateY(-60px)"
+                    })
+                }, 100)
             }
+
+            function resetProgressBar() {
+                elem.style.transition = "0s", width = 0, clearInterval(interval), elem.style.width = width + "%"
+            }
+
+
+            /* notification system */
 
             function remove(e) {
                 sfx('delete')
-                var t = e;
+                let t = e;
                 t.style.transform = "translateX(80%)", t.style.opacity = "0", setTimeout(() => {
                     t.style.height = "0", t.style.margin = "0"
                     2 >= document.getElementById("notifbar").childElementCount && 
@@ -194,14 +214,6 @@
                         t.remove();
                     },300)
                 }, 290)
-            }
-
-            function sfx(e) {
-                if(window.innerWidth > window.innerHeight && (localStorage.getItem("sfx")==='true' || localStorage.getItem("sfx")===null)){
-                    let r = document.getElementById(e);
-                    r.currentTime = 0
-                    r.play();
-                }
             }
 
             function removeall() {
@@ -219,7 +231,7 @@
 
             function notifcomplete(e) {
                 notifopener();
-                var t = document.getElementById("notifbar").appendChild(document.createElement("div")),
+                let t = document.getElementById("notifbar").appendChild(document.createElement("div")),
                     n = t.appendChild(document.createElement("div")),
                     i = t.appendChild(document.createElement("p")),
                     a = t.appendChild(document.createElement("button")),
@@ -232,7 +244,7 @@
 
             function notiferror(e) {
                 notifopener();
-                var t = document.getElementById("notifbar").appendChild(document.createElement("div")),
+                let t = document.getElementById("notifbar").appendChild(document.createElement("div")),
                     n = t.appendChild(document.createElement("div")),
                     i = t.appendChild(document.createElement("p")),
                     a = t.appendChild(document.createElement("button")),
@@ -253,6 +265,8 @@
                 document.getElementById("notifbar").classList.remove("active"), document.getElementById("notifmenu").classList.add("active")
             }
 
+
+            /* changelog system */
             function load() {
                 document.getElementById("pagecounter").innerHTML = pageindex + "/" + index
             }
@@ -263,14 +277,12 @@
             }
 
 
-            let buttons = document.getElementsByClassName('navbutton')
+            /* misc */
 
-            function pageactive(e,x,y) {
-                for(let i = 0; i<buttons.length; i++){
-                    buttons[i].classList.remove('active')
-                }
-                document.getElementById(e).classList.add('active')
-                loadframe(e,x,y)
+            function scrolltop() {
+                setTimeout(() => {
+                    document.body.scrollTop = 0, document.documentElement.scrollTop = 0
+                }, 200)
             }
 
             function homeactive() {
@@ -283,6 +295,25 @@
                 document.getElementById("notifbar").classList.add('active')
                 loaderdeactivate();
             }
+
+            function pageactive(e,x,y) {
+                for(let i = 0; i<buttons.length; i++){
+                    buttons[i].classList.remove('active')
+                }
+                document.getElementById(e).classList.add('active')
+                loadframe(e,x,y)
+            }
+
+            function sfx(e) {
+                if(window.innerWidth > window.innerHeight && (localStorage.getItem("sfx")==='true' || localStorage.getItem("sfx")===null)){
+                    let r = document.getElementById(e);
+                    r.currentTime = 0
+                    r.play();
+                }
+            }
+
+
+            /* embedded system functions */
 
             function unloadframe(e,x,y) {
                 if(y=='logframe'){
@@ -314,28 +345,16 @@
                     document.title="Natski | "+x+'.html';
             }
             
-            window.addEventListener("load", function() {
-                showSlides(slideIndex),time = setInterval(function() {
-                    plusSlides(1)
-                }, 1e4), slideshowContainer = document.getElementsByClassName("banner-button");
-                for (let e = 0; e < slideshowContainer.length; e++) slideshowContainer[e].addEventListener("mouseenter", pause), slideshowContainer[e].addEventListener("mouseleave", resume)
-            }), pause = () => {
-                clearInterval(time), resetProgressBar()
-            }, resume = () => {
-                clearInterval(time), time = setInterval(function() {
-                    plusSlides(slideIndex)
-                }, 1e4), progressBar()
-            }
-            
 
+            /* cross site to index functions */
 
-
-            /* cross site functions */
             function changetheme(e) {
                 $(':root').css({'--themecol':e,'--themecoltrans':e+"50"});
             };
 
-            function pagename(x){document.title="Natski | "+x;document.getElementById('pagename').innerHTML=x;} /* thoughts? */
+            function pagename(x){
+                document.title="Natski | "+x;document.getElementById('pagename').innerHTML=x;
+            }
                 
             function loaderactivate() {
                 $(".loaderback").fadeIn()
@@ -344,23 +363,7 @@
             function loaderdeactivate() {
                 $(".loaderback").fadeOut()
             }
-            
-            /*
-                function addnotif(x,y){
-                    loadernotif(y);
-                    setTimeout(()=>{document.getElementById('loadingnotif').remove();notifcomplete(y);download(x,y);},2000);
-                };
-                
-                function download(x,y){
-                    const anchor=document.createElement('a');
-                    anchor.href=x;
-                    anchor.download=y+'.png';
-                    document.body.appendChild(anchor);
-                    anchor.click();
-                    document.body.removeChild(anchor);
-                };
-                function imgloader(x,y){notifopener();addnotif(x,y);};
-                */
+
 
         
         </script>
