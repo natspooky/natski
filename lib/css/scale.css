@@ -312,6 +312,12 @@
         margin-top: 40px;
         display: none;
     }
+    header .progress
+    {
+        width: unset;
+        left: 15px;
+        right: 15px;
+    }
     main .profile
     {
         margin-top: 25px;
