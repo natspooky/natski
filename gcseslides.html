@@ -146,7 +146,9 @@
                     newslide.className = 'slidepicker';
                     newslide.name = i;
                     newslide.style.backgroundImage = "url(icon/slides/gcse/"+(i+1)+".png)";
-                    newslide.style.animation = "notif calc("+i+"*0.1s)";
+                    if(i < 12){
+                        newslide.style.animation = "notif calc("+i+"*0.1s + 0.2s)";
+                    }
                     newslide.onclick=function(){scrollslide(this.name)}
                 }
             };
