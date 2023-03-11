@@ -56,10 +56,23 @@
                 </svg>
             </div>
         </div>
+        <div class="slidemenu" style="z-index: 10;">
+            <div class="menubar">
+                <a class="menubutton" href="index.html">
+                    Home
+                </a>
+                <a class="menubutton" href="about.html">
+                    About
+                </a>
+                <a class="menubutton" href="changes.html">
+                    Changelog
+                </a>
+            </div>
+        </div>
         <header class="topbar" style="box-shadow: none;">
             <h1>Portfolio</h1>
         </header>
-        <div style="width: 100%; border-bottom: 2px solid #303030; display: flex; justify-content: center; align-items: center;">
+        <div class="filtercont" style="width: 100%; border-bottom: 2px solid #303030; display: flex; justify-content: center; align-items: center; animation: fade 1s;">
             <button class="filterbuttons active" id="allfilter" onclick="reset(this.id)">ALL</button>
             <button class="filterbuttons" id="gcsefilter" onclick="filter('.gcse',this.id)">GCSE</button>
             <button class="filterbuttons" id="alevelfilter" onclick="filter('.alevel',this.id)">ALEVEL</button>
@@ -94,8 +107,14 @@
 	            background-color: #33333350;
                 border: 2px solid #303030;
             }
+            @media (orientation: portrait){
+                .filtercont
+                {
+                    transform: scale(0.9);
+                }
+            }
         </style>
-        <main style="min-height: 100%;">
+        <main style="min-height: 100%; margin-top: 10px;">
             <div class="descriptionbar"><span>GCSE Art</span></div>
             <div class="middle">
 
@@ -509,19 +528,6 @@
                 </a>
             </div>
         </nav>
-        <div class="slidemenu">
-            <div class="menubar">
-                <a class="menubutton" href="index.html">
-                    Home
-                </a>
-                <a class="menubutton" href="about.html">
-                    About
-                </a>
-                <a class="menubutton" href="changes.html">
-                    Changelog
-                </a>
-            </div>
-        </div>
         <noscript>
             <h1>javascript is disabled :(</h1>
             <p>this website requires javascript to run.<br>please enable the use of javascript to see this page :)</p>
