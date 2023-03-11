@@ -95,7 +95,7 @@
             </ul>
             <hr class="revealed" style="--i: 8;">
             <article class="revealed" id="text-content" style="--i: 10;">
-                <div class="chapter"><div id="chapters-one"></div>What is HTML, CSS and Javascript</div><br>
+                <div class="chapter"><div id="chapters-one"></div><span>01</span> What is HTML, CSS and Javascript</div><br>
                 In this chapter I will be going into the history and the basics of HTML, CSS and Javascript code as these are crucial elements to understanding the difference in complexity and customization that a website coded by hand can have over a website builder.<br><hr>
                 Websites are composed of many different languages in order to style, structure and run different features both client side and server side. The languages used can be split into two main categories which consist of the ‘frontend’ and ‘backend’ where the frontend is the design and functionality of the client side layout, whereas the backend is the server processing and database of the website.<br>
 
@@ -109,11 +109,11 @@
                 
                 All HTML pages will contain a series of elements through the culmination of tags and attributes within. Elements are what structures a webpage through placement of tags and attributes that assign meaning to each tag. Tags tell the browser where an element will begin and end but an attribute will describe the characteristics of the element. Tags are structured with an opening tag, content and closing tag, for example a paragraph would be shown as:
                 
-                <div class="code">&lt;p> This is text inside of a paragraph &lt;/p></div>
+                <div class="code">&lt;p><br>&nbsp;&nbsp;&nbsp;&nbsp;This is text inside of a paragraph<br>&lt;/p></div>
 
                 Every element follows this layout in the format of:
 
-                <div class="code">&lt;[tag name]> [element content] &lt;/[tag name]></div>
+                <div class="code">&lt;[tag name]><br>&nbsp;&nbsp;&nbsp;&nbsp;[element content]<br>&lt;/[tag name]></div>
 
                 The closing tag in html always has a forward slash after the opening bracket in order to tell the browser that this is where an element ends. This is important because in HTML you can have multiple elements embedded inside of a single element, meaning that without the ending tag the browser could misinterpret the embedded element as a closing tag and drastically change the elements function. This rule has a few exceptions however as some elements only have an opening tag such as image tags, meta tags and line break tags.
 
@@ -121,7 +121,7 @@
 
                 Single tag elements exist as they cannot contain content or tags within themselves which makes the closing tag redundant when used, However both tag types use attributes. Attributes are vital to tags which add more information and detail. Attributes are formatted in tags as:
 
-                <div class="code">&lt;[tag name] [attribute name]=”[attribute value]”> [content of element] &lt;/[tag name]></div>
+                <div class="code">&lt;[tag name] [attribute name]=”[attribute value]”><br>&nbsp;&nbsp;&nbsp;&nbsp;[content of element]<br>&lt;/[tag name]></div>
                 
                 Attributes can give links to images through ‘src’, links to other pages through ‘href’ and group attributing through ‘class’.<br>
 
@@ -130,7 +130,7 @@
                 All HTML documents contain a similar base layout which consists of a starting tag which tells the browser to render the page as a HTML document and then a html tag which contains a head and body tag.<br>
                 The header tag is used to contain unseen content such as: page title, search engine optimization and links to CSS files. While the body tag is used to contain all of the visible page content.
 
-                <div class="code">&lt;!DOCTYPE html> &lt;html> &lt;head>&lt;/head> &lt;body>&lt;/body> &lt;/html></div>
+                <div class="code">&lt;!DOCTYPE html><br>&lt;html><br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;head>&lt;/head><br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;body>&lt;/body><br>&lt;/html></div>
 
                 HTML is limited in what it can do as it is primarily static and requires the help of Javascript in order to give it dynamic functionality. It also requires a new HTML document for every page meaning that even if all of the elements are the same, it will need a new document to change page, which can be taxing to create.<br><br>
 
@@ -166,7 +166,7 @@
 
                 Finally, inline CSS is used for styling single elements in HTML documents through using the style attribute inside of an element and is laid out in the form: 
 
-                <div class="code">&lt;[tag name] style=”background-color: red;”> [content of element] &lt;/[tag name]></div>
+                <div class="code">&lt;[tag name] style=”background-color: red;”><br>&nbsp;&nbsp;&nbsp;&nbsp;[content of element]<br>&lt;/[tag name]></div>
 
                 This method of CSS is not generally considered to be the most efficient method, however can be useful to change styles of a single element quickly for preview purposes when creating a website.<br><br>
 
@@ -191,11 +191,11 @@
                 In the JQuery library.<br>
                 The interactivity that this code can supply makes a static website using only HTML and CSS into a more fleshed out experience for the user by adding functions such as: onClick(), onLoad() and onChange(). These are used to call functions when one of these conditions are met within the page. These can be laid out in two ways, in the javascript file itself:
 
-                <div class="code">variable.addEventListener(‘click’ function(){ output code });</div>
+                <div class="code">variable.addEventListener(‘click’ function(){<br>&nbsp;&nbsp;&nbsp;&nbsp;[output code]<br>});</div>
 
                 Or within the HTML document as an attribute:
 
-                <div class="code">&lt;[tag name] onClick=’function(){ output code }’>&lt;/[tag name]></div>
+                <div class="code">&lt;[tag name] onClick=’function(){<br>&nbsp;&nbsp;&nbsp;&nbsp;[output code]<br>}’>&lt;/[tag name]></div>
 
                 <img class="left" src="icon/essayimgs/buttondemo.gif" alt="button" draggable="false">
                 
@@ -204,15 +204,47 @@
 
                 Javascript is good at these operations due to its speed and simplicity as Javascript executes its code inside the browser rather than connecting to a server or needing a compiler for it to run. Due to these benefits, Javascript is incredibly popular and therefore has a lot of user created libraries and tutorials for beginners wanting to get into the language.<br>
                 However even with all these benefits of Javascript, the language still has some issues as each browser can interpret the code differently meaning that some features that work on one browser may not act the same on a different browser, which ends up requiring a developer to test the code on all of the major browsers before being able to upload the code for the website.<br>
-                It is important when coding in Javascript that the variables are assigned before the code itself is referenced due to the language processing the code from the top down. This means that if a function is referenced before the variable is assigned in the code, then the variable in the function will be read as ‘undefined’ which prevents the rest of the code from being executed. 
+                It is important when coding in Javascript that the variables are assigned before the code itself is referenced due to the language processing the code from the top down. This means that if a function is referenced before the variable is assigned in the code, then the variable in the function will be read as ‘undefined’ which prevents the rest of the code from being executed.
 
-                <div class="chapter"><div id="chapters-two"></div>What is a website builder</div><br>
+
+
+
+                <div class="chapter"><div id="chapters-two"></div><span>02</span> What is a website builder</div><br>
+                This chapter will focus on what website builders are and how they use user interfaces to negate the requirement for coding when creating websites, which introduces an easier environment for people wanting to create websites without prior coding knowledge.<br><hr>
+
+                Building websites used to be a challenging and time consuming task for most, due to them requiring a lot of experience and learning in order to have a decent final product, however through the use of website builders this challenging and time consuming activity can be reduced into simple design rather than having to dig into the technicalities and the coding that used to be required. Through the website builders ease of access to creation through using preset pages and drag and drop functionality to add pages, features and other content, it makes all the time needed to learn all of the previously mentioned code turn into time that can be spent focusing more on the desired layout and content of the website.<br>
+
+
+                One of the first features that are included in most website builders are drag and drop elements (being one of the major features), is the most used by website builders as they allow for content in the website editor to be positioned according to the users desired design but also by allowing content from outside of the browser to be dragged directly into the page such as images and files, which allowed for the files to be directly uploaded into the website builder rather than having to navigate a series of menus and code image inputs in order to display them on the website. This drag and drop functionality became possible for website builders and other websites on the 25th of January in 2010 when chrome released its new major version CHROME 4.0. (https://chromereleases.googleblog.com) <br>
+                This feature then became more widely used and implemented into other browsers in later versions such as Microsoft Edge 9.0 and Safari 6.0. (https://www.w3schools.com/html/html5_draganddrop.asp)<br>
+
+
+                Secondly, website builders take the issue of storing and hosting websites into their own hands by removing the need for the user to have to build a database or web server in order to be able to run the site on the internet. This is especially useful as most users looking to create a website won't have the experience to program the security required to protect their website, nor have a computer that can run 24/7 to act as a server. Website builders handling the servers for any websites made with their service also mean that users don't have to undergo getting a secure SSL certificate. SSL certificates both encrypt the data travelling from the server to the user, and also allow the browser and users to know that this is a trusted and safe website (https://www.digicert.com/what-is-an-ssl-certificate). <br>
+                Having an SSL certificate can also boost its ranking when displayed by a search engine like google as it is seen as a sign of security which allows it to be boosted higher up in search rankings. (https://www.sherbetdonkey.co.uk/blog/how-ssl-certificates-affect-seo) This is just one way that website builders automatically employ SEO, which stands for ‘search engine optimization’. SEO is the process of improving a websites ‘online ranking’ which simply just means how high google will place it compared to other websites that fit a search criteria put in by a user, for example googling ‘youtube’ will present ‘youtube.com’ as the first search result as not only does it fit the search criteria, but it also has a high SEO ranking in comparison to other video sharing sites.<br>
+
+                Website builders also accommodate for different page sizes through the responsive drag and drop elements that are automatically resized for any displays. This is incredibly useful for website builders as it means that the user only has to create a design for the landscape view of the website, and the website builder would automatically change sizes and order of items in order for it to be formatted correctly while in a portrait mobile view. This feature saves time and allows for more time on a single design rather than having to come up with designs for every screen size. This is crucial if a website is not designed with a mobile layout in mind then it can sometimes be unusable on mobile devices due to warped layouts and off-screen buttons.<br>
+
+                Thirdly, website builders also include easy compatibility between themselves and third party applications. This makes embedding content like youtube videos, spotify songs and google drive links considerably easier as website builders usually have predetermined settings for each type of embed that are set to improve the user experience for any device it's viewed on.<br>
+
+                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/7tyvqaKyzIIHKjPYHkdMD4?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+
+                Embedded layers like the one shown above allow for websites to display their content and information into other websites through the use of an ‘iframe’ tag which mimics a website being opened. This allows for the aforementioned videos and songs to be played without having to leave the space of the current website being visited.<br>
+
+                Lastly, and most importantly. Website builders automatically optimise their websites to give the best performance to any device that it is opened on. This is incredibly beneficial for the user as any images uploaded will automatically be scaled and converted to different formats to improve the speed and load time of the page. This doesn't stop at images though as favicons (icons displayed next to the page name) and any javascript is usually shortened and optimised when a website is published. The javascript is shortened and compressed because:
+
+                <div class="code">if( [condition] ) {<br>&nbsp;&nbsp;&nbsp;&nbsp;[if code]<br>} else {<br>&nbsp;&nbsp;&nbsp;&nbsp;[else code]<br>}</div>
+
+                Is easier to read, but takes a lot longer to convert into machine code by the browser when the page is opened in comparison to this same code in a compressed format:
+
+                <div class="code">[condition] ? [if code] : [else code]</div>
+
+                Overall website builders contain many features that are necessities in order for them to perform as well as websites created by website developers and through these features they become extremely convenient in terms of user experience and traffic to the website.
+
+                <div class="chapter"><div id="chapters-three"></div><span>03</span> Humans vs Machines</div><br>
                 WIP
-                <div class="chapter"><div id="chapters-three"></div>Humans vs Machines</div><br>
+                <div class="chapter"><div id="chapters-four"></div><span>04</span> How this affects our online activity</div><br>
                 WIP
-                <div class="chapter"><div id="chapters-four"></div>How this affects our online activity</div><br>
-                WIP
-                <div class="chapter"><div id="chapters-five"></div>WIP what is this useful for</div><br>
+                <div class="chapter"><div id="chapters-five"></div><span>05</span> WIP what is this useful for</div><br>
                 WIP
 
                 <ul class="epqpage" style="list-style: none;">

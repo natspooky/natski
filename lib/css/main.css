@@ -988,6 +988,10 @@ article .chapter div
 	position: relative;
 	top: -70px;
 }
+article .chapter span
+{
+	color: var(--themecol);
+}
 #wordcount
 {
 	position: fixed;
