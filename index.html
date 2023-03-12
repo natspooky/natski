@@ -366,7 +366,7 @@
 
             function currentstatus(e) {
                 percentComplete++
-                console.log(e)
+                console.log('ok'+e)
                 document.getElementById('loaded').innerHTML = percentComplete + '/' + e + ' loaded'
                 if(percentComplete == e || e == 0) {
                     $('#loaded').fadeOut()
