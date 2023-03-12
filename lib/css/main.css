@@ -115,7 +115,8 @@
 }
 #loaded
 {
-	position: fixed; 
+	position: fixed;
+	display: none;
 	bottom: 20px; 
 	left: 50px; 
 	background-color: var(--accentcol); 
