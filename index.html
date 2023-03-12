@@ -49,8 +49,8 @@
             };
             $(':root').css({'--themecol':theme,'--themecoltrans':theme+"50"});
         </script>
+        <p id="loaded" style="position: fixed; bottom: 10px; left: 10px; background-color: var(--accentcol); border: 1px solid #303030; color: var(--maincol); z-index: 99; padding: 5px; border-radius: 5px;"></p>
         <div class="loaderback" style="display: flex;">
-            <p>//Natski build N2.0</p>
             <div>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 834.61 834.61">
                     <path class="loadwheel" d="M772.51,540.33c-50.95,147.13-190.73,252.78-355.2,252.78-207.55,0-375.81-168.25-375.81-375.8S209.76,41.5,417.31,41.5c164.47,0,304.25,105.65,355.2,252.79"/>
@@ -349,22 +349,27 @@
 
             /* cross site to index functions */
 
-            let percentComplete = 0
-
-            $('img').each(function(e) {
+            let percentComplete = 0,
+            
+            loadimage = $('img');
+            loadimage.each(function(e) {
+                console.log('e')
                 $(this).imagesLoaded().done(function() {
-                    currentstatus($('img'))
+                    currentstatus(loadimage.length)
                 });
             });
 
             function resetstatus() {
                 percentComplete = 0
+                $('#loaded').fadeIn()
             }
 
             function currentstatus(e) {
-                /* dont use this code */
                 percentComplete++
-                console.log(percentComplete+'/'+e.length)
+                document.getElementById('loaded').innerHTML = percentComplete + '/' + e + ' loaded.'
+                if(percentComplete == e) {
+                    $('#loaded').fadeOut()
+                }
             }
 
             function changetheme(e) {

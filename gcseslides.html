@@ -210,10 +210,12 @@
         <script>
             $(document).ready(function(){setTimeout(()=>{parent.pagename('GCSE SLides');},500);});
 
+            loadimage = $('img');
+
             parent.resetstatus()
-            $('img').each(function(e) {
+            loadimage.each(function(e) {
                 $(this).imagesLoaded().done(function() {
-                    parent.currentstatus($('img'))
+                    parent.currentstatus(loadimage.length)
                 });
             });
         </script>
