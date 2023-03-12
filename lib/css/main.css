@@ -9,16 +9,15 @@
 .loaderback
 {
 	position: fixed;
-	top: 0;
-	left: 0;
+	bottom: 10px;
+	left: 10px;
 	z-index: 9999;
-	width: 100%;
 	background-color: transparent;
-	height: 100%;
 	display: none;
 	justify-content: center;
 	align-items: center;
 }
+
 .loadwheel
 {
 	stroke-linecap: round;
@@ -27,13 +26,7 @@
 	stroke: var(--maincol);
 	stroke-miterlimit: 10;
 }
-.loaderback p
-{
-	position: absolute;
-	left: 0;
-	bottom: 0;
-	color: var(--themecol);
-}
+/*
 .loaderback div
 {
 	display: flex;
@@ -53,6 +46,27 @@
 	position: relative;
 	height: 100px;
 	width: 100px;
+	animation: spin 3s linear infinite;
+}
+*/
+.loaderback div
+{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: var(--accentcol);
+	border: 1px solid #303030;
+	border-radius: 12px;
+	height: 30px;
+	width: 30px;
+	transition: 0.3s;
+	animation: spin2 3s infinite;
+}
+.loaderback div svg
+{
+	position: relative;
+	height: 18px;
+	width: 18px;
 	animation: spin 3s linear infinite;
 }
 @keyframes spin {

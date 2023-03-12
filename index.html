@@ -49,7 +49,7 @@
             };
             $(':root').css({'--themecol':theme,'--themecoltrans':theme+"50"});
         </script>
-        <p id="loaded" style="position: fixed; bottom: 10px; left: 10px; background-color: var(--accentcol); border: 1px solid #303030; color: var(--maincol); z-index: 99; padding: 5px; border-radius: 5px;"></p>
+        <p id="loaded" style="position: fixed; bottom: 10px; left: 50px; background-color: var(--accentcol); border: 1px solid #303030; color: var(--maincol); z-index: 99; padding: 5px; border-radius: 5px;"></p>
         <div class="loaderback" style="display: flex;">
             <div>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 834.61 834.61">
@@ -365,6 +365,7 @@
                 if(e == 0) {
                     document.getElementById('loaded').innerHTML = ' 0/0 loaded'
                     $('#loaded').fadeOut()
+                    loaderdeactivate()
                 }
             }
 
@@ -373,6 +374,7 @@
                 document.getElementById('loaded').innerHTML = percentComplete + '/' + e + ' loaded'
                 if(percentComplete == e) {
                     $('#loaded').fadeOut()
+                    loaderdeactivate()
                 }
             }
 
