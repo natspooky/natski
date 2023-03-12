@@ -349,11 +349,12 @@
 
             /* cross site to index functions */
 
-            let percentComplete = 0;
-            resetstatus(loadimage.length)
-            loadimage.each(function(e) {
+            let percentComplete = 0,
+            indeximage = $('img');
+            resetstatus(indeximage.length)
+            indeximage.each(function(e) {
                 $(this).imagesLoaded().done(function() {
-                    currentstatus(loadimage.length)
+                    currentstatus(indeximage.length)
                 })
             })
 
