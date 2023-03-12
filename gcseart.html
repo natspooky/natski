@@ -102,7 +102,15 @@
                     <img src="icon/portimg/7.png" class="img noaspect" draggable="false">
                 </div>
                 <script>
-                    function img(x){parent.imgloader(x.src,x.name);};$(document).ready(function(){setTimeout(()=>{parent.pagename('GCSE Art');},500);});
+                    $(document).ready(function(){setTimeout(()=>{parent.pagename('GCSE Art');},500);});
+
+                    loadimage = $('img');
+                    parent.resetstatus()
+                    loadimage.each(function(e) {
+                        $(this).imagesLoaded().done(function() {
+                            parent.currentstatus(loadimage.length)
+                        });
+                    });
                 </script>
             </div>
             <hr>

@@ -143,7 +143,15 @@
             <p>this website requires javascript to run.<br>please enable the use of javascript to see this page :)</p>
         </noscript>
         <script>
-            $(document).ready(function(){setTimeout(()=>{parent.pagename('scraper');},500);});
+            $(document).ready(function(){setTimeout(()=>{parent.pagename('Scraper');},500);});
+
+            loadimage = $('img');
+            parent.resetstatus()
+            loadimage.each(function(e) {
+                $(this).imagesLoaded().done(function() {
+                    parent.currentstatus(loadimage.length)
+                });
+            });
         </script>
 
         <script src="lib/js/main.js"></script>

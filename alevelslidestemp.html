@@ -231,7 +231,15 @@
             <p>this website requires javascript to run.<br>please enable the use of javascript to see this page :)</p>
         </noscript>
         <script>
-            $(document).ready(function(){setTimeout(()=>{parent.pagename('Alevel SLides');},500);});
+            $(document).ready(function(){setTimeout(()=>{parent.pagename('Alevel Slides');},500);});
+
+            loadimage = $('img');
+            parent.resetstatus()
+            loadimage.each(function(e) {
+                $(this).imagesLoaded().done(function() {
+                    parent.currentstatus(loadimage.length)
+                });
+            });
         </script>
         <script src="lib/js/main.js"></script>
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>

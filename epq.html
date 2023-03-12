@@ -382,6 +382,14 @@
                     })
                 })
             });
+
+            loadimage = $('img');
+            parent.resetstatus()
+            loadimage.each(function(e) {
+                $(this).imagesLoaded().done(function() {
+                    parent.currentstatus(loadimage.length)
+                });
+            });
         </script>
         <script src="lib/js/main.js"></script>
         <script src="lib/js/iframeresponder.js"></script>
