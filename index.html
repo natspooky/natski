@@ -367,9 +367,9 @@
             function currentstatus(e) {
                 percentComplete++
                 document.getElementById('loaded').innerHTML = percentComplete + '/' + e + ' loaded'
-                if(percentComplete == e) {
+                if(percentComplete == e || e == 0) {
                     $('#loaded').fadeOut()
-                    document.getElementById('loaded').innerHTML = e + '/' + e + ' loaded / tinting'
+                    document.getElementById('loaded').innerHTML = e + '/' + e + ' loaded / ready'
                 }
             }
 
