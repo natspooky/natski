@@ -144,14 +144,6 @@
         </noscript>
         <script>
             $(document).ready(function(){setTimeout(()=>{parent.pagename('Scraper');},500);});
-
-            loadimage = $('img');
-            parent.resetstatus(loadimage.length)
-            loadimage.each(function(e) {
-                $(this).imagesLoaded().done(function() {
-                    parent.currentstatus(loadimage.length)
-                });
-            });
         </script>
 
         <script src="lib/js/main.js"></script>

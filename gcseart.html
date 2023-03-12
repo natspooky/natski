@@ -103,14 +103,6 @@
                 </div>
                 <script>
                     $(document).ready(function(){setTimeout(()=>{parent.pagename('GCSE Art');},500);});
-
-                    loadimage = $('img');
-                    parent.resetstatus(loadimage.length)
-                    loadimage.each(function(e) {
-                        $(this).imagesLoaded().done(function() {
-                            parent.currentstatus(loadimage.length)
-                        });
-                    });
                 </script>
             </div>
             <hr>

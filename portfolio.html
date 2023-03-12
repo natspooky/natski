@@ -476,14 +476,6 @@
 
 
             $(document).ready(function(){setTimeout(()=>{parent.pagename('Portfolio');},500);});
-
-            loadimage = $('img');
-            parent.resetstatus(loadimage.length)
-            loadimage.each(function(e) {
-                $(this).imagesLoaded().done(function() {
-                    parent.currentstatus(loadimage.length)
-                });
-            });
         </script>
         <footer>
             <div class="linkbar" id="linker">

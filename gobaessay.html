@@ -200,14 +200,6 @@ So no, the idea of good and bad artwork will always be an unanswered question ov
         </noscript>
         <script>
             $(document).ready(function(){setTimeout(()=>{parent.pagename('Art Essay');},500);});
-
-            loadimage = $('img');
-            parent.resetstatus(loadimage.length)
-            loadimage.each(function(e) {
-                $(this).imagesLoaded().done(function() {
-                    parent.currentstatus(loadimage.length)
-                });
-            });
         </script>
         <script src="lib/js/main.js"></script>
         <script src="lib/js/iframeresponder.js"></script>
