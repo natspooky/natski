@@ -56,18 +56,18 @@
 	align-items: center;
 	background-color: var(--accentcol);
 	border: 1px solid #303030;
-	border-radius: 12px;
+	border-radius: 5px;
 	height: 30px;
 	width: 30px;
 	transition: 0.3s;
-	animation: spin2 3s infinite;
+	animation: spin2 0s infinite;
 }
 .loaderback div svg
 {
 	position: relative;
 	height: 18px;
 	width: 18px;
-	animation: spin 3s linear infinite;
+	animation: spin 1.5s linear infinite;
 }
 @keyframes spin {
 	from {
