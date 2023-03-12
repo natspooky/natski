@@ -9,7 +9,7 @@
 .loaderback
 {
 	position: fixed;
-	bottom: 10px;
+	bottom: 25px;
 	left: 10px;
 	z-index: 9999;
 	background-color: transparent;
@@ -17,7 +17,6 @@
 	justify-content: center;
 	align-items: center;
 }
-
 .loadwheel
 {
 	stroke-linecap: round;
@@ -81,37 +80,17 @@
 		transform: rotate(359deg);
 	}
 }
-@keyframes spin2 {
-	0% {
-	  	-webkit-transform: rotate(0deg);
-		transform: rotate(0deg);
-	  	-webkit-transform: rotate(0deg);
-		transform: rotate(0deg);
-	}
-	25% {
-	  	-webkit-transform: rotate(90deg);
-		transform: rotate(90deg);
-	  	-webkit-transform: rotate(90deg);
-		transform: rotate(90deg);
-	}
-	50% {
-		-webkit-transform: rotate(180deg);
-	  transform: rotate(180deg);
-		-webkit-transform: rotate(180deg);
-	  transform: rotate(180deg);
-  	}
-  	75% {
-		-webkit-transform: rotate(270deg);
-	transform: rotate(270deg);
-		-webkit-transform: rotate(270deg);
-	transform: rotate(270deg);
-	}
-	100% {
-		-webkit-transform: rotate(360deg);
-	transform: rotate(360deg);
-		-webkit-transform: rotate(360deg);
-	transform: rotate(360deg);
-	}
+#loaded
+{
+	position: fixed; 
+	bottom: 25px; 
+	left: 50px; 
+	background-color: var(--accentcol); 
+	border: 1px solid #303030; 
+	color: var(--maincol); 
+	z-index: 99; 
+	padding: 5px; 
+	border-radius: 5px;
 }
 :root
 {

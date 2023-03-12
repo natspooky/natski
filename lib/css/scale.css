@@ -119,6 +119,10 @@
     {
         width: 0px;
     }
+    #loaded,.loaderback
+    {
+        bottom: 10px;
+    }
     .navbar
     {
         left: 5vw;
