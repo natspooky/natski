@@ -361,9 +361,9 @@
 
             function resetstatus(e) {
                 percentComplete = 0
-                console.log(e)
                 $('#loaded').fadeIn()
                 if(e == 0) {
+                    document.getElementById('loaded').innerHTML = ' 0/0 loaded'
                     $('#loaded').fadeOut()
                 }
             }
