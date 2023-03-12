@@ -349,6 +349,24 @@
 
             /* cross site to index functions */
 
+            let percentComplete = 0
+
+            $('img').each(function(e) {
+                $(this).imagesLoaded().done(function() {
+                    currentstatus($('img'))
+                });
+            });
+
+            function resetstatus() {
+                percentComplete = 0
+            }
+
+            function currentstatus(e) {
+                /* dont use this code */
+                percentComplete++
+                console.log(percentComplete+'/'+e.length)
+            }
+
             function changetheme(e) {
                 $(':root').css({'--themecol':e,'--themecoltrans':e+"50"});
             };
