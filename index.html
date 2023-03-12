@@ -349,7 +349,14 @@
 
             /* cross site to index functions */
 
-            let percentComplete = 0;
+            let percentComplete = 0,
+            loadimage = $('img');
+            resetstatus(loadimage.length)
+            loadimage.each(function(e) {
+                $(this).imagesLoaded().done(function() {
+                    currentstatus(loadimage.length)
+                })
+            })
 
             function resetstatus(e) {
                 percentComplete = 0
