@@ -359,14 +359,17 @@
                 });
             });
 
-            function resetstatus() {
+            function resetstatus(e) {
                 percentComplete = 0
+                console.log(e)
                 $('#loaded').fadeIn()
+                if(e == 0) {
+                    $('#loaded').fadeOut()
+                }
             }
 
             function currentstatus(e) {
                 percentComplete++
-                console.log('ok'+e)
                 document.getElementById('loaded').innerHTML = percentComplete + '/' + e + ' loaded'
                 if(percentComplete == e || e == 0) {
                     $('#loaded').fadeOut()

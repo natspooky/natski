@@ -173,7 +173,7 @@
             $(document).ready(function(){setTimeout(()=>{parent.pagename('Settings');},500);});
 
             loadimage = $('img');
-            parent.resetstatus()
+            parent.resetstatus(loadimage.length)
             loadimage.each(function(e) {
                 $(this).imagesLoaded().done(function() {
                     parent.currentstatus(loadimage.length)
