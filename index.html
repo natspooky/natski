@@ -336,16 +336,19 @@
             function loadframe(e,x,y) {
                 if(localStorage.getItem("performance")==='true'){
                     window.location.href=e+'.html';
-                }if(y=='logframe'){
-                    $("#backcloser").fadeIn(),
-                    document.querySelector(".changelogframe").classList.add("active"),
-                    document.querySelector(".navbar").classList.add("active")
                 }else{
-                    document.querySelector(".pagecontainer").classList.add("active"),
-                    document.querySelector(".navbar").classList.add("active")}
+                    if(y=='logframe'){
+                        $("#backcloser").fadeIn(),
+                        document.querySelector(".changelogframe").classList.add("active"),
+                        document.querySelector(".navbar").classList.add("active")
+                    }else{
+                        document.querySelector(".pagecontainer").classList.add("active"),
+                        document.querySelector(".navbar").classList.add("active")
+                    }
                     document.body.classList.add("static")
                     document.getElementById(y).src=e+'.html';
                     document.title="Natski | "+x+'.html';
+                }
             }
             
 
