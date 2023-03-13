@@ -306,7 +306,7 @@
             }
 
             function sfx(e) {
-                if(window.innerWidth > window.innerHeight && (localStorage.getItem("sfx")==='true' || localStorage.getItem("sfx")===null)){
+                if(window.innerWidth > window.innerHeight && (localStorage.getItem("sfx")==='true')){
                     let r = document.getElementById(e);
                     r.currentTime = 0
                     r.play();
@@ -334,7 +334,9 @@
             }
 
             function loadframe(e,x,y) {
-                if(y=='logframe'){
+                if(localStorage.getItem("performance")==='true'){
+                    window.location.href=e+'.html';
+                }if(y=='logframe'){
                     $("#backcloser").fadeIn(),
                     document.querySelector(".changelogframe").classList.add("active"),
                     document.querySelector(".navbar").classList.add("active")
