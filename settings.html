@@ -71,12 +71,90 @@
                 <dt>Transparency Effects</dt>
                 <dd>COMING SOON</dd>
                 <hr>
-                <dt>Low Performance Mode</dt>
-                <dd>COMING SOON</dd>
+                <dt>Performance Mode</dt>
+                <dd><input type="checkbox" id="performance"></dd>
             </dl>
         </main>
 
+        <style>
+            input[type="checkbox"]
+            {
+                font-size: 30px;
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                        appearance: none;
+                width: 60px;
+                height: 30px;
+                background: var(--accentcol);
+                border-radius: 15px;
+                position: relative;
+                cursor: pointer;
+                outline: none;
+                -webkit-transition: all .2s ease-in-out;
+                transition: all .2s ease-in-out;
+            }
+  
+            input[type="checkbox"]:checked
+            {
+                background: var(--themecol);
+            }
+            
+            input[type="checkbox"]:after
+            {
+                position: absolute;
+                content: "";
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                background: #303030;
+                -webkit-box-shadow: 0 0 .25em rgba(0,0,0,.3);
+                        box-shadow: 0 0 .25em rgba(0,0,0,.3);
+                -webkit-transform: scale(.7);
+                        transform: scale(.7);
+                left: 0;
+                -webkit-transition: all .2s ease-in-out;
+                transition: all .2s ease-in-out;
+            }
+            
+            input[type="checkbox"]:checked:after
+            {
+                left: calc(100% - 30px);
+                background: #fff;
+            }
 
+            input[type="color"]
+            {
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                appearance: none;
+                width: 60px;
+                height: 35px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+            }
+
+            input[type="color"]::-webkit-color-swatch 
+            {
+                border-radius: 20px;
+                border: none;
+            }
+            
+            input[type="color"]::-moz-color-swatch 
+            {
+                border-radius: 20px;
+                border: none;
+            }
+
+            dl button
+            {
+                margin: 0 10px;
+                border-radius: 5px;
+                padding: 5px;
+                background-color: var(--themecoltrans);
+                color: var(--maincol);
+            }
+        </style>
 
         <script>
             $("#themepicker").val(theme);
@@ -95,13 +173,21 @@
                 $("#themepicker").val('#729ef6');
                 parent.changetheme('#729ef6');
             };
-            if(localStorage.getItem("sfx")===null || localStorage.getItem("sfx")==='true'){
+            if(localStorage.getItem("sfx")==='true'){
                 document.getElementById("sfx").checked = true;
             };
             $("#sfx").on("input",function(){
                     let sound=document.getElementById("sfx").checked;
                     console.log(sound)
                     localStorage.setItem('sfx',sound);
+            });
+            if(localStorage.getItem("performance")==='true'){
+                document.getElementById("performance").checked = true;
+            };
+            $("#performance").on("input",function(){
+                    let perf=document.getElementById("performance").checked;
+                    console.log(perf)
+                    localStorage.setItem('performance',perf);
             });
         </script>
 
