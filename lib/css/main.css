@@ -404,19 +404,24 @@ button
 {
 	position: sticky; 
 	float: right;
-	padding: 10px 30px;
+	padding: 10px 20px;
 	overflow: hidden; 
-	bottom: 40%; 
-	transform: translateX(min(20.5vw,200px));
-	background-color: var(--accentcol);
+	height: calc(100vh - 70px);
+	bottom: 10px;
+	transform: translateX(min(19.5vw,225px));
+	background-color: #30303050;
 	border: 2px solid #303030;
 	color: var(--maincol);
 	font-size: 1.1em;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
 	border-radius: 10px;
 }
 .epqpage li
 {
-	margin: 10px 0;
+	margin: 5px 0;
 	padding: 0 3px;
 	border-radius: 5px;
 }
@@ -929,6 +934,9 @@ article
 	height: auto;
 	cursor: default;
 	user-select: text;
+	background-color: #30303050;
+	border-radius: 15px;
+	border: 2px solid #303030;
 }
 article img
 { 
