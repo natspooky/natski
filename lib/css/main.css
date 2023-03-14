@@ -417,7 +417,7 @@ button
 	align-items: center;
 	flex-direction: column;
 	border-radius: 10px;
-	animation: fade 0.5s;
+	animation: fade 0.45s;
 }
 .epqpage.active
 {
@@ -427,11 +427,11 @@ button
 	padding: 0 5px;
 	bottom: unset;
 	transform: translate(0);
-	background-color: #30303050;
+	background-color: #30303040;
 	border: 2px solid transparent;
 	width: 100%;
 	border-radius: 6px;
-	animation: fade 0.5s;
+	animation: expandfade 0.3s;
 }
 .epqpage a
 {
