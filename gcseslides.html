@@ -149,7 +149,9 @@
                     if(i < 12){
                         newslide.style.animation = "notif calc("+i+"*0.1s + 0.2s)";
                     }
-                    newslide.onclick=function(){scrollslide(this.name)}
+                    newslide.onclick=function(){
+                        scrollslide(this.name)
+                    }
                 }
             };
             function scrollslide(e) {
