@@ -95,6 +95,9 @@
                 <li>
                     <a href="#chapters-five">WIP</a>
                 </li>
+                <li>
+                    <a href="#chapters-conclusion">Conclusion</a>
+                </li>
             </ul>
             <hr class="revealed" style="--i: 8;">
             <article class="revealed" id="text-content" style="--i: 10;">
@@ -251,17 +254,19 @@
                 WIP
                 <div class="chapter"><div id="chapters-five"></div><span>05</span> WIP what is this useful for</div><br>
                 WIP
+                <div class="chapter"><div id="chapters-conclusion"></div><span>06</span> Conclusion</div><br>
+                WIP
 
-                <ul class="epqpage" style="list-style: none; text-align: center;">
-                    <p style="width: 100%;">Chapters</p>
+                <ul class="epqpage" id="chapterselect" style="list-style: none; text-align: center;">
+                    <li>Chapters</li>
                     <hr>
-                    <li class="chapterpick0"><a href="#chapters-intro">Introduction</a></li>
-                    <li class="chapterpick1"><a href="#chapters-one">Chapter 1</a></li>
-                    <li class="chapterpick2"><a href="#chapters-two">Chapter 2</a></li>
-                    <li class="chapterpick3"><a href="#chapters-three">Chapter 3</a></li>
-                    <li class="chapterpick4"><a href="#chapters-four">Chapter 4</a></li>
-                    <li class="chapterpick5"><a href="#chapters-five">Chapter 5</a></li>
-                    <li class="chapterpick5"><a href="#chapters-five">Conclusion</a></li>
+                    <a class="chapterpick0" href="#chapters-intro">Introduction</a>
+                    <a class="chapterpick1" href="#chapters-one">Chapter 1</a>
+                    <a class="chapterpick2" href="#chapters-two">Chapter 2</a>
+                    <a class="chapterpick3" href="#chapters-three">Chapter 3</a>
+                    <a class="chapterpick4" href="#chapters-four">Chapter 4</a>
+                    <a class="chapterpick5" href="#chapters-five">Chapter 5</a>
+                    <a class="chapterpick6" href="#chapters-conclusion">Conclusion</a>
                 </ul>
             </article>
             <hr>
@@ -421,6 +426,13 @@
                     }) : $('.chapterpick'+e).css({
                         backgroundColor: "transparent"
                     })
+                })
+            });
+
+            $(window).scroll(function() {
+                $("article").each(function(e) {
+                    var t = $(this).position().top + $(this).outerHeight() + 130;
+                    $(window).scrollTop() + $(window).height() > t ? document.getElementById('chapterselect').classList.add('active') : document.getElementById('chapterselect').classList.remove('active')
                 })
             });
         </script>

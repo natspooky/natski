@@ -404,11 +404,10 @@ button
 {
 	position: sticky; 
 	float: right;
-	padding: 0 10px;
-	overflow: hidden; 
-	height: calc(100vh - 70px);
-	bottom: 10px;
-	transform: translateX(min(21vw,225px));
+	padding: 10px;
+	height: auto;
+	bottom: 50%;
+	transform: translateX(min(21vw,225px)) translateY(50%);
 	background-color: #30303050;
 	border: 2px solid #303030;
 	color: var(--maincol);
@@ -418,18 +417,30 @@ button
 	align-items: center;
 	flex-direction: column;
 	border-radius: 10px;
+	animation: fade 0.5s;
 }
-.epqpage li
+.epqpage.active
+{
+	position: relative; 
+	float: unset;
+	height: auto;
+	padding: 0 5px;
+	bottom: unset;
+	transform: translate(0);
+	background-color: #30303050;
+	border: 2px solid transparent;
+	width: 100%;
+	border-radius: 6px;
+	animation: fade 0.5s;
+}
+.epqpage a
 {
 	margin: 5px 0;
 	padding: 0 6px;
-	width: 100%;
 	border-radius: 5px;
-}
-.epqpage li a
-{
-	text-decoration: none;
+	width: 100%;
 	color: var(--themecol);
+	text-decoration: none;
 }
 .notifcont
 {
@@ -928,15 +939,13 @@ article
 	text-align: justify;
 	line-height: 30px;
 	color: var(--maincol);
-	margin: 0 0 2vw 0;
 	padding: 1vw;
 	font-size: 18px;
 	width: 60%;
-	height: auto;
 	cursor: default;
 	user-select: text;
 	background-color: #30303050;
-	border-radius: 15px;
+	border-radius: 10px;
 	border: 2px solid #303030;
 }
 article img
