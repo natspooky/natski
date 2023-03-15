@@ -183,7 +183,7 @@
 
 
             </div>
-            <hr>
+            <hr class="seperate">
 
             <!-- middle ends here? -->
 
@@ -285,7 +285,7 @@
 
 
             </div>
-            <hr>
+            <hr class="seperate">
 
             <div class="descriptionbar"><span>Other</span></div>
 
@@ -425,7 +425,7 @@
                 allButtons = document.querySelectorAll('.filterbuttons'),
                 thisButton = document.getElementById(x);
 
-                $('hr,.descriptionbar').fadeOut(250)
+                $('.seperate,.descriptionbar').slideUp(250)
 
                 for(let i = 0; i < allButtons.length; i++) {
 
@@ -435,30 +435,24 @@
 
                 thisButton.classList.add('active');
 
-
                 for(let i = 0; i < tabs.length; i++) {
+                    
+                    if(tabs[i].classList.contains(e.substring(1,e.length)) != true){
+                        tabs[i].style.opacity = "0", setTimeout(() => {
 
-                    tabs[i].style.opacity = "0", setTimeout(() => {
+                            tabs[i].classList.add('hidden');
 
-                        tabs[i].classList.add('hidden');
-
-                    },200)
-                }
-                
-                setTimeout(() => {
-
-                    for(let i = 0; i < keep.length; i++) {
-
-                        keep[i].classList.remove('hidden'), 
+                        },200)
+                    }else{
+                        tabs[i].classList.remove('hidden'), 
                         
                         setTimeout(() => {
 
-                            keep[i].style.opacity = "1";
+                            tabs[i].style.opacity = "1";
 
                         },200)
                     }
-                },400)
-                
+                }
             };
 
             function reset(e) {
@@ -467,7 +461,7 @@
                 allButtons = document.querySelectorAll('.filterbuttons'),
                 thisButton = document.getElementById(e);
                 
-                $('hr,.descriptionbar').slideDown(300)
+                $('.seperate,.descriptionbar').slideDown(300)
 
                 for(let i = 0; i < allButtons.length; i++) {
 
@@ -489,7 +483,6 @@
                 }
                 
             };
-
 
             $(document).ready(function(){setTimeout(()=>{parent.pagename('Portfolio');},500);});
         </script>
