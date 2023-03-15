@@ -88,12 +88,13 @@
         <header class="topbar" style="box-shadow: none;">
             <h1>Portfolio</h1>
         </header>
-        <div class="filtercont" style="width: 100%; border-bottom: 2px solid #303030; display: flex; justify-content: center; align-items: center; animation: fade 1s;">
+        <div class="filtercont" style="width: 100%; display: flex; justify-content: center; align-items: center; animation: fade 1s;">
             <button class="filterbuttons active" id="allfilter" onclick="reset(this.id)">ALL</button>
             <button class="filterbuttons" id="gcsefilter" onclick="filter('.gcse',this.id)">GCSE</button>
             <button class="filterbuttons" id="alevelfilter" onclick="filter('.alevel',this.id)">ALEVEL</button>
             <button class="filterbuttons" id="otherfilter" onclick="filter('.other',this.id)">OTHER</button>
         </div>
+        <hr style="margin-top: 0;">
         <style>
             .filterbuttons
             {
@@ -119,7 +120,6 @@
             }
             .filterbuttons.active
             {
-                
 	            background-color: #30303050;
                 border: 2px solid #303030;
             }
@@ -188,8 +188,6 @@
             <!-- middle ends here? -->
 
             <div class="descriptionbar"><span>Alevel Art</span></div>
-
-            <!-- .middle shouldnt restart // make into one container -->
 
             <div class="middle">
                 <div class="beforemiddleimg revealed alevel" style="--i: 8;--j:#3c00ff60;">
@@ -388,9 +386,16 @@
 
         </main>
         <script>
+
+
+            /* main variables */
+
             var timer = null, frames = document.getElementsByClassName('iframelookers'), 
             link = document.getElementsByClassName('linkplate'), 
             loader = document.getElementsByClassName('loaderframe');
+
+
+            /* page onlook system */
 
             if(window.innerWidth > window.innerHeight && localStorage.getItem("performance")!=='true') {
 
@@ -418,6 +423,9 @@
                 }
             };
 
+
+            /* filter system */
+
             function filter(e,x) {
 
                 let tabs = document.querySelectorAll('.beforemiddleimg'),
@@ -438,19 +446,12 @@
                 for(let i = 0; i < tabs.length; i++) {
                     
                     if(tabs[i].classList.contains(e.substring(1,e.length)) != true){
-                        tabs[i].style.opacity = "0", setTimeout(() => {
 
-                            tabs[i].classList.add('hidden');
+                        tabs[i].classList.add('hidden');
 
-                        },200)
                     }else{
-                        tabs[i].classList.remove('hidden'), 
-                        
-                        setTimeout(() => {
-
-                            tabs[i].style.opacity = "1";
-
-                        },200)
+                        tabs[i].classList.remove('hidden');
+                    
                     }
                 }
             };
@@ -483,6 +484,9 @@
                 }
                 
             };
+
+
+            /* pagename system */
 
             $(document).ready(function(){setTimeout(()=>{parent.pagename('Portfolio');},500);});
         </script>
