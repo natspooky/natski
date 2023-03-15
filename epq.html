@@ -447,13 +447,9 @@
                         backgroundColor: "transparent"
                     })
                 })
-            });
-
-            $(window).scroll(function() {
-                $("article").each(function(e) {
-                    var t = $(this).position().top + $(this).outerHeight() + 130;
-                    $(window).scrollTop() + $(window).height() > t ? document.getElementById('chapterselect').classList.add('active') : document.getElementById('chapterselect').classList.remove('active')
-                })
+                
+                var t = $('article').position().top + $('article').outerHeight() + 130;
+                $(window).scrollTop() + $(window).height() > t ? document.getElementById('chapterselect').classList.add('active') : document.getElementById('chapterselect').classList.remove('active')
             });
         </script>
         <script src="lib/js/main.js"></script>
