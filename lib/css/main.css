@@ -439,8 +439,32 @@ button
 	padding: 0 6px;
 	border-radius: 5px;
 	width: 100%;
-	color: var(--themecol);
+	color: var(--themecoltrans);
 	text-decoration: none;
+}
+.epqpage a::before
+{
+	opacity: 0;
+	visibility: hidden;
+	position: absolute;
+	display: block;
+	right: 50%;
+	white-space: nowrap;
+	padding: 4px 7px;
+	border-radius: 10px;
+	font-size: 0.9em;
+	transform: translateY(-7px) translateX(50%);
+	color: inherit;
+	background-color: var(--accentcol);
+	box-shadow: 0px 0px 20px var(--accentcol);
+	border: 2px solid #303030;
+    content: attr(name);
+	transition: 0.1s;
+}
+.epqpage a:hover::before
+{
+	visibility: visible;
+	opacity: 1;
 }
 .notifcont
 {
@@ -1070,8 +1094,8 @@ article .chapter span
 	text-align: center;
 	max-width: 300px;
 	border-radius: 10px;
-	padding: 7px;
 	transform: translate(-50%,-160%);
+	padding: 7px;
 	color: var(--maincol);
 	background-color: var(--accentcol);
 	box-shadow: 0px 0px 20px var(--accentcol);

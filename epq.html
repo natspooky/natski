@@ -90,7 +90,7 @@
                     <a href="#chapters-three">Humans vs Machines</a>
                 </li>
                 <li>
-                    <a href="#chapters-four">How this affects our online activity</a>
+                    <a href="#chapters-four">How do website builders affect us</a>
                 </li>
                 <li>
                     <a href="#chapters-five">WIP</a>
@@ -270,24 +270,24 @@
 
 
 
-                <div class="chapter"><div id="chapters-four"></div><span>04</span> How this affects our online activity</div><br>
+                <div class="chapter"><div id="chapters-four"></div><span>04</span> How do website builders affect us</div><br>
                 WIP
                 <div class="chapter"><div id="chapters-five"></div><span>05</span> WIP what is this useful for</div><br>
                 WIP
-                <div class="code">code window</div>
+
                 <div class="chapter"><div id="chapters-conclusion"></div><span>06</span> Conclusion</div><br>
                 WIP
 
                 <ul class="epqpage" id="chapterselect" style="list-style: none; text-align: center;">
                     <li>Chapters</li>
                     <hr>
-                    <a class="chapterpick0" href="#chapters-intro">Introduction</a>
-                    <a class="chapterpick1" href="#chapters-one">Chapter 1</a>
-                    <a class="chapterpick2" href="#chapters-two">Chapter 2</a>
-                    <a class="chapterpick3" href="#chapters-three">Chapter 3</a>
-                    <a class="chapterpick4" href="#chapters-four">Chapter 4</a>
-                    <a class="chapterpick5" href="#chapters-five">Chapter 5</a>
-                    <a class="chapterpick6" href="#chapters-conclusion">Conclusion</a>
+                    <a class="chapterpick0" name="Introductory chapter" href="#chapters-intro">Introduction</a>
+                    <a class="chapterpick1" name="What is HTML, CSS and Javascript" href="#chapters-one">Chapter 1</a>
+                    <a class="chapterpick2" name="What is a website builder" href="#chapters-two">Chapter 2</a>
+                    <a class="chapterpick3" name="Humans vs Machines" href="#chapters-three">Chapter 3</a>
+                    <a class="chapterpick4" name="How do website builders affect us" href="#chapters-four">Chapter 4</a>
+                    <a class="chapterpick5" name="chap2 :" href="#chapters-five">Chapter 5</a>
+                    <a class="chapterpick6" name="Conclusional chapter" href="#chapters-conclusion">Conclusion</a>
                 </ul>
             </article>
             <hr>
@@ -440,13 +440,13 @@
             $(document).ready(function(){setTimeout(()=>{parent.pagename('EPQ');},500);});
 
             $(window).scroll(function() {
+
                 $(".chapter").each(function(e) {
                     var t = $(this).position().top + $(this).outerHeight() + 1300;
-                    $(window).scrollTop() + $(window).height() > t ? $('.chapterpick'+e).css({
-                        backgroundColor: "#303030"
-                    }) : $('.chapterpick'+e).css({
-                        backgroundColor: "transparent"
-                    })
+                    if($(window).scrollTop() + $(window).height() > t){
+                        $('.chapterpick'+(e-1)+',.chapterpick'+(e+1)).css({backgroundColor: "transparent",color: 'var(--themecoltrans)'})
+                        $('.chapterpick'+e).css({backgroundColor: "#303030",color: 'var(--themecol)'})
+                    }
                 })
                 
                 var t = $('article').position().top + $('article').outerHeight() + 130;
