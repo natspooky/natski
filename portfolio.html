@@ -398,91 +398,58 @@
             /* page onlook system */
 
             if(window.innerWidth > window.innerHeight && localStorage.getItem("performance")!=='true') {
-
                 for(let i = 0; i<link.length;i++){
-
                     link[i].addEventListener('mouseover',function() {
-
                         loader[i].style.display = 'flex'
-
                         timer = window.setTimeout(function(){
-
                             frames[i].src="lib/hovertabs/"+link[i].href.substring(27,link[i].href.length);
-
-                    }, 300);
-
+                        }, 300);
                     });
-
                     link[i].addEventListener('mouseout',function() { 
-
                         window.clearTimeout(timer)
                         loader[i].style.display = 'none'
                         frames[i].src='';
-
                     })
                 }
-            };
+            }
 
 
             /* filter system */
 
             function filter(e,x) {
-
                 let tabs = document.querySelectorAll('.beforemiddleimg'),
                 keep = document.querySelectorAll(e),
                 allButtons = document.querySelectorAll('.filterbuttons'),
                 thisButton = document.getElementById(x);
-
                 $('.seperate,.descriptionbar').slideUp(250)
-
                 for(let i = 0; i < allButtons.length; i++) {
-
                     allButtons[i].classList.remove("active");
-
                 }
-
                 thisButton.classList.add('active');
-
-                for(let i = 0; i < tabs.length; i++) {
-                    
+                for(let i = 0; i < tabs.length; i++) { 
                     if(tabs[i].classList.contains(e.substring(1,e.length)) != true){
-
                         tabs[i].classList.add('hidden');
-
                     }else{
                         tabs[i].classList.remove('hidden');
-                    
                     }
                 }
             };
 
             function reset(e) {
-
                 let tabs = document.querySelectorAll('.beforemiddleimg'),
                 allButtons = document.querySelectorAll('.filterbuttons'),
                 thisButton = document.getElementById(e);
-                
                 $('.seperate,.descriptionbar').slideDown(300)
-
                 for(let i = 0; i < allButtons.length; i++) {
-
                     allButtons[i].classList.remove("active");
-
                 }
-
-                thisButton.classList.add('active');
-                
+                thisButton.classList.add('active'); 
                 for(let i = 0; i < tabs.length; i++) {
-
                     tabs[i].classList.remove('hidden'), 
-
                     setTimeout(() => {
-
                         tabs[i].style.opacity = "1"
-
                     },200)
-                }
-                
+                }        
             };
 
 

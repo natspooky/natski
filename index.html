@@ -151,7 +151,8 @@
                 showSlides(slideIndex),time = setInterval(function() {
                     plusSlides(1)
                 }, 1e4), slideshowContainer = document.getElementsByClassName("banner-button");
-                for (let e = 0; e < slideshowContainer.length; e++) slideshowContainer[e].addEventListener("mouseenter", pause), slideshowContainer[e].addEventListener("mouseleave", resume)
+                for (let e = 0; e < slideshowContainer.length; e++) slideshowContainer[e].addEventListener("mouseenter", pause), 
+                slideshowContainer[e].addEventListener("mouseleave", resume)
             }), pause = () => {
                 clearInterval(time), resetProgressBar()
             }, resume = () => {
@@ -159,7 +160,6 @@
                     plusSlides(slideIndex)
                 }, 1e4), progressBar()
             }
-
 
             function plusSlides(e) {
                 clearInterval(time), e < 0 ? showSlides(slideIndex -= 1) : showSlides(slideIndex += 1), time = -1 === e ? setInterval(function() {
@@ -354,8 +354,7 @@
 
             /* cross site to index functions */
 
-            let percentComplete = 0,
-            indeximage = $('img');
+            let percentComplete = 0, indeximage = $('img');
             resetstatus(indeximage.length)
             indeximage.each(function(e) {
                 $(this).imagesLoaded().done(function() {
@@ -384,7 +383,7 @@
 
             function changetheme(e) {
                 $(':root').css({'--themecol':e,'--themecoltrans':e+"50"});
-            };
+            }
 
             function pagename(x){
                 document.title="Natski | "+x;document.getElementById('pagename').innerHTML=x;

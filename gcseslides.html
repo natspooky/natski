@@ -139,6 +139,9 @@
         </footer>
         <div class="slidesmenu" id="slidechooser"></div>
         <script>
+
+            /* slidepicker system */
+
             let slides = document.getElementById("slidecontainer").childElementCount, slidenum = document.getElementById('slidechooser');
             if(window.innerWidth > window.innerHeight) {
                 for(let i = 0; i<slides; i++) {
@@ -154,6 +157,7 @@
                     }
                 }
             };
+
             function scrollslide(e) {
                 document.getElementById('slidenumber'+e).scrollIntoView({
                     behavior: 'auto',
@@ -161,6 +165,7 @@
                     inline: 'center'
                 });
             };
+            
         </script>
 
         <nav class="navbar">
