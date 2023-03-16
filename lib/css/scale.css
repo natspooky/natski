@@ -207,6 +207,8 @@
     }
     .slidesmenu
     {
+        opacity: 0;
+        visibility: hidden;
         transform: translateX(20vw);
     }
     .epqpage
