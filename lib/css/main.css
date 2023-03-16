@@ -134,6 +134,7 @@
 	--themecoltrans: #729ef650;
 	--barcol: #dcdcdc;
 	--buttoncol: #f8f9fa;
+	--blur: 5px;
 }
 ::-webkit-scrollbar
 {
@@ -373,6 +374,7 @@ button
 	right: min(1.5%,25px);
 	background-color: #30303050;
 	border: 2px solid #303030;
+	backdrop-filter: blur(var(--blur));
 	color: var(--maincol);
 	font-size: 1.1em;
 	transform: translateX(0);
