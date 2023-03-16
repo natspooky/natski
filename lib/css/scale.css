@@ -105,6 +105,16 @@
     {
         filter: brightness(1);
     }
+    .epqpage a:hover::before
+    {
+        visibility: visible;
+        opacity: 1;
+        transform: translateY(-5px) translateX(50%) scale(1);
+    }
+    input[type=range]:hover::-webkit-slider-runnable-track 
+    {
+        background: var(--themecoltrans);
+    }
 }
 @media screen and (max-width: 1250px) and (min-width: 0px)
 {
