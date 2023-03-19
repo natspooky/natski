@@ -33,8 +33,10 @@
             <button onclick="parent.changepage(-10,'');"></button>
         </header>
         <main class="middle">
-            <article style="margin-top: 20px;">
-                <div class="chapter" style="margin-top: -10px;"><div id="chapters-intro"></div><span>00</span> Introduction</div><br></article>
+            <article class="revealed" style="margin-top: 20px; --i: 6;">
+                <div class="chapter" style="margin-top: -10px;"><div></div>19 / 03 / 23</div><br>
+                ok
+            </article>
         </main>
         <script>
             $(document).ready(function(){setTimeout(()=>{$(".loaderback").fadeOut()},500);let e=new Date;e.getFullYear()>2022?document.getElementById("footerdate").innerHTML="\xa9 NATSKI 2022-"+e.getFullYear():document.getElementById("footerdate").innerHTML="\xa9 NATSKI "+e.getFullYear()});
