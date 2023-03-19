@@ -271,10 +271,11 @@
             function load() {
                 document.getElementById("pagecounter").innerHTML = pageindex + "/" + index
             }
-
+            let type = '';
             function changepage(e,x) {
-                let type = x;
-                if(type != 'P'){
+                if(x == 'P'){
+                    type = 'P'
+                }if(x == ''){
                     type = ''
                 }
                 (pageindex += e) < 1 && (pageindex = 1), pageindex > index && (pageindex = index), 
