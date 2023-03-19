@@ -1516,18 +1516,6 @@ footer .linkbar a
 	border-radius: 0px;
 	box-shadow: 0px 0px 25px #0a0a0a;
 }
-.changelogframe iframe
-{
-	position: absolute;
-	overscroll-behavior: contain;
-	top: 0;
-	left: 0;
-	height: 90%;
-	width: 100%;
-	border: 0px;
-	display: none;
-	transition: 0.3s;
-}
 .backpanel
 {
 	position: fixed;
@@ -1547,7 +1535,7 @@ footer .linkbar a
 	background-color: var(--accentcol);
 	scroll-snap-align: end;
 }
-.iframecont iframe,.iframecont a
+.iframecont iframe,.changelogframe iframe,.iframecont a
 {
 	position: absolute;
 	left: 0;

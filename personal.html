@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en-US">
     <head>
-		<title>Natski | Changelog</title>
+		<title>Natski | Personal Log</title>
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, user-scalable=no"/>
         <meta name="theme-color" content="#1e1e1e"/>
@@ -49,15 +49,15 @@
         </div>
         <div id="footerdate"></div>
         <script>
-            var pageindex=1,index=3;
+            var pageindex=1,index=1;
             function load(){document.getElementById("pagecounter").innerHTML=pageindex+"/"+index}
             function changepage(e) {
                 (pageindex += e) < 1 && (pageindex = 1), pageindex > index && (pageindex = index), 
-                document.getElementById("ifr").src = "lib/html/log" + pageindex + ".html", document.getElementById("pagecounter").innerHTML = pageindex + "/" + index
+                document.getElementById("ifr").src = "lib/html/Plog" + pageindex + ".html", document.getElementById("pagecounter").innerHTML = pageindex + "/" + index
             }
         </script>
         <nav class="navbar">
-            <span id="pagename">Changelog</span>
+            <span id="pagename">Personal Log</span>
             <div class="navbarleft">
                 <a href="index.html">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560.95 560.95" fill="var(--maincol)">
@@ -79,7 +79,7 @@
                     About
                     <div class="selector"></div>
                 </a>
-                <a class="navbutton active" style="cursor: pointer;">
+                <a class="navbutton" href="changes.html">
                     Changelog
                     <div class="selector"></div>
                 </a>
@@ -138,7 +138,7 @@
             </div>
         </div>
         <script>
-            $(document).ready(function(){setTimeout(()=>{parent.pagename('Changelog');},500);});
+            $(document).ready(function(){setTimeout(()=>{parent.pagename('Personal Log');},500);});
         </script>
         <noscript>
             <h1>javascript is disabled :(</h1>

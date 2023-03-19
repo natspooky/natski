@@ -140,9 +140,6 @@
             slideIndex = 1,
             elem = document.getElementById("progress-bar"),
             width = 1,
-            pageindex = 1,
-            index = 3,
-            type = '',
             buttons = document.getElementsByClassName('navbutton');
 
 
@@ -267,24 +264,6 @@
             }
 
 
-            /* changelog system */
-            
-            function load() {
-                document.getElementById("pagecounter").innerHTML = pageindex + "/" + index
-            }
-            function changepage(e,x) {
-                if(x == 'P'){
-                    type = 'P'
-                    index = 1
-                }if(x == ''){
-                    type = ''
-                    index = 3
-                }
-                (pageindex += e) < 1 && (pageindex = 1), pageindex > index && (pageindex = index), 
-                document.getElementById("logframe").src = "lib/html/"+type+"log" + pageindex + ".html", document.getElementById("pagecounter").innerHTML = pageindex + "/" + index
-            }
-
-
             /* misc */
 
             function scrolltop() {
@@ -326,11 +305,10 @@
             function unloadframe(e,x,y) {
                 if(y=='logframe'){
                     document.querySelector(".changelogframe").classList.remove("active"),
-                    document.querySelector(".navbar").classList.remove("active"),
                     $("#backcloser").fadeOut()
                 }else{
-                    document.querySelector(".pagecontainer").classList.remove("active"),
-                    document.querySelector(".navbar").classList.remove("active")}
+                    document.querySelector(".pagecontainer").classList.remove("active")}
+                    document.querySelector(".navbar").classList.remove("active")
                     document.body.classList.remove("static")
                     document.getElementById(y).src=e; 
                     document.title="Natski | "+x;
@@ -346,12 +324,11 @@
                 }else{
                     if(y=='logframe'){
                         $("#backcloser").fadeIn(),
-                        document.querySelector(".changelogframe").classList.add("active"),
-                        document.querySelector(".navbar").classList.add("active")
+                        document.querySelector(".changelogframe").classList.add("active")
                     }else{
-                        document.querySelector(".pagecontainer").classList.add("active"),
-                        document.querySelector(".navbar").classList.add("active")
+                        document.querySelector(".pagecontainer").classList.add("active")
                     }
+                    document.querySelector(".navbar").classList.add("active")
                     document.body.classList.add("static")
                     document.getElementById(y).src=e+'.html';
                     document.title="Natski | "+x+'.html';
@@ -489,7 +466,7 @@
                     About
                     <div class="selector"></div>
                 </a>
-                <button class="navbutton" id="changes" onClick='unloadframe("","Changelog","ifr");pageactive(this.id,"Changelog","logframe");document.getElementById("logframe").src="lib/html/log1.html";load();changepage(0,"");loaderdeactivate();sfx("excite")'>
+                <button class="navbutton" id="changes" onClick='unloadframe("","Changelog","ifr");pageactive(this.id,"Changelog","logframe");document.getElementById("logframe").src="changes.html";loaderdeactivate();sfx("excite")'>
                     Changelog
                     <div class="selector"></div>
                 </button>
@@ -509,7 +486,7 @@
         <div class="backpanel" id="backcloser" onClick='unloadframe("","Home","logframe");sfx("hom")'></div>
         <div class="changelogframe">
             <iframe id="logframe"></iframe>
-            <div class="pagechanger" style="border-top: 2px solid #303030;">
+            <!--<div class="pagechanger" style="border-top: 2px solid #303030;">
                 <button id="backpg" onclick="changepage(-1);sfx('clicker')">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 398.35 636.29">
                         <path d="M16.05,354l302.18,269.96c30.98,27.68,80.12,5.69,80.12-35.86V48.18c0-41.55-49.14-63.54-80.12-35.86L16.05,282.28c-21.4,19.12-21.4,52.6,0,71.72Z"/>
@@ -521,7 +498,7 @@
                         <path d="M382.3,282.28L80.12,12.32C49.14-15.36,0,6.63,0,48.18V588.11c0,41.55,49.14,63.54,80.12,35.86L382.3,354c21.4-19.12,21.4-52.6,0-71.72Z"/>
                     </svg>
                 </button>
-            </div>
+            </div>-->
             <button class="logcloser" onClick='unloadframe("","Home","logframe");sfx("hom")'>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 811.31 811.31">
                     <defs>
