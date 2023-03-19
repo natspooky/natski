@@ -142,6 +142,7 @@
             width = 1,
             pageindex = 1,
             index = 3,
+            type = '',
             buttons = document.getElementsByClassName('navbutton');
 
 
@@ -271,7 +272,6 @@
             function load() {
                 document.getElementById("pagecounter").innerHTML = pageindex + "/" + index
             }
-            let type = '';
             function changepage(e,x) {
                 if(x == 'P'){
                     type = 'P'
