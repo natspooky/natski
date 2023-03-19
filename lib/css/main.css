@@ -752,6 +752,7 @@ header .progress .progress-bar
 .topbar
 {
 	position: relative;
+	overflow: visible;
 	justify-content: unset;
 	background-position: center;
 	background-image: linear-gradient(to top right, var(--themecol),var(--accentcol));
