@@ -274,6 +274,9 @@
 
             function changepage(e,x) {
                 let type = x;
+                if(type != 'P'){
+                    type = ''
+                }
                 (pageindex += e) < 1 && (pageindex = 1), pageindex > index && (pageindex = index), 
                 document.getElementById("logframe").src = "lib/html/"+type+"log" + pageindex + ".html", document.getElementById("pagecounter").innerHTML = pageindex + "/" + index
             }
@@ -483,7 +486,7 @@
                     About
                     <div class="selector"></div>
                 </a>
-                <button class="navbutton" id="changes" onClick='unloadframe("","Changelog","ifr");pageactive(this.id,"Changelog","logframe");document.getElementById("logframe").src="lib/html/log1.html";load();changepage(0,"");loaderdeactivate();sfx("excite")'>
+                <button class="navbutton" id="changes" onClick='unloadframe("","Changelog","ifr");pageactive(this.id,"Changelog","logframe");document.getElementById("logframe").src="lib/html/log1.html";load();loaderdeactivate();sfx("excite")'>
                     Changelog
                     <div class="selector"></div>
                 </button>
