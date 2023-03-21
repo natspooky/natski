@@ -132,9 +132,8 @@
 	--accentcol: #1e1e1e;
 	--accentcoltrans: #1e1e1eb0;
 	--themecol: #729ef6;
-	--themecoltrans: #729ef650;
-	--barcol: #dcdcdc;
-	--buttoncol: #f8f9fa;
+	--themecoltrans: #729ef6b0;
+	--notifcol: #282828b0;
 	--blur: 5px;
 }
 ::-webkit-scrollbar {
@@ -473,7 +472,7 @@ button {
     z-index: 99999;
     opacity: 1;
     box-shadow: 0 0 20px #0a0a0a94;
-    background-color: #282828b0;
+    background-color: var(--notifcol);
 	backdrop-filter: blur(var(--blur));
     transition: .3s
 }
