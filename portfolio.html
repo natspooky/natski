@@ -88,6 +88,10 @@
         <header class="topbar" style="box-shadow: none;">
             <h1>Portfolio</h1>
         </header>
+        <div class="filtercont" id="stylebut" style="width: 100%; justify-content: center; align-items: center; animation: fade 1s;">
+            <button class="stylebuttons active" id="originalbtn" onclick="styler('false',this.id)">ORIGINAL</button>
+            <button class="stylebuttons" id="smallbtn" onclick="styler('true',this.id)">COMPACT</button>
+        </div>
         <div class="filtercont" style="width: 100%; display: flex; justify-content: center; align-items: center; animation: fade 1s;">
             <button class="filterbuttons active" id="allfilter" onclick="reset(this.id)">ALL</button>
             <button class="filterbuttons" id="gcsefilter" onclick="filter('.gcse',this.id)">GCSE</button>
@@ -96,7 +100,7 @@
         </div>
         <hr style="margin-top: 0;">
         <style>
-            .filterbuttons
+            .filterbuttons, .stylebuttons
             {
                 padding: 10px 15px;
                 font-weight: bold;
@@ -109,26 +113,34 @@
                 cursor: pointer;
                 transition: 0.1s;
             }
-            .filterbuttons:hover
+            .filterbuttons:hover,.stylebuttons:hover
             {
                 border: 2px solid var(--themecol);
             }
-            .filterbuttons:active
+            .filterbuttons:active,.stylebuttons:active
             {
                 transform: scale(0.9);
                 background-color: var(--themecoltrans);
                 transition: 0s;
             }
-            .filterbuttons.active
+            .filterbuttons.active,.stylebuttons.active
             {
 	            background-color: var(--themecol);
                 border: 2px solid var(--themecol);
                 color: var(--accentcol);
             }
+            #stylebut
+            {
+                display: flex;
+            }
             @media (orientation: portrait){
                 .filtercont
                 {
                     transform: scale(0.9);
+                }
+                #stylebut
+                {
+                    display: none;
                 }
             }
         </style>
@@ -454,6 +466,24 @@
                         tabs[i].style.opacity = "1"
                     },200)
                 }        
+            };
+
+
+            function styler(e,x) {
+                let tabs = document.querySelectorAll('.beforemiddleimg'),
+                allButtons = document.querySelectorAll('.stylebuttons'),
+                thisButton = document.getElementById(x);
+                for(let i = 0; i < allButtons.length; i++) {
+                    allButtons[i].classList.remove("active");
+                }
+                thisButton.classList.add('active');
+                for(let i = 0; i < tabs.length; i++) { 
+                    if(e == 'true'){
+                        tabs[i].classList.add('small');
+                    }else{
+                        tabs[i].classList.remove('small');
+                    }
+                }
             };
 
 
