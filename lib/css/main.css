@@ -56,15 +56,15 @@
 	align-items: center;
 	background-color: var(--accentcol);
 	border: 1px solid #303030;
-	border-radius: 5px;
+	border-radius: 8px;
 	height: 30px;
 	width: 30px;
 }
 .loaderback div svg
 {
 	position: relative;
-	height: 18px;
-	width: 18px;
+	height: 15px;
+	width: 15px;
 	animation: spin 1.5s linear infinite;
 }
 @keyframes spin {
@@ -124,7 +124,7 @@
 	color: var(--maincol); 
 	z-index: 99; 
 	padding: 5px; 
-	border-radius: 5px;
+	border-radius: 8px;
 }
 :root
 {
@@ -1172,6 +1172,7 @@ input[type=range]:focus::-webkit-slider-thumb {
     margin: .5vw .7vw 1.4vw;
     overflow: hidden;
     border: 10px solid transparent;
+	outline: #303030 solid 1px;
     border-radius: 26px;
     box-shadow: 0 0 10px #00000000;
     cursor: pointer;
@@ -1182,6 +1183,7 @@ input[type=range]:focus::-webkit-slider-thumb {
     height: 0;
     margin: 0 .7vw;
     border: 0 solid transparent;
+	outline: transparent solid 0;
     transition: .3s
 }
 
@@ -1195,6 +1197,7 @@ input[type=range]:focus::-webkit-slider-thumb {
     border-radius: 45px;
     font-size: 1.4vw;
     border: 4px solid transparent;
+	outline: #303030 solid 1px;
     cursor: pointer;
     font-weight: 700;
     text-decoration: none;
