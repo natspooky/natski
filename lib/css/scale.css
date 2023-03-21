@@ -12,7 +12,9 @@
     }
     .middle .beforemiddleimg:hover .middlebutton
     {
-        border: 4px solid var(--themecol);
+        border: 4px solid transparent;
+        background-color: var(--themecol);
+        color: var(--accentcol);
         outline: transparent solid 1px;
     }
     .middle .beforemiddleimg:hover .text h1
