@@ -512,6 +512,7 @@ button {
     height: 75px;
     width: 100%;
     background-color: #373737;
+	outline: #303030 solid 2px;
     border-radius: 10px;
     margin-bottom: 20px;
     transform: scale(1);

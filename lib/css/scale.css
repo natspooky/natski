@@ -58,7 +58,7 @@
     .notifcont .notif:hover:active
     {
         transform: scale(0.97);
-        box-shadow: 0px 0px 20px var(--accentcol);
+        box-shadow: 0px 10px 10px var(--accentcoltrans);
         transition: 0s;
     }
     .notifcont .notif:hover
