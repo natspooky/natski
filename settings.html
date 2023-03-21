@@ -62,17 +62,21 @@
     
         <main class="middle">
             <dl class="revealed" style="--i: 4;">
-                <dt>Website theme</dt>
+                <dt>Website Theme</dt>
                 <dd><input type="color" id="themepicker"><button onclick="resettheme()">reset</button></dd>
                 <hr>
-                <dt>Website sfx (pc only)</dt>
+                <dt>Website SFX (pc only)</dt>
                 <dd><input type="checkbox" id="sfx"></dd>
                 <hr>
-                <dt>Performance Mode</dt>
+                <dt>Performance Mode <span style="font-size: 0.7rem;">(some features are still under development and might not work as intended)</span></dt>
+                <dd>Best Performance</dd>
                 <dd><input type="checkbox" id="performance"></dd>
-                <hr>
-                <dt>Transparency Effects</dt>
-                <dd>COMING SOON</dd>
+                <dd>Toggle Seperate Pages:</dd>
+                <dd><input type="checkbox" id="temp1"></dd>
+                <dd>WIP Toggle Embedded Loader:</dd>
+                <dd><input type="checkbox" id="temp2" checked></dd>
+                <dd>WIP Toggle Transparency and Blur Effects:</dd>
+                <dd><input type="checkbox" id="temp3" checked></dd>
             </dl>
         </main>
 
@@ -151,8 +155,10 @@
                 margin: 0 10px;
                 border-radius: 5px;
                 padding: 5px;
-                background-color: var(--themecoltrans);
-                color: var(--maincol);
+                font-weight: bold;
+                background-color: var(--themecol);
+                color: var(--accentcol);
+                cursor: pointer;
             }
         </style>
 
