@@ -515,6 +515,7 @@ button {
     border-radius: 10px;
     margin-bottom: 20px;
     transform: scale(1);
+	box-shadow: 0 10px 20px var(--accentcoltrans);
     animation: notif .5s;
     text-decoration: none;
     transition: .15s ease;
