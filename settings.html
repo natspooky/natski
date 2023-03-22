@@ -71,12 +71,12 @@
                 <dt>Performance Mode <span style="font-size: 0.7rem;">(some features are still under development and might not work as intended)</span></dt>
                 <dd>Best Performance</dd>
                 <dd><input type="checkbox" id="performance"></dd>
-                <dd>Toggle Seperate Pages:</dd>
-                <dd><input type="checkbox" id="temp1"></dd>
-                <dd>WIP Toggle Embedded Loader:</dd>
-                <dd><input type="checkbox" id="temp2" checked></dd>
-                <dd>WIP Toggle Transparency and Blur Effects:</dd>
-                <dd><input type="checkbox" id="temp3" checked></dd>
+                <dd class="shift">Enable Seperate Pages:</dd>
+                <dd class="shift"><input type="checkbox" id="pages"></dd>
+                <dd class="shift">WIP Enable Embedded Loader:</dd>
+                <dd class="shift"><input type="checkbox" id="embloader" checked></dd>
+                <dd class="shift">WIP Enable Transparency and Blur Effects:</dd>
+                <dd class="shift"><input type="checkbox" id="tab" checked></dd>
             </dl>
         </main>
 
@@ -160,6 +160,10 @@
                 color: var(--accentcol);
                 cursor: pointer;
             }
+            .shift
+            {
+                margin-left: 45px;
+            }
         </style>
 
         <script>
@@ -169,7 +173,7 @@
             $("#themepicker").val(theme);
             $("#themepicker").on("input",function(){
                     let hex=document.getElementById("themepicker").value;
-                    if(/^#([0-9A-F]{6})$/i.test(hex)==false||hex=='#ffffff'){
+                    if(hex=='#ffffff'){
                         hex='#729ef6';
                     }
                     localStorage.setItem('theme',hex);
@@ -185,19 +189,34 @@
             if(localStorage.getItem("sfx")==='true'){
                 document.getElementById("sfx").checked = true;
             };
+            if(localStorage.getItem("performance")==='true'){
+                document.getElementById("performance").checked = true;
+                document.getElementById("pages").checked = true
+                document.getElementById("embloader").checked = false
+                document.getElementById("tab").checked = false
+            };
             $("#sfx").on("input",function(){
                     let sound=document.getElementById("sfx").checked;
                     console.log(sound)
                     localStorage.setItem('sfx',sound);
             });
-            if(localStorage.getItem("performance")==='true'){
-                document.getElementById("performance").checked = true;
-            };
             $("#performance").on("input",function(){
                     let perf=document.getElementById("performance").checked;
                     console.log(perf)
                     localStorage.setItem('performance',perf);
+                    if(perf == true){
+                        document.getElementById("pages").checked = true
+                        document.getElementById("embloader").checked = false
+                        document.getElementById("tab").checked = false
+                    }else{
+                        document.getElementById("pages").checked = false
+                        document.getElementById("embloader").checked = true
+                        document.getElementById("tab").checked = true
+                    }
             });
+            $("#tab,#pages,#embloader").on("input",function(){
+                document.getElementById("performance").checked = false
+            })
         </script>
 
 
