@@ -1394,50 +1394,73 @@ input[type=range]:focus::-webkit-slider-thumb {
     transition: 0s
 }
 
-footer,footer .linkbar a {
+
+footer
+{
     position: relative;
-    color: #777
-}
-
-footer,footer .linkbar {
-    height: auto;
-    width: 100%;
-    justify-content: center
-}
-
-footer {
-    flex-direction: column;
-    padding: 10px 0;
-    background-color: #0a0a0a;
-    background-image: linear-gradient(to bottom right,var(--themecoltrans),var(--accentcol))
-}
-
-footer p {
-    margin: 10px 0
-}
-
-footer svg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     height: 60px;
-    margin: 30px 0
+    width: 100%;
+    background-color: #00000020;
 }
 
-footer .linkbar {
+footer .footer-links
+{
     position: relative;
-    margin: 10px 0;
-    flex-direction: row
+    display: flex;
+    align-items: center;
+    padding: 10px 5px;
+    border-radius: 100vmax;
+    background-color: var(--themecol);
 }
 
-footer .linkbar .bar {
-    position: relative;
-    background-color: #777;
-    height: 15px;
-    width: 1px
-}
-
-footer .linkbar a {
+footer .footer-links a
+{
     margin: 0 20px;
-    text-decoration: none
+    text-decoration: none;
+    position: relative;
+    font-weight: bold;
+    color: var(--accentcol);
+    cursor: pointer;
 }
+
+footer .footer-links .footer-bars
+{
+    position: relative;
+    background-color: var(--accentcol);
+    border-radius: 100vmax;
+    width: 3px;
+    height: 20px;
+}
+
+footer .footer-logo
+{
+    position: absolute;
+    left: 8px;
+    display: flex;
+    align-items: center;
+    background-color: var(--themecol);
+    transform: scale(0.7);
+    transform-origin: left;
+    border-radius: 10px;
+}
+
+footer .footer-logo svg
+{
+    height: 40px;
+    margin: 10px;
+}
+
+footer .footer-logo p
+{
+    line-height: 20px;
+    color: var(--accentcol);
+    font-weight: bold;
+    margin-right: 10px;
+}
+
 
 .pagecontainer,.pagecontainer iframe {
     overscroll-behavior: contain;
@@ -1594,7 +1617,7 @@ dl dt {
     margin-left: 1.1vw;
     margin-bottom: .5vw
 }
-dl dd,footer,footer .linkbar,noscript {
+dl dd,noscript {
     display: flex;
     align-items: center
 }
@@ -1637,4 +1660,127 @@ noscript h1 {
 noscript p {
     font-size: 3em;
     margin: 0 20px
+}
+
+@media (hover: hover){
+    .middle .beforemiddleimg:hover
+    {
+        transform: scale(1.02);
+        background-color: var(--j);
+        outline: transparent solid 1px;
+        box-shadow: 0px 0px 20px #00000050;
+    }
+    .middle .beforemiddleimg:hover .middleimg
+    {
+        background-size: 105%;
+    }
+    .middle .beforemiddleimg:hover .middlebutton
+    {
+        border: 4px solid transparent;
+        background-color: var(--themecol);
+        color: var(--accentcol);
+        outline: transparent solid 1px;
+    }
+    .middle .beforemiddleimg:hover .text h1
+    {
+        text-decoration: underline;
+    }
+    .pagechanger button:hover
+    {
+        background-color: #303030;
+    }
+    .pagechanger button:hover:active
+    {
+        background-color: var(--themecoltrans);
+        transition: 0s;
+    }
+    footer .footer-links a:hover,footer .footer-links button:hover
+    {
+        text-decoration: underline;
+    }
+    ::-webkit-scrollbar-thumb:hover
+    {
+        border: 3px solid var(--accentcol);
+    }
+    .slidesmenu::-webkit-scrollbar-thumb:hover
+    {
+        border: 3px solid #303030;
+    }
+    .navbar:hover
+    {
+        box-shadow: 0px 0px 100px #0a0a0a;
+        border-bottom: 2px solid transparent;
+    }
+    .navbar .notiftoggle:hover svg
+    {
+        fill: #ca8300;
+    }
+    .notifcont h1 button:hover
+    {
+        color: var(--maincol);
+    }
+    .notifcont .notif:hover:active
+    {
+        transform: scale(0.97);
+        box-shadow: 0px 5px 20px var(--accentcoltrans);
+        transition: 0s;
+    }
+    .notifcont .notif:hover
+    {
+        background-color: #444444;
+    }
+    .notifcont .notif .notifclose:hover
+    {
+        background-color: #373737;
+    }
+    .navbutton:hover,.navbar .navbarleft a:hover,.navbar .notiftoggle:hover
+    {
+        background-color: #33333350;
+    }
+    .navbutton:hover:active,.navbar .navbarleft:hover:active,.navbar .notiftoggle:hover:active,.prev:hover:active,.next:hover:active
+    {
+        background-color: var(--themecoltrans);
+        transform: scale(0.9);
+        border-radius: 10px;
+        transition: 0s;
+    }
+    .navbutton:hover .selector
+    {
+        width: 100%;
+        background-color: var(--maincol);
+    }
+    .navbutton.active:hover .selector
+    {
+        background-color: var(--themecol);
+    }
+    .prev:hover,.next:hover
+    {
+        background-color: #2e2e2e;
+    }
+    .pagecontainer .closer:hover,.changelogframe .logcloser:hover,.backpage:hover
+    {
+        border: 2px solid #ffffff;
+    }
+    .menubutton:hover
+    {
+        background-color: #33333350;
+    }
+    article .code:hover
+    {
+        background-color: #00000030;
+    }
+    .slidesmenu .slidepicker:hover
+    {
+        filter: brightness(1);
+    }
+    .epqpage a:hover::before
+    {
+        visibility: visible;
+        opacity: 1;
+        transform: translateY(-5px) translateX(50%) scale(1);
+    }
+    input[type=range]:hover::-webkit-slider-runnable-track 
+    {
+        background: var(--themecoltrans);
+    }
 }

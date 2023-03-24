@@ -1,125 +1,3 @@
-@media (hover: hover){
-    .middle .beforemiddleimg:hover
-    {
-        transform: scale(1.02);
-        background-color: var(--j);
-        outline: transparent solid 1px;
-        box-shadow: 0px 0px 20px #00000050;
-    }
-    .middle .beforemiddleimg:hover .middleimg
-    {
-        background-size: 105%;
-    }
-    .middle .beforemiddleimg:hover .middlebutton
-    {
-        border: 4px solid transparent;
-        background-color: var(--themecol);
-        color: var(--accentcol);
-        outline: transparent solid 1px;
-    }
-    .middle .beforemiddleimg:hover .text h1
-    {
-        text-decoration: underline;
-    }
-    .pagechanger button:hover
-    {
-        background-color: #303030;
-    }
-    .pagechanger button:hover:active
-    {
-        background-color: var(--themecoltrans);
-        transition: 0s;
-    }
-    footer .linkbar a:hover
-    {
-        text-decoration: underline;
-    }
-    ::-webkit-scrollbar-thumb:hover
-    {
-        border: 3px solid var(--accentcol);
-    }
-    .slidesmenu::-webkit-scrollbar-thumb:hover
-    {
-        border: 3px solid #303030;
-    }
-    .navbar:hover
-    {
-        box-shadow: 0px 0px 100px #0a0a0a;
-        border-bottom: 2px solid transparent;
-    }
-    .navbar .notiftoggle:hover svg
-    {
-        fill: #ca8300;
-    }
-    .notifcont h1 button:hover
-    {
-        color: var(--maincol);
-    }
-    .notifcont .notif:hover:active
-    {
-        transform: scale(0.97);
-        box-shadow: 0px 5px 20px var(--accentcoltrans);
-        transition: 0s;
-    }
-    .notifcont .notif:hover
-    {
-        background-color: #444444;
-    }
-    .notifcont .notif .notifclose:hover
-    {
-        background-color: #373737;
-    }
-    .navbutton:hover,.navbar .navbarleft a:hover,.navbar .notiftoggle:hover
-    {
-        background-color: #33333350;
-    }
-    .navbutton:hover:active,.navbar .navbarleft:hover:active,.navbar .notiftoggle:hover:active,.prev:hover:active,.next:hover:active
-    {
-        background-color: var(--themecoltrans);
-        transform: scale(0.9);
-        border-radius: 10px;
-        transition: 0s;
-    }
-    .navbutton:hover .selector
-    {
-        width: 100%;
-        background-color: var(--maincol);
-    }
-    .navbutton.active:hover .selector
-    {
-        background-color: var(--themecol);
-    }
-    .prev:hover,.next:hover
-    {
-        background-color: #2e2e2e;
-    }
-    .pagecontainer .closer:hover,.changelogframe .logcloser:hover,.backpage:hover
-    {
-        border: 2px solid #ffffff;
-    }
-    .menubutton:hover
-    {
-        background-color: #33333350;
-    }
-    article .code:hover
-    {
-        background-color: #00000030;
-    }
-    .slidesmenu .slidepicker:hover
-    {
-        filter: brightness(1);
-    }
-    .epqpage a:hover::before
-    {
-        visibility: visible;
-        opacity: 1;
-        transform: translateY(-5px) translateX(50%) scale(1);
-    }
-    input[type=range]:hover::-webkit-slider-runnable-track 
-    {
-        background: var(--themecoltrans);
-    }
-}
 @media screen and (max-width: 1250px) and (min-width: 0px)
 {
     .banner-bg
@@ -445,22 +323,42 @@
     }
     footer
     {
-        padding: 15px 0px;
+        height: auto;
+        padding: 10px 0;
+        flex-direction: column-reverse;
     }
-    footer svg
+    footer .footer-links
     {
-        height: 12vw;
-        margin: 4vw 0;
+        font-size: 0.8em;
+        padding: 9px 7px;
     }
-    footer p
+    footer .footer-links .footer-bars
     {
-        font-size: 3vw;
+        height: 15px;
+        width: 2px;
     }
-    footer .linkbar a
+    footer .footer-links a
     {
-        margin: 0px 2.5vw;
-        font-size: 3.2vw;
+        margin: 0 6px;
     }
+    footer .footer-logo
+    {
+        transform: scale(0.7);
+        transform-origin: center;
+        position: relative;
+        left: 0;
+
+    }
+    footer .footer-logo svg
+    {
+
+    }
+    footer .footer-logo p
+    {
+        text-align: center;
+    }
+
+
     .pagecontainer .closer,.backpage,.changelogframe .logcloser
     {
         left: unset;
