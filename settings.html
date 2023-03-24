@@ -68,15 +68,8 @@
                 <dt>Website SFX (pc only)</dt>
                 <dd><input type="checkbox" id="sfx"></dd>
                 <hr>
-                <dt>Performance Mode <span style="font-size: 0.7rem;">(some features are still under development and might not work as intended)</span></dt>
-                <dd>Best Performance</dd>
+                <dt>Performance Mode</dt>
                 <dd><input type="checkbox" id="performance"></dd>
-                <dd class="shift">Enable Seperate Pages:</dd>
-                <dd class="shift"><input type="checkbox" id="pages"></dd>
-                <dd class="shift">WIP Enable Embedded Loader:</dd>
-                <dd class="shift"><input type="checkbox" id="embloader" checked></dd>
-                <dd class="shift">WIP Enable Transparency and Blur Effects:</dd>
-                <dd class="shift"><input type="checkbox" id="tab" checked></dd>
             </dl>
         </main>
 
@@ -191,9 +184,6 @@
             };
             if(localStorage.getItem("performance")==='true'){
                 document.getElementById("performance").checked = true;
-                document.getElementById("pages").checked = true
-                document.getElementById("embloader").checked = false
-                document.getElementById("tab").checked = false
             };
             $("#sfx").on("input",function(){
                     let sound=document.getElementById("sfx").checked;
@@ -204,19 +194,7 @@
                     let perf=document.getElementById("performance").checked;
                     console.log(perf)
                     localStorage.setItem('performance',perf);
-                    if(perf == true){
-                        document.getElementById("pages").checked = true
-                        document.getElementById("embloader").checked = false
-                        document.getElementById("tab").checked = false
-                    }else{
-                        document.getElementById("pages").checked = false
-                        document.getElementById("embloader").checked = true
-                        document.getElementById("tab").checked = true
-                    }
             });
-            $("#tab,#pages,#embloader").on("input",function(){
-                document.getElementById("performance").checked = false
-            })
         </script>
 
 
