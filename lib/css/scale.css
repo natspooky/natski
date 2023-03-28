@@ -1,11 +1,3 @@
-@media screen and (max-width: 1250px) and (min-width: 0px)
-{
-    .banner-bg
-    {
-        background-size: cover;
-        animation: fade 1s;
-    }
-}
 @media (orientation: portrait){
     ::-webkit-scrollbar
     {
@@ -232,6 +224,10 @@
         text-align: left;
         font-size: 16px;
     }
+    article iframe
+    {
+        height: 80vh;
+    }
     .middle
     {
         flex-direction: column;
@@ -349,16 +345,10 @@
         left: 0;
 
     }
-    footer .footer-logo svg
-    {
-
-    }
     footer .footer-logo p
     {
         text-align: center;
     }
-
-
     .pagecontainer .closer,.backpage,.changelogframe .logcloser
     {
         left: unset;

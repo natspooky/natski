@@ -35,7 +35,7 @@
         <meta name="twitter:card" content="summary">
         <link rel="stylesheet" type="text/css" href="lib/css/main.css"/>
         <link rel="stylesheet" type="text/css" href="lib/css/animations.css"/>
-        <link rel="stylesheet" type="text/css" href="lib/css/scale.css"/>
+        <link rel="stylesheet" type="text/css" media="screen and (orientation: portrait)" href="lib/css/scale.css"/>
         <script src="lib/js/jquery.js"></script>
         <script src="lib/js/images.js"></script>
 	</head>
@@ -274,6 +274,7 @@
                 WIP
                 <div class="chapter"><div id="chapters-five"></div><span>05</span> WIP what is this useful for</div><br>
                 WIP
+                <iframe src="https://natski.netlify.com" loading="lazy"></iframe>
 
                 <div class="chapter"><div id="chapters-conclusion"></div><span>06</span> Conclusion</div><br>
                 WIP
@@ -442,6 +443,11 @@
                 
                 var t = $('article').position().top + $('article').outerHeight() + 130;
                 $(window).scrollTop() + $(window).height() > t ? document.getElementById('chapterselect').classList.add('active') : document.getElementById('chapterselect').classList.remove('active')
+            });
+
+            $("iframe").load(function (){
+                var btn = $('iframe').contents().find('button');
+                btn.off('click');
             });
         </script>
         <script src="lib/js/main.js"></script>

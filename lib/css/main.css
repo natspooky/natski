@@ -166,6 +166,14 @@
     border: 4px solid #303030
 }
 
+@media screen and (max-width: 1250px) and (min-width: 0px)
+{
+    .banner-bg
+    {
+        background-size: cover;
+        animation: fade 1s;
+    }
+}
 body,html {
     background-color: var(--accentcol);
     height: 100%;
@@ -786,7 +794,7 @@ header .progress .progress-bar {
     flex-direction: row
 }
 
-.thumbs .thumb,article img {
+.thumbs .thumb,article img,article iframe {
     position: relative;
     border-radius: 10px
 }
@@ -1037,6 +1045,15 @@ article .chapter div {
 
 article .chapter span {
     color: var(--themecol)
+}
+article iframe
+{
+    width: 100%;
+    height: 60vh;
+    border: none;
+    overflow: hidden;
+    border: 6px solid var(--themecoltrans);
+    pointer-events: none;
 }
 
 #wordcount {
