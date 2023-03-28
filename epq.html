@@ -275,8 +275,6 @@
                 <div class="chapter"><div id="chapters-five"></div><span>05</span> WIP what is this useful for</div><br>
                 WIP
                 <iframe class="exampleframe" src="https://natski.netlify.com" loading="lazy"></iframe>
-                <iframe class="exampleframe" src="https://natski.netlify.com/portfolio.html" loading="lazy"></iframe>
-                <iframe class="exampleframe" src="https://natski.netlify.com/changes.html" loading="lazy"></iframe>
 
                 <div class="chapter"><div id="chapters-conclusion"></div><span>06</span> Conclusion</div><br>
                 WIP
@@ -436,20 +434,15 @@
             $(window).scroll(function() {
 
                 $(".chapter").each(function(e) {
-                    var t = $(this).position().top + $(this).outerHeight() + 1300;
+                    let t = $(this).position().top + $(this).outerHeight() + 1300;
                     if($(window).scrollTop() + $(window).height() > t){
                         $('.chapterpick'+(e-1)+',.chapterpick'+(e+1)).css({backgroundColor: "transparent",color: 'var(--themecoltrans)'})
                         $('.chapterpick'+e).css({backgroundColor: "#303030",color: 'var(--themecol)'})
                     }
                 })
                 
-                var t = $('article').position().top + $('article').outerHeight() + 130;
-                $(window).scrollTop() + $(window).height() > t ? document.getElementById('chapterselect').classList.add('active') : document.getElementById('chapterselect').classList.remove('active')
-            });
-
-            $("iframe").load(function (){
-                var btn = $('iframe').contents().find('button');
-                btn.off('click');
+                let x = $('article').position().top + $('article').outerHeight() + 130;
+                $(window).scrollTop() + $(window).height() > x ? document.getElementById('chapterselect').classList.add('active') : document.getElementById('chapterselect').classList.remove('active')
             });
         </script>
         <script src="lib/js/main.js"></script>
