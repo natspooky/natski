@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en-US">
     <head>
-		<title>Natski | EPQ</title>
+		<title>Natski</title>
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, user-scalable=no"/>
         <meta name="theme-color" content="#1e1e1e"/>
@@ -9,6 +9,7 @@
         <meta name="keywords" content="portfolio, natspooky, natski"/>
         <meta name="author" content="NATSKI"/>
         <meta name="copyright" content="NATSKI">
+        <meta name="color-scheme" content="normal">
 		<link rel="icon" type="image/svg+xml" href="icon/svg/favicon.svg"/>
         <link rel="apple-touch-icon"sizes="57x57" href="icon/mobile/57.png"/>
         <link rel="apple-touch-icon"sizes="60x60" href="icon/mobile/60.png"/>
@@ -38,416 +39,376 @@
         <link rel="stylesheet" type="text/css" media="screen and (orientation: portrait)" href="lib/css/scale.css"/>
         <script src="lib/js/jquery.js"></script>
         <script src="lib/js/images.js"></script>
+        
 	</head>
     <body>
-        <script>
-            if(localStorage.getItem("theme")===null){
-                var theme='#729ef6';
-            }else{
-                var theme=localStorage.getItem('theme');
-            };
-            $(':root').css({'--themecol':theme,'--themecoltrans':theme+"50"});
-        </script>
-        <div class="loaderback">
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 834.61 834.61">
-                    <path class="loadwheel" d="M772.51,540.33c-50.95,147.13-190.73,252.78-355.2,252.78-207.55,0-375.81-168.25-375.81-375.8S209.76,41.5,417.31,41.5c164.47,0,304.25,105.65,355.2,252.79"/>
-                    <circle fill="none" cx="417.31" cy="417.31" r="375.78"/>
+        <style>
+            ::-webkit-scrollbar{width: 5px;}
+        </style>
+        <div id="colourlesspanelback"></div>
+        <div id="colourpanelback"></div>
+
+        <header>
+            <div class="observe"></div>
+            <div class="imagebox">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.35 850.35">
+                    <path d="M850.35,48.04V802.31c0,26.53-21.51,48.04-48.04,48.04h-171.87c-18.33,0-35.64-8.4-46.98-22.8l-243.52-309.3c-29.93-38.02-91.02-16.85-91.02,31.53v252.55c0,26.52-21.5,48.02-48.02,48.02H48.02c-26.52,0-48.02-21.5-48.02-48.02V48.02C0,21.5,21.5,0,48.02,0H219.9c18.33,0,35.64,8.4,46.99,22.8l243.46,309.07c29.96,38.03,91.08,16.85,91.08-31.56V48.04c0-26.53,21.51-48.04,48.04-48.04h152.85c26.53,0,48.04,21.51,48.04,48.04Z"/>
                 </svg>
+                <img src="icon/img/epq.png" alt="epq" id="headerimage" draggable="false">
             </div>
-        </div>
-        <a href="portfolio.html" onclick="parent.loaderactivate();">
-            <button class="backpage">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 833.38 833.38">
-                    <defs>
-                        <style>
-                        .back-icon{fill:none;stroke:var(--maincol);stroke-linecap:round;stroke-linejoin:round;stroke-width:120px;}
-                        </style>
-                    </defs>
-                    <polyline class="back-icon" points="416.69 60 60 416.69 416.69 773.38"/>
-                    <line class="back-icon" x1="770.41" y1="416.69" x2="76.58" y2="416.69"/>
-                </svg>
-            </button>
-        </a>
-        <header class="topbar">
-            <h1>EPQ</h1>
+            <h2>EPQ</h2>
         </header>
-        <main class="middle" style="flex-direction: column;">
-            <img src="icon/img/epq.png" class="profile revealed" draggable="false" style="--i: 4;" alt="code">
-            <h1 class="article-title revealed" style="--i: 6;">Ease of access to website builders and how it affects programmers and consumers online</h1>
-            <ul class="bibliography revealed" style="--i: 8;">
-                <h2>Chapters</h2>
-                <li>
-                    <a href="#chapters-intro">Introduction</a>
-                </li>
-                <li>
-                    <a href="#chapters-one">What is HTML, CSS and Javascript</a>
-                </li>
-                <li>
-                    <a href="#chapters-two">What is a website builder</a>
-                </li>
-                <li>
-                    <a href="#chapters-three">Humans vs Machines</a>
-                </li>
-                <li>
-                    <a href="#chapters-four">How do website builders affect us</a>
-                </li>
-                <li>
-                    <a href="#chapters-five">WIP</a>
-                </li>
-                <li>
-                    <a href="#chapters-conclusion">Conclusion</a>
-                </li>
-            </ul>
-            <hr class="revealed" style="--i: 8;">
-            <article class="revealed" id="text-content" style="--i: 10;">
-                <div class="chapter" style="margin-top: -10px;"><div id="chapters-intro"></div><span>00</span> Introduction</div><br>
-                intro
-                <div class="chapter"><div id="chapters-one"></div><span>01</span> What is HTML, CSS and Javascript</div><br>
-                In this chapter I will be going into the history and the basics of HTML, CSS and Javascript code as these are crucial elements to understanding the difference in complexity and customization that a website coded by hand can have over a website builder.<br><hr>
-                Websites are composed of many different languages in order to style, structure and run different features both client side and server side. The languages used can be split into two main categories which consist of the ‘frontend’ and ‘backend’ where the frontend is the design and functionality of the client side layout, whereas the backend is the server processing and database of the website.<br>
 
-                The frontend consists of 3 main languages: HTML, CSS and Javascript. These all contribute to the creation of the visual and client side processing of the website.<br>
+        <main>
+        
+
+            <article style="animation: slide 0.6s">
+                <h4>how website bulders affect freelance web designers and how people use the internet</h4>
+                <hr class="mini">
+                <h3><div id="00"></div><span>00</span> Introduction</h3>
+                <hr>
                 
-                <img class="left" src="icon/essayimgs/html.png" alt="html" draggable="false">
 
-                The central connective language for frontend development is HTML; which stands for Hypertext Markup Language. <span>'HTML 1.0 was first written in 1993 by Tim Berners-Lee'<a href="https://en.wikipedia.org/wiki/Tim_Berners-Lee" target="_blank" class="sourcer" name="Tim Berners-Lee, Wikipedia">[1]</a></span>, which has since been expanded upon until HTML 4.01 became the official standard in December 1999 at which point version 4.01 became the most widely used version of the architecture at the time. <span>'XHTML 1.0 (Extensible Hypertext Markup Language)'<a href="https://en.wikipedia.org/wiki/XHTML" target="_blank" class="sourcer" name="XHTML, Wikipedia">[2]</a></span> was written shortly after HTML 4.01 in 2000, and was designed to combine both the power of XML and the current strength of HTML 4, this was a stricter but ultimately the same version of HTML, however it was the only way to have both HTML and XML. the requirement of XHTML if developers wanted both HTML and XML was removed in 2015 when HTML 5 was released, HTML 5 was designed solely in order to be able to replace all previous versions of HTML and XHTML in order to make all the needed features of both available while adding major improvements for both, such as more elements and optimisation to video and audio capability. HTML 5 is now considered an official web standard by the World Wide Web Consortium (W3C) who now maintain and continue developing HTML to add more functionality to the language.<br>
+                <br><br>
+
+                <h3><div id="01"></div><span>01</span> What is HTML, CSS and Javascript</h3>
+                <hr>
                 
-                HTML is not considered a programming language due to its inability to create dynamic functionality. ‘But why do we need HTML?’ Although HTML isn't a programming language, HTML is needed for structuring page content, inserting links to other pages or websites and connecting other languages together through itself, thus it is just as needed as Javascript or CSS. Each page of a website, whether it's a home page, about page or contact page, still requires a separate HTML document for each.<br>
+                In this chapter I will be going into the history and the basics of HTML, CSS and Javascript code as these are crucial elements to understanding the difference in complexity and customization that a website coded by hand can have over a website builder.<br><br>
+
+Websites are composed of many different languages in order to style, structure and run different features both client side and server side. The languages used can be split into two main categories which consist of the ‘frontend’ and ‘backend’ where the frontend is the design and functionality of the client side layout, whereas the backend is the server processing and database of the website.<br>
+
+The frontend consists of 3 main languages: HTML, CSS and Javascript. These all contribute to the creation of the visual and client side processing of the website.<br><br>
+
+<img class="left colourimage" src="icon/essayimgs/html.png" alt="html" draggable="false">
+
+The central connective language for frontend development is HTML; which stands for Hypertext Markup Language. <span>‘HTML 1.0 was first written in 1993 by Tim Berners-Lee’<a href="https://www.washington.edu/accesscomputing/webd2/student/unit1/module3/html_history.html" target="_blank" class="sourcer" name="University of Washington, 2005">[1]</a></span>, which has since been expanded upon until HTML 4.01 became the official standard in December 1999 at which point version 4.01 became the most widely used version of the architecture at the time. XHTML 1.0 (Extensible Hypertext Markup Language) was written shortly after HTML 4.01 in 2000, and was designed to combine both the power of XML and the current strength of HTML 4, this was a stricter but ultimately the same version of HTML, however it was the only way to have both HTML and XML. the requirement of XHTML if developers wanted both HTML and XML was removed in 2015 when HTML 5 was released, HTML 5 was designed solely in order to be able to replace all previous versions of HTML and XHTML in order to make all the needed features of both available while adding major improvements for both, such as more elements and optimisation to video and audio capability. HTML 5 is now considered an official web standard by the World Wide Web Consortium (W3C) who now maintain and continue developing HTML to add more functionality to the language.<br>
+
+HTML is not considered a programming language due to its inability to create dynamic functionality. ‘But why do we need HTML?’ Although HTML isn't a programming language, HTML is needed for structuring page content, inserting links to other pages or websites and connecting other languages together through itself, thus it is just as needed as Javascript or CSS. Each page of a website, whether it's a home page, about page or contact page, still requires a separate HTML document for each.<br>
+
+All HTML pages will contain a series of elements through the culmination of tags and attributes within. Elements are what structures a webpage through placement of tags and attributes that assign meaning to each tag. Tags tell the browser where an element will begin and end but an attribute will describe the characteristics of the element.<br>
+Tags are structured with an opening tag, content and closing tag, for example a paragraph would be shown as:
+
+<div class="codewindow">
+&lt;p><br>&nbsp;&nbsp;&nbsp;&nbsp;This is text inside of a paragraph<br>&lt;/p>
+</div>
+
+Every element follows this layout in the format of:
+
+<div class="codewindow">
+&lt;[tag name]><br>&nbsp;&nbsp;&nbsp;&nbsp;[element content]<br>&lt;/[tag name]>
+</div>
+
+The closing tag in html always has a forward slash after the opening bracket in order to tell the browser that this is where an element ends. This is important because in HTML you can have multiple elements embedded inside of a single element, meaning that without the ending tag the browser could misinterpret the embedded element as a closing tag and drastically change the elements function. This rule has a few exceptions however as some elements only have an opening tag such as image tags, meta tags and line break tags.
+
+<div class="codewindow">
+&lt;[name of single tag element]>
+</div>
+
+Single tag elements exist as they cannot contain content or tags within themselves which makes the closing tag redundant when used, However both tag types use attributes. Attributes are vital to tags which add more information and detail. Attributes are formatted in tags as:
+
+<div class="codewindow">
+&lt;[tag name] [attribute name]=”[attribute value]”><br>&nbsp;&nbsp;&nbsp;&nbsp;[content of element]<br>&lt;/[tag name]>
+</div>
+
+Attributes can give links to images through ‘src’, links to other pages through ‘href’ and group attributing through ‘class’.<br>
+
+Class is one of the most important attributes as it can be used to assign styling from CSS to every element that has the same class attribute, which prevents repeatedly writing the same CSS for every element that needs the styling.<br>
+
+All HTML documents contain a similar base layout which consists of a starting tag which tells the browser to render the page as a HTML document and then a html tag which contains a head and body tag.<br>
+The header tag is used to contain unseen content such as: page title, search engine optimization and links to CSS files. While the body tag is used to contain all of the visible page content.
+
+<div class="codewindow">
+&lt;!DOCTYPE html><br>&lt;html><br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;head>&lt;/head><br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;body>&lt;/body><br>&lt;/html>
+</div>
+
+HTML is limited in what it can do as it is primarily static and requires the help of Javascript in order to give it dynamic functionality. It also requires a new HTML document for every page meaning that even if all of the elements are the same, it will need a new document to change page, which can be taxing to create.<br><br>
+
+<img class="left colourimage" src="icon/essayimgs/css.png" alt="css" draggable="false">
+
+The second language that is used in frontend development is CSS and stands for cascading style sheets and is used solely for styling elements inside of a HTML document. CSS was developed by the aforementioned W3C in 1996 due to html not being a fit language to have tags that format the page as this type of tag required web developers to have to rewrite each HTML document every time a new styling tag was introduced throughout each HTML version. CSS isn't a requirement for websites unlike javascript and HTML but without the use of CSS, websites would look plain and empty due to the lack of positioning and colour. The idea for CSS was first brought up by <span>‘Håkon Wium Lie on the 10th of October 1994’<a href="https://css-tricks.com/look-back-history-css/" target="_blank" class="sourcer" name="Jay Hoffmann, October 22th, 2017">[2]</a></span> during his time working with Tim Berners-Lee at CERN but the first version was only released in 1996 <span>‘but then enhanced upon in CSS 2 from 1998’<a href="https://www.w3.org/Style/CSS20/history.html" target="_blank" class="sourcer" name="W3C, 17 December 2016">[3]</a></span>.
+The advantages of CSS become very noticeable from both a developers and users point of view when comparing websites with and without, as if you take this website without CSS:<br>
+
+<img class="left colourimage" src="icon/essayimgs/nocss.png" alt="no css" draggable="false">
+
+You might have seen a website display itself like this when it fails to load completely, and thus had to reload the page due to a lack of cohesion in the tall list of links, buttons and images all consisting of only blue and black text. All websites would have this same list-like layout and sizing if not for the use of CSS attached to the main HTML document. CSS has a much higher efficiency than the styling used in HTML 3.1 as assigning an element in HTML to a class allows for CSS to style every element of the given class without having to rewrite the code for every element you want to style which only requires one declaration statement. Unlike HTML, CSS lays out its code by containing the style for an element in a pair of curly brackets which is placed after the element you want to style such as:
+
+<div class="codewindow">
+p{ Background-color: red; }
+</div>
+
+
+By using ‘p’ it tells the CSS code to style every paragraph element in the HTML document with a background colour of red. However if you wanted to style a certain class rather than every element of a specific tag then you would want to have the class name rather than the tag of an element placed before the curly brackets with a period placed in front.
+
+<div class="codewindow">
+.className{ Background-color: red; }
+</div>
+
+Now, rather than styling all the elements of a specific tag; only the class called ‘className’ will have a background colour of red. The same goes for if you want to style an element with a certain ID name, all you would need to do is place the id name of the element before the curly brackets with an octothorp placed in front: 
+
+<div class="codewindow">
+#idName{ Background-color: red; }
+</div>
+
+With the ability to style all elements of a certain tag, class and id all through css it allowed for the CSS code itself to be kept in a separate file rather than having to be stored in the HTML ‘style’ tag. This meant that not only would you not have to write the same styling code for every element you want it to apply to; but also that you wouldn't need to rewrite all of the code for every HTML document you wanted it to apply to as it could now easily be linked into the page using a ‘link’ tag:
+
+<div class="codewindow">
+&lt;link rel="stylesheet" type="text/css" href="[file name]"/>
+</div>
+
+Through the advent of being able to have one CSS file to style every page of a website, the use of CSS has become more of a requirement than an optional addon to HTML.
+Although even with the advent of a single css file, many types are still used to fit a certain purpose of a website. These types of CSS are called External, Internal and Inline.<br>
+
+CSS used as an internal style is loaded each and every time the website is refreshed or reloaded and can also only be used for the HTML document that this CSS code is written on, This is due to this specific CSS code being contained inside of a HTML documents ‘style’ tag rather than externally contained in a separate CSS file. Internal CSS has a benefit when developing a site compared to an external file due to having all of the styling and HTML code on one page makes it easier to view and share previews for the page being developed.<br>
+
+Secondly, CSS used as an external style is usually considered the most convenient as it uses the aforementioned separate CSS file, meaning it can be used on every page without having to rewrite the code for every page, which can increase the speed of styling and adding new pages to a website. This method also has the advantage of possibly improving the load times for a website as rather than having to read a new stylesheet inside of each HTML file, it can instead read the external CSS file being kept in the ‘browsers cache’ (small storage containing data from previously visited websites in order to load them faster) which allows for much faster loading of the CSS.<br>
+
+Finally, inline CSS is used for styling single elements in HTML documents through using the style attribute inside of an element and is laid out in the form: 
+
+<div class="codewindow">
+&lt;[tag name] style=”background-color: red;”><br>&nbsp;&nbsp;&nbsp;&nbsp;[content of element]<br>&lt;/[tag name]>
+</div>
+
+This method of CSS is not generally considered to be the most efficient method, however can be useful to change styles of a single element quickly for preview purposes when creating a website.<br><br>
+
+<img class="left colourimage" src="icon/essayimgs/js.png" alt="javascript" draggable="false">
+
+The third and final language that is used in frontend development is Javascript. Brendan Eich invented Javascript in 1995 for use in the Netscape 2 web browser before <span>‘becoming the ECMA-262 standard in 1997’<a href="https://www.w3schools.com/js/js_history.asp" target="_blank" class="sourcer" name="W3Schools, 1998">[4]</a></span>. Javascript was later handed over to ECMA by Netscape and now continues to be developed by the Mozilla foundation who are best known for their Firefox browser.<br>
+
+Javascript is a high level language used in websites due to its ability to allow dynamic interactions inside of a webpage that HTML and CSS cannot offer by themselves. Javascript can edit styles and add actions based on user inputs onto the site.<br>
+Similarly to CSS, Javascript can be stored either on the page in a ‘script’ tag, or in a separate JS file linked to the page:
+
+<div class="codewindow">
+&lt;script src="[file location]">&lt;/script>
+</div>
+
+Unlike with HTML and CSS, Javascript has many libraries developed for it in order to add new functionality that base javascript does not include. These additions allow previously long lines of code to be simplified for example:
+
+<div class="codewindow">
+document.getElementsByTagName(‘div’);
+</div>
+
+from base Javascript can be turned into:
+
+<div class="codewindow">
+$(‘div’)
+</div>
+
+In the JQuery library.<br>
+The interactivity that this code can supply makes a static website using only HTML and CSS into a more fleshed out experience for the user by adding functions such as: onClick(), onLoad() and onChange(). These are used to call functions when one of these conditions are met within the page. These can be laid out in two ways, in the javascript file itself:
+
+<div class="codewindow">
+variable.addEventListener(‘click’ function(){<br>&nbsp;&nbsp;&nbsp;&nbsp;output code<br>});
+</div>
+
+Or within the HTML document as an attribute:
+
+<div class="codewindow">
+&lt;[tag name] onClick=’function(){<br>&nbsp;&nbsp;&nbsp;&nbsp;output code<br>}’>&lt;/[tag name]>
+</div>
+
+Both examples show javascript ‘events’ that allow for specific tasks such as dropdown menus, button functionality and for starting different CSS animations.
+Frontend javascript can also be used for hidden uses to improve a websites functionality such as loading images when needed, adding cookies to a page so the user can stay logged in and for preloading certain elements to improve website speed between pages.<br>
+
+Javascript is good at these operations due to its speed and simplicity as Javascript executes its code inside the browser rather than connecting to a server or needing a compiler for it to run. Due to these benefits, Javascript is incredibly popular and therefore has a lot of user created libraries and tutorials for beginners wanting to get into the language.<br>
+However even with all these benefits of Javascript, the language still has some issues as each browser can interpret the code differently meaning that some features that work on one browser may not act the same on a different browser, which ends up requiring a developer to test the code on all of the major browsers before being able to upload the code for the website.<br>
+It is important when coding in Javascript that the variables are assigned before the code itself is referenced due to the language processing the code from the top down. This means that if a function is referenced before the variable is assigned in the code, then the variable in the function will be read as ‘undefined’ which prevents the rest of the code from being executed. 
+
                 
-                All HTML pages will contain a series of elements through the culmination of tags and attributes within. Elements are what structures a webpage through placement of tags and attributes that assign meaning to each tag. Tags tell the browser where an element will begin and end but an attribute will describe the characteristics of the element. Tags are structured with an opening tag, content and closing tag, for example a paragraph would be shown as:
+                <br><br>
+
+                <h3><div id="02"></div><span>02</span> What is a website builder</h3>
+                <hr>
+                This chapter will focus on what website builders are and how they use user interfaces to negate the requirement for coding when creating websites, which introduces an easier environment for people wanting to create websites without prior coding knowledge.<br><br>
+
+Building websites used to be a challenging and time consuming task for most, due to them requiring a lot of experience and initial learning in order to have a decent final product, however through the use of website builders this challenging and time consuming activity can be reduced into just creating a simple design rather than having to dig into the technicalities and the coding that used to be required. Because of the website builders ease of access to creation through using preset pages and drag and drop functionality to add pages, features and other content, it makes all the time needed to learn all of the previously mentioned code turn into time that can be spent focusing more on the desired layout and content of the website.<br><br>
+
+One of the first features that are included in most website builders are drag and drop elements (being one of the major features), they are the most used tool by website builders as they allow for content in the website editor to be positioned according to the users desired design simply by moving the content to a spot the user sees fit, but also by allowing content from outside of the browser to be dragged directly into the page such as images and files, which in turn allows for the files to be directly uploaded into the website builder rather than having to navigate a series of file upload menus and popup windows in order to display them on the website. Originally, drag and drop functionality became possible for both website builders and other websites on the <span>'25th of January in 2010 when chrome released its new major version CHROME 4.0'<a href="https://chromereleases.googleblog.com/2010/01/" target="_blank" class="sourcer" name="Google, December 25th, 2010">[5]</a></span>.<br>
+This feature then became more widely used and implemented into other browsers for a better user experience across different devices in later versions such as <span>'Microsoft Edge 9.0 and Safari 6.0'<a href="https://www.w3schools.com/html/html5_draganddrop.asp" target="_blank" class="sourcer" name="W3Schools, 2012">[6]</a></span>.<br>
+
+<iframe class="exampleframe" style="width: 100%; height: 300px; border: 0; border-radius: 10px; margin: 0.7em 0; padding: 0;" src="lib/html/draganddropexample.html" loading="lazy"></iframe>
+
+Secondly, website builders take the issue of storing data and hosting websites into their own hands by removing the need for the user to have built a database or web server in order to be able to run the site on the internet. This is especially useful as most users looking to create a website won't have the experience necessary to program the security required to protect their website from attacks, nor have a computer that can run 24/7 to act as a dedicated server. Website builders handling the servers for any websites made with their service also mean that users don't have to undergo getting a secure SSL certificate. SSL certificates both <span>'encrypt the data travelling from the server to the user and also allow the browser and users to know that this is a trusted and safe website'<a href="https://www.digicert.com/what-is-an-ssl-certificate" target="_blank" class="sourcer" name="Digicert, no date of creation">[7]</a></span>.<br>
+Having an SSL certificate can also boost its ranking when displayed by a search engine like google as it is seen as a sign of security by search engines which allows it to be boosted higher up in search rankings. This is just one way that website builders automatically employ SEO, which stands for ‘search engine optimization’. SEO is the process of improving a websites ‘online ranking’ which simply just means how high google will place it compared to other websites that fit a search criteria put in by a user, for example googling ‘youtube’ will present ‘youtube.com’ as the first search result as not only does it fit the search criteria, but it also has a high SEO ranking in comparison to other video sharing sites.<br>
+
+Thirdly, Website builders use responsive template elements. These are elements placed on a page using the website builders’ drag and drop tool, furthermore these elements automatically resize themselves for any size display. This is incredibly useful for website builders as it means that the user only has to create a design for the landscape view of the website, and the website builder will automatically change the size and order of these elements in order for them to be formatted correctly while in either portrait mobile view or a smaller screen size. This feature saves the user time and allows for more being spent on the desired design rather than having to come up with multiple designs for each and every screen size. This is crucial if a website is not designed with a mobile layout in mind as it can sometimes become unusable on mobile devices due to warped layouts and buttons being pushed off the screen.<br>
+
+Fourthly, website builders also include easy compatibility between themselves and third party applications. This makes embedding content like youtube videos, spotify songs and google drive content considerably easier as website builders usually have predetermined settings for each type of embed so that the user experience can be fine tuned to the users design preferences without disrupting any of the embedded data.<br>
+
+<iframe style="border-radius: 10px; margin: 0.7em 0;" src="https://open.spotify.com/embed/track/2Dzzhb1oV5ckgOjWZLraIB?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+
+Embedded players like the one shown above allow for websites to display their content and information into other websites through the use of an ‘iframe’ tag, iframes mimic a browser window inside of a HTML document thus allowing data from other websites and pages to be displayed on the page the iframe is in. This allows for the aforementioned videos and songs to be played without having to leave the space of the current website being visited.<br>
+
+Lastly, and most importantly. Website builders automatically optimise image files and video files to give the best performance to any device that the website is opened on. This is an incredibly beneficial feature for the user as any images uploaded will automatically be compressed and converted to better formats such as ‘webp’ in order to improve the page load speed. This doesn't stop at the images that are only displayed on the page, as favicons (icons displayed next to the page name) and any javascript is usually shortened and optimised when a website is published. The javascript is shortened and compressed because:
+
+<div class="codewindow">
+if( [condition] ) {<br>&nbsp;&nbsp;&nbsp;&nbsp;if output<br>} else {<br>&nbsp;&nbsp;&nbsp;&nbsp;else output<br>}
+</div>
+
+Is easier to read, but takes a lot longer to convert into machine readable code by the browser when the page is opened in comparison to this same code in a compressed format:
+
+<div class="codewindow">
+[condition] ? if output : else output
+</div>
+
+This compressed code takes a much shorter time to convert into machine code as there is less formatting and white-space that the browser needs to remove before it can convert the javascript into machine code<br>
+
+Altogether, website builders contain many features that are necessities in order for them to perform as well as websites created by freelance website developers and through these features they become extremely convenient in terms of user experience and traffic to the website.
+
+                <br><br>
+
+                <h3><div id="03"></div><span>03</span> Humans vs Machines</h3>
+                <hr>
                 
-                <div class="code">&lt;p><br>&nbsp;&nbsp;&nbsp;&nbsp;This is text inside of a paragraph<br>&lt;/p></div>
+                For both website builders and freelance website developers, there are a series of benefits and drawbacks to choosing either. In this chapter I will overview the differences between both and what makes one better than the other in certain aspects but worse in other aspects.<br><br>
 
-                Every element follows this layout in the format of:
+So why would you choose a freelance website developer over a simple website builder if website builders don't require any deep understanding of code?<br>
+This, although a very good point, isn't quite as simple as it seems as just because website builders can quickly make websites without the need for any initial coding experience, users are also completely limited to the tools and presets that come with the service that restrict the amount that could be achieved for the purpose of keeping the website responsive and optimised. This means that for any design that would require specialist functionality such as: transitions between pages, 3D scenes, and any other unique visual effects, the user unfortunately wouldn't be able to achieve this through the means of a website builder due to its limited capabilities. Therefore for designs too complicated to be accomplished by website builders, it's more advised to hire a freelance website developer as any designs can be achieved as the restrictions that weigh down on website builders become simple additions when using a code editor to create a website. Regrettably, this isn't the only issue that website builders face when compared against freelance website developers as website builders also give off a lacklustre feeling to any page made with a website builder. This is caused by the lack of differentiation from any other website made with the same builder due to how all website builders use a limited amount of element templates in order to keep the responsive nature of any websites created. Sadly, this lack of differentiation can make the page seem boring to users that have seen similar versions made from the same website builder, thus lowering the user retention rate of your website.<br>
 
-                <div class="code">&lt;[tag name]><br>&nbsp;&nbsp;&nbsp;&nbsp;[element content]<br>&lt;/[tag name]></div>
+<img class="left colourimage" src="icon/essayimgs/template.png" alt="templates" draggable="false">
 
-                The closing tag in html always has a forward slash after the opening bracket in order to tell the browser that this is where an element ends. This is important because in HTML you can have multiple elements embedded inside of a single element, meaning that without the ending tag the browser could misinterpret the embedded element as a closing tag and drastically change the elements function. This rule has a few exceptions however as some elements only have an opening tag such as image tags, meta tags and line break tags.
+This screenshot from the website builder <span>'Nicepage'<a href="https://nicepage.com/website-builder" target="_blank" class="sourcer" name="Nicepage">[8]</a></span> shows the limited amount of tools that can be used in websites designed using Nicepage, from this we can see that although every website created will be <span>‘unique’</span>, they will all suffer design wise as they are limited to the same template elements. Additionally, this becomes an even greater issue as competing website builders will have to implement the same templates in order to prevent them from falling behind in terms of features when comparing them to other website builders, but this causes the competing websites builders to have very similar looking sites when placed side by side as they all share the same popular templates as each other in order to appeal to any potential users. Most website builders will also include a banner displayed either on the top or the bottom of the website indicating that this specific site was made with a website builder.<br>
 
-                <div class="code">&lt;[name of single tag element]></div>
+<img class="left colourimage" src="icon/essayimgs/banner.png" alt="banner" draggable="false">
 
-                Single tag elements exist as they cannot contain content or tags within themselves which makes the closing tag redundant when used, However both tag types use attributes. Attributes are vital to tags which add more information and detail. Attributes are formatted in tags as:
+This image is from a Wix site that shows an advertisement banner that Wix displays on most of their websites that users have created. This is used in order to advertise their services to any users visiting a site created with their services. For most people this watermark left behind won't be an issue as they just want an online space to display their work for others to view however, websites used for business purposes can seem unprofessional due to the watermark left by the website builder that gives the website a sense of cheapness and disregard for the brands online image. This can lead to further distrust from buyers into the product quality from a business and can cause a reduction in sales and reputation.<br>
 
-                <div class="code">&lt;[tag name] [attribute name]=”[attribute value]”><br>&nbsp;&nbsp;&nbsp;&nbsp;[content of element]<br>&lt;/[tag name]></div>
+Even though website builders have a large amount of drawbacks in contrast to what freelance website developers can achieve, this doesn’t necessarily mean that website builders are completely inferior to website developers.<br>
+This point is most evident when it comes to the management of websites and pricing that keeps these services running for an extended period of time as the cost of a website builder is only around <span>'11 to 21 pounds a month'<a href="https://www.wix.com/upgrade/website" target="_blank" class="sourcer" name="Wix, March 20th, 2023">[9]</a></span> as shown on the wix website, whereas a freelance website developer can cost an average of around 75 pounds an hour, and an amount of around 6,760 pounds in total for a complete website. This large sum, although it’s usually enough to produce a full website, does not typically include server costs nor additional features later down the line. Due to website builders having a fixed monthly cost that includes: databases, payment handling systems, additional features as they are added to the service, and server processing. These benefits make the pricing for a website builder significantly more cost effective compared to the cost of server processing and hosting for a website created with a freelance website developer. because on Amazon Web Services (AWS) server processing is shown to cost from <span>'200 to 800 pounds a month'<a href="https://www.linkedin.com/pulse/how-much-does-cost-host-websiteapp-aws-cloud-alfonso-valdes" target="_blank" class="sourcer" name="Alfonso Valdes, January 12th, 2018">[10]</a></span>. This shows that by building a website with a website builder, you can save a significant amount of money both upfront and monthly, thus making this a much better option for small projects or startups when compared to hiring a freelance website developer. Using a website builder can also notably reduce the time it takes to have your website built as the coding process for most websites is long and time consuming compared to using the drag and drop presets that website builders provide.<br>
+
+Overall both website builders and freelance website developers have both pros and cons, whether it's related to cost, available features or user perception. Due to these factors, there is no definitive right answer for what you should use to make your website, as both can be applicable for different circumstances that a website might need to fill. From online stores to portfolios to display a persons’ work.
+
+                <br><br>
+
+                <h3><div id="04"></div><span>04</span> How do website builders affect us</h3>
+                <hr>
+
+                This chapter is mostly talking about how the influx of eCommerce due to website builders like Shopify have drastically changed how we use the internet today compared to how it was used beforehand from the introduction of many small indie brands being able to find footing solely online rather than opening a much less profitable storefront. <br><br>
+
+                Although it may not seem like website builders have any impact on how we browse the internet both currently and heading into the future, you would be surprised how much they have changed users' internet traffic from originally being people wanting to simply browse others’ personal websites and video sharing sites like Youtube, to being dominated by online shopping sites. Using a website called ‘similarweb’ which is made to rank the most visited websites of a given year for a given country, <span>‘Amazon placed 5th, just behind the BBC for the total amount of user visits for all websites being searched for in the UK’<a href="https://www.similarweb.com/top-websites/united-kingdom" target="_blank" class="sourcer" name="Similarweb, April 1st, 2023">[11]</a></span>. This statistic shows that across the UK, online shopping is commonly searched for and in very high demand from users, with this alongside the amount of sales per year from online shopping rapidly increasing since <span>‘1994 with the appearance of eBay’<a href="https://www.bbc.com/worklife/article/20200722-the-curious-origins-of-online-shopping" target="_blank" class="sourcer" name="Bryan Lufkin, July 27th, 2020">[12]</a></span> in the uk which reached a peak of <span>'120 billion pounds in 2021'<a href="https://www.statista.com/statistics/315506/online-retail-sales-in-the-united-kingdom" target="_blank" class="sourcer" name="Daniela Coppola, February 28th, 2023">[13]</a></span>.<br>
                 
-                Attributes can give links to images through ‘src’, links to other pages through ‘href’ and group attributing through ‘class’.<br>
-
-                Class is one of the most important attributes as it can be used to assign styling from CSS to every element that has the same class attribute, which prevents repeatedly writing the same CSS for every element that needs the styling.<br>
-
-                All HTML documents contain a similar base layout which consists of a starting tag which tells the browser to render the page as a HTML document and then a html tag which contains a head and body tag.<br>
-                The header tag is used to contain unseen content such as: page title, search engine optimization and links to CSS files. While the body tag is used to contain all of the visible page content.
-
-                <div class="code">&lt;!DOCTYPE html><br>&lt;html><br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;head>&lt;/head><br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;body>&lt;/body><br>&lt;/html></div>
-
-                HTML is limited in what it can do as it is primarily static and requires the help of Javascript in order to give it dynamic functionality. It also requires a new HTML document for every page meaning that even if all of the elements are the same, it will need a new document to change page, which can be taxing to create.<br>
-
-                <img class="left" src="icon/essayimgs/css.png" alt="css" draggable="false">
+                <a href="https://www.statista.com/statistics/315506/online-retail-sales-in-the-united-kingdom" target="_blank" class="sourcer" name="Daniela Coppola, February 28th, 2023"><img class="left colourimage" src="icon/essayimgs/statistic.png" alt="graph" draggable="false"></a>
                 
-                The second language that is used in frontend development is CSS and stands for cascading style sheets and is used solely for styling elements inside of a HTML document. CSS was developed by the aforementioned W3C in 1996 due to html not being a fit language to have tags that format the page as this type of tag required web developers to have to rewrite each HTML document every time a new styling tag was introduced throughout each HTML version. CSS isn't a requirement for websites unlike javascript and HTML but without the use of CSS, websites would look plain and empty due to the lack of positioning and colour. The idea for CSS was first brought up by Håkon Wium Lie on the 10th of October 1994 <span>'during his time working with Tim Berners-Lee at CERN'<a href="https://en.wikipedia.org/wiki/CSS" target="_blank" class="sourcer" name="CSS, Wikipedia">[3]</a></span> but the first version was only released in 1996 <span>'but then enhanced upon in CSS 2 from 1998'<a href="https://www.bu.edu/lernet/artemis/years/2020/projects/FinalPresentations/HTML/historyofcss.html" target="_blank" class="sourcer" name="History of CSS, Bu.edu">[4]</a></span>.
-                The advantages of CSS become very noticeable from both a developers and users point of view when comparing websites with and without, as if you take this website without CSS:<br>
-
-                <img class="left" src="icon/essayimgs/nocss.png" alt="no_css" draggable="false">
-
-                You might have seen a website display itself like this when it fails to load completely, and thus had to reload the page due to a lack of cohesion in the tall list of links, buttons and images all consisting of only blue and black text. All websites would have this same list-like layout and sizing if not for the use of CSS attached to the main HTML document. CSS has a much higher efficiency than the styling used in HTML 3.1 as assigning an element in HTML to a class allows for CSS to style every element of the given class without having to rewrite the code for every element you want to style which only requires one declaration statement. Unlike HTML, CSS lays out its code by containing the style for an element in a pair of curly brackets which is placed after the element you want to style such as:
-
-                <div class="code">p{ Background-color: red; }</div>
-
-                By using ‘p’ it tells the CSS code to style every paragraph element in the HTML document with a background colour of red. However if you wanted to style a certain class rather than every element of a specific tag then you would want to have the class name rather than the tag of an element placed before the curly brackets with a period placed in front.
-
-                <div class="code">.className{ Background-color: red; }</div>
-
-                Now, rather than styling all the elements of a specific tag; only the class called ‘className’ will have a background colour of red. The same goes for if you want to style an element with a certain ID name, all you would need to do is place the id name of the element before the curly brackets with an octothorp placed in front: 
-
-                <div class="code">#idName{ Background-color: red; }</div>
-
-                With the ability to style all elements of a certain tag, class and id all through css it allowed for the CSS code itself to be kept in a separate file rather than having to be stored in the HTML ‘style’ tag. This meant that not only would you not have to write the same styling code for every element you want it to apply to; but also that you wouldn't need to rewrite all of the code for every HTML document you wanted it to apply to as it could now easily be linked into the page using a ‘link’ tag:
-
-                <div class="code">&lt;link rel="stylesheet" type="text/css" href="[file name]"/></div>
-
-                Through the advent of being able to have one CSS file to style every page of a website, the use of CSS has become more of a requirement than an optional addon to HTML.
-                Although even with the advent of a single css file, many types are still used to fit a certain purpose of a website. These types of CSS are called External, Internal and Inline.<br>
-
-                CSS used as an internal style is loaded each and every time the website is refreshed or reloaded and can also only be used for the HTML document that this CSS code is written on, This is due to this specific CSS code being contained inside of a HTML documents ‘style’ tag rather than externally contained in a separate CSS file. Internal CSS has a benefit when developing a site compared to an external file due to having all of the styling and HTML code on one page makes it easier to view and share previews for the page being developed.<br>
-
-                Secondly, CSS used as an external style is usually considered the most convenient as it uses the aforementioned separate CSS file, meaning it can be used on every page without having to rewrite the code for every page, which can increase the speed of styling and adding new pages to a website. This method also has the advantage of possibly improving the load times for a website as rather than having to read a new stylesheet inside of each HTML file, it can instead read the external CSS file being kept in the ‘browsers cache’ (small storage containing data from previously visited websites in order to load them faster) which allows for much faster loading of the CSS.<br>
-
-                Finally, inline CSS is used for styling single elements in HTML documents through using the style attribute inside of an element and is laid out in the form: 
-
-                <div class="code">&lt;[tag name] style=”background-color: red;”><br>&nbsp;&nbsp;&nbsp;&nbsp;[content of element]<br>&lt;/[tag name]></div>
-
-                This method of CSS is not generally considered to be the most efficient method, however can be useful to change styles of a single element quickly for preview purposes when creating a website.<br>
-
-
-                <img class="left" src="icon/essayimgs/js.png" alt="js" draggable="false">
+                This has led some stores to move from a renting out a physical store, to moving over to a much less expensive online only storefront for their goods as it is much easier to manage the costs of shipping items alone compared to dealing with the hundreds of real storefronts that require a large sum to rent out. This transition has happened specifically within some big name brands such as <span>'TOPSHOP and Debenhams'<a href="https://www.retailgazette.co.uk/blog/2022/04/retailers-that-have-gone-online-only" target="_blank" class="sourcer" name="Sahar Nazir, April 14th, 2022">[14]</a></span> that ended up moving to online only stores solely due to their lack of funding preventing them from being able to keep their doors open. From this new rise of profit and affordability by utilising eCommerce sites, some website builders took this slowly rising opportunity and took action by creating systems that allow for users to create online storefronts through the use of a website builder interface. The main difference between a personal portfolio website builder like Wix, and an eCommerce website builder like Shopify is that while regular website builders provide users with the tools to create beautiful visuals for their website, eCommerce website builders will allow users to process payments and deliveries all through the comfort of their website while still offering a wide variety of tools used to customise the users online storefront. Payment and security is one of the major benefits of using an eCommerce website builder as setting up a payment gateway which also has enough security to be able to guarantee a customers safety while handling transactions is no easy feat which requires a strenuous amount of effort and perseverance to set up correctly, thus having a website builder with an inbuilt payment gateway will drastically decrease the amount of time needed to set up your online storefront with the included benefit that it guarantees the safety of any transactions done through the service. The uses of eCommerce website builders has drastically increased the amount of online storefronts as there is now an estimated <span>'12 to 24 million eCommerce sites as of 2023'<a href="https://wpforms.com/ecommerce-statistics" target="_blank" class="sourcer" name="Lisa Gennaro, January 3rd, 2023">[15]</a></span> and this increase in trust for businesses that make use of systems like the Shopify payment API helps contribute to the fact that more than <span>'80% of the uk population has used an online store to make a purchase'<a href="https://www.statista.com/topics/7887/online-shopping-behavior-in-the-uk" target="_blank" class="sourcer" name="Marina Pasquali, January 9th, 2023">[16]</a></span>. <br>
                 
-                The third and final language that is used in frontend development is Javascript, Brendan Eich invented Javascript in 1995 for use in the Netscape 2 web browser <span>'before becoming the ECMA-262 standard in 1997'<a href="https://www.w3schools.com/js/js_history.asp" target="_blank" class="sourcer" name="History of Javascript, W3schools">[5]</a></span>. Javascript was later handed over to ECMA by Netscape and now continues to be developed by the Mozilla foundation who are best known for their Firefox browser.<br>
-
-                Javascript is a high level language used in websites due to its ability to allow dynamic interactions inside of a webpage that HTML and CSS cannot offer by themselves. Javascript can edit styles and add actions based on user inputs onto the site.<br>
-                Similarly to CSS, Javascript can be stored either on the page in a ‘script’ tag, or in a separate JS file linked to the page:
-
-                <div class="code">&lt;script src="[file location]">&lt;/script></div>
-
-                Unlike with HTML and CSS, Javascript has many libraries developed for it in order to add new functionality that base javascript does not include. These additions allow previously long lines of code to be simplified for example:
-
-                <div class="code">document.querySelectorAll(‘div’);</div>
-
-                from base Javascript can be turned into:
-
-                <div class="code">$('div')</div>
-
-                In the JQuery library.<br>
-                The interactivity that this code can supply makes a static website using only HTML and CSS into a more fleshed out experience for the user by adding functions such as: onClick(), onLoad() and onChange(). These are used to call functions when one of these conditions are met within the page. These can be laid out in two ways, in the javascript file itself:
-
-                <div class="code">variable.addEventListener(‘click’, function(){<br>&nbsp;&nbsp;&nbsp;&nbsp;[output code]<br>});</div>
-
-                Or within the HTML document as an attribute:
-
-                <div class="code">&lt;[tag name] onClick=’function(){<br>&nbsp;&nbsp;&nbsp;&nbsp;[output code]<br>}’>&lt;/[tag name]></div>
-
-                <img class="left" src="icon/essayimgs/buttondemo.gif" alt="button" draggable="false">
+                <a href="https://www.bankofengland.co.uk/bank-overground/2020/how-has-covid-19-affected-small-uk-companies" target="_blank" class="sourcer" name="Bank of England, October 27th, 2020"><img class="left colourimage" src="icon/essayimgs/c19impact.png" alt="graph" draggable="false"></a>
                 
-                Both examples show javascript ‘events’ that allow for specific tasks such as dropdown menus, button functionality and for starting different CSS animations.
-                Frontend javascript can also be used for hidden uses to improve a websites functionality such as loading images when needed, adding cookies to a page so the user can stay logged in and for preloading certain elements to improve website speed between pages.<br>
+                This number has also been artificially increased due to the amount of small businesses being forced out of the physical market and onto an online space due to the semi recent impact left by the COVID-19 pandemic, which left many small businesses without the needed income to pay for their stores as even the larger of the small scale companies struggle to make a turnover of more than £10 million. Through this unexpected lack of customers in the physical front due to COVID, any online selling service became a major upgrade in terms of potential sales for the companies. By compiling all of these different statistics on eCommerce growth as of recent, it becomes clearer that overall the internet is becoming more and more of a place for users to just to sell and buy goods rather than being a large network of computers made for users to share simple media with each other, and although this ease of access is good for most users, it means that eventually the majority of physical shops located along less profitable streets will close in order to make a more cost effective and accessible online store. This eventual shift into online stores means that websites that collect and sell users’ personal data to advertisers will be able to create more accurate digital profiles as all shopping will have to be done online rather than in person. This would allow for a larger amount of data to be harvested from unknowing and unsuspecting users by companies. This will end up leading to more users unknowingly being coerced into buying products that they otherwise wouldn't want through manipulation in targeted advertisements that can relate to subjects a person can be emotional or passionate about. This strategy of targeted advertising is scarily common and thus has had many studies done on the tactics used and the reason that it works on consumers. Mainly advertisements will use the study of colours to emotions to make a user have a response to their advert, this is possible as humans can sometimes perceive colours as corresponding emotions whereas <span>'red represents excitement, danger and action'<a href="https://www.smashingmagazine.com/2010/01/color-theory-for-designers-part-1-the-meaning-of-color" target="_blank" class="sourcer" name="Cameron Chapman, May 20th, 2021">[17]</a></span>. This applies to all other colours as well but red is the most common in this type of advertising as the colour also helps to grab attention due to its bright but sharp colour.<br>
+                
+                This shift into online shopping will also eventually lead to large shopping centres losing money due to a decreasing amount of stores willing to rent out spaces in a physical store, thus eventually leaving shopping centres much blander and lacklustre.<br>
+                
+                This influx of eCommerce through website builders will also end up affecting the overall majority of freelance website developers as, compared to regular non profit websites, eCommerce website builders are a cheaper, faster, and overall a much more efficient way to sell products as a small business, and further adding on to the issue are the non eCommerce website builders used to create portfolio sites and other personal displays. This leaves the freelance website developers at a loss in profit as less and less people require the use of professionals when it comes to creating websites due to the abundance and ease of modern website builders. Through this rise, a lot of freelancers changed careers out of freelance website development due to the rising threat that these systems hold.<br>
+                
+                However, website builders have not spelt the death for freelancers altogether as although it has made it harder for freelancers to get small jobs, it hasn't affected the wider market for massive feature intensive websites for large brands and corporations. This is because most large businesses want a flashy user interface that can outline all of the features that a company wants to show off to users. For example: GitHub, RPCS3 and Riot Games.
+                Each of these companies employed freelance website developers to create complete designs and animations for their websites that a website builder simply wouldn't be capable of.<br>
+                Below shows each of the aforementioned websites.
+                
+                <a href="https://github.com/" target="_blank" class="sourcer" name="Github">
+                    <img class="colourimage" style="margin: 0.7em 0; width: 100%; height: auto;" src="icon/essayimgs/github.png" alt="Github" draggable="false">
+                </a>
+                <a href="https://rpcs3.net/" target="_blank" class="sourcer" name="RPCS3">
+                    <img class="colourimage" style="margin: 0.7em 0; width: 100%; height: auto;" src="icon/essayimgs/rpcs3.png" alt="RPCS3" draggable="false">
+                </a>
+                <a href="https://www.riotgames.com/en" target="_blank" class="sourcer" name="Riot Games">
+                    <img class="colourimage" style="margin: 0.7em 0; width: 100%; height: auto;" src="icon/essayimgs/riot.png" alt="Riot Games" draggable="false">
+                </a>
+                <br>
+                
+                
+                Personally, I feel that website builders are still becoming a threat for most freelance website developers but the website builders just aren't yet powerful enough to completely kill off all freelancers as there are still larger, more sophisticated website designs that can't be dealt with through the use of limited website builder tools however i don't believe this means that website builders won't eventually be able to beat the talents of freelancers.
+                
 
-                Javascript is good at these operations due to its speed and simplicity as Javascript executes its code inside the browser rather than connecting to a server or needing a compiler for it to run. Due to these benefits, Javascript is incredibly popular and therefore has a lot of user created libraries and tutorials for beginners wanting to get into the language.<br>
-                However even with all these benefits of Javascript, the language still has some issues as each browser can interpret the code differently meaning that some features that work on one browser may not act the same on a different browser, which ends up requiring a developer to test the code on all of the major browsers before being able to upload the code for the website.<br>
-                It is important when coding in Javascript that the variables are assigned before the code itself is referenced due to the language processing the code from the top down. This means that if a function is referenced before the variable is assigned in the code, then the variable in the function will be read as ‘undefined’ which prevents the rest of the code from being executed.
+                <br><br>
 
+                <h3><div id="05"></div><span>05</span> Web design docs</h3>
+                <hr>
+                
 
-
-
-                <div class="chapter"><div id="chapters-two"></div><span>02</span> What is a website builder</div><br>
-                This chapter will focus on what website builders are and how they use user interfaces to negate the requirement for coding when creating websites, which introduces an easier environment for people wanting to create websites without prior coding knowledge.<br><hr>
-
-                Building websites used to be a challenging and time consuming task for most, due to them requiring a lot of experience and learning in order to have a decent final product, however through the use of website builders this challenging and time consuming activity can be reduced into simple design rather than having to dig into the technicalities and the coding that used to be required. Through the website builders ease of access to creation through using preset pages and drag and drop functionality to add pages, features and other content, it makes all the time needed to learn all of the previously mentioned code turn into time that can be spent focusing more on the desired layout and content of the website.<br>
-
-
-                One of the first features that are included in most website builders are drag and drop elements (being one of the major features), is the most used by website builders as they allow for content in the website editor to be positioned according to the users desired design but also by allowing content from outside of the browser to be dragged directly into the page such as images and files, which allowed for the files to be directly uploaded into the website builder rather than having to navigate a series of menus and code image inputs in order to display them on the website. This drag and drop functionality became possible for website builders and other websites on the <span>'25th of January in 2010 when chrome released its new major version CHROME 4.0'<a href="https://chromereleases.googleblog.com" target="_blank" class="sourcer" name="Chome releases, Google">[6]</a></span>.<br>
-                This feature then became more widely used and implemented into other browsers in later <span>'versions such as Microsoft Edge 9.0 and Safari 6.0'<a href="https://www.w3schools.com/html/html5_draganddrop.asp" target="_blank" class="sourcer" name="Drag and Drop, W3schools">[7]</a></span>.<br>
-
-
-                Secondly, website builders take the issue of storing and hosting websites into their own hands by removing the need for the user to have to build a database or web server in order to be able to run the site on the internet. This is especially useful as most users looking to create a website won't have the experience to program the security required to protect their website, nor have a computer that can run 24/7 to act as a server. Website builders handling the servers for any websites made with their service also mean that users don't have to undergo getting a secure SSL certificate. SSL certificates both encrypt the data travelling from the server to the user, and also <span>'allow the browser and users to know that this is a trusted and safe website'<a href="https://www.digicert.com/what-is-an-ssl-certificate" target="_blank" class="sourcer" name="What is an SSL certificate, Digicert">[8]</a></span>.<br>
-                Having an SSL certificate can also boost its ranking when displayed by a search engine like google as <span>'it is seen as a sign of security which allows it to be boosted higher up in search rankings'<a href="https://www.sherbetdonkey.co.uk/blog/how-ssl-certificates-affect-seo" target="_blank" class="sourcer" name="How SSL affects SEO, Sherbetdonkey">[9]</a></span>. This is just one way that website builders automatically employ SEO, which stands for ‘search engine optimization’. SEO is the process of improving a websites ‘online ranking’ which simply just means how high google will place it compared to other websites that fit a search criteria put in by a user, for example googling ‘youtube’ will present ‘youtube.com’ as the first search result as not only does it fit the search criteria, but it also has a high SEO ranking in comparison to other video sharing sites.<br>
-
-                Website builders also accommodate for different page sizes through the responsive drag and drop elements that are automatically resized for any displays. This is incredibly useful for website builders as it means that the user only has to create a design for the landscape view of the website, and the website builder would automatically change sizes and order of items in order for it to be formatted correctly while in a portrait mobile view. This feature saves time and allows for more time on a single design rather than having to come up with designs for every screen size. This is crucial if a website is not designed with a mobile layout in mind then it can sometimes be unusable on mobile devices due to warped layouts and off-screen buttons.<br>
-
-                Thirdly, website builders also include easy compatibility between themselves and third party applications. This makes embedding content like youtube videos, spotify songs and google drive links considerably easier as website builders usually have predetermined settings for each type of embed that are set to improve the user experience for any device it's viewed on.<br>
-
-                <iframe style="border-radius: 10px; margin: 10px 0 3px 0;" src="https://open.spotify.com/embed/track/2Dzzhb1oV5ckgOjWZLraIB?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-
-                Embedded layers like the one shown above allow for websites to display their content and information into other websites through the use of an ‘iframe’ tag which mimics a website being opened. This allows for the aforementioned videos and songs to be played without having to leave the space of the current website being visited.<br>
-
-                Lastly, and most importantly. Website builders automatically optimise their websites to give the best performance to any device that it is opened on. This is incredibly beneficial for the user as any images uploaded will automatically be scaled and converted to different formats to improve the speed and load time of the page. This doesn't stop at images though as favicons (icons displayed next to the page name) and any javascript is usually shortened and optimised when a website is published. The javascript is shortened and compressed because:
-
-                <div class="code">if([condition]) {<br>&nbsp;&nbsp;&nbsp;&nbsp;[if code]<br>} else {<br>&nbsp;&nbsp;&nbsp;&nbsp;[else code]<br>}</div>
-
-                Is easier to read, but takes a lot longer to convert into machine code by the browser when the page is opened in comparison to this same code in a compressed format:
-
-                <div class="code">[condition] ? [if code] : [else code]</div>
-
-                Overall website builders contain many features that are necessities in order for them to perform as well as websites created by website developers and through these features they become extremely convenient in terms of user experience and traffic to the website.
-
-                <div class="chapter"><div id="chapters-three"></div><span>03</span> Humans vs Machines</div><br>
-                For both website builders and human website developers, there are a series of benefits and drawbacks to choosing either. In this chapter I will overview the differences between both and what makes one better than the other in certain aspects but worse in other aspects.<br><hr>
-
-                So why would you choose a website developer over a simple website builder if website builders don't require any deep understanding of code?<br>
-                This, although a very good point, isn't quite as simple as it seems as just because website builders can quickly make websites without the need for any coding experience, it's also completely limited to the tools and presets that come with the service that restrict the amount that could be achieved within a website. This means that for any design that would require specialist functionality such as: transitions between pages, 3D scenes, and any other unique visual effects, unfortunately wouldn't be able to be achieved by a website builder as per its limited capabilities. Therefore for designs too complicated to be accomplished by these means, it's more advised to hire a freelance website developer as any designs can be achieved as the restrictions that weigh down on website builders become redundant when using a code editor. Regrettably, this isn't the only issue that website builders face when put against freelance website developers as website builders also give off a lacklustre feeling to any page made with a website builder. This is caused by the lack of differentiation from any other website made with the same builder due to how all website builders use template systems in order to keep the websites responsive for all devices. Sadly, this lack of differentiation can make the page seem boring to users that have seen similar versions made from the same website builder, thus lowering the user retention rate of your website.<br>
-
-                <img class="left" src="icon/essayimgs/template.png" alt="templates" draggable="false">
-
-                This screenshot from the website builder <span>'Nicepage'<a href="https://nicepage.com/website-builder" target="_blank" class="sourcer" name="Website builder, Nicepage">[10]</a></span> shows the limited amount of tools that will be used in most websites made using Nicepage, from this we can see that although every website created will be ‘unique’, they will still all be limited to the same template elements. Additionally to the lack of uniqueness between websites made with the same templates. This however, becomes an even greater issue as competing website builders will have to implement the same templates in order to prevent them from falling behind in terms of features in contrast to other website builders, but this causes even the competing websites builders to have very similar looking sites when placed side by side as they all share the same popular templates. Most website builders will also include a banner displayed either on the top or the bottom of the website indicating that this specific site was made with a website builder.<br>
-
-                <img class="left" src="icon/essayimgs/banner.png" alt="banner" draggable="false">
-
-                This image is from a <span>‘Wix site’<a href="https://www.wix.com/" target="_blank" class="sourcer" name="Website builder, Wix">[11]</a></span> that shows an advertisement banner that Wix displays on most of their websites that users have created. This is used in order to advertise their services to any users visiting a site created with them. For most people this watermark left behind won't be an issue as they just want an online space to display their work for others to view however, websites used for business purposes can seem unprofessional due to the watermark that gives it a sense of cheapness and disregard for the brands online image. This can lead to further distrust into the product quality from a business and can cause a reduction in sales and reputation.<br>
-
-                Even though website builders have a large amount of drawbacks in contrast to what Freelance website developers can achieve, this doesn’t necessarily mean that website builders are completely inferior to website developers.
-                This is most evident when it comes to management of the websites and pricing to keep the services running for an extended period of time as the cost of a website builder is only around <span>‘11 to 21 pounds a month’<a href="https://www.wix.com/upgrade/website" target="_blank" class="sourcer" name="Website pricing, Wix">[12]</a></span> as shown on the wix website whereas a website developer can cost an average of around 75 pounds an hour, and an amount of around 6,760 pounds in total. This large sum, although it will usually be enough to produce a full website, does not typically include server costs nor additional features later down the line. Due to the website builders having a simple monthly cost that includes: databases, payment handling, additional features as they are added, and server processing, it makes the pricing for website builders significantly more cost effective compared to server processing and hosting for a website made without a website builder that aren't included with the price of hiring a freelance website developer as on Amazon Web Services (AWS) server processing costs from <span>‘200 to 800 pounds a month’<a href="https://www.linkedin.com/pulse/how-much-does-cost-host-websiteapp-aws-cloud-alfonso-valdes" target="_blank" class="sourcer" name="AWS website hosting prices, Linkedin">[13]</a></span>. This shows that by building a website with a website builder, you can save a significant amount of money both upfront and monthly, making this the better option for a small project or startup in comparison to hiring a website developer. Using a website builder can also notably reduce the time it takes to have your website built as the coding process for a website is a long and time consuming process compared to using the drag and drop presets that the website builder provides.<br>
-
-                Overall both website builders and freelance website developers have both pros and cons, whether it's related to cost, available features or user perception. Due to these factors, there is no definitive right answer for what you should use to make your website, as both can be applicable for different circumstances that a website might need to fill. From online stores to portfolios to display a persons’ work.
+                <iframe class="displayframe" style="width: 100%; height: 90vmin; border: 0; border-radius: 10px; margin: 0.7em 0; padding: 0;" src="index.html" loading="lazy"></iframe>
 
 
+                <br><br>
 
+                <h3><div id="06"></div><span>06</span> Conclusion</h3>
+                <hr>
+                <div class="codewindow">pogger</div>
+            </article>
 
-                <div class="chapter"><div id="chapters-four"></div><span>04</span> How do website builders affect us</div><br>
-                WIP
-                <div class="chapter"><div id="chapters-five"></div><span>05</span> WIP what is this useful for</div><br>
-                WIP
-                <iframe class="exampleframe" src="https://natski.netlify.com" loading="lazy"></iframe>
+            <article>
+                <h4>Bibliography</h4>
+                <hr class="mini">
 
-                <div class="chapter"><div id="chapters-conclusion"></div><span>06</span> Conclusion</div><br>
-                WIP
+                <h3>Cites</h3>
+                <hr>
+                <ul>
+                    <li>
+                        <a href="https://artsartistsartwork.com/why-there-is-no-such-thing-as-good-art-or-bad-art/" target="_blank">artsartistsartwork.com / why there is no such thing as good art or bad art</a>
+                    </li>
+                    <li>
+                        <a href="https://medium.com/p/96c33bf67903" target="_blank">medium.com / did Marcel Duchamp’s 'Fountain' really come completely out of left field?</a>
+                    </li>
+                    <li>
+                        <a href="https://yourartpath.com/digital-art-vs-traditional-art" target="_blank">yourartpath.com / digital art vs traditional art</a>
+                    </li>
+                </ul>
 
-                <ul class="epqpage" id="chapterselect" style="list-style: none; text-align: center;">
-                    <li>Chapters</li>
-                    <hr>
-                    <a class="chapterpick0" name="Introductory chapter" href="#chapters-intro">Introduction</a>
-                    <a class="chapterpick1" name="HTML, CSS and Javascript" href="#chapters-one">Chapter 1</a>
-                    <a class="chapterpick2" name="What is a website builder" href="#chapters-two">Chapter 2</a>
-                    <a class="chapterpick3" name="Humans vs Machines" href="#chapters-three">Chapter 3</a>
-                    <a class="chapterpick4" name="How do website builders affect us" href="#chapters-four">Chapter 4</a>
-                    <a class="chapterpick5" name="WIP" href="#chapters-five">Chapter 5</a>
-                    <a class="chapterpick6" name="Conclusional chapter" href="#chapters-conclusion">Conclusion</a>
+                <h3>Info Gathering</h3>
+                <hr>
+                <ul>
+                    <li>
+                        <a href="https://en.wikipedia.org/wiki/Outsider_art" target="_blank">Outsider Art Wikipedia</a>
+                    </li>
+                    <li>
+                        <a href="https://en.wikipedia.org/wiki/Comedian_(artwork)" target="_blank">Comedian Wikipedia</a>
+                    </li>
+                    <li>
+                        <a href="http://museumofbadart.org/poor-traits/" target="_blank">Museum of Bad Art: Poor-Traits</a>
+                    </li>
+                </ul>
+
+                <h3>Images Used</h3>
+                <hr>
+                <ul>
+                    <li>
+                        <a href="https://www.khanacademy.org/humanities/art-1010/dada-and-surrealism/dada2/a/introduction-to-dada" target="_blank">Fountain</a>
+                    </li>
+                    <li>
+                        <a href="https://www.pinterest.co.uk/pin/699324648373177082" target="_blank">Carles Dalmau</a>
+                    </li>
                 </ul>
             </article>
-            <hr>
-            <ul class="bibliography">
-                <h2>Cites</h2>
-                <p>in order of appearance</p>
-                <li>
-                    <a href="https://en.wikipedia.org/wiki/Tim_Berners-Lee" target="_blank">Wikipedia / Who is Tim Berners-Lee</a>
-                </li>
-                <li>
-                    <a href="https://en.wikipedia.org/wiki/XHTML" target="_blank">Wikipedia / What is XHTML</a>
-                </li>
-                <li>
-                    <a href="https://en.wikipedia.org/wiki/CSS" target="_blank">Wikipedia / What is CSS</a>
-                </li>
-                <li>
-                    <a href="https://www.bu.edu/lernet/artemis/years/2020/projects/FinalPresentations/HTML/historyofcss.html" target="_blank">Bu.edu / History of CSS</a>
-                </li>
-                <li>
-                    <a href="https://www.w3schools.com/js/js_history.asp" target="_blank">W3schools / History of Javascript</a>
-                </li>
-                <li>
-                    <a href="https://chromereleases.googleblog.com" target="_blank">Google / Chrome releases</a>
-                </li>
-                <li>
-                    <a href="https://www.w3schools.com/html/html5_draganddrop.asp" target="_blank">W3schools / Drag and Drop</a>
-                </li>
-                <li>
-                    <a href="https://www.digicert.com/what-is-an-ssl-certificate" target="_blank">Digicert / What is an SSL certificate</a>
-                </li>
-                <li>
-                    <a href="https://www.sherbetdonkey.co.uk/blog/how-ssl-certificates-affect-seo" target="_blank">Sherbetdonkey / How SSL affects SEO</a>
-                </li>
-            </ul>
-            
-            <ul class="bibliography">
-                <h2>Info Gathering</h2>
-                <li>
-                    <a href="" target="_blank"></a>
-                </li>
-            </ul>
-            
-            <ul class="bibliography">
-                <h2>Images Used</h2>
-                <p>in order of appearance</p>
-                <li>
-                    <a href="https://uploads.sitepoint.com/wp-content/uploads/2011/02/HTML5_Badge_256_thumb.png" target="_blank">HTML 5 logo</a>
-                </li>
-                <li>
-                    <a href="https://logospng.org/download/css-3/logo-css-3-1536.png" target="_blank">CSS logo</a>
-                </li>
-                <li>
-                    <a href="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/480px-Unofficial_JavaScript_logo_2.svg.png" target="_blank">Javascript logo</a>
-                </li>
-            </ul>
-            <div id="wordcount"></div>
         </main>
-        <footer class="footer">
-            <div class="footer-logo">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560.95 560.95" fill="var(--accentcol)">
-                    <path d="M560.95,31.69v497.57c0,17.5-14.19,31.69-31.69,31.69h-113.37c-12.09,0-23.51-5.54-30.99-15.04l-160.64-204.04c-19.74-25.08-60.05-11.12-60.05,20.8v166.6c0,17.5-14.18,31.68-31.68,31.68H31.68c-17.5,0-31.68-14.18-31.68-31.68V31.68C0,14.18,14.18,0,31.68,0h113.38c12.09,0,23.51,5.54,31,15.04l160.6,203.88c19.76,25.09,60.08,11.11,60.08-20.82V31.69c0-17.5,14.19-31.69,31.69-31.69h100.83c17.5,0,31.69,14.19,31.69,31.69Z"/>
+
+        <footer>
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.35 850.35">
+                    <path d="M850.35,48.04V802.31c0,26.53-21.51,48.04-48.04,48.04h-171.87c-18.33,0-35.64-8.4-46.98-22.8l-243.52-309.3c-29.93-38.02-91.02-16.85-91.02,31.53v252.55c0,26.52-21.5,48.02-48.02,48.02H48.02c-26.52,0-48.02-21.5-48.02-48.02V48.02C0,21.5,21.5,0,48.02,0H219.9c18.33,0,35.64,8.4,46.99,22.8l243.46,309.07c29.96,38.03,91.08,16.85,91.08-31.56V48.04c0-26.53,21.51-48.04,48.04-48.04h152.85c26.53,0,48.04,21.51,48.04,48.04Z"/>
                 </svg>
-                <p id="footerdate"></p>
+                <p>©NATSKI<br>ENCORE</p>
             </div>
-            <div class="footer-links">
-                <a href="#">Privacy Policy</a>
-                <div class="footer-bars"></div>
-                <a href="https://opensource.org/licenses/MIT">Licence</a>
-            </div>
+            <span></span>
+            <a href="privacy policy.html" onclick="parent.pageSystem('Privacy Policy');">Privacy Policy</a>
         </footer>
-        <div class="bibcont" id="bibcontainer"></div>
-        <nav class="navbar">
-            <span id="pagename">EPQ</span>
-            <div class="navbarleft">
-                <a href="index.html">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560.95 560.95" fill="var(--maincol)">
-                        <path d="M560.95,31.69v497.57c0,17.5-14.19,31.69-31.69,31.69h-113.37c-12.09,0-23.51-5.54-30.99-15.04l-160.64-204.04c-19.74-25.08-60.05-11.12-60.05,20.8v166.6c0,17.5-14.18,31.68-31.68,31.68H31.68c-17.5,0-31.68-14.18-31.68-31.68V31.68C0,14.18,14.18,0,31.68,0h113.38c12.09,0,23.51,5.54,31,15.04l160.6,203.88c19.76,25.09,60.08,11.11,60.08-20.82V31.69c0-17.5,14.19-31.69,31.69-31.69h100.83c17.5,0,31.69,14.19,31.69,31.69Z"/>
-                    </svg>
-                </a>
-            </div>
-            <div class="navbarright">
-                <a class="toggle">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </a>
-                <a class="navbutton" href="index.html">
-                    Home
-                    <div class="selector"></div>
-                </a>
-                <a class="navbutton" href="about.html">
-                    About
-                    <div class="selector"></div>
-                </a>
-                <a class="navbutton" href="changes.html">
-                    Changelog
-                    <div class="selector"></div>
-                </a>
-                <a class="navbutton" href="settings.html">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1032.47 1032.53">
-                        <path d="M952.08,620.24l-57.1-32.97c-25.19-14.54-40.47-41.49-40.43-70.58,0-.16,0-.31,0-.47s0-.31,0-.47c-.04-29.09,15.24-56.04,40.43-70.58l57.1-32.97c41.44-23.93,55.64-76.92,31.72-118.36l-41.28-71.49c-23.92-41.44-76.92-55.64-118.36-31.72l-57.05,32.94c-25.23,14.57-56.25,14.28-81.44-.34-.28-.16-.56-.33-.85-.49-25.16-14.5-40.81-41.2-40.81-70.24V86.64c0-47.85-38.79-86.64-86.65-86.64h-82.54c-47.86,0-86.65,38.79-86.65,86.64v65.87c0,29.04-15.65,55.74-40.81,70.24-.28,.16-.57,.33-.85,.49-25.2,14.62-56.22,14.9-81.44,.34l-57.05-32.94c-41.44-23.92-94.44-9.72-118.37,31.72l-41.27,71.49c-23.93,41.44-9.73,94.43,31.72,118.36l57.1,32.97c25.19,14.54,40.47,41.49,40.43,70.58,0,.16,0,.31,0,.47s0,.31,0,.47c.04,29.09-15.24,56.04-40.43,70.58l-57.1,32.97c-41.45,23.93-55.65,76.92-31.72,118.36l41.27,71.49c23.93,41.44,76.93,55.64,118.37,31.72l57.05-32.94c25.23-14.57,56.25-14.28,81.44,.34,.28,.16,.56,.33,.85,.49,25.16,14.5,40.81,41.2,40.81,70.24v65.86c0,47.86,38.79,86.65,86.65,86.65h82.54c47.86,0,86.65-38.79,86.65-86.65v-65.86c0-29.04,15.65-55.74,40.81-70.24,.28-.16,.57-.33,.85-.49,25.2-14.62,56.22-14.9,81.44-.34l57.05,32.94c41.44,23.92,94.44,9.72,118.36-31.72l41.28-71.49c23.92-41.44,9.72-94.43-31.72-118.36Zm-401.72,63.49c-11.07,2.25-22.53,3.43-34.27,3.43s-23.2-1.18-34.27-3.43c-36.94-7.52-69.55-26.96-93.65-54.11-15.14-17.08-26.91-37.2-34.28-59.33-5.66-16.99-8.73-35.17-8.73-54.06s3.07-37.07,8.73-54.06c7.37-22.13,19.14-42.25,34.28-59.33,24.1-27.15,56.71-46.59,93.65-54.11,11.07-2.25,22.53-3.43,34.27-3.43s23.2,1.18,34.27,3.43c36.94,7.52,69.55,26.96,93.65,54.11,15.14,17.08,26.91,37.2,34.28,59.33,5.66,16.99,8.73,35.17,8.73,54.06s-3.07,37.07-8.73,54.06c-7.37,22.13-19.14,42.25-34.28,59.33-24.1,27.15-56.71,46.59-93.65,54.11Z"/>
-                    </svg>
-                    <div class="selector"></div>
-                </a>
-            </div>
-        </nav>
-        <div class="slidemenu">
-            <div class="menubar">
-                <a class="menubutton" href="index.html">
-                    Home
-                </a>
-                <hr>
-                <a class="menubutton" href="about.html">
-                    About
-                </a>
-                <hr>
-                <a class="menubutton" href="changes.html">
-                    Changelog
-                </a>
-                <hr>
-                <a class="menubutton" href="portfolio.html">
-                    Portfolio
-                </a>
-                <hr>
-                <a class="menubutton" href="websites.html">
-                    Websites
-                </a>
-                <hr>
-                <a class="menubutton" href="settings.html">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1032.47 1032.53">
-                        <path d="M952.08,620.24l-57.1-32.97c-25.19-14.54-40.47-41.49-40.43-70.58,0-.16,0-.31,0-.47s0-.31,0-.47c-.04-29.09,15.24-56.04,40.43-70.58l57.1-32.97c41.44-23.93,55.64-76.92,31.72-118.36l-41.28-71.49c-23.92-41.44-76.92-55.64-118.36-31.72l-57.05,32.94c-25.23,14.57-56.25,14.28-81.44-.34-.28-.16-.56-.33-.85-.49-25.16-14.5-40.81-41.2-40.81-70.24V86.64c0-47.85-38.79-86.64-86.65-86.64h-82.54c-47.86,0-86.65,38.79-86.65,86.64v65.87c0,29.04-15.65,55.74-40.81,70.24-.28,.16-.57,.33-.85,.49-25.2,14.62-56.22,14.9-81.44,.34l-57.05-32.94c-41.44-23.92-94.44-9.72-118.37,31.72l-41.27,71.49c-23.93,41.44-9.73,94.43,31.72,118.36l57.1,32.97c25.19,14.54,40.47,41.49,40.43,70.58,0,.16,0,.31,0,.47s0,.31,0,.47c.04,29.09-15.24,56.04-40.43,70.58l-57.1,32.97c-41.45,23.93-55.65,76.92-31.72,118.36l41.27,71.49c23.93,41.44,76.93,55.64,118.37,31.72l57.05-32.94c25.23-14.57,56.25-14.28,81.44,.34,.28,.16,.56,.33,.85,.49,25.16,14.5,40.81,41.2,40.81,70.24v65.86c0,47.86,38.79,86.65,86.65,86.65h82.54c47.86,0,86.65-38.79,86.65-86.65v-65.86c0-29.04,15.65-55.74,40.81-70.24,.28-.16,.57-.33,.85-.49,25.2-14.62,56.22-14.9,81.44-.34l57.05,32.94c41.44,23.92,94.44,9.72,118.36-31.72l41.28-71.49c23.92-41.44,9.72-94.43-31.72-118.36Zm-401.72,63.49c-11.07,2.25-22.53,3.43-34.27,3.43s-23.2-1.18-34.27-3.43c-36.94-7.52-69.55-26.96-93.65-54.11-15.14-17.08-26.91-37.2-34.28-59.33-5.66-16.99-8.73-35.17-8.73-54.06s3.07-37.07,8.73-54.06c7.37-22.13,19.14-42.25,34.28-59.33,24.1-27.15,56.71-46.59,93.65-54.11,11.07-2.25,22.53-3.43,34.27-3.43s23.2,1.18,34.27,3.43c36.94,7.52,69.55,26.96,93.65,54.11,15.14,17.08,26.91,37.2,34.28,59.33,5.66,16.99,8.73,35.17,8.73,54.06s-3.07,37.07-8.73,54.06c-7.37,22.13-19.14,42.25-34.28,59.33-24.1,27.15-56.71,46.59-93.65,54.11Z"/>
-                      </svg>
-                </a>
-            </div>
+
+        <div class="epq">
+            <a href="#00"><p name="Introduction">00</p></a>
+            <a href="#01"><p name="What is HTML, CSS and Javascript">01</p></a>
+            <a href="#02"><p name="What is a website builder">02</p></a>
+            <a href="#03"><p name="Humans vs Machines">03</p></a>
+            <a href="#04"><p name="How do website builders affect us">04</p></a>
+            <a href="#05"><p name="Web design docs">05</p></a>
+            <a href="#06"><p name="Conclusion">06</p></a>
         </div>
+
+        <div id="popout"></div>
+        <p id="wordcount"></p>
+
         <noscript>
-            <h1>javascript is disabled :(</h1>
-            <p>this website requires javascript to run.<br>please enable the use of javascript to see this page :)</p>
+            <h1>javascript is disabled</h1>
+            <p>ENCORE.js requires javascript in order to run, please enable javascript</p>
         </noscript>
-        <script>
-            $(document).ready(function(){setTimeout(()=>{parent.pagename('EPQ');},500);});
-
-            $(window).scroll(function() {
-
-                $(".chapter").each(function(e) {
-                    let t = $(this).position().top + $(this).outerHeight() + 1300;
-                    if($(window).scrollTop() + $(window).height() > t){
-                        $('.chapterpick'+(e-1)+',.chapterpick'+(e+1)).css({backgroundColor: "transparent",color: 'var(--themecoltrans)'})
-                        $('.chapterpick'+e).css({backgroundColor: "#303030",color: 'var(--themecol)'})
-                    }
-                })
-                
-                let x = $('article').position().top + $('article').outerHeight() + 130;
-                $(window).scrollTop() + $(window).height() > x ? document.getElementById('chapterselect').classList.add('active') : document.getElementById('chapterselect').classList.remove('active')
-            });
-        </script>
-        <script src="lib/js/main.js"></script>
-        <script src="lib/js/iframeresponder.js"></script>
-        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-        <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+        <script src="lib/js/ENCORE_DES.js"></script>
+        <script src="lib/js/ENCORE_DSS.js"></script>
+        <script src="lib/js/ENCORE_SCS.js"></script>
     </body>
 </html>

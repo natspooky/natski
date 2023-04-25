@@ -51,18 +51,21 @@
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.35 850.35">
                     <path d="M850.35,48.04V802.31c0,26.53-21.51,48.04-48.04,48.04h-171.87c-18.33,0-35.64-8.4-46.98-22.8l-243.52-309.3c-29.93-38.02-91.02-16.85-91.02,31.53v252.55c0,26.52-21.5,48.02-48.02,48.02H48.02c-26.52,0-48.02-21.5-48.02-48.02V48.02C0,21.5,21.5,0,48.02,0H219.9c18.33,0,35.64,8.4,46.99,22.8l243.46,309.07c29.96,38.03,91.08,16.85,91.08-31.56V48.04c0-26.53,21.51-48.04,48.04-48.04h152.85c26.53,0,48.04,21.51,48.04,48.04Z"/>
                 </svg>
-                <img src="icon/thumbnails/missing.png" alt="404" id="headerimage" draggable="false">
+                <img src="icon/thumbnails/changelog.png" alt="changelog" id="headerimage" draggable="false">
             </div>
-            <h2>404</h2>
+            <h2>Changelog</h2>
         </header>
 
+        <main></main>
 
-        <main>
-            <article style="text-align: center;">
-                <span>looks like you got lost...</span>
-            </article>
-        </main>
-
+        <section id="scrollloader">
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 834.61 834.61">
+                    <path class="loadwheel" d="M772.51,540.33c-50.95,147.13-190.73,252.78-355.2,252.78-207.55,0-375.81-168.25-375.81-375.8S209.76,41.5,417.31,41.5c164.47,0,304.25,105.65,355.2,252.79"/>
+                    <circle fill="none" cx="417.31" cy="417.31" r="375.78"/>
+                </svg>
+            </div>
+        </section>
 
         <footer>
             <div>
@@ -83,6 +86,13 @@
             <p>ENCORE.js requires javascript in order to run, please enable javascript</p>
         </noscript>
         <script src="lib/js/ENCORE_DSS.js"></script>
+        <script src="lib/js/ENCORE_CLS.js"></script>
+
+        <script>
+            var path = 'https://wcotest.netlify.app/lib/txt/changelog', filecount = 4
+            clsStart()
+        </script>
+
         <script src="lib/js/ENCORE_SCS.js"></script>
     </body>
 </html>

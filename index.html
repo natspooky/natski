@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en-US">
     <head>
-		<title>Natski | Home</title>
+		<title>Natski</title>
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, user-scalable=no"/>
         <meta name="theme-color" content="#1e1e1e"/>
@@ -39,270 +39,293 @@
         <link rel="stylesheet" type="text/css" media="screen and (orientation: portrait)" href="lib/css/scale.css"/>
         <script src="lib/js/jquery.js"></script>
         <script src="lib/js/images.js"></script>
+        <script src="lib/js/ENCORE_SSC.js"></script>
+        
 	</head>
-    <body>
-        <script>
-            if(localStorage.getItem("theme")===null){
-                var theme='#729ef6';
-            }else{
-                var theme=localStorage.getItem('theme');
-            };
-            $(':root').css({'--themecol':theme,'--themecoltrans':theme+"50"});
-        </script>
-        <p id="loaded"></p>
-        <div class="loaderback" style="display: flex;">
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 834.61 834.61">
-                    <path class="loadwheel" d="M772.51,540.33c-50.95,147.13-190.73,252.78-355.2,252.78-207.55,0-375.81-168.25-375.81-375.8S209.76,41.5,417.31,41.5c164.47,0,304.25,105.65,355.2,252.79"/>
-                    <circle fill="none" cx="417.31" cy="417.31" r="375.78"/>
-                </svg>
-            </div>
-        </div>
-        <style>::-webkit-scrollbar{height:0px;width:0px;}</style>
-        <header>
-            <div class="banner-bg" style="background-image: url('icon/img/1.png')">
-                <div class="banner-fg">
-                    <h1 class="banner-title-hover">Portfolio</h1>
-                    <hr class="banner-bar">
-                    <div class="banner-info">
-                        a collection of work made during the GCSE / Alevel timeframe including: artwork, research documents and progression slides, in order to archive all of it
-                    </div>
-                    <h1 class="banner-title">Portfolio</h1>
-                    <button class="banner-button" id="portfolio" onClick='pageactive(this.id,"Portfolio","ifr");loaderactivate();sfx("excite");'>
-                        enter
-                    </button>
+    <body style="background-image: linear-gradient(to top left, transparent, transparent, #202020);">
+
+        <header class="slideshowcontainer" id="SSC">
+
+            <div class="banner-bg" style="background-image: url('icon/img/1.png');">
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.35 850.35">
+                        <path d="M850.35,48.04V802.31c0,26.53-21.51,48.04-48.04,48.04h-171.87c-18.33,0-35.64-8.4-46.98-22.8l-243.52-309.3c-29.93-38.02-91.02-16.85-91.02,31.53v252.55c0,26.52-21.5,48.02-48.02,48.02H48.02c-26.52,0-48.02-21.5-48.02-48.02V48.02C0,21.5,21.5,0,48.02,0H219.9c18.33,0,35.64,8.4,46.99,22.8l243.46,309.07c29.96,38.03,91.08,16.85,91.08-31.56V48.04c0-26.53,21.51-48.04,48.04-48.04h152.85c26.53,0,48.04,21.51,48.04,48.04Z"/>
+                    </svg>
+                    <h1>PORTFOLIO</h1>
+                    <hr>
+                    <p>A collection of different projects ranging from schoolwork to personal projects created for fun</p>
+                    
                 </div>
+                <button name="portfolio" onclick="loadframe(this.name)" class="banner-button">
+                    enter
+                </button>
             </div>
-            <div class="banner-bg" style="background-image: url('icon/img/2.png')">
-                <div class="banner-fg">
-                    <h1 class="banner-title-hover">Websites</h1>
-                    <hr class="banner-bar">
-                    <div class="banner-info">
-                        Websites built for either general use such as social linking sites or for brand specific jobs
-                    </div>
-                    <h1 class="banner-title">Websites</h1>
-                    <button class="banner-button" id="websites" onClick='pageactive(this.id,"Websites","ifr");loaderactivate();sfx("excite");'>
-                        enter
-                    </button>
+
+            <div class="banner-bg" style="background-image: url('icon/img/2.png');">
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.39 850.35">
+                        <path d="M803.85,56.19H46.55C20.84,56.19,0,77.03,0,102.74V747.65c0,25.71,20.84,46.55,46.55,46.55H803.85c25.7,0,46.54-20.84,46.54-46.55V102.74c0-25.71-20.84-46.55-46.54-46.55Zm-37.85,635.72c0,9.88-8.01,17.9-17.9,17.9H102.29c-9.88,0-17.9-8.02-17.9-17.9V347.77c0-9.88,8.02-17.89,17.9-17.89H748.1c9.89,0,17.9,8.01,17.9,17.89v344.14Z"/>
+                    </svg>
+                    <h1>WEBSITES</h1>
+                    <hr>
+                    <p>Websites created both for personal enjoyment and contributing to projects proposed to me by friends</p>
+                    
                 </div>
+                <button name="websites" onclick="loadframe(this.name)" class="banner-button">
+                    enter
+                </button>
             </div>
-            <div class="banner-bg" style="background-image: url('icon/img/3.png')">
-                <div class="banner-fg">
-                    <h1 class="banner-title-hover">ENCORE JS</h1>
-                    <hr class="banner-bar">
-                    <div class="banner-info">
-                        ENCORE JS is a set of functions used to power ©NATSKI websites
-                    </div>
-                    <h1 class="banner-title">ENCORE JS<br>[WIP PAGE]</h1>
-                    <button class="banner-button" onClick='document.getElementById("ifr").src="404.html";' disabled>
-                        enter
-                    </button>
+                
+            <div class="banner-bg" style="background-image: url('icon/img/3.png');">
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.35 850.35">
+                        <path d="M596.1,707.01v84.01c0,25.7,20.83,46.53,46.53,46.53h148.36c25.7,0,46.53-20.83,46.53-46.53V59.23c0-.49,0-1-.04-1.48-.03-1.14-.11-2.28-.23-3.39-.03-.3-.07-.6-.11-.9,0-.02,0-.04,0-.05-.04-.38-.09-.75-.15-1.12-.14-.91-.3-1.81-.49-2.71l-.16-.72c-.09-.37-.17-.75-.27-1.12-.18-.75-.4-1.48-.62-2.21-.23-.73-.48-1.45-.74-2.16-.2-.55-.42-1.11-.64-1.66-.44-1.07-.91-2.1-1.42-3.12-7.65-15.27-23.43-25.75-41.65-25.75H59.32c-17.62,0-32.96,9.8-40.87,24.24-.25,.47-.49,.94-.74,1.42h0c-.52,1.06-1.02,2.13-1.46,3.22-.22,.55-.44,1.1-.64,1.66-.26,.72-.5,1.44-.74,2.16-.22,.73-.43,1.46-.62,2.21-.1,.37-.18,.75-.27,1.12l-.2,.9c-.17,.83-.33,1.68-.46,2.52-.06,.39-.12,.78-.16,1.16-.05,.35-.09,.7-.13,1.05-.05,.46-.09,.92-.13,1.4-.04,.53-.07,1.08-.09,1.62,0,.04,0,.08,0,.12-.03,.52-.04,1.07-.04,1.6V791.01c0,25.7,20.83,46.53,46.53,46.53H207.67c25.7,0,46.53-20.83,46.53-46.53v-84.01c0-22.32,18.1-40.41,40.42-40.41h261.07c22.32,0,40.41,18.1,40.41,40.41Zm0-427.62v145.8h-50.24v-145.8c0-13.87,11.25-25.12,25.12-25.12s25.12,11.25,25.12,25.12ZM254.2,425.18v-145.8c0-13.87,11.25-25.12,25.12-25.12h0c13.87,0,25.12,11.25,25.12,25.12v145.8h-50.25Z"/>
+                    </svg>
+                    <h1>ENCORE</h1>
+                    <hr>
+                    <p>temp</p>
+                    
                 </div>
+                <button name="encore" onclick="loadframe(this.name)" class="banner-button">
+                    enter
+                </button>
             </div>
-            <button class="prev" onclick="plusSlides(-1);sfx('clicker')">
-                <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 398.35 636.29">
+
+            <button class="prev" onclick="plusSlides(-1);">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 398.35 636.29">
                     <path d="M16.05,354l302.18,269.96c30.98,27.68,80.12,5.69,80.12-35.86V48.18c0-41.55-49.14-63.54-80.12-35.86L16.05,282.28c-21.4,19.12-21.4,52.6,0,71.72Z"/>
                 </svg>
             </button>
-            <button class="next" onclick="plusSlides(1);sfx('clicker')">
+
+            <button class="next" onclick="plusSlides(1);">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 398.35 636.29">
                     <path d="M382.3,282.28L80.12,12.32C49.14-15.36,0,6.63,0,48.18V588.11c0,41.55,49.14,63.54,80.12,35.86L382.3,354c21.4-19.12,21.4-52.6,0-71.72Z"/>
                 </svg>
             </button>
-            <section class="thumbs">
-                <button onclick="currentSlide(1)" class="thumb">
-                    <img src="icon/img/1.png" draggable="false" alt="portfolio">
-                </button>
-                <button onclick="currentSlide(2)" class="thumb">
-                    <img src="icon/img/2.png" draggable="false" alt="websites">
-                </button>
-                <button onclick="currentSlide(3)" class="thumb">
-                    <img src="icon/img/3.png" draggable="false" alt="encore">
-                </button>
-            </section>
+
+            <div class="thumbs">
+
+                <button onclick="currentSlide(1)" class="thumb"></button>
+
+                <button onclick="currentSlide(2)" class="thumb"></button>
+
+                <button onclick="currentSlide(3)" class="thumb"></button>
+
+            </div>
+
             <div class="progress">
+
                 <div class="progress-bar" id="progress-bar"></div>
+
             </div>
+            <button class="watermark" onclick="loadframe('encore')">ENCORE_SSC.JS</button>
         </header>
-        <section>
-            <audio preload="auto" id="hom" src="lib/audio/home-press.mp3"></audio>
-            <audio preload="auto" id="excite" src="lib/audio/excite-open.mp3"></audio>
-            <audio preload="auto" id="appear" src="lib/audio/notif-appear.mp3"></audio>
-            <audio preload="auto" id="delete" src="lib/audio/notif-delete.mp3"></audio>
-            <audio preload="auto" id="clicker" src="lib/audio/button-click.mp3"></audio>
-        </section>
-        
+
         <main>
-            <div class="descriptionbar"><span>Featured</span></div>
-            <div class="middle" id="middle">
-                <button class="beforemiddleimg" onclick="currentSlide(1); scrolltop();" style="--j:#303030;">
-                    <div class="middlebutton">visit</div>
-                    <div class="text">
-                        <h1>Portfolio</h1>
-                        <p>A collection of artwork for GCSE/Alevel</p>
-                    </div>
-                    <div class="middleimg" style="background-image: url('icon/img/1.png')">
-                        <p>New</p>
-                        <h1>Portfolio</h1>
-                    </div>
-                </button>
-                <button class="beforemiddleimg" onclick="currentSlide(2); scrolltop();" style="--j:#303030;">
-                    <div class="middlebutton">visit</div>
-                    <div class="text">
-                        <h1>Websites</h1>
-                        <p>Web projects for brands/personal</p>
-                    </div>
-                    <div class="middleimg" style="background-image: url('icon/img/2.png')">
-                        <p>New</p>
-                        <h1>Websites</h1>
-                    </div>
-                </button>
-            </div>
+            <article style="text-align: center;">
+                thank you for visiting <span>NATSKI</span>!
+            </article>
         </main>
-        <footer class="footer">
-            <div class="footer-logo">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560.95 560.95" fill="var(--accentcol)">
-                    <path d="M560.95,31.69v497.57c0,17.5-14.19,31.69-31.69,31.69h-113.37c-12.09,0-23.51-5.54-30.99-15.04l-160.64-204.04c-19.74-25.08-60.05-11.12-60.05,20.8v166.6c0,17.5-14.18,31.68-31.68,31.68H31.68c-17.5,0-31.68-14.18-31.68-31.68V31.68C0,14.18,14.18,0,31.68,0h113.38c12.09,0,23.51,5.54,31,15.04l160.6,203.88c19.76,25.09,60.08,11.11,60.08-20.82V31.69c0-17.5,14.19-31.69,31.69-31.69h100.83c17.5,0,31.69,14.19,31.69,31.69Z"/>
+
+
+        <footer>
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.35 850.35">
+                    <path d="M850.35,48.04V802.31c0,26.53-21.51,48.04-48.04,48.04h-171.87c-18.33,0-35.64-8.4-46.98-22.8l-243.52-309.3c-29.93-38.02-91.02-16.85-91.02,31.53v252.55c0,26.52-21.5,48.02-48.02,48.02H48.02c-26.52,0-48.02-21.5-48.02-48.02V48.02C0,21.5,21.5,0,48.02,0H219.9c18.33,0,35.64,8.4,46.99,22.8l243.46,309.07c29.96,38.03,91.08,16.85,91.08-31.56V48.04c0-26.53,21.51-48.04,48.04-48.04h152.85c26.53,0,48.04,21.51,48.04,48.04Z"/>
                 </svg>
-                <p id="footerdate"></p>
+                <p>©NATSKI<br>ENCORE</p>
             </div>
-            <div class="footer-links">
-                <a href="#">Privacy Policy</a>
-                <div class="footer-bars"></div>
-                <a href="https://opensource.org/licenses/MIT">Licence</a>
-            </div>
+            <span></span>
+            <button name="Privacy Policy" onclick="loadframe(this.name)">Privacy Policy</button>
         </footer>
 
-
-
-        <div class="notifcont active" id="notifbar">
-            <h1>notifications <button onclick='removeall();'>clear all</button></h1>
-        </div>
-        <nav class="navbar" style="display: block;">
-            <span id="pagename">Home</span>
-            <button class="notiftoggle" id="notifmenu" onclick="notiftbaroggle(); sfx('appear')">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 879.52 879.52">
-                    <path d="M439.76,0C196.89,0,0,196.89,0,439.76s196.89,439.76,439.76,439.76,439.76-196.89,439.76-439.76S682.63,0,439.76,0Zm66.8,667.36c0,38.4-12,50.4-49.6,50.4h-33.6c-37.6,0-49.6-12-49.6-50.4v-35.2c0-38.4,12-50.4,49.6-50.4h33.6c37.6,0,49.6,12,49.6,50.4v35.2Zm5.6-306.62c0,.68-.03,1.36-.09,2.03l-13.25,154.82c-1.05,12.31-11.35,21.77-23.71,21.77h-70.7c-12.36,0-22.66-9.46-23.71-21.77l-13.25-154.82c-.06-.67-.09-1.35-.09-2.03V185.56c0-13.15,10.65-23.8,23.8-23.8h97.2c13.14,0,23.8,10.65,23.8,23.8v175.18Z"/>
+        <div class="iframePanel" id="iframePanel">
+            <iframe id="iframe"></iframe>
+            <button class="navbutton" style="display: flex;" name="close" onclick="unloadframe();backPage(-1000)">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.39 850.39">
+                    <path d="M830.41,733.92c26.64,26.65,26.64,69.85,0,96.49-13.32,13.32-30.78,19.98-48.24,19.98s-34.93-6.66-48.25-19.98l-280.57-280.57c-15.55-15.55-40.76-15.55-56.31,0L116.47,830.41c-26.64,26.64-69.84,26.64-96.49,0-13.32-13.32-19.98-30.78-19.98-48.24s6.66-34.93,19.98-48.25L300.55,453.35c15.55-15.55,15.55-40.76,0-56.31L19.98,116.47C-6.66,89.83-6.66,46.63,19.98,19.98,33.3,6.66,50.77,0,68.23,0s34.92,6.66,48.24,19.98L397.04,300.55c15.55,15.55,40.76,15.55,56.31,0L733.92,19.98c26.65-26.64,69.85-26.64,96.49,0,13.32,13.32,19.98,30.79,19.98,48.25s-6.66,34.92-19.98,48.24l-280.57,280.58c-15.55,15.55-15.55,40.76,0,56.31l280.57,280.57Z"/>
+                  </svg>
+            </button>
+            <button class="navbutton" id="backbutton" style="display: flex;" name="back" onclick="backPage(-1);pageSystem('Portfolio');document.getElementById('iframe').src='portfolio.html';">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.39 745.44">
+                    <path d="M850.39,372.72c0,17.2-6.97,32.76-18.24,44.03-11.27,11.27-26.84,18.24-44.04,18.24H212.03l204.55,204.55c24.23,24.23,24.23,63.5,0,87.73-12.11,12.11-27.98,18.17-43.86,18.17s-31.75-6.06-43.86-18.17L18.17,416.58c-24.23-24.23-24.23-63.5,0-87.73L328.86,18.17c24.22-24.23,63.5-24.23,87.72,0,12.12,12.11,18.17,27.99,18.17,43.86s-6.05,31.75-18.17,43.86l-204.55,204.55H788.11c34.4,0,62.28,27.88,62.28,62.28Z"/>
                 </svg>
             </button>
-            <div class="navbarleft">
-                <a href="index.html">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560.95 560.95" fill="var(--maincol)">
-                        <path d="M560.95,31.69v497.57c0,17.5-14.19,31.69-31.69,31.69h-113.37c-12.09,0-23.51-5.54-30.99-15.04l-160.64-204.04c-19.74-25.08-60.05-11.12-60.05,20.8v166.6c0,17.5-14.18,31.68-31.68,31.68H31.68c-17.5,0-31.68-14.18-31.68-31.68V31.68C0,14.18,14.18,0,31.68,0h113.38c12.09,0,23.51,5.54,31,15.04l160.6,203.88c19.76,25.09,60.08,11.11,60.08-20.82V31.69c0-17.5,14.19-31.69,31.69-31.69h100.83c17.5,0,31.69,14.19,31.69,31.69Z"/>
-                    </svg>
-                </a>
-            </div>
+        </div>
 
-            <!-- make the navbarright into the mobile menu :)  //  use backpanel to make it .slid -->
+        <div id="colourpanel"></div>
+        <nav>
+            <a class="navbutton" href="index.html" name="NATSKI">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.35 850.35">
+                    <path d="M850.35,48.04V802.31c0,26.53-21.51,48.04-48.04,48.04h-171.87c-18.33,0-35.64-8.4-46.98-22.8l-243.52-309.3c-29.93-38.02-91.02-16.85-91.02,31.53v252.55c0,26.52-21.5,48.02-48.02,48.02H48.02c-26.52,0-48.02-21.5-48.02-48.02V48.02C0,21.5,21.5,0,48.02,0H219.9c18.33,0,35.64,8.4,46.99,22.8l243.46,309.07c29.96,38.03,91.08,16.85,91.08-31.56V48.04c0-26.53,21.51-48.04,48.04-48.04h152.85c26.53,0,48.04,21.51,48.04,48.04Z"/>
+                </svg>
+            </a>
+            <div></div>
+            <span id="pageTitle">Home</span>
+            
+            <button class="navbutton" name="settings" onclick="loadframe(this.name)">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1032.47 1032.53">
+                    <path d="M952.08,620.24l-57.1-32.97c-25.19-14.54-40.47-41.49-40.43-70.58,0-.16,0-.31,0-.47s0-.31,0-.47c-.04-29.09,15.24-56.04,40.43-70.58l57.1-32.97c41.44-23.93,55.64-76.92,31.72-118.36l-41.28-71.49c-23.92-41.44-76.92-55.64-118.36-31.72l-57.05,32.94c-25.23,14.57-56.25,14.28-81.44-.34-.28-.16-.56-.33-.85-.49-25.16-14.5-40.81-41.2-40.81-70.24V86.64c0-47.85-38.79-86.64-86.65-86.64h-82.54c-47.86,0-86.65,38.79-86.65,86.64v65.87c0,29.04-15.65,55.74-40.81,70.24-.28,.16-.57,.33-.85,.49-25.2,14.62-56.22,14.9-81.44,.34l-57.05-32.94c-41.44-23.92-94.44-9.72-118.37,31.72l-41.27,71.49c-23.93,41.44-9.73,94.43,31.72,118.36l57.1,32.97c25.19,14.54,40.47,41.49,40.43,70.58,0,.16,0,.31,0,.47s0,.31,0,.47c.04,29.09-15.24,56.04-40.43,70.58l-57.1,32.97c-41.45,23.93-55.65,76.92-31.72,118.36l41.27,71.49c23.93,41.44,76.93,55.64,118.37,31.72l57.05-32.94c25.23-14.57,56.25-14.28,81.44,.34,.28,.16,.56,.33,.85,.49,25.16,14.5,40.81,41.2,40.81,70.24v65.86c0,47.86,38.79,86.65,86.65,86.65h82.54c47.86,0,86.65-38.79,86.65-86.65v-65.86c0-29.04,15.65-55.74,40.81-70.24,.28-.16,.57-.33,.85-.49,25.2-14.62,56.22-14.9,81.44-.34l57.05,32.94c41.44,23.92,94.44,9.72,118.36-31.72l41.28-71.49c23.92-41.44,9.72-94.43-31.72-118.36Zm-401.72,63.49c-11.07,2.25-22.53,3.43-34.27,3.43s-23.2-1.18-34.27-3.43c-36.94-7.52-69.55-26.96-93.65-54.11-15.14-17.08-26.91-37.2-34.28-59.33-5.66-16.99-8.73-35.17-8.73-54.06s3.07-37.07,8.73-54.06c7.37-22.13,19.14-42.25,34.28-59.33,24.1-27.15,56.71-46.59,93.65-54.11,11.07-2.25,22.53-3.43,34.27-3.43s23.2,1.18,34.27,3.43c36.94,7.52,69.55,26.96,93.65,54.11,15.14,17.08,26.91,37.2,34.28,59.33,5.66,16.99,8.73,35.17,8.73,54.06s-3.07,37.07-8.73,54.06c-7.37,22.13-19.14,42.25-34.28,59.33-24.1,27.15-56.71,46.59-93.65,54.11Z"/>
+                </svg>
+            </button>
 
-            <div class="navbarright">
-                <button class="navbutton active" id="home" onclick='homeactive();sfx("hom");'>
-                    Home 
-                    
-                    <!-- make all names in navbarright into svg icons // delayed? -->
+            <button class="navbutton" name="changelog" onclick="loadframe(this.name)">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.39 850.39">
+                    <path d="M764.11,0H88.77C40.43,0,1.24,39.19,1.24,87.52V762.87c0,48.34,39.19,87.52,87.53,87.52H764.11c48.34,0,87.53-39.18,87.53-87.52V87.52c0-48.33-39.19-87.52-87.53-87.52ZM129.07,644.94c-8.31-8.32-12.47-19.22-12.47-30.12s4.16-21.8,12.47-30.12l174.12-174.11L128.02,235.42c-16.64-16.64-16.64-43.61,0-60.25,8.32-8.31,19.22-12.47,30.12-12.47s21.81,4.16,30.13,12.47l204.16,204.16c.88,.89,1.72,1.8,2.5,2.74,.02,.02,.04,.04,.06,.06,7.31,8.09,10.96,18.31,10.96,28.53,0,10.9-4.15,21.8-12.47,30.12l-204.16,204.16c-16.64,16.64-43.61,16.64-60.25,0Zm595.78,.46c-7.71,7.71-18.35,12.48-30.12,12.48H406.47c-23.53,0-42.6-19.07-42.6-42.6,0-11.76,4.77-22.42,12.48-30.12,7.71-7.71,18.35-12.48,30.12-12.48h288.26c23.53,0,42.6,19.07,42.6,42.6,0,11.76-4.77,22.42-12.48,30.12Z"/>
+                </svg>
+            </button>
 
-                    <div class="selector"></div>
-                </button>
-                <a class="navbutton" id="about" onClick='pageactive(this.id,"About","ifr");loaderactivate();sfx("excite");'>
-                    About
-                    <div class="selector"></div>
-                </a>
-                <button class="navbutton" id="changes" onClick='unloadframe("","Changelog","ifr");pageactive(this.id,"Changelog","logframe");document.getElementById("logframe").src="changes.html";loaderdeactivate();sfx("excite")'>
-                    Changelog
-                    <div class="selector"></div>
-                </button>
-                <button class="navbutton" id="settings" onClick='pageactive(this.id,"Settings","ifr");loaderactivate();sfx("excite")'>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1032.47 1032.53">
-                        <path d="M952.08,620.24l-57.1-32.97c-25.19-14.54-40.47-41.49-40.43-70.58,0-.16,0-.31,0-.47s0-.31,0-.47c-.04-29.09,15.24-56.04,40.43-70.58l57.1-32.97c41.44-23.93,55.64-76.92,31.72-118.36l-41.28-71.49c-23.92-41.44-76.92-55.64-118.36-31.72l-57.05,32.94c-25.23,14.57-56.25,14.28-81.44-.34-.28-.16-.56-.33-.85-.49-25.16-14.5-40.81-41.2-40.81-70.24V86.64c0-47.85-38.79-86.64-86.65-86.64h-82.54c-47.86,0-86.65,38.79-86.65,86.64v65.87c0,29.04-15.65,55.74-40.81,70.24-.28,.16-.57,.33-.85,.49-25.2,14.62-56.22,14.9-81.44,.34l-57.05-32.94c-41.44-23.92-94.44-9.72-118.37,31.72l-41.27,71.49c-23.93,41.44-9.73,94.43,31.72,118.36l57.1,32.97c25.19,14.54,40.47,41.49,40.43,70.58,0,.16,0,.31,0,.47s0,.31,0,.47c.04,29.09-15.24,56.04-40.43,70.58l-57.1,32.97c-41.45,23.93-55.65,76.92-31.72,118.36l41.27,71.49c23.93,41.44,76.93,55.64,118.37,31.72l57.05-32.94c25.23-14.57,56.25-14.28,81.44,.34,.28,.16,.56,.33,.85,.49,25.16,14.5,40.81,41.2,40.81,70.24v65.86c0,47.86,38.79,86.65,86.65,86.65h82.54c47.86,0,86.65-38.79,86.65-86.65v-65.86c0-29.04,15.65-55.74,40.81-70.24,.28-.16,.57-.33,.85-.49,25.2-14.62,56.22-14.9,81.44-.34l57.05,32.94c41.44,23.92,94.44,9.72,118.36-31.72l41.28-71.49c23.92-41.44,9.72-94.43-31.72-118.36Zm-401.72,63.49c-11.07,2.25-22.53,3.43-34.27,3.43s-23.2-1.18-34.27-3.43c-36.94-7.52-69.55-26.96-93.65-54.11-15.14-17.08-26.91-37.2-34.28-59.33-5.66-16.99-8.73-35.17-8.73-54.06s3.07-37.07,8.73-54.06c7.37-22.13,19.14-42.25,34.28-59.33,24.1-27.15,56.71-46.59,93.65-54.11,11.07-2.25,22.53-3.43,34.27-3.43s23.2,1.18,34.27,3.43c36.94,7.52,69.55,26.96,93.65,54.11,15.14,17.08,26.91,37.2,34.28,59.33,5.66,16.99,8.73,35.17,8.73,54.06s-3.07,37.07-8.73,54.06c-7.37,22.13-19.14,42.25-34.28,59.33-24.1,27.15-56.71,46.59-93.65,54.11Z"/>
-                    </svg>
-                    <div class="selector"></div>
-                </button>
-                <button class="toggle">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-            </div>
+            <button class="navbutton" name="about" onclick="loadframe(this.name)">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.35 850.39">
+                    <path d="M229.53,195.63C229.53,87.59,317.12,0,425.16,0s195.62,87.59,195.62,195.63-87.58,195.62-195.62,195.62-195.63-87.59-195.63-195.62Z"/>
+                    <path d="M763.98,850.39H86.33c-38.66,0-67.72-35.05-60.8-73.08,34.42-189.45,200.26-333.12,399.64-333.12s365.21,143.66,399.64,333.12c6.91,38.03-22.15,73.08-60.81,73.08Z"/>
+                </svg>
+            </button>
+
+            <button class="navbutton" name="home" onclick="unloadframe();backPage(-1000)">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.35 850.35">
+                    <path d="M807.39,396.36h-97.92v409.21c0,24.73-21.53,44.78-48.09,44.78H188.69c-26.56,0-48.09-20.05-48.09-44.78V396.36H45.5c-33.72,0-50.04-37.67-25.46-58.73L401,11.35c14.3-12.25,36.58-12.25,50.88,0l380.95,326.28c24.59,21.06,8.27,58.73-25.44,58.73Z"/>
+                </svg>
+            </button>
+
+            <button class="navbutton" name="menu" onclick="menuOpen()">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.39 850.39">
+                    <rect y="357.4" width="850.39" height="135.6" rx="67.8" ry="67.8"/>
+                    <rect x="0" y="714.79" width="850.39" height="135.6" rx="67.8" ry="67.8"/>
+                    <rect y="0" width="850.39" height="135.6" rx="67.8" ry="67.8"/>
+                </svg>
+            </button>
+
         </nav>
-        <div class="backpanel" id="backcloser" onClick='unloadframe("","Home","logframe");sfx("hom")'></div>
-        <div class="changelogframe">
-            <iframe id="logframe"></iframe>
-            <!--<div class="pagechanger" style="border-top: 2px solid #303030;">
-                <button id="backpg" onclick="changepage(-1);sfx('clicker')">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 398.35 636.29">
-                        <path d="M16.05,354l302.18,269.96c30.98,27.68,80.12,5.69,80.12-35.86V48.18c0-41.55-49.14-63.54-80.12-35.86L16.05,282.28c-21.4,19.12-21.4,52.6,0,71.72Z"/>
-                    </svg>
-                </button>
-                <p id="pagecounter"></p>
-                <button id="forwardpg" onclick="changepage(1);sfx('clicker')">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 398.35 636.29">
-                        <path d="M382.3,282.28L80.12,12.32C49.14-15.36,0,6.63,0,48.18V588.11c0,41.55,49.14,63.54,80.12,35.86L382.3,354c21.4-19.12,21.4-52.6,0-71.72Z"/>
-                    </svg>
-                </button>
-            </div>-->
-            <button class="logcloser" onClick='unloadframe("","Home","logframe");sfx("hom")'>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 811.31 811.31">
-                    <defs>
-                        <style>
-                        .close-icon{fill:none;stroke:var(--maincol);stroke-linecap:round;stroke-linejoin:round;stroke-width:120px;}
-                        </style>
-                    </defs>
-                    <line class="close-icon" x1="751.31" y1="60" x2="60" y2="751.31"/>
-                    <line class="close-icon" x1="751.31" y1="751.31" x2="60" y2="60"/>
+        <div class="covermenu" id="covermenu">
+
+            <button class="navbutton" style="display: inline-flex; margin: 0; float: right;" onclick="menuClose()" name="close">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.39 850.39">
+                    <path d="M830.41,733.92c26.64,26.65,26.64,69.85,0,96.49-13.32,13.32-30.78,19.98-48.24,19.98s-34.93-6.66-48.25-19.98l-280.57-280.57c-15.55-15.55-40.76-15.55-56.31,0L116.47,830.41c-26.64,26.64-69.84,26.64-96.49,0-13.32-13.32-19.98-30.78-19.98-48.24s6.66-34.93,19.98-48.25L300.55,453.35c15.55-15.55,15.55-40.76,0-56.31L19.98,116.47C-6.66,89.83-6.66,46.63,19.98,19.98,33.3,6.66,50.77,0,68.23,0s34.92,6.66,48.24,19.98L397.04,300.55c15.55,15.55,40.76,15.55,56.31,0L733.92,19.98c26.65-26.64,69.85-26.64,96.49,0,13.32,13.32,19.98,30.79,19.98,48.25s-6.66,34.92-19.98,48.24l-280.57,280.58c-15.55,15.55-15.55,40.76,0,56.31l280.57,280.57Z"/>
                 </svg>
             </button>
-        </div>
-        <div class="pagecontainerstyle"></div>
-        <div class="pagecontainer">
-            <iframe id="ifr"></iframe>
-            <button class="closer" onClick='unloadframe("","Home","ifr");document.getElementById("pagename").innerHTML="Home";sfx("hom")'>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 811.31 811.31">
-                    <defs>
-                        <style>
-                        .close-icon{fill:none;stroke:var(--maincol);stroke-linecap:round;stroke-linejoin:round;stroke-width:120px;}
-                        </style>
-                    </defs>
-                    <line class="close-icon" x1="751.31" y1="60" x2="60" y2="751.31"/>
-                    <line class="close-icon" x1="751.31" y1="751.31" x2="60" y2="60"/>
-                </svg>
-            </button>
-        </div>
-        <div class="slidemenu">
-            <div class="menubar">
-                <button class="menubutton" onclick='homeactive();'>
+            
+            <h1>menu</h1>
+
+            <hr style="width: 100%; margin: 10px 0;">
+            <div style="overflow-y: scroll;">
+                <button class="coverbutton" name="home" onclick="unloadframe();backPage(-1000)">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.35 850.35">
+                        <path d="M807.39,396.36h-97.92v409.21c0,24.73-21.53,44.78-48.09,44.78H188.69c-26.56,0-48.09-20.05-48.09-44.78V396.36H45.5c-33.72,0-50.04-37.67-25.46-58.73L401,11.35c14.3-12.25,36.58-12.25,50.88,0l380.95,326.28c24.59,21.06,8.27,58.73-25.44,58.73Z"/>
+                    </svg>
                     Home
                 </button>
-                <hr>
-                <button class="menubutton" onclick='pageactive("about","About","ifr");loaderactivate();'>
+
+                <button class="coverbutton" name="about" onclick="loadframe(this.name)">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.35 850.39">
+                        <path d="M229.53,195.63C229.53,87.59,317.12,0,425.16,0s195.62,87.59,195.62,195.63-87.58,195.62-195.62,195.62-195.63-87.59-195.63-195.62Z"/>
+                        <path d="M763.98,850.39H86.33c-38.66,0-67.72-35.05-60.8-73.08,34.42-189.45,200.26-333.12,399.64-333.12s365.21,143.66,399.64,333.12c6.91,38.03-22.15,73.08-60.81,73.08Z"/>
+                    </svg>
                     About
                 </button>
-                <hr>
-                <button class="menubutton" onclick='pageactive("changes","Changelog","ifr");'>
+
+                <button class="coverbutton" name="changelog" onclick="loadframe(this.name)">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.39 850.39">
+                        <path d="M764.11,0H88.77C40.43,0,1.24,39.19,1.24,87.52V762.87c0,48.34,39.19,87.52,87.53,87.52H764.11c48.34,0,87.53-39.18,87.53-87.52V87.52c0-48.33-39.19-87.52-87.53-87.52ZM129.07,644.94c-8.31-8.32-12.47-19.22-12.47-30.12s4.16-21.8,12.47-30.12l174.12-174.11L128.02,235.42c-16.64-16.64-16.64-43.61,0-60.25,8.32-8.31,19.22-12.47,30.12-12.47s21.81,4.16,30.13,12.47l204.16,204.16c.88,.89,1.72,1.8,2.5,2.74,.02,.02,.04,.04,.06,.06,7.31,8.09,10.96,18.31,10.96,28.53,0,10.9-4.15,21.8-12.47,30.12l-204.16,204.16c-16.64,16.64-43.61,16.64-60.25,0Zm595.78,.46c-7.71,7.71-18.35,12.48-30.12,12.48H406.47c-23.53,0-42.6-19.07-42.6-42.6,0-11.76,4.77-22.42,12.48-30.12,7.71-7.71,18.35-12.48,30.12-12.48h288.26c23.53,0,42.6,19.07,42.6,42.6,0,11.76-4.77,22.42-12.48,30.12Z"/>
+                    </svg>
                     Changelog
                 </button>
-                <hr>
-                <button class="menubutton" onClick='pageactive("portfolio","Portfolio","ifr");loaderactivate();'>
+
+                <button class="coverbutton" name="portfolio" onclick="loadframe(this.name)">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.35 850.35">
+                        <path d="M850.35,48.04V802.31c0,26.53-21.51,48.04-48.04,48.04h-171.87c-18.33,0-35.64-8.4-46.98-22.8l-243.52-309.3c-29.93-38.02-91.02-16.85-91.02,31.53v252.55c0,26.52-21.5,48.02-48.02,48.02H48.02c-26.52,0-48.02-21.5-48.02-48.02V48.02C0,21.5,21.5,0,48.02,0H219.9c18.33,0,35.64,8.4,46.99,22.8l243.46,309.07c29.96,38.03,91.08,16.85,91.08-31.56V48.04c0-26.53,21.51-48.04,48.04-48.04h152.85c26.53,0,48.04,21.51,48.04,48.04Z"/>
+                    </svg>
                     Portfolio
                 </button>
-                <hr>
-                <button class="menubutton" onClick='pageactive("websites","Websites","ifr");loaderactivate();'>
+
+                <button class="coverbutton" name="websites" onclick="loadframe(this.name)">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.39 850.35">
+                        <path d="M803.85,56.19H46.55C20.84,56.19,0,77.03,0,102.74V747.65c0,25.71,20.84,46.55,46.55,46.55H803.85c25.7,0,46.54-20.84,46.54-46.55V102.74c0-25.71-20.84-46.55-46.54-46.55Zm-37.85,635.72c0,9.88-8.01,17.9-17.9,17.9H102.29c-9.88,0-17.9-8.02-17.9-17.9V347.77c0-9.88,8.02-17.89,17.9-17.89H748.1c9.89,0,17.9,8.01,17.9,17.89v344.14Z"/>
+                    </svg>
                     Websites
                 </button>
-                <hr>
-                <button class="menubutton" onClick='pageactive("settings","Settings","ifr");loaderactivate();'>
+
+                <button class="coverbutton" name="encore" onclick="loadframe(this.name)">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.35 850.35">
+                        <path d="M596.1,707.01v84.01c0,25.7,20.83,46.53,46.53,46.53h148.36c25.7,0,46.53-20.83,46.53-46.53V59.23c0-.49,0-1-.04-1.48-.03-1.14-.11-2.28-.23-3.39-.03-.3-.07-.6-.11-.9,0-.02,0-.04,0-.05-.04-.38-.09-.75-.15-1.12-.14-.91-.3-1.81-.49-2.71l-.16-.72c-.09-.37-.17-.75-.27-1.12-.18-.75-.4-1.48-.62-2.21-.23-.73-.48-1.45-.74-2.16-.2-.55-.42-1.11-.64-1.66-.44-1.07-.91-2.1-1.42-3.12-7.65-15.27-23.43-25.75-41.65-25.75H59.32c-17.62,0-32.96,9.8-40.87,24.24-.25,.47-.49,.94-.74,1.42h0c-.52,1.06-1.02,2.13-1.46,3.22-.22,.55-.44,1.1-.64,1.66-.26,.72-.5,1.44-.74,2.16-.22,.73-.43,1.46-.62,2.21-.1,.37-.18,.75-.27,1.12l-.2,.9c-.17,.83-.33,1.68-.46,2.52-.06,.39-.12,.78-.16,1.16-.05,.35-.09,.7-.13,1.05-.05,.46-.09,.92-.13,1.4-.04,.53-.07,1.08-.09,1.62,0,.04,0,.08,0,.12-.03,.52-.04,1.07-.04,1.6V791.01c0,25.7,20.83,46.53,46.53,46.53H207.67c25.7,0,46.53-20.83,46.53-46.53v-84.01c0-22.32,18.1-40.41,40.42-40.41h261.07c22.32,0,40.41,18.1,40.41,40.41Zm0-427.62v145.8h-50.24v-145.8c0-13.87,11.25-25.12,25.12-25.12s25.12,11.25,25.12,25.12ZM254.2,425.18v-145.8c0-13.87,11.25-25.12,25.12-25.12h0c13.87,0,25.12,11.25,25.12,25.12v145.8h-50.25Z"/>
+                    </svg>
+                    Encore
+                </button>
+
+                <button class="coverbutton" name="settings" onclick="loadframe(this.name)">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1032.47 1032.53">
                         <path d="M952.08,620.24l-57.1-32.97c-25.19-14.54-40.47-41.49-40.43-70.58,0-.16,0-.31,0-.47s0-.31,0-.47c-.04-29.09,15.24-56.04,40.43-70.58l57.1-32.97c41.44-23.93,55.64-76.92,31.72-118.36l-41.28-71.49c-23.92-41.44-76.92-55.64-118.36-31.72l-57.05,32.94c-25.23,14.57-56.25,14.28-81.44-.34-.28-.16-.56-.33-.85-.49-25.16-14.5-40.81-41.2-40.81-70.24V86.64c0-47.85-38.79-86.64-86.65-86.64h-82.54c-47.86,0-86.65,38.79-86.65,86.64v65.87c0,29.04-15.65,55.74-40.81,70.24-.28,.16-.57,.33-.85,.49-25.2,14.62-56.22,14.9-81.44,.34l-57.05-32.94c-41.44-23.92-94.44-9.72-118.37,31.72l-41.27,71.49c-23.93,41.44-9.73,94.43,31.72,118.36l57.1,32.97c25.19,14.54,40.47,41.49,40.43,70.58,0,.16,0,.31,0,.47s0,.31,0,.47c.04,29.09-15.24,56.04-40.43,70.58l-57.1,32.97c-41.45,23.93-55.65,76.92-31.72,118.36l41.27,71.49c23.93,41.44,76.93,55.64,118.37,31.72l57.05-32.94c25.23-14.57,56.25-14.28,81.44,.34,.28,.16,.56,.33,.85,.49,25.16,14.5,40.81,41.2,40.81,70.24v65.86c0,47.86,38.79,86.65,86.65,86.65h82.54c47.86,0,86.65-38.79,86.65-86.65v-65.86c0-29.04,15.65-55.74,40.81-70.24,.28-.16,.57-.33,.85-.49,25.2-14.62,56.22-14.9,81.44-.34l57.05,32.94c41.44,23.92,94.44,9.72,118.36-31.72l41.28-71.49c23.92-41.44,9.72-94.43-31.72-118.36Zm-401.72,63.49c-11.07,2.25-22.53,3.43-34.27,3.43s-23.2-1.18-34.27-3.43c-36.94-7.52-69.55-26.96-93.65-54.11-15.14-17.08-26.91-37.2-34.28-59.33-5.66-16.99-8.73-35.17-8.73-54.06s3.07-37.07,8.73-54.06c7.37-22.13,19.14-42.25,34.28-59.33,24.1-27.15,56.71-46.59,93.65-54.11,11.07-2.25,22.53-3.43,34.27-3.43s23.2,1.18,34.27,3.43c36.94,7.52,69.55,26.96,93.65,54.11,15.14,17.08,26.91,37.2,34.28,59.33,5.66,16.99,8.73,35.17,8.73,54.06s-3.07,37.07-8.73,54.06c-7.37,22.13-19.14,42.25-34.28,59.33-24.1,27.15-56.71,46.59-93.65,54.11Z"/>
-                      </svg>
+                    </svg>
+                    Settings
                 </button>
             </div>
         </div>
+        <script>
+                function pageSystem(e){
+                    let title = document.getElementById('pageTitle')
+                    title.style.opacity = 0;
+                    setTimeout(() => {
+                        title.innerHTML = e
+                        title.style.opacity = 1;
+                    }, 200)
+                }
+
+                let backnum = 0;
+                function backPage(e){
+                    backnum += e;
+                    if(backnum < 0){
+                        backnum = 0
+                    }
+                    if(backnum > 0){
+                        document.getElementById('backbutton').classList.add('revealed')
+                    }else{
+                        document.getElementById('backbutton').classList.remove('revealed')
+                    }
+                }
+            
+                function menuOpen(){
+                    document.getElementById('covermenu').classList.add('active')
+                }
+
+                function menuClose(){
+                    document.getElementById('covermenu').classList.remove('active')
+                }
+            
+                function unloadframe() {
+                    document.getElementById("SSC").classList.remove("active")
+                    menuClose()
+                    document.querySelector(".iframePanel").classList.remove("active")
+                    document.body.style.position = 'unset'
+                    document.body.style.overflow = 'unset'
+                    document.body.classList.remove("static")
+                    document.getElementById('iframe').src=''; 
+                    pageSystem('Home')
+                    changeBar('#474747')
+                }
+
+                function loadframe(e) {
+                    document.getElementById("SSC").classList.add("active")
+                    menuClose()
+                    document.querySelector(".iframePanel").classList.add("active")
+                    document.body.style.position = 'fixed'
+                    document.body.style.overflow = 'hidden'
+                    document.getElementById('iframe').src=e+'.html';
+                    backPage(-1000)
+                    pageSystem(e.charAt(0).toUpperCase() + e.slice(1))
+                }
+
+                function changeBar(e){
+                    document.getElementById('colourpanel').style.backgroundColor = e
+                }
+
+
+        </script>
+
+
         <noscript>
-            <h1>javascript is disabled :(</h1>
-            <p>this website requires javascript to run.<br>please enable the use of javascript to see this page :)</p>
+            <h1>javascript is disabled</h1>
+            <p>ENCORE.js requires javascript in order to run, please enable javascript</p>
         </noscript>
-        <script src="lib/js/main.js"></script>
-        <script src="lib/js/index.js"></script>
-        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-        <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+        
     </body>
 </html>

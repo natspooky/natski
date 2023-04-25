@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en-US">
     <head>
-		<title>Natski | Portfolio</title>
+		<title>Natski</title>
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, user-scalable=no"/>
         <meta name="theme-color" content="#1e1e1e"/>
@@ -9,6 +9,7 @@
         <meta name="keywords" content="portfolio, natspooky, natski"/>
         <meta name="author" content="NATSKI"/>
         <meta name="copyright" content="NATSKI">
+        <meta name="color-scheme" content="normal">
 		<link rel="icon" type="image/svg+xml" href="icon/svg/favicon.svg"/>
         <link rel="apple-touch-icon"sizes="57x57" href="icon/mobile/57.png"/>
         <link rel="apple-touch-icon"sizes="60x60" href="icon/mobile/60.png"/>
@@ -38,513 +39,190 @@
         <link rel="stylesheet" type="text/css" media="screen and (orientation: portrait)" href="lib/css/scale.css"/>
         <script src="lib/js/jquery.js"></script>
         <script src="lib/js/images.js"></script>
+        
 	</head>
     <body>
-        <script>
-            if(localStorage.getItem("theme")===null){
-                var theme='#729ef6';
-            }else{
-                var theme=localStorage.getItem('theme');
-            };
-            $(':root').css({'--themecol':theme,'--themecoltrans':theme+"50"});
-        </script>
-        <div class="loaderback">
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 834.61 834.61">
-                    <path class="loadwheel" d="M772.51,540.33c-50.95,147.13-190.73,252.78-355.2,252.78-207.55,0-375.81-168.25-375.81-375.8S209.76,41.5,417.31,41.5c164.47,0,304.25,105.65,355.2,252.79"/>
-                    <circle fill="none" cx="417.31" cy="417.31" r="375.78"/>
+        <div id="colourlesspanelback"></div>
+        <div id="colourpanelback"></div>
+
+        <header>
+            <div class="observe"></div>
+            <div class="imagebox">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.35 850.35">
+                    <path d="M850.35,48.04V802.31c0,26.53-21.51,48.04-48.04,48.04h-171.87c-18.33,0-35.64-8.4-46.98-22.8l-243.52-309.3c-29.93-38.02-91.02-16.85-91.02,31.53v252.55c0,26.52-21.5,48.02-48.02,48.02H48.02c-26.52,0-48.02-21.5-48.02-48.02V48.02C0,21.5,21.5,0,48.02,0H219.9c18.33,0,35.64,8.4,46.99,22.8l243.46,309.07c29.96,38.03,91.08,16.85,91.08-31.56V48.04c0-26.53,21.51-48.04,48.04-48.04h152.85c26.53,0,48.04,21.51,48.04,48.04Z"/>
                 </svg>
+                <img src="icon/thumbnails/portfolio.png" alt="portfolio" id="headerimage" draggable="false">
             </div>
-        </div>
-        <div class="slidemenu" style="z-index: 10;">
-            <div class="menubar">
-                <a class="menubutton" href="index.html">
-                    Home
-                </a>
-                <hr>
-                <a class="menubutton" href="about.html">
-                    About
-                </a>
-                <hr>
-                <a class="menubutton" href="changes.html">
-                    Changelog
-                </a>
-                <hr>
-                <a class="menubutton" href="portfolio.html">
-                    Portfolio
-                </a>
-                <hr>
-                <a class="menubutton" href="websites.html">
-                    Websites
-                </a>
-                <hr>
-                <a class="menubutton" href="settings.html">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1032.47 1032.53">
-                        <path d="M952.08,620.24l-57.1-32.97c-25.19-14.54-40.47-41.49-40.43-70.58,0-.16,0-.31,0-.47s0-.31,0-.47c-.04-29.09,15.24-56.04,40.43-70.58l57.1-32.97c41.44-23.93,55.64-76.92,31.72-118.36l-41.28-71.49c-23.92-41.44-76.92-55.64-118.36-31.72l-57.05,32.94c-25.23,14.57-56.25,14.28-81.44-.34-.28-.16-.56-.33-.85-.49-25.16-14.5-40.81-41.2-40.81-70.24V86.64c0-47.85-38.79-86.64-86.65-86.64h-82.54c-47.86,0-86.65,38.79-86.65,86.64v65.87c0,29.04-15.65,55.74-40.81,70.24-.28,.16-.57,.33-.85,.49-25.2,14.62-56.22,14.9-81.44,.34l-57.05-32.94c-41.44-23.92-94.44-9.72-118.37,31.72l-41.27,71.49c-23.93,41.44-9.73,94.43,31.72,118.36l57.1,32.97c25.19,14.54,40.47,41.49,40.43,70.58,0,.16,0,.31,0,.47s0,.31,0,.47c.04,29.09-15.24,56.04-40.43,70.58l-57.1,32.97c-41.45,23.93-55.65,76.92-31.72,118.36l41.27,71.49c23.93,41.44,76.93,55.64,118.37,31.72l57.05-32.94c25.23-14.57,56.25-14.28,81.44,.34,.28,.16,.56,.33,.85,.49,25.16,14.5,40.81,41.2,40.81,70.24v65.86c0,47.86,38.79,86.65,86.65,86.65h82.54c47.86,0,86.65-38.79,86.65-86.65v-65.86c0-29.04,15.65-55.74,40.81-70.24,.28-.16,.57-.33,.85-.49,25.2-14.62,56.22-14.9,81.44-.34l57.05,32.94c41.44,23.92,94.44,9.72,118.36-31.72l41.28-71.49c23.92-41.44,9.72-94.43-31.72-118.36Zm-401.72,63.49c-11.07,2.25-22.53,3.43-34.27,3.43s-23.2-1.18-34.27-3.43c-36.94-7.52-69.55-26.96-93.65-54.11-15.14-17.08-26.91-37.2-34.28-59.33-5.66-16.99-8.73-35.17-8.73-54.06s3.07-37.07,8.73-54.06c7.37-22.13,19.14-42.25,34.28-59.33,24.1-27.15,56.71-46.59,93.65-54.11,11.07-2.25,22.53-3.43,34.27-3.43s23.2,1.18,34.27,3.43c36.94,7.52,69.55,26.96,93.65,54.11,15.14,17.08,26.91,37.2,34.28,59.33,5.66,16.99,8.73,35.17,8.73,54.06s-3.07,37.07-8.73,54.06c-7.37,22.13-19.14,42.25-34.28,59.33-24.1,27.15-56.71,46.59-93.65,54.11Z"/>
-                      </svg>
-                </a>
-            </div>
-        </div>
-        <header class="topbar" style="box-shadow: none;">
-            <h1>Portfolio</h1>
+            <h2>Portfolio</h2>
         </header>
-        <div class="filtercont" id="stylebut" style="width: 100%; justify-content: center; align-items: center; animation: fade 1s;">
-            <button class="stylebuttons active" id="originalbtn" onclick="styler('false',this.id)">ORIGINAL</button>
-            <button class="stylebuttons" id="smallbtn" onclick="styler('true',this.id)">COMPACT</button>
-        </div>
-        <div class="filtercont" style="width: 100%; display: flex; justify-content: center; align-items: center; animation: fade 1s;">
-            <button class="filterbuttons active" id="allfilter" onclick="reset(this.id)">ALL</button>
-            <button class="filterbuttons" id="gcsefilter" onclick="filter('.gcse',this.id)">GCSE</button>
-            <button class="filterbuttons" id="alevelfilter" onclick="filter('.alevel',this.id)">ALEVEL</button>
-            <button class="filterbuttons" id="otherfilter" onclick="filter('.other',this.id)">OTHER</button>
-        </div>
-        <hr style="margin-top: 0;">
-        <style>
-            .filterbuttons, .stylebuttons
-            {
-                padding: 10px 15px;
-                font-weight: bold;
-                font-size: 16px;
-                margin: 8px 0.5vw;
-                color: var(--maincol);
-                border-radius: 6px;
-                transform: scale(1);
-                border: 2px solid transparent;
-                cursor: pointer;
-                transition: 0.1s;
-            }
-            .filterbuttons:hover,.stylebuttons:hover
-            {
-                border: 2px solid var(--themecol);
-            }
-            .filterbuttons:active,.stylebuttons:active
-            {
-                transform: scale(0.9);
-                background-color: var(--themecoltrans);
-                transition: 0s;
-            }
-            .filterbuttons.active,.stylebuttons.active
-            {
-	            background-color: var(--themecol);
-                border: 2px solid var(--themecol);
-                color: var(--accentcol);
-            }
-            #stylebut
-            {
-                display: flex;
-            }
-            @media (orientation: portrait){
-                .filtercont
-                {
-                    transform: scale(0.9);
-                }
-                #stylebut
-                {
-                    display: none;
-                }
-            }
-        </style>
-        <main style="min-height: 100%; margin-top: 10px;">
-            <div class="descriptionbar"><span>GCSE Art</span></div>
-            <div class="middle">
 
-                <!-- gross stacking ahead -->
 
-                <div class="beforemiddleimg revealed gcse" style="--i: 4;--j:#d3111160;">
-                    <div class="middlebutton">visit</div>
-                    <div class="text">
-                        <h1>Slides</h1>
+        <main>
+            <p class="title">GCSE</p>
+            <div class="sidescrollbar">
+                <a class="portanchor" href="gcse slides.html" onclick="parent.pageSystem('GCSE Slides');parent.backPage(1)">
+                    <div class="titlebutton">
+                        <div>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.35 850.35">
+                                <path d="M850.35,48.04V802.31c0,26.53-21.51,48.04-48.04,48.04h-171.87c-18.33,0-35.64-8.4-46.98-22.8l-243.52-309.3c-29.93-38.02-91.02-16.85-91.02,31.53v252.55c0,26.52-21.5,48.02-48.02,48.02H48.02c-26.52,0-48.02-21.5-48.02-48.02V48.02C0,21.5,21.5,0,48.02,0H219.9c18.33,0,35.64,8.4,46.99,22.8l243.46,309.07c29.96,38.03,91.08,16.85,91.08-31.56V48.04c0-26.53,21.51-48.04,48.04-48.04h152.85c26.53,0,48.04,21.51,48.04,48.04Z"/>
+                            </svg>
+                            <img src="icon/thumbnails/gcseart_2.png" draggable="false" alt="cover image">
+                            
+                        </div>
+                        <span>GCSE Slides</span>
                         <p>A collection of slides detailing the work done during GCSE</p>
                     </div>
-                    <div class="middleimg" style="background-image: url('icon/thumbnails/gcseslides.png')">
-                        <div class="loaderframe">
-                            <div>
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 834.61 834.61">
-                                    <path class="loadwheel" d="M772.51,540.33c-50.95,147.13-190.73,252.78-355.2,252.78-207.55,0-375.81-168.25-375.81-375.8S209.76,41.5,417.31,41.5c164.47,0,304.25,105.65,355.2,252.79"/>
-                                    <circle fill="none" cx="417.31" cy="417.31" r="375.78"/>
-                                </svg>
-                            </div>
+                </a>
+                <a class="portanchor" href="gcse art.html" onclick="parent.pageSystem('GCSE Art');parent.backPage(1)">
+                    <div class="titlebutton">
+                        <div>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.35 850.35">
+                                <path d="M850.35,48.04V802.31c0,26.53-21.51,48.04-48.04,48.04h-171.87c-18.33,0-35.64-8.4-46.98-22.8l-243.52-309.3c-29.93-38.02-91.02-16.85-91.02,31.53v252.55c0,26.52-21.5,48.02-48.02,48.02H48.02c-26.52,0-48.02-21.5-48.02-48.02V48.02C0,21.5,21.5,0,48.02,0H219.9c18.33,0,35.64,8.4,46.99,22.8l243.46,309.07c29.96,38.03,91.08,16.85,91.08-31.56V48.04c0-26.53,21.51-48.04,48.04-48.04h152.85c26.53,0,48.04,21.51,48.04,48.04Z"/>
+                            </svg>
+                            <img src="icon/portimg/gcse/14.png" draggable="false" alt="cover image">
+                            
                         </div>
-                        <iframe class="iframelookers" scrolling="no"></iframe>
-                        <p style="background-color: #af503f;">GCSE</p>
-                        <h1>Slides</h1>
+                        <span>GCSE Art</span>
+                        <p>A collection of artwork created during GCSE</p>
                     </div>
-                    <a class="linkplate" href="gcseslides.html" onclick="parent.loaderactivate();"></a>
-                </div>
-
-
-                <div class="beforemiddleimg revealed gcse" style="--i: 6;--j:#ff00ff60;">
-                    <div class="middlebutton">visit</div>
-                    <div class="text">
-                        <h1>Art</h1>
-                        <p>A collection of artwork from GCSE</p>
-                    </div>
-                    <div class="middleimg" style="background-image: url('icon/thumbnails/gcseart.png')">
-                        <div class="loaderframe">
-                            <div>
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 834.61 834.61">
-                                    <path class="loadwheel" d="M772.51,540.33c-50.95,147.13-190.73,252.78-355.2,252.78-207.55,0-375.81-168.25-375.81-375.8S209.76,41.5,417.31,41.5c164.47,0,304.25,105.65,355.2,252.79"/>
-                                    <circle fill="none" cx="417.31" cy="417.31" r="375.78"/>
-                                </svg>
-                            </div>
-                        </div>
-                        <iframe class="iframelookers" scrolling="no"></iframe>
-                        <p style="background-color: #af503f;">GCSE</p>
-                        <h1>Art</h1>
-                    </div>
-                    <a class="linkplate" href="gcseart.html" onclick="parent.loaderactivate();"></a>
-                </div>
-
-
+                </a>
             </div>
-            <hr class="seperate">
-
-            <!-- middle ends here? -->
-
-            <div class="descriptionbar"><span>Alevel Art</span></div>
-
-            <div class="middle">
-
-                <div class="beforemiddleimg revealed alevel" style="--i: 8;--j:#3c00ff60;">
-                    <div class="middlebutton">visit</div>
-                    <div class="text">
-                        <h1>Slides</h1>
-                        <p>A collection of slides detailing the work done during alevel</p>
-                    </div>
-                    <div class="middleimg" style="background-image: url('icon/thumbnails/alevelslides.png')">
-                        <div class="loaderframe">
-                            <div>
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 834.61 834.61">
-                                    <path class="loadwheel" d="M772.51,540.33c-50.95,147.13-190.73,252.78-355.2,252.78-207.55,0-375.81-168.25-375.81-375.8S209.76,41.5,417.31,41.5c164.47,0,304.25,105.65,355.2,252.79"/>
-                                    <circle fill="none" cx="417.31" cy="417.31" r="375.78"/>
-                                </svg>
-                            </div>
+            <p class="title">Alevel</p>
+            <div class="sidescrollbar">
+                <a class="portanchor" href="alevel slides.html" onclick="parent.pageSystem('Alevel Slides');parent.backPage(1)">
+                    <div class="titlebutton">
+                        <div>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.35 850.35">
+                                <path d="M850.35,48.04V802.31c0,26.53-21.51,48.04-48.04,48.04h-171.87c-18.33,0-35.64-8.4-46.98-22.8l-243.52-309.3c-29.93-38.02-91.02-16.85-91.02,31.53v252.55c0,26.52-21.5,48.02-48.02,48.02H48.02c-26.52,0-48.02-21.5-48.02-48.02V48.02C0,21.5,21.5,0,48.02,0H219.9c18.33,0,35.64,8.4,46.99,22.8l243.46,309.07c29.96,38.03,91.08,16.85,91.08-31.56V48.04c0-26.53,21.51-48.04,48.04-48.04h152.85c26.53,0,48.04,21.51,48.04,48.04Z"/>
+                            </svg>
+                            <img src="icon/portimg/gcse/12.png" draggable="false" alt="cover image">
+                            
                         </div>
-                        <iframe class="iframelookers" scrolling="no"></iframe>
-                        <p style="background-color: #5a32a8;">Alevel</p>
-                        <h1>Slides</h1>
+                        <span>Alevel Slides</span>
+                        <p>A collection of slides detailing the work done during Alevel</p>
                     </div>
-                    <a class="linkplate" href="alevelslides.html" onclick="parent.loaderactivate();"></a>
-                </div>
+                </a>
 
-
-
-                <div class="beforemiddleimg revealed alevel" style="--i: 10;--j:#2b774f;">
-                    <div class="middlebutton">visit</div>
-                    <div class="text">
-                        <h1>Art</h1>
-                        <p>A collection of artwork from Alevel</p>
-                    </div>
-                    <div class="middleimg" style="background-image: url('icon/thumbnails/alevelart.png')">
-                        <div class="loaderframe">
-                            <div>
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 834.61 834.61">
-                                    <path class="loadwheel" d="M772.51,540.33c-50.95,147.13-190.73,252.78-355.2,252.78-207.55,0-375.81-168.25-375.81-375.8S209.76,41.5,417.31,41.5c164.47,0,304.25,105.65,355.2,252.79"/>
-                                    <circle fill="none" cx="417.31" cy="417.31" r="375.78"/>
-                                </svg>
-                            </div>
+                <a class="portanchor" href="alevel art.html" onclick="parent.pageSystem('Alevel Art');parent.backPage(1)">
+                    <div class="titlebutton">
+                        <div>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.35 850.35">
+                                <path d="M850.35,48.04V802.31c0,26.53-21.51,48.04-48.04,48.04h-171.87c-18.33,0-35.64-8.4-46.98-22.8l-243.52-309.3c-29.93-38.02-91.02-16.85-91.02,31.53v252.55c0,26.52-21.5,48.02-48.02,48.02H48.02c-26.52,0-48.02-21.5-48.02-48.02V48.02C0,21.5,21.5,0,48.02,0H219.9c18.33,0,35.64,8.4,46.99,22.8l243.46,309.07c29.96,38.03,91.08,16.85,91.08-31.56V48.04c0-26.53,21.51-48.04,48.04-48.04h152.85c26.53,0,48.04,21.51,48.04,48.04Z"/>
+                            </svg>
+                            <img src="icon/portimg/alevel/9.png" draggable="false" alt="cover image">
+                            
                         </div>
-                        <iframe class="iframelookers" scrolling="no"></iframe>
-                        <p style="background-color: #5a32a8;">Alevel</p>
-                        <h1>Art</h1>
+                        <span>Alevel Art</span>
+                        <p>A collection of artwork created during Alevel</p>
                     </div>
-                    <a class="linkplate" href="alevelart.html" onclick="parent.loaderactivate();"></a>
-                </div>
-
-
-                <div class="beforemiddleimg alevel" style="--j:#00800060;">
-                    <div class="middlebutton">visit</div>
-                    <div class="text">
-                        <h1>Good Or Bad Art</h1>
-                        <p>Essay about whether there is such a thing as good or bad art</p>
-                    </div>
-                    <div class="middleimg" style="background-image: url('icon/thumbnails/goba.png')">
-                        <div class="loaderframe">
-                            <div>
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 834.61 834.61">
-                                    <path class="loadwheel" d="M772.51,540.33c-50.95,147.13-190.73,252.78-355.2,252.78-207.55,0-375.81-168.25-375.81-375.8S209.76,41.5,417.31,41.5c164.47,0,304.25,105.65,355.2,252.79"/>
-                                    <circle fill="none" cx="417.31" cy="417.31" r="375.78"/>
-                                </svg>
-                            </div>
+                </a>
+            
+                <a class="portanchor" href="art essay.html" onclick="parent.pageSystem('Art Essay');parent.backPage(1)">
+                    <div class="titlebutton">
+                        <div>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.35 850.35">
+                                <path d="M850.35,48.04V802.31c0,26.53-21.51,48.04-48.04,48.04h-171.87c-18.33,0-35.64-8.4-46.98-22.8l-243.52-309.3c-29.93-38.02-91.02-16.85-91.02,31.53v252.55c0,26.52-21.5,48.02-48.02,48.02H48.02c-26.52,0-48.02-21.5-48.02-48.02V48.02C0,21.5,21.5,0,48.02,0H219.9c18.33,0,35.64,8.4,46.99,22.8l243.46,309.07c29.96,38.03,91.08,16.85,91.08-31.56V48.04c0-26.53,21.51-48.04,48.04-48.04h152.85c26.53,0,48.04,21.51,48.04,48.04Z"/>
+                            </svg>
+                            <img src="icon/thumbnails/gobaessayphoto.png" draggable="false" alt="cover image">
+                            
                         </div>
-                        <iframe class="iframelookers" scrolling="no"></iframe>
-                        <p style="background-color: #5a32a8;">Alevel</p>
-                        <h1>Good Or Bad Art</h1>
+                        <span>Art Essay</span>
+                        <p>Essay about whether there is good or bad art</p>
                     </div>
-                    <a class="linkplate" href="gobaessay.html" onclick="parent.loaderactivate();"></a>
-                </div>
-
-
-                <div class="beforemiddleimg alevel" style="--j:#303030;">
-                    <div class="middlebutton">visit</div>
-                    <div class="text">
-                        <h1>Related Study</h1>
+                </a>
+                <a class="portanchor" href="related study.html" onclick="parent.pageSystem('Related Study');parent.backPage(1)">
+                    <div class="titlebutton">
+                        <div>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.35 850.35">
+                                <path d="M850.35,48.04V802.31c0,26.53-21.51,48.04-48.04,48.04h-171.87c-18.33,0-35.64-8.4-46.98-22.8l-243.52-309.3c-29.93-38.02-91.02-16.85-91.02,31.53v252.55c0,26.52-21.5,48.02-48.02,48.02H48.02c-26.52,0-48.02-21.5-48.02-48.02V48.02C0,21.5,21.5,0,48.02,0H219.9c18.33,0,35.64,8.4,46.99,22.8l243.46,309.07c29.96,38.03,91.08,16.85,91.08-31.56V48.04c0-26.53,21.51-48.04,48.04-48.04h152.85c26.53,0,48.04,21.51,48.04,48.04Z"/>
+                            </svg>
+                            <img src="icon/thumbnails/missing.png" draggable="false" alt="cover image">
+                            
+                        </div>
+                        <span>Related Study</span>
                         <p>Essay produced to relate to the Alevel art project</p>
                     </div>
-                    <div class="middleimg" style="background-image: url('icon/thumbnails/relatedstudy.png')">
-                        <div class="loaderframe">
-                            <div>
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 834.61 834.61">
-                                    <path class="loadwheel" d="M772.51,540.33c-50.95,147.13-190.73,252.78-355.2,252.78-207.55,0-375.81-168.25-375.81-375.8S209.76,41.5,417.31,41.5c164.47,0,304.25,105.65,355.2,252.79"/>
-                                    <circle fill="none" cx="417.31" cy="417.31" r="375.78"/>
-                                </svg>
-                            </div>
-                        </div>
-                        <iframe class="iframelookers" scrolling="no"></iframe>
-                        <p style="background-color: #5a32a8;">Alevel</p>
-                        <h1>Related Study</h1>
-                    </div>
-                    <a class="linkplate" href="relatedstudy.html" onclick="parent.loaderactivate();"></a>
-                </div>
-
-
+                </a>
             </div>
-            <hr class="seperate">
 
-            <div class="descriptionbar"><span>Other</span></div>
-
-            <div class="middle">
-                <div class="beforemiddleimg alevel" style="--j:#2b2f3c;">
-                    <div class="middlebutton">visit</div>
-                    <div class="text">
-                        <h1>EPQ</h1>
+            <p class="title">Other</p>
+            <div class="sidescrollbar">
+                <a class="portanchor" href="epq.html" onclick="parent.pageSystem('EPQ');parent.backPage(1)">
+                    <div class="titlebutton">
+                        <div>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.35 850.35">
+                                <path d="M850.35,48.04V802.31c0,26.53-21.51,48.04-48.04,48.04h-171.87c-18.33,0-35.64-8.4-46.98-22.8l-243.52-309.3c-29.93-38.02-91.02-16.85-91.02,31.53v252.55c0,26.52-21.5,48.02-48.02,48.02H48.02c-26.52,0-48.02-21.5-48.02-48.02V48.02C0,21.5,21.5,0,48.02,0H219.9c18.33,0,35.64,8.4,46.99,22.8l243.46,309.07c29.96,38.03,91.08,16.85,91.08-31.56V48.04c0-26.53,21.51-48.04,48.04-48.04h152.85c26.53,0,48.04,21.51,48.04,48.04Z"/>
+                            </svg>
+                            <img src="icon/thumbnails/epqphoto.png" draggable="false" alt="cover image">
+                            
+                        </div>
+                        <span>EPQ</span>
                         <p>EPQ project created during the Alevel period</p>
                     </div>
-                    <div class="middleimg" style="background-image: url('icon/thumbnails/epq.png')">
-                        <div class="loaderframe">
-                            <div>
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 834.61 834.61">
-                                    <path class="loadwheel" d="M772.51,540.33c-50.95,147.13-190.73,252.78-355.2,252.78-207.55,0-375.81-168.25-375.81-375.8S209.76,41.5,417.31,41.5c164.47,0,304.25,105.65,355.2,252.79"/>
-                                    <circle fill="none" cx="417.31" cy="417.31" r="375.78"/>
-                                </svg>
-                            </div>
+                </a>
+
+                <a class="portanchor" href="#" onclick="parent.pageSystem('');parent.backPage(0)">
+                    <div class="titlebutton">
+                        <div>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.35 850.35">
+                                <path d="M850.35,48.04V802.31c0,26.53-21.51,48.04-48.04,48.04h-171.87c-18.33,0-35.64-8.4-46.98-22.8l-243.52-309.3c-29.93-38.02-91.02-16.85-91.02,31.53v252.55c0,26.52-21.5,48.02-48.02,48.02H48.02c-26.52,0-48.02-21.5-48.02-48.02V48.02C0,21.5,21.5,0,48.02,0H219.9c18.33,0,35.64,8.4,46.99,22.8l243.46,309.07c29.96,38.03,91.08,16.85,91.08-31.56V48.04c0-26.53,21.51-48.04,48.04-48.04h152.85c26.53,0,48.04,21.51,48.04,48.04Z"/>
+                            </svg>
+                            <img src="icon/thumbnails/missing.png" draggable="false" alt="cover image">
+                            
                         </div>
-                        <iframe class="iframelookers" scrolling="no"></iframe>
-                        <p style="background-color: #5a32a8;">Alevel</p>
-                        <h1>EPQ</h1>
+                        <span>Face Tracker</span>
+                        <p>Face tracking software made for computing Alevel</p>
                     </div>
-                    <a class="linkplate" href="epq.html" onclick="parent.loaderactivate();"></a>
-                </div>
-
-
-
-                <div class="beforemiddleimg alevel" style="--j:#303030;">
-                    <div class="middlebutton">visit</div>
-                    <div class="text">
-                        <h1>Face Tracker</h1>
-                        <p>Face tracking software made for computing Alevel coursework (requires camera and microphone access)</p>
-                    </div>
-                    <div class="middleimg" style="background-image: url('icon/thumbnails/facetracker.png')">
-                        <div class="loaderframe">
-                            <div>
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 834.61 834.61">
-                                    <path class="loadwheel" d="M772.51,540.33c-50.95,147.13-190.73,252.78-355.2,252.78-207.55,0-375.81-168.25-375.81-375.8S209.76,41.5,417.31,41.5c164.47,0,304.25,105.65,355.2,252.79"/>
-                                    <circle fill="none" cx="417.31" cy="417.31" r="375.78"/>
-                                </svg>
-                            </div>
+                </a>
+            
+                <a class="portanchor" href="#" onclick="parent.pageSystem('');parent.backPage(0)">
+                    <div class="titlebutton">
+                        <div>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.35 850.35">
+                                <path d="M850.35,48.04V802.31c0,26.53-21.51,48.04-48.04,48.04h-171.87c-18.33,0-35.64-8.4-46.98-22.8l-243.52-309.3c-29.93-38.02-91.02-16.85-91.02,31.53v252.55c0,26.52-21.5,48.02-48.02,48.02H48.02c-26.52,0-48.02-21.5-48.02-48.02V48.02C0,21.5,21.5,0,48.02,0H219.9c18.33,0,35.64,8.4,46.99,22.8l243.46,309.07c29.96,38.03,91.08,16.85,91.08-31.56V48.04c0-26.53,21.51-48.04,48.04-48.04h152.85c26.53,0,48.04,21.51,48.04,48.04Z"/>
+                            </svg>
+                            <img src="icon/thumbnails/missing.png" draggable="false" alt="cover image">
+                            
                         </div>
-                        <iframe class="iframelookers" scrolling="no"></iframe>
-                        <p style="background-color: #5a32a8;">Alevel</p>
-                        <h1>Face Tracker</h1>
+                        <span>wip</span>
+                        <p style="color: transparent;">Essay about whether there is good or bad art</p>
                     </div>
-                    <a class="linkplate" href="facetracker.html" onclick="parent.loaderactivate();"></a>
-                </div>
-
-
-
-                <div class="beforemiddleimg other" style="--j:#303030;">
-                    <div class="middlebutton">visit</div>
-                    <div class="text">
-                        <h1>N_AI</h1>
-                        <p>attempt to create an AI chatbot</p>
-                    </div>
-                    <div class="middleimg" style="background-image: url('icon/img/7.png')">
-                        <div class="loaderframe">
-                            <div>
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 834.61 834.61">
-                                    <path class="loadwheel" d="M772.51,540.33c-50.95,147.13-190.73,252.78-355.2,252.78-207.55,0-375.81-168.25-375.81-375.8S209.76,41.5,417.31,41.5c164.47,0,304.25,105.65,355.2,252.79"/>
-                                    <circle fill="none" cx="417.31" cy="417.31" r="375.78"/>
-                                </svg>
-                            </div>
+                </a>
+                <a class="portanchor" href="#" onclick="parent.pageSystem('');parent.backPage(0)">
+                    <div class="titlebutton">
+                        <div>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.35 850.35">
+                                <path d="M850.35,48.04V802.31c0,26.53-21.51,48.04-48.04,48.04h-171.87c-18.33,0-35.64-8.4-46.98-22.8l-243.52-309.3c-29.93-38.02-91.02-16.85-91.02,31.53v252.55c0,26.52-21.5,48.02-48.02,48.02H48.02c-26.52,0-48.02-21.5-48.02-48.02V48.02C0,21.5,21.5,0,48.02,0H219.9c18.33,0,35.64,8.4,46.99,22.8l243.46,309.07c29.96,38.03,91.08,16.85,91.08-31.56V48.04c0-26.53,21.51-48.04,48.04-48.04h152.85c26.53,0,48.04,21.51,48.04,48.04Z"/>
+                            </svg>
+                            
+                            
                         </div>
-                        <iframe class="iframelookers" scrolling="no"></iframe>
-                        <p style="background-color: #be3b3b;">Personal</p>
-                        <h1>N_AI</h1>
+                        <span style="color: transparent; background-color: #66666640; border-radius: 5px;">Related Study</span>
+                        <p style="color: transparent; background-color: #66666640; border-radius: 5px;">Essay produced to relate to the Alevel art project</p>
                     </div>
-                    <a class="linkplate" href="AI.html" onclick="parent.loaderactivate();"></a>
-                </div>
-
-
-                <div class="beforemiddleimg other" style="--j:#242424;">
-                    <div class="middlebutton" style="color: transparent;">visit</div>
-                    <div class="text">
-                        <h1 style="border-radius: 100px; color: transparent; background-color: var(--accentcol);">temptxt</h1>
-                        <p style="border-radius: 100px; color: transparent; background-color: var(--accentcol); margin: 0.5vw 0;">temp temp temp temp temp temp</p>
-                        <p style="border-radius: 100px; color: transparent; background-color: var(--accentcol);">temp temp temp temp</p>
-                    </div>
-                    <div class="middleimg">
-                        <div class="loaderframe">
-                            <div>
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 834.61 834.61">
-                                    <path class="loadwheel" d="M772.51,540.33c-50.95,147.13-190.73,252.78-355.2,252.78-207.55,0-375.81-168.25-375.81-375.8S209.76,41.5,417.31,41.5c164.47,0,304.25,105.65,355.2,252.79"/>
-                                    <circle fill="none" cx="417.31" cy="417.31" r="375.78"/>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="iframelookers" scrolling="no"></div>
-                        <p style="background-color: var(--accentcol); color: transparent;">Unknown</p>
-                        <h1 style="color: transparent;">filler</h1>
-                    </div>
-                    <a class="linkplate" href="something.html"></a>
-                </div>
+                </a>
             </div>
-
-
         </main>
-        <script>
 
 
-            /* main variables */
-
-            var timer = null, frames = document.getElementsByClassName('iframelookers'), 
-            link = document.getElementsByClassName('linkplate'), 
-            loader = document.getElementsByClassName('loaderframe');
-
-
-            /* page onlook system */
-
-            if(window.innerWidth > window.innerHeight && localStorage.getItem("performance")!=='true') {
-                for(let i = 0; i<link.length;i++){
-                    link[i].addEventListener('mouseover',function() {
-                        loader[i].style.display = 'flex'
-                        timer = window.setTimeout(function(){
-                            frames[i].src="lib/hovertabs/"+link[i].href.substring(27,link[i].href.length);
-                        }, 300);
-                    });
-                    link[i].addEventListener('mouseout',function() { 
-                        window.clearTimeout(timer)
-                        loader[i].style.display = 'none'
-                        frames[i].src='';
-                    })
-                }
-            }
-
-
-            /* filter system */
-
-            function filter(e,x) {
-                let tabs = document.querySelectorAll('.beforemiddleimg'),
-                keep = document.querySelectorAll(e),
-                allButtons = document.querySelectorAll('.filterbuttons'),
-                thisButton = document.getElementById(x);
-                $('.seperate,.descriptionbar').slideUp(250)
-                for(let i = 0; i < allButtons.length; i++) {
-                    allButtons[i].classList.remove("active");
-                }
-                thisButton.classList.add('active');
-                for(let i = 0; i < tabs.length; i++) { 
-                    if(tabs[i].classList.contains(e.substring(1,e.length)) != true){
-                        tabs[i].classList.add('hidden');
-                    }else{
-                        tabs[i].classList.remove('hidden');
-                    }
-                }
-            };
-
-            function reset(e) {
-                let tabs = document.querySelectorAll('.beforemiddleimg'),
-                allButtons = document.querySelectorAll('.filterbuttons'),
-                thisButton = document.getElementById(e);
-                $('.seperate,.descriptionbar').slideDown(300)
-                for(let i = 0; i < allButtons.length; i++) {
-                    allButtons[i].classList.remove("active");
-                }
-                thisButton.classList.add('active'); 
-                for(let i = 0; i < tabs.length; i++) {
-                    tabs[i].classList.remove('hidden'), 
-                    setTimeout(() => {
-                        tabs[i].style.opacity = "1"
-                    },200)
-                }        
-            };
-
-
-            function styler(e,x) {
-                let tabs = document.querySelectorAll('.beforemiddleimg'),
-                allButtons = document.querySelectorAll('.stylebuttons'),
-                thisButton = document.getElementById(x);
-                for(let i = 0; i < allButtons.length; i++) {
-                    allButtons[i].classList.remove("active");
-                }
-                thisButton.classList.add('active');
-                for(let i = 0; i < tabs.length; i++) { 
-                    if(e == 'true'){
-                        tabs[i].classList.add('small');
-                    }else{
-                        tabs[i].classList.remove('small');
-                    }
-                }
-            };
-
-
-            /* pagename system */
-
-            $(document).ready(function(){setTimeout(()=>{parent.pagename('Portfolio');},500);});
-        </script>
-        <footer class="footer">
-            <div class="footer-logo">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560.95 560.95" fill="var(--accentcol)">
-                    <path d="M560.95,31.69v497.57c0,17.5-14.19,31.69-31.69,31.69h-113.37c-12.09,0-23.51-5.54-30.99-15.04l-160.64-204.04c-19.74-25.08-60.05-11.12-60.05,20.8v166.6c0,17.5-14.18,31.68-31.68,31.68H31.68c-17.5,0-31.68-14.18-31.68-31.68V31.68C0,14.18,14.18,0,31.68,0h113.38c12.09,0,23.51,5.54,31,15.04l160.6,203.88c19.76,25.09,60.08,11.11,60.08-20.82V31.69c0-17.5,14.19-31.69,31.69-31.69h100.83c17.5,0,31.69,14.19,31.69,31.69Z"/>
+        <footer>
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.35 850.35">
+                    <path d="M850.35,48.04V802.31c0,26.53-21.51,48.04-48.04,48.04h-171.87c-18.33,0-35.64-8.4-46.98-22.8l-243.52-309.3c-29.93-38.02-91.02-16.85-91.02,31.53v252.55c0,26.52-21.5,48.02-48.02,48.02H48.02c-26.52,0-48.02-21.5-48.02-48.02V48.02C0,21.5,21.5,0,48.02,0H219.9c18.33,0,35.64,8.4,46.99,22.8l243.46,309.07c29.96,38.03,91.08,16.85,91.08-31.56V48.04c0-26.53,21.51-48.04,48.04-48.04h152.85c26.53,0,48.04,21.51,48.04,48.04Z"/>
                 </svg>
-                <p id="footerdate"></p>
+                <p>©NATSKI<br>ENCORE</p>
             </div>
-            <div class="footer-links">
-                <a href="#">Privacy Policy</a>
-                <div class="footer-bars"></div>
-                <a href="https://opensource.org/licenses/MIT">Licence</a>
-            </div>
+            <span></span>
+            <a href="privacy policy.html" onclick="parent.pageSystem('Privacy Policy');">Privacy Policy</a>
         </footer>
-        <nav class="navbar">
-            <span id="pagename">Portfolio</span>
-            <div class="navbarleft">
-                <a href="index.html">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560.95 560.95" fill="var(--maincol)">
-                        <path d="M560.95,31.69v497.57c0,17.5-14.19,31.69-31.69,31.69h-113.37c-12.09,0-23.51-5.54-30.99-15.04l-160.64-204.04c-19.74-25.08-60.05-11.12-60.05,20.8v166.6c0,17.5-14.18,31.68-31.68,31.68H31.68c-17.5,0-31.68-14.18-31.68-31.68V31.68C0,14.18,14.18,0,31.68,0h113.38c12.09,0,23.51,5.54,31,15.04l160.6,203.88c19.76,25.09,60.08,11.11,60.08-20.82V31.69c0-17.5,14.19-31.69,31.69-31.69h100.83c17.5,0,31.69,14.19,31.69,31.69Z"/>
-                    </svg>
-                </a>
-            </div>
-            <div class="navbarright">
-                <a class="toggle">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </a>
-                <a class="navbutton" href="index.html">
-                    Home
-                    <div class="selector"></div>
-                </a>
-                <a class="navbutton" href="about.html">
-                    About
-                    <div class="selector"></div>
-                </a>
-                <a class="navbutton" href="changes.html">
-                    Changelog
-                    <div class="selector"></div>
-                </a>
-                <a class="navbutton" href="settings.html">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1032.47 1032.53">
-                        <path d="M952.08,620.24l-57.1-32.97c-25.19-14.54-40.47-41.49-40.43-70.58,0-.16,0-.31,0-.47s0-.31,0-.47c-.04-29.09,15.24-56.04,40.43-70.58l57.1-32.97c41.44-23.93,55.64-76.92,31.72-118.36l-41.28-71.49c-23.92-41.44-76.92-55.64-118.36-31.72l-57.05,32.94c-25.23,14.57-56.25,14.28-81.44-.34-.28-.16-.56-.33-.85-.49-25.16-14.5-40.81-41.2-40.81-70.24V86.64c0-47.85-38.79-86.64-86.65-86.64h-82.54c-47.86,0-86.65,38.79-86.65,86.64v65.87c0,29.04-15.65,55.74-40.81,70.24-.28,.16-.57,.33-.85,.49-25.2,14.62-56.22,14.9-81.44,.34l-57.05-32.94c-41.44-23.92-94.44-9.72-118.37,31.72l-41.27,71.49c-23.93,41.44-9.73,94.43,31.72,118.36l57.1,32.97c25.19,14.54,40.47,41.49,40.43,70.58,0,.16,0,.31,0,.47s0,.31,0,.47c.04,29.09-15.24,56.04-40.43,70.58l-57.1,32.97c-41.45,23.93-55.65,76.92-31.72,118.36l41.27,71.49c23.93,41.44,76.93,55.64,118.37,31.72l57.05-32.94c25.23-14.57,56.25-14.28,81.44,.34,.28,.16,.56,.33,.85,.49,25.16,14.5,40.81,41.2,40.81,70.24v65.86c0,47.86,38.79,86.65,86.65,86.65h82.54c47.86,0,86.65-38.79,86.65-86.65v-65.86c0-29.04,15.65-55.74,40.81-70.24,.28-.16,.57-.33,.85-.49,25.2-14.62,56.22-14.9,81.44-.34l57.05,32.94c41.44,23.92,94.44,9.72,118.36-31.72l41.28-71.49c23.92-41.44,9.72-94.43-31.72-118.36Zm-401.72,63.49c-11.07,2.25-22.53,3.43-34.27,3.43s-23.2-1.18-34.27-3.43c-36.94-7.52-69.55-26.96-93.65-54.11-15.14-17.08-26.91-37.2-34.28-59.33-5.66-16.99-8.73-35.17-8.73-54.06s3.07-37.07,8.73-54.06c7.37-22.13,19.14-42.25,34.28-59.33,24.1-27.15,56.71-46.59,93.65-54.11,11.07-2.25,22.53-3.43,34.27-3.43s23.2,1.18,34.27,3.43c36.94,7.52,69.55,26.96,93.65,54.11,15.14,17.08,26.91,37.2,34.28,59.33,5.66,16.99,8.73,35.17,8.73,54.06s-3.07,37.07-8.73,54.06c-7.37,22.13-19.14,42.25-34.28,59.33-24.1,27.15-56.71,46.59-93.65,54.11Z"/>
-                    </svg>
-                    <div class="selector"></div>
-                </a>
-            </div>
-        </nav>
+
+
+
         <noscript>
-            <h1>javascript is disabled :(</h1>
-            <p>this website requires javascript to run.<br>please enable the use of javascript to see this page :)</p>
+            <h1>javascript is disabled</h1>
+            <p>ENCORE.js requires javascript in order to run, please enable javascript</p>
         </noscript>
-        <script src="lib/js/main.js"></script>
-        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-        <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+        <script src="lib/js/ENCORE_DSS.js"></script>
+        <script src="lib/js/ENCORE_SCS.js"></script>
     </body>
 </html>
