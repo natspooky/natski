@@ -614,6 +614,11 @@ main article h4
     font-size: 2rem;
     line-height: 2rem;
 }
+main article h5
+{
+    font-size: 1.4rem;
+    text-align: left;
+}
 main article .codewindow
 {
     position: relative;
@@ -624,8 +629,48 @@ main article .codewindow
     margin: 0.7em 0;
     color: #b5b5b5;
     text-align: left;
+    white-space: nowrap;
     background-color: #222222;
     overflow-x: scroll;
+}
+main article .codewindow::-webkit-scrollbar
+{
+    height: 5px;
+    background-color: transparent;
+}
+main article .codewindow::-webkit-scrollbar-thumb
+{
+    border: 0px solid #222222;
+}
+main article .displayframecont
+{
+    position: relative;
+    width: 100%;
+    height: 85vh;
+    margin: 0.7em 0;
+    border-radius: 10px;
+    overflow: hidden;
+}
+main article .displayframecont::after
+{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+
+}
+main article .displayframecont .displayframe
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    border: 0;
+    pointer-events: none;
+
 }
 main article section
 {
