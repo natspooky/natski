@@ -1062,6 +1062,7 @@ main article .codewindow:hover
 .portanchor .titlebutton:hover
 {
     background-color: #222222;
+    transition: 0s;
 }
 .portanchor .titlebutton:hover:active
 {
