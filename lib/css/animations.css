@@ -22,3 +22,8 @@
     from{transform: rotate(0deg);}
     to{transform: rotate(360deg);}
 }
+
+@keyframes popout {
+    from{transform: translate(-50%, -100%); opacity: 0.3;}
+    to{transform: translate(-50%, calc(-100% - 0.6em)); opacity: 1;}
+}
