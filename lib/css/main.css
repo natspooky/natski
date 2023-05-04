@@ -617,6 +617,8 @@ main article h3 span
 }
 main article h4
 {
+    top: 0.5em;
+    position: sticky;
     width: 100%;
     text-align: center;
     font-size: 2rem;
