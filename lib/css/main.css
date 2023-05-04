@@ -620,11 +620,13 @@ main article h4
     top: 60px;
     position: sticky;
     padding: 0.3em 0;
-    border-radius: 100vmax;
     background-color: #66666640;
+    backdrop-filter: blur(1px);
+    -webkit-backdrop-filter: blur(1px);
     text-align: center;
     font-size: 2rem;
     line-height: 2rem;
+    border-radius: 7px;
     z-index: 9999;
 }
 main article h5
