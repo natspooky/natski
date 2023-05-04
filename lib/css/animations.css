@@ -27,3 +27,8 @@
     from{transform: translate(-50%, -100%); opacity: 0.3;}
     to{transform: translate(-50%, calc(-100% - 0.6em)); opacity: 1;}
 }
+
+@keyframes opacity {
+    from{opacity: 0;}
+    to{opacity: 1;}
+}

@@ -628,6 +628,7 @@ main article h4
     line-height: 2rem;
     border-radius: 7px;
     z-index: 9999;
+    animation: opacity 1s;
 }
 main article h5
 {
