@@ -63,7 +63,7 @@
 
         <hr>
         <div class="bottom">
-            <button class="logbutton addbut" onclick="newheader()">New Catagory</button>
+            <button class="logbutton addbut" style="margin: 0.7em 0.5em" onclick="newheader()">New Catagory</button>
             <button class="logbutton" onclick="reset()">Reset</button>
             <button class="logbutton" onclick="format()">Format Data</button>
         </div>
@@ -89,8 +89,7 @@
             {
                 width: 100%;
                 position: relative;
-                display: flex;
-                flex-direction: column;
+                display: block;
                 justify-content: center;
                 align-items: center;
                 animation: opacity 0.5s;
@@ -104,6 +103,7 @@
             .logbutton
             {
                 position: relative;
+                display: inline;
                 padding: 0.5em 1em;
                 background-color: #66666640;
                 margin: 0.7em 0.5em;
@@ -114,6 +114,7 @@
                 position: relative;
                 display: flex;
                 justify-content: center;
+                align-items: center;
                 width: 100%;
                 animation: opacity 0.5s;
             }
@@ -138,17 +139,20 @@
             }
             .delete
             {
+                position: relative;
                 padding: 0.5em 1em;
                 background-color: #6b2c2c40;
                 margin: 0.7em 0.5em;
                 border-radius: 10px;
-                flex-grow: 0;
+                height: fit-content;
+                display: inline;
             }
             .addbut
             {
+                display: block;
                 padding: 0.5em 1em;
                 background-color: #2e6b2c40;
-                margin: 0.7em 0.5em;
+                margin: 0.7em auto;
                 border-radius: 10px;
                 flex-grow: 0;
             }
@@ -162,6 +166,12 @@
             {
                 .changeLog
                 {
+                    flex-direction: column;
+                    align-items: unset;
+                }
+                .headerLog
+                {
+                    display: flex;
                     flex-direction: column;
                 }
                 input
