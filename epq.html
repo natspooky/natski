@@ -334,6 +334,389 @@ Overall both website builders and freelance website developers have both pros an
                 <h3><div id="05"></div><span>05</span> Web design docs</h3>
                 <hr>
         
+                In this chapter I will be covering how I created this website, to better understand some of the code it is advised to read through chapter <span><a href="#01" class="sourcer" name="What is HTML, CSS and Javascript" style="font-size: inherit;">01</a></span>. I will also be going through each page and outlining features that are possible to recreate using a website builder while also outlining features that would have to be made through the use of code.<br><br>
+
+                <h5><div id="51"></div>Home Page</h5>
+                
+                So how does the homepage work? The home page, just like every other page, is formed using three main tags inlaid upon the ‘body’ tag. These three tags being: the ‘header’, the ‘main’ and the ‘footer’.
+                
+                <div class="codewindow">
+                &lt;body><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&lt;header>&lt;/header><br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;main>&lt;/main><br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;footer>&lt;/footer><br>&lt;/body>
+                </div>
+                
+                These tags are used to help create cohesion throughout the code and help to indicate to the coder as to what part of the webpage is being edited.<br>
+                
+                For the home page, I decided to have something large upon entering the website rather than just starting with a header full of uninteresting text. Because of this, I created a header taking the form of a popular feature that most websites have in some form, that of which being an image carousel.
+                
+                <div class="displayframecont">
+                <iframe class="displayframe" src="index.html" loading="lazy"></iframe>
+                </div>
+                
+                To create this carousel, I first had to add elements to the header that I could switch between on a timer while also being the same tag type to guarantee that none of the elements would stand out in a strange way from each other.
+                
+                <div class="codewindow">
+                &lt;header class="slideshowcontainer"><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="banner-bg">&lt;/div><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="banner-bg">&lt;/div><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="banner-bg">&lt;/div><br>
+                &lt;/div>
+                </div>
+                
+                From this, I styled the main container (slideshowcontainer) and created a style for each of the display panels within the slideshowcontainer to make sure that not only is each panel was the same size as the slideshowcontainer but to also to make ensure that each background images used would not scale inappropriately depending on its dimensions.
+                
+                <div class="codewindow">
+                .slideshowcontainer {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;height: 100%;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;transform: scale(0.9);<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;border-radius: 25px;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;overflow: hidden;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;margin-top: 25px;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;background-color: #444444;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;border: 2px solid #444444;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;box-shadow: 0 10px 20px #00000070;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;transition: 0.45s;<br>
+                }<br>
+                
+                .banner-bg {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;position: absolute;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;display: none;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;top: 0;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;left: 0;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;justify-content: center;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;align-items: center;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;height: 100%;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;width: 100%;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;background-position: center;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;background-repeat: no-repeat;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;background-size: cover;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;animation: fadein 0.6s;<br>
+                }
+                </div>
+                
+                Finally, in order to add a timer, image display change and intractable buttons, I added the following Javascript.
+                
+                <div class="codewindow">
+                let time, slideshowContainer, interval, <br>
+                slideIndex = 1, <br>
+                elem = document.getElementById("progress-bar"), <br>
+                width = 0;<br><br>
+                
+                window.addEventListener("load", function() {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;showSlides(slideIndex),<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;time = setInterval(function() {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;plusSlides(1)<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;}, 1e4)<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;slideshowContainer = document.getElementsByClassName("banner-button");<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;for (let e = 0; e < slideshowContainer.length; e++) { <br>&nbsp;&nbsp;&nbsp;&nbsp;slideshowContainer[e].addEventListener("mouseenter", pause),<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;slideshowContainer[e].addEventListener("mouseleave", play)<br>
+                }})<br><br>
+                
+                function plusSlides(e) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;clearInterval(time), e < 0 ? showSlides(slideIndex -= 1) : showSlides(slideIndex += 1),<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;time = -1 === e ? setInterval(function() {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;plusSlides(e + 2)<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;}, 1e4) : setInterval(function() {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;plusSlides(e + 1)<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;}, 1e4)<br>
+                }<br><br>
+                
+                function currentSlide(e) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;clearInterval(time), <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;time = setInterval(function() {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;plusSlides(e + 1)<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;}, 1e4), <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;showSlides(slideIndex = e)<br>
+                }<br><br>
+                
+                function showSlides(e) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;let t, n = document.getElementsByClassName("banner-bg"),<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;i = document.getElementsByClassName("thumb");<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;for (e > n.length && (slideIndex = 1), e < 1 && (slideIndex = n.length), t = 0; t < n.length; t++) n[t].style.display = "none";<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;for (t = 0; t < i.length; t++) i[t].classList.remove("active");<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;n[slideIndex - 1].style.display = "flex"; <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;i[slideIndex - 1].classList.add("active"), <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;resetProgressBar(), <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;progressBar()<br>
+                }<br><br>
+                
+                function progressBar() {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;document.getElementById("progress-bar").style.transition = "0.1s linear", <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;interval = setInterval(function e() {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;width >= 100 ? clearInterval(interval) : (width++, document.getElementById("progress-bar").style.width = width + "%") <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;}, 100)<br>
+                }<br><br>
+                
+                function resetProgressBar() {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;document.getElementById("progress-bar").style.transition = "0s", <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;width = 0, <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;clearInterval(interval), <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;document.getElementById("progress-bar").style.width = width + "%"<br>
+                }<br><br>
+                
+                function pause() {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;resetProgressBar()<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;clearInterval(time)<br>
+                }<br><br>
+                
+                function play() {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;progressBar()<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;clearInterval(time),<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;time = setInterval(function() {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;plusSlides(slideIndex)<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;}, 1e4)<br>
+                }
+                </div>
+                
+                Carousels like this, although they require a fair amount of code, are extremely versatile and popular for use in websites. Whether it be for displaying images, featured products, or even a selector for different web pages. Displays like this are a very common template in website builders due to this high popularity and versatility. Due to how the carousel pages change on a button press, it allows for most carousel designs to be very responsive which adds to its ease of installation when adding a carousel using a website builder.
+                
+                <br><br>
+                
+                <h5><div id="52"></div>Sub Page Headers</h5>
+                
+                The ‘header’ tag can also be styled for use in every page to give the website a sense of unity, this can be seen throughout every page in this site as every header follows the same format across all pages.
+                
+                <img class="colourimage" style="margin: 0.7em 0; width: 100%; height: auto;" src="icon/essayimgs/header.png" alt="headers" draggable="false"><br>
+                
+                Each one of these headers is made by assigning a single style to every header that follows the previously shown format
+                
+                
+                <div class="codewindow">
+                &lt;header><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="observe">&lt;/div><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="imagebox"><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.35 850.35"><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;path d="M850.35,48.04V802.31c0,26.53-21.51"/><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/svg><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;img src="icon/thumbnails/Title image.png" alt="Title image" id="headerimage" draggable="false"><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&lt;/div><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&lt;h2>Page Title&lt;/h2><br>
+                &lt;/header>
+                </div>
+                
+                This example shows how the elements are all structured within the header, thus allowing for a theme to be kept across pages. This is all thanks to the use of ‘div’ tags. ‘div’ tags are the equivalent of a cardboard box that can take the shape of any width and height in order to fit the content contained within it. I placed both the placeholder icon (svg) and the page display image (img) inside a ‘div’ tag so I could position both the svg and the img without having to create positional styles for both elements. This leads onto the next part of the code of which being the CSS used to style each element and make them look more appealing to users.
+                
+                <div class="codewindow">
+                header .observe {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;position: absolute;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;height: 200px;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;top: 100px;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;width: 100%;<br>
+                }<br>
+                
+                header .imagebox {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;position: relative;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;width: 200px;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;height: 200px;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;margin: 100px 0 20px 0;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;border-radius: 23px;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;background-color: #66666640;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;box-shadow: 0 0 40px #00000060;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;overflow: hidden;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;display: flex;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;justify-content: center;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;align-items: center;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;animation: headerimage 0.35s;<br>
+                }<br>
+                
+                header .imagebox img {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;position: absolute;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;left: 0;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;top: 0;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;width: 100%;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;height: 100%;<br>
+                }<br>
+                
+                header .imagebox svg {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;position: relative;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;height: 80%;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;fill: #4a4a4a;<br>
+                }
+                </div>
+                
+                With a design like this it wouldn't be completely impossible to replicate it or to make something similar by using a website builder, however this changes when you start to involve Javascript. This is because Javascript is a more complex language which allows it to have a higher range of control and functionality across a web page. For example, this is the code that gives the page headers an animation on scroll:
+                
+                <div class="codewindow">
+                const numSteps = 20.0,<br>
+                box = document.querySelector(".observe"),<br>
+                colourbg = document.querySelector("#colourpanelback"),<br>
+                imagebox = document.querySelector(".imagebox"),<br>
+                colourlessbg = document.querySelector("#colourlesspanelback");<br>
+                let prevRatio = 0.0;<br><br>
+                
+                function swipeSystem() {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;colourbg.style.transition = '0s'<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;createObserver();<br>
+                }<br><br>
+                
+                function createObserver() {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;let observer, options = {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;root: null,<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rootMargin: "-90px 0px 0px 0px",<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;threshold: buildThresholdList()<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;observer = new IntersectionObserver(handleIntersect, options);<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;observer.observe(box);<br>
+                }<br><br>
+                
+                function buildThresholdList() {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;let thresholds = [],<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;numSteps = 50;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;for (let i = 1.0; i &lt;= numSteps; i++) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let ratio = i / numSteps;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;thresholds.push(ratio);<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;thresholds.push(0);<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;return thresholds;<br>
+                }<br><br>
+                
+                function handleIntersect(entries, observer) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;entries.forEach((entry) => {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(entry.intersectionRatio &lt;= 0.7) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;imagebox.style.transform = 'scale(0.7)'<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;imagebox.style.transform = 'scale('+entry.intersectionRatio+')'<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;colourbg.style.opacity = entry.intersectionRatio<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;colourlessbg.style.opacity = 1 - entry.intersectionRatio<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;imagebox.style.opacity = entry.intersectionRatio<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;prevRatio = entry.intersectionRatio<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;})<br>
+                }
+                </div>
+                
+                This Javascript code is used to detect the display image overlapping with the top of the browser viewport. From this, the display image will be scaled down and slowly turn transparent as the image scrolls further off of the page. Due to the nature of having to have selected a target for this code to run, creating something similar using just tools provided by a website builder would be nearly impossible due to the amount of unexpected ways the intersecting boundaries could be used in a web page. Because of this, it would be hard to create a template that would suit everyones’ needs, while also keeping the template responsive and optimised for every screen size and browser.
+                
+                <br><br>
+                
+                <h5><div id="53"></div>Essay System</h5>
+                
+                The most important thing when creating an informative document is to be able to cite your sources of information for the reader to find, but for essays you need to be wary of the word count of your document to make sure you make the minimum word quota. To account for these issues, I created a word count system for all essay pages and also implemented a popup display to show footnotes at the point of the information while also not bombarding the document with dates and authors by keeping that data in a hidden popup that displays when hovering over an embedded footnote that looks like this: <span>‘example of a quote’<a href="#53" class="sourcer" name="clicking me would redirect you to the page that has been cited">[?]</a></span>. To make this, I needed to create both the hoverable element and also the popup element in HTML.
+                
+                <div class="codewindow">
+                &lt;span>'[cited text]'&lt;a href="[cite url]" target="_blank" class="sourcer" name="[popup information]">[  ]&lt;/a>&lt;/span><br><br>
+                &lt;div id="popout">&lt;/div><br>
+                &lt;p id="wordcount">&lt;/p><br>
+                </div>
+                
+                After creating the basic elements, I styled the .sourcer class to stand out from regular text in order to be a clear indication that it is interactable.
+                
+                <div class="codewindow">
+                main article span {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;font-weight: bold;<br>
+                }<br>
+                main article span .sourcer {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;color: var(--themecol);<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;font-size: 0.7rem;<br>
+                }<br>
+                #popout {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;top: 0;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;left: 0;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;display: none;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;position: absolute;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;text-align: center;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;padding: 0.5em;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;transform: translate(-50%, calc(-100% - 0.9em));<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;color: var(--maincol);<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;max-width: 200px;<br>&nbsp;&nbsp;&nbsp;&nbsp;font-size: 1.2rem;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;border-radius: 10px;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;background-color: #3a3a3a;<br>
+                }<br>
+                #wordcount {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;position: fixed;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;bottom: 10px;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;left: 10px;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;border-radius: 10px;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;padding: 0.5em;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;background-color: #3a3a3a;<br>
+                }
+                </div>
+                
+                Then in order to make the word count display the amount of words in an essay without counting any HTML elements, and to also display the popup while hovering over a footnote.
+                
+                <div class="codewindow">
+                let frameloader = document.getElementById("popout"),<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;hoverable = document.getElementsByClassName("sourcer");<br><br>
+                for(let i = 0; i &lt; hoverable.length; i++) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;hoverable[i].addEventListener("mouseenter", function(e) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;frameloader.innerHTML = hoverable[i].name;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let r = e.pageX,<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;t = e.pageY;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;frameloader.style.left = r + "px", <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;frameloader.style.top = t + "px", <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;frameloader.style.display = "block"<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;}),hoverable[i].addEventListener("mousemove", function(e) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let r = e.pageX,<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;t = e.pageY;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;frameloader.style.left = r + "px", <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;frameloader.style.top = t + "px", <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;frameloader.style.display = "block"<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;}), hoverable[i].addEventListener("mouseleave", function() {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;frameloader.innerHTML = "", <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;frameloader.style.left = "0px", <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;frameloader.style.top = "0px", <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;frameloader.style.display = "none"<br>
+                })}<br><br>
+                
+                function wordCount(e) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;let removewords = 0, <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;nullwords = document.getElementsByClassName('codewindow');<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;for(let i = 0; i &lt; nullwords.length; i++) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;removewords += nullwords[i].textContent.split(/\s+[^0-9]/).length<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;return e.textContent.split(/\s+[^0-9]/).length - removewords<br>
+                }<br>
+                document.getElementById("wordcount").innerHTML = "Word Count: " + wordCount(document.querySelector("article"));
+                </div>
+                
+                This code checks through all of the text on an essay page to count all of the words, it then removes any words that shouldnt count towards a word count (in this instance it removes the amount of words from inside a code window) and displays the total word count in the element with the ID of ‘wordcount’. This code also displays the popup for footnotes by reading the footnotes 'name’ attribute in order to get the text, and aligning the top and left styles of the popup to the mouse cursor. Systems like the word count are usually quite popular within portfolio websites displaying large amounts of text, therefore they are an easily obtainable tool in website builders. On the other hand, the popup system isn’t as easy to implement when compared to the word counter as the popup system doesn't have a specific use case and therefore is hard for website builders to implement it as a complete feature, however some website builders have limited use case versions of this system that can display the title of certain buttons on hover.
+                
+                <br><br>
+                
+                <h5><div id="54"></div>Specific Colour System</h5>
+                
+                One of the main systems on this site is the ability to get an accent colour for any image placed in a page. This system is what gives images a slight glow that reflects the overall colour of the image. This system is used especially for the art display pages as any images that have transparent backgrounds would seem out of place, so to fix this problem I added a background colour and box shadow colour system in order to keep each image to a similar size. To achieve this, I needed to allocate every image I wanted to automatically get an average colour for a class that can be obtained by javascript. 
+                
+                <div class="codewindow">
+                
+                &lt;img class="colourimage" src="[image directory]" alt="" draggable="false">
+                
+                </div>
+                
+                By giving every image this class, I can then pass each image into javascript to be processed for their average colour. I used a class rather than passing every image in the page as i only wanted certain images to be processed by the Javascript code.
+                
+                <div class="codewindow">
+                
+                function colourSystem(e) {  <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;for (let t = 0; t &lt; e.length; t++) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let a, o, c, s,<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;l = document.createElement("canvas"), <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;r = l.getContext && l.getContext("2d"), <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;n = {r: 0, g: 0, b: 0}, <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i = 0;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c = l.height = e[t].naturalHeight || e[t].offsetHeight || e[t].height, o = l.width = e[t].naturalWidth || e[t].offsetWidth || e[t].width,<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;r.drawImage(e[t], 0, 0), s = (a = r.getImageData(0, 0, o, c)).data.length;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (let g = 0; g &lt; s; g += 4) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;n.r += a.data[g], <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;n.g += a.data[g + 1], <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;n.b += a.data[g + 2], <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I++;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;n.r = Math.floor(n.r / i), <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;n.g = Math.floor(n.g / i), <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;n.b = Math.floor(n.b / i), <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e[t].style.boxShadow = '0 0 40px '+"rgba(" + n.r + "," + n.g + "," + n.b + ", 0.7)", <br> 
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e[t].style.backgroundColor = "rgba(" + n.r + "," + n.g + "," + n.b + ", 0.7)"<br>
+                &nbsp;&nbsp;&nbsp;&nbsp}<br>
+                }<br><br>
+                
+                $('.colourimage').imagesLoaded().done(function() {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;colourSystem($('.colourimage'));<br>
+                })
+                </div>
+                
+                This works by calling the ‘colourSystem’ function once Javascript detects all images with the class ‘colourimage’ as being loaded. From there, ‘colourSystem’ will go through every image and determine an average colour through checking the colour of every pixel in an image which it then uses to create an average colour. This is then applied to the background and the box shadow of every image that it has processed. It gets the average through averaging the red, green and blue colours independently of each other before reassembling these values to create a complete colour.
                 
 
                 <br><br>
