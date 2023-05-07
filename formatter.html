@@ -65,8 +65,15 @@
         <div class="bottom">
             <button class="logbutton addbut" style="margin: 0.7em 0.5em" onclick="newheader()">New Catagory</button>
             <button class="logbutton" onclick="reset()">Reset</button>
-            <button class="logbutton" onclick="format()">Format Data</button>
+            <button class="logbutton" onclick="formattxt()">Format Data to file</button>
+            <button class="logbutton" onclick="formatcopy()">Format Data to clipboard</button>
+            <button class="logbutton" onclick="preview()">Preview</button>
         </div>
+        <hr>
+        <main id="preview">
+            <h1>PREVIEW</h1>
+            <article id="prev"></article>
+        </main>
 
         <footer>
             <div>
@@ -98,7 +105,7 @@
             {
                 display: flex;
                 justify-content: center;
-                padding: 0 0 2em 0;
+            
             }
             .logbutton
             {
