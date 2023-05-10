@@ -140,7 +140,7 @@ nav span
 {
     float: left;
 }
-.navbutton:last-child
+.navbutton:nth-last-child(2)
 {
     display: none;
 }
@@ -1056,7 +1056,7 @@ noscript
     {
         display: none;
     }
-    nav .navbutton:first-child,nav .navbutton:last-child
+    nav .navbutton:first-child,nav .navbutton:last-child,nav .navbutton:nth-last-child(2)
     {
         display: inline-flex;
     }
