@@ -162,7 +162,6 @@
             </a>
             <div></div>
             <span id="pageTitle">Home</span>
-            
             <button class="navbutton" name="settings" onclick="loadframe(this.name)">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1032.47 1032.53">
                     <path d="M952.08,620.24l-57.1-32.97c-25.19-14.54-40.47-41.49-40.43-70.58,0-.16,0-.31,0-.47s0-.31,0-.47c-.04-29.09,15.24-56.04,40.43-70.58l57.1-32.97c41.44-23.93,55.64-76.92,31.72-118.36l-41.28-71.49c-23.92-41.44-76.92-55.64-118.36-31.72l-57.05,32.94c-25.23,14.57-56.25,14.28-81.44-.34-.28-.16-.56-.33-.85-.49-25.16-14.5-40.81-41.2-40.81-70.24V86.64c0-47.85-38.79-86.64-86.65-86.64h-82.54c-47.86,0-86.65,38.79-86.65,86.64v65.87c0,29.04-15.65,55.74-40.81,70.24-.28,.16-.57,.33-.85,.49-25.2,14.62-56.22,14.9-81.44,.34l-57.05-32.94c-41.44-23.92-94.44-9.72-118.37,31.72l-41.27,71.49c-23.93,41.44-9.73,94.43,31.72,118.36l57.1,32.97c25.19,14.54,40.47,41.49,40.43,70.58,0,.16,0,.31,0,.47s0,.31,0,.47c.04,29.09-15.24,56.04-40.43,70.58l-57.1,32.97c-41.45,23.93-55.65,76.92-31.72,118.36l41.27,71.49c23.93,41.44,76.93,55.64,118.37,31.72l57.05-32.94c25.23-14.57,56.25-14.28,81.44,.34,.28,.16,.56,.33,.85,.49,25.16,14.5,40.81,41.2,40.81,70.24v65.86c0,47.86,38.79,86.65,86.65,86.65h82.54c47.86,0,86.65-38.79,86.65-86.65v-65.86c0-29.04,15.65-55.74,40.81-70.24,.28-.16,.57-.33,.85-.49,25.2-14.62,56.22-14.9,81.44-.34l57.05,32.94c41.44,23.92,94.44,9.72,118.36-31.72l41.28-71.49c23.92-41.44,9.72-94.43-31.72-118.36Zm-401.72,63.49c-11.07,2.25-22.53,3.43-34.27,3.43s-23.2-1.18-34.27-3.43c-36.94-7.52-69.55-26.96-93.65-54.11-15.14-17.08-26.91-37.2-34.28-59.33-5.66-16.99-8.73-35.17-8.73-54.06s3.07-37.07,8.73-54.06c7.37-22.13,19.14-42.25,34.28-59.33,24.1-27.15,56.71-46.59,93.65-54.11,11.07-2.25,22.53-3.43,34.27-3.43s23.2,1.18,34.27,3.43c36.94,7.52,69.55,26.96,93.65,54.11,15.14,17.08,26.91,37.2,34.28,59.33,5.66,16.99,8.73,35.17,8.73,54.06s-3.07,37.07-8.73,54.06c-7.37,22.13-19.14,42.25-34.28,59.33-24.1,27.15-56.71,46.59-93.65,54.11Z"/>
@@ -188,6 +187,13 @@
                 </svg>
             </button>
 
+            <button class="navbutton" name="loading..." id="loader">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 834.61 834.61" style="animation: rotate 1.5s linear infinite;">
+                    <path style="stroke-linecap: round;stroke-width: 100px;fill: none;stroke: var(--maincol);stroke-miterlimit: 10;" d="M772.51,540.33c-50.95,147.13-190.73,252.78-355.2,252.78-207.55,0-375.81-168.25-375.81-375.8S209.76,41.5,417.31,41.5c164.47,0,304.25,105.65,355.2,252.79"/>
+                    <circle fill="none" cx="417.31" cy="417.31" r="375.78"/>
+                </svg>
+            </button>
+
             <button class="navbutton" name="menu" onclick="menuOpen()">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.39 850.39">
                     <rect y="357.4" width="850.39" height="135.6" rx="67.8" ry="67.8"/>
@@ -195,6 +201,7 @@
                     <rect y="0" width="850.39" height="135.6" rx="67.8" ry="67.8"/>
                 </svg>
             </button>
+
 
         </nav>
         <div class="covermenu" id="covermenu">
@@ -262,12 +269,14 @@
         </div>
         <script>
                 function pageSystem(e){
+                    loader()
                     let title = document.getElementById('pageTitle')
                     title.style.opacity = 0;
                     setTimeout(() => {
                         title.innerHTML = e
                         title.style.opacity = 1;
                     }, 200)
+
                 }
 
                 let backnum = 0;
@@ -300,6 +309,7 @@
                     document.body.classList.remove("static")
                     document.getElementById('iframe').src=''; 
                     pageSystem('Home')
+                    unloader()
                     changeBar('#474747')
                 }
 
@@ -318,6 +328,15 @@
                     document.getElementById('colourpanel').style.backgroundColor = e
                 }
 
+                function unloader() {
+                    document.getElementById('loader').style.opacity = '0';
+                    document.getElementById('loader').style.visibility = 'hidden';
+                }
+
+                function loader() {
+                    document.getElementById('loader').style.visibility = 'visible';
+                    document.getElementById('loader').style.opacity = '1';
+                }
 
         </script>
 
