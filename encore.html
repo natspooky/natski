@@ -75,11 +75,6 @@
                 transform: translateX(0);
                 display: inline-block;
             }
-            article:hover h3 span
-            {
-                transform: translateX(-55px);
-                opacity: 0;
-            }
             article h3 section
             {
                 position: relative;
@@ -89,11 +84,6 @@
                 transform: translateX(0);
                 color: var(--themecol);
                 transition: 0.3s;
-            }
-            article:hover h3 section
-            {
-                opacity: 1;
-                transform: translateX(-55px);
             }
             .hover
             {
@@ -118,22 +108,12 @@
                 background-color: transparent;
                 user-select: none;
             }
-            .encore:hover
-            {
-                background-color: #66666610;
-                border: 2px solid #66666640;
-                transform: scale(1.04);
-            }
             .encore .codewindow
             {
                 background-color: #c0c0c050;
                 z-index: 20;
                 box-shadow: 0 0 5px #00000020;
                 user-select: text;
-            }
-            .encore .codewindow:hover
-            {
-                background-color: #c0c0c060;
             }
             .codewindow .navbutton
             {
@@ -179,11 +159,40 @@
             article h3 section
             {
                 display: block;
-                transform: translateX(55px);
+                transform: translateX(0px);
+                opacity: 1;
+            }
+            article h3 span
+            {
+                display: none;
+            }
+            .encore
+            {
+                background-color: #66666610;
+                border: 2px solid #66666640;
+                transform: scale(1.02);
+            }
+            }
+            @media (hover: hover){
+                .encore .codewindow:hover
+            {
+                background-color: #c0c0c057;
+            }
+            .encore:hover
+            {
+                background-color: #66666610;
+                border: 2px solid #66666640;
+                transform: scale(1.02);
             }
             article:hover h3 section
             {
-                transform: translateX(0px);
+                opacity: 1;
+                transform: translateX(-55px);
+            }
+            article:hover h3 span
+            {
+                transform: translateX(-55px);
+                opacity: 0;
             }
             }
         </style>
