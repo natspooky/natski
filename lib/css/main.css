@@ -480,7 +480,10 @@ header h2
     position: relative;
     line-height: 60px;
     font-size: min(4rem, 10vw);
-    
+}
+.banner-bg hr
+{
+    border: 1px solid #e9e9e9;
 }
 .banner-bg div svg
 {
