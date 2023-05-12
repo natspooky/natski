@@ -39,7 +39,6 @@
         <link rel="stylesheet" type="text/css" media="screen and (orientation: portrait)" href="lib/css/scale.css"/>
         <script src="lib/js/jquery.js"></script>
         <script src="lib/js/images.js"></script>
-        <script src="lib/js/ENCORE_SSC.js"></script>
         
 	</head>
     <body style="background-image: linear-gradient(to top left, transparent, transparent, #202020);">
@@ -91,34 +90,7 @@
                 </button>
             </div>
 
-            <button class="prev" onclick="plusSlides(-1);">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 398.35 636.29">
-                    <path d="M16.05,354l302.18,269.96c30.98,27.68,80.12,5.69,80.12-35.86V48.18c0-41.55-49.14-63.54-80.12-35.86L16.05,282.28c-21.4,19.12-21.4,52.6,0,71.72Z"/>
-                </svg>
-            </button>
-
-            <button class="next" onclick="plusSlides(1);">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 398.35 636.29">
-                    <path d="M382.3,282.28L80.12,12.32C49.14-15.36,0,6.63,0,48.18V588.11c0,41.55,49.14,63.54,80.12,35.86L382.3,354c21.4-19.12,21.4-52.6,0-71.72Z"/>
-                </svg>
-            </button>
-
-            <div class="thumbs">
-
-                <button onclick="currentSlide(1)" class="thumb"></button>
-
-                <button onclick="currentSlide(2)" class="thumb"></button>
-
-                <button onclick="currentSlide(3)" class="thumb"></button>
-
-            </div>
-
-            <div class="progress">
-
-                <div class="progress-bar" id="progress-bar"></div>
-
-            </div>
-            <button class="watermark" name="encore" onclick="loadframe(this.name)">ENCORE_SSC.JS</button>
+            <button class="watermark" name="encore" onclick="loadframe(this.name)">ENCORE SSC</button>
         </header>
 
         <main>
@@ -348,8 +320,10 @@
                 }
 
                 function loader() {
-                    document.getElementById('loader').style.visibility = 'visible';
-                    document.getElementById('loader').style.opacity = '1';
+                    if(localStorage.getItem("performance")!=='true'){
+                        document.getElementById('loader').style.visibility = 'visible';
+                        document.getElementById('loader').style.opacity = '1';
+                    }
                 }
 
         </script>
@@ -359,6 +333,9 @@
             <h1>javascript is disabled</h1>
             <p>ENCORE.js requires javascript in order to run, please enable javascript</p>
         </noscript>
-        
+        <script src="lib/js/ENCORE_SSC.js"></script>
+        <script>
+            SSC_settings = ['thumbs:true','progressBar:true','sideButtons:true']
+        </script>
     </body>
 </html>

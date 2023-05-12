@@ -51,20 +51,236 @@
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.35 850.35">
                     <path d="M850.35,48.04V802.31c0,26.53-21.51,48.04-48.04,48.04h-171.87c-18.33,0-35.64-8.4-46.98-22.8l-243.52-309.3c-29.93-38.02-91.02-16.85-91.02,31.53v252.55c0,26.52-21.5,48.02-48.02,48.02H48.02c-26.52,0-48.02-21.5-48.02-48.02V48.02C0,21.5,21.5,0,48.02,0H219.9c18.33,0,35.64,8.4,46.99,22.8l243.46,309.07c29.96,38.03,91.08,16.85,91.08-31.56V48.04c0-26.53,21.51-48.04,48.04-48.04h152.85c26.53,0,48.04,21.51,48.04,48.04Z"/>
                 </svg>
-                <img src="icon/thumbnails/missing.png" alt="encore" id="headerimage" draggable="false">
+                <img src="icon/thumbnails/encore.png" alt="encore" id="headerimage" draggable="false">
             </div>
             <h2>ENCORE</h2>
         </header>
 
+        <style>
+
+
+            article h3
+            {
+                font-size: 3rem;
+                position: relative;
+                display: inline-block;
+                width: 100%;
+                user-select: none;
+                transition: 0.5s;
+            }
+            article h3 span
+            {
+                position: relative;
+                transition: 0.3s;
+                transform: translateX(0);
+                display: inline-block;
+            }
+            article:hover h3 span
+            {
+                transform: translateX(-55px);
+                opacity: 0;
+            }
+            article h3 section
+            {
+                position: relative;
+                opacity: 0;
+                width: fit-content;
+                display: inline-block;
+                transform: translateX(0);
+                color: var(--themecol);
+                transition: 0.3s;
+            }
+            article:hover h3 section
+            {
+                opacity: 1;
+                transform: translateX(-55px);
+            }
+            .hover
+            {
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 70em;
+                width: 70em;
+                opacity: 0;
+                transform: translate(-50%, -50%);
+                background-repeat: no-repeat;
+                background-size: 100%;
+                background-position: center;
+                z-index: -3;
+                transition: opacity 0.5s;
+            }
+            .codewindow
+            {
+                box-shadow: 0 0 5px #00000020;
+            }
+            .encore
+            {
+                transition: 0.3s;
+                border: 2px solid transparent;
+                overflow: hidden;
+                background-color: transparent;
+                user-select: none;
+            }
+            .encore:hover
+            {
+                background-color: #66666610;
+                border: 2px solid #66666640;
+                transform: scale(1.04);
+            }
+            .encore .codewindow
+            {
+                background-color: #c0c0c050;
+                z-index: 20;
+                user-select: text;
+            }
+            .encore .codewindow:hover
+            {
+                background-color: #c0c0c060;
+            }
+            .codewindow .navbutton
+            {
+                position: absolute;
+                top: 1em;
+                right: 1em;
+                margin: 0;
+            }
+            .codewindow .navbutton::before
+            {
+                top: 50%;
+                right: calc(100% + 0.5em);
+                transform: translateY(-50%) translateX(-1em);
+                transform-origin: right;  
+            }
+            .codewindow .navbutton:hover::before
+            {
+                transform: translateY(-50%) translateX(0);
+            }
+            .codewindow .navbutton:active:before
+            {
+                transition: 0s;
+                transform: translateY(-50%) translateX(0) scale(0.9);
+            }
+            #SSC
+            {
+                position: relative;
+                width: 100%;
+                height: 40vh;
+                overflow: hidden;
+                border-radius: 10px;
+                margin-top: 1em;
+                display: flex;
+                justify-content: center;
+                border: 2px solid #66666640;
+            }
+            @media screen and (max-width: 900px){
+                .codewindow .navbutton
+            {
+                display: none;
+            }
+            }
+        </style>
 
         <main>
-            <article>
-                <div class="codewindow" style="margin: 0;">
-                    ENCORE is currently under developement
+            <article class="encore">
+                <div class="hover" style="background-image: radial-gradient(rgba(103, 0, 167, 0.368),transparent, transparent);"></div>
+                <h3 style="margin-top: 0;">ENCORE <span>SSC</span><section>Slide Show Container</section></h3>
+                <span>ENCORE SSC is a preprogrammed javascript carousel package that can be added to any website without having to worry about any javascript programming.</span>
+                <br><br><span>Script that needs to be appeneded to the bottom of the HTML file:</span>
+                <div class="codewindow">
+<pre>
+<code>&lt;script src="lib/js/ENCORE_SSC.js"&gt;&lt;/script&gt;
+&lt;script&gt;SSC_settings=["thumbs:true","progressBar:true","sideButtons:true"]&lt;/script&gt;
+</code></pre>
+                    <button class="navbutton" name="copy" onclick="copy(this.parentNode)">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.39 850.39">
+                            <path d="M389.7,715.19h126.3v83.3c0,28.67-23.24,51.9-51.9,51.9H51.9c-28.66,0-51.9-23.23-51.9-51.9V227.1c0-28.66,23.24-51.9,51.9-51.9h245.9v448.09c0,50.68,41.23,91.9,91.9,91.9Z"/>
+                            <rect  x="334.39" width="516" height="675.19" rx="51.9" ry="51.9"/>
+                        </svg>
+                    </button>
+                </div>
+                <br><span>HTML code that needs to be added into the HTML file:</span>
+                <div class="codewindow" style="margin-bottom: 0;">
+<pre>
+<code>&lt;div id="SSC"&gt;
+
+    &lt;div class="banner-bg"&gt; &lt;!-- duplicate this element for the amount of pages you want --&gt;
+
+        &lt;!-- place content in here --&gt;
+
+    &lt;/div&gt;
+
+&lt;/div&gt;
+</code></pre>
+            
+                    <button class="navbutton" name="copy" onclick="copy(this.parentNode)">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.39 850.39">
+                            <path d="M389.7,715.19h126.3v83.3c0,28.67-23.24,51.9-51.9,51.9H51.9c-28.66,0-51.9-23.23-51.9-51.9V227.1c0-28.66,23.24-51.9,51.9-51.9h245.9v448.09c0,50.68,41.23,91.9,91.9,91.9Z"/>
+                            <rect  x="334.39" width="516" height="675.19" rx="51.9" ry="51.9"/>
+                        </svg>
+                    </button>
+                </div>
+                <br><span>ENCORE SSC example:</span>
+                <div id="SSC">
+
+                    <div class="banner-bg">
+                
+                        display 1
+                
+                    </div>
+
+                    <div class="banner-bg">
+                
+                        display 2
+                
+                    </div>
+
+                    <div class="banner-bg">
+                
+                        display 3
+                
+                    </div>
+                
+                </div>
+                
+            </article>
+
+            <article class="encore">
+                <div class="hover" style="background-image: radial-gradient(rgba(14, 167, 0, 0.368),transparent, transparent);"></div>
+                <h3 style="margin-top: 0;">ENCORE <span>WIP</span><section>Work In Progress</section></h3>
+                
+                <div class="codewindow" style="margin-bottom: 0;">
+                    in development
                 </div>
             </article>
         </main>
 
+
+
+        <script>
+            let x = document.getElementsByTagName('article'),
+                hov = document.getElementsByClassName('hover')
+
+            for(let i = 0; i < x.length; i++){
+                x[i].addEventListener("mouseenter", function(e) {
+                    hov[i].style.opacity = '0.4'
+                })
+                x[i].addEventListener("mousemove", function(e) {
+                    let pagX = e.pageX - x[i].offsetLeft,
+                        pagY = e.pageY - x[i].offsetTop;
+
+                    hov[i].style.top = pagY + "px"
+                    hov[i].style.left = pagX + "px"
+                })
+                x[i].addEventListener("mouseleave", function(e) {
+                    hov[i].style.opacity = '0'
+                })
+            }
+
+            function copy(e){
+                navigator.clipboard.writeText(e.innerText);
+            }
+        </script>
 
         <footer>
             <div>
@@ -86,5 +302,8 @@
         </noscript>
         <script src="lib/js/ENCORE_DSS.js"></script>
         <script src="lib/js/ENCORE_SCS.js"></script>
+        <script src="lib/js/ENCORE_SSC.js"></script>
+        <script>SSC_settings=["thumbs:true","progressBar:true","sideButtons:true"]</script>
+
     </body>
 </html>
