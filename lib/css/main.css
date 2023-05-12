@@ -631,7 +631,7 @@ main article h4
     font-size: 2rem;
     line-height: 2rem;
     border-radius: 7px;
-    z-index: 9999;
+    z-index: 999;
 }
 main article h5
 {
@@ -996,7 +996,7 @@ main article ul li a
 	stroke: var(--maincol);
 	stroke-miterlimit: 10;
 }
-.epq
+.chapterselector
 {
     position: fixed;
     right: 0;
@@ -1005,8 +1005,9 @@ main article ul li a
     width: auto;
     background-color: #66666640;
     padding: 0 0.8em;
+    z-index: 9999;
 }
-.epq a p 
+.chapterselector a p 
 {
     position: relative;
     padding: 0.8em;
@@ -1018,11 +1019,11 @@ main article ul li a
     font-weight: bold;
     transition: 0.2s;
 }
-.epq a p:hover
+.chapterselector a p:hover
 {
     background-color: #66666640;
 }
-.epq a p::before
+.chapterselector a p::before
 {
     content: attr(name);
     position: absolute;
@@ -1038,7 +1039,7 @@ main article ul li a
     transform: translate(13px,-50%);
     transition: 0.2s;
 }
-.epq a p:hover::before
+.chapterselector a p:hover::before
 {
     transform: translate(0px,-50%);
     opacity: 1;
@@ -1120,7 +1121,7 @@ noscript
 }
 @media screen and (max-width: 900px)
 {
-    nav .navbutton,.pagebutton,.slidecontainer,.epq
+    nav .navbutton,.pagebutton,.slidecontainer,.chapterselector
     {
         display: none;
     }

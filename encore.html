@@ -151,6 +151,28 @@
                 box-shadow: 0 0 5px #00000020;
                 border: 2px solid #66666640;
             }
+            @media (hover: hover){
+                .encore .codewindow:hover
+            {
+                background-color: #c0c0c057;
+            }
+            .encore:hover
+            {
+                background-color: #66666610;
+                border: 2px solid #66666640;
+                transform: scale(1.02);
+            }
+            article:hover h3 section
+            {
+                opacity: 1;
+                transform: translateX(-55px);
+            }
+            article:hover h3 span
+            {
+                transform: translateX(-55px);
+                opacity: 0;
+            }
+            }
             @media screen and (max-width: 900px){
                 .codewindow .navbutton
             {
@@ -172,27 +194,9 @@
                 border: 2px solid #66666640;
                 transform: scale(1.02);
             }
-            }
-            @media (hover: hover){
-                .encore .codewindow:hover
-            {
-                background-color: #c0c0c057;
-            }
-            .encore:hover
-            {
-                background-color: #66666610;
-                border: 2px solid #66666640;
-                transform: scale(1.02);
-            }
             article:hover h3 section
             {
-                opacity: 1;
-                transform: translateX(-55px);
-            }
-            article:hover h3 span
-            {
-                transform: translateX(-55px);
-                opacity: 0;
+                transform: translateX(0px);
             }
             }
         </style>
@@ -274,30 +278,38 @@
         </main>
 
 
-
         <script>
             let x = document.getElementsByTagName('article'),
                 hov = document.getElementsByClassName('hover')
 
-            for(let i = 0; i < x.length; i++){
-                x[i].addEventListener("mouseenter", function(e) {
-                    hov[i].style.opacity = '0.4'
-                })
-                x[i].addEventListener("mousemove", function(e) {
-                    let pagX = e.pageX - x[i].offsetLeft,
-                        pagY = e.pageY - x[i].offsetTop;
+            if(window.innerHeight < window.innerWidth){
+                for(let i = 0; i < x.length; i++){
+                    x[i].addEventListener("mouseenter", function(e) {
+                        hov[i].style.opacity = '0.4'
+                    })
+                    x[i].addEventListener("mousemove", function(e) {
+                        let pagX = e.pageX - x[i].offsetLeft,
+                            pagY = e.pageY - x[i].offsetTop;
 
-                    hov[i].style.top = pagY + "px"
-                    hov[i].style.left = pagX + "px"
-                })
-                x[i].addEventListener("mouseleave", function(e) {
-                    hov[i].style.opacity = '0'
-                })
+                        hov[i].style.top = pagY + "px"
+                        hov[i].style.left = pagX + "px"
+                    })
+                    x[i].addEventListener("mouseleave", function(e) {
+                        hov[i].style.opacity = '0'
+                    })
+                }
+            }else{
+                for(let i = 0; i < x.length; i++){
+                        hov[i].style.top = '0px'
+                        hov[i].style.left = '0px'
+                        hov[i].style.opacity = '0.4'
+                }
             }
-
+            
             function copy(e){
                 navigator.clipboard.writeText(e.innerText);
             }
+
         </script>
 
         <footer>
