@@ -71,7 +71,7 @@
         </div>
         <hr>
         <main id="preview">
-            <h1>PREVIEW</h1>
+            <h1 style="margin-bottom: 0.5em;">PREVIEW</h1>
             <article id="prev"></article>
         </main>
 
@@ -112,7 +112,7 @@
                 position: relative;
                 display: inline;
                 padding: 0.5em 1em;
-                background-color: #66666640;
+                background-color: var(--displaycolourtrans);
                 margin: 0.7em 0.5em;
                 border-radius: 10px;
             }
@@ -131,9 +131,9 @@
                 font-size: 1.3rem;
                 margin: 0.7em 0.5em;
                 border: 0;
-                color: #fff;
+                color: var(--textmain);
                 padding: 0.5em 1em;
-                background-color: #66666640;
+                background-color: var(--displaycolourtrans);
                 border-radius: 10px;
             }
             select
@@ -166,7 +166,7 @@
             hr
             {
                 margin: 1em 0;
-                border: 2px solid #66666640;
+                border: 2px solid var(--displaycolourtrans);
                 width: 100%;
             }
             @media (orientation: portrait)
