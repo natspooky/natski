@@ -103,7 +103,7 @@
             .encore
             {
                 transition: 0.3s;
-                border: 2px solid transparent;
+                border: 2px solid #66666617;
                 overflow: hidden;
                 background-color: transparent;
                 user-select: none;
@@ -391,12 +391,53 @@
                 coming soon</div>
                 <p class="beta">BETA</p>
             </article>
+
+            <article class="encore">
+                <div class="hover" style="background-image: radial-gradient(rgba(0, 167, 156, 0.368),transparent, transparent);"></div>
+                <h3 style="margin-top: 0;">ENCORE <span>WIP</span><section>Work In Progress</section></h3>
+                <span>ENCORE SSC is a preprogrammed javascript carousel package that can be added to any website without having to worry about any javascript programming.</span>
+                <br><br><span>Script that needs to be appeneded to the bottom of the HTML file:</span>
+                <div class="codewindow">
+<pre>
+<code>coming soon
+</code></pre>
+                    <button class="navbutton" name="copy" onclick="copy(this.parentNode)">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.39 850.39">
+                            <path d="M389.7,715.19h126.3v83.3c0,28.67-23.24,51.9-51.9,51.9H51.9c-28.66,0-51.9-23.23-51.9-51.9V227.1c0-28.66,23.24-51.9,51.9-51.9h245.9v448.09c0,50.68,41.23,91.9,91.9,91.9Z"/>
+                            <rect  x="334.39" width="516" height="675.19" rx="51.9" ry="51.9"/>
+                        </svg>
+                    </button>
+                </div>
+                <br><span>HTML code that needs to be added into the HTML file:</span>
+                <div class="codewindow" style="margin-bottom: 0;">
+<pre>
+<code>coming soon
+</code></pre>
+            
+                    <button class="navbutton" name="copy" onclick="copy(this.parentNode)">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.39 850.39">
+                            <path d="M389.7,715.19h126.3v83.3c0,28.67-23.24,51.9-51.9,51.9H51.9c-28.66,0-51.9-23.23-51.9-51.9V227.1c0-28.66,23.24-51.9,51.9-51.9h245.9v448.09c0,50.68,41.23,91.9,91.9,91.9Z"/>
+                            <rect  x="334.39" width="516" height="675.19" rx="51.9" ry="51.9"/>
+                        </svg>
+                    </button>
+                </div>
+                <br><span>ENCORE SSC example:</span>
+                <div id="WIP" class="preview">
+                
+                </div>
+                <br><span>ENCORE SSC theme templates:</span>
+                <div class="codewindow" style="margin-bottom: 0;">
+                coming soon</div>
+                <p class="beta">BETA</p>
+            </article>
         </main>
 
 
         <script>
-            let x = document.getElementsByTagName('article'),
+            let x = document.getElementsByClassName('encore'),
                 hov = document.getElementsByClassName('hover')
+
+                console.log(x)
 
             if(window.innerHeight < window.innerWidth){
                 for(let i = 0; i < x.length; i++){
@@ -451,7 +492,7 @@
         <script src="lib/js/ENCORE_SSC.js"></script>
         <script>SSC_settings={'thumbs':true,'progressBar':true,'sideButtons':true,'timer':5000}</script>
         <script src="lib/js/ENCORE_CLS.js"></script>
-        <script>CLS_settings={'path':'https://natski.netlify.app/lib/txt/changelog','fileCount':5,'container':document.getElementById('CLSwindow')}</script>
+        <script>CLS_settings={'path':'https://natski.netlify.app/lib/txt/changelog','fileCount':6,'container':document.getElementById('CLSwindow')}</script>
 
 
     </body>
