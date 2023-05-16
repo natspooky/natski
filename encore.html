@@ -144,7 +144,7 @@
                 transition: 0s;
                 transform: translateY(-50%) translateX(0) scale(0.9);
             }
-            #SSC
+            .preview
             {
                 position: relative;
                 width: 100%;
@@ -153,9 +153,23 @@
                 border-radius: 10px;
                 margin-top: 1em;
                 display: flex;
-                justify-content: center;
+                flex-direction: column;
+                align-items: center;
                 box-shadow: 0 0 5px #00000020;
                 border: 2px solid var(--displaycolourtrans);
+            }
+            .preview main
+            {
+                position: relative;
+                width: 100%;
+            }
+            .preview main article
+            {
+                width: 90%;
+            }
+            .preview #CLSloader
+            {
+                width: 100%;
             }
             .thumbs,.progress,.pagebutton
             {
@@ -280,7 +294,7 @@
                     </button>
                 </div>
                 <br><span>ENCORE SSC example:</span>
-                <div id="SSC">
+                <div id="SSC" class="preview">
 
                     <div class="banner-bg">
                 
@@ -356,8 +370,16 @@
                     </button>
                 </div>
                 <br><span>ENCORE CLS example:</span>
-                <div id="SSC">
-                    
+                <div class="preview" id="CLSwindow" style="overflow-y: scroll; padding-top: 0.5em;">
+                    <main id="CLS"></main>
+                    <section id="CLSloader">
+                        <div>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 834.61 834.61">
+                                <path class="loadwheel" d="M772.51,540.33c-50.95,147.13-190.73,252.78-355.2,252.78-207.55,0-375.81-168.25-375.81-375.8S209.76,41.5,417.31,41.5c164.47,0,304.25,105.65,355.2,252.79"/>
+                                <circle fill="none" cx="417.31" cy="417.31" r="375.78"/>
+                            </svg>
+                        </div>
+                    </section>
                 </div>
                 
                 <br><span>ENCORE CLS theme templates:</span>
@@ -424,6 +446,9 @@
         <script src="lib/js/ENCORE_SCS.js"></script>
         <script src="lib/js/ENCORE_SSC.js"></script>
         <script>SSC_settings={'thumbs':true,'progressBar':true,'sideButtons':true,'timer':5000}</script>
+        <script src="lib/js/ENCORE_CLS.js"></script>
+        <script>CLS_settings={'path':'https://natski.netlify.com/lib/txt/changelog','fileCount':5,'container':document.getElementById('CLSwindow')}</script>
+
 
     </body>
 </html>
