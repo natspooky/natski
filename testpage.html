@@ -171,13 +171,30 @@
                 border: 10px solid #555555;
                 background-color: #555555;
             }
+            .banner-bg div
+            {
+                width: unset;
+            }
+            .progresbar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: 
+    radial-gradient(closest-side, white 79%, transparent 80% 100%),
+    conic-gradient(hotpink 75%, pink 0);   
+    flex-shrink: 0; 
+}
+
 
         </style>
 
         <main>
             <div id="SSC">
                 <div class="banner-bg">
-                    woo
+                    
+                        <div class="progresbar">
+                          <progress id="html" min="0" max="100" value="92"></progress>
+                        </div>
                 </div>
 
                 <div class="banner-bg">
@@ -188,6 +205,7 @@
                 </div>
                 <div class="banner-bg">
                     wah
+                    
                 </div>
             </div>
 
@@ -215,7 +233,7 @@
         <script src="lib/js/ENCORE_DSS.js"></script>
         <script src="lib/js/ENCORE_SCS.js"></script>
         <script src="lib/js/ENCORE_SSC.js"></script>
-        <script>SSC_settings=["thumbs:true","progressBar:true","sideButtons:true"]</script>
+        <script>SSC_settings={"thumbs":true,"progressBar":true,"sideButtons":true,"timer":5000}</script>
 
     </body>
 </html>
