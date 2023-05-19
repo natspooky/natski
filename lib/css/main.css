@@ -1172,7 +1172,7 @@ footer span
     left: 50%;
     transform: translate(-50%, -50%);
     height: 80%;
-    fill: var(--displaycolourtrans);
+    fill: var(--accentcoltranslighter);
     transition: 0.4s;
 }
 noscript
