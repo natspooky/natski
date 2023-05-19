@@ -1163,6 +1163,7 @@ footer span
     background-color: var(--displaycolourtrans);
     box-shadow: 0 0 40px #00000060;
     overflow: hidden;
+    transition: background-color 1s;
 }
 #inspectPanel div img
 {
