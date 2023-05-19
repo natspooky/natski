@@ -1161,8 +1161,6 @@ footer span
     border-radius: 23px;
     height: 70%;
     background-color: var(--displaycolourtrans);
-    backdrop-filter: blur(3px);
-    -webkit-backdrop-filter: blur(3px);
     box-shadow: 0 0 40px #00000060;
     overflow: hidden;
 }
