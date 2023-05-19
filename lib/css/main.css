@@ -1150,10 +1150,10 @@ footer span
 #inspectPanel div
 {
     position: relative;
-    min-height: min(20vmax,20vmin);
-    min-width: min(20vmax,20vmin);
     border-radius: 23px;
     background-color: var(--displaycolourtrans);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
     box-shadow: 0 0 40px #00000060;
     overflow: hidden;
 }
@@ -1171,7 +1171,7 @@ footer span
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    height: 60%;
+    height: 45%;
     fill: var(--accentcoltranslighter);
     transition: 0.4s;
 }
