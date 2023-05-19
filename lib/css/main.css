@@ -1150,8 +1150,8 @@ footer span
 #inspectPanel div
 {
     position: relative;
-    height: min(70vmax,70vmin);
-    min-width: min(70vmax,70vmin);
+    min-height: min(20vmax,20vmin);
+    min-width: min(20vmax,20vmin);
     border-radius: 23px;
     background-color: var(--displaycolourtrans);
     box-shadow: 0 0 40px #00000060;
@@ -1160,7 +1160,7 @@ footer span
 #inspectPanel div img
 {
     position: relative;
-    height: 100%;
+    height: min(70vmax,70vmin);
     opacity: 0;
     border-radius: 23px;
     transition: 0.4s;
