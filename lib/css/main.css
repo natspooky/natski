@@ -552,25 +552,6 @@ main .title
     font-weight: bold;
     padding: 0.5em 2em;
 }
-.flex
-{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    animation: slide 0.6s;
-}
-.flex .row
-{
-    position: relative;
-    width: 50%;
-    justify-content: center;
-    display: flex;
-}
-.flex .row .column
-{
-    width: 25vw;
-    position: relative;
-}
 main article
 {
     position: relative;
@@ -1125,6 +1106,25 @@ footer span
     border-radius: 100vmax;
     margin: 0 10px;
     background-color: var(--displaycolour);
+}
+.flex
+{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    animation: slide 0.6s;
+}
+.flex .row
+{
+    position: relative;
+    width: 50%;
+    justify-content: center;
+    display: flex;
+}
+.flex .row .column
+{
+    width: 25vw;
+    position: relative;
 }
 #inspectPanel
 {
