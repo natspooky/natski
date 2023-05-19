@@ -537,6 +537,7 @@ header h2
     border-radius: 20px;
     transition: 0.3s;
     transform: scale(1);
+    cursor: pointer;
     grid-column-end: 0;
     grid-row-end: 0;
 }
@@ -1146,6 +1147,13 @@ footer span
     transform: scale(1);
     visibility: visible;
     opacity: 1;
+}
+#inspectPanel section
+{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
 }
 #inspectPanel div
 {
