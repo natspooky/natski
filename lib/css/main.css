@@ -1125,6 +1125,38 @@ footer span
     margin: 0 10px;
     background-color: var(--displaycolour);
 }
+#inspectPanel
+{
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--accentcoltrans);
+}
+#inspectPanel div
+{
+    position: relative;
+    height: min(60vmax,60vmin);
+    min-width: min(60vmax,60vmin);
+    border-radius: 23px;
+    background-color: var(--displaycolourtrans);
+    box-shadow: 0 0 40px #00000060;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: headerimage 0.35s;
+}
+#inspectPanel div img
+{
+    position: relative;
+    height: 100%;
+    opacity: 0;
+}
 noscript
 {
     position: fixed;
