@@ -1136,19 +1136,26 @@ footer span
     align-items: center;
     justify-content: center;
     background-color: var(--accentcoltranslighter);
+    opacity: 0;
+    transform: scale(1.1);
+    visibility: hidden;
+    transition: 0.6s;
+}
+#inspectPanel.active
+{
+    transform: scale(1);
+    visibility: visible;
+    opacity: 1;
 }
 #inspectPanel div
 {
     position: relative;
-    height: min(60vmax,60vmin);
-    min-width: min(60vmax,60vmin);
+    height: min(55vmax,55vmin);
+    min-width: min(55vmax,55vmin);
     border-radius: 23px;
     background-color: var(--displaycolourtrans);
     box-shadow: 0 0 40px #00000060;
     overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     animation: headerimage 0.35s;
 }
 #inspectPanel div img
@@ -1156,6 +1163,17 @@ footer span
     position: relative;
     height: 100%;
     opacity: 0;
+    transition: 0.4s;
+}
+#inspectPanel div svg
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 80%;
+    fill: var(--bar);
+    transition: 0.4s;
 }
 noscript
 {
