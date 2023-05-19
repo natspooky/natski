@@ -80,12 +80,9 @@
             <a href="privacy policy.html" onclick="parent.pageSystem('Privacy Policy');">Privacy Policy</a>
         </footer>
 
-        <div id="inspectPanel">
+        <div id="GVS">
             <section onclick="document.getElementById('inspectPanel').classList.remove('active')"></section>
             <div id="inspectContainer">
-                <svg id="inspectSVG" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.35 850.35">
-                    <path d="M801.36,0H49C21.94,0,0,21.94,0,49V801.36C0,828.42,21.94,850.35,49,850.35H801.36c27.06,0,48.99-21.93,48.99-48.99V49c0-27.06-21.93-49-48.99-49Zm-171.94,97.43c68.56,0,124.14,55.58,124.14,124.14s-55.58,124.14-124.14,124.14-124.15-55.58-124.15-124.14,55.58-124.14,124.15-124.14Zm109.18,677.74H110.59c-29.56,0-48.04-32-33.26-57.6l235.77-408.37c14.78-25.6,51.73-25.6,66.51,0l134.29,232.59,44.98-77.9c14.78-25.6,51.73-25.6,66.51,0l146.46,253.68c14.78,25.6-3.69,57.6-33.25,57.6Z"/>
-                  </svg>
                 <img id="inspectImage" draggable="false" src="">
             </div>
             <button class="pagebutton" onclick="inspectChange('icon/portimg/gcse/', -1)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 398.35 636.29"><path d="M16.05,354l302.18,269.96c30.98,27.68,80.12,5.69,80.12-35.86V48.18c0-41.55-49.14-63.54-80.12-35.86L16.05,282.28c-21.4,19.12-21.4,52.6,0,71.72Z"></path></svg></button>
@@ -97,10 +94,9 @@
             <p>ENCORE.js requires javascript in order to run, please enable javascript</p>
         </noscript>
         <script src="lib/js/ENCORE_DSS.js"></script>
-        <script src="lib/js/ENCORE_IDS.js"></script>
+        <script src="lib/js/ENCORE_GVS.js"></script>
         <script>
-            createGrid(22,'icon/portimg/gcse/','colourimage displayimage scroller','image')
-            createGrid(4,'icon/portimg/gcse/','colourimage displayimage scroller','video')
+            GVS_settings = {'path':'icon/portimg/gcse/','fileCount':22,'classes':'scroller displayimage colourimage'}
         </script>
 
         <script src="lib/js/ENCORE_SCS.js"></script>

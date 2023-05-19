@@ -63,7 +63,7 @@
         flex-direction: column;
         justify-content: unset;
     }
-    .flex .row .columns
+    .flex .row .column
     {
         width: 50vw;
         position: relative;
