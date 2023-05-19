@@ -24,3 +24,14 @@
     fill: #fff;
     height: 15px;
 }
+@media (hover: hover){
+.GVSbuttons:hover
+{
+    background-color: #111111;
+}
+.GVSbuttons:active
+{
+    transform: scale(1.1) translateY(-50%);
+    background-color: #000000;
+    transition: 0s;
+}
