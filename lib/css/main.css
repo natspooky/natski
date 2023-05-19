@@ -1135,7 +1135,7 @@ footer span
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--accentcoltrans);
+    background-color: var(--accentcoltranslighter);
 }
 #inspectPanel div
 {
