@@ -1138,6 +1138,7 @@ footer span
     justify-content: center;
     background-color: var(--accentcoltranslighter);
     opacity: 0;
+    pointer-events: none;
     transform: scale(1.1);
     visibility: hidden;
     transition: 0.3s, background-color 1s;
@@ -1147,6 +1148,7 @@ footer span
     transform: scale(1);
     visibility: visible;
     opacity: 1;
+    pointer-events: unset;
 }
 #inspectPanel section
 {
