@@ -1123,7 +1123,7 @@ footer span
 }
 .flex .row .column
 {
-    width: 25vw;
+    width: 25%;
     position: relative;
 }
 #inspectPanel
