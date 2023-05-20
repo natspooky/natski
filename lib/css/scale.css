@@ -65,7 +65,7 @@
     }
     .flex .row .column
     {
-        width: 50vw;
+        width: 100%;
         position: relative;
     }
     .webcontainer

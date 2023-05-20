@@ -1126,7 +1126,7 @@ footer span
     width: 50%;
     position: relative;
 }
-.flex .row .column img
+.flex .row .column .GVSimage
 {
     flex-grow: 0;
     flex-shrink: 0;
