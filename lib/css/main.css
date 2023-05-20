@@ -1126,6 +1126,13 @@ footer span
     width: 50%;
     position: relative;
 }
+.flex .row .column img
+{
+    flex-grow: 0;
+    flex-shrink: 0;
+    height: unset;
+    width: 100%;
+}
 #inspectPanel
 {
     position: fixed;
