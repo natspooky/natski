@@ -1132,7 +1132,7 @@ footer span
     flex-shrink: 0;
     height: unset;
     width: calc(100% - 1em);
-    margin: 0 0.5em;
+    margin: 0.5em;
 }
 #inspectPanel
 {
