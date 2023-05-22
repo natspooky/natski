@@ -1179,9 +1179,14 @@ footer span
     border-radius: 23px;
     background-color: var(--displaycolourtrans);
     box-shadow: 0 0 40px #00000060;
-    transition: 0.4s;
+    transition: 0.4s, background-color 1s;
     flex-grow: 0;
     flex-shrink: 0;
+}
+#inspectPanel img.active
+{
+    height: auto;
+    width: 90%;
 }
 
 @media (orientation: portrait) {
