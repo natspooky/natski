@@ -1,4 +1,82 @@
-
+#PDS
+{
+    position: relative;
+    width: 100%;
+}
+#PDS .row
+{
+    position: relative;
+    width: 50%;
+    display: inline-block;
+    vertical-align: top;
+}
+#PDS .row .column
+{
+    width: 50%;
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+}
+#PDS .row .column .PDSimages
+{
+    position: relative;
+    display: block;
+    height: auto;
+    width: calc(100% - 1em);
+    margin: 0.5em;
+    border-radius: 20px;
+    cursor: pointer;
+}
+#inspectPanel
+{
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--accentcoltranslighter);
+    opacity: 0;
+    z-index: 999;
+    pointer-events: none;
+    transform: scale(1.1);
+    visibility: hidden;
+    transition: 0.3s, background-color 1s;
+}
+#inspectPanel.active
+{
+    transform: scale(1);
+    visibility: visible;
+    opacity: 1;
+    pointer-events: unset;
+}
+#inspectPanel section
+{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: #00000050;
+    cursor: pointer;
+}
+#inspectPanel img
+{
+    position: relative;
+    height: 70%;
+    opacity: 0;
+    border-radius: 23px;
+    background-color: var(--displaycolourtrans);
+    box-shadow: 0 0 40px #00000060;
+    transition: 0.4s, background-color 1s;
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+#inspectPanel img.active
+{
+    height: auto;
+    width: 80%;
+}
 
 .PDSbuttons
 {
@@ -27,13 +105,26 @@
     height: 15px;
 }
 @media (hover: hover){
-.PDSbuttons:hover
-{
-    background-color: #111111;
+    .PDSbuttons:hover
+    {
+        background-color: #111111;
+    }
+    .PDSbuttons:active
+    {
+        transform: scale(1.1) translateY(-50%);
+        background-color: #000000;
+        transition: 0s;
+    }
 }
-.PDSbuttons:active
-{
-    transform: scale(1.1) translateY(-50%);
-    background-color: #000000;
-    transition: 0s;
+
+@media (orientation: portrait) {
+    #PDS .row
+    {
+        width: 50%;
+    }
+    #PDS .row .column
+    {
+        width: 100%;
+        display: block;
+    }
 }
