@@ -17,7 +17,7 @@
     display: inline-block;
     vertical-align: top;
 }
-#PDS .row .column .PDSimages
+#PDS .row .column img
 {
     position: relative;
     display: block;
@@ -116,7 +116,7 @@
         background-color: #000000;
         transition: 0s;
     }
-    #PDS .row .column .PDSimages:hover
+    #PDS .row .column img:hover
     {
         transform: scale(1.02);
     }
