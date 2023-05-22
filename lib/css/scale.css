@@ -58,16 +58,6 @@
         width: 100%;
         margin: 0.7em 0;
     }
-    .flex .row
-    {
-        flex-direction: column;
-        justify-content: unset;
-    }
-    .flex .row .column
-    {
-        width: 100%;
-        position: relative;
-    }
     .webcontainer
     {
         height: calc(100vmax - 50px);
