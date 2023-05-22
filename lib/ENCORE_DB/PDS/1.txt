@@ -1,24 +1,20 @@
-#PDS
-{
+#PDS {
     position: relative;
     width: 100%;
 }
-#PDS .row
-{
+#PDS .row {
     position: relative;
     width: 50%;
     display: inline-block;
     vertical-align: top;
 }
-#PDS .row .column
-{
+#PDS .row .column {
     width: 50%;
     position: relative;
     display: inline-block;
     vertical-align: top;
 }
-#PDS .row .column img
-{
+#PDS .row .column img {
     position: relative;
     display: block;
     height: auto;
@@ -28,8 +24,7 @@
     cursor: pointer;
     transform: scale(1);
 }
-#inspectPanel
-{
+#inspectPanel {
     position: fixed;
     height: 100%;
     width: 100%;
@@ -46,23 +41,20 @@
     visibility: hidden;
     transition: 0.3s, background-color 1s;
 }
-#inspectPanel.active
-{
+#inspectPanel.active {
     transform: scale(1);
     visibility: visible;
     opacity: 1;
     pointer-events: unset;
 }
-#inspectPanel section
-{
+#inspectPanel section {
     position: absolute;
     height: 100%;
     width: 100%;
     background-color: #00000050;
     cursor: pointer;
 }
-#inspectPanel img
-{
+#inspectPanel img {
     position: relative;
     height: 70%;
     opacity: 0;
@@ -73,14 +65,11 @@
     flex-grow: 0;
     flex-shrink: 0;
 }
-#inspectPanel img.active
-{
+#inspectPanel img.active {
     height: auto;
     width: 80%;
 }
-
-.PDSbuttons
-{
+.PDSbuttons {
     position: absolute;
     top: 50%;
     left: 15px;
@@ -93,42 +82,34 @@
     transform-origin: top;
     transition: 0.2s;
 }
-.PDSbuttons:last-of-type
-{
+.PDSbuttons:last-of-type {
     left: unset;
     right: 15px;
 }
-.PDSbuttons svg
-{
+.PDSbuttons svg {
     position: relative;
     display: block;
     fill: #fff;
     height: 15px;
 }
-@media (hover: hover){
-    .PDSbuttons:hover
-    {
+@media (hover: hover) {
+    .PDSbuttons:hover {
         background-color: #111111;
     }
-    .PDSbuttons:active
-    {
+    .PDSbuttons:active {
         transform: scale(1.1) translateY(-50%);
         background-color: #000000;
         transition: 0s;
     }
-    #PDS .row .column img:hover
-    {
+    #PDS .row .column img:hover {
         transform: scale(1.02);
     }
 }
-
 @media (orientation: portrait) {
-    #PDS .row
-    {
+    #PDS .row {
         width: 50%;
     }
-    #PDS .row .column
-    {
+    #PDS .row .column {
         width: 100%;
         display: block;
     }
