@@ -1,6 +1,6 @@
 
 
-.GVSbuttons
+.PDSbuttons
 {
     position: absolute;
     top: 50%;
@@ -14,12 +14,12 @@
     transform-origin: top;
     transition: 0.2s;
 }
-.GVSbuttons:last-of-type
+.PDSbuttons:last-of-type
 {
     left: unset;
     right: 15px;
 }
-.GVSbuttons svg
+.PDSbuttons svg
 {
     position: relative;
     display: block;
@@ -27,11 +27,11 @@
     height: 15px;
 }
 @media (hover: hover){
-.GVSbuttons:hover
+.PDSbuttons:hover
 {
     background-color: #111111;
 }
-.GVSbuttons:active
+.PDSbuttons:active
 {
     transform: scale(1.1) translateY(-50%);
     background-color: #000000;
