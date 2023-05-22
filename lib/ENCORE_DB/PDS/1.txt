@@ -25,7 +25,6 @@
     width: calc(100% - 1em);
     margin: 1em 0.5em;
     cursor: pointer;
-    transition: 0.3s;
 }
 #inspectPanel
 {
