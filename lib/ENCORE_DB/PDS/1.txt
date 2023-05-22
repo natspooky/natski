@@ -23,7 +23,7 @@
     display: block;
     height: auto;
     width: calc(100% - 1em);
-    margin: 1em 0.5em;
+    margin: 0.5em;
     border-radius: 15px;
     cursor: pointer;
     transform: scale(1);
