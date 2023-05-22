@@ -1180,6 +1180,8 @@ footer span
     background-color: var(--displaycolourtrans);
     box-shadow: 0 0 40px #00000060;
     transition: 0.4s;
+    flex-grow: 0;
+    flex-shrink: 0;
 }
 
 @media (orientation: portrait) {
