@@ -1107,26 +1107,30 @@ footer span
     margin: 0 10px;
     background-color: var(--displaycolour);
 }
-.flex
+
+
+
+
+
+#PDS
 {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    animation: slide 0.6s;
 }
-.flex .row
+#PDS .row
 {
     position: relative;
     width: 50%;
     justify-content: center;
     display: flex;
 }
-.flex .row .column
+#PDS .row .column
 {
     width: 50%;
     position: relative;
 }
-.flex .row .column .GVSimage
+#PDS .row .column .GVSimage
 {
     flex-grow: 0;
     flex-shrink: 0;
@@ -1146,6 +1150,7 @@ footer span
     justify-content: center;
     background-color: var(--accentcoltranslighter);
     opacity: 0;
+    z-index: 999;
     pointer-events: none;
     transform: scale(1.1);
     visibility: hidden;
@@ -1184,6 +1189,24 @@ footer span
     border-radius: 23px;
     transition: 0.4s;
 }
+
+@media (orientation: portrait) {
+    #PDS .row
+    {
+        flex-direction: column;
+        justify-content: unset;
+    }
+    #PDS .row .column
+    {
+        width: 100%;
+        position: relative;
+    }
+}
+
+
+
+
+
 noscript
 {
     position: fixed;
