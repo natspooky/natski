@@ -1065,6 +1065,7 @@ footer
     align-items: center;
     background-color: #232323;
     color: var(--textmain);
+    animation: opacity 0.6s;
 }
 footer div
 {
