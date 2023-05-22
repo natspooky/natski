@@ -24,8 +24,9 @@
     height: auto;
     width: calc(100% - 1em);
     margin: 0.5em;
-    border-radius: 20px;
+    opacity: 0;
     cursor: pointer;
+    transition: 0.3s;
 }
 #inspectPanel
 {
