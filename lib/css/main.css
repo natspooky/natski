@@ -1114,30 +1114,29 @@ footer span
 
 #PDS
 {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    
 }
 #PDS .row
 {
     position: relative;
     width: 50%;
-    justify-content: center;
-    display: flex;
+    display: inline-block;
 }
 #PDS .row .column
 {
     width: 50%;
     position: relative;
+    display: inline-block;
 }
 #PDS .row .column .GVSimage
 {
-    flex-grow: 0;
-    flex-shrink: 0;
-    height: unset;
+
+    height: auto;
     width: calc(100% - 1em);
     margin: 0.5em;
 }
+
+
 #inspectPanel
 {
     position: fixed;
