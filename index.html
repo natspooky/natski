@@ -41,7 +41,7 @@
         <script src="lib/js/images.js"></script>
         
 	</head>
-    <body style="background-image: linear-gradient(to top left, transparent, transparent, #202020);" onload="document.body.style.position='unset';document.body.style.overflow='unset'">
+    <body style="background-image: linear-gradient(to top left, transparent, transparent, #202020);" onload="document.body.style.position='unset';document.body.style.overflow='unset';document.getElementById('loadscreen').classList.add('loaded')">
 
         <header class="slideshowcontainer" id="SSC">
 
@@ -252,6 +252,37 @@
                 </button>
             </div>
         </div>
+        <div id="loadscreen">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.35 850.35">
+                <path d="M850.35,48.04V802.31c0,26.53-21.51,48.04-48.04,48.04h-171.87c-18.33,0-35.64-8.4-46.98-22.8l-243.52-309.3c-29.93-38.02-91.02-16.85-91.02,31.53v252.55c0,26.52-21.5,48.02-48.02,48.02H48.02c-26.52,0-48.02-21.5-48.02-48.02V48.02C0,21.5,21.5,0,48.02,0H219.9c18.33,0,35.64,8.4,46.99,22.8l243.46,309.07c29.96,38.03,91.08,16.85,91.08-31.56V48.04c0-26.53,21.51-48.04,48.04-48.04h152.85c26.53,0,48.04,21.51,48.04,48.04Z"/>
+            </svg>
+        </div>
+        <style>
+            #loadscreen
+            {
+                position: fixed;
+                height: 100%;
+                width: 100%;
+                top: 0;
+                left: 0;
+                opacity: 1;
+                visibility: visible;
+                background-color: #000000;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                transition: 0.8s;
+            }
+            #loadscreen svg
+            {
+                height: 12em;
+            }
+            #loadscreen.loaded
+            {
+                opacity: 0;
+                visibility: hidden;
+            }
+        </style>
         <script>
                 function pageSystem(e){
                     loader()
@@ -326,6 +357,7 @@
                 }
 
         </script>
+
 
 
         <noscript>
