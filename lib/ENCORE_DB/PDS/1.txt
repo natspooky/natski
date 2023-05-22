@@ -23,7 +23,7 @@
     display: block;
     height: auto;
     width: calc(100% - 1em);
-    margin: 0.5em;
+    margin: 1em 0.5em;
     opacity: 0;
     cursor: pointer;
     transition: 0.3s;
