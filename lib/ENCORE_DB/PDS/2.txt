@@ -23,7 +23,7 @@
     height: auto;
     width: 100%;
     margin: 0;
-    border-radius: 0px;
+    border-radius: 100vmax;
     cursor: pointer;
     float: left;
     transform: scale(1);
