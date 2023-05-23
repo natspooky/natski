@@ -2,6 +2,7 @@
     position: relative;
     width: 100%;
     display: block;
+    overflow: hidden;
 }
 #PDS .row {
     position: relative;
