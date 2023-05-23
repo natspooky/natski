@@ -80,7 +80,7 @@
     transform: translateY(-50%);
     padding: 25px 10px;
     border-radius: 10px;
-    background-color: #222222;
+    background-color: #66666670;
     transform-origin: top;
     transition: 0.2s;
 }
@@ -96,11 +96,11 @@
 }
 @media (hover: hover) {
     .PDSbuttons:hover {
-        background-color: #111111;
+        background-color: #666666b0;
     }
     .PDSbuttons:active {
         transform: scale(1.1) translateY(-50%);
-        background-color: #000000;
+        background-color: #666666e0;
         transition: 0s;
     }
     #PDS .row .column img:hover {
