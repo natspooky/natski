@@ -1,6 +1,7 @@
 #PDS {
     position: relative;
     width: 100%;
+    height: auto;
     display: block;
     padding: 0.5em;
 }
