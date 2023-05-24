@@ -42,7 +42,7 @@
         <script src="lib/js/images.js"></script>
         
 	</head>
-    <body style="background-image: linear-gradient(to top left, transparent, transparent, #202020);" onload="document.body.style.position='unset';document.body.style.overflow='unset';document.getElementById('loadscreen').classList.add('loaded')">
+    <body style="background-image: linear-gradient(to top left, transparent, transparent, #202020);" onload="systemStart()">
 
         <header class="slideshowcontainer" id="SSC">
 
@@ -257,6 +257,13 @@
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.35 850.35">
                 <path d="M850.35,48.04V802.31c0,26.53-21.51,48.04-48.04,48.04h-171.87c-18.33,0-35.64-8.4-46.98-22.8l-243.52-309.3c-29.93-38.02-91.02-16.85-91.02,31.53v252.55c0,26.52-21.5,48.02-48.02,48.02H48.02c-26.52,0-48.02-21.5-48.02-48.02V48.02C0,21.5,21.5,0,48.02,0H219.9c18.33,0,35.64,8.4,46.99,22.8l243.46,309.07c29.96,38.03,91.08,16.85,91.08-31.56V48.04c0-26.53,21.51-48.04,48.04-48.04h152.85c26.53,0,48.04,21.51,48.04,48.04Z"/>
             </svg>
+            <p>ENCORE N2.0.4</p>
+            <button class="navbutton">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 834.61 834.61" style="animation: rotate 1.5s linear infinite;">
+                    <path style="stroke-linecap: round;stroke-width: 100px;fill: none;stroke: var(--svgcolor);stroke-miterlimit: 10;" d="M772.51,540.33c-50.95,147.13-190.73,252.78-355.2,252.78-207.55,0-375.81-168.25-375.81-375.8S209.76,41.5,417.31,41.5c164.47,0,304.25,105.65,355.2,252.79"/>
+                    <circle fill="none" cx="417.31" cy="417.31" r="375.78"/>
+                </svg>
+            </button>
         </div>
         <style>
             #loadscreen
@@ -279,7 +286,6 @@
             {
                 height: 12em;
                 animation: opacity 1s;
-
             }
             #loadscreen.loaded
             {
@@ -287,8 +293,32 @@
                 visibility: hidden;
                 pointer-events: none;
             }
+            #loadscreen p
+            {
+                position: absolute;
+                bottom: 16.5px;
+                left: 50px;
+                font-weight: bold;
+                color: #fff;
+            }
+            #loadscreen button
+            {
+                position: absolute;
+                bottom: 5px;
+                left: 0;
+            }
         </style>
         <script>
+
+                function systemStart() {
+                    document.body.style.position='unset';
+                    document.body.style.overflow='unset';
+                    document.getElementById('loadscreen').classList.add('loaded')
+                    setTimeout(() => {
+                        document.getElementById('loadscreen').remove()
+                    }, 2500)
+                }
+
                 function pageSystem(e){
                     loader()
                     let title = document.getElementById('pageTitle')
