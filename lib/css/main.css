@@ -74,7 +74,7 @@ body, html {
     -ms-touch-action: manipulation;
     touch-action: manipulation;
     color: var(--textmain);
-    background-color: var(--accentcol);
+    background-color: #000;
 }
 body
 {
