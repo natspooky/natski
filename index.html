@@ -273,16 +273,19 @@
                 justify-content: center;
                 align-items: center;
                 transition: 0.8s;
-                transition-delay: 0.5s;
+                transition-delay: 1s;
             }
             #loadscreen svg
             {
                 height: 12em;
+                animation: opacity 1s;
+
             }
             #loadscreen.loaded
             {
                 opacity: 0;
                 visibility: hidden;
+                pointer-events: none;
             }
         </style>
         <script>
