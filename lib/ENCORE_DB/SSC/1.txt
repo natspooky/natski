@@ -34,7 +34,7 @@
     background-color: var(--SSCcolor);
     cursor: pointer;
 }
-#SSC .pagebutton:last-child
+#SSC .pagebutton:last-of-type
 {
     left: unset;
     right: 15px;
