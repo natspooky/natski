@@ -272,7 +272,8 @@
         'thumbs':true,
         'progressBar':true,
         'sideButtons':true,
-        'timer':5000
+        'timer':10000,
+        'style':null (1 to 2)
     }
 &lt;/script&gt;
 </code></pre>
@@ -291,6 +292,8 @@
     &lt;div class="banner-bg"&gt; &lt;!-- duplicate 'banner-bg' for the amount of pages you want --&gt;
 
         &lt;img src="path of background image" draggable="false" alt="" loading="eager"&gt;
+
+        &lt;a class="banner-button" href=""&gt;link text&lt;/a&gt; &lt;!-- can be deleted --&gt;
 
         &lt;!-- place content in here --&gt;
 
@@ -312,6 +315,8 @@
                     <div class="banner-bg">
                 
                         Preview 1
+
+                        <a class="banner-button">link text</a>
                 
                     </div>
 
@@ -339,7 +344,7 @@
                     <input type="checkbox" id="but" class="codewindow" style="margin: 0;" checked><br>
 
                     <label for="tim">Timer</label><br>
-                    <input type="number" class="codewindow" style="margin: 0;" id="tim" value="5000"><br><br>
+                    <input type="number" class="codewindow" style="margin: 0;" id="tim" value="10000"><br><br>
 
                     <button class="codewindow" style="text-align: center; margin: 0;" onclick="SSC_settings={'thumbs':document.getElementById('thumb').checked,'progressBar':document.getElementById('prog').checked,'sideButtons':document.getElementById('but').checked,'timer':document.getElementById('tim').value}; loadSSC(SSC_settings);">Apply Changes</button>
                 </div>
@@ -421,7 +426,7 @@
         'fileCount':number of images,
         'classes':'additional classes',
         'colourSystem':true,
-        'style':pre-made styles (1 to 2)
+        'style':null (1 to 2)
     }
 &lt;/script&gt;
 </code></pre>
@@ -511,7 +516,7 @@
         </noscript>
         <script src="lib/js/ENCORE_NAT.js"></script>
         <script src="lib/js/ENCORE_SSC.js"></script>
-        <script>SSC_settings={'thumbs':true,'progressBar':true,'sideButtons':true,'timer':5000}</script>
+        <script>SSC_settings={'thumbs':true,'progressBar':true,'sideButtons':true,'timer':10000,'style':null}</script>
         <script src="lib/js/ENCORE_CLS.js"></script>
         <script>CLS_settings={'path':'https://natski.netlify.app/lib/txt/changelog','fileCount':6,'container':document.getElementById('CLSwindow')}</script>
         <script src="lib/js/ENCORE_PDS.js"></script>
