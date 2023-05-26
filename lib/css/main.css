@@ -272,6 +272,11 @@ nav span
 {
     float: unset;
     margin: 60px 25px 0px 25px;
+    display: none;
+}
+.iframePanel.active button
+{
+    display: flex;
 }
 .iframePanel button:last-child
 {
