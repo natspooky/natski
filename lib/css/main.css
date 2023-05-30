@@ -355,6 +355,7 @@ header h2
     font-size: 3.5rem;
     width: 100%;
     text-align: center;
+    animation: opacity 0.35s;
 }
 .pagebutton
 {

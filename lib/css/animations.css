@@ -1,6 +1,6 @@
 @keyframes headerimage {
-    from{transform: scale(0.5); opacity: 0.3;}
-    to{transform: scale(1); opacity: 1;}
+    from{transform: scale(0.5);}
+    to{transform: scale(1);}
 }
 
 @keyframes fadein {
