@@ -258,6 +258,14 @@ nav span
     transform: translateY(0);
     visibility: visible;
 }
+.iframePanel header
+{
+    visibility: hidden;
+}
+.iframePanel.active header
+{
+    visibility: visible;
+}
 .iframePanel iframe
 {
     position: absolute;

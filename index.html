@@ -180,12 +180,12 @@
         </footer>
 
         <div class="iframePanel" id="iframePanel">
-            <button class="navbutton" name="loading..." style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); margin: 0;">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 834.61 834.61" style="animation: rotate 1.5s linear infinite;">
-                    <path style="stroke-linecap: round;stroke-width: 100px;fill: none;stroke: var(--svgcolor);stroke-miterlimit: 10;" d="M772.51,540.33c-50.95,147.13-190.73,252.78-355.2,252.78-207.55,0-375.81-168.25-375.81-375.8S209.76,41.5,417.31,41.5c164.47,0,304.25,105.65,355.2,252.79"/>
-                    <circle fill="none" cx="417.31" cy="417.31" r="375.78"/>
-                </svg>
-            </button>
+
+            <header style="position: absolute;">
+                <div class="imagebox" style="transform: scale(0.5);"></div>
+                <h2 style="color: transparent; background-color: var(--displaycolourtrans); border-radius: 100vmax; width: max(70vmin,50vw);">placeholder</h2>
+            </header>
+
             <iframe id="iframe"></iframe>
             <button class="navbutton" style="display: flex;" name="close" onclick="unloadframe();backPage(-1000)">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.39 850.39">
