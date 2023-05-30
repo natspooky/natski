@@ -96,6 +96,63 @@ button,a
     text-decoration: none;
     color: var(--textmain);
 }
+header
+{
+    position: relative;
+    width: 100%;
+    display: flex;
+    padding: 0 20px;
+    margin: 0 0 20px 0;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+header .observe
+{
+    position: absolute;
+    height: 200px;
+    top: 100px;
+    width: 100%;
+}
+header .imagebox
+{
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin: 100px 0 20px 0;
+    border-radius: 23px;
+    background-color: var(--displaycolourtrans);
+    box-shadow: 0 0 40px #00000060;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: headerimage 0.35s;
+}
+header .imagebox img
+{
+    position: absolute;
+    left: 0;
+    top: 0;
+    border-radius: 22px;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: 0.2s;
+}
+header .imagebox svg
+{
+    position: relative;
+    height: 80%;
+    fill: var(--bar);
+}
+header h2
+{
+    font-size: 3.5rem;
+    width: 100%;
+    text-align: center;
+    animation: opacity 0.35s;
+}
 .static,.menustatic
 {
     position: fixed;
@@ -299,63 +356,6 @@ nav span
     visibility: visible;
     transform: scale(1);
     opacity: 1;
-}
-header
-{
-    position: relative;
-    width: 100%;
-    display: flex;
-    padding: 0 20px;
-    margin: 0 0 20px 0;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-header .observe
-{
-    position: absolute;
-    height: 200px;
-    top: 100px;
-    width: 100%;
-}
-header .imagebox
-{
-    position: relative;
-    width: 200px;
-    height: 200px;
-    margin: 100px 0 20px 0;
-    border-radius: 23px;
-    background-color: var(--displaycolourtrans);
-    box-shadow: 0 0 40px #00000060;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    animation: headerimage 0.35s;
-}
-header .imagebox img
-{
-    position: absolute;
-    left: 0;
-    top: 0;
-    border-radius: 22px;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    transition: 0.2s;
-}
-header .imagebox svg
-{
-    position: relative;
-    height: 80%;
-    fill: var(--bar);
-}
-header h2
-{
-    font-size: 3.5rem;
-    width: 100%;
-    text-align: center;
-    animation: opacity 0.35s;
 }
 .pagebutton
 {
