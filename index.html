@@ -362,6 +362,7 @@
                     unloader()
                     changeBar('var(--bar)')
                     reloadFrame()
+                    play()
                 }
 
                 function loadframe(e) {
@@ -374,6 +375,7 @@
                     document.getElementById('iframe').src=e+'.html';
                     backPage(-1000)
                     pageSystem(e.charAt(0).toUpperCase() + e.slice(1))
+                    pause()
                 }
 
                 function reloadFrame() {
