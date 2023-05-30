@@ -144,7 +144,6 @@ header .imagebox svg
 {
     position: relative;
     height: 80%;
-    fill: var(--bar);
 }
 header h2
 {
