@@ -63,7 +63,7 @@
             <article style="animation: opacity 0.5s;">
                 <h3>Performance {WIP}</h3>
                 <hr>
-                <input type="checkbox" id="performance">
+                <input type="checkbox" id="performance" onchange="perf('performance', this)">
                 <br><br>
                 <h3>{WIP}</h3>
                 <hr>
@@ -126,11 +126,12 @@
         <script>
             if(localStorage.getItem("performance")==='true'){
                 document.getElementById("performance").checked = true;
-            };
+            }
+            
 
-            $("#performance").on("input",function(){
-                localStorage.setItem('performance', document.getElementById("performance").checked);
-            });
+            function perf(name, value){
+                localStorage.setItem(name, value.checked)
+            }
         </script>
 
         <footer>
