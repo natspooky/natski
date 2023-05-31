@@ -18,11 +18,6 @@
     to{opacity: 1; transform: translateY(0);}
 }
 
-@keyframes rotate {
-    from{transform: rotate(0deg);}
-    to{transform: rotate(360deg);}
-}
-
 @keyframes popout {
     from{transform: translate(-50%, -100%); opacity: 0.3;}
     to{transform: translate(-50%, calc(-100% - 0.6em)); opacity: 1;}
@@ -33,6 +28,6 @@
     to{opacity: 1;}
 }
 @keyframes rotate {
-    from{transform: rotate(0) scale(0.8);}
-    to{transform: rotate(360deg) scale(0.8);}
+    from{transform: rotate(0) scale(0.9);}
+    to{transform: rotate(360deg) scale(0.9);}
 }
