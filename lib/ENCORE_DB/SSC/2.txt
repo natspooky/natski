@@ -70,6 +70,7 @@
     height: 100%;
     background-color: #e9e9e9;
     border-radius: 100vmax;
+    transition: 0.1s linear;
 }
 #SSC .banner-bg
 {
