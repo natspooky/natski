@@ -760,7 +760,7 @@ main article ul li a
 {
     position: relative;
     padding: 0.5em;
-    border-radius: 10px;
+    border-radius: 18px;
     background-color: var(--accentcoltranslighter);
     line-height: 1.5em;
     transition: 0.2s;
@@ -779,9 +779,10 @@ main article ul li a
 .featurebanner img
 {
     margin: 0 0.5em 0 0;
-    border-radius: 5px;
+    border-radius: 10px;
     height: 3em;
-    width: unset;
+    width: 3em;
+    background-color: #303030;
 }
 .featurebanner p
 {
