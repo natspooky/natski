@@ -96,6 +96,13 @@ body, html {
     color: var(--textmain);
     background-color: var(--accentcol);
 }
+
+
+
+
+
+
+
 @media (prefers-color-scheme: light) {
     :root
     {
@@ -110,171 +117,113 @@ body, html {
         --SSCaccent: #464646;
     }
 }
-#SSC
+
+main article
 {
     position: relative;
-    height: 100vh;
-    transform: scale(0.9);
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    background-color: #101010;
-    border-radius: 10px;
-    border: 2px solid var(--SSCcolor);
-    overflow: hidden;
-}
-#SSC .pagebutton
-{
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    left: 15px;
-    padding: 1.5em 0.6em;
-    border-radius: 8px;
-    border: 0;
-    background-color: var(--SSCcolor);
-    cursor: pointer;
-}
-#SSC .pagebutton:last-of-type
-{
-    left: unset;
-    right: 15px;
-}
-#SSC .pagebutton svg
-{
+    line-height: 1.55rem;
+    font-size: 1.2rem;
     display: block;
-    fill: #e9e9e9;
-    height: 15px;
+    width: max(95vmin,68vw);
+    border-radius: 20px;
+    padding: 1em;
+    margin: 0px auto 20px auto;
+    background-color: var(--SSCcolor);
+    text-align: justify;
+    user-select: text;
+    color: #e9e9e9;
 }
-#SSC .pagebutton:active
+main article hr
 {
-    background-color: #10101030;
+    border: 2px solid #222222;
+    margin: 0 0 1em 0;
 }
-#SSC .progress
+main article .mini
+{
+    width: 90%;
+    display: block;
+    background-image: linear-gradient(to right, transparent, var(--maincol), transparent);
+    height: 4px;
+    border: 0;
+    margin: 1em auto 0.8em auto;
+}
+main article h3
 {
     position: relative;
-    height: 5px;
-    width: 70%;
-    bottom: 15px;
-    background-color: var(--SSCcolor);
-    border-radius: 100vmax;
-    overflow: hidden;
+    font-size: 2rem;
+    text-align: left;
+    margin-top: 1em;
+    padding: 0em 0em 0.5em 0em;
+    line-height: 2rem;
 }
-#SSC .progress .progress-bar
+main article h4
 {
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    background-color: #e9e9e9;
-    border-radius: 100vmax;
-    transition: 0.1s linear;
+    position: relative;
+    padding: 0.3em;
+    background-color: var(--SSCaccent);
+    text-align: center;
+    font-size: 2rem;
+    line-height: 2rem;
+    border-radius: 7px;
+    z-index: 999;
 }
-#SSC .thumbs
+main article section
 {
-    
-    position: absolute;
-    padding: 0.3em 0em;
+    margin: 0 0 0.6em 0;
+    width: 100%;
     display: flex;
     align-items: center;
-    border-radius: 100vmax;
-    background-color: var(--SSCcolor);
-    bottom: 30px;
 }
-#SSC .thumbs .thumb
+main article section p
 {
-    position: relative;
-    border-radius: 100vmax;
-    height: 20px;
-    width: 20px;
-    border: 0px solid var(--SSCaccent);
-    background-color: var(--SSCaccent);
-    margin: 0 0.5em;
-    transition: 0.2s;
+    text-align: left;
+}
+main article section p a,main article section p button
+{
+    font-weight: bold;
+    color: var(--themecol);
     cursor: pointer;
+    line-height: 1.55rem;
+    font-size: 1.2rem;
 }
-#SSC .thumbs .thumb.active
+main article section svg
 {
-    border: 5px solid var(--SSCaccent);
-    background-color: #e9e9e9;
+    width: 15px;
+    margin: 0 0.4em;
+    flex-shrink: 0;
 }
-#SSC .banner-bg
+.red
 {
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 100%;
-    display: none;
-    justify-content: center;
-    animation: fadeIn 1s;
+    fill: #ff6961;
 }
-#SSC .banner-bg img
+.green
 {
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
+    fill: #77dd77;
 }
-#SSC .banner-bg .banner-button
+.white
 {
-    position: absolute;
-    padding: 0.7em 1.8em;
-    border-radius: 100vmax;
-    color: #ffffff;
-    text-decoration: none;
-    background-color: var(--SSCcolor);
-    height: fit-content;
-    cursor: pointer;
-    bottom: 70px;
-}
-@keyframes fadeIn
-{
-    from{opacity: 0.4;}
-    to{opacity: 1;}
+    fill: #e9e9e9;
+    transform: scale(0.75);
 }
         </style>
 
         
        
 
-<div id="SSC" style="opacity: 0; display: none;">
+<main id="CLS">
+    <article>
+        <h4>03 / 06 / 2023</h4><hr class="mini"><h3>title</h3><hr><section><svg class="green" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 609.73 609.73"><path d="M305.04,609.73c-15.82,.01-30.15-6.4-40.52-16.76-10.37-10.37-16.76-24.65-16.76-40.45l-.11-190.37-190.37,.11C25.66,362.28,.02,336.66,0,305.04c-.02-15.82,6.4-30.14,16.77-40.51s24.65-16.76,40.45-16.77l190.37-.11-.11-190.37C247.46,25.67,273.07,.02,304.69,0c15.82-.01,30.14,6.4,40.51,16.77s16.77,24.65,16.77,40.45l.11,190.37,190.37-.11c31.61-.02,57.26,25.6,57.28,57.21,.01,15.82-6.4,30.15-16.77,40.52-10.37,10.37-24.65,16.76-40.45,16.76l-190.37,.11,.11,190.37c.02,31.62-25.59,57.26-57.21,57.28Z"/></svg><p>asfsdg</p></section><section><svg class="red" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 616.14 616.14"><path d="M593.94,593.61c-14.82,14.84-34.25,22.26-53.68,22.26s-38.81-7.4-53.62-22.2l-178.51-178.3-178.3,178.51c-29.62,29.65-77.66,29.68-107.31,.06-14.84-14.81-22.25-34.25-22.25-53.68s7.39-38.81,22.19-53.62l178.3-178.51L22.25,129.83c-29.64-29.62-29.67-77.66-.06-107.31C37.01,7.68,56.44,.27,75.87,.27s38.82,7.39,53.63,22.19l178.51,178.3L486.31,22.25c29.61-29.64,77.65-29.67,107.3-.06,14.84,14.82,22.26,34.25,22.26,53.69s-7.4,38.81-22.2,53.62l-178.3,178.51,178.51,178.3c29.65,29.61,29.68,77.65,.06,107.3Z"/></svg><p>sghadsh</p></section><section><svg class="green" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 692.13 496.44"><path d="M692.13,75.84c0,21.49-9.08,42.85-26.74,57.86L259.79,478.38c-14.27,12.13-31.73,18.06-49.1,18.06-21.49,0-42.84-9.08-57.85-26.74L18.06,311.1c-27.14-31.94-23.25-79.82,8.68-106.96,14.28-12.13,31.73-18.06,49.1-18.06,21.5,0,42.85,9.09,57.86,26.75l85.64,100.77L567.12,18.06c31.94-27.13,79.82-23.25,106.96,8.69,12.12,14.27,18.05,31.72,18.05,49.09Z"/></svg><p>sdfg</p></section><section><svg class="white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1133.86 1133.86"><circle cx="566.93" cy="566.93" r="566.93"/></svg><p>adfhasdfg</p></section>
+    </article>
+</main>
 
-    <div class="banner-bg"> <!-- duplicate 'banner-bg' for the amount of pages you want -->
-
-        <img src="icon/img/1.png" draggable="false" alt="" loading="eager">
-
-        <a class="banner-button" href="">enter</a>
-
-    </div>
-
-    <div class="banner-bg"> <!-- duplicate 'banner-bg' for the amount of pages you want -->
-
-        <img src="icon/img/1.png" draggable="false" alt="" loading="eager">
-
-        <a class="banner-button" href="">enter</a>
-
-    </div>
+<section id="CLSloader"></section>
 
 
-</div>
 
 
 
      
-            <script src="lib/js/ENCORE_SSC.js"></script>
-            <script>
-                SSC_settings={
-                    'thumbs':true,
-                    'progressBar':true,
-                    'sideButtons':true,
-                    'timer':10000,
-                    'style':null
-                }
-            </script>
+
             
 
     </body>
