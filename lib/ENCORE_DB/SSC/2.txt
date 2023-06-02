@@ -80,6 +80,8 @@
     height: 100%;
     width: 100%;
     display: none;
+    align-items: center;
+    justify-content: center;
     animation: fadeIn 1s;
 }
 #SSC .banner-bg img
