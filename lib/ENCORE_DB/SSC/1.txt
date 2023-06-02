@@ -16,11 +16,15 @@
 {
     position: relative;
     height: 100vh;
+    transform: scale(0.9);
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: flex-end;
     background-color: #101010;
+    border: 2px solid var(--SSCcolor);
+    border-radius: 10px;
+    overflow: hidden;
 }
 #SSC .pagebutton
 {
@@ -90,6 +94,7 @@
     background-color: var(--SSCaccent);
     margin: 0 0.5em;
     transition: 0.2s;
+    cursor: pointer;
 }
 #SSC .thumbs .thumb.active
 {
@@ -104,6 +109,7 @@
     height: 100%;
     width: 100%;
     display: none;
+    justify-content: center;
     animation: fadeIn 1s;
 }
 #SSC .banner-bg img
@@ -114,6 +120,18 @@
     height: 100%;
     width: 100%;
     object-fit: cover;
+}
+#SSC .banner-bg .banner-button
+{
+    position: absolute;
+    padding: 0.7em 1.8em;
+    border-radius: 100vmax;
+    color: #ffffff;
+    text-decoration: none;
+    background-color: var(--SSCcolor);
+    height: fit-content;
+    cursor: pointer;
+    bottom: 70px;
 }
 @keyframes fadeIn
 {
