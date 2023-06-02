@@ -150,8 +150,6 @@
                 border-radius: 10px;
                 margin-top: 1em;
                 display: flex;
-                flex-direction: column;
-                align-items: center;
                 box-shadow: 0 0 5px #00000020;
                 border: 2px solid var(--displaycolourtrans);
             }
@@ -395,7 +393,7 @@
                     </button>
                 </div>
                 <br><span>ENCORE CLS example:</span>
-                <div class="preview" id="CLSwindow" style="overflow-y: scroll; padding-top: 0.5em; height: 60vh;">
+                <div class="preview" id="CLSwindow" style="overflow-y: scroll; padding-top: 0.5em; height: 60vh; flex-direction: column; align-items: center;">
                     <main id="CLS"></main>
                     <section id="CLSloader">
                         <div>
@@ -450,9 +448,7 @@
                     </button>
                 </div>
                 <br><span>ENCORE PDS example:</span>
-                <div id="PDS" class="preview" style="height: auto; display: block; justify-content: unset; align-items: unset; padding-top: 0.5em;">
-                
-                </div>
+                <div id="PDS" class="preview" style="height: auto; display: block; justify-content: unset; align-items: unset; padding-top: 0.5em; flex-direction: column;"></div>
                 <br><span>ENCORE PDS theme templates:</span>
                 <div class="codewindow" style="margin-bottom: 0;">
                 coming soon</div>
