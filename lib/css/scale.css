@@ -1,10 +1,5 @@
 @media (orientation: portrait)
 {
-    .progress
-    {
-        left:10%;
-        right: 10%;
-    }
     .slidecontainer,.chapterselector
     {
         display: none;
@@ -65,31 +60,5 @@
     main article .exampleframe
     {
         display: none;
-    }
-    .banner-bg div
-    {
-        margin: 0.6em 1em 1em 1em;
-    }
-    .banner-bg div svg
-    {
-        position: absolute;
-        top: 0;
-        left: 0;
-        opacity: 0.07;
-        width: 100%;
-        height: 100%;
-        transform: scale(0.9);
-        object-fit: cover;
-    }
-    .banner-bg div h1
-    {
-        text-align: center;
-        width: 100%;
-        line-height: normal;
-    }
-    .banner-bg div p
-    {
-        width: 100%;
-        text-align: center;
     }
 }
