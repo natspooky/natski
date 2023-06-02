@@ -15,10 +15,9 @@
 #SSC
 {
     position: relative;
-    height: calc(100vh - 120px);
-    top: 60px;
-    left: 60px;
-    width: calc(100% - 120px);
+    height: 100vh;
+    transform: scale(0.9);
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: flex-end;
@@ -29,7 +28,6 @@
 #SSC .pagebutton
 {
     position: relative;
-    top: 0;
     bottom: 30px;
     display: block;
     margin: 0 5em;
