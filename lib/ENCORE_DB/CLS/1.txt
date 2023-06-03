@@ -19,6 +19,7 @@ main article
     width: max(95vmin,68vw);
     border-radius: 20px;
     padding: 1em;
+    background-color: transparent;
     margin: 10px auto;
     border: 2px solid var(--SSCcolor);
     text-align: justify;
@@ -53,6 +54,7 @@ main article h4
 {
     position: relative;
     padding: 0.3em;
+    top: unset;
     background-color: var(--SSCcolor);
     border: 2px solid var(--SSCcolor);
     text-align: center;
