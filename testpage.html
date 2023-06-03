@@ -107,17 +107,14 @@ body, html {
     :root
     {
         --SSCcolor: #505050b0;
-        --SSCaccent: #666666;
     }
 }
 @media (prefers-color-scheme: dark) {
     :root
     {
-        --SSCcolor: #1b1b1b90;
-        --SSCaccent: #464646;
+        --SSCcolor: #2a2a2a90;
     }
 }
-
 main article
 {
     position: relative;
@@ -127,22 +124,23 @@ main article
     width: max(95vmin,68vw);
     border-radius: 20px;
     padding: 1em;
-    margin: 0px auto 20px auto;
-    background-color: var(--SSCcolor);
+    margin: 10px auto;
+    border: 2px solid var(--SSCcolor);
     text-align: justify;
     user-select: text;
     color: #e9e9e9;
 }
 main article hr
 {
-    border: 2px solid #222222;
+    border: 2px solid var(--SSCcolor);
     margin: 0 0 1em 0;
+    border-radius: 100vmax;
 }
 main article .mini
 {
     width: 90%;
     display: block;
-    background-image: linear-gradient(to right, transparent, var(--maincol), transparent);
+    background-image: linear-gradient(to right, transparent,#8f8f8f, transparent);
     height: 4px;
     border: 0;
     margin: 1em auto 0.8em auto;
@@ -160,7 +158,8 @@ main article h4
 {
     position: relative;
     padding: 0.3em;
-    background-color: var(--SSCaccent);
+    background-color: var(--SSCcolor);
+    border: 2px solid var(--SSCcolor);
     text-align: center;
     font-size: 2rem;
     line-height: 2rem;
@@ -178,14 +177,6 @@ main article section p
 {
     text-align: left;
 }
-main article section p a,main article section p button
-{
-    font-weight: bold;
-    color: var(--themecol);
-    cursor: pointer;
-    line-height: 1.55rem;
-    font-size: 1.2rem;
-}
 main article section svg
 {
     width: 15px;
@@ -202,7 +193,7 @@ main article section svg
 }
 .white
 {
-    fill: #e9e9e9;
+    fill: #dcdcdc;
     transform: scale(0.75);
 }
         </style>

@@ -36,65 +36,10 @@
         <meta name="twitter:card" content="summary">
         <link rel="stylesheet" type="text/css" href="lib/css/main.css"/>
         <link rel="stylesheet" type="text/css" href="lib/css/animations.css"/>
-        <link rel="stylesheet" type="text/css" media="screen and (orientation: portrait)" href="lib/css/scale.css"/>
-        
+        <link rel="stylesheet" type="text/css" media="screen and (orientation: portrait)" href="lib/css/scale.css"/> 
 	</head>
     <body style="position: relative; overflow: visible;">
 
-        <div id="colourlesspanelback"></div>
-        <div id="colourpanelback"></div>
-
-        <header>
-            <div class="observe"></div>
-            <div class="imagebox">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.39 850.39">
-                    <path fill="var(--bar)" d="M746.41,0H103.99C77.59,0,56.19,21.4,56.19,47.8V802.6c0,26.39,21.4,47.79,47.8,47.79H746.41c26.39,0,47.79-21.4,47.79-47.79V47.8C794.2,21.4,772.8,0,746.41,0Zm-36.6,749.3c0,9.22-7.48,16.7-16.71,16.7H157.29c-9.23,0-16.71-7.48-16.71-16.7V101.1c0-9.23,7.48-16.71,16.71-16.71H699.41c5.74,0,10.4,4.66,10.4,10.4V749.3Z"/>
-                    <rect fill="var(--bar)" x="371.3" y="-59.51" width="107.79" height="483.41" rx="53.9" ry="53.9" transform="translate(607.4 -243) rotate(90)"/>
-                    <rect fill="var(--bar)" x="397.5" y="186.14" width="55.4" height="323.31" rx="27.7" ry="27.7" transform="translate(772.99 -77.4) rotate(90)"/>
-                    <rect fill="var(--bar)" x="397.5" y="229.39" width="55.4" height="443.21" rx="27.7" ry="27.7" transform="translate(876.19 25.8) rotate(90)"/>
-                    <rect fill="var(--bar)" x="397.5" y="447.39" width="55.4" height="213.61" rx="27.7" ry="27.7" transform="translate(979.39 129) rotate(90)"/>
-                    <rect fill="var(--bar)" x="397.5" y="486.99" width="55.4" height="340.81" rx="27.7" ry="27.7" transform="translate(1082.59 232.2) rotate(90)"/>
-                </svg>
-                <img src="icon/thumbnails/encoreclsf.png" alt="ENCORE CLSF" id="headerimage" draggable="false">
-         	</div>
-            <h2>ENCORE CLSF</h2>
-            <p>Changelog System Formatter</p>
-        </header>
-
-        <main style="animation: opacity 1s;">
-            <input class="dateLog" type="date" id="date">
-        </main>
-
-        <hr>
-        <div class="bottom">
-            <button class="logbutton addbut" style="margin: 0.7em 0.5em" onclick="newheader()">New Catagory</button>
-            <button class="logbutton" onclick="reset()">Reset</button>
-            <button class="logbutton" onclick="saveCLS('save')">Format Data to file</button>
-            <button class="logbutton" onclick="saveCLS('copy')">Format Data to clipboard</button>
-            <button class="logbutton" onclick="saveCLS('preview')">Preview</button>
-        </div>
-        <hr>
-        <main id="preview">
-            <style id="previewStyle"></style>
-            <h1 style="margin-bottom: 0.5em;">PREVIEW</h1>
-            <label for="styling">select CLS preview style</label>
-            <select onchange="changeStyleCall(this.value)">
-                <option value="1">style 1</option>
-                <option value="2">style 2</option>
-            </select>
-            <article id="prev"></article>
-        </main>
-
-        <footer>
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.35 850.35">
-                    <path d="M850.35,48.04V802.31c0,26.53-21.51,48.04-48.04,48.04h-171.87c-18.33,0-35.64-8.4-46.98-22.8l-243.52-309.3c-29.93-38.02-91.02-16.85-91.02,31.53v252.55c0,26.52-21.5,48.02-48.02,48.02H48.02c-26.52,0-48.02-21.5-48.02-48.02V48.02C0,21.5,21.5,0,48.02,0H219.9c18.33,0,35.64,8.4,46.99,22.8l243.46,309.07c29.96,38.03,91.08,16.85,91.08-31.56V48.04c0-26.53,21.51-48.04,48.04-48.04h152.85c26.53,0,48.04,21.51,48.04,48.04Z"/>
-                </svg>
-                <p>©NATSKI<br>ENCORE</p>
-            </div>
-            <span></span>
-            <a href="privacy policy.html" onclick="parent.pageSystem('Privacy Policy');">Privacy Policy</a>
-        </footer>
         <style>
             main
             {
@@ -200,9 +145,147 @@
                     width: unset;
                 }
             }
+
+/*
+main article
+{
+    position: unset;
+    line-height: unset;
+    font-size: unset;
+    display: unset;
+    width: unset;
+    border-radius: unset;
+    padding: unset;
+    margin: unset;
+    border: unset;
+    text-align: unset;
+    user-select: unset;
+    color: unset;
+}
+main article hr
+{
+    border: unset;
+    margin: unset;
+    border-radius: unset;
+}
+main article .mini
+{
+    width: unset;
+    display: unset;
+    background-image: unset;
+    height: unset;
+    border: unset;
+    margin: unset;
+}
+main article h3
+{
+    position: unset;
+    font-size: unset;
+    text-align: unset;
+    margin-top: unset;
+    padding: unset;
+    line-height: unset;
+}
+main article h4
+{
+    position: unset;
+    padding: unset;
+    background-color: unset;
+    border: unset;
+    text-align: unset;
+    font-size: unset;
+    line-height: unset;
+    border-radius: unset;
+    z-index: unset;
+}
+main article section
+{
+    margin: unset;
+    width: unset;
+    display: unset;
+    align-items: unset;
+}
+main article section p
+{
+    text-align: unset;
+}
+main article section svg
+{
+    width: unset;
+    margin: unset;
+    flex-shrink: unset;
+}
+.red
+{
+    fill: unset;
+}
+.green
+{
+    fill: unset;
+}
+.white
+{
+    fill: unset;
+    transform: unset;
+}*/
         </style>
 
 
+        <div id="colourlesspanelback"></div>
+        <div id="colourpanelback"></div>
+
+        <header>
+            <div class="observe"></div>
+            <div class="imagebox">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.39 850.39">
+                    <path fill="var(--bar)" d="M746.41,0H103.99C77.59,0,56.19,21.4,56.19,47.8V802.6c0,26.39,21.4,47.79,47.8,47.79H746.41c26.39,0,47.79-21.4,47.79-47.79V47.8C794.2,21.4,772.8,0,746.41,0Zm-36.6,749.3c0,9.22-7.48,16.7-16.71,16.7H157.29c-9.23,0-16.71-7.48-16.71-16.7V101.1c0-9.23,7.48-16.71,16.71-16.71H699.41c5.74,0,10.4,4.66,10.4,10.4V749.3Z"/>
+                    <rect fill="var(--bar)" x="371.3" y="-59.51" width="107.79" height="483.41" rx="53.9" ry="53.9" transform="translate(607.4 -243) rotate(90)"/>
+                    <rect fill="var(--bar)" x="397.5" y="186.14" width="55.4" height="323.31" rx="27.7" ry="27.7" transform="translate(772.99 -77.4) rotate(90)"/>
+                    <rect fill="var(--bar)" x="397.5" y="229.39" width="55.4" height="443.21" rx="27.7" ry="27.7" transform="translate(876.19 25.8) rotate(90)"/>
+                    <rect fill="var(--bar)" x="397.5" y="447.39" width="55.4" height="213.61" rx="27.7" ry="27.7" transform="translate(979.39 129) rotate(90)"/>
+                    <rect fill="var(--bar)" x="397.5" y="486.99" width="55.4" height="340.81" rx="27.7" ry="27.7" transform="translate(1082.59 232.2) rotate(90)"/>
+                </svg>
+                <img src="icon/thumbnails/encoreclsf.png" alt="ENCORE CLSF" id="headerimage" draggable="false">
+         	</div>
+            <h2>ENCORE CLSF</h2>
+            <p>Changelog System Formatter</p>
+        </header>
+
+        <main style="animation: opacity 1s;">
+            <input class="dateLog" type="date" id="date">
+        </main>
+
+        <hr>
+        <div class="bottom">
+            <button class="logbutton addbut" style="margin: 0.7em 0.5em" onclick="newheader()">New Catagory</button>
+            <button class="logbutton" onclick="reset()">Reset</button>
+            <button class="logbutton" onclick="saveCLS('save')">Format Data to file</button>
+            <button class="logbutton" onclick="saveCLS('copy')">Format Data to clipboard</button>
+            <button class="logbutton" onclick="saveCLS('preview')">Preview</button>
+        </div>
+        <hr>
+        <main id="preview">
+            <style id="previewStyle"></style>
+            <h1 style="margin-bottom: 0.5em;">PREVIEW</h1>
+            <label for="styling">select CLS preview style</label>
+            <select onchange="changeStyleCall(this.value)">
+                <option value="null">style 0</option>
+                <option value="1">style 1</option>
+                <option value="2">style 2</option>
+            </select>
+            <article id="prev"></article>
+        </main>
+
+        <footer>
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.35 850.35">
+                    <path d="M850.35,48.04V802.31c0,26.53-21.51,48.04-48.04,48.04h-171.87c-18.33,0-35.64-8.4-46.98-22.8l-243.52-309.3c-29.93-38.02-91.02-16.85-91.02,31.53v252.55c0,26.52-21.5,48.02-48.02,48.02H48.02c-26.52,0-48.02-21.5-48.02-48.02V48.02C0,21.5,21.5,0,48.02,0H219.9c18.33,0,35.64,8.4,46.99,22.8l243.46,309.07c29.96,38.03,91.08,16.85,91.08-31.56V48.04c0-26.53,21.51-48.04,48.04-48.04h152.85c26.53,0,48.04,21.51,48.04,48.04Z"/>
+                </svg>
+                <p>©NATSKI<br>ENCORE</p>
+            </div>
+            <span></span>
+            <a href="privacy policy.html" onclick="parent.pageSystem('Privacy Policy');">Privacy Policy</a>
+        </footer>
 
         <noscript>
             <h1>javascript is disabled</h1>
