@@ -59,8 +59,7 @@
     border-radius: 8px;
     box-shadow: 0 0 40px #00000060;
     transition: 0.4s, background-color 1s;
-    flex-grow: 0;
-    flex-shrink: 0;
+    transform: translate(-50%,-50%);
 }
 #inspectPanel img.active {
     height: auto;
