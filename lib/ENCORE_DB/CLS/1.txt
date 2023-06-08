@@ -93,3 +93,9 @@ main article section svg
     fill: #dcdcdc;
     transform: scale(0.75);
 }
+#CLSloader
+{
+    position: relative;
+    width: 100%;
+    height: 25px;
+}
