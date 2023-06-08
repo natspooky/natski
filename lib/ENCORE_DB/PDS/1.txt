@@ -58,7 +58,7 @@
     cursor: pointer;
 }
 #inspectPanel img {
-    position: relative;
+    position: fixed;
     height: 70%;
     opacity: 0;
     border-radius: 23px;
