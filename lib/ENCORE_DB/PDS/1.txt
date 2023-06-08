@@ -37,12 +37,10 @@
     opacity: 0;
     z-index: 999;
     pointer-events: none;
-    transform: scale(1.1);
     visibility: hidden;
     transition: 0.3s, background-color 1s;
 }
 #inspectPanel.active {
-    transform: scale(1);
     visibility: visible;
     opacity: 1;
     pointer-events: unset;
