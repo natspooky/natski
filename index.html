@@ -124,7 +124,8 @@
 {
     position: absolute;
     bottom: 65px;
-    background-color: #222222;
+    background-color: #22222290;
+    border: 2px solid #222222;
     color: var(--themecol);
     border-radius: 100vmax;
     padding: 10px 50px;
@@ -132,12 +133,6 @@
     font-weight: bold;
     animation: buttonfade 0.6s;
     transition: 0.2s;
-}
-.banner-bg button:active
-{
-    background-color: #000000;
-    transition: 0s;
-    transform: scale(1.1);
 }
 .banner-bg div
 {
@@ -199,8 +194,8 @@
 {
     position: absolute;
     bottom: 10px;
-    left:25%;
-    right: 25%;
+    left: 30%;
+    right: 30%;
     height: 5px;
     box-sizing: initial;
     background-color: #222222;
@@ -214,8 +209,8 @@
     top: 0;
     height: 100%;
     background-color: var(--themecol);
-    border-radius: 100vmax;
-    transition: 0.1s linear;
+    transform-origin: left;
+    width: 100%;
 }
 .thumbs
 {
@@ -259,6 +254,16 @@
         transform: scale(1.1) translateY(-50%);
         background-color: #000000;
         transition: 0s;
+    }
+    .banner-bg button:hover
+    {
+        background-color: #222222;
+    }
+    .banner-bg button:active
+    {
+        background-color: #000000;
+        transition: 0s;
+        transform: scale(1.05);
     }
 }
 @media (orientation: portrait)
