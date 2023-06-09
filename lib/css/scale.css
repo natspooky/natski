@@ -19,6 +19,7 @@
     .sidescrollbar
     {
         padding: 0.5em 0;
+        flex-wrap: nowrap;
     }
     .portanchor .titlebutton div
     {

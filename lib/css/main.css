@@ -725,6 +725,7 @@ main article ul li a
     overflow-y: hidden;
     width: 100%;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     padding: 1em 2em;
     scroll-snap-type: x mandatory;
@@ -753,7 +754,6 @@ main article ul li a
     border-radius: 20px;
     transition: 0.2s;
 }
-
 .portanchor .titlebutton div
 {
     position: relative;
@@ -966,6 +966,7 @@ noscript
     {
         justify-content: unset;
         padding: 0.5em 0;
+        flex-wrap: nowrap;
     }
     main .title
     {

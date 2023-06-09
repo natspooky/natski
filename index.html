@@ -337,7 +337,7 @@
                     enter
                 </button>
             </div>
-
+<!--
             <div class="banner-bg">
                 <img src="icon/img/2.png" draggable="false" alt="ssc" loading="eager">
                 <div>
@@ -353,7 +353,7 @@
                     enter
                 </button>
             </div>
-                
+
             <div class="banner-bg">
                 <img src="icon/img/3.png" draggable="false" alt="ssc" loading="eager">
                 <div>
@@ -369,7 +369,7 @@
                     enter
                 </button>
             </div>
-
+-->
         </header>
 
         <main>
@@ -535,6 +535,8 @@
             </div>
         </div>
         <script>
+                let backnum = 0;
+
 
                 function systemStart() {
                     document.body.style.position='unset';
@@ -543,7 +545,14 @@
                     setTimeout(() => {
                         document.getElementById('loadscreen').remove()
                     }, 2500)
+                    randomSplash()
                 }
+
+
+                function randomSplash() {
+                    console.log('pog')
+                }
+
 
                 function pageSystem(e){
                     loader()
@@ -555,7 +564,7 @@
                     }, 200)
                 }
 
-                let backnum = 0;
+
                 function backPage(e){
                     backnum += e;
                     if(backnum < 0){
@@ -568,14 +577,17 @@
                     }
                 }
             
+
                 function menuOpen(){
                     document.getElementById('covermenu').classList.add('active')
                 }
+
 
                 function menuClose(){
                     document.getElementById('covermenu').classList.remove('active')
                 }
             
+
                 function unloadframe() {
                     document.getElementById("SSC").classList.remove("active")
                     menuClose()
@@ -590,6 +602,7 @@
                     playSSC()
                 }
 
+
                 function loadframe(e) {
                     reloadFrame()
                     document.getElementById("SSC").classList.add("active")
@@ -602,6 +615,7 @@
                     pageSystem(e.charAt(0).toUpperCase() + e.slice(1))
                     pauseSSC()
                 }
+
 
                 function reloadFrame() {
                     document.getElementById('iframe').remove()
@@ -618,6 +632,7 @@
                     document.getElementById('colourpanel').style.backgroundColor = e
                 }
 
+
                 function unloader() {
                     document.getElementById('loader').style.opacity = '0';
                     document.getElementById('loader').style.visibility = 'hidden';
@@ -626,6 +641,7 @@
                     },300)
                 }
 
+
                 function loader() {
                     if(localStorage.getItem("performance")!=='true'){
                         document.getElementById('loader').style.visibility = 'visible';
@@ -633,7 +649,6 @@
                         document.getElementById('loadersvg').style.animation = 'rotate 1.5s linear infinite';
                     }
                 }
-
         </script>
 
 
@@ -644,7 +659,7 @@
         </noscript>
         <script src="lib/js/ENCORE_SSC.js"></script>
         <script>
-            SSC_settings = {'thumbs':true,'progressBar':true,'sideButtons':true,'timer':10000,'style':null}
+            SSC_settings = {'thumbs':false,'progressBar':false,'sideButtons':false,'timer':null,'style':null}
         </script>
     </body>
 </html>
