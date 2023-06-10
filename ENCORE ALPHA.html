@@ -316,7 +316,7 @@
                         </button>
                     </div>
                     <div class="exampleMenu" id="SSCmenu" style="display: none; margin-top: 1em;">
-                        <button style="background-color: #06750030;" onclick="SSC_settings={'thumbs':document.getElementById('sscthumb').active,'progressBar':document.getElementById('sscbar').active,'sideButtons':document.getElementById('sscbuttons').active,'timer':document.getElementById('ssctime').value,'style':document.getElementById('sscstyle').value}; reloadSSC(SSC_settings);">
+                        <button style="background-color: #06750030;" onclick="SSC_settings={'thumbs':document.getElementById('sscthumb').hasAttribute('active'),'progressBar':document.getElementById('sscbar').hasAttribute('active'),'sideButtons':document.getElementById('sscbuttons').hasAttribute('active'),'timer':document.getElementById('ssctime').value,'style':document.getElementById('sscstyle').value}; reloadSSC(SSC_settings);">
                             Save Changes
                         </button>
                         <button class="active" active id="sscthumb" onclick="changeSSCvalues(this)">
@@ -457,9 +457,8 @@
         }
 
         function changeSSCvalues(e) {
-            console.log(e.getAttribute("active"))
             e.classList.toggle('active')
-            if(e.active) {
+            if(e.hasAttribute('active')) {
                 e.removeAttribute('active');
             }else {
                 e.setAttribute('active', '');
