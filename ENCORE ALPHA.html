@@ -433,37 +433,39 @@
                         }else {
                             let script = document.createElement('script'),
                             settings = document.createElement('script');
-                            document.getElementById('PDS').innerHTML = '<div class="banner-bg"><img src="icon/img/ssc1.jpg" draggable="false" alt="" loading="eager"></div><div class="banner-bg"><img src="icon/img/ssc2.jpg" draggable="false" alt="" loading="eager"></div>'
-                            script.id = 'SSCscript'
-                            script.src = 'https://natski.netlify.com/lib/js/ENCORE_SSC.js'
-                            settings.id = 'SSCsettings'
-                            settings.innerHTML = "SSC_settings={'thumbs':true,'progressBar':true,'sideButtons':true,'timer':10000,'style':1}"
+                            script.id = 'PDSscript'
+                            script.src = 'https://natski.netlify.com/lib/js/ENCORE_PDS.js'
+                            settings.id = 'PDSsettings'
+                            settings.innerHTML = "PDS_settings={'thumbs':true,'progressBar':true,'sideButtons':true,'timer':10000,'style':1}"
                             document.body.appendChild(script)
                             document.body.appendChild(settings)
-                            document.getElementById('SSC').style.height = 'var(--height)'
+                            document.getElementById('PDS').style.height = 'var(--height)'
                         }
                         break;
                 }
             }
 
-        function unloadSystem(sys) {
-            switch(sys) {
-                case 'SSC':
-                    document.getElementById('SSC').style.height = '0'
-                    document.getElementById('SSC').style.opacity = '0'
-                    pauseSSC()
-                    break;
-            }
-        }
 
-        function changeSSCvalues(e) {
-            e.classList.toggle('active')
-            if(e.hasAttribute('active')) {
-                e.removeAttribute('active');
-            }else {
-                e.setAttribute('active', '');
+            function unloadSystem(sys) {
+                switch(sys) {
+                    case 'SSC':
+                        document.getElementById('SSC').style.height = '0'
+                        document.getElementById('SSC').style.opacity = '0'
+                        document.getElementById('SSCmenu').style.display = 'none'
+                        pauseSSC()
+                        break;
+                }
             }
-        }
+
+
+            function changeSSCvalues(e) {
+                e.classList.toggle('active')
+                if(e.hasAttribute('active')) {
+                    e.removeAttribute('active');
+                }else {
+                    e.setAttribute('active', '');
+                }
+            }
         </script>
 
 
