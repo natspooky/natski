@@ -141,10 +141,6 @@
     background-color: #66666620;
     border-radius: 0.5em;
 }
-.dropdown .contentbox .codecontainer .copybox:active
-{
-    background-color: #66666640;
-}
 .dropdown .contentbox .codecontainer .copybox svg
 {
     width: 30%;
@@ -161,6 +157,16 @@
     .dropdown .dropdownheader p span
     {
         display: none;
+    }
+}
+@media (hover:hover) {
+    .dropdown .contentbox .codecontainer .copybox:hover
+    {
+        background-color: #66666640;
+    }
+    .dropdown .contentbox .codecontainer .copybox:hover:active
+    {
+        background-color: #66666660;
     }
 }
     </style>
