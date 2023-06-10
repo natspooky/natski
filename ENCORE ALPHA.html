@@ -47,7 +47,7 @@
     width: max(95vmin,68vw);
     margin: 1em auto;
     border-radius: 1.3em;
-    background-color: #66666615;
+    background-color: var(--colour);
 }
 .dropdown .dropdownheader
 {
@@ -110,11 +110,18 @@
     padding: 1em;
     animation: opacity 0.5s;
 }
+.dropdown .contentbox hr
+{
+    margin: 0.8em 0;
+    border: 3px solid #66666620;
+    border-radius: 100vmax;
+}
 .dropdown .contentbox .codecontainer
 {
     position: relative;
     width: 100%;
     overflow: hidden;
+    margin: 1em 0;
 }
 .dropdown .contentbox .codecontainer .codebox
 {
@@ -153,6 +160,39 @@
 {
     display: block;
 }
+.dropdown .previewWindow
+{
+    position: relative;
+    width: 100%;
+    background-color: #66666620;
+    border-radius: 0.5em;
+    border: 2px solid #66666620;
+    margin: 1em 0;
+    height: 1em;
+    transition: 0.5s;
+}
+.dropdown .previewWindow.active
+{
+    height: var(--height);
+}
+.dropdown .exampleMenu
+{
+    position: relative;
+    width: 100%;
+    border-radius: 0.5em;
+    background-color: #66666620;
+    padding: 1em;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.dropdown .exampleMenu button
+{
+    padding: 0.5em 1em;
+    font-weight: bold;
+    background-color: #66666620;
+    border-radius: 0.3em;
+}
 @media screen and (orientation:portrait) {
     .dropdown .dropdownheader p span
     {
@@ -189,7 +229,7 @@
 
 
         <main>
-            <div class="dropdown">
+            <div class="dropdown" style="--colour: #6f00ff15;">
                 <div class="dropdownheader">
                     <img src="icon/thumbnails_small/SSC.png" alt="SSC" draggable="false">
                     <p>ENCORE SSC<span>  •  Slide Show Container</span></p>
@@ -200,6 +240,9 @@
                     </div>
                 </div>
                 <div class="contentbox">
+                    <p>ENCORE SSC is a preprogrammed javascript carousel package that can be added to any website without having to worry about any javascript programming.</p>
+                    <hr>
+                    <p>Code that needs to be appended at the bottom of the HTML file:</p>
                     <div class="codecontainer">
                         <div class="codebox">
 <pre>
@@ -222,11 +265,49 @@
                             </svg>
                         </div>
                     </div>
+
+                    <p>Code that needs to be added into the HTML file:</p>
+
+                    <div class="codecontainer">
+                        <div class="codebox">
+<pre>
+<code>&lt;div id="SSC" style="opacity: 0; display: none;"&gt;
+
+    &lt;div class="banner-bg"&gt; &lt;!-- duplicate 'banner-bg' for the amount of pages you want --&gt;
+
+        &lt;img src="path of background image" draggable="false" alt="" loading="eager"&gt;
+
+        &lt;a class="banner-button" href="insert link here"&gt;enter&lt;/a&gt;
+
+        &lt;!-- place content in here --&gt;
+
+    &lt;/div&gt;
+
+&lt;/div&gt;
+</code></pre>
+                        </div>
+                        <div class="copybox">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.39 850.39">
+                                <path d="M389.7,715.19h126.3v83.3c0,28.67-23.24,51.9-51.9,51.9H51.9c-28.66,0-51.9-23.23-51.9-51.9V227.1c0-28.66,23.24-51.9,51.9-51.9h245.9v448.09c0,50.68,41.23,91.9,91.9,91.9Z"/>
+                                <rect  x="334.39" width="516" height="675.19" rx="51.9" ry="51.9"/>
+                            </svg>
+                        </div>
+                    </div>
                 
+                    <p>ENCORE SSC Example:</p>
+
+                    <div class="previewWindow" style="--height: 50vh; opacity: 0;" id="SSC"></div>
+
+                    <div class="exampleMenu">
+                        <button onclick="loadSystem('SSC')">
+                            Load SSC
+                        </button>
+                    </div>
+
                 </div>
             </div>
 
-            <div class="dropdown">
+            <div class="dropdown" style="--colour: #44a8ff15;">
                 <div class="dropdownheader">
                     <img src="icon/thumbnails_small/PDS.png" alt="PDS" draggable="false">
                     <p>ENCORE PDS<span>  •  Picture Display System</span></p>
@@ -241,7 +322,7 @@
                 </div>
             </div>
 
-            <div class="dropdown">
+            <div class="dropdown" style="--colour: #44ff4d15;">
                 <div class="dropdownheader">
                     <img src="icon/thumbnails_small/CLS.png" alt="CLS" draggable="false">
                     <p>ENCORE CLS<span>  •  Changelog System</span></p>
@@ -256,7 +337,7 @@
                 </div>
             </div>
 
-            <div class="dropdown">
+            <div class="dropdown" style="--colour: #ffffff15;">
                 <div class="dropdownheader">
                     <img src="icon/thumbnails_small/encoreclsf.png" alt="CLSF" draggable="false">
                     <p>ENCORE CLSF<span>  •  Changelog System Formatter</span></p>
@@ -295,6 +376,25 @@
                 document.getElementsByClassName('copybox')[i].addEventListener('click', function(){
                     navigator.clipboard.writeText(document.getElementsByClassName('codebox')[i].innerText)
                 })
+            }
+
+            function loadSystem(sys) {
+                switch(sys) {
+                    case 'SSC':
+                        if(document.getElementById('SSCscript')) {
+                            document.getElementById('SSCscript').remove()
+                            document.getElementById('SSCsettings').remove()
+                            document.getElementById('SSC').innerHTML = ''
+                        }
+                        let script = document.createElement('script'),
+                        settings = document.createElement('script');
+                        document.getElementById('SSC').innerHTML = '<div class="banner-bg"><img src="icon/img/ssc1.jpg" draggable="false" alt="" loading="eager"></div><div class="banner-bg"><img src="icon/img/ssc2.jpg" draggable="false" alt="" loading="eager"></div>'
+                        script.id = 'SSCscript'
+                        script.src = 'https://natski.netlify.com/lib/js/ENCORE_SSC.js'
+                        settings.innerHTML = "SSC_settings={'thumbs':true,'progressBar':true,'sideButtons':true,'timer':10000,'style':1}"
+                        document.getElementById('SSC').classList.add('active')
+                        break;
+                }
             }
         </script>
 
