@@ -180,19 +180,26 @@
     width: 100%;
     border-radius: 0.5em;
     background-color: #66666620;
-    padding: 1em 0;
+    padding: 0.5em;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
 }
-.dropdown .exampleMenu button
+.dropdown .exampleMenu button, .dropdown .exampleMenu input
 {
-    padding: 0.5em 1em;
+    position: relative;
+    padding: 0.5em 0;
     font-weight: bold;
-    margin: 0 1em;
+    margin: 0.5em;
+    border: 0;
     background-color: #66666620;
     border-radius: 0.3em;
     flex-grow: 1;
+    transition: 0.1s;
+}
+.dropdown .exampleMenu button.active
+{
+    background-color: var(--themecoltrans);
 }
 @media screen and (orientation:portrait) {
     .dropdown .dropdownheader p span
@@ -307,6 +314,22 @@
                             Unload SSC
                         </button>
                     </div>
+                    <div class="exampleMenu" id="SSCmenu" style="display: none; margin-top: 1em;">
+                        <button onclick="SSC_settings={'thumbs':document.getElementById('sscthumb').value,'progressBar':document.getElementById('sscbar').value,'sideButtons':document.getElementById('sscbuttons').value,'timer':document.getElementById('ssctime').value,'style':document.getElementById('sscstyle').value}; reloadSSC(SSC_settings);">
+                            Save Changes
+                        </button>
+                        <button class="active" value="true" id="sscthumb" onclick="changeSSCvalues(this)">
+                            Thumbs
+                        </button>
+                        <button class="active" value="true" id="sscbar" onclick="changeSSCvalues(this)">
+                            Progress Bar
+                        </button>
+                        <button class="active" value="true" id="sscbuttons" onclick="changeSSCvalues(this)">
+                            Side Buttons
+                        </button>
+                        <input type="number" value="10000" id="ssctime">
+                        <input type="number" value="1" id="sscstyle">
+                    </div>
 
                 </div>
             </div>
@@ -399,6 +422,7 @@
                             document.body.appendChild(script)
                             document.body.appendChild(settings)
                             document.getElementById('SSC').style.height = 'var(--height)'
+                            document.getElementById('SSCmenu').style.display = 'flex'
                         }
                         break;
 
@@ -428,6 +452,15 @@
                     document.getElementById('SSC').style.height = '0'
                     document.getElementById('SSC').style.opacity = '0'
                     break;
+            }
+        }
+
+        function changeSSCvalues(e) {
+            e.classList.toggle('active')
+            if(e.value == true){
+                e.value == false
+            }else {
+                e.value == true
             }
         }
         </script>
