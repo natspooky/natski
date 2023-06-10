@@ -185,7 +185,7 @@
     justify-content: space-between;
     flex-wrap: wrap;
 }
-.dropdown .exampleMenu button, .dropdown .exampleMenu input
+.dropdown .exampleMenu button
 {
     position: relative;
     padding: 0.5em;
@@ -316,7 +316,7 @@
                         </button>
                     </div>
                     <div class="exampleMenu" id="SSCmenu" style="display: none; margin-top: 1em;">
-                        <button style="background-color: #09af0030;" onclick="SSC_settings={'thumbs':document.getElementById('sscthumb').hasAttribute('active'),'progressBar':document.getElementById('sscbar').hasAttribute('active'),'sideButtons':document.getElementById('sscbuttons').hasAttribute('active'),'timer':document.getElementById('ssctime').value,'style':document.getElementById('sscstyle').value}; reloadSSC(SSC_settings);">
+                        <button style="background-color: #09af0030;" onclick="SSC_settings={'thumbs':document.getElementById('sscthumb').hasAttribute('active'),'progressBar':document.getElementById('sscbar').hasAttribute('active'),'sideButtons':document.getElementById('sscbuttons').hasAttribute('active'),'timer':10000,'style':1}; reloadSSC(SSC_settings);">
                             Save Changes
                         </button>
                         <button class="active" active id="sscthumb" onclick="changeSSCvalues(this)">
@@ -328,8 +328,6 @@
                         <button class="active" active id="sscbuttons" onclick="changeSSCvalues(this)">
                             Side Buttons
                         </button>
-                        <input type="number" value="10000" id="ssctime">
-                        <input type="number" value="1" id="sscstyle">
                     </div>
 
                 </div>
