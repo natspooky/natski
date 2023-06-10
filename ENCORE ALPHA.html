@@ -188,13 +188,14 @@
 .dropdown .exampleMenu button, .dropdown .exampleMenu input
 {
     position: relative;
-    padding: 0.5em 0;
+    padding: 0.5em;
     font-weight: bold;
     margin: 0.5em;
     border: 0;
     background-color: #66666620;
     border-radius: 0.3em;
     flex-grow: 1;
+    color: #e9e9e9;
     transition: 0.1s;
 }
 .dropdown .exampleMenu button.active
@@ -315,16 +316,16 @@
                         </button>
                     </div>
                     <div class="exampleMenu" id="SSCmenu" style="display: none; margin-top: 1em;">
-                        <button onclick="SSC_settings={'thumbs':document.getElementById('sscthumb').value,'progressBar':document.getElementById('sscbar').value,'sideButtons':document.getElementById('sscbuttons').value,'timer':document.getElementById('ssctime').value,'style':document.getElementById('sscstyle').value}; reloadSSC(SSC_settings);">
+                        <button onclick="SSC_settings={'thumbs':document.getElementById('sscthumb').active,'progressBar':document.getElementById('sscbar').active,'sideButtons':document.getElementById('sscbuttons').active,'timer':document.getElementById('ssctime').value,'style':document.getElementById('sscstyle').value}; reloadSSC(SSC_settings);">
                             Save Changes
                         </button>
-                        <button class="active" value="true" id="sscthumb" onclick="changeSSCvalues(this)">
+                        <button class="active" active id="sscthumb" onclick="changeSSCvalues(this)">
                             Thumbs
                         </button>
-                        <button class="active" value="true" id="sscbar" onclick="changeSSCvalues(this)">
+                        <button class="active" active id="sscbar" onclick="changeSSCvalues(this)">
                             Progress Bar
                         </button>
-                        <button class="active" value="true" id="sscbuttons" onclick="changeSSCvalues(this)">
+                        <button class="active" active id="sscbuttons" onclick="changeSSCvalues(this)">
                             Side Buttons
                         </button>
                         <input type="number" value="10000" id="ssctime">
@@ -457,10 +458,10 @@
 
         function changeSSCvalues(e) {
             e.classList.toggle('active')
-            if(e.value == true){
-                e.value == false
+            if(e.active) {
+                e.removeAttribute('active');
             }else {
-                e.value == true
+                e.setAttribute('active', '');
             }
         }
         </script>
