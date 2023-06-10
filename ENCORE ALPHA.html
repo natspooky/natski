@@ -388,7 +388,7 @@
                 
                     <p>ENCORE PDS Example:</p>
 
-                    <div class="previewWindow" style="--height: 50vh; opacity: 0;" id="PDS"></div>
+                    <div class="previewWindow" style="--height: 50vh; opacity: 0; overflow-y: scroll;" id="PDS"></div>
 
                     <div class="exampleMenu">
                         <button onclick="loadSystem('PDS')">
@@ -524,8 +524,8 @@
                         pauseSSC()
                         break;
                     case 'PDS':
-                        document.getElementById('SSC').style.height = '0'
-                        document.getElementById('SSC').style.opacity = '0'
+                        document.getElementById('PDS').style.height = '0'
+                        document.getElementById('PDS').style.opacity = '0'
                         break;
                 }
             }
