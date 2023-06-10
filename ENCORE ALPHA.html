@@ -329,7 +329,6 @@
                             Side Buttons
                         </button>
                     </div>
-
                 </div>
             </div>
 
@@ -344,7 +343,75 @@
                     </div>
                 </div>
                 <div class="contentbox">
-                    bean
+                    <p>ENCORE PDS is a system used to display images in an interactable gallery that can be clicked on to open a big picture viewer for each image.</p>
+                    <hr>
+                    <p>Code that needs to be appended at the bottom of the HTML file:</p>
+                    <div class="codecontainer">
+                        <div class="codebox">
+<pre>
+<code>&lt;script src="https://natski.netlify.app/lib/js/ENCORE_PDS.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+    PDS_settings={
+        'path':'image directory',
+        'fileCount':number of images,
+        'classes':'additional classes',
+        'colourSystem':true,
+        'animations':true,
+        'style':null (1 to 2)
+    }
+&lt;/script&gt;
+</code></pre>
+                        </div>
+                        <div class="copybox">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.39 850.39">
+                                <path d="M389.7,715.19h126.3v83.3c0,28.67-23.24,51.9-51.9,51.9H51.9c-28.66,0-51.9-23.23-51.9-51.9V227.1c0-28.66,23.24-51.9,51.9-51.9h245.9v448.09c0,50.68,41.23,91.9,91.9,91.9Z"/>
+                                <rect  x="334.39" width="516" height="675.19" rx="51.9" ry="51.9"/>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <p>Code that needs to be added into the HTML file:</p>
+
+                    <div class="codecontainer">
+                        <div class="codebox">
+<pre>
+<code>&lt;div id="PDS"&gt;&lt;/div&gt;
+</code></pre>
+                        </div>
+                        <div class="copybox">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.39 850.39">
+                                <path d="M389.7,715.19h126.3v83.3c0,28.67-23.24,51.9-51.9,51.9H51.9c-28.66,0-51.9-23.23-51.9-51.9V227.1c0-28.66,23.24-51.9,51.9-51.9h245.9v448.09c0,50.68,41.23,91.9,91.9,91.9Z"/>
+                                <rect  x="334.39" width="516" height="675.19" rx="51.9" ry="51.9"/>
+                            </svg>
+                        </div>
+                    </div>
+                
+                    <p>ENCORE PDS Example:</p>
+
+                    <div class="previewWindow" style="--height: 50vh; opacity: 0;" id="PDS"></div>
+
+                    <div class="exampleMenu">
+                        <button onclick="loadSystem('PDS')">
+                            Load PDS
+                        </button>
+                        <button onclick="unloadSystem('PDS')">
+                            Unload PDS
+                        </button>
+                    </div>
+                    <div class="exampleMenu" id="PDSmenu" style="display: none; margin-top: 1em;">
+                        <button style="background-color: #09af0030;" onclick="SSC_settings={'thumbs':document.getElementById('sscthumb').hasAttribute('active'),'progressBar':document.getElementById('sscbar').hasAttribute('active'),'sideButtons':document.getElementById('sscbuttons').hasAttribute('active'),'timer':10000,'style':1}; reloadSSC(SSC_settings);">
+                            Save Changes
+                        </button>
+                        <button class="active" active id="sscthumb" onclick="changeSSCvalues(this)">
+                            Thumbs
+                        </button>
+                        <button class="active" active id="sscbar" onclick="changeSSCvalues(this)">
+                            Progress Bar
+                        </button>
+                        <button class="active" active id="sscbuttons" onclick="changeSSCvalues(this)">
+                            Side Buttons
+                        </button>
+                    </div>
                 </div>
             </div>
 
@@ -437,7 +504,7 @@
                             script.id = 'PDSscript'
                             script.src = 'https://natski.netlify.com/lib/js/ENCORE_PDS.js'
                             settings.id = 'PDSsettings'
-                            settings.innerHTML = "PDS_settings={'thumbs':true,'progressBar':true,'sideButtons':true,'timer':10000,'style':1}"
+                            settings.innerHTML = "PDS_settings={'path':'icon/OG_IMAGES/','fileCount':10,'classes':'null','colourSystem':false,'animations':true,'style':1}"
                             document.body.appendChild(script)
                             document.body.appendChild(settings)
                             document.getElementById('PDS').style.height = 'var(--height)'
@@ -454,6 +521,10 @@
                         document.getElementById('SSC').style.opacity = '0'
                         document.getElementById('SSCmenu').style.display = 'none'
                         pauseSSC()
+                        break;
+                    case 'PDS':
+                        document.getElementById('SSC').style.height = '0'
+                        document.getElementById('SSC').style.opacity = '0'
                         break;
                 }
             }
