@@ -384,7 +384,7 @@
                 switch(sys) {
                     case 'SSC':
                         if(document.getElementById('SSCscript')) {
-                            document.getElementById('SSC').classList.add('active')
+                            document.getElementById('SSC').style.height = 'var(--height)'
                             document.getElementById('SSC').style.opacity = '1'
                         }else {
                             let script = document.createElement('script'),
@@ -396,7 +396,7 @@
                             settings.innerHTML = "SSC_settings={'thumbs':true,'progressBar':true,'sideButtons':true,'timer':10000,'style':1}"
                             document.body.appendChild(script)
                             document.body.appendChild(settings)
-                            document.getElementById('SSC').classList.add('active')
+                            document.getElementById('SSC').style.height = 'var(--height)'
                         }
                         break;
                 }
@@ -405,7 +405,7 @@
         function unloadSystem(sys) {
             switch(sys) {
                 case 'SSC':
-                    document.getElementById('SSC').classList.remove('active')
+                    document.getElementById('SSC').style.height = '0'
                     document.getElementById('SSC').style.opacity = '0'
                     break;
             }
