@@ -302,6 +302,9 @@
                         <button onclick="loadSystem('SSC')">
                             Load SSC
                         </button>
+                        <button onclick="unloadSystem('SSC')">
+                            Unload SSC
+                        </button>
                     </div>
 
                 </div>
@@ -399,6 +402,19 @@
                         break;
                 }
             }
+
+        function unloadSystem(sys) {
+            switch(sys) {
+                case 'SSC':
+                    if(document.getElementById('SSCscript')) {
+                        document.getElementById('SSCscript').remove()
+                        document.getElementById('SSCsettings').remove()
+                        document.getElementById('SSC').innerHTML = ''
+                    }
+                    document.getElementById('SSC').classList.remove('active')
+                    break;
+            }
+        }
         </script>
 
 
