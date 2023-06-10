@@ -166,7 +166,6 @@
     width: 100%;
     background-color: #66666620;
     border-radius: 0.5em;
-    border: 2px solid #66666620;
     margin: 1em 0;
     height: 1em;
     transition: 0.5s;
@@ -385,20 +384,20 @@
                 switch(sys) {
                     case 'SSC':
                         if(document.getElementById('SSCscript')) {
-                            document.getElementById('SSCscript').remove()
-                            document.getElementById('SSCsettings').remove()
-                            document.getElementById('SSC').innerHTML = ''
+                            document.getElementById('SSC').classList.add('active')
+                            document.getElementById('SSC').style.opacity = '1'
+                        }else {
+                            let script = document.createElement('script'),
+                            settings = document.createElement('script');
+                            document.getElementById('SSC').innerHTML = '<div class="banner-bg"><img src="icon/img/ssc1.jpg" draggable="false" alt="" loading="eager"></div><div class="banner-bg"><img src="icon/img/ssc2.jpg" draggable="false" alt="" loading="eager"></div>'
+                            script.id = 'SSCscript'
+                            script.src = 'https://natski.netlify.com/lib/js/ENCORE_SSC.js'
+                            settings.id = 'SSCsettings'
+                            settings.innerHTML = "SSC_settings={'thumbs':true,'progressBar':true,'sideButtons':true,'timer':10000,'style':1}"
+                            document.body.appendChild(script)
+                            document.body.appendChild(settings)
+                            document.getElementById('SSC').classList.add('active')
                         }
-                        let script = document.createElement('script'),
-                        settings = document.createElement('script');
-                        document.getElementById('SSC').innerHTML = '<div class="banner-bg"><img src="icon/img/ssc1.jpg" draggable="false" alt="" loading="eager"></div><div class="banner-bg"><img src="icon/img/ssc2.jpg" draggable="false" alt="" loading="eager"></div>'
-                        script.id = 'SSCscript'
-                        script.src = 'https://natski.netlify.com/lib/js/ENCORE_SSC.js'
-                        settings.id = 'SSCsettings'
-                        settings.innerHTML = "SSC_settings={'thumbs':true,'progressBar':true,'sideButtons':true,'timer':10000,'style':1}"
-                        document.body.appendChild(script)
-                        document.body.appendChild(settings)
-                        document.getElementById('SSC').classList.add('active')
                         break;
                 }
             }
@@ -406,12 +405,8 @@
         function unloadSystem(sys) {
             switch(sys) {
                 case 'SSC':
-                    if(document.getElementById('SSCscript')) {
-                        document.getElementById('SSCscript').remove()
-                        document.getElementById('SSCsettings').remove()
-                        document.getElementById('SSC').innerHTML = ''
-                    }
                     document.getElementById('SSC').classList.remove('active')
+                    document.getElementById('SSC').style.opacity = '0'
                     break;
             }
         }
