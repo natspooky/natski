@@ -410,6 +410,7 @@
                         if(document.getElementById('SSCscript')) {
                             document.getElementById('SSC').style.height = 'var(--height)'
                             document.getElementById('SSC').style.opacity = '1'
+                            playSSC()
                         }else {
                             let script = document.createElement('script'),
                             settings = document.createElement('script');
@@ -450,6 +451,7 @@
                 case 'SSC':
                     document.getElementById('SSC').style.height = '0'
                     document.getElementById('SSC').style.opacity = '0'
+                    pauseSSC()
                     break;
             }
         }
