@@ -423,7 +423,61 @@
                     </div>
                 </div>
                 <div class="contentbox">
-                    bean
+                    <p>ENCORE CLS is a system used to display formatted text files as the user scrolls further down the page.<br>text files can be formatted for ENCORE CLS by using the <b>ENCORE CLS Formatter</b> page.</p>
+                    <hr>
+                    <p>Code that needs to be appended at the bottom of the HTML file:</p>
+                    <div class="codecontainer">
+                        <div class="codebox">
+<pre>
+<code>&lt;script src="https://natski.netlify.app/lib/js/ENCORE_CLS.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+    CLS_settings={
+        'path':'path of log files',
+        'fileCount':number of logs,
+        'container':null,
+        'style':null (1 to 2)
+    }
+&lt;/script&gt;
+</code></pre>
+                        </div>
+                        <div class="copybox">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.39 850.39">
+                                <path d="M389.7,715.19h126.3v83.3c0,28.67-23.24,51.9-51.9,51.9H51.9c-28.66,0-51.9-23.23-51.9-51.9V227.1c0-28.66,23.24-51.9,51.9-51.9h245.9v448.09c0,50.68,41.23,91.9,91.9,91.9Z"/>
+                                <rect  x="334.39" width="516" height="675.19" rx="51.9" ry="51.9"/>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <p>Code that needs to be added into the HTML file:</p>
+
+                    <div class="codecontainer">
+                        <div class="codebox">
+<pre>
+<code>&lt;div id="CLS"&gt;&lt;/div&gt;
+
+&lt;section id="CLSloader"&gt;&lt;/section&gt;
+</code></pre>
+                        </div>
+                        <div class="copybox">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.39 850.39">
+                                <path d="M389.7,715.19h126.3v83.3c0,28.67-23.24,51.9-51.9,51.9H51.9c-28.66,0-51.9-23.23-51.9-51.9V227.1c0-28.66,23.24-51.9,51.9-51.9h245.9v448.09c0,50.68,41.23,91.9,91.9,91.9Z"/>
+                                <rect  x="334.39" width="516" height="675.19" rx="51.9" ry="51.9"/>
+                            </svg>
+                        </div>
+                    </div>
+                
+                    <p>ENCORE CLS Example:</p>
+
+                    <div class="previewWindow" style="--height: 50vh; opacity: 0; overflow-y: scroll;" id="CLS"></div>
+
+                    <div class="exampleMenu">
+                        <button onclick="loadSystem('CLS')">
+                            Load CLS
+                        </button>
+                        <button onclick="unloadSystem('CLS')">
+                            Unload PDS
+                        </button>
+                    </div>
                 </div>
             </div>
 
