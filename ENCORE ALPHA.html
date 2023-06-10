@@ -319,13 +319,13 @@
                         <button style="background-color: #09af0030;" onclick="SSC_settings={'thumbs':document.getElementById('sscthumb').hasAttribute('active'),'progressBar':document.getElementById('sscbar').hasAttribute('active'),'sideButtons':document.getElementById('sscbuttons').hasAttribute('active'),'timer':10000,'style':1}; reloadSSC(SSC_settings);">
                             Save Changes
                         </button>
-                        <button class="active" active id="sscthumb" onclick="changeSSCvalues(this)">
+                        <button class="active" active id="sscthumb" onclick="changeValues(this)">
                             Thumbs
                         </button>
-                        <button class="active" active id="sscbar" onclick="changeSSCvalues(this)">
+                        <button class="active" active id="sscbar" onclick="changeValues(this)">
                             Progress Bar
                         </button>
-                        <button class="active" active id="sscbuttons" onclick="changeSSCvalues(this)">
+                        <button class="active" active id="sscbuttons" onclick="changeValues(this)">
                             Side Buttons
                         </button>
                     </div>
@@ -399,17 +399,14 @@
                         </button>
                     </div>
                     <div class="exampleMenu" id="PDSmenu" style="display: none; margin-top: 1em;">
-                        <button style="background-color: #09af0030;" onclick="SSC_settings={'thumbs':document.getElementById('sscthumb').hasAttribute('active'),'progressBar':document.getElementById('sscbar').hasAttribute('active'),'sideButtons':document.getElementById('sscbuttons').hasAttribute('active'),'timer':10000,'style':1}; reloadSSC(SSC_settings);">
+                        <button style="background-color: #09af0030;" onclick="PDS_settings={'path':'icon/OG_IMAGES/','fileCount':8,'classes':'null','colourSystem':document.getElementById('pdscol').hasAttribute('active'),'animations':document.getElementById('pdsani').hasAttribute('active'),'style':1}; reloadPDS(PDS_settings);">
                             Save Changes
                         </button>
-                        <button class="active" active id="sscthumb" onclick="changeSSCvalues(this)">
-                            Thumbs
+                        <button class="active" id="pdscol" onclick="changeValues(this)">
+                            Colour System
                         </button>
-                        <button class="active" active id="sscbar" onclick="changeSSCvalues(this)">
-                            Progress Bar
-                        </button>
-                        <button class="active" active id="sscbuttons" onclick="changeSSCvalues(this)">
-                            Side Buttons
+                        <button class="active" active id="pdsani" onclick="changeValues(this)">
+                            Animations
                         </button>
                     </div>
                 </div>
@@ -498,6 +495,7 @@
                         if(document.getElementById('PDSscript')) {
                             document.getElementById('PDS').style.height = 'var(--height)'
                             document.getElementById('PDS').style.opacity = '1'
+                            document.getElementById('PDSmenu').style.display = 'flex'
                         }else {
                             let script = document.createElement('script'),
                             settings = document.createElement('script');
@@ -509,6 +507,7 @@
                             document.body.appendChild(settings)
                             document.getElementById('PDS').style.height = 'var(--height)'
                             document.getElementById('PDS').style.opacity = '1'
+                            document.getElementById('PDSmenu').style.display = 'flex'
                         }
                         break;
                 }
@@ -526,12 +525,13 @@
                     case 'PDS':
                         document.getElementById('PDS').style.height = '0'
                         document.getElementById('PDS').style.opacity = '0'
+                        document.getElementById('PDSmenu').style.display = 'none'
                         break;
                 }
             }
 
 
-            function changeSSCvalues(e) {
+            function changeValues(e) {
                 e.classList.toggle('active')
                 if(e.hasAttribute('active')) {
                     e.removeAttribute('active');
