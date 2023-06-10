@@ -180,7 +180,7 @@
     width: 100%;
     border-radius: 0.5em;
     background-color: #66666620;
-    padding: 1em;
+    padding: 1em 0;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -189,8 +189,10 @@
 {
     padding: 0.5em 1em;
     font-weight: bold;
+    margin: 0 1em;
     background-color: #66666620;
     border-radius: 0.3em;
+    flex-grow: 1;
 }
 @media screen and (orientation:portrait) {
     .dropdown .dropdownheader p span
@@ -390,6 +392,24 @@
                             let script = document.createElement('script'),
                             settings = document.createElement('script');
                             document.getElementById('SSC').innerHTML = '<div class="banner-bg"><img src="icon/img/ssc1.jpg" draggable="false" alt="" loading="eager"></div><div class="banner-bg"><img src="icon/img/ssc2.jpg" draggable="false" alt="" loading="eager"></div>'
+                            script.id = 'SSCscript'
+                            script.src = 'https://natski.netlify.com/lib/js/ENCORE_SSC.js'
+                            settings.id = 'SSCsettings'
+                            settings.innerHTML = "SSC_settings={'thumbs':true,'progressBar':true,'sideButtons':true,'timer':10000,'style':1}"
+                            document.body.appendChild(script)
+                            document.body.appendChild(settings)
+                            document.getElementById('SSC').style.height = 'var(--height)'
+                        }
+                        break;
+
+                    case 'PDS':
+                        if(document.getElementById('PDSscript')) {
+                            document.getElementById('PDS').style.height = 'var(--height)'
+                            document.getElementById('PDS').style.opacity = '1'
+                        }else {
+                            let script = document.createElement('script'),
+                            settings = document.createElement('script');
+                            document.getElementById('PDS').innerHTML = '<div class="banner-bg"><img src="icon/img/ssc1.jpg" draggable="false" alt="" loading="eager"></div><div class="banner-bg"><img src="icon/img/ssc2.jpg" draggable="false" alt="" loading="eager"></div>'
                             script.id = 'SSCscript'
                             script.src = 'https://natski.netlify.com/lib/js/ENCORE_SSC.js'
                             settings.id = 'SSCsettings'
