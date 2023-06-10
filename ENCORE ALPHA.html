@@ -392,6 +392,8 @@
                         script.id = 'SSCscript'
                         script.src = 'https://natski.netlify.com/lib/js/ENCORE_SSC.js'
                         settings.innerHTML = "SSC_settings={'thumbs':true,'progressBar':true,'sideButtons':true,'timer':10000,'style':1}"
+                        document.body.appendChild(script)
+                        document.body.appendChild(settings)
                         document.getElementById('SSC').classList.add('active')
                         break;
                 }
