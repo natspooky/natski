@@ -889,7 +889,7 @@ main article ul li a
     opacity: 0;
     visibility: hidden;
     background-color: #232323;
-    transition: 0.2s;
+    transition: 0.2s, visibility 0s;
     transition-delay: 0.2s;
 }
 .panelhover:hover ~ .panel,.panel:hover
