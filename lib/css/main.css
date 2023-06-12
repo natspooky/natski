@@ -629,7 +629,75 @@ main article ul li a
     opacity: 0;
     visibility: hidden;
     transition: 0.2s;
-
+}
+.chapterselector
+{
+    position: fixed;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: auto;
+    background-color: var(--displaycolourtrans);
+    padding: 50px 0.8em 0 0.8em;
+    z-index: 9999;
+    animation: side 0.5s;
+}
+.chapterselector a p 
+{
+    position: relative;
+    padding: 0.8em;
+    margin-bottom: 0.2em;
+    background-color: #66666620;
+    border-radius: 10px;
+    color: var(--textmain);
+    text-align: center;
+    font-weight: bold;
+    transition: 0.2s;
+}
+.chapterselector a p:hover
+{
+    background-color: var(--displaycolourdark);
+}
+.chapterselector a p::before
+{
+    content: attr(name);
+    position: absolute;
+    right: calc(2em + 50px);
+    top: 50%;
+    border-radius: 10px;
+    padding: 0.5em;
+    background-color: #3a3a3a;
+    opacity: 0;
+    visibility: hidden;
+    white-space: nowrap;
+    pointer-events: none;
+    transform: translate(13px,-50%);
+    transition: 0.2s;
+}
+.chapterselector a p:hover::before
+{
+    transform: translate(0px,-50%);
+    opacity: 1;
+    visibility: visible;
+}
+.panel
+{
+    position: absolute;
+    top: 0;
+    opacity: 0;
+    visibility: hidden;
+    right: 100%;
+    height: 100%;
+    z-index: -1;
+    padding: 50px 0.8em 0 0.8em;
+    background-color: #232323;
+    transition: 0.2s;
+    transition-delay: 0.2s;
+}
+.panelhover:hover ~ .panel,.panel:hover
+{
+    opacity: 1;
+    visibility: visible;
 }
 .webcontainer
 {
@@ -827,75 +895,6 @@ main article ul li a
 	fill: none;
 	stroke: var(--maincol);
 	stroke-miterlimit: 10;
-}
-.chapterselector
-{
-    position: fixed;
-    right: 0;
-    top: 0;
-    height: 100%;
-    width: auto;
-    background-color: var(--displaycolourtrans);
-    padding: 50px 0.8em 0 0.8em;
-    z-index: 9999;
-    animation: side 0.5s;
-}
-.chapterselector a p 
-{
-    position: relative;
-    padding: 0.8em;
-    margin-bottom: 0.2em;
-    background-color: #66666620;
-    border-radius: 10px;
-    color: var(--textmain);
-    text-align: center;
-    font-weight: bold;
-    transition: 0.2s;
-}
-.chapterselector a p:hover
-{
-    background-color: var(--displaycolourdark);
-}
-.chapterselector a p::before
-{
-    content: attr(name);
-    position: absolute;
-    right: calc(2em + 50px);
-    top: 50%;
-    border-radius: 10px;
-    padding: 0.5em;
-    background-color: #3a3a3a;
-    opacity: 0;
-    visibility: hidden;
-    white-space: nowrap;
-    pointer-events: none;
-    transform: translate(13px,-50%);
-    transition: 0.2s;
-}
-.chapterselector a p:hover::before
-{
-    transform: translate(0px,-50%);
-    opacity: 1;
-    visibility: visible;
-}
-.panel
-{
-    position: absolute;
-    top: 0;
-    right: 100%;
-    height: 100%;
-    z-index: -1;
-    padding: 50px 0.8em 0 0.8em;
-    opacity: 0;
-    visibility: hidden;
-    background-color: #232323;
-    transition: 0.2s, visibility 0s;
-    transition-delay: 0.2s;
-}
-.panelhover:hover ~ .panel,.panel:hover
-{
-    opacity: 1;
-    visibility: visible;
 }
 footer
 {
