@@ -838,6 +838,7 @@ main article ul li a
     background-color: var(--displaycolourtrans);
     padding: 50px 0.8em 0 0.8em;
     z-index: 9999;
+    animation: side 0.5s;
 }
 .chapterselector a p 
 {

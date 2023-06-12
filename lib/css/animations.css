@@ -27,7 +27,13 @@
     from{opacity: 0;}
     to{opacity: 1;}
 }
+
 @keyframes rotate {
     from{transform: rotate(0) scale(0.9);}
     to{transform: rotate(360deg) scale(0.9);}
+}
+
+@keyframes side {
+    from{transform: translateX(200%);}
+    to{transform: translateX(0);}
 }
