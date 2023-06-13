@@ -468,7 +468,11 @@
                 
                     <p>ENCORE CLS Example:</p>
 
-                    <div class="previewWindow" style="--height: 50vh; opacity: 0; overflow-y: scroll;" id="CLS"></div>
+                    <div class="previewWindow" style="--height: 50vh; opacity: 0; overflow-y: scroll;" id="CLScontainer">
+                        <div id="CLS"></div>
+
+                        <section id="CLSloader"></section>
+                    </div>
 
                     <div class="exampleMenu">
                         <button onclick="loadSystem('CLS')">
@@ -564,6 +568,24 @@
                             document.getElementById('PDSmenu').style.display = 'flex'
                         }
                         break;
+                    
+                    case 'CLS':
+                        if(document.getElementById('CLSscript')) {
+                            document.getElementById('CLS').style.height = 'var(--height)'
+                            document.getElementById('CLS').style.opacity = '1'
+                        }else {
+                            let script = document.createElement('script'),
+                            settings = document.createElement('script');
+                            script.id = 'CLSscript'
+                            script.src = 'https://natski.netlify.com/lib/js/ENCORE_CLS.js'
+                            settings.id = 'CLSsettings'
+                            settings.innerHTML = "CLS_settings={'path':'path of log files','fileCount':2,'container':null,'style':1}"
+                            document.body.appendChild(script)
+                            document.body.appendChild(settings)
+                            document.getElementById('CLS').style.height = 'var(--height)'
+                            document.getElementById('CLS').style.opacity = '1'
+                        }
+                        break;
                 }
             }
 
@@ -580,6 +602,10 @@
                         document.getElementById('PDS').style.height = '0'
                         document.getElementById('PDS').style.opacity = '0'
                         document.getElementById('PDSmenu').style.display = 'none'
+                        break;
+                    case 'CLS':
+                        document.getElementById('PDS').style.height = '0'
+                        document.getElementById('PDS').style.opacity = '0'
                         break;
                 }
             }
