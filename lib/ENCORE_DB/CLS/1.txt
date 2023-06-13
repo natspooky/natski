@@ -23,7 +23,7 @@
     width: max(90%, 200px);
     border-radius: 20px;
     padding: 1em;
-    background-color: transparent;
+    background-color: var(--SSCcolor);
     margin: 10px auto;
     border: 2px solid var(--SSCcolor);
     text-align: justify;
