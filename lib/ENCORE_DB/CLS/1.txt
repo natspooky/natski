@@ -14,7 +14,7 @@
         --SSCcolor: #2a2a2a90;
     }
 }
-main article
+#CLS article
 {
     position: relative;
     line-height: 1.55rem;
@@ -30,13 +30,13 @@ main article
     user-select: text;
     color: #e9e9e9;
 }
-main article hr
+#CLS article hr
 {
     border: 2px solid var(--SSCcolor);
     margin: 0 0 1em 0;
     border-radius: 100vmax;
 }
-main article .mini
+#CLS article .mini
 {
     width: 90%;
     display: block;
@@ -45,7 +45,7 @@ main article .mini
     border: 0;
     margin: 1em auto 0.8em auto;
 }
-main article h3
+#CLS article h3
 {
     position: relative;
     font-size: 2rem;
@@ -54,7 +54,7 @@ main article h3
     padding: 0em 0em 0.5em 0em;
     line-height: 2rem;
 }
-main article h4
+#CLS article h4
 {
     position: relative;
     padding: 0.3em;
@@ -67,18 +67,18 @@ main article h4
     border-radius: 7px;
     z-index: 999;
 }
-main article section
+#CLS article section
 {
     margin: 0 0 0.6em 0;
     width: 100%;
     display: flex;
     align-items: center;
 }
-main article section p
+#CLS article section p
 {
     text-align: left;
 }
-main article section svg
+#CLS article section svg
 {
     width: 15px;
     margin: 0 0.4em;
