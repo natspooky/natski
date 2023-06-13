@@ -20,7 +20,7 @@
     line-height: 1.55rem;
     font-size: 1.2rem;
     display: block;
-    width: max(95vmin,68vw);
+    width: max(90%, 200px);
     border-radius: 20px;
     padding: 1em;
     background-color: transparent;
