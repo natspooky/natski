@@ -571,8 +571,8 @@
                     
                     case 'CLS':
                         if(document.getElementById('CLSscript')) {
-                            document.getElementById('CLS').style.height = 'var(--height)'
-                            document.getElementById('CLS').style.opacity = '1'
+                            document.getElementById('CLScontainer').style.height = 'var(--height)'
+                            document.getElementById('CLScontainer').style.opacity = '1'
                         }else {
                             let script = document.createElement('script'),
                             settings = document.createElement('script');
@@ -582,8 +582,8 @@
                             settings.innerHTML = "CLS_settings={'path':'https://natski.netlify.app/lib/ENCORE_DB/CLS/log','fileCount':1,'container':null,'style':1}"
                             document.body.appendChild(script)
                             document.body.appendChild(settings)
-                            document.getElementById('CLS').style.height = 'var(--height)'
-                            document.getElementById('CLS').style.opacity = '1'
+                            document.getElementById('CLScontainer').style.height = 'var(--height)'
+                            document.getElementById('CLScontainer').style.opacity = '1'
                         }
                         break;
                 }
@@ -604,8 +604,8 @@
                         document.getElementById('PDSmenu').style.display = 'none'
                         break;
                     case 'CLS':
-                        document.getElementById('PDS').style.height = '0'
-                        document.getElementById('PDS').style.opacity = '0'
+                        document.getElementById('PDScontainer').style.height = '0'
+                        document.getElementById('PDScontainer').style.opacity = '0'
                         break;
                 }
             }
