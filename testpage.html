@@ -231,7 +231,7 @@ body, html {
 }
 .VPScontainer .controlBox .controlBar button:active
 {
-    background-color: #ba3ec854;
+    background-color: #4b4b4b40;
 }
 .VPScontainer .controlBox .controlBar button svg
 {
@@ -371,12 +371,12 @@ body, html {
 </div>
 -->
 
-<video class="VPS" height="500" title="title of thing">
+<video class="VPS" height="500" title="test#1">
     <source src="icon/portimg/alevel/5.mp4" type="video/mp4">
 </video>
 
 
-<video class="VPS" height="500" title="tof thing">
+<video class="VPS" width="500" title="tof thing">
     <source src="icon/portimg/alevel/3.mp4" type="video/mp4">
 </video>
 
@@ -563,7 +563,6 @@ window.addEventListener('load', function() {
         video.onplaying = function(){bufferClear(e)}
 
         playframe.onclick = function(){playPause(e)}
-        playframe.onmousemove = function(){showCont(e)}
 
         proginput.oninput = function(){adjustBar(e,proginput.value);videoTime(e,proginput.value)}
 
