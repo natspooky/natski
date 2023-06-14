@@ -558,10 +558,9 @@ window.addEventListener('load', function() {
         video.onended = function(){showCont(e);document.getElementsByClassName('VPSplay')[e].classList.remove('active')}
         video.onpause = function(){showCont(e)}
         video.onplay = function(){hideCont(e)}
-        //ADD BUFFER
+     
         video.onwaiting = function(){buffer(e)}
         video.onplaying = function(){bufferClear(e)}
-        video.onloadeddata = function(){bufferClear(e)}
 
         playframe.onclick = function(){playPause(e)}
         playframe.onmousemove = function(){showCont(e)}
