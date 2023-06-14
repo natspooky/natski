@@ -115,107 +115,281 @@ body, html {
         --SSCcolor: #2a2a2a90;
     }
 }
-main article
+
+
+@keyframes VPSbuffer {
+    from{
+        transform: translate(-50%,-50%) rotate(0deg);
+    }
+    to{
+        transform: translate(-50%,-50%) rotate(360deg);
+    }
+}
+
+
+.VPScontainer
 {
     position: relative;
-    line-height: 1.55rem;
-    font-size: 1.2rem;
+    width: fit-content;
+    height: fit-content;
+    border-radius: 0.6em;
+    overflow: hidden;
+    background-color: #66666640;
     display: block;
-    width: max(95vmin,68vw);
-    border-radius: 20px;
-    padding: 1em;
-    margin: 10px auto;
-    border: 2px solid var(--SSCcolor);
-    text-align: justify;
-    user-select: text;
-    color: #e9e9e9;
+    margin: auto;
 }
-main article hr
+.VPScontainer .buffer
 {
-    border: 2px solid var(--SSCcolor);
-    margin: 0 0 1em 0;
-    border-radius: 100vmax;
-}
-main article .mini
-{
-    width: 90%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    height: min(70px, 40%);
     display: block;
-    background-image: linear-gradient(to right, transparent,#8f8f8f, transparent);
-    height: 4px;
-    border: 0;
-    margin: 1em auto 0.8em auto;
+    fill: #e9e9e9;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0s;
+    pointer-events: none;
 }
-main article h3
+.VPScontainer .buffer.active
+{
+    animation: VPSbuffer 1.5s linear infinite;
+    opacity: 1;
+    visibility: visible;
+    transition: 0.3s;
+}
+.VPScontainer video
 {
     position: relative;
-    font-size: 2rem;
-    text-align: left;
-    margin-top: 1em;
-    padding: 0em 0em 0.5em 0em;
-    line-height: 2rem;
+    display: block;
 }
-main article h4
+.VPScontainer .controlBox
 {
-    position: relative;
-    padding: 0.3em;
-    background-color: var(--SSCcolor);
-    border: 2px solid var(--SSCcolor);
-    text-align: center;
-    font-size: 2rem;
-    line-height: 2rem;
-    border-radius: 7px;
-    z-index: 999;
-}
-main article section
-{
-    margin: 0 0 0.6em 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
     width: 100%;
+    background-color: #00000090;
+    opacity: 0;
+    transition: 0.3s;
+}
+.VPScontainer .controlBox .playField
+{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+.VPScontainer .controlBox .controlBar
+{
+    position: absolute;
+    padding: 0.4em 0em;
+    left: 0;
+    bottom: 0;
+    height: calc(40px + 0.8em);
+    width: 100%;
+    background-color: #00000050;
+}
+.VPScontainer .controlBox .controlBar button
+{
+    position: relative;
+    float: left;
+    border: 0;
+    border-radius: 0.3em;
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
+    background-color: transparent;
     display: flex;
+    justify-content: center;
     align-items: center;
+    margin: 0 0.25em;
+    transition: 0.4s;
+    transition-delay: 0.1s;
 }
-main article section p
+.VPScontainer .controlBox .controlBar button:first-of-type
 {
-    text-align: left;
+    margin-left: 0.5em;
 }
-main article section svg
+.VPScontainer .controlBox .controlBar button:hover
 {
-    width: 15px;
-    margin: 0 0.4em;
-    flex-shrink: 0;
+    transition: 0s;
+    transition-delay: 0s;
+    background-color: #4b4b4b70;
 }
-.red
+.VPScontainer .controlBox .controlBar button:active
 {
-    fill: #ff6961;
+    background-color: #ba3ec854;
 }
-.green
+.VPScontainer .controlBox .controlBar button svg
 {
-    fill: #77dd77;
+    position: relative;
+    display: block;
+    height: 70%;
+    fill: #e9e9e9;
 }
-.white
+.VPScontainer .controlBox .controlBar .PVSbar
 {
-    fill: #dcdcdc;
-    transform: scale(0.75);
+    position: absolute;
+    left: 0;
+    height: 5px;
+    width: 100%;
+    background-color: #ffffff40;
+    bottom: 100%;
 }
+.VPScontainer .controlBox .controlBar .PVSbar input
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    opacity: 0;
+    cursor: pointer;
+}
+.VPScontainer .controlBox .controlBar .PVSbar div
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background-color: #ff0000;
+}
+.VPScontainer .controlBox .controlBar .PVSbar div::before
+{
+    content: '';
+    position: absolute;
+    height: 10px;
+    width: 10px;
+    right: -5px;
+    top: 50%;
+    transform: translate(0,-50%);
+    border-radius: 100vmax;
+    background-color: #ff0000;
+    opacity: 0;
+    transition: 0.2s;
+}
+.VPScontainer .controlBox .controlBar .PVSbar:hover div::before
+{
+    opacity: 1;
+}
+.VPScontainer .controlBox .VPStitle
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0.6em;
+    text-shadow: 0 0 5px #00000020;
+    font-size: 1.8rem;
+    width: 100%;
+    font-weight: bold;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
         </style>
 
         
-       
-
-<main id="CLS">
-    <article>
-        <h4>03 / 06 / 2023</h4><hr class="mini"><h3>title</h3><hr><section><svg class="green" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 609.73 609.73"><path d="M305.04,609.73c-15.82,.01-30.15-6.4-40.52-16.76-10.37-10.37-16.76-24.65-16.76-40.45l-.11-190.37-190.37,.11C25.66,362.28,.02,336.66,0,305.04c-.02-15.82,6.4-30.14,16.77-40.51s24.65-16.76,40.45-16.77l190.37-.11-.11-190.37C247.46,25.67,273.07,.02,304.69,0c15.82-.01,30.14,6.4,40.51,16.77s16.77,24.65,16.77,40.45l.11,190.37,190.37-.11c31.61-.02,57.26,25.6,57.28,57.21,.01,15.82-6.4,30.15-16.77,40.52-10.37,10.37-24.65,16.76-40.45,16.76l-190.37,.11,.11,190.37c.02,31.62-25.59,57.26-57.21,57.28Z"/></svg><p>asfsdg</p></section><section><svg class="red" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 616.14 616.14"><path d="M593.94,593.61c-14.82,14.84-34.25,22.26-53.68,22.26s-38.81-7.4-53.62-22.2l-178.51-178.3-178.3,178.51c-29.62,29.65-77.66,29.68-107.31,.06-14.84-14.81-22.25-34.25-22.25-53.68s7.39-38.81,22.19-53.62l178.3-178.51L22.25,129.83c-29.64-29.62-29.67-77.66-.06-107.31C37.01,7.68,56.44,.27,75.87,.27s38.82,7.39,53.63,22.19l178.51,178.3L486.31,22.25c29.61-29.64,77.65-29.67,107.3-.06,14.84,14.82,22.26,34.25,22.26,53.69s-7.4,38.81-22.2,53.62l-178.3,178.51,178.51,178.3c29.65,29.61,29.68,77.65,.06,107.3Z"/></svg><p>sghadsh</p></section><section><svg class="green" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 692.13 496.44"><path d="M692.13,75.84c0,21.49-9.08,42.85-26.74,57.86L259.79,478.38c-14.27,12.13-31.73,18.06-49.1,18.06-21.49,0-42.84-9.08-57.85-26.74L18.06,311.1c-27.14-31.94-23.25-79.82,8.68-106.96,14.28-12.13,31.73-18.06,49.1-18.06,21.5,0,42.85,9.09,57.86,26.75l85.64,100.77L567.12,18.06c31.94-27.13,79.82-23.25,106.96,8.69,12.12,14.27,18.05,31.72,18.05,49.09Z"/></svg><p>sdfg</p></section><section><svg class="white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1133.86 1133.86"><circle cx="566.93" cy="566.93" r="566.93"/></svg><p>adfhasdfg</p></section>
-    </article>
-</main>
-
-<section id="CLSloader"></section>
 
 
 
+<div class="VPScontainer" onmouseenter="showCont()" onmouseleave="hideCont()">
+    <video class="VPS" height="500" id="vid" ontimeupdate="bar((this.currentTime / this.duration) * 100)" onended="hasEnded()" onwaiting="buffer()" onplaying="bufferClear()" onpause="showCont()" onplay="hideCont()">
+        <source src="icon/portimg/alevel/5.mp4" type="video/mp4">
+    </video>
+    <div class="controlBox" id="controlBox">
+        <span class="VPStitle">
+            titlefkjdsfksfheslkfjhfjkasfhsdfk jsdfsdkfjhsdfkjsdhfksjdf hsdkjdshfksjdfhs dkjfhsdkfjsdhfskdjfhsdkjfhsdkfsdhfksdjfhsdkf jsdhfkjsdfhsdkjfhsdkfjsdhfksdjhfsdkjfhsdkjfshdfksjdhfsdkjf
+        </span>
 
+        <div class="playField" onclick="playPause()"></div>
+
+
+        <div class="controlBar">
+            <div class="PVSbar">
+                <div id="VPSbar"></div>
+                <input type="range" oninput="bar(this.value);videoTime(this.value)" value="0" min="0" max="100">
+            </div>
+
+
+
+            <button class="PVSplay" onclick="playPause()">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1032.47 1032.53">
+                    <path d="M952.08,620.24l-57.1-32.97c-25.19-14.54-40.47-41.49-40.43-70.58,0-.16,0-.31,0-.47s0-.31,0-.47c-.04-29.09,15.24-56.04,40.43-70.58l57.1-32.97c41.44-23.93,55.64-76.92,31.72-118.36l-41.28-71.49c-23.92-41.44-76.92-55.64-118.36-31.72l-57.05,32.94c-25.23,14.57-56.25,14.28-81.44-.34-.28-.16-.56-.33-.85-.49-25.16-14.5-40.81-41.2-40.81-70.24V86.64c0-47.85-38.79-86.64-86.65-86.64h-82.54c-47.86,0-86.65,38.79-86.65,86.64v65.87c0,29.04-15.65,55.74-40.81,70.24-.28,.16-.57,.33-.85,.49-25.2,14.62-56.22,14.9-81.44,.34l-57.05-32.94c-41.44-23.92-94.44-9.72-118.37,31.72l-41.27,71.49c-23.93,41.44-9.73,94.43,31.72,118.36l57.1,32.97c25.19,14.54,40.47,41.49,40.43,70.58,0,.16,0,.31,0,.47s0,.31,0,.47c.04,29.09-15.24,56.04-40.43,70.58l-57.1,32.97c-41.45,23.93-55.65,76.92-31.72,118.36l41.27,71.49c23.93,41.44,76.93,55.64,118.37,31.72l57.05-32.94c25.23-14.57,56.25-14.28,81.44,.34,.28,.16,.56,.33,.85,.49,25.16,14.5,40.81,41.2,40.81,70.24v65.86c0,47.86,38.79,86.65,86.65,86.65h82.54c47.86,0,86.65-38.79,86.65-86.65v-65.86c0-29.04,15.65-55.74,40.81-70.24,.28-.16,.57-.33,.85-.49,25.2-14.62,56.22-14.9,81.44-.34l57.05,32.94c41.44,23.92,94.44,9.72,118.36-31.72l41.28-71.49c23.92-41.44,9.72-94.43-31.72-118.36Zm-401.72,63.49c-11.07,2.25-22.53,3.43-34.27,3.43s-23.2-1.18-34.27-3.43c-36.94-7.52-69.55-26.96-93.65-54.11-15.14-17.08-26.91-37.2-34.28-59.33-5.66-16.99-8.73-35.17-8.73-54.06s3.07-37.07,8.73-54.06c7.37-22.13,19.14-42.25,34.28-59.33,24.1-27.15,56.71-46.59,93.65-54.11,11.07-2.25,22.53-3.43,34.27-3.43s23.2,1.18,34.27,3.43c36.94,7.52,69.55,26.96,93.65,54.11,15.14,17.08,26.91,37.2,34.28,59.33,5.66,16.99,8.73,35.17,8.73,54.06s-3.07,37.07-8.73,54.06c-7.37,22.13-19.14,42.25-34.28,59.33-24.1,27.15-56.71,46.59-93.65,54.11Z"/>
+                </svg>
+            </button>
+            <button class="VPSvolume">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1032.47 1032.53">
+                    <path d="M952.08,620.24l-57.1-32.97c-25.19-14.54-40.47-41.49-40.43-70.58,0-.16,0-.31,0-.47s0-.31,0-.47c-.04-29.09,15.24-56.04,40.43-70.58l57.1-32.97c41.44-23.93,55.64-76.92,31.72-118.36l-41.28-71.49c-23.92-41.44-76.92-55.64-118.36-31.72l-57.05,32.94c-25.23,14.57-56.25,14.28-81.44-.34-.28-.16-.56-.33-.85-.49-25.16-14.5-40.81-41.2-40.81-70.24V86.64c0-47.85-38.79-86.64-86.65-86.64h-82.54c-47.86,0-86.65,38.79-86.65,86.64v65.87c0,29.04-15.65,55.74-40.81,70.24-.28,.16-.57,.33-.85,.49-25.2,14.62-56.22,14.9-81.44,.34l-57.05-32.94c-41.44-23.92-94.44-9.72-118.37,31.72l-41.27,71.49c-23.93,41.44-9.73,94.43,31.72,118.36l57.1,32.97c25.19,14.54,40.47,41.49,40.43,70.58,0,.16,0,.31,0,.47s0,.31,0,.47c.04,29.09-15.24,56.04-40.43,70.58l-57.1,32.97c-41.45,23.93-55.65,76.92-31.72,118.36l41.27,71.49c23.93,41.44,76.93,55.64,118.37,31.72l57.05-32.94c25.23-14.57,56.25-14.28,81.44,.34,.28,.16,.56,.33,.85,.49,25.16,14.5,40.81,41.2,40.81,70.24v65.86c0,47.86,38.79,86.65,86.65,86.65h82.54c47.86,0,86.65-38.79,86.65-86.65v-65.86c0-29.04,15.65-55.74,40.81-70.24,.28-.16,.57-.33,.85-.49,25.2-14.62,56.22-14.9,81.44-.34l57.05,32.94c41.44,23.92,94.44,9.72,118.36-31.72l41.28-71.49c23.92-41.44,9.72-94.43-31.72-118.36Zm-401.72,63.49c-11.07,2.25-22.53,3.43-34.27,3.43s-23.2-1.18-34.27-3.43c-36.94-7.52-69.55-26.96-93.65-54.11-15.14-17.08-26.91-37.2-34.28-59.33-5.66-16.99-8.73-35.17-8.73-54.06s3.07-37.07,8.73-54.06c7.37-22.13,19.14-42.25,34.28-59.33,24.1-27.15,56.71-46.59,93.65-54.11,11.07-2.25,22.53-3.43,34.27-3.43s23.2,1.18,34.27,3.43c36.94,7.52,69.55,26.96,93.65,54.11,15.14,17.08,26.91,37.2,34.28,59.33,5.66,16.99,8.73,35.17,8.73,54.06s-3.07,37.07-8.73,54.06c-7.37,22.13-19.14,42.25-34.28,59.33-24.1,27.15-56.71,46.59-93.65,54.11Z"/>
+                </svg>
+            </button>
+            <button class="VPSsettings">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1032.47 1032.53">
+                    <path d="M952.08,620.24l-57.1-32.97c-25.19-14.54-40.47-41.49-40.43-70.58,0-.16,0-.31,0-.47s0-.31,0-.47c-.04-29.09,15.24-56.04,40.43-70.58l57.1-32.97c41.44-23.93,55.64-76.92,31.72-118.36l-41.28-71.49c-23.92-41.44-76.92-55.64-118.36-31.72l-57.05,32.94c-25.23,14.57-56.25,14.28-81.44-.34-.28-.16-.56-.33-.85-.49-25.16-14.5-40.81-41.2-40.81-70.24V86.64c0-47.85-38.79-86.64-86.65-86.64h-82.54c-47.86,0-86.65,38.79-86.65,86.64v65.87c0,29.04-15.65,55.74-40.81,70.24-.28,.16-.57,.33-.85,.49-25.2,14.62-56.22,14.9-81.44,.34l-57.05-32.94c-41.44-23.92-94.44-9.72-118.37,31.72l-41.27,71.49c-23.93,41.44-9.73,94.43,31.72,118.36l57.1,32.97c25.19,14.54,40.47,41.49,40.43,70.58,0,.16,0,.31,0,.47s0,.31,0,.47c.04,29.09-15.24,56.04-40.43,70.58l-57.1,32.97c-41.45,23.93-55.65,76.92-31.72,118.36l41.27,71.49c23.93,41.44,76.93,55.64,118.37,31.72l57.05-32.94c25.23-14.57,56.25-14.28,81.44,.34,.28,.16,.56,.33,.85,.49,25.16,14.5,40.81,41.2,40.81,70.24v65.86c0,47.86,38.79,86.65,86.65,86.65h82.54c47.86,0,86.65-38.79,86.65-86.65v-65.86c0-29.04,15.65-55.74,40.81-70.24,.28-.16,.57-.33,.85-.49,25.2-14.62,56.22-14.9,81.44-.34l57.05,32.94c41.44,23.92,94.44,9.72,118.36-31.72l41.28-71.49c23.92-41.44,9.72-94.43-31.72-118.36Zm-401.72,63.49c-11.07,2.25-22.53,3.43-34.27,3.43s-23.2-1.18-34.27-3.43c-36.94-7.52-69.55-26.96-93.65-54.11-15.14-17.08-26.91-37.2-34.28-59.33-5.66-16.99-8.73-35.17-8.73-54.06s3.07-37.07,8.73-54.06c7.37-22.13,19.14-42.25,34.28-59.33,24.1-27.15,56.71-46.59,93.65-54.11,11.07-2.25,22.53-3.43,34.27-3.43s23.2,1.18,34.27,3.43c36.94,7.52,69.55,26.96,93.65,54.11,15.14,17.08,26.91,37.2,34.28,59.33,5.66,16.99,8.73,35.17,8.73,54.06s-3.07,37.07-8.73,54.06c-7.37,22.13-19.14,42.25-34.28,59.33-24.1,27.15-56.71,46.59-93.65,54.11Z"/>
+                </svg>
+            </button>
+            <button class="VPSfullScreen">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1032.47 1032.53">
+                    <path d="M952.08,620.24l-57.1-32.97c-25.19-14.54-40.47-41.49-40.43-70.58,0-.16,0-.31,0-.47s0-.31,0-.47c-.04-29.09,15.24-56.04,40.43-70.58l57.1-32.97c41.44-23.93,55.64-76.92,31.72-118.36l-41.28-71.49c-23.92-41.44-76.92-55.64-118.36-31.72l-57.05,32.94c-25.23,14.57-56.25,14.28-81.44-.34-.28-.16-.56-.33-.85-.49-25.16-14.5-40.81-41.2-40.81-70.24V86.64c0-47.85-38.79-86.64-86.65-86.64h-82.54c-47.86,0-86.65,38.79-86.65,86.64v65.87c0,29.04-15.65,55.74-40.81,70.24-.28,.16-.57,.33-.85,.49-25.2,14.62-56.22,14.9-81.44,.34l-57.05-32.94c-41.44-23.92-94.44-9.72-118.37,31.72l-41.27,71.49c-23.93,41.44-9.73,94.43,31.72,118.36l57.1,32.97c25.19,14.54,40.47,41.49,40.43,70.58,0,.16,0,.31,0,.47s0,.31,0,.47c.04,29.09-15.24,56.04-40.43,70.58l-57.1,32.97c-41.45,23.93-55.65,76.92-31.72,118.36l41.27,71.49c23.93,41.44,76.93,55.64,118.37,31.72l57.05-32.94c25.23-14.57,56.25-14.28,81.44,.34,.28,.16,.56,.33,.85,.49,25.16,14.5,40.81,41.2,40.81,70.24v65.86c0,47.86,38.79,86.65,86.65,86.65h82.54c47.86,0,86.65-38.79,86.65-86.65v-65.86c0-29.04,15.65-55.74,40.81-70.24,.28-.16,.57-.33,.85-.49,25.2-14.62,56.22-14.9,81.44-.34l57.05,32.94c41.44,23.92,94.44,9.72,118.36-31.72l41.28-71.49c23.92-41.44,9.72-94.43-31.72-118.36Zm-401.72,63.49c-11.07,2.25-22.53,3.43-34.27,3.43s-23.2-1.18-34.27-3.43c-36.94-7.52-69.55-26.96-93.65-54.11-15.14-17.08-26.91-37.2-34.28-59.33-5.66-16.99-8.73-35.17-8.73-54.06s3.07-37.07,8.73-54.06c7.37-22.13,19.14-42.25,34.28-59.33,24.1-27.15,56.71-46.59,93.65-54.11,11.07-2.25,22.53-3.43,34.27-3.43s23.2,1.18,34.27,3.43c36.94,7.52,69.55,26.96,93.65,54.11,15.14,17.08,26.91,37.2,34.28,59.33,5.66,16.99,8.73,35.17,8.73,54.06s-3.07,37.07-8.73,54.06c-7.37,22.13-19.14,42.25-34.28,59.33-24.1,27.15-56.71,46.59-93.65,54.11Z"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+    <svg class="buffer" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1118.94 1118.94">
+        <path d="M1118.94,559.47c0,308.99-250.48,559.47-559.47,559.47C250.73,1118.94,0,868.21,0,559.47,0,250.48,250.48,0,559.47,0c67.59,0,132.38,11.99,192.36,33.96,31.61,11.58,52.71,41.56,52.71,75.22h0c0,55.73-55.47,94.18-107.81,75.03-41.87-15.32-87.01-23.83-134.1-24.2-221.74-1.72-401.71,176.02-402.63,397.77-.92,221.96,179.2,402.08,401.16,401.16,221.74-.92,399.48-180.89,397.77-402.63-.37-47.08-8.88-92.23-24.2-134.1-19.15-52.34,19.3-107.81,75.03-107.81h0c33.66,0,63.64,21.1,75.22,52.71,21.97,59.98,33.96,124.77,33.96,192.36Z"/>
+    </svg>
+</div>
+
+
+<script>
+
+    function bar(e) {
+        document.getElementById('VPSbar').style.width = e + '%'
+    }
+
+    function videoTime(e) {
+        document.getElementById('vid').currentTime = (document.getElementById('vid').duration * (e / 100))
+    }
+
+
+    function playPause() {
+        if(document.getElementById('vid').paused){
+            document.getElementById('vid').play()
+        }else{
+            document.getElementById('vid').pause()
+        }
+    }
+
+    function hideCont() {
+        document.getElementById('controlBox').style.opacity = '0'   
+    }
+
+    function showCont() {
+        document.getElementById('controlBox').style.opacity = '1'
+    }
+
+
+    function buffer() {
+        document.getElementById('buffer').classList.add('active')
+    }
+
+    function bufferClear() {
+        document.getElementById('buffer').classList.remove('active')
+    }
+
+
+
+</script>
 
      
 
             
-
+<!--<script src="lib/js/ENCORE_VPS.js"></script>
+<script>SSC_settings={'thumbs':true,'progressBar':true,'sideButtons':true,'timer':10000,'style':1}</script>-->
     </body>
 </html>
