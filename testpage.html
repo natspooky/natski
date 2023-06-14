@@ -554,7 +554,7 @@ window.addEventListener('load', function() {
         player = document.getElementsByClassName('VPSplay')[e],
         fullsc = document.getElementsByClassName('VPSscreen')[e];
 
-        video.ontimeupdate = function(){adjustBar(e,Math.round((video.currentTime / video.duration) * 100));checkLoaded(e,Math.round((video.buffered.end(0) / video.duration) * 100));}
+        video.ontimeupdate = function(){adjustBar(e,Math.round((video.currentTime / video.duration) * 100));}
         video.onended = function(){showCont(e);document.getElementsByClassName('VPSplay')[e].classList.remove('active')}
         video.onpause = function(){showCont(e)}
         video.onplay = function(){hideCont(e)}
