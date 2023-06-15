@@ -245,6 +245,10 @@ body, html {
 {
     background-color: #ff00005c;
 }
+.VPScontainer .controlBox .controlBar button.setting
+{
+    background-color: #00aaff37;
+}
 .VPScontainer .controlBox .controlBar button.active .play, .VPScontainer .controlBox .controlBar button .pause
 {
     display: none;
@@ -405,6 +409,7 @@ body, html {
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
     transition: 0.2s;
 }
 .VPScontainer .controlBox .settingsPanel button.active
@@ -465,6 +470,9 @@ body, html {
         document.getElementsByClassName('VPSsound')[x].classList.remove('muted')
         document.getElementsByClassName('volumeVisible')[x].style.width = e + '%'
         document.getElementsByClassName('VPS')[x].volume = e / 100
+        if(document.getElementsByClassName('VPS')[x].volume == 0){
+            document.getElementsByClassName('VPSsound')[x].classList.add('muted')
+        }
     }
 
 
@@ -480,6 +488,7 @@ body, html {
 
     function toggleSettings(e) {
         document.getElementsByClassName('settingsPanel')[e].classList.toggle('active')
+        document.getElementsByClassName('VPSsettings')[e].classList.toggle('setting')
     }
 
 
