@@ -111,25 +111,25 @@ body, html {
         transform: translate(-50%,-50%) rotate(360deg);
     }
 }
+
+::-webkit-media-controls,.VPS::-webkit-media-controls,.VPS::-webkit-media-controls-enclosure
+{
+    display: none;
+}
 .VPScontainer
 {
     position: relative;
     width: fit-content;
     height: fit-content;
-    border-radius: 0.6em;
     overflow: hidden;
     background-color: #66666640;
     display: block;
-    min-width: 300px;
-    min-height: 150px;
     box-shadow: 0 10px 10px #00000020;
 }
 .VPScontainer .VPS
 {
     position: relative;
     pointer-events: none;
-    appearance: none;
-    -webkit-appearance: none;
     display: block;
     min-width: 300px;
     min-height: 150px;
