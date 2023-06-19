@@ -566,6 +566,11 @@ main article ul li a
 {
     fill: #77dd77;
 }
+.white
+{
+    fill: #dcdcdc;
+    transform: scale(0.75);
+}
 .gridcontainer
 {
     user-select: none;
@@ -943,6 +948,7 @@ noscript
     left: 0;
     height: 100%;
     width: 100%;
+    z-index: 999999;
     color: var(--textmain);
     display: flex;
     align-items: center;
