@@ -121,10 +121,27 @@ body, html {
     -webkit-appearance: none;
 }
 
+input[type=range] {
+    appearance: none;
+   -webkit-appearance: none;
+}
+input[type=range]::-webkit-slider-thumb {
+   -webkit-appearance: none;
+   border: none;
+   height: 0px;
+   width: 0px;
+}
+ input[type=range]::-moz-range-thumb,input[type=range]::-ms-thumb  {
+   border: none;
+   height: 0px;
+   width: 0px;
+}
+
+
 
 svg rect
 {
-    transition: 0.2s;
+    transition: 0.3s;
 }
 
 .VPScontainer
@@ -368,41 +385,6 @@ svg rect
     height: 100%;
     border-radius: 100vmax;
     background-color: #e9e9e9;
-}
-
-input[type=range] {
-    appearance: none;
-   -webkit-appearance: none;
-}
-input[type=range]::-webkit-slider-runnable-track {
-   border: none;
-}
-input[type=range]::-webkit-slider-thumb {
-   -webkit-appearance: none;
-   border: none;
-   height: 0px;
-   width: 0px;
-}
-input[type=range]:focus {
-   outline: none;
-}
- input[type=range]::-moz-range-track {
-   border: none;
-}
- input[type=range]::-moz-range-thumb {
-   border: none;
-   height: 0px;
-   width: 0px;
-}
-
-input[type=range]::-ms-track {
-   border-width: 6px 0;
-
-}
-input[type=range]::-ms-thumb {
-   border: none;
-   height: 0px;
-   width: 0px;
 }
 
 .VPScontainer .controlBox .controlBar .volumeContainer .volumeInput
