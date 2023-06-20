@@ -23,6 +23,8 @@
     height: 100vh;
     transform: scale(0.9);
     width: 100%;
+    left: 0;
+    top: 0;
     display: flex;
     justify-content: center;
     align-items: flex-end;
@@ -130,6 +132,7 @@
 #SSC .banner-bg .banner-button
 {
     position: absolute;
+    display: block;
     padding: 0em 1.8em;
     border-radius: 100vmax;
     color: #ffffff;
