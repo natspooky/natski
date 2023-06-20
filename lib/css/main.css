@@ -603,6 +603,7 @@ main article ul li a
 .featurebanner img
 {
     margin: 0 0.5em 0 0;
+    float: left;
     border-radius: 10px;
     height: 3em;
     width: 3em;
