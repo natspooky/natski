@@ -396,10 +396,12 @@ main article
 main article img
 {
     position: relative;
-    height: 207px;
+    max-height: 60vh;
+    width: 100%;
+    object-fit: contain;
     border-radius: 10px;
-    float: left;
-    margin: 10px 10px 0 0px;
+    margin: 0.7em 0;
+    background-color: #66666620;
 }
 main article hr
 {

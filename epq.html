@@ -57,7 +57,24 @@
             <h2>EPQ</h2>
         </header>
 
+        <script>
+            function printver() {
+                if(window.location !== window.parent.location){
+                    window.open('https://natski.netlify.app/epq.html', '_blank').focus();
+                }else{
+                    document.getElementById('wordcount').remove()
+                    setTimeout(() => {
+                        window.print()
+                    },100) 
+                }
+            }
+            printver()
+        </script>
+
+<button style="padding: 0.5em 1em; display: block; margin: 1em auto; background-color: rgba(0, 128, 0, 0.3); font-size: 1.1rem; font-weight: bold; border-radius: 100vmax; cursor: pointer;" onclick="printver()">print document</button>
+
         <main>
+
         
 
             <article style="animation: slide 0.6s">
@@ -844,6 +861,9 @@ Overall both website builders and freelance website developers have both pros an
 
         <div id="popout"></div>
         <p id="wordcount"></p>
+
+
+
 
         <noscript>
             <h1>javascript is disabled</h1>
