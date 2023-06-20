@@ -63,6 +63,7 @@
                     window.open('https://natski.netlify.app/epq.html', '_blank').focus();
                 }else{
                     document.getElementById('wordcount').remove()
+                    document.getElementById('chapselec').remove()
                     setTimeout(() => {
                         window.print()
                     },100) 
@@ -839,7 +840,7 @@ Overall both website builders and freelance website developers have both pros an
             <a href="privacy policy.html" onclick="parent.pageSystem('Privacy Policy');">Privacy Policy</a>
         </footer>
 
-        <div class="chapterselector">
+        <div class="chapterselector" id="chapselec">
             <a href="#-"><p name="Abstract">-</p></a>
             <a href="#00"><p name="Introduction">00</p></a>
             <a href="#01"><p name="What is HTML, CSS and Javascript">01</p></a>
