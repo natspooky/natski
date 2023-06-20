@@ -100,6 +100,12 @@ body, html {
 
 
 
+
+body,html
+{
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+}
 :root
 {
     --progressbar: #ff0000;
@@ -150,8 +156,8 @@ svg rect
 .VPScontainer
 {
     position: relative;
-    width: 100%;
-    height: auto;
+    width: fit-content;
+    height: fit-content;
     overflow: hidden;
     background-color: #66666610;
     display: block;
@@ -164,8 +170,6 @@ svg rect
     display: block;
     min-width: 330px;
     min-height: 330px;
-    height: 100%;
-    width: 100%;
 }
 .VPScontainer .VPS.full
 {
@@ -284,9 +288,10 @@ svg rect
 .VPScontainer .controlBox .controlBar .VPSbar
 {
     position: absolute;
-    left: 0;
+    left: 15px;
+    right: 15px;
     height: 5px;
-    width: 100%;
+    box-sizing: initial;
     background-color: #ffffff20;
     bottom: 100%;
 }
@@ -472,11 +477,8 @@ svg rect
 
 
 <video class="VPS" width="200" title="based test text for he video">
-    <source label="1080p" src="icon/portimg/alevel/3.mp4" type="video/mp4">
+    <source label="1080p" src="icon/portimg/alevel/4.mp4" type="video/mp4">
 </video>
-
-
-
 
 <script src="lib/js/ENCORE_VPS.js"></script>
 <script>VPS_settings={'style':1}</script>
