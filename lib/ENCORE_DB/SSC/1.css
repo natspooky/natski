@@ -64,7 +64,7 @@
 {
     position: relative;
     height: 5px;
-    width: 100px;
+    width: 50%;
     bottom: 15px;
     background-color: var(--SSCcolor);
     border-radius: 100vmax;
