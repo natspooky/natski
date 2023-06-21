@@ -307,16 +307,18 @@ svg rect
     right: 1em;
     width: 100px;
     overflow: hidden;
-    transform: translate(200%,0);
+    opacity: 0;
     border-radius: 0.5em;
     visibility: hidden;
+    pointer-events: none;
     display: block;
     background-color: #00000080;
     transition: 0.3s;
 }
 .VPScontainer .controlBox .settingsPanel.active
 {
-    transform: translate(0,0);
+    opacity: 1;
+    pointer-events: all;
     visibility: visible;
 }
 .VPScontainer .controlBox .settingsPanel button
