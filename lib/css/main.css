@@ -934,6 +934,7 @@ footer div svg
 footer div p
 {
     padding: 10px 10px 10px 0;
+    text-align: center;
 }
 footer span
 {
@@ -943,7 +944,6 @@ footer span
     margin: 0 10px;
     background-color: var(--displaycolour);
 }
-
 noscript
 {
     position: fixed;
