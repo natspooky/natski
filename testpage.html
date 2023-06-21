@@ -139,14 +139,14 @@ body,html
 {
   -webkit-appearance: none;
    appearance: none;
-   height: 10px;
+   height: 20px;
    width: 10px;
 }
 .VPSrange::-moz-range-thumb
 {
    border: none;
    border-radius: 0;
-   height: 10px;
+   height: 20px;
    width: 10px;
 }
 svg rect
@@ -288,12 +288,17 @@ svg rect
 .VPScontainer .controlBox .controlBar .VPSbar
 {
     position: absolute;
-    left: 15px;
-    right: 15px;
-    height: 5px;
+    left: 10px;
+    right: 10px;
+    height: 2.5px;
     box-sizing: initial;
     background-color: #ffffff20;
     bottom: 100%;
+    transition: 0.2s;
+}
+.VPScontainer .controlBox .controlBar .VPSbar:hover
+{
+    height: 5px;
 }
 .VPScontainer .controlBox .controlBar .VPSbar .VPSinput
 {
@@ -301,7 +306,7 @@ svg rect
     bottom: 0px;
     left: -5px;
     width: calc(100% + 10px);
-    height: 15px;
+    height: 20px;
     opacity: 0;
 }
 .VPScontainer .controlBox .controlBar .VPSbar .VPSbarChange
@@ -454,7 +459,7 @@ svg rect
 {
     transition: 0s;
     transition-delay: 0s;
-    background-color: #4b4b4b90;
+    background-color: #4b4b4ba0;
 }
 .VPScontainer .controlBox .settingsPanel button svg
 {
@@ -476,7 +481,7 @@ svg rect
 
 
 
-<video class="VPS" width="200" title="based test text for he video">
+<video class="VPS" width="200" poster="icon/portimg/alevel/2thumb.png" title="based test text for he video">
     <source label="1080p" src="icon/portimg/alevel/4.mp4" type="video/mp4">
 </video>
 
