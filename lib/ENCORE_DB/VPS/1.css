@@ -7,6 +7,23 @@ body,html
 {
     --progressbar: #ff0000;
 }
+@media (hover:hover)
+{
+    .VPScontainer .controlBox .controlBar .VPSbar:hover .VPSbarChange::before
+    {
+        opacity: 1;
+    }
+    .VPScontainer .controlBox .controlBar .VPSbar:hover
+    {
+        height: 5px;
+    }
+    .VPScontainer .controlBox .controlBar button:hover, .VPScontainer .controlBox .controlBar .volumeContainer:hover,.VPScontainer .controlBox .controlBar .VPStime:hover,.VPScontainer .controlBox .settingsPanel button:hover
+    {
+        transition: 0s;
+        transition-delay: 0s;
+        background-color: #4b4b4b70;
+    }
+}
 @keyframes VPSbuffer {
     from{
         transform: translate(-50%,-50%) rotate(0deg);
@@ -383,21 +400,4 @@ svg rect
 {
     transition: 0.3s;
     transform: rotate(-180deg);
-}
-@media (hover:hover)
-{
-    .VPScontainer .controlBox .controlBar .VPSbar:hover .VPSbarChange::before
-    {
-        opacity: 1;
-    }
-    .VPScontainer .controlBox .controlBar .VPSbar:hover
-    {
-        height: 5px;
-    }
-    .VPScontainer .controlBox .controlBar button:hover, .VPScontainer .controlBox .controlBar .volumeContainer:hover,.VPScontainer .controlBox .controlBar .VPStime:hover,.VPScontainer .controlBox .settingsPanel button:hover
-    {
-        transition: 0s;
-        transition-delay: 0s;
-        background-color: #4b4b4b70;
-    }
 }
