@@ -330,7 +330,7 @@ svg rect
     pointer-events: none;
     display: block;
     background-color: #00000080;
-    transition: 0.3s;
+    transition: 0.2s;
 }
 .VPScontainer .controlBox .settingsPanel.active
 {
