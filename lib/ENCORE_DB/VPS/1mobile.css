@@ -114,6 +114,7 @@ svg rect
     width: 100%;
     top: 0;
     left: 0;
+    display: none;
 }
 .VPScontainer .controlBox .controlBar
 {
