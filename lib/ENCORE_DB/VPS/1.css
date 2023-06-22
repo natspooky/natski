@@ -204,7 +204,6 @@ svg rect
     box-sizing: initial;
     background-color: #ffffff20;
     bottom: 100%;
-    display: none;
     transition: 0.2s;
 }
 .VPScontainer .controlBox .controlBar .VPSbar .VPSinput
