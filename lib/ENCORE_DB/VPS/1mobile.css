@@ -68,7 +68,7 @@ svg rect
     position: relative;
     pointer-events: none;
     display: block;
-    min-width: 270px;
+    min-width: 280px;
     min-height: 200px;
 }
 .VPScontainer .VPS.full
