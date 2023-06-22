@@ -314,24 +314,7 @@ svg rect
 }
 .VPSplaybackMenu button
 {
-    position: relative;
-    display: inline-block;
-    border: 0;
-    height: 40px;
-    width: 120px;
-    margin: 0.5em 0 0 0;
-    border-radius: 0.3em;
-    background-color: transparent;
-    color: #e9e9e9;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    overflow: hidden;
-    transition: 0.4s;
-    transition-delay: 0.1s;
-    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    height: 30px;
 }
 .VPSmainSettings
 {
