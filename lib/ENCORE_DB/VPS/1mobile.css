@@ -288,6 +288,10 @@ svg rect
     transition-delay: 0.1s;
     -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
 }
+.VPScontainer .controlBox .settingsPanel button svg
+{
+    height: 50%;
+}
 .VPSplaybackMenu
 {
     position: absolute;
