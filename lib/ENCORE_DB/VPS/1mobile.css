@@ -261,7 +261,7 @@ svg rect
     visibility: hidden;
     display: block;
     pointer-events: none;
-    background-color: #00000080;
+    background-color: #1e1e1e;
     opacity: 0;
     transition: 0.3s;
 }
