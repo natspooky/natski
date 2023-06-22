@@ -152,6 +152,7 @@ svg rect
     height: 55px;
     width: 55px;
     padding: 0;
+    transition: 0.2s;
     -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
 }
 .VPScontainer .controlBox .controlBar .VPSscreen
