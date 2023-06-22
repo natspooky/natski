@@ -74,7 +74,7 @@ svg rect
     width: fit-content;
     height: fit-content;
     overflow: hidden;
-    background-color: #66666610;
+    background-color: #000000;
     display: block;
     box-shadow: 0 10px 10px #00000020;
 	font-family: 'Exo 2', sans-serif;
