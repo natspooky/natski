@@ -53,6 +53,7 @@ svg rect
 .VPScontainer
 {
     position: relative;
+    box-sizing: border-box;
     width: fit-content;
     height: fit-content;
     overflow: hidden;
@@ -147,6 +148,7 @@ svg rect
     transform: translate(-50%,-50%);
     height: 55px;
     width: 55px;
+    -webkit-tap-highlight-color:  rgba(255, 255, 255, 0);
 }
 .VPScontainer .controlBox .controlBar .VPSscreen
 {
@@ -154,6 +156,7 @@ svg rect
     right: 25px;
     height: 15px;
     width: 15px;
+    box-sizing: border-box;
 }
 .VPScontainer .controlBox .controlBar .VPSsettings
 {
@@ -161,6 +164,7 @@ svg rect
     right: 10px;
     height: 20px;
     width: 20px;
+    box-sizing: border-box;
     display: none;
 }
 .VPScontainer .controlBox .controlBar button.setting svg
