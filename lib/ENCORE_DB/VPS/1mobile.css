@@ -161,6 +161,7 @@ svg rect
     width: 15px;
     padding: 0;
     box-sizing: border-box;
+    -webkit-tap-highlight-color:  rgba(255, 255, 255, 0);
 }
 .VPScontainer .controlBox .controlBar .VPSsettings
 {
@@ -171,6 +172,7 @@ svg rect
     padding: 0;
     box-sizing: border-box;
     display: none;
+    -webkit-tap-highlight-color:  rgba(255, 255, 255, 0);
 }
 .VPScontainer .controlBox .controlBar button.setting svg
 {
