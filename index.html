@@ -537,18 +537,19 @@
 
 
                 function systemStart() {
+                    let screen = document.getElementById('loadscreen');
                     document.body.style.position='unset';
                     document.body.style.overflow='unset';
-                    document.getElementById('loadscreen').classList.add('loaded')
+                    screen.classList.add('loaded')
                     setTimeout(() => {
-                        document.getElementById('loadscreen').remove()
+                        screen.remove()
                     }, 2500)
                     //randomSplash()
                 }
 
 
                 function randomSplash() {
-                    console.log('pog')
+                    console.log('test')
                 }
 
 
@@ -620,9 +621,9 @@
                     let frame = document.createElement('iframe'),
                     framecont = document.querySelector(".iframePanel");
                     frame.id = 'iframe'
-                    document.querySelector(".iframePanel").appendChild(frame)
-                    document.querySelector(".iframePanel").insertBefore(frame, frame.previousElementSibling);
-                    document.querySelector(".iframePanel").insertBefore(frame, frame.previousElementSibling);
+                    framecont.appendChild(frame)
+                    framecont.insertBefore(frame, frame.previousElementSibling);
+                    framecont.insertBefore(frame, frame.previousElementSibling);
                 }
 
 
@@ -632,8 +633,9 @@
 
 
                 function unloader() {
-                    document.getElementById('loader').style.opacity = '0';
-                    document.getElementById('loader').style.visibility = 'hidden';
+                    let loader = document.getElementById('loader');
+                    loader.style.opacity = '0';
+                    loader.style.visibility = 'hidden';
                     setTimeout(() => {
                         document.getElementById('loadersvg').style.animation = 'unset';
                     },300)
@@ -642,11 +644,14 @@
 
                 function loader() {
                     if(localStorage.getItem("performance")!=='true'){
-                        document.getElementById('loader').style.visibility = 'visible';
-                        document.getElementById('loader').style.opacity = '1';
+                        let loader = document.getElementById('loader');
+                        loader.style.visibility = 'visible';
+                        loader.style.opacity = '1';
                         document.getElementById('loadersvg').style.animation = 'rotate 1.5s linear infinite';
                     }
                 }
+
+
         </script>
 
 
