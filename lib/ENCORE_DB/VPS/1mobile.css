@@ -252,7 +252,7 @@ svg rect
 {
     position: absolute;
     top: 50%;
-    right: 50%;
+    left: 50%;
     width: 100px;
     overflow: hidden;
     box-sizing: border-box;
