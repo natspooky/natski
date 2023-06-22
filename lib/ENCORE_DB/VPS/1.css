@@ -52,7 +52,7 @@ body,html
 }
 .VPSrange::-webkit-slider-thumb
 {
-  -webkit-appearance: none;
+   -webkit-appearance: none;
    appearance: none;
    height: 20px;
    width: 10px;
@@ -138,6 +138,7 @@ svg rect
     padding: 0.4em 0em;
     left: 0;
     bottom: 0;
+    box-sizing: border-box;
     height: calc(40px + 0.8em);
     width: 100%;
 }
