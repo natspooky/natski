@@ -37,9 +37,10 @@
     left: 0;
     opacity: 0;
     z-index: 999;
+    background-color: #00000060;
     pointer-events: none;
     visibility: hidden;
-    transition: 0.3s, background-color 1s;
+    transition: 0.3s;
 }
 #inspectPanel.active {
     visibility: visible;
@@ -50,7 +51,6 @@
     position: absolute;
     height: 100%;
     width: 100%;
-    background-color: #00000050;
     cursor: pointer;
     -webkit-tap-highlight-color:  rgba(255, 255, 255, 0);
 }
@@ -68,6 +68,13 @@
 #inspectPanel img.active {
     height: auto;
     width: 80%;
+}
+#inspectPanel div
+{
+    position: absolute;
+    bottom: 0px;
+    background-color: #00000060;
+    height: 50px;
 }
 .PDSbuttons {
     position: absolute;

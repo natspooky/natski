@@ -40,6 +40,12 @@
         
 	</head>
     <style>
+@media (hover:hover) {
+    .dropdown .contentbox .codecontainer .copybox:hover
+    {
+        background-color: #66666640;
+    }
+}
 .dropdown
 {
     position: relative;
@@ -159,6 +165,34 @@
 {
     width: 30%;
 }
+.dropdown .contentbox .codecontainer .copybox::before
+{
+    content: 'copied!';
+    position: absolute;
+    right: calc(100% + 1.5em);
+    padding: 0.3em 0.5em;
+    top: 50%;
+    pointer-events: none;
+    border-radius: 0.3em;
+    opacity: 0;
+    font-weight: bold;
+    transform: translate(0,-50%);
+    background-color: #4c4c4c;
+    visibility: hidden;
+    transition: 0.5s;
+    transition-delay: 2s;
+}
+.dropdown .contentbox .codecontainer .copybox:active::before
+{
+    transition: 0s;
+    transition-delay: 0s;
+    visibility: visible;
+    opacity: 1;
+}
+.dropdown .contentbox .codecontainer .copybox:active
+    {
+        background-color: #66666660;
+    }
 .dropdown.active .dropdownheader div svg
 {
     transform: rotate(0deg);
@@ -213,16 +247,6 @@
     .dropdown .dropdownheader p span
     {
         display: none;
-    }
-}
-@media (hover:hover) {
-    .dropdown .contentbox .codecontainer .copybox:hover
-    {
-        background-color: #66666640;
-    }
-    .dropdown .contentbox .codecontainer .copybox:hover:active
-    {
-        background-color: #66666660;
     }
 }
     </style>
@@ -536,30 +560,32 @@
             function loadSystem(sys) {
                 switch(sys) {
                     case 'SSC':
+                        let ssc = document.getElementById('SSC');
                         if(document.getElementById('SSCscript')) {
-                            document.getElementById('SSC').style.height = 'var(--height)'
-                            document.getElementById('SSC').style.opacity = '1'
+                            ssc.style.height = 'var(--height)'
+                            ssc.style.opacity = '1'
                             document.getElementById('SSCmenu').style.display = 'flex'
                             playSSC()
                         }else {
                             let script = document.createElement('script'),
                             settings = document.createElement('script');
-                            document.getElementById('SSC').innerHTML = '<div class="banner-bg"><img src="icon/img/ssc1.jpg" draggable="false" alt="" loading="eager"></div><div class="banner-bg"><img src="icon/img/ssc2.jpg" draggable="false" alt="" loading="eager"></div>'
+                            ssc.innerHTML = '<div class="banner-bg"><img src="icon/img/ssc1.jpg" draggable="false" alt="" loading="eager"></div><div class="banner-bg"><img src="icon/img/ssc2.jpg" draggable="false" alt="" loading="eager"></div>'
                             script.id = 'SSCscript'
                             script.src = 'https://natski.netlify.com/lib/js/ENCORE_SSC.js'
                             settings.id = 'SSCsettings'
                             settings.innerHTML = "SSC_settings={'thumbs':true,'progressBar':true,'sideButtons':true,'timer':10000,'style':1}"
                             document.body.appendChild(script)
                             document.body.appendChild(settings)
-                            document.getElementById('SSC').style.height = 'var(--height)'
+                            ssc.style.height = 'var(--height)'
                             document.getElementById('SSCmenu').style.display = 'flex'
                         }
                         break;
 
                     case 'PDS':
+                        let pds = document.getElementById('PDS');
                         if(document.getElementById('PDSscript')) {
-                            document.getElementById('PDS').style.height = 'var(--height)'
-                            document.getElementById('PDS').style.opacity = '1'
+                            pds.style.height = 'var(--height)'
+                            pds.style.opacity = '1'
                             document.getElementById('PDSmenu').style.display = 'flex'
                         }else {
                             let script = document.createElement('script'),
@@ -570,16 +596,17 @@
                             settings.innerHTML = "PDS_settings={'path':'icon/OG_IMAGES/','fileCount':8,'classes':'null','colourSystem':false,'animations':true,'style':1}"
                             document.body.appendChild(script)
                             document.body.appendChild(settings)
-                            document.getElementById('PDS').style.height = 'var(--height)'
-                            document.getElementById('PDS').style.opacity = '1'
+                            pds.style.height = 'var(--height)'
+                            pds.style.opacity = '1'
                             document.getElementById('PDSmenu').style.display = 'flex'
                         }
                         break;
                     
                     case 'CLS':
+                        let cls = document.getElementById('CLScontainer');
                         if(document.getElementById('CLSscript')) {
-                            document.getElementById('CLScontainer').style.height = 'var(--height)'
-                            document.getElementById('CLScontainer').style.opacity = '1'
+                            cls.style.height = 'var(--height)'
+                            cls.style.opacity = '1'
                         }else {
                             let script = document.createElement('script'),
                             settings = document.createElement('script');
@@ -589,8 +616,8 @@
                             settings.innerHTML = "CLS_settings={'path':'https://natski.netlify.app/lib/ENCORE_DB/CLS/log','fileCount':1,'container':document.getElementById('CLScontainer'),'style':1}"
                             document.body.appendChild(script)
                             document.body.appendChild(settings)
-                            document.getElementById('CLScontainer').style.height = 'var(--height)'
-                            document.getElementById('CLScontainer').style.opacity = '1'
+                            cls.style.height = 'var(--height)'
+                            cls.style.opacity = '1'
                         }
                         break;
                 }
@@ -600,19 +627,22 @@
             function unloadSystem(sys) {
                 switch(sys) {
                     case 'SSC':
-                        document.getElementById('SSC').style.height = '0'
-                        document.getElementById('SSC').style.opacity = '0'
+                        let ssc = document.getElementById('SSC')
+                        ssc.style.height = '0'
+                        ssc.style.opacity = '0'
                         document.getElementById('SSCmenu').style.display = 'none'
                         pauseSSC()
                         break;
                     case 'PDS':
-                        document.getElementById('PDS').style.height = '0'
-                        document.getElementById('PDS').style.opacity = '0'
+                        let pds = document.getElementById('PDS');
+                        pds.style.height = '0'
+                        pds.style.opacity = '0'
                         document.getElementById('PDSmenu').style.display = 'none'
                         break;
                     case 'CLS':
-                        document.getElementById('PDScontainer').style.height = '0'
-                        document.getElementById('PDScontainer').style.opacity = '0'
+                        let cls = document.getElementById('PDScontainer');
+                        pds.style.height = '0'
+                        pds.style.opacity = '0'
                         break;
                 }
             }

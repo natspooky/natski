@@ -272,7 +272,7 @@ svg rect
 {
     visibility: visible;
     transform: translate(-50%,-50%) scale(1);
-    pointer-events: all;
+    pointer-events: unset;
     opacity: 1;
 }
 .VPScontainer .controlBox .settingsPanel button

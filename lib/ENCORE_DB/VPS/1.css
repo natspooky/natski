@@ -340,7 +340,7 @@ svg rect
 .VPScontainer .controlBox .settingsPanel.active
 {
     opacity: 1;
-    pointer-events: all;
+    pointer-events: unset;
     visibility: visible;
 }
 .VPScontainer .controlBox .settingsPanel button

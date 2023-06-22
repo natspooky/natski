@@ -806,6 +806,7 @@ main article ul li a
     flex-wrap: wrap;
     justify-content: center;
     padding: 1em 2em;
+    -webkit-overflow-scrolling: touch;
     scroll-snap-type: x mandatory;
 }
 .portanchor
