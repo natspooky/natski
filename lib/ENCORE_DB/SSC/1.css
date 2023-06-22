@@ -44,6 +44,7 @@
     border-radius: 8px;
     border: 0;
     background-color: var(--SSCcolor);
+    -webkit-tap-highlight-color:  rgba(255, 255, 255, 0);
     cursor: pointer;
 }
 #SSC .pagebutton:last-of-type
@@ -105,6 +106,7 @@
     margin: 0 0.5em;
     transition: 0.2s;
     cursor: pointer;
+    -webkit-tap-highlight-color:  rgba(255, 255, 255, 0);
 }
 #SSC .thumbs .thumb.active
 {
@@ -145,6 +147,7 @@
     line-height: 50px;
     cursor: pointer;
     bottom: 70px;
+    -webkit-tap-highlight-color:  rgba(255, 255, 255, 0);
 }
 @keyframes fadeIn
 {
