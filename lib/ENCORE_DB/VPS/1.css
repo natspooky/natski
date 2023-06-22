@@ -77,9 +77,6 @@ svg rect
     background-color: #66666610;
     display: block;
     box-shadow: 0 10px 10px #00000020;
-    margin: 0;
-	padding: 0;
-	box-sizing: border-box;
 	font-family: 'Exo 2', sans-serif;
 }
 .VPScontainer .VPS
@@ -265,6 +262,7 @@ svg rect
     cursor: pointer;
     background-color: transparent;
     margin: 0;
+    box-sizing: border-box;
     visibility: hidden;
     opacity: 0;
     transition: 0.4s;
