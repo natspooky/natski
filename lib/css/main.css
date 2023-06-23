@@ -74,6 +74,7 @@ body, html {
     scroll-behavior: smooth;
     -ms-touch-action: manipulation;
     touch-action: manipulation;
+    scrollbar-width: none;
     color: var(--textmain);
     background-color: var(--accentcol);
 }
@@ -979,6 +980,7 @@ noscript
         justify-content: unset;
         padding: 0.5em 0;
         flex-wrap: nowrap;
+        scrollbar-width: 5px;
     }
     main .title
     {
