@@ -1000,7 +1000,7 @@ noscript
     .sidescrollbar::-webkit-scrollbar
     {
         height: 5px;
-        background-color: #222222;
+        background-color: transparent;
     }
     .sidescrollbar::-webkit-scrollbar-thumb
     {
