@@ -14,6 +14,12 @@
         --SSCcolor: #2a2a2a90;
     }
 }
+#CLS *
+{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
 #CLS article
 {
     position: relative;

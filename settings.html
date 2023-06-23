@@ -56,19 +56,6 @@
             <h2>Settings</h2>
         </header>
 
-
-        <main>
-            <article style="animation: opacity 0.5s;">
-                <h3>Performance {WIP}</h3>
-                <hr>
-                <input type="checkbox" id="performance" onchange="perf('performance', this)">
-                <br><br>
-                <h3>{WIP}</h3>
-                <hr>
-                <input type="checkbox" id="temp">
-            </article>
-        </main>
-
         <style>
             input[type="checkbox"]
             {
@@ -120,6 +107,17 @@
             }
         </style>
 
+        <main>
+            <article style="animation: opacity 0.5s;">
+                <h3>Performance</h3>
+                <hr>
+                <input type="checkbox" id="performance" onchange="changeSettings('performance', this)">
+                <br><br>
+                <h3>[WIP]</h3>
+                <hr>
+                <input type="checkbox" id="motion">
+            </article>
+        </main>
 
         <script>
             if(localStorage.getItem("performance")==='true'){
@@ -127,7 +125,7 @@
             }
 
 
-            function perf(name, value){
+            function changeSettings(name, value){
                 localStorage.setItem(name, value.checked)
             }
         </script>
