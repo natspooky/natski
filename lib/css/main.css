@@ -61,7 +61,7 @@
 {
     width: 0px;
 	height: 0px;
-    background-color: var(--accentcol);
+    background-color: transparent;
 }
 .itemContainer::-webkit-scrollbar,.itemContainer div p::-webkit-scrollbar
 {
