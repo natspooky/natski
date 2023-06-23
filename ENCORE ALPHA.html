@@ -54,6 +54,7 @@
     margin: 1em auto;
     border-radius: 1.3em;
     box-shadow: 0 10px 10px #00000020;
+    scroll-margin: 65px;
     background-color: var(--colour);
 }
 .dropdown .dropdownheader
@@ -269,7 +270,7 @@
 
 
         <main>
-            <div class="dropdown" style="--colour: #6f00ff15;">
+            <div class="dropdown" id="encoreSSC" style="--colour: #6f00ff15;">
                 <div class="dropdownheader">
                     <img src="icon/thumbnails_small/SSC.png" alt="SSC" draggable="false">
                     <p>ENCORE SSC<span>  •  Slide Show Container</span></p>
@@ -545,6 +546,49 @@
 
 
         <script>
+            switch(window.location.href.slice((window.location.href.length - 3), window.location.href.length)){
+                
+                case 'SSC':
+                    let ssc = document.getElementsByClassName('dropdown')[0];
+                    window.onload = function(){
+                        setTimeout(() => {
+                            ssc.classList.add('active')
+                            ssc.scrollIntoView({ behavior: "smooth", block: "start", inline: "start" });
+                        }, 615)
+                    }
+                    break;
+                case 'PDS':
+                    let pds = document.getElementsByClassName('dropdown')[1];
+                    window.onload = function(){
+                        setTimeout(() => {
+                            pds.classList.add('active')
+                            pds.scrollIntoView({ behavior: "smooth", block: "start", inline: "start" });
+                        }, 615)
+                    }
+                    break;
+                case 'CLS':
+                    let cls = document.getElementsByClassName('dropdown')[2];
+                    window.onload = function(){
+                        setTimeout(() => {
+                            cls.classList.add('active')
+                            cls.scrollIntoView({ behavior: "smooth", block: "start", inline: "start" });
+                        }, 615)
+                    }
+                    break;
+                case 'LSF':
+                let clsf = document.getElementsByClassName('dropdown')[3];
+                    window.onload = function(){
+                        setTimeout(() => {
+                            clsf.classList.add('active')
+                            clsf.scrollIntoView({ behavior: "smooth", block: "start", inline: "start" });
+                        }, 615)
+                    }
+                    break;
+
+            }
+            
+
+            
             for(let i = 0; i < document.getElementsByClassName('dropdownheader').length; i++) {
                 document.getElementsByClassName('dropdownheader')[i].addEventListener('click', function(){
                     this.parentNode.classList.toggle('active')
