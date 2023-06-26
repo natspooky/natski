@@ -79,9 +79,8 @@
     left: 50%;
     transform: translateX(-50%);
     bottom: 10px;
-    width: calc(360px + 1em);
     background-color: #00000060;
-    height: 60px; 
+    height: calc(15% - 15px); 
 }
 #inspectPanel div img
 {
