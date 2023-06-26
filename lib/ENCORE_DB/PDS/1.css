@@ -89,7 +89,7 @@
     flex-shrink: 0;
     flex-grow: 0;
     height: 100%;
-    padding: 0 0.5em;
+    margin: 0 0.5em;
     border-radius: 0.5em;
     opacity: 0;
     transition: 0.2s;
