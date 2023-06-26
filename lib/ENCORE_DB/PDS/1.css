@@ -33,6 +33,7 @@
     border-radius: 10px;
     cursor: pointer;
     float: left;
+    border: 2px solid #66666640;
     transform: scale(1);
 }
 #inspectPanel {
@@ -177,7 +178,6 @@ dev mode
 #PDS .row .column img, #inspectPanel div img,#inspectPanel #inspectImage
 {
     object-position: -99999px 99999px;
-    border: 2px solid #66666640;
 }
 
 #PDS::after
