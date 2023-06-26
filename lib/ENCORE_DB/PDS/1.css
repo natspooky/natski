@@ -160,36 +160,3 @@
         display: block;
     }
 }
-
-
-/*
-dev mode
-*/
-
-#PDS .row .column:nth-child(even)
-{
-    background-color: #ffffff10;
-}
-#PDS .row .column:nth-child(odd)
-{
-    background-color: #ffffff20;
-}
-
-#PDS .row .column img, #inspectPanel div img,#inspectPanel #inspectImage
-{
-    object-position: -99999px 99999px;
-}
-
-#PDS::after
-{
-    content: 'PDS DEV MODE';
-    position: fixed;
-    top: 50px;
-    right: 50px;
-    padding: 0.5em;
-    background-color: #000000;
-    color: #fff;
-    z-index: 99999;
-    border-radius: 0.3em;
-    font-weight: bold;
-}
