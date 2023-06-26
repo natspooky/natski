@@ -152,11 +152,11 @@
     right: 10px;
     height: 40px;
     width: 40px;
-    background-color: #101010;
+    background-color: #66666630;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 1em;
+    border-radius: 100vmax;
 }
 #SSC .infoButton svg
 {
