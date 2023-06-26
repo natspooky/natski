@@ -580,7 +580,7 @@ main article ul li a
     user-select: none;
     gap: 1em;
     display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+    grid-template-columns: repeat(auto-fit,minmax(max(40%,280px),1fr));
 }
 .featurebanner
 {
