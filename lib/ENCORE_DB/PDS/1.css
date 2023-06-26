@@ -100,19 +100,23 @@
     opacity: 0;
     transition: 0.4s;
 }
+#inspectPanel div img:nth-child(1)
+{
+    border: 2px solid #fff;
+}
 .PDSbuttons {
-    position: absolute;
-    top: 50%;
-    left: 15px;
-    border: 0;
-    width: fit-content;
-    transform: translateY(-50%);
-    padding: 25px 10px;
-    border-radius: 10px;
-    background-color: #66666670;
-    transform-origin: top;
-    -webkit-tap-highlight-color:  rgba(255, 255, 255, 0);
-    transition: 0.2s;
+        position: absolute;
+        top: 50%;
+        left: 15px;
+        border: 0;
+        width: fit-content;
+        transform: translateY(-50%);
+        padding: 25px 10px;
+        border-radius: 10px;
+        background-color: #66666670;
+        transform-origin: top;
+        -webkit-tap-highlight-color:  rgba(255, 255, 255, 0);
+        transition: 0.2s;
 }
 .PDSbuttons:last-of-type {
     left: unset;
