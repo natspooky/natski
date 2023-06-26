@@ -92,7 +92,7 @@
     height: 100%;
     object-fit: contain;
     padding: 0 0.5em;
-    background-color: #ffffff30;
+    border-radius: 0.5em;
 }
 .PDSbuttons {
     position: absolute;
