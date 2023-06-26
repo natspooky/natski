@@ -33,7 +33,6 @@
     border-radius: 10px;
     cursor: pointer;
     float: left;
-    border: 2px solid #66666640;
     transform: scale(1);
 }
 #inspectPanel {
