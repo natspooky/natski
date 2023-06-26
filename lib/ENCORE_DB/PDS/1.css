@@ -81,7 +81,6 @@
     flex-wrap: nowrap;
     transform: translateX(-50%);
     bottom: 10px;
-    background-color: #00000060;
     height: 10%; 
 }
 #inspectPanel div img
