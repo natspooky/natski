@@ -80,7 +80,7 @@
     display: flex;
     flex-wrap: nowrap;
     transform: translateX(-50%);
-    bottom: 10px;
+    bottom: 20px;
 }
 #inspectPanel div img
 {
