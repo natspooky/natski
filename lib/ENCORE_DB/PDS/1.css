@@ -76,17 +76,21 @@
 #inspectPanel div
 {
     position: absolute;
-    margin: 0 auto;
+    left: 50%;
+    transform: translateX(-50%);
     display: block;
     bottom: 10px;
+    width: calc(360px + 3em);
     background-color: #00000060;
     height: 50px;
+    overflow: hidden;
 }
 #inspectPanel div img
 {
     position: relative;
     height: 50px;
-    width: 80px;
+    width: 120px;
+    padding: 0 0.5em;
     background-color: #ffffff30;
 }
 .PDSbuttons {
