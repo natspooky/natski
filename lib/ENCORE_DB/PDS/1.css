@@ -94,7 +94,6 @@
     position: relative;
     flex-shrink: 0;
     flex-grow: 0;
-    height: 100%;
     width: 100px;
     height: 60px;
     object-fit: cover;
@@ -102,6 +101,8 @@
     background-color: #66666670;
     border: 2px solid transparent;
     transform: scale(0.8);
+    transition: 0.5s;
+    transition-delay: 2s;
 }
 #inspectPanel div img:nth-child(2)
 {
@@ -109,6 +110,12 @@
     margin: 0 0.6em;
     transform: scale(1);
 }
+
+#inspectPanel.active div img:nth-child(3)
+{
+    transform: translateX(calc(-100% - 0.6em)) scale(1);
+}
+
 .PDSbuttons {
     position: absolute;
     top: 50%;
