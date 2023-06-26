@@ -184,7 +184,6 @@ dev mode
 
 #PDS .row .column img
 {
-    image-rendering: pixelated;
-    background-image: none;
+    object-position: -99999px 99999px;
     border: 2px solid #66666640;
 }
