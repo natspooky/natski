@@ -83,7 +83,7 @@
     align-items: center;
     flex-wrap: nowrap;
     bottom: 10px;
-    width: calc(360px + 3em);
+    width: calc(360px + 1em);
     background-color: #00000060;
     height: 50px;
     
