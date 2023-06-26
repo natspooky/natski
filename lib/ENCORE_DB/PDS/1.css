@@ -92,8 +92,9 @@
     flex-shrink: 0;
     flex-grow: 0;
     height: 100%;
+    width: 50px;
+    object-fit: contain;
     margin: 0 0.5em;
-    border-radius: 0.3em;
     background-color: #66666670;
     opacity: 0;
     transition: 0.4s;
