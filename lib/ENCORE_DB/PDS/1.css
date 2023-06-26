@@ -99,12 +99,13 @@
     width: 100px;
     height: 60px;
     object-fit: cover;
-    border-radius: 0.3em;
+    border-radius: 0.5em;
     background-color: #66666670;
     margin: 20px 0;
     border: 2px solid transparent;
     opacity: 0.5;
     transform: scale(0.8);
+    cursor: pointer;
 }
 #inspectPanel div img:nth-child(2)
 {
