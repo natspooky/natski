@@ -78,12 +78,15 @@
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     bottom: 10px;
     width: calc(360px + 3em);
     background-color: #00000060;
     height: 50px;
-    overflow-y: scroll;
+    
+    overflow-y: hidden;
 }
 #inspectPanel div img
 {
