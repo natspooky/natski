@@ -88,7 +88,7 @@
     flex-shrink: 0;
     flex-grow: 0;
     height: 100%;
-    width: 80px;
+    width: 100px;
     height: 60px;
     object-fit: cover;
     margin: 0 0.3em;
@@ -96,8 +96,6 @@
     background-color: #66666670;
     border: 2px solid transparent;
     transform: scale(0.8);
-    opacity: 0;
-    transition: 0.4s;
 }
 #inspectPanel div img:nth-child(2)
 {
