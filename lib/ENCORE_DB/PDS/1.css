@@ -78,23 +78,16 @@
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: nowrap;
     bottom: 10px;
     width: calc(360px + 1em);
     background-color: #00000060;
-    height: 50px;
-    
+    height: 60px; 
 }
 #inspectPanel div img
 {
     position: relative;
-    flex-shrink: 0;
-    flex-grow: 0;
-    height: 50px;
-    width: 120px;
+    height: 100%;
+    object-fit: contain;
     padding: 0 0.5em;
     background-color: #ffffff30;
 }
