@@ -165,11 +165,11 @@
 dev mode
 */
 
-#PDS .row:nth-child(even)
+#PDS .row .column:nth-child(even)
 {
     background-color: #ffffff10;
 }
-#PDS .row:nth-child(odd)
+#PDS .row .column:nth-child(odd)
 {
     background-color: #ffffff20;
 }
