@@ -83,7 +83,7 @@
     width: calc(360px + 3em);
     background-color: #00000060;
     height: 50px;
-    overflow: hidden;
+    overflow-y: scroll;
 }
 #inspectPanel div img
 {
