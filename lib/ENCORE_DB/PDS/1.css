@@ -167,19 +167,19 @@ dev mode
 
 #PDS .row .column:nth-child(even)
 {
-    background-color: #ffffff70;
+    background-color: #ffffff10;
 }
 #PDS .row .column:nth-child(odd)
 {
-    background-color: #ffffff30;
+    background-color: #ffffff10;
 }
 #PDS .row:nth-child(even)
 {
-    background-color: #ffffff70;
+    background-color: #ffffff10;
 }
 #PDS .row:nth-child(odd)
 {
-    background-color: #ffffff30;
+    background-color: #ffffff10;
 }
 
 #PDS .row .column img, #inspectPanel div img,#inspectPanel #inspectImage
@@ -208,10 +208,9 @@ dev mode
     right: 10px;
     height: 40px;
     width: 40px;
-    border-width: 20px;
     border-radius: 50%;
-    border-top-color: red;
-    border-bottom-color: red;
+    border-top: 6px solid #000;
+    border-bottom: 6px solid #000;
     animation: spin 4s linear infinite;
 }
 @keyframes spin {
