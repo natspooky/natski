@@ -1,18 +1,6 @@
 :root
 {
-    --SSCcolor: #2a2a2a90;
-}
-@media (prefers-color-scheme: light) {
-    :root
-    {
-        --SSCcolor: #505050b0;
-    }
-}
-@media (prefers-color-scheme: dark) {
-    :root
-    {
-        --SSCcolor: #2a2a2a90;
-    }
+    --SSCcolor: #505050b0;
 }
 #CLS *
 {
