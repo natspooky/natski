@@ -103,7 +103,7 @@
     background-color: #66666670;
     margin: 20px 0;
     border: 2px solid transparent;
-    opacity: 0.7;
+    opacity: 0.5;
     transform: scale(0.8);
 }
 #inspectPanel div img:nth-child(2)
