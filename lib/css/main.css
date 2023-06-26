@@ -589,6 +589,7 @@ main article ul li a
     border-radius: 18px;
     background-color: var(--accentcoltranslighter);
     line-height: 1.5em;
+    text-align: left;
     transition: 0.2s;
 }
 .featurebanner:hover
