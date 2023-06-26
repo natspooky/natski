@@ -24,6 +24,14 @@
     display: inline-block;
     vertical-align: top;
 }
+#PDS .row .column:nth-child(even)
+{
+    background-color: #ffffff70;
+}
+#PDS .row .column:nth-child(odd)
+{
+    background-color: #ffffff30;
+}
 #PDS .row .column img {
     position: relative;
     display: block;
@@ -99,7 +107,7 @@
     width: 100px;
     height: 60px;
     object-fit: cover;
-    border-radius: 1em;
+    border-radius: 0.6em;
     background-color: #66666670;
     margin: 20px 0;
     opacity: 0.5;
