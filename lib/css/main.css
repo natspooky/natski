@@ -340,18 +340,23 @@ nav span
     float: unset;
     margin: 60px 25px 0px 25px;
     display: none;
+    transition: 0.2s;
 }
 .iframePanel.active button
 {
     display: flex;
 }
-.iframePanel button:last-child
+.iframePanel button.active:first-child
 {
-    margin: 10px 25px 0px 25px;
     opacity: 0;
     transform: scale(0.5);
     visibility: hidden;
-    transition: 0.2s;
+}
+.iframePanel button:last-child
+{
+    opacity: 0;
+    transform: scale(0.5);
+    visibility: hidden;
 }
 .iframePanel button.revealed
 {
