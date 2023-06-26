@@ -152,7 +152,7 @@
     right: 10px;
     height: 40px;
     width: 40px;
-    background-color: #66666630;
+    background-color: #1e1e1e30;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -162,6 +162,16 @@
 {
     position: relative;
     height: 50%;
-    fill: #e9e9e9;
+    fill: #c5c5c5;
     display: block;
+}
+#SSC .infoButton::before
+{
+    content: 'ENCORE SSC';
+    position: absolute;
+    top: 50%;
+    right: calc(100% + 1em);
+    padding: 0.5em;
+    background-color: #1e1e1e30;
+    color: #c5c5c5;
 }
