@@ -387,7 +387,7 @@ main article
     line-height: 1.55rem;
     font-size: 1.2rem;
     display: block;
-    width: max(95vmin,68vw);
+    width: min(60vmax,95%);
     border-radius: 20px;
     padding: 1em;
     margin: 0px auto 20px auto;
