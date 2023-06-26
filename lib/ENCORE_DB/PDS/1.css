@@ -24,14 +24,6 @@
     display: inline-block;
     vertical-align: top;
 }
-#PDS .row .column:nth-child(even)
-{
-    background-color: #ffffff70;
-}
-#PDS .row .column:nth-child(odd)
-{
-    background-color: #ffffff30;
-}
 #PDS .row .column img {
     position: relative;
     display: block;
@@ -51,6 +43,7 @@
     left: 0;
     opacity: 0;
     z-index: 999;
+    overflow: hidden;
     background-color: #00000080;
     pointer-events: none;
     visibility: hidden;
@@ -108,7 +101,7 @@
     height: 60px;
     object-fit: cover;
     border-radius: 0.6em;
-    background-color: #66666670;
+    background-color: #66666640;
     margin: 20px 0;
     opacity: 0.5;
     transform: scale(0.8);
@@ -165,4 +158,32 @@
         width: 100%;
         display: block;
     }
+}
+
+
+/*
+dev mode
+*/
+
+#PDS .row .column:nth-child(even)
+{
+    background-color: #ffffff70;
+}
+#PDS .row .column:nth-child(odd)
+{
+    background-color: #ffffff30;
+}
+#PDS .row:nth-child(even)
+{
+    background-color: #ffffff70;
+}
+#PDS .row:nth-child(odd)
+{
+    background-color: #ffffff30;
+}
+
+#PDS .row .column img
+{
+    object-fit: none;
+    border: 2px solid #66666640;
 }
