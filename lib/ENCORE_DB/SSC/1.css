@@ -180,6 +180,7 @@
     white-space: nowrap;
     visibility: hidden;
     pointer-events: none;
+    font-weight: bold;
     transition: 0.2s;
 }
 #SSC .infoButton:hover::before
