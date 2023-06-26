@@ -81,7 +81,10 @@
     flex-wrap: nowrap;
     transform: translateX(-50%);
     bottom: 10px;
-    height: 10%; 
+    height: 10%;
+    padding: 0.5em 0;
+    border-radius: 0.5em;
+    background-color: #66666670;
 }
 #inspectPanel div img
 {
@@ -90,7 +93,7 @@
     flex-grow: 0;
     height: 100%;
     margin: 0 0.5em;
-    border-radius: 0.5em;
+    border-radius: 0.3em;
     opacity: 0;
     transition: 0.2s;
 }
