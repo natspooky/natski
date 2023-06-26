@@ -182,8 +182,39 @@ dev mode
     background-color: #ffffff30;
 }
 
-#PDS .row .column img
+#PDS .row .column img, #inspectPanel div img,#inspectPanel #inspectImage
 {
     object-position: -99999px 99999px;
     border: 2px solid #66666640;
+}
+
+#PDS::after
+{
+    content: 'PDS DEV MODE';
+    position: fixed;
+    top: 10px;
+    right: 60px;
+    padding: 0.5em;
+    background-color: #000000;
+    color: #fff;
+    border-radius: 0.3em;
+    font-weight: bold;
+}
+#PDS::before
+{
+    content: '';
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    height: 40px;
+    width: 40px;
+    border-width: 20px;
+    border-radius: 50%;
+    border-top-color: red;
+    border-bottom-color: red;
+    animation: spin 4s linear infinite;
+}
+@keyframes spin {
+    from{transform: rotate(0deg);}
+    to{transform: rotate(360deg);}
 }
