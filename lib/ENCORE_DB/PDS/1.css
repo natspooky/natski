@@ -81,7 +81,7 @@
     flex-wrap: nowrap;
     transform: translateX(-50%);
     bottom: 10px;
-    height: 10%;
+    height: 13%;
     padding: 1em 0.5em;
     border-radius: 0.5em;
     background-color: #66666670;
@@ -94,6 +94,7 @@
     height: 100%;
     margin: 0 0.5em;
     border-radius: 0.3em;
+    background-color: #66666670;
     opacity: 0;
     transition: 0.2s;
 }
