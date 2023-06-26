@@ -81,6 +81,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: nowrap;
     bottom: 10px;
     width: calc(360px + 3em);
     background-color: #00000060;
