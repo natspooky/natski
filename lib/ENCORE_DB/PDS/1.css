@@ -85,6 +85,7 @@
 }
 #inspectPanel.active div
 {
+    transition-delay: 0.1s;
     transform: translate(-50%,0);
 }
 #inspectPanel div img
