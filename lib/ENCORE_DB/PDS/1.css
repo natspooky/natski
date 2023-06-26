@@ -91,32 +91,35 @@
     flex-shrink: 0;
     flex-grow: 0;
     height: 100%;
-    width: 75px;
+    width: 80px;
     height: 60px;
     object-fit: cover;
     margin: 0 0.5em;
     border-radius: 0.3em;
     background-color: #66666670;
+    border: 2px solid transparent;
+    transform: scale(0.9);
     opacity: 0;
     transition: 0.4s;
 }
-#inspectPanel div img:nth-child(1)
+#inspectPanel div img:nth-child(2)
 {
     border: 2px solid #fff;
+    transform: scale(1);
 }
 .PDSbuttons {
-        position: absolute;
-        top: 50%;
-        left: 15px;
-        border: 0;
-        width: fit-content;
-        transform: translateY(-50%);
-        padding: 25px 10px;
-        border-radius: 10px;
-        background-color: #66666670;
-        transform-origin: top;
-        -webkit-tap-highlight-color:  rgba(255, 255, 255, 0);
-        transition: 0.2s;
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    border: 0;
+    width: fit-content;
+    transform: translateY(-50%);
+    padding: 25px 10px;
+    border-radius: 10px;
+    background-color: #66666670;
+    transform-origin: top;
+    -webkit-tap-highlight-color:  rgba(255, 255, 255, 0);
+    transition: 0.2s;
 }
 .PDSbuttons:last-of-type {
     left: unset;
