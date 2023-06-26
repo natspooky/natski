@@ -55,25 +55,42 @@
         </header>
 
         <style>
-.celContainer
-{
-    position: relative;
-    padding: 1em;
-    height: 400px;
-    display: block;
-    width: 400px;
-    margin-left: 50px;
-    border-radius: 0.5em;
-    background-color: #1c004b40;
-    border: 2px solid #66666620;
-    overflow: hidden;
-}
+
         </style>
         
         <main>
-            <div class="celContainer">
-                <span></span>
-            </div>
+            <article class="gridcontainer" style="animation: slide 0.6s">
+                <a name="ENCORE PDS" href="#">
+                    <div class="featurebanner" name="A frontend plugin for creating JS image galleries">
+                        <img src="icon/thumbnails_small/PDS.png" alt="page icon" draggable="false">
+                        <p>PDS Example</p>
+                        <span>ENCORE ALPHA</span>
+                    </div>
+                </a>
+                <a name="ENCORE ALPHA" onclick="loadframe(this.name)">
+                    <div class="featurebanner" name="Information about every ENCORE ALPHA package">
+                        <img src="icon/thumbnails_small/websites.png" alt="page icon" draggable="false">
+                        <p>Setup & Info</p>
+                        <span>ENCORE ALPHA</span>
+                    </div>
+                </a>
+
+                <a name="ENCORE PDS" onclick="loadframe(this.name)">
+                    <div class="featurebanner" name="A frontend plugin for creating JS image galleries">
+                        <img src="icon/thumbnails_small/PDS.png" alt="page icon" draggable="false">
+                        <p>PDS Example</p>
+                        <span>ENCORE ALPHA</span>
+                    </div>
+                </a>
+                <a name="ENCORE ALPHA" onclick="loadframe(this.name)">
+                    <div class="featurebanner" name="Information about every ENCORE ALPHA package">
+                        <img src="icon/thumbnails_small/websites.png" alt="page icon" draggable="false">
+                        <p>Setup & Info</p>
+                        <span>ENCORE ALPHA</span>
+                    </div>
+                </a>
+
+            </article>
         </main>
 
 
