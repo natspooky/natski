@@ -79,13 +79,13 @@
     left: 50%;
     display: flex;
     flex-wrap: nowrap;
-    transform: translateX(-50%,200%);
+    transform: translate(-50%,200%);
     bottom: 20px;
     transition: 0.5s
 }
 #inspectPanel.active div
 {
-    transform: translateX(-50%,0);
+    transform: translate(-50%,0);
 }
 #inspectPanel div img
 {
