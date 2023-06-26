@@ -76,7 +76,9 @@
 #inspectPanel div
 {
     position: absolute;
-    bottom: 0px;
+    margin: 0 auto;
+    display: block;
+    bottom: 10px;
     background-color: #00000060;
     height: 50px;
 }
