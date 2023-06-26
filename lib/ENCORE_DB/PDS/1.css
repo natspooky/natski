@@ -82,7 +82,7 @@
     transform: translateX(-50%);
     bottom: 10px;
     height: 10%;
-    padding: 0.5em 0;
+    padding: 1em 0.5em;
     border-radius: 0.5em;
     background-color: #66666670;
 }
