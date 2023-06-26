@@ -457,7 +457,7 @@ main article h3 span
 main article h4
 {
     top: calc(35px + 1em);
-    position: sticky;
+    position: relative;
     padding: 0.3em;
     background-color: var(--accentcoltranslighter);
     text-align: center;
