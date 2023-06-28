@@ -79,6 +79,7 @@
 {
     width: 0;
 }
+/*
 body, html {
     height: 500vh;
     width: 100%;
@@ -88,7 +89,7 @@ body, html {
     touch-action: manipulation;
     background-color: var(--accentcol);
 }
-
+*/
 
 :root
 {
@@ -232,32 +233,31 @@ body, html {
 
 </style>
 
-
+<!--
 <div id="SSC" style="opacity: 0; display: none;">
 
-    <div class="banner-bg"> <!-- duplicate 'banner-bg' for the amount of pages you want -->
+
 
         <img src="path of background image" draggable="false" alt="" loading="eager">
 
         <a class="banner-button" href="insert link here">enter</a>
 
-        <!-- place content in here -->
+    
 
     </div>
 
-    <div class="banner-bg"> <!-- duplicate 'banner-bg' for the amount of pages you want -->
+    <div class="banner-bg"> 
 
         <img src="path of background image" draggable="false" alt="" loading="eager">
 
         <a class="banner-button" href="insert link here">enter</a>
 
-        <!-- place content in here -->
 
     </div>
 
 
 </div>
-
+-->
 <script src="lib/js/ENCORE_testSystem.js"></script>
 <script>
     SSC_settings={
@@ -268,5 +268,56 @@ body, html {
         'style':null
     }
 </script>
+
+
+
+
+
+            <div class="container">
+                <span>
+                    <p>
+                        paragraph text
+                    </p>
+                    <button onclick="alert('button clicked!')">
+                        text
+                    </button>
+                </span>
+            </div>
+
+
+            
+            <style>
+
+
+                .container span
+                {
+                    position: relative;
+                    display: block;
+                    width: fit-content;
+                    padding: 5px 20px 20px 20px;
+                    background-color: #bababa;
+                    border-radius: 1em;
+                }
+                .container span p
+                {
+                    text-decoration:underline;
+                }
+                .container span button
+                {
+                    position: relative;
+                    display: block;
+                    margin: auto;
+                    border: 2px solid cyan;
+                    border-radius: 100vmax;
+                    padding: 0.5em 1em;
+                    background-color: rgba(0, 255, 255, 0.46);
+                }
+
+
+
+            </style>
+        
+
+
     </body>
 </html>
