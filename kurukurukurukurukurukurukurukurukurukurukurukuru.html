@@ -123,8 +123,7 @@
             .kuruParticle
             {
                 position: absolute;
-                bottom: -40px;
-                background-color: #ffffff10;
+                background-color: #7300ff0a;
                 border-radius: 100vmax;
             }
         </style>
@@ -151,10 +150,10 @@
             <div id="kuruContainer">
                 <span id="kuruGradient"></span>
                 <p id="kuruCounter">
-                    Kuru Count: 0
+                    Kuru Count: <span id="counter">0</span>
                 </p>
                 <p id="kuruCombo">
-                    Kuru Combo: 0
+                    Kuru Combo: <span id="combo">0</span>
                 </p>
                 <span class="kuruParticle"></span>
                 <button class="kuruButton" onclick="kuru()">
@@ -223,16 +222,16 @@
             
                 if(counter >= save) {
                     save = counter
-                    document.getElementById('kuruCombo').innerHTML = 'Kuru Combo: ' + counter
+                    document.getElementById('combo').innerHTML = counter
                 }
-                document.getElementById('kuruCounter').innerHTML = 'Kuru Count: ' + counter
+                document.getElementById('counter').innerHTML = counter
                 gradient.style.opacity = counter / 500
                 clearTimeout(gradTimer)
                 gradTimer = setTimeout(() => {
                     let x = (3 / counter) * 100;
                     kuruInterval = setInterval(() => {
                         counter -= 1
-                        document.getElementById('kuruCounter').innerHTML = 'Kuru Count: '+ counter
+                        document.getElementById('counter').innerHTML = counter
                         if(counter <= 0){
                             clearInterval(kuruInterval)
                         }
@@ -245,11 +244,12 @@
             function kuruParticle(e) {
                 let particle = document.createElement('span'),
                 timer = Math.max(1,Math.min(5,(100 / e))),
-                size = Math.floor(Math.random() * 10);
+                size = Math.floor(Math.random() * 3)+1;
                 
                 particle.className = 'kuruParticle'
                 particle.style.animation = 'particle ' + timer + 's linear'
                 particle.style.left = Math.floor(Math.random() * 100) + '%'
+                particle.style.bottom = '-' + size*10 + 'px'
                 particle.style.height = size*10 + 'px'
                 particle.style.width = size*10 + 'px'
                 setTimeout(() => {
