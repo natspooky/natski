@@ -234,7 +234,7 @@
 
             function kuruParticle(e) {
                 let particle = document.createElement('span'),
-                timer = Math.min(6,(100 / e)),
+                timer = Math.max(1,Math.min(5,(100 / e))),
                 size = Math.floor(Math.random() * 10);
                 
                 particle.className = 'kuruParticle'
