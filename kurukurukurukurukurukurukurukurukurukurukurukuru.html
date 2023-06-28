@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en-US">
+    <head>
+		<title>Natski</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, user-scalable=no"/>
+        <meta name="theme-color" content="#1e1e1e"/>
+        <meta name="description" content="ground up website for fun"/>
+        <meta name="keywords" content="portfolio, natspooky, natski"/>
+        <meta name="author" content="NATSKI"/>
+        <meta name="copyright" content="NATSKI">
+        <meta name="color-scheme" content="normal">
+		<link rel="icon" type="image/svg+xml" href="icon/svg/favicon.svg"/>
+        <link rel="apple-touch-icon"sizes="57x57" href="icon/mobile/57.png"/>
+        <link rel="apple-touch-icon"sizes="60x60" href="icon/mobile/60.png"/>
+        <link rel="apple-touch-icon"sizes="72x72" href="icon/mobile/72.png"/>
+        <link rel="apple-touch-icon"sizes="76x76" href="icon/mobile/76.png"/>
+        <link rel="apple-touch-icon"sizes="114x114" href="icon/mobile/114.png"/>
+        <link rel="apple-touch-icon"sizes="120x120" href="icon/mobile/120.png"/>
+        <link rel="apple-touch-icon"sizes="144x144" href="icon/mobile/144.png"/>
+        <link rel="apple-touch-icon"sizes="152x152" href="icon/mobile/152.png"/>
+        <meta property="og:title" content="Natspooky"/>
+        <meta property="og:description" content="ground up website for fun"/>
+        <meta property="og:image" content="https://natski.netlify.com/icon/avatar/400.png"/>
+        <meta property="og:image:width" content="400"/>
+        <meta property="og:image:height" content="400"/>
+        <meta property="og:url" content="https://natski.netlify.com"/>
+        <meta property="og:locale" content="en_US"/>
+        <meta property="og:type" content="website"/>
+        <meta property="og:site_name" content="NATSKI"/>
+        <meta name="twitter:title" content="Natspooky">
+        <meta name="twitter:description" content="ground up website for fun">
+        <meta name="twitter:image" content="https://natski.netlify.com/icon/avatar/400.png">
+        <meta name="twitter:site" content="@natspooky_">
+        <meta name="twitter:creator" content="@natspooky_">
+        <meta name="twitter:card" content="summary">
+        <link rel="stylesheet" type="text/css" href="lib/css/main.css"/>
+        <link rel="stylesheet" type="text/css" href="lib/css/animations.css"/>
+        <link rel="stylesheet" type="text/css" media="screen and (orientation: portrait)" href="lib/css/scale.css"/>
+        <link rel="prefetch" href="icon/img/kuru.gif">
+        <link rel="prefetch" href="icon/audio/kuru.mp3">
+        <link rel="prefetch" href="icon/audio/kuruine.mp3">
+	</head>
+    <body>
+
+
+        <style>
+            @keyframes kuru {
+                from{transform: translateX(0);}
+                to{transform: translateX(calc(-100vw - 400px));}
+            }
+            @keyframes particle {
+                from{transform: translateY(0);}
+                to{transform: translateY(-100vh);}
+            }
+            .kuruImage
+            {
+                position: absolute;
+                bottom: 0;
+                right: -400px;
+                height: 400px;
+                width: 400px;
+                transform: translateX(0);
+                animation: kuru 1s linear;
+            }
+            .kuruButton
+            {
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                bottom: 20px;
+                padding: 1em 2em;
+                background-color: rgba(87, 0, 169, 0.8);
+                color: #e9e9e9;
+                z-index: 9999;
+                font-weight: bold;
+                border-radius: 0.5em;
+            }
+            .kuruButton:active
+            {
+                background-color: rgba(87, 0, 169, 0.5);
+            }
+            #kuruContainer
+            {
+                position: relative;
+                width: 100%;
+                height: 75vh;
+                overflow: hidden;
+                transform: scale(0.9);
+                border-radius: 1em;
+                background-color: #ffffff00;
+                outline: 2px dashed rgba(87, 0, 169, 0.8);
+                outline-offset: 15px;
+                border: 2px solid rgba(87, 0, 169, 0.8);
+            }
+            #kuruCounter,#kuruCombo
+            {
+                position: absolute;
+                top: 0;
+                left: 0;
+                padding: 1em;
+                background-color: rgba(87, 0, 169, 0.8);
+                color: #e9e9e9;
+                border-radius: 0 0 0.5em 0;
+            }
+            #kuruCombo
+            {
+                right: 0;
+                left: unset;
+                border-radius: 0 0 0 0.5em;
+            }
+            #kuruGradient
+            {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                opacity: 0;
+                background-image: linear-gradient(to top, #ff0000bd, transparent);
+                transition: 1s;
+            }
+            .kuruParticle
+            {
+                position: absolute;
+                bottom: -40px;
+                background-color: #ffffff10;
+                border-radius: 100vmax;
+            }
+        </style>
+
+
+        <div id="colourlesspanelback"></div>
+        <div id="colourpanelback"></div>
+        <header>
+            <div class="observe"></div>
+            <div class="imagebox">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.39 850.39">
+                    <path fill="var(--bar)" d="M799.6,0H50.8C22.74,0,0,22.74,0,50.8V799.6c0,28.05,22.74,50.79,50.8,50.79H799.6c28.05,0,50.79-22.74,50.79-50.79V50.8C850.39,22.74,827.65,0,799.6,0ZM403.6,766H104.39c-11.04,0-20-8.95-20-20v-70.6H239.4c4.97,0,9-4.03,9-9v-25.2c0-4.97-4.03-9-9-9H84.39V218.2H239.4c4.97,0,9-4.03,9-9v-25.2c0-4.97-4.03-9-9-9H84.39V104.39c0-11.04,8.96-20,20-20H403.6V766ZM766,175h-155.01c-4.97,0-9,4.03-9,9v25.2c0,4.97,4.03,9,9,9h155.01v414h-155.01c-4.97,0-9,4.03-9,9v25.2c0,4.97,4.03,9,9,9h155.01v70.6c0,11.05-8.95,20-20,20H446.8V84.39h299.2c11.05,0,20,8.96,20,20v70.61Z"/>
+                </svg>
+                <img src="icon/img/kuru.gif" alt="portfolio" id="headerimage" draggable="false">
+            </div>
+            <h2>Kuru Kuru</h2>
+        </header>
+
+        <style>
+
+        </style>
+        
+        <main>
+            <div id="kuruContainer">
+                <span id="kuruGradient"></span>
+                <p id="kuruCounter">
+                    Kuru Count: 0
+                </p>
+                <p id="kuruCombo">
+                    Kuru Combo: 0
+                </p>
+                <span class="kuruParticle"></span>
+                <button class="kuruButton" onclick="kuru()">
+                    Press to kuru!
+                </button>
+            </div>
+        </main>
+
+
+        <script>
+
+            let counter = 0,
+            gradTimer,
+            save = 0,
+            kuruInterval;
+
+            function kuru() {
+                kuruSound()
+                kuruCounter()
+                kuruImage()
+            }
+
+            function kuruSound() {
+                let sound = document.createElement('audio');
+                sound.onended = function() {
+                    sound.remove();
+                }
+
+                switch(Math.floor(Math.random() * 2)){
+                    case 0:
+                        sound.src = 'icon/audio/kuruine.mp3'
+                        break;
+                    case 1:
+                        sound.src = 'icon/audio/kuru.mp3'
+                        break;
+                }
+                document.getElementById('kuruContainer').appendChild(sound)
+                sound.play();
+            }
+
+            function kuruImage() {
+                let image = document.createElement('img');
+                image.src = 'icon/img/kuru.gif'
+                image.className = 'kuruImage'
+                document.getElementById('kuruContainer').appendChild(image)
+                setTimeout(() => {
+                    image.remove()
+                }, 2000)
+
+            }
+
+            function kuruCounter() {
+                let gradient = document.getElementById('kuruGradient')
+                counter += 1
+                document.getElementById('kuruContainer').appendChild(kuruParticle(counter))
+            
+                if(counter >= save) {
+                    save = counter
+                    document.getElementById('kuruCombo').innerHTML = 'Kuro Combo: ' + counter
+                }
+                document.getElementById('kuruCounter').innerHTML = 'Kuru Count: ' + counter
+                gradient.style.opacity = counter / 500
+                clearTimeout(gradTimer)
+                gradTimer = setTimeout(() => {
+                    let x = (3 / counter) * 100;
+                    kuruInterval = setInterval(() => {
+                        counter -= 1
+                        document.getElementById('kuruCounter').innerHTML = 'Kuru Count: '+ counter
+                        if(counter <= 0){
+                            clearInterval(kuruInterval)
+                        }
+                    },x)
+                    gradient.style.opacity = 0
+                }, 2000);
+            }
+
+
+            function kuruParticle(e) {
+                let particle = document.createElement('span'),
+                timer = Math.min(6,(100 / e)),
+                size = Math.floor(Math.random() * 10);
+                
+                particle.className = 'kuruParticle'
+                particle.style.animation = 'particle ' + timer + 's linear'
+                particle.style.left = Math.floor(Math.random() * 100) + '%'
+                particle.style.height = size*10 + 'px'
+                particle.style.width = size*10 + 'px'
+                setTimeout(() => {
+                    particle.remove()
+                }, timer * 1000)
+                return particle
+            }
+        </script>
+
+
+        <footer>
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.35 850.35">
+                    <path d="M850.35,48.04V802.31c0,26.53-21.51,48.04-48.04,48.04h-171.87c-18.33,0-35.64-8.4-46.98-22.8l-243.52-309.3c-29.93-38.02-91.02-16.85-91.02,31.53v252.55c0,26.52-21.5,48.02-48.02,48.02H48.02c-26.52,0-48.02-21.5-48.02-48.02V48.02C0,21.5,21.5,0,48.02,0H219.9c18.33,0,35.64,8.4,46.99,22.8l243.46,309.07c29.96,38.03,91.08,16.85,91.08-31.56V48.04c0-26.53,21.51-48.04,48.04-48.04h152.85c26.53,0,48.04,21.51,48.04,48.04Z"/>
+                </svg>
+                <p>©NATSKI<br>ENCORE</p>
+            </div>
+            <span></span>
+            <a href="privacy policy.html" onclick="parent.pageSystem('Privacy Policy');">Privacy Policy</a>
+        </footer>
+
+
+
+        <noscript>
+            <h1>javascript is disabled</h1>
+            <p>ENCORE.js requires javascript in order to run, please enable javascript</p>
+        </noscript>
+        <script src="lib/js/ENCORE_NAT.js"></script>
+    </body>
+</html>
