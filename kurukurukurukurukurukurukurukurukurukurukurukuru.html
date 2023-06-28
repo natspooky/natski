@@ -120,6 +120,10 @@
                 color: #e9e9e9;
                 border-radius: 0 0 0.5em 0;
             }
+            #kuruCounter span
+            {
+                transition: 0.3s;
+            }
             #kuruCombo
             {
                 right: 0;
@@ -134,7 +138,7 @@
                 width: 100%;
                 height: 100%;
                 opacity: 0;
-                background-image: linear-gradient(to top, #ff0000bd, transparent);
+                background-image: linear-gradient(to top, #6600ff8e, transparent);
                 transition: 1s;
             }
             .kuruParticle
@@ -167,10 +171,10 @@
             <div id="kuruContainer">
                 <span id="kuruGradient"></span>
                 <p id="kuruCounter">
-                    Kuru Count: <span id="counter">0</span>
+                    Kuru Combo: <span id="counter">0</span>
                 </p>
                 <p id="kuruCombo">
-                    Kuru Combo: <span id="combo">0</span>
+                    Kuru Max Combo: <span id="combo">0</span>
                 </p>
                 <span class="kuruParticle"></span>
                 <button class="kuruButton" onclick="kuru()">
@@ -246,14 +250,13 @@
                 gradient.style.opacity = counter / 500
                 clearTimeout(gradTimer)
                 gradTimer = setTimeout(() => {
-                    let x = (3 / counter) * 100;
-                    kuruInterval = setInterval(() => {
-                        counter -= 1
-                        document.getElementById('counter').innerHTML = counter
-                        if(counter <= 0){
-                            clearInterval(kuruInterval)
-                        }
-                    },x)
+                    let count = document.getElementById('counter')
+                    count.style.opacity = '0'
+                    setTimeout(() => {
+                        counter = 0
+                        count.innerHTML = 0
+                        count.style.opacity = '1'
+                    },310)
                     gradient.style.opacity = 0
                 }, 2000);
             }
