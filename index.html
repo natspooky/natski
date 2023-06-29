@@ -669,7 +669,20 @@
                     menu.style.top = e.pageY + 'px'
                     menu.style.left = e.pageX + 'px'
                     if (menu.children[0].offsetHeight + menu.offsetTop >= document.body.offsetHeight - 20){
-                        console.log('fired')
+                        menu.style.top = document.body.offsetHeight - menu.children[0].offsetHeight - 20 + 'px'
+                    }
+                    if(menu.offsetWidth + menu.offsetLeft >= document.body.offsetWidth - 20){
+                        menu.style.left = document.body.offsetWidth - menu.children[0].offsetWidth - 20 + 'px'
+                    }
+                }
+
+
+                function openMenuEmbed(e) {
+                    let menu = document.getElementById('contextMenu')
+                    menu.style.height = menu.children[0].offsetHeight + 'px'
+                    menu.style.top = e.clientY + 'px'
+                    menu.style.left = e.clientX + 'px'
+                    if (menu.children[0].offsetHeight + menu.offsetTop >= document.body.offsetHeight - 20){
                         menu.style.top = document.body.offsetHeight - menu.children[0].offsetHeight - 20 + 'px'
                     }
                     if(menu.offsetWidth + menu.offsetLeft >= document.body.offsetWidth - 20){
@@ -677,6 +690,7 @@
                     }
 
                 }
+
                 function closeMenu() {
                     let menu = document.getElementById('contextMenu')
                     menu.style.height = '0px'
