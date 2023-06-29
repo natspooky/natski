@@ -652,10 +652,83 @@
                         document.getElementById('loadersvg').style.animation = 'rotate 1.5s linear infinite';
                     }
                 }
-         
+
+
+                document.addEventListener('contextmenu', function(e){
+                    e.preventDefault()
+                    openMenu(e)
+                })
+                
+                document.addEventListener('click', function(){
+                    closeMenu()
+                })
+
+                function openMenu(e) {
+                    let menu = document.getElementById('contextMenu')
+                    menu.style.height = menu.children[0].offsetHeight + 'px'
+                    menu.style.top = e.pageY + 'px'
+                    menu.style.left = e.pageX + 'px'
+                    if (menu.children[0].offsetHeight + menu.offsetTop >= document.body.offsetHeight - 20){
+                        console.log('fired')
+                        menu.style.top = document.body.offsetHeight - menu.children[0].offsetHeight - 20 + 'px'
+                    }
+                    if(menu.offsetWidth + menu.offsetLeft >= document.body.offsetWidth - 20){
+                        menu.style.left = document.body.offsetWidth - menu.children[0].offsetWidth - 20 + 'px'
+                    }
+
+                }
+                function closeMenu() {
+                    let menu = document.getElementById('contextMenu')
+                    menu.style.height = '0px'
+                }
         </script>
 
 
+<style>
+    #contextMenu
+    {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 200px;
+        height: 0;
+        background-color: #66666670;
+        display: block;
+        overflow: hidden;
+        border-radius: 1em;
+        backdrop-filter: blur(5px);
+        transition: height 0.3s;
+    }
+    #contextMenu div
+    {
+        position: relative;
+        display: block;
+        width: 100%;
+    }
+    #contextMenu div button
+    {
+        position: relative;
+        display: block;
+        width: 100%;
+        padding: 0.7em;
+
+    }
+    #contextMenu div button:hover
+    {
+        background-color: #66666650;
+    }
+</style>
+
+<div id="contextMenu">
+    <div>
+        <button>Home</button>
+        <button>About</button>
+        <button>Changelog</button>
+        <button>Portfolio</button>
+        <button>Encore</button>
+        <button>Settings</button>
+    </div>
+</div>
 
         <noscript>
             <h1>javascript is disabled</h1>
