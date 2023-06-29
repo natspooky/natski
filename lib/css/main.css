@@ -810,6 +810,10 @@ main article ul li a
     -webkit-overflow-scrolling: touch;
     scroll-snap-type: x mandatory;
 }
+.sidescrollbar::-webkit-scrollbar
+{
+    display: none;
+}
 .portanchor
 {
     position: relative;
@@ -1003,6 +1007,7 @@ noscript
     {
         height: 5px;
         background-color: transparent;
+        display: block;
     }
     .sidescrollbar::-webkit-scrollbar-thumb
     {
