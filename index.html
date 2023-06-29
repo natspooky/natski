@@ -654,6 +654,10 @@
                 }
 
 
+
+
+
+
                 document.addEventListener('contextmenu', function(e){
                     e.preventDefault()
                     openMenu(e)
@@ -679,7 +683,6 @@
                 }
 
                 function closeMenu(e) {
-
                     let menu = document.getElementById('contextMenu')
                     if (!e.target.classList.contains('clickable')){
                         menu.classList.remove('active')
