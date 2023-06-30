@@ -79,7 +79,7 @@
 {
     width: 0;
 }
-/*
+
 body, html {
     height: 500vh;
     width: 100%;
@@ -89,234 +89,23 @@ body, html {
     touch-action: manipulation;
     background-color: var(--accentcol);
 }
-*/
-
-:root
-{
-    --SSCcolor: #1b1b1b90;
-    --SSCaccent: #464646;
-}
-#SSC *
-{
-    box-sizing: border-box;
-}
-#SSC
-{
-    position: relative;
-    height: 100vh;
-    transform: scale(0.9);
-    width: 100%;
-    left: 0;
-    top: 0;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    background-color: #101010;
-    border: 2px solid var(--SSCcolor);
-    border-radius: 10px;
-    box-sizing: border-box;
-    overflow: hidden;
-}
-#SSC .pagebutton
-{
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    left: 15px;
-    padding: 1.5em 0.6em;
-    border-radius: 8px;
-    border: 0;
-    background-color: var(--SSCcolor);
-    -webkit-tap-highlight-color:  rgba(255, 255, 255, 0);
-    cursor: pointer;
-}
-#SSC .pagebutton:last-of-type
-{
-    left: unset;
-    right: 15px;
-}
-#SSC .pagebutton svg
-{
-    display: block;
-    fill: #e9e9e9;
-    box-sizing: border-box;
-    height: 15px;
-}
-#SSC .pagebutton:active
-{
-    background-color: #10101030;
-}
-#SSC .thumbs
-{
-    position: absolute;
-    padding: 0.3em 0em;
-    display: flex;
-    align-items: center;
-    border-radius: 100vmax;
-    box-sizing: border-box;
-    background-color: var(--SSCcolor);
-    bottom: 15px;
-}
-#SSC .thumbs .thumb
-{
-    position: relative;
-    border-radius: 100vmax;
-    height: 20px;
-    width: 20px;
-    box-sizing: border-box;
-    border: 0px solid var(--SSCaccent);
-    background-color: var(--SSCaccent);
-    margin: 0 0.5em;
-    transition: 0.2s;
-    cursor: pointer;
-    overflow: hidden;
-    -webkit-tap-highlight-color:  rgba(255, 255, 255, 0);
-}
-#SSC .thumbs .thumb.active
-{
-    border: 6px solid var(--SSCaccent);
-    width: 45px;
-}
-#SSC .thumbs .thumb .thumbProgress
-{
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    transform-origin: left;
-    background-color: #fff;
-}
-#SSC .banner-bg
-{
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 100%;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    animation: fadeIn 1s;
-}
-#SSC .banner-bg img
-{
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-}
-#SSC .banner-bg .banner-button
-{
-    position: absolute;
-    display: block;
-    padding: 0em 1.8em;
-    border-radius: 100vmax;
-    color: #ffffff;
-    text-decoration: none;
-    background-color: var(--SSCcolor);
-    height: 50px;
-    line-height: 50px;
-    cursor: pointer;
-    bottom: 70px;
-    box-sizing: border-box;
-    -webkit-tap-highlight-color:  rgba(255, 255, 255, 0);
-}
-@keyframes fadeIn
-{
-    from{opacity: 0.4;}
-    to{opacity: 1;}
-}
 
 
 </style>
 
-<!--
-<div id="SSC" style="opacity: 0; display: none;">
+<video playsinline class="VPS">
+    <source src="icon/portimg/alevel/5.mp4">
+</video>
 
 
-
-        <img src="path of background image" draggable="false" alt="" loading="eager">
-
-        <a class="banner-button" href="insert link here">enter</a>
-
-    
-
-    </div>
-
-    <div class="banner-bg"> 
-
-        <img src="path of background image" draggable="false" alt="" loading="eager">
-
-        <a class="banner-button" href="insert link here">enter</a>
-
-
-    </div>
-
-
-</div>
--->
-<script src="lib/js/ENCORE_testSystem.js"></script>
+<script src="lib/js/ENCORE_VPS.js"></script>
 <script>
-    SSC_settings={
-        'thumbs':true,
-        'progressBar':true,
-        'sideButtons':true,
-        'timer':10000,
+    VPS_settings={
         'style':null
     }
 </script>
 
 
-
-
-
-            <div class="container">
-                <span>
-                    <p>
-                        paragraph text
-                    </p>
-                    <button onclick="alert('button clicked!')">
-                        text
-                    </button>
-                </span>
-            </div>
-
-
-            
-            <style>
-
-
-                .container span
-                {
-                    position: relative;
-                    display: block;
-                    width: fit-content;
-                    padding: 5px 20px 20px 20px;
-                    background-color: #bababa;
-                    border-radius: 1em;
-                }
-                .container span p
-                {
-                    text-decoration:underline;
-                }
-                .container span button
-                {
-                    position: relative;
-                    display: block;
-                    margin: auto;
-                    border: 2px solid cyan;
-                    border-radius: 100vmax;
-                    padding: 0.5em 1em;
-                    background-color: rgba(0, 255, 255, 0.46);
-                }
-
-
-
-            </style>
-        
 
 
     </body>
