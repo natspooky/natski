@@ -175,9 +175,3 @@
     font-weight: bold;
     transition: 0.2s;
 }
-#PDS .infoButton:hover::before
-{
-    transform: translate(-0.5em,-50%);
-    opacity: 1;
-    visibility: visible;
-}
