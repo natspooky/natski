@@ -1,6 +1,9 @@
 #PDS * 
 {
     box-sizing: border-box;
+    -webkit-tap-highlight-color:  rgba(255, 255, 255, 0);
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
 }
 #PDS {
     position: relative;
@@ -11,7 +14,7 @@
 }
 #PDS .row {
     position: relative;
-    width: 50%;
+    width: 100%;
     display: inline-block;
     vertical-align: top;
 }
@@ -177,26 +180,4 @@
     transform: translate(-0.5em,-50%);
     opacity: 1;
     visibility: visible;
-}
-@media (hover: hover) {
-    .PDSbuttons:hover {
-        background-color: #666666b0;
-    }
-    .PDSbuttons:active {
-        transform: scale(1.1) translateY(-50%);
-        background-color: #666666e0;
-        transition: 0s;
-    }
-    #PDS .row .column img:hover {
-        transform: scale(1.02);
-    }
-}
-@media (orientation: portrait) {
-    #PDS .row {
-        width: 50%;
-    }
-    #PDS .row .column {
-        width: 100%;
-        display: block;
-    }
 }
