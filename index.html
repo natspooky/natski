@@ -843,7 +843,7 @@
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.39 850.39">
                 <path d="M799.6,0H50.8C22.74,0,0,22.74,0,50.8V799.6c0,28.05,22.74,50.79,50.8,50.79H799.6c28.05,0,50.79-22.74,50.79-50.79V50.8C850.39,22.74,827.65,0,799.6,0ZM403.6,766H104.39c-11.04,0-20-8.95-20-20v-70.6H239.4c4.97,0,9-4.03,9-9v-25.2c0-4.97-4.03-9-9-9H84.39V218.2H239.4c4.97,0,9-4.03,9-9v-25.2c0-4.97-4.03-9-9-9H84.39V104.39c0-11.04,8.96-20,20-20H403.6V766ZM766,175h-155.01c-4.97,0-9,4.03-9,9v25.2c0,4.97,4.03,9,9,9h155.01v414h-155.01c-4.97,0-9,4.03-9,9v25.2c0,4.97,4.03,9,9,9h155.01v70.6c0,11.05-8.95,20-20,20H446.8V84.39h299.2c11.05,0,20,8.96,20,20v70.61Z"/>
             </svg>
-            Cellar
+            The Cellar
         </button>
 
         <button name="The Archive" onclick="loadframe(this.name)">
@@ -854,21 +854,22 @@
                 <path d="M538.81,163.63c7.11,0,12.9,5.79,12.9,12.9V712.37c0,7.11-5.79,12.9-12.9,12.9h-77.4c-7.11,0-12.9-5.79-12.9-12.9V176.53c0-7.11,5.79-12.9,12.9-12.9h77.4m0-39.52h-77.4c-28.95,0-52.42,23.47-52.42,52.42V712.37c0,28.95,23.47,52.42,52.42,52.42h77.4c28.95,0,52.42-23.47,52.42-52.42V176.53c0-28.95-23.47-52.42-52.42-52.42h0Z"/>
                 <rect x="0" y="787.07" width="850.39" height="39.52" rx="19.76" ry="19.76"/>
             </svg>
-            Archive
+            The Archive
         </button>
 
-        <button name="GCSE Art" onclick="loadframe(this.name)">
-            
-            GCSE Art
-        </button>
-        <button name="alevel Art" onclick="loadframe(this.name)">
-            
-            Alevel Art
+        <button name="artContext" class="clickable" onclick="changeMenu(this.name)">
+            Artwork
+            <svg style="transform: rotate(-90deg) scale(0.5); position: absolute; right: 8px; opacity: 0.5; margin: 0;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.35 850.35">
+                <path d="M816.99,312.17l-351.98,351.98c-22.01,22.01-57.69,22.01-79.7,0L33.32,312.17c-32.59-32.58-32.59-85.42,0-118h0c32.59-32.59,85.42-32.59,118,0L425.16,468.01,698.99,194.17c32.58-32.59,85.42-32.59,118,0h0c32.59,32.59,32.59,85.42,0,118Z"/>
+            </svg>
         </button>
 
         <button name="EPQ" onclick="loadframe(this.name)">
-            
             EPQ
+        </button>
+
+        <button name="Face Tracker" onclick="loadframe(this.name)">
+            Face Tracker
         </button>
     </div>
     <div id="encoreContext" class="context">
@@ -911,6 +912,34 @@
         </button>
         <button name="ENCORE CLSF" onclick="loadframe(this.name)">
             CLS Formatter
+        </button>
+    </div>
+    <div id="artContext" class="context">
+        <button name="portfolioContext" class="clickable" onclick="changeMenu(this.name)">
+            <svg style="transform: rotate(90deg) scale(0.8);" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.35 850.35">
+                <path d="M816.99,312.17l-351.98,351.98c-22.01,22.01-57.69,22.01-79.7,0L33.32,312.17c-32.59-32.58-32.59-85.42,0-118h0c32.59-32.59,85.42-32.59,118,0L425.16,468.01,698.99,194.17c32.58-32.59,85.42-32.59,118,0h0c32.59,32.59,32.59,85.42,0,118Z"/>
+            </svg>
+            Back
+        </button>
+
+        <button name="GCSE Slides" onclick="loadframe(this.name)">
+            GCSE Slides
+        </button>
+
+        <button name="GCSE Art" onclick="loadframe(this.name)">
+            GCSE Art
+        </button>
+
+        <button name="Alevel Slides" onclick="loadframe(this.name)">
+            Alevel Slides
+        </button>
+
+        <button name="Alevel Art" onclick="loadframe(this.name)">
+            Alevel Art
+        </button>
+
+        <button name="Related Study" onclick="loadframe(this.name)">
+            Related Study
         </button>
     </div>
 </div>
