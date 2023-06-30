@@ -52,6 +52,10 @@
                 from{transform: translateY(0);}
                 to{transform: translateY(-100vh);}
             }
+            @keyframes clicker {
+                from{transform: scale(0) translate(-50%,-50%); opacity: 1;}
+                to{transform: scale(1) translate(-50%,-50%); opacity: 0;}
+            }
             .kuruImage
             {
                 position: absolute;
@@ -65,11 +69,10 @@
             .kuruButton
             {
                 position: absolute;
-                left: 50%;
-                transform: translateX(-50%);
-                bottom: 20px;
-                padding: 1em 2em;
-                background-color: rgba(87, 0, 169, 0.8);
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
                 color: #e9e9e9;
                 z-index: 9999;
                 display: flex;
@@ -78,6 +81,12 @@
                 font-weight: bold;
                 font-size: 16px;
                 border-radius: 0.5em;
+                opacity: 1;
+                transition: 0.3s;
+            }
+            .kuruButton.active
+            {
+                opacity: 0;
             }
             .kuruButton p
             {
@@ -92,17 +101,13 @@
                 background-color: rgb(255, 255, 255);
                 border-radius: 5px;
             }
-            .kuruButton:active
-            {
-                background-color: rgba(87, 0, 169, 0.5);
-            }
             #kuruContainer
             {
                 position: relative;
-                width: 100%;
-                height: 75vh;
+                width: calc(100% - 100px);
+                height: calc(80vh - 100px);
                 overflow: hidden;
-                transform: scale(0.9);
+                margin: 50px auto;
                 border-radius: 1em;
                 background-color: rgba(87, 0, 169, 0.05);
                 outline: 2px dashed rgba(87, 0, 169, 0.8);
@@ -140,11 +145,33 @@
                 background-image: linear-gradient(to top, #6600ff8e, transparent);
                 transition: 1s;
             }
+
+
+
+
             .kuruParticle
             {
                 position: absolute;
                 background-color: #7300ff0a;
                 border-radius: 100vmax;
+            }
+
+
+
+
+
+            .clickPoint
+            {
+                position: absolute;
+                height: 200px;
+                width: 200px;
+                border-radius: 100vmax;
+                pointer-events: none;
+                z-index: 999;
+                background-color:#6600ff8e;
+                transform-origin: top left;
+                transform: scale(0) translate(-50%,-50%);
+                animation: clicker 0.5s;
             }
         </style>
 
@@ -176,10 +203,10 @@
                     Kuru Max Combo: <span id="combo">0</span>
                 </p>
                 <span class="kuruParticle"></span>
-                <button class="kuruButton" onclick="kuru()">
-                    <p>Press to kuru!</p>
+                <div class="kuruButton" id="kuruButton">
+                    <p>Click to kuru!</p>
                     <img src="icon/img/kuru.gif">
-                </button>
+                </div>
             </div>
         </main>
 
@@ -199,7 +226,8 @@
 
             let device = deviceCheck()
 
-            function kuru() {
+            function kuru(e) {
+                clickPointer(e)
                 kuruSound()
                 kuruImage()
                 if(!device){
@@ -212,7 +240,6 @@
                 sound.onended = function() {
                     sound.remove();
                 }
-
                 switch(Math.floor(Math.random() * 2)){
                     case 0:
                         sound.src = 'icon/audio/kuruine.mp3'
@@ -237,8 +264,9 @@
 
             function kuruCounter() {
                 let gradient = document.getElementById('kuruGradient')
+                document.getElementById('kuruButton').classList.add('active')
                 counter += 1
-                document.getElementById('kuruContainer').appendChild(kuruParticle(counter))
+                //document.getElementById('kuruContainer').appendChild(kuruParticle(counter))
             
                 if(counter >= save) {
                     save = counter
@@ -256,9 +284,23 @@
                         count.style.opacity = '1'
                     },310)
                     gradient.style.opacity = 0
+                    document.getElementById('kuruButton').classList.remove('active')
                 }, 2000);
             }
 
+            function clickPointer(e) {
+                let x = document.getElementById('kuruContainer'),
+                pagX = e.pageX - x.offsetLeft,
+                pagY = e.pageY - x.offsetTop,
+                clicker = document.createElement('span');
+                clicker.className = 'clickPoint'
+                clicker.style.top = pagY + 'px'
+                clicker.style.left = pagX + 'px'
+                setTimeout(() => {
+                    clicker.remove()
+                }, 510)
+                document.getElementById('kuruContainer').appendChild(clicker)
+            }
 
             function kuruParticle(e) {
                 let particle = document.createElement('span'),
@@ -276,6 +318,11 @@
                 }, timer * 1000)
                 return particle
             }
+
+            document.getElementById('kuruButton').addEventListener('click', function(e){
+                kuru(e)
+            })
+
         </script>
 
 
