@@ -137,11 +137,16 @@
     fill: #fff;
     height: 15px;
 }
-#PDS .infoButton
+#PDS .infoCont
 {
-    position: absolute;
-    bottom: 0px;
-    right: 10px;
+    position: relative;
+    width: 100%;
+    padding: 1em;
+}
+#PDS .infoCont .infoButton
+{
+    position: relative;
+    float: right;
     height: 40px;
     width: 40px;
     background-color: #1e1e1e60;
@@ -150,7 +155,7 @@
     justify-content: center;
     border-radius: 100vmax;
 }
-#PDS .infoButton svg
+#PDS .infoCont .infoButton svg
 {
     position: relative;
     height: 50%;

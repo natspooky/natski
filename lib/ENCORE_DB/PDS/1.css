@@ -134,11 +134,16 @@
     fill: #fff;
     height: 15px;
 }
-#PDS .infoButton
+#PDS .infoCont
 {
     position: relative;
-    bottom: 10px;
-    right: 10px;
+    width: 100%;
+    padding: 1em;
+}
+#PDS .infoCont .infoButton
+{
+    position: relative;
+    float: right;
     height: 40px;
     width: 40px;
     background-color: #1e1e1e60;
@@ -147,14 +152,14 @@
     justify-content: center;
     border-radius: 100vmax;
 }
-#PDS .infoButton svg
+#PDS .infoCont .infoButton svg
 {
     position: relative;
     height: 50%;
     fill: #e9e9e9;
     display: block;
 }
-#PDS .infoButton::before
+#PDS .infoCont .infoButton::before
 {
     content: 'ENCORE PDS';
     position: absolute;
@@ -172,7 +177,7 @@
     font-weight: bold;
     transition: 0.2s;
 }
-#PDS .infoButton:hover::before
+#PDS .infoCont .infoButton:hover::before
 {
     transform: translate(-0.5em,-50%);
     opacity: 1;
