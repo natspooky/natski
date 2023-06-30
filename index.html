@@ -71,238 +71,238 @@
                 pointer-events: none;
             }
             .slideshowcontainer
-{
-    height: 100%;
-    transform: scale(0.9);
-    border-radius: 25px;
-    overflow: hidden;
-    margin: 25px 0 0 0;
-    background-color: #444444;
-    border: 2px solid #444444;
-    box-shadow: 0 10px 20px #00000070;
-    opacity: 1;
-    transition: 0.45s;
-}
-.slideshowcontainer.active
-{
-    opacity: 0;
-    transform: scale(0.7);
-}
-.banner-bg
-{
-    position: absolute;
-    display: none;
-    top: 0;
-    left: 0;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    width: 100%;
-    animation: fadein 0.6s;
-}
-.banner-bg::before
-{
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: linear-gradient(to top left, transparent, #000000b0);
-}
-.banner-bg img
-{
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-    z-index: -1;
-}
-.banner-bg button
-{
-    position: absolute;
-    bottom: 65px;
-    background-color: #22222290;
-    border: 2px solid #222222;
-    color: var(--themecol);
-    border-radius: 100vmax;
-    padding: 10px 50px;
-    font-size: 2rem;
-    font-weight: bold;
-    animation: buttonfade 0.6s;
-    transition: 0.2s;
-}
-.banner-bg div
-{
-    position: relative;
-    width: min(80%, 700px);
-    background-color: #00000040;
-    border-radius: 20px;
-    padding: 1em 1em 1em 1em;
-    font-size: 1.45rem;
-    overflow: hidden;
-    animation: fadein 1s;
-}
-.banner-bg div h1
-{
-    position: relative;
-    line-height: 60px;
-    font-size: min(4rem, 10vw);
-}
-.banner-bg hr
-{
-    border: 1px solid var(--maincol);
-}
-.banner-bg div svg
-{
-    position: relative;
-    float: left;
-    width: 65px;
-    margin-right: 1em;
-    border-radius: 5px;
-    transition: 0s;
-}
-.banner-bg div p
-{
-    margin-top: 1em;
-}
-.pagebutton
-{
-    position: absolute;
-    top: 50%;
-    left: 15px;
-    width: fit-content;
-    transform: translateY(-50%);
-    padding: 25px 10px;
-    border-radius: 10px;
-    background-color: #222222;
-    transform-origin: top;
-    transition: 0.2s;
-}
-.pagebutton:last-of-type
-{
-    left: unset;
-    right: 15px;
-}
-.pagebutton svg
-{
-    height: 15px;
-}
-.progress
-{
-    position: absolute;
-    bottom: 10px;
-    left: 47%;
-    right: 47%;
-    height: 5px;
-    box-sizing: initial;
-    background-color: #222222;
-    border-radius: 100vmax;
-    overflow: hidden;
-}
-.progress .progress-bar
-{
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    background-color: var(--themecol);
-    transform-origin: left;
-    width: 100%;
-}
-.thumbs
-{
-    position: absolute;
-    bottom: 25px;
-    width: fit-content;
-    height: 30px;
-    display: flex;
-    justify-content: center;
-    padding: 5px 0;
-    background-color: #222222;
-    border-radius: 100vmax;
-}
-.thumbs .thumb
-{
-    height: 20px;
-    width: 20px;
-    margin: 0 5px;
-    background-color: #444444;
-    border: 10px solid #444444;
-    border-radius: 100vmax;
-    transition: border 0.2s, background-color 0.4s;
-}
-.thumbs .thumb.active,.thumbs .thumb.active:hover
-{
-    background-color: var(--themecol);
-    border: 4px solid #222222;
-}
-.thumbs .thumb:hover
-{
-    border: 10px solid #555555;
-    background-color: #555555;
-}
-#SSC .infoButton
-{
-    display: none;
-}
-@media (hover: hover){
-    .pagebutton:hover
-    {
-        background-color: #111111;
-    }
-    .pagebutton:active
-    {
-        transform: scale(1.1) translateY(-50%);
-        background-color: #000000;
-        transition: 0s;
-    }
-    .banner-bg button:hover
-    {
-        background-color: #222222;
-    }
-    .banner-bg button:active
-    {
-        background-color: #000000;
-        transition: 0s;
-    }
-}
-@media (orientation: portrait)
-{
-    .progress
-    {
-        left:10%;
-        right: 10%;
-    }
-    .banner-bg div
-    {
-        margin: 0.6em 1em 1em 1em;
-    }
-    .banner-bg div svg
-    {
-        position: absolute;
-        top: 0;
-        left: 0;
-        opacity: 0.07;
-        width: 100%;
-        height: 100%;
-        transform: scale(0.9);
-        object-fit: cover;
-    }
-    .banner-bg div h1
-    {
-        text-align: center;
-        width: 100%;
-        line-height: normal;
-    }
-    .banner-bg div p
-    {
-        width: 100%;
-        text-align: center;
-    }
-}
+            {
+                height: 100%;
+                transform: scale(0.9);
+                border-radius: 25px;
+                overflow: hidden;
+                margin: 25px 0 0 0;
+                background-color: #444444;
+                border: 2px solid #444444;
+                box-shadow: 0 10px 20px #00000070;
+                opacity: 1;
+                transition: 0.45s;
+            }
+            .slideshowcontainer.active
+            {
+                opacity: 0;
+                transform: scale(0.7);
+            }
+            .banner-bg
+            {
+                position: absolute;
+                display: none;
+                top: 0;
+                left: 0;
+                justify-content: center;
+                align-items: center;
+                height: 100%;
+                width: 100%;
+                animation: fadein 0.6s;
+            }
+            .banner-bg::before
+            {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-image: linear-gradient(to top left, transparent, #000000b0);
+            }
+            .banner-bg img
+            {
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+                z-index: -1;
+            }
+            .banner-bg button
+            {
+                position: absolute;
+                bottom: 65px;
+                background-color: #22222290;
+                border: 2px solid #222222;
+                color: var(--themecol);
+                border-radius: 100vmax;
+                padding: 10px 50px;
+                font-size: 2rem;
+                font-weight: bold;
+                animation: buttonfade 0.6s;
+                transition: 0.2s;
+            }
+            .banner-bg div
+            {
+                position: relative;
+                width: min(80%, 700px);
+                background-color: #00000040;
+                border-radius: 20px;
+                padding: 1em 1em 1em 1em;
+                font-size: 1.45rem;
+                overflow: hidden;
+                animation: fadein 1s;
+            }
+            .banner-bg div h1
+            {
+                position: relative;
+                line-height: 60px;
+                font-size: min(4rem, 10vw);
+            }
+            .banner-bg hr
+            {
+                border: 1px solid var(--maincol);
+            }
+            .banner-bg div svg
+            {
+                position: relative;
+                float: left;
+                width: 65px;
+                margin-right: 1em;
+                border-radius: 5px;
+                transition: 0s;
+            }
+            .banner-bg div p
+            {
+                margin-top: 1em;
+            }
+            .pagebutton
+            {
+                position: absolute;
+                top: 50%;
+                left: 15px;
+                width: fit-content;
+                transform: translateY(-50%);
+                padding: 25px 10px;
+                border-radius: 10px;
+                background-color: #222222;
+                transform-origin: top;
+                transition: 0.2s;
+            }
+            .pagebutton:last-of-type
+            {
+                left: unset;
+                right: 15px;
+            }
+            .pagebutton svg
+            {
+                height: 15px;
+            }
+            .progress
+            {
+                position: absolute;
+                bottom: 10px;
+                left: 47%;
+                right: 47%;
+                height: 5px;
+                box-sizing: initial;
+                background-color: #222222;
+                border-radius: 100vmax;
+                overflow: hidden;
+            }
+            .progress .progress-bar
+            {
+                position: absolute;
+                left: 0;
+                top: 0;
+                height: 100%;
+                background-color: var(--themecol);
+                transform-origin: left;
+                width: 100%;
+            }
+            .thumbs
+            {
+                position: absolute;
+                bottom: 25px;
+                width: fit-content;
+                height: 30px;
+                display: flex;
+                justify-content: center;
+                padding: 5px 0;
+                background-color: #222222;
+                border-radius: 100vmax;
+            }
+            .thumbs .thumb
+            {
+                height: 20px;
+                width: 20px;
+                margin: 0 5px;
+                background-color: #444444;
+                border: 10px solid #444444;
+                border-radius: 100vmax;
+                transition: border 0.2s, background-color 0.4s;
+            }
+            .thumbs .thumb.active,.thumbs .thumb.active:hover
+            {
+                background-color: var(--themecol);
+                border: 4px solid #222222;
+            }
+            .thumbs .thumb:hover
+            {
+                border: 10px solid #555555;
+                background-color: #555555;
+            }
+            #SSC .infoButton
+            {
+                display: none;
+            }
+            @media (hover: hover){
+                .pagebutton:hover
+                {
+                    background-color: #111111;
+                }
+                .pagebutton:active
+                {
+                    transform: scale(1.1) translateY(-50%);
+                    background-color: #000000;
+                    transition: 0s;
+                }
+                .banner-bg button:hover
+                {
+                    background-color: #222222;
+                }
+                .banner-bg button:active
+                {
+                    background-color: #000000;
+                    transition: 0s;
+                }
+            }
+            @media (orientation: portrait)
+            {
+                .progress
+                {
+                    left:10%;
+                    right: 10%;
+                }
+                .banner-bg div
+                {
+                    margin: 0.6em 1em 1em 1em;
+                }
+                .banner-bg div svg
+                {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    opacity: 0.07;
+                    width: 100%;
+                    height: 100%;
+                    transform: scale(0.9);
+                    object-fit: cover;
+                }
+                .banner-bg div h1
+                {
+                    text-align: center;
+                    width: 100%;
+                    line-height: normal;
+                }
+                .banner-bg div p
+                {
+                    width: 100%;
+                    text-align: center;
+                }
+            }
         </style>
 
         <div id="loadscreen">
@@ -568,12 +568,12 @@
 
                 function backPage(e){
                     backnum += e;
-                    if(backnum < 0){
+                    if(backnum < 0) {
                         backnum = 0
                     }
-                    if(backnum > 0){
+                    if(backnum > 0) {
                         document.getElementById('backbutton').classList.add('revealed')
-                    }else{
+                    }else {
                         document.getElementById('backbutton').classList.remove('revealed')
                     }
                 }
@@ -674,7 +674,7 @@
                     menu.style.left = e.clientX + 5 + 'px'
                     menu.style.height = menu.children[0].offsetHeight + 'px'
                     menu.classList.add('active')
-                    if (menu.children[0].offsetHeight + menu.offsetTop >= window.innerHeight - 20){
+                    if (menu.children[0].offsetHeight + menu.offsetTop >= window.innerHeight - 20) {
                         menu.style.top = window.innerHeight - menu.children[0].offsetHeight - 20 + 'px'
                     }
                     if(menu.offsetWidth + menu.offsetLeft >= window.innerWidth - 20){
@@ -839,15 +839,6 @@
             Back
         </button>
 
-        <button name="GCSE Art" onclick="loadframe(this.name)">
-            
-            GCSE Art
-        </button>
-        <button name="alevel Art" onclick="loadframe(this.name)">
-            
-            Alevel Art
-        </button>
-
         <button name="The Cellar" onclick="loadframe(this.name)">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.39 850.39">
                 <path d="M799.6,0H50.8C22.74,0,0,22.74,0,50.8V799.6c0,28.05,22.74,50.79,50.8,50.79H799.6c28.05,0,50.79-22.74,50.79-50.79V50.8C850.39,22.74,827.65,0,799.6,0ZM403.6,766H104.39c-11.04,0-20-8.95-20-20v-70.6H239.4c4.97,0,9-4.03,9-9v-25.2c0-4.97-4.03-9-9-9H84.39V218.2H239.4c4.97,0,9-4.03,9-9v-25.2c0-4.97-4.03-9-9-9H84.39V104.39c0-11.04,8.96-20,20-20H403.6V766ZM766,175h-155.01c-4.97,0-9,4.03-9,9v25.2c0,4.97,4.03,9,9,9h155.01v414h-155.01c-4.97,0-9,4.03-9,9v25.2c0,4.97,4.03,9,9,9h155.01v70.6c0,11.05-8.95,20-20,20H446.8V84.39h299.2c11.05,0,20,8.96,20,20v70.61Z"/>
@@ -864,6 +855,20 @@
                 <rect x="0" y="787.07" width="850.39" height="39.52" rx="19.76" ry="19.76"/>
             </svg>
             Archive
+        </button>
+
+        <button name="GCSE Art" onclick="loadframe(this.name)">
+            
+            GCSE Art
+        </button>
+        <button name="alevel Art" onclick="loadframe(this.name)">
+            
+            Alevel Art
+        </button>
+
+        <button name="EPQ" onclick="loadframe(this.name)">
+            
+            EPQ
         </button>
     </div>
     <div id="encoreContext" class="context">
