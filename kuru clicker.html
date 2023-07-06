@@ -48,10 +48,6 @@
                 from{transform: translateX(0);}
                 to{transform: translateX(calc(-100vw - 400px));}
             }
-            @keyframes particle {
-                from{transform: translateY(0);}
-                to{transform: translateY(-100vh);}
-            }
             @keyframes clicker {
                 from{transform: scale(0) translate(-50%,-50%); opacity: 1;}
                 to{transform: scale(1) translate(-50%,-50%); opacity: 0;}
@@ -145,21 +141,6 @@
                 background-image: linear-gradient(to top, #6600ff8e, transparent);
                 transition: 1s;
             }
-
-
-
-
-            .kuruParticle
-            {
-                position: absolute;
-                background-color: #7300ff0a;
-                border-radius: 100vmax;
-            }
-
-
-
-
-
             .clickPoint
             {
                 position: absolute;
@@ -226,6 +207,11 @@
 
             let device = deviceCheck()
 
+            if(device){
+                document.getElementById('kuruCombo').style.display = 'none'
+                document.getElementById('kuruCounter').style.display = 'none'
+            }
+
             function kuru(e) {
                 clickPointer(e)
                 kuruSound()
@@ -259,7 +245,7 @@
                 document.getElementById('kuruContainer').appendChild(image)
                 setTimeout(() => {
                     image.remove()
-                }, 2000)
+                }, 1010)
             }
 
             function kuruCounter() {
