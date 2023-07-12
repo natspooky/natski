@@ -54,7 +54,7 @@
                     <rect fill="var(--bar)" x="397.5" y="447.39" width="55.4" height="213.61" rx="27.7" ry="27.7" transform="translate(979.39 129) rotate(90)"/>
                     <rect fill="var(--bar)" x="397.5" y="486.99" width="55.4" height="340.81" rx="27.7" ry="27.7" transform="translate(1082.59 232.2) rotate(90)"/>
                 </svg>
-                <img src="icon/thumbnails/encoreclsf.png" alt="ENCORE CLSF" id="headerimage" draggable="false">
+                <img src="icon/thumbnails/missing.png" alt="ENCORE CMSF" id="headerimage" draggable="false">
          	</div>
             <h2>ENCORE CMSF</h2>
             <p>Context Menu System Formatter</p>
@@ -71,12 +71,21 @@
                 from{opacity: 0;}
                 to{opacity: 1;}
             }
+            #CMScontainer
+            {
+                position: relative;
+                background-color: #66666620;
+                border-radius: 20px;
+                padding: 50px 50px 50px 0;
+                margin: 0 10px;
+                width: fit-content;
+            }
             .subitem
             {
+                position: relative;
                 margin: 0px 0 0 98px;
                 padding: 10px 0 10px 10px;
                 display: block;
-                pointer-events: none;
                 width: fit-content;
                 border-left: 3px solid var(--colour);
             }
@@ -91,15 +100,37 @@
                 position: relative;
                 padding: 0 0 15px 15px;
                 display: block;
-                pointer-events: none;
                 width: fit-content;
                 margin: 0 0 0 50px;
+                border-left: 3px solid var(--colour);
+            }
+            .mainitem:first-of-type::before
+            {
+                content: '';
+                position: absolute;
+                left: -2.5px;
+                bottom: 100%;
+                height: 50px;
+                width: 3px;
                 border-left: 3px solid var(--colour);
             }
             .subitem:last-of-type,.mainitem:last-of-type
             {
                 border-radius: 0 0 0 20px;
                 border-bottom: 3px solid var(--colour);
+            }
+            .mainitem:last-of-type::after,.subitem:last-of-type::after
+            {
+                content: '';
+                position: absolute;
+                bottom: -2.5px;
+                left: 100%;
+                height: 3px;
+                width: 40px;
+                border: 0px;
+                border-bottom: 3px solid transparent;
+                border-image-source: linear-gradient(to right, var(--colour), transparent);
+                border-image-slice: 1;
             }
             .item
             {
@@ -109,6 +140,7 @@
                 pointer-events: all;
                 width: fit-content;
                 display: flex;
+                z-index: 999;
                 align-items: center;
                 border-radius: 10px; 
                 margin: 0px 0 0px 0;
@@ -199,9 +231,21 @@
                 width: 170px;
                 margin: 0 10px 0 0;
                 font-size: 1.1rem;
-                background-color: #66666620;
+                
                 border-radius: 10px;
                 transition: 0.3s;
+            }
+            .item .imageLink
+            {
+                background-color: #00b7ff20;
+            }
+            .item .buttonName
+            {
+                background-color: #c300ff20;
+            }
+            .item .function
+            {
+                background-color: #ffea0020;
             }
             .item input[type=text]:focus
             {
@@ -269,6 +313,7 @@
             }
             .toolbar button
             {
+                position: relative;
                 height: 40px;
                 width: 40px;
                 margin: 0 10px;
@@ -278,6 +323,31 @@
                 justify-content: center;
                 align-items: center;
                 transition: 0.2s;
+            }
+            .toolbar button:last-of-type::after
+            {
+                content: 'copied!';
+                position: absolute;
+                left: 100%;
+                top: 50%;
+                padding: 0.5em;
+                color: #e9e9e9;
+                pointer-events: none;
+                transition: 0.2s;
+                transition-delay: 2s;
+                opacity: 0;
+                visibility: hidden;
+                background-color: #003c0099;
+                border-radius: 0.5em;
+                transform: translateX(0.5em) translateY(-50%);
+            }
+            .toolbar button:last-of-type:active::after
+            {
+                transition: 0s;
+                transition-delay: 0s;
+                opacity: 1;
+                visibility: visible;
+                transform: translateX(1em) translateY(-50%);
             }
             .toolbar button:hover
             {
@@ -291,29 +361,10 @@
             }
         </style>
 
-        <main id="CMSF" style="width: 100%; overflow-x: scroll; overflow-y: visible; padding: 60px 0;">
-            <!--
-            <div class="mainitem">
+        <main id="CMSF" style="width: 100%; overflow-x: scroll; overflow-y: visible; padding: 30px 0;">
+            <div id="CMScontainer">
 
-                <div class="item" value="#d31111">
-
-                    <button class="remove" name="remove" onclick="removeItemMain(this)">
-                        <svg style="transform: rotate(45deg);" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 609.73 609.73"><path d="M305.04,609.73c-15.82,.01-30.15-6.4-40.52-16.76-10.37-10.37-16.76-24.65-16.76-40.45l-.11-190.37-190.37,.11C25.66,362.28,.02,336.66,0,305.04c-.02-15.82,6.4-30.14,16.77-40.51s24.65-16.76,40.45-16.77l190.37-.11-.11-190.37C247.46,25.67,273.07,.02,304.69,0c15.82-.01,30.14,6.4,40.51,16.77s16.77,24.65,16.77,40.45l.11,190.37,190.37-.11c31.61-.02,57.26,25.6,57.28,57.21,.01,15.82-6.4,30.15-16.77,40.52-10.37,10.37-24.65,16.76-40.45,16.76l-190.37,.11,.11,190.37c.02,31.62-25.59,57.26-57.21,57.28Z"></path></svg>
-                    </button>
-                    <input type="checkbox" name="make parent tab" onchange="addSub(this)"> 
-
-                    <input type="text"> 
-
-                    <input type="text" class="function">
-
-                    <button class="add" name="add" onclick="addItem(this,'main')">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 609.73 609.73"><path d="M305.04,609.73c-15.82,.01-30.15-6.4-40.52-16.76-10.37-10.37-16.76-24.65-16.76-40.45l-.11-190.37-190.37,.11C25.66,362.28,.02,336.66,0,305.04c-.02-15.82,6.4-30.14,16.77-40.51s24.65-16.76,40.45-16.77l190.37-.11-.11-190.37C247.46,25.67,273.07,.02,304.69,0c15.82-.01,30.14,6.4,40.51,16.77s16.77,24.65,16.77,40.45l.11,190.37,190.37-.11c31.61-.02,57.26,25.6,57.28,57.21,.01,15.82-6.4,30.15-16.77,40.52-10.37,10.37-24.65,16.76-40.45,16.76l-190.37,.11,.11,190.37c.02,31.62-25.59,57.26-57.21,57.28Z"></path></svg>
-                    </button>
-
-
-                </div>
-
-            </div>-->
+            </div>
 
         </main>
 
@@ -324,11 +375,11 @@
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 609.73 609.73"><path d="M305.04,609.73c-15.82,.01-30.15-6.4-40.52-16.76-10.37-10.37-16.76-24.65-16.76-40.45l-.11-190.37-190.37,.11C25.66,362.28,.02,336.66,0,305.04c-.02-15.82,6.4-30.14,16.77-40.51s24.65-16.76,40.45-16.77l190.37-.11-.11-190.37C247.46,25.67,273.07,.02,304.69,0c15.82-.01,30.14,6.4,40.51,16.77s16.77,24.65,16.77,40.45l.11,190.37,190.37-.11c31.61-.02,57.26,25.6,57.28,57.21,.01,15.82-6.4,30.15-16.77,40.52-10.37,10.37-24.65,16.76-40.45,16.76l-190.37,.11,.11,190.37c.02,31.62-25.59,57.26-57.21,57.28Z"></path></svg>
             </button>
 
-            <button onclick="document.getElementById('CMSF').innerHTML=''" name="reset CMSF" style="--col: #5e000089;">
+            <button onclick="document.getElementById('CMScontainer').innerHTML=''" name="reset CMSF" style="--col: #5e000089;">
                 <svg style="transform: rotate(45deg);" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 609.73 609.73"><path d="M305.04,609.73c-15.82,.01-30.15-6.4-40.52-16.76-10.37-10.37-16.76-24.65-16.76-40.45l-.11-190.37-190.37,.11C25.66,362.28,.02,336.66,0,305.04c-.02-15.82,6.4-30.14,16.77-40.51s24.65-16.76,40.45-16.77l190.37-.11-.11-190.37C247.46,25.67,273.07,.02,304.69,0c15.82-.01,30.14,6.4,40.51,16.77s16.77,24.65,16.77,40.45l.11,190.37,190.37-.11c31.61-.02,57.26,25.6,57.28,57.21,.01,15.82-6.4,30.15-16.77,40.52-10.37,10.37-24.65,16.76-40.45,16.76l-190.37,.11,.11,190.37c.02,31.62-25.59,57.26-57.21,57.28Z"></path></svg>
             </button>
 
-            <button onclick="format()" name="format data to clipboard" style="--col: #00485e89;">
+            <button onclick="generatePages()" name="format data to clipboard" style="--col: #00485e89;">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.39 850.39">
                     <path d="M389.7,715.19h126.3v83.3c0,28.67-23.24,51.9-51.9,51.9H51.9c-28.66,0-51.9-23.23-51.9-51.9V227.1c0-28.66,23.24-51.9,51.9-51.9h245.9v448.09c0,50.68,41.23,91.9,91.9,91.9Z"/>
                     <rect  x="334.39" width="516" height="675.19" rx="51.9" ry="51.9"/>
@@ -344,9 +395,7 @@
             function addSub(e) {
                 if(e.checked) {
                     addItem(e,'parent')
-                    //if(!e.parentNode.parentNode.classList.contains('mainitem')) {
-                        e.parentNode.classList.add('subMenu')
-                    //}
+                    e.parentNode.classList.add('subMenu')
                 }else{
                     let x = e.parentNode.parentNode.childElementCount - 1
                     for(let i = 0; i < x; i++) {
@@ -465,16 +514,10 @@
                         addButton.onclick = function() {addItem(this,'main')}
                         removeButton.onclick = function() {removeItemMain(this)}
                         containerMain.appendChild(item)
-                        document.getElementById('CMSF').appendChild(containerMain)
+                        document.getElementById('CMScontainer').appendChild(containerMain)
                         break;
                 }
             }
-
-
-            function format(){
-                generatePages()
-            }
-
 
             function generatePages(){
                 let format = '<div id="contextMenu">' + generateMain() + generateSub() + '</div>'
