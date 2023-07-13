@@ -552,14 +552,20 @@ main article section svg
 main article ul
 {
     width: 100%;
+    text-align: left;
+    word-break: break-word;
 }
 main article ul li
 {
     margin: 0 0 1em 1em;
+    text-align: left;
+    word-break: break-word;
 }
 main article ul li a
 {
     font-weight: bold;
+    text-align: left;
+    word-break: break-word;
     color: var(--themecol);
 }
 .red
