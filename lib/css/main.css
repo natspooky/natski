@@ -299,11 +299,11 @@ nav span
     position: fixed;
     top: 60px;
     left: 50%;
-    width: calc(100% - 20px);
+    width: calc(100% - 10px);
     height: calc(100% - 70px);
     border-radius: 20px;
     overflow: hidden;
-    border: 3px solid #393939;
+    border: 2px solid #393939;
     background-color: var(--accentcol);
     transform: translateY(100vh) translateX(-50%);
     visibility: hidden;
