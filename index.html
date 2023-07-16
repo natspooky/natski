@@ -642,6 +642,12 @@
                     document.addEventListener('click', function(e){
                         closeMenu(e)
                     })
+
+                    document.addEventListener("keydown", function(e){
+                        if(e.metaKey || e.ctrlKey){
+                            e.preventDefault()
+                        }
+                    })
                 }
 
 
