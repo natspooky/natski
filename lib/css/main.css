@@ -299,7 +299,7 @@ nav span
     position: fixed;
     top: 60px;
     left: 50%;
-    width: calc(100% - 10px);
+    width: 98%;
     height: calc(100% - 70px);
     border-radius: 20px;
     overflow: hidden;
