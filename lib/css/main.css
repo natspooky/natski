@@ -227,7 +227,7 @@ nav span
 {
     float: left;
 }
-.navbutton:nth-last-child(2)
+.navbutton:last-child
 {
     display: none;
 }
@@ -977,7 +977,7 @@ noscript
     {
         display: none;
     }
-    nav .navbutton:first-child,nav .navbutton:last-child,nav .navbutton:nth-last-child(2)
+    nav .navbutton:first-child,nav .navbutton:last-child
     {
         display: inline-flex;
     }
