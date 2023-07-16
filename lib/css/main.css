@@ -303,7 +303,7 @@ nav span
     height: calc(100% - 70px);
     border-radius: 20px;
     overflow: hidden;
-    border: 0px solid #393939;
+    border: 1px solid #393939;
     background-color: var(--accentcol);
     transform: translateY(100vh) translateX(-50%);
     visibility: hidden;
