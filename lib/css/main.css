@@ -652,7 +652,7 @@ main article ul li a
     height: 100%;
     width: auto;
     background-color: var(--displaycolourtrans);
-    padding: 0px 0.8em 0 0.8em;
+    padding: 0px 0.8em 0px 0.8em;
     z-index: 9999;
     animation: side 0.5s;
 }
@@ -660,7 +660,6 @@ main article ul li a
 {
     position: relative;
     padding: 0.8em;
-    margin-bottom: 0.2em;
     background-color: #66666620;
     border-radius: 10px;
     color: var(--textmain);
