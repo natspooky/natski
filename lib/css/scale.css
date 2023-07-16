@@ -33,7 +33,6 @@
     .sidescrollbar::-webkit-scrollbar
     {
         height: 5px;
-        background-color: #222222;
     }
     .sidescrollbar::-webkit-scrollbar-thumb
     {

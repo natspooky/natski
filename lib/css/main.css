@@ -292,7 +292,7 @@ nav span
 .covermenu .coverbutton svg
 {
     height: 20px;
-    margin-right: 5px;
+    margin-right: 15px;
 }
 .covermenu .coverbutton.active
 {
@@ -379,6 +379,7 @@ main .title
     color: var(--textmain);
     font-size: 1.5rem;
     font-weight: bold;
+    margin: 5px 0 0 0;
     padding: 0.5em 2em;
 }
 main article
@@ -827,7 +828,7 @@ main article ul li a
     height: fit-content;
     width: fit-content;
     border-radius: 20px;
-    margin: 0 10px;
+    margin: 5px 10px 0px 10px;
     scroll-snap-align: start;
 }
 .portanchor:last-child
