@@ -8,6 +8,11 @@
     to{transform: scale(1); opacity: 1;}
 }
 
+@keyframes fadeup {
+    from{transform: scale(0.9);}
+    to{transform: scale(1);}
+}
+
 @keyframes buttonfade {
     from{transform: translateY(-24.5px) scale(0.6); opacity: 0;}
     to{transform: translateY(0) scale(1); opacity: 1;}
