@@ -39,7 +39,7 @@
         <link rel="stylesheet" type="text/css" media="screen and (orientation: portrait)" href="lib/css/scale.css"/>
         
 	</head>
-    <body>
+    <body onload="SDSloadWeb()">
 
         <div id="colourlesspanelback"></div>
         <div id="colourpanelback"></div>
@@ -56,18 +56,20 @@
         </header>
 
         <script>
-            let slideimgload = document.getElementById('headerimage')
-            if(slideimgload.complete && slideimgload.naturalHeight !== 0){
-                setTimeout(() => {
-                        SDSloader(1,'icon/slides/alevel/','colourimage slideimage scroller')
-                        createSelector(1,'icon/slides/alevel/')
-                }, 300);
-            }else{
-                slideimgload.onload = function(){
+            function SDSloadWeb(){
+                let slideimgload = document.getElementById('headerimage')
+                if(slideimgload.complete && slideimgload.naturalHeight !== 0){
                     setTimeout(() => {
-                        SDSloader(1,'icon/slides/alevel/','colourimage slideimage scroller')
-                        createSelector(1,'icon/slides/alevel/')
-                    }, 300); 
+                            SDSloader(1,'icon/slides/alevel/','colourimage slideimage scroller')
+                            createSelector(1,'icon/slides/alevel/')
+                    }, 300);
+                }else{
+                    slideimgload.onload = function(){
+                        setTimeout(() => {
+                            SDSloader(1,'icon/slides/alevel/','colourimage slideimage scroller')
+                            createSelector(1,'icon/slides/alevel/')
+                        }, 300); 
+                    }
                 }
             }
         </script>
