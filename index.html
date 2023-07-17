@@ -621,6 +621,7 @@
 
                 function changeBar(e){
                     document.getElementById('colourpanel').style.backgroundColor = e
+                    console.log(e.substring(e.length, e.length - 2))
                     if(e == 'var(--bar)'){
                         document.getElementById('iframePanel').style.backgroundImage = 'linear-gradient(to bottom, var(--accentcol), var(--accentcol))'
                     }else{
