@@ -44,6 +44,27 @@
         <div id="colourlesspanelback"></div>
         <div id="colourpanelback"></div>
 
+        <script>
+            function checkLoadedSDS() {
+                return document.readyState === "complete";
+            }
+
+
+            function loadImages(){
+                if(checkLoadedSDS() == true) {
+                    setTimeout(() => {
+                        SDSloader(42,'icon/slides/gcse/','colourimage slideimage scroller')
+                        createSelector(42,'icon/slides/gcse/')
+                    },300)
+                }
+                window.addEventListener("load", function() {
+                    setTimeout(() => {
+                        SDSloader(42,'icon/slides/gcse/','colourimage slideimage scroller')
+                        createSelector(42,'icon/slides/gcse/')
+                    },300)
+                })
+            }
+        </script>
 
         <header>
             <div class="observe"></div>
@@ -76,13 +97,5 @@
             <p>ENCORE.js requires javascript in order to run, please enable javascript</p>
         </noscript>
         <script src="lib/js/ENCORE_NAT.js"></script>
-        <script>
-            setTimeout(() => {
-                SDSloader(42,'icon/slides/gcse/','colourimage slideimage scroller')
-                if(window.innerHeight < window.innerWidth){
-                    createSelector(42,'icon/slides/gcse/')
-                }
-            }, 300);
-        </script>
     </body>
 </html>
