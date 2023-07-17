@@ -621,11 +621,10 @@
 
                 function changeBar(e){
                     document.getElementById('colourpanel').style.backgroundColor = e
-                    console.log(e.substring(e.length, e.length - 2))
                     if(e == 'var(--bar)'){
                         document.getElementById('iframePanel').style.backgroundImage = 'linear-gradient(to bottom, var(--accentcol), var(--accentcol))'
                     }else{
-                        document.getElementById('iframePanel').style.backgroundImage = 'linear-gradient(to bottom, '+e.substring(e.length, e.length - 2)+'0.7) 50%, var(--accentcol) 50%)'
+                        document.getElementById('iframePanel').style.backgroundImage = 'linear-gradient(to bottom, '+e.substring(0, e.length - 2)+'0.7) 50%, var(--accentcol) 50%)'
                     }
                 }
 
