@@ -79,7 +79,9 @@
         <script>
             setTimeout(() => {
                 SDSloader(42,'icon/slides/gcse/','colourimage slideimage scroller')
-                createSelector(42,'icon/slides/gcse/')
+                if(window.innerHeight < window.innerWidth){
+                    createSelector(42,'icon/slides/gcse/')
+                }
             }, 300);
         </script>
     </body>
