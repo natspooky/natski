@@ -120,7 +120,7 @@ header .imagebox
     margin: 37px 0 20px 0;
     border-radius: 23px;
     background-color: var(--displaycolourtrans);
-    box-shadow: 0 0 40px #00000060;
+    box-shadow: 0 15px 40px #00000060;
     overflow: hidden;
     display: flex;
     justify-content: center;
@@ -313,14 +313,6 @@ nav span
 .iframePanel.active
 {
     transform: translateY(0px) translateX(-50%);
-    visibility: visible;
-}
-.iframePanel header
-{
-    visibility: hidden;
-}
-.iframePanel.active header
-{
     visibility: visible;
 }
 .iframePanel iframe
