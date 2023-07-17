@@ -621,6 +621,7 @@
 
                 function changeBar(e){
                     document.getElementById('colourpanel').style.backgroundColor = e
+                    document.getElementById('iframePanel').style.backgroundImage = 'linear-gradient(to bottom, '+e+' 50%, transparent 50%)'
                 }
 
 
@@ -643,11 +644,11 @@
                         closeMenu(e)
                     })
 
-                    document.addEventListener("keydown", function(e){
+                    /*document.addEventListener("keydown", function(e){
                         if(e.metaKey || e.ctrlKey){
                             e.preventDefault()
                         }
-                    })
+                    })*/
                 }
 
 
@@ -697,6 +698,14 @@
 
 
 <style>
+
+    #iframePanel
+    {
+        background: linear-gradient(to bottom, transparent 50%, transparent 50%);
+    }
+
+
+
     #contextMenu
     {
         position: fixed;
