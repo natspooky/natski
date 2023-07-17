@@ -583,7 +583,7 @@
                 function unloadframe() {
                     document.getElementById("SSC").classList.remove("active")
                     menuClose()
-                    document.querySelector(".iframePanel").classList.remove("active")
+                    document.getElementById("iframePanel").classList.remove("active")
                     document.body.style.position = 'unset'
                     document.body.style.overflow = 'unset'
                     document.body.classList.remove("static")
@@ -598,7 +598,7 @@
                     reloadFrame()
                     document.getElementById("SSC").classList.add("active")
                     menuClose()
-                    document.querySelector(".iframePanel").classList.add("active")
+                    document.getElementById("iframePanel").classList.add("active")
                     document.body.style.position = 'fixed'
                     document.body.style.overflow = 'hidden'
                     document.getElementById('iframe').src=e+'.html';
@@ -611,7 +611,7 @@
                 function reloadFrame() {
                     document.getElementById('iframe').remove()
                     let frame = document.createElement('iframe'),
-                    framecont = document.querySelector(".iframePanel");
+                    framecont = document.getElementById("iframePanel");
                     frame.id = 'iframe'
                     framecont.appendChild(frame)
                     framecont.insertBefore(frame, frame.previousElementSibling);
@@ -622,13 +622,11 @@
                 function changeBar(e){
                     document.getElementById('colourpanel').style.backgroundColor = e
                     if(e == 'var(--bar)'){
-                        document.getElementById('iframePanel').style.backgroundImage = 'linear-gradient(to bottom,  var(--accentcol) 100%)'
+                        document.getElementById('iframePanel').style.backgroundImage = 'linear-gradient(to bottom, var(--accentcol), var(--accentcol))'
                     }else{
-                        document.getElementById('iframePanel').style.backgroundImage = 'linear-gradient(to bottom, '+e+' 50%, var(--accentcol) 50%)'
+                        document.getElementById('iframePanel').style.backgroundImage = 'linear-gradient(to bottom, '+e.substring(e.length, e.length - 2)+'0.7) 50%, var(--accentcol) 50%)'
                     }
                 }
-
-
 
 
 
@@ -648,11 +646,11 @@
                         closeMenu(e)
                     })
 
-                    /*document.addEventListener("keydown", function(e){
+                    document.addEventListener("keydown", function(e){
                         if(e.metaKey || e.ctrlKey){
                             e.preventDefault()
                         }
-                    })*/
+                    })
                 }
 
 
@@ -702,11 +700,6 @@
 
 
 <style>
-
-    #iframePanel
-    {
-        background: linear-gradient(to bottom, transparent 50%, transparent 50%);
-    }
 
 
 

@@ -305,6 +305,7 @@ nav span
     overflow: hidden;
     border: 2px solid #393939;
     background-color: var(--accentcol);
+    background-image: linear-gradient(to bottom, var(--accentcol), var(--accentcol));
     transform: translateY(100vh) translateX(-50%);
     visibility: hidden;
     transition: 0.8s cubic-bezier(.61,.04,0,1.22);
