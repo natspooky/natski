@@ -160,10 +160,12 @@ header h2
 #colourpanel
 {
     position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 5px;
+    width: 98%;
     height: 50px;
+    border-radius: 20px;
     background-color: var(--bar);
     transition: 0.6s;
 }
@@ -187,11 +189,13 @@ header h2
 nav
 {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
+    top: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 98%;
     height: 50px;
     padding: 5px 20px;
+    border-radius: 20px;
     background-color: #00000080;
 }
 
@@ -297,15 +301,14 @@ nav span
 .iframePanel
 {
     position: fixed;
-    top: 60px;
+    top: 65px;
     left: 50%;
     width: 98%;
-    height: calc(100% - 70px);
+    height: calc(100% - 75px);
     border-radius: 20px;
     overflow: hidden;
     border: 2px solid #393939;
     background-color: var(--accentcol);
-    background-image: linear-gradient(to bottom, var(--accentcol), var(--accentcol));
     transform: translateY(100vh) translateX(-50%);
     visibility: hidden;
     transition: 0.8s cubic-bezier(.61,.04,0,1.22);

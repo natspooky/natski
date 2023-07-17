@@ -548,7 +548,6 @@
 
 
                 function pageSystem(e){
-                    document.getElementById('iframePanel').style.backgroundImage = 'linear-gradient(to bottom, var(--accentcol), var(--accentcol))'
                     let title = document.getElementById('pageTitle')
                     title.style.opacity = 0;
                     setTimeout(() => {
@@ -622,11 +621,6 @@
 
                 function changeBar(e){
                     document.getElementById('colourpanel').style.backgroundColor = e
-                    if(e == 'var(--bar)'){
-                        document.getElementById('iframePanel').style.backgroundImage = 'linear-gradient(to bottom, var(--accentcol), var(--accentcol))'
-                    }else{
-                        document.getElementById('iframePanel').style.backgroundImage = 'linear-gradient(to bottom, '+e.substring(0, e.length - 2)+'0.7) 50%, var(--accentcol) 50%)'
-                    }
                 }
 
 
