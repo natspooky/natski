@@ -80,6 +80,10 @@
                 margin: 0 10px;
                 width: fit-content;
             }
+            #CMSF
+            {
+                cursor: grab;
+            }
             .subitem
             {
                 position: relative;
@@ -612,6 +616,37 @@
                 }
                 return formatted
             }
+
+
+
+
+            let containerCMS = document.getElementById('CMSF'),
+            isDown = false,
+            startX,
+            scrollLeft;
+
+            containerCMS.addEventListener('mousedown', (e) => {
+                isDown = true;
+                startX = e.pageX - containerCMS.offsetLeft;
+                scrollLeft = containerCMS.scrollLeft;
+            });
+
+            containerCMS.addEventListener('mouseleave', () => {
+                isDown = false;
+            });
+
+            containerCMS.addEventListener('mouseup', () => {
+                isDown = false;
+            });
+
+            containerCMS.addEventListener('mousemove', (e) => {
+                if(!isDown) return;
+
+                e.preventDefault();
+                let x = e.pageX - containerCMS.offsetLeft;
+                let walk = (x - startX) * 1;
+                containerCMS.scrollLeft = scrollLeft - walk;
+            });
         </script>
         
 
