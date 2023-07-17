@@ -82,7 +82,7 @@
     border-radius: 100vmax;
     box-sizing: border-box;
     background-color: var(--SSCcolor);
-    bottom: 30px;
+    bottom: 32px;
 }
 #SSC .thumbs .thumb
 {
@@ -136,7 +136,7 @@
     height: 50px;
     line-height: 50px;
     cursor: pointer;
-    bottom: 70px;
+    bottom: 72px;
     box-sizing: border-box;
     -webkit-tap-highlight-color:  rgba(255, 255, 255, 0);
 }
