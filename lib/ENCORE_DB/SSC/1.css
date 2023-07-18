@@ -10,7 +10,7 @@
 #SSC
 {
     position: relative;
-    height: 100vh;
+    height: min(100vmax,99vh);
     transform: scale(0.9);
     width: 100%;
     left: 0;
