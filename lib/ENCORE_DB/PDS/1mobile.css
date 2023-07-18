@@ -67,7 +67,7 @@
     display: block;
     border-radius: 23px;
     box-shadow: 0 0 40px #00000060;
-    transition: 0.4s, background-color 0s;
+    transition: 0.4s cubic-bezier(.45,.13,.36,1.2), background-color 0s, opacity 0.1s;
     transform: translate(-50%,-50%);
     pointer-events: none;
 }
@@ -104,6 +104,7 @@
     background-color: #66666640;
     margin: 20px 0;
     opacity: 0.5;
+    image-rendering: optimizeSpeed;
     transform: scale(0.8);
     cursor: pointer;
 }
