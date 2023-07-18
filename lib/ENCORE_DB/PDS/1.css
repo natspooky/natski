@@ -102,6 +102,7 @@
     margin: 20px 0;
     opacity: 0.5;
     transform: scale(0.8);
+    image-rendering: pixelated;
     cursor: pointer;
 }
 #inspectPanel div img:nth-child(2)
