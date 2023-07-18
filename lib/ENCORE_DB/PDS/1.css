@@ -131,7 +131,7 @@
     margin: 20px 0.6em;
     transform: scale(1);
 }
-.PDSbuttons {
+#inspectPanel .PDSbuttons {
     position: absolute;
     top: 50%;
     left: 15px;
@@ -144,11 +144,11 @@
     transform-origin: top;
     transition: 0.2s;
 }
-.PDSbuttons:last-of-type {
+#inspectPanel .PDSbuttons:last-of-type {
     left: unset;
     right: 15px;
 }
-.PDSbuttons svg {
+#inspectPanel .PDSbuttons svg {
     position: relative;
     display: block;
     fill: #fff;

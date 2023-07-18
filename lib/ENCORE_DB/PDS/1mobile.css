@@ -1,11 +1,11 @@
 #PDS *,#inspectPanel *, #PDS, #inspectPanel
 {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
     -webkit-tap-highlight-color:  rgba(255, 255, 255, 0);
     -ms-touch-action: manipulation;
     touch-action: manipulation;
-    margin: 0;
-    padding: 0;
 }
 #PDS {
     position: relative;
@@ -121,7 +121,7 @@
     margin: 20px 0.6em;
     transform: scale(1);
 }
-.PDSbuttons {
+#inspectPanel .PDSbuttons {
     position: absolute;
     top: 50%;
     left: 15px;
@@ -134,11 +134,11 @@
     transform-origin: top;
     transition: 0.2s;
 }
-.PDSbuttons:last-of-type {
+#inspectPanel .PDSbuttons:last-of-type {
     left: unset;
     right: 15px;
 }
-.PDSbuttons svg {
+#inspectPanel .PDSbuttons svg {
     position: relative;
     display: block;
     fill: #fff;
