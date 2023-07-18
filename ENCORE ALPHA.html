@@ -59,8 +59,7 @@
 }
 .dropdown .dropdownheader
 {
-    position: sticky;
-    top: 5px;
+    position: relative;
     z-index: 999;
     width: 100%;
     height: 5em;
@@ -69,11 +68,6 @@
     cursor: pointer;
     background-color: #66666630;
     transition: 0.2s;
-}
-.dropdown.active .dropdownheader
-{
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
 }
 .dropdown .dropdownheader:active
 {
