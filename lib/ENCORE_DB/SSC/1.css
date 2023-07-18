@@ -10,9 +10,9 @@
 #SSC
 {
     position: relative;
-    height: 100%;
+    height: 100vmax;
     transform: scale(0.9);
-    width: 100vmax;
+    width: 100%;
     left: 0;
     top: 0;
     display: flex;
