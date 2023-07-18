@@ -12,7 +12,7 @@
     position: relative;
     height: 100%;
     transform: scale(0.9);
-    width: 100%;
+    width: 100vmax;
     left: 0;
     top: 0;
     display: flex;
