@@ -80,6 +80,7 @@
     display: flex;
     justify-content: center;
     width: 100%;
+    pointer-events: none;
     flex-wrap: nowrap;
     transform: translateY(200%);
     transition: 0.45s
@@ -95,6 +96,7 @@
     flex-grow: 0;
     width: 100px;
     height: 60px;
+    pointer-events: all;
     object-fit: cover;
     border-radius: 0.6em;
     background-color: #66666640;
