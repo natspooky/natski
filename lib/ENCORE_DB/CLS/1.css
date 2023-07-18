@@ -2,9 +2,11 @@
 {
     --SSCcolor: #505050b0;
 }
-#CLS *
+#CLS *, #CLSloader, #CLS
 {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 #CLS article
 {

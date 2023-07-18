@@ -3,9 +3,11 @@
     --SSCcolor: #1b1b1b90;
     --SSCaccent: #464646;
 }
-#SSC *
+#SSC *, #SSC
 {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 #SSC
 {
@@ -21,7 +23,6 @@
     background-color: #101010;
     border: 2px solid var(--SSCcolor);
     border-radius: 10px;
-    box-sizing: border-box;
     overflow: hidden;
 }
 #SSC .pagebutton
