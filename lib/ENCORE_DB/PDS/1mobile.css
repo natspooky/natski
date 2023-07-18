@@ -30,7 +30,8 @@
     height: auto;
     width: calc(100% - 1em);
     margin: 0.5em;
-    border-radius: 10px;
+    border-radius: 20px;
+    border: 4px solid transparent;
     cursor: pointer;
     float: left;
     transform: scale(1);
@@ -67,6 +68,7 @@
     display: block;
     border-radius: 23px;
     box-shadow: 0 0 40px #00000060;
+    border: 4px solid transparent;
     transform: translate(-50%,-50%);
     pointer-events: none;
 }

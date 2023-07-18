@@ -46,11 +46,6 @@
     border: 4px solid transparent;
     transform: scale(1);
 }
-#PDS .row .column img:active
-{
-    transform: scale(1);
-    transition: 0s;
-}
 #inspectPanel {
     position: fixed;
     height: 100%;
