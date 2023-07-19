@@ -104,6 +104,7 @@ header
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    animation: opacity 0.8s;
 }
 header .observe
 {
@@ -394,6 +395,10 @@ nav span
     visibility: visible;
     transform: scale(1);
     opacity: 1;
+}
+main
+{
+    animation: opacity 0.8s;
 }
 .slideimage
 {
@@ -825,6 +830,7 @@ main article ul li a
     overflow-y: scroll;
     overflow-x: hidden;
     background-color: var(--displaycolourtrans);
+    animation: opacity 0.8s;
 }
 .slidecontainer img
 {
@@ -959,7 +965,7 @@ footer
     justify-content: center;
     align-items: center;
     color: var(--textmain);
-    animation: opacity 0.6s;
+    animation: opacity 0.8s;
 }
 footer div
 {
