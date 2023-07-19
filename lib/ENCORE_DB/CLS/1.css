@@ -2,6 +2,10 @@
 {
     --SSCcolor: #505050b0;
 }
+@keyframes CLS {
+    from{opacity: 0;}
+    to{opacity: 1;}
+}
 #CLS *, #CLSloader, #CLS
 {
     box-sizing: border-box;
@@ -22,6 +26,7 @@
     text-align: justify;
     user-select: text;
     color: #e9e9e9;
+    animation: CLS 1s;
 }
 #CLS article hr
 {
