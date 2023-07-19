@@ -98,7 +98,7 @@
                 align-items: center;
                 height: 100%;
                 width: 100%;
-                transition: 0.3s;
+                transition: 0.6s ease-in-out;
             }
             .banner-bg::before
             {
@@ -143,7 +143,7 @@
                 font-size: 1.45rem;
                 overflow: hidden;
                 border: 1px solid #66666640;
-                animation: fadeup 0.6s;
+                animation: fadeup 0.9s;
             }
             .banner-bg div h1
             {
@@ -282,6 +282,7 @@
                 .banner-bg div
                 {
                     margin: 0.6em 1em 1em 1em;
+                    animation: unset;
                 }
                 .banner-bg div svg
                 {
@@ -293,14 +294,12 @@
                     height: 100%;
                     transform: scale(0.9);
                     object-fit: cover;
-                    animation: unset;
                 }
                 .banner-bg div h1
                 {
                     text-align: center;
                     width: 100%;
                     line-height: normal;
-                    animation: unset;
                 }
                 .banner-bg div p
                 {
@@ -325,7 +324,7 @@
             </nav>
         </div>
 
-        <header class="slideshowcontainer" id="SSC">
+        <header class="slideshowcontainer" id="SSCU">
 
             <div class="banner-bg">
                 <img src="icon/img/1.png" draggable="false" alt="ssc" loading="eager">
@@ -580,7 +579,7 @@
             
 
                 function unloadframe() {
-                    document.getElementById("SSC").classList.remove("active")
+                    document.getElementById("SSCU").classList.remove("active")
                     menuClose()
                     document.getElementById("iframePanel").classList.remove("active")
                     document.body.style.position = 'unset'
@@ -589,13 +588,13 @@
                     pageSystem('Home')
                     changeBar('var(--bar)')
                     reloadFrame()
-                    playSSC()
+                    playSSCU()
                 }
 
 
                 function loadframe(e) {
                     reloadFrame()
-                    document.getElementById("SSC").classList.add("active")
+                    document.getElementById("SSCU").classList.add("active")
                     menuClose()
                     document.getElementById("iframePanel").classList.add("active")
                     document.body.style.position = 'fixed'
@@ -603,7 +602,7 @@
                     document.getElementById('iframe').src=e+'.html';
                     backPage(-1000)
                     pageSystem(e.charAt(0).toUpperCase() + e.slice(1))
-                    pauseSSC()
+                    pauseSSCU()
                 }
 
 
@@ -934,7 +933,7 @@
             <h1>javascript is disabled</h1>
             <p>ENCORE.js requires javascript in order to run, please enable javascript</p>
         </noscript>
-        <script src="lib/js/ENCORE_SSC_ALT.js"></script>
+        <script src="lib/js/ENCORE_SSC_ULT.js"></script>
         <script>
             SSCU_settings = {'thumbs':true,'progressBar':true,'sideButtons':true,'timer':10000,'style':null}
         </script>
