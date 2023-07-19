@@ -56,9 +56,23 @@
             <p>Slide Show Container</p>
         </header>
 
+        <style>
+            #SSC::before, #SSCU::before
+            {
+                content: attr(name);
+                position: absolute;
+                top: 10px;
+                left: 10px;
+                font-weight: bold;
+                color: #ffffff;
+                text-shadow: 0px 0px 2px #000000;
+                z-index: 999;
+            }
+        </style>
+
         <a style="position: relative; margin: 1em auto; display: block; padding: 0.5em 1em; color: #e9e9e9; text-decoration: none; background-color: rgba(255, 0, 225, 0.337); width: fit-content; border-radius: 100vmax;" href="ENCORE ALPHA.html#SSC">Setup & Information</a>
 
-        <div id="SSC" style="opacity: 0; display: none;">
+        <div id="SSC" style="opacity: 0; display: none;" name="ENCORE SSC">
 
             <div class="banner-bg">
         
@@ -87,7 +101,7 @@
         </div>
 
 
-        <div id="SSCU" style="opacity: 0; display: none;">
+        <div id="SSCU" style="opacity: 0; display: none;" name="ENCORE SSC ULT">
 
             <div class="banner-bg-u">
         
