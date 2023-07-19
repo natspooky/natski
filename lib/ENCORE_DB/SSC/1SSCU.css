@@ -56,7 +56,7 @@
 #SSCU .thumbs
 {
     position: absolute;
-    padding: 0.3em 0em;
+    padding: 0.3em;
     display: flex;
     align-items: center;
     border-radius: 100vmax;
@@ -71,10 +71,13 @@
     width: 20px;
     border: 6px solid #363636;
     background-color: #363636;
-    margin: 0 0.5em;
     overflow: hidden;
     transition: 0.2s;
     cursor: pointer;
+}
+#SSCU .thumbs .thumb-u:nth-of-type(2)
+{
+    margin: 0 0.5em;
 }
 #SSCU .thumbs .thumb-u .progress-u
 {
