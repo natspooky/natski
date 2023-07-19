@@ -403,7 +403,7 @@ nav span
     margin: 30px auto;
     border-radius: 20px;
     opacity: 0;
-    transition: 0.3s;
+    transition: 0.3s, opacity 1s;
     transform: scale(1);
 }
 main .title
