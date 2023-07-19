@@ -91,17 +91,17 @@
     width: 20px;
     border: 0px solid var(--SSCaccent);
     background-color: var(--SSCaccent);
-    margin: 0 0.5em;
+    margin: 0 0.4em;
     transition: 0.2s;
     cursor: pointer;
 }
 #SSC .thumbs .thumb:first-of-type
 {
-    margin: 0 0.5em 0 0;
+    margin: 0 0.4em 0 0;
 }
 #SSC .thumbs .thumb:last-of-type
 {
-    margin: 0 0 0 0.5em;
+    margin: 0 0 0 0.4em;
 }
 #SSC .thumbs .thumb.active
 {
