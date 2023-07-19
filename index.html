@@ -647,6 +647,10 @@
                     })
                 }
 
+                function test() {
+                    document.getElementById('testbar').classList.toggle('active')
+                }
+
 
                 function openMenu(e) {
                     resetMenu()
@@ -928,6 +932,42 @@
         </button>
     </div>
 </div>
+
+<style>
+    #testbar
+    {
+        position: fixed; 
+        bottom: 0; 
+        left: 0;
+        width: 100%;
+        flex-wrap: wrap;
+        display: none;
+        background-image: linear-gradient(to top, #000, transparent);
+        padding: 0.5em 1.2em;
+    }
+    #testbar.active
+    {
+        display: flex;
+    }
+    #testbar button
+    {
+        padding: 0.5em;
+        flex-grow: 1;
+        border-radius: 0.3em;
+        background-color: #4e4e4e;
+        margin: 0.3em;
+    }
+</style>
+
+<div id="testbar">
+    <button onclick="pageSystem('testing '+this.innerText);">PageSystem</button>
+    <button onclick="alert(deviceCheck()); pageSystem('testing '+this.innerText);">DeviceCheck</button>
+    <button onclick="changeBar('#345456'); setTimeout(() => {changeBar('var(--bar)')},1000); pageSystem('testing '+this.innerText);">ColourSystem</button>
+    <button onclick="reloadFrame(); pageSystem('testing '+this.innerText);">MemoryClear</button>
+    <button onclick="loadframe('testpage'); pageSystem('testing '+this.innerText);">EmbeddedPlayer</button>
+    <button onclick="unloadframe(); pageSystem('testing '+this.innerText);">CloseEmbeddedPlayer</button>
+</div>
+
 
         <noscript>
             <h1>javascript is disabled</h1>
