@@ -1,0 +1,174 @@
+:root
+{
+    --SSCUcolor: #1b1b1b90;
+    --SSCUaccent: #464646;
+}
+#SSCU *, #SSCU
+{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+#SSCU
+{
+    position: relative;
+    height: 100vh;
+    transform: scale(0.9);
+    width: 100%;
+    left: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    background-color: #101010;
+    border: 2px solid var(--SSCUcolor);
+    border-radius: 10px;
+    overflow: hidden;
+}
+#SSCU .pagebutton-u
+{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 15px;
+    padding: 1.5em 0.6em;
+    border-radius: 8px;
+    border: 0;
+    background-color: var(--SSCUcolor);
+    -webkit-tap-highlight-color:  rgba(255, 255, 255, 0);
+    cursor: pointer;
+}
+#SSCU .pagebutton-u:last-of-type
+{
+    left: unset;
+    right: 15px;
+}
+#SSCU .pagebutton-u svg
+{
+    display: block;
+    fill: #e9e9e9;
+    box-sizing: border-box;
+    height: 15px;
+}
+#SSCU .pagebutton-u:active
+{
+    background-color: #10101030;
+}
+#SSCU .thumbs
+{
+    position: absolute;
+    padding: 0.3em 0em;
+    display: flex;
+    align-items: center;
+    border-radius: 100vmax;
+    box-sizing: border-box;
+    background-color: var(--SSCUcolor);
+    bottom: 15px;
+}
+#SSCU .thumbs .thumb-u
+{
+    position: relative;
+    border-radius: 100vmax;
+    height: 20px;
+    width: 20px;
+    box-sizing: border-box;
+    border: 0px solid var(--SSCUaccent);
+    background-color: var(--SSCUaccent);
+    margin: 0 0.5em;
+    transition: 0.2s;
+    cursor: pointer;
+    -webkit-tap-highlight-color:  rgba(255, 255, 255, 0);
+}
+#SSCU .thumbs .thumb-u.active
+{
+    border: 5px solid var(--SSCUaccent);
+    background-color: #e9e9e9;
+}
+#SSCU .banner-bg-u
+{
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 1s;
+}
+#SSCU .banner-bg-u img
+{
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+#SSCU .banner-bg-u .banner-button
+{
+    position: absolute;
+    display: block;
+    padding: 0em 1.8em;
+    border-radius: 100vmax;
+    color: #ffffff;
+    text-decoration: none;
+    background-color: var(--SSCUcolor);
+    height: 50px;
+    line-height: 50px;
+    cursor: pointer;
+    bottom: 60px;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color:  rgba(255, 255, 255, 0);
+}
+@keyframes fadeIn
+{
+    from{opacity: 0.4;}
+    to{opacity: 1;}
+}
+#SSCU .infoButton
+{
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    height: 40px;
+    width: 40px;
+    background-color: #1e1e1e60;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100vmax;
+}
+#SSCU .infoButton svg
+{
+    position: relative;
+    height: 50%;
+    fill: #e9e9e9;
+    display: block;
+}
+#SSCU .infoButton::before
+{
+    content: 'ENCORE SSCU';
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    padding: 0.5em;
+    transform: translate(0,-50%);
+    background-color: #1e1e1e60;
+    color: #e9e9e9;
+    border-radius: 0.5em;
+    opacity: 0;
+    white-space: nowrap;
+    visibility: hidden;
+    pointer-events: none;
+    font-weight: bold;
+    transition: 0.2s;
+}
+@media (hover:hover){
+    #SSCU .infoButton:hover::before
+    {
+        transform: translate(-0.5em,-50%);
+        opacity: 1;
+        visibility: visible;
+    }
+}
