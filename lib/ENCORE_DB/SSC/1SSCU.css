@@ -72,12 +72,17 @@
     border: 6px solid #363636;
     background-color: #363636;
     overflow: hidden;
+    margin: 0 0.5em;
     transition: 0.2s;
     cursor: pointer;
 }
-#SSCU .thumbs .thumb-u:nth-of-type(2)
+#SSCU .thumbs .thumb-u:first-of-type
 {
-    margin: 0 0.5em;
+    margin: 0 0 0 0.5em;
+}
+#SSCU .thumbs .thumb-u:last-of-type
+{
+    margin: 0 0.5em 0 0;
 }
 #SSCU .thumbs .thumb-u .progress-u
 {

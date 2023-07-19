@@ -76,7 +76,7 @@
 #SSC .thumbs
 {
     position: absolute;
-    padding: 0.3em 0em;
+    padding: 0.3em;
     display: flex;
     align-items: center;
     border-radius: 100vmax;
@@ -94,6 +94,14 @@
     margin: 0 0.5em;
     transition: 0.2s;
     cursor: pointer;
+}
+#SSC .thumbs .thumb:first-of-type
+{
+    margin: 0 0 0 0.5em;
+}
+#SSC .thumbs .thumb:last-of-type
+{
+    margin: 0 0.5em 0 0;
 }
 #SSC .thumbs .thumb.active
 {
