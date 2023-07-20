@@ -2,7 +2,7 @@
 :root
 {
     --SSCUcolor: #505050b0;
-    --SSCUaccent: #222222;
+    --SSCUaccent: #aaaaaa;
 }
 @media (hover:hover){
     #SSCU .infoButton:hover::before
