@@ -4,6 +4,18 @@
     --SSCcolor: #1b1b1b90;
     --SSCaccent: #464646;
 }
+@media (hover:hover){
+    #SSC .infoButton:hover::before
+    {
+        transform: translate(-0.5em,-50%);
+        opacity: 1;
+        visibility: visible;
+    }
+    #SSC .pagebutton:hover
+    {
+        background-color: transparent;
+    }
+}
 #SSC *, #SSC
 {
     box-sizing: border-box;
@@ -36,10 +48,10 @@
     left: 15px;
     padding: 1.5em 0.6em;
     border-radius: 8px;
-    border: 0;
     border: 2px solid var(--SSCcolor);
     background-color: var(--SSCcolor);
     cursor: pointer;
+    transition: 0.2s;
 }
 #SSC .pagebutton:last-of-type
 {
@@ -54,7 +66,8 @@
 }
 #SSC .pagebutton:active
 {
-    background-color: #10101030;
+    background-color: #222222;
+    transition: 0s;
 }
 #SSC .progress
 {
@@ -201,12 +214,4 @@
     pointer-events: none;
     font-weight: bold;
     transition: 0.2s;
-}
-@media (hover:hover){
-    #SSC .infoButton:hover::before
-    {
-        transform: translate(-0.5em,-50%);
-        opacity: 1;
-        visibility: visible;
-    }
 }
