@@ -194,7 +194,7 @@ header h2
     }
     .navbutton:hover
     {
-        background-color: #66666640;
+        background-color: #66666670;
     }
     .navbutton:active::before
     {
@@ -294,7 +294,7 @@ nav span
 .navbutton:active
 {
     transform: scale(1.1);
-    background-color: #66666670;
+    background-color: #66666690;
     transition: 0s;
 }
 .covermenu
