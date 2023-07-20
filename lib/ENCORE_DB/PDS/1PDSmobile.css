@@ -145,7 +145,7 @@
     left: unset;
     right: 15px;
 }
-.PDSbuttons:active {
+#PDSinspectPanel .PDSbuttons:active {
     background-color: #222222;
     transition: 0s;
 }

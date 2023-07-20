@@ -5,8 +5,8 @@
     --SSCaccent: #464646;
 }
 @media (hover: hover) {
-    .PDSbuttons:hover {
-        background-color: transparent;
+    #PDSinspectPanel .PDSbuttons:hover {
+        background-color: #00000070;
     }
     #PDS .PDSrow .PDScolumn img:hover {
         transform: scale(1.01);
@@ -150,7 +150,7 @@
     left: unset;
     right: 15px;
 }
-.PDSbuttons:active {
+#PDSinspectPanel .PDSbuttons:active {
     background-color: #222222;
     transition: 0s;
 }
@@ -195,7 +195,8 @@
     right: 100%;
     padding: 0.5em;
     transform: translate(0,-50%);
-    background-color: #1e1e1e60;
+    background-color: var(--SSCcolor);
+    border: 2px solid var(--SSCcolor);
     color: #e9e9e9;
     border-radius: 0.5em;
     opacity: 0;

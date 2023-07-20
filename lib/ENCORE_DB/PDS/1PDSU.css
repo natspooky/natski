@@ -5,8 +5,8 @@
     --SSCaccent: #464646;
 }
 @media (hover: hover) {
-    .PDSUbuttons:hover {
-        background-color: transparent;
+    #PDSUinspectPanel .PDSUbuttons:hover {
+        background-color: #00000070;
     }
 }
 #PDSUinspectPanel *, #PDSUinspectPanel
@@ -115,7 +115,7 @@
     left: unset;
     right: 15px;
 }
-.PDSUbuttons:active {
+#PDSinspectPanel .PDSUbuttons:active {
     background-color: #222222;
     transition: 0s;
 }
