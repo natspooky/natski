@@ -115,7 +115,7 @@
     left: unset;
     right: 15px;
 }
-#PDSinspectPanel .PDSUbuttons:active {
+#PDSUinspectPanel .PDSUbuttons:active {
     background-color: #222222;
     transition: 0s;
 }
