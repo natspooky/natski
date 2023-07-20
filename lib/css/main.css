@@ -1015,7 +1015,7 @@ noscript
 }
 @media screen and (max-width: 900px)
 {
-    nav .navbutton,.pagebutton,.slidecontainer,.chapterselector
+    nav .navbutton,.pagebutton-u,.slidecontainer,.chapterselector
     {
         display: none;
     }
