@@ -114,7 +114,8 @@
     pointer-events: all;
     object-fit: cover;
     border-radius: 0.6em;
-    background-color: #66666640;
+    background-color: var(--SSCcolor);
+    border: 2px solid var(--SSCcolor);
     margin: 20px 0;
     opacity: 0.5;
     image-rendering: optimizeSpeed;
