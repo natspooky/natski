@@ -1,4 +1,4 @@
-#PDS *,#PDSinspectPanel *, #PDS, #PDSinspectPanel
+#PDSUinspectPanel *, #PDSUinspectPanel
 {
     box-sizing: border-box;
     margin: 0;
@@ -7,39 +7,7 @@
     -ms-touch-action: manipulation;
     touch-action: manipulation;
 }
-#PDS {
-    position: relative;
-    width: 100%;
-    height: auto;
-    display: block;
-    padding: 0.5em;
-}
-#PDS .PDSrow {
-    position: relative;
-    width: 100%;
-    display: inline-block;
-    vertical-align: top;
-}
-#PDS .PDSrow .PDScolumn {
-    width: 50%;
-    position: relative;
-    display: inline-block;
-    vertical-align: top;
-}
-#PDS .PDSrow .PDScolumn img {
-    position: relative;
-    display: block;
-    height: auto;
-    width: calc(100% - 1em);
-    margin: 0.5em;
-    border-radius: 20px;
-    border: 4px solid transparent;
-    background-color: #e9e9e915;
-    cursor: pointer;
-    float: left;
-    transform: scale(1);
-}
-#PDSinspectPanel {
+#PDSUinspectPanel {
     position: fixed;
     height: 100%;
     width: 100%;
@@ -53,18 +21,18 @@
     visibility: hidden;
     transition: 0.3s;
 }
-#PDSinspectPanel.active {
+#PDSUinspectPanel.active {
     visibility: visible;
     opacity: 1;
     pointer-events: unset;
 }
-#PDSinspectPanel section {
+#PDSUinspectPanel section {
     position: absolute;
     height: 100%;
     width: 100%;
     cursor: pointer;
 }
-#PDSinspectPanel #PDSinspectImage {
+#PDSUinspectPanel #PDSUinspectImage {
     position: fixed;
     height: 70%;
     opacity: 0;
@@ -75,11 +43,11 @@
     transform: translate(-50%,-50%);
     pointer-events: none;
 }
-#PDSinspectPanel #PDSinspectImage.active {
+#PDSUinspectPanel #iPDSUnspectImage.active {
     height: auto;
     width: 80%;
 }
-#PDSinspectPanel div
+#PDSUinspectPanel div
 {
     position: absolute;
     left: 0;
@@ -93,11 +61,11 @@
     transform: translateY(200%);
     transition: 0.45s
 }
-#PDSinspectPanel.active div
+#PDSUinspectPanel.active div
 {
     transform: translateY(0);
 }
-#PDSinspectPanel div img
+#PDSUinspectPanel div img
 {
     position: relative;
     flex-shrink: 0;
@@ -114,14 +82,14 @@
     transform: scale(0.8);
     cursor: pointer;
 }
-#PDSinspectPanel div img:nth-child(2)
+#PDSUinspectPanel div img:nth-child(2)
 {
     border: 2px solid #fff;
     opacity: 1;
     margin: 20px 0.6em;
     transform: scale(1);
 }
-#PDSinspectPanel .PDSbuttons {
+#PDSUinspectPanel .PDSUbuttons {
     position: absolute;
     top: 50%;
     left: 15px;
@@ -134,27 +102,21 @@
     transform-origin: top;
     transition: 0.2s;
 }
-#PDSinspectPanel .PDSbuttons:last-of-type {
+#PDSUinspectPanel .PDSUbuttons:last-of-type {
     left: unset;
     right: 15px;
 }
-#PDSinspectPanel .PDSbuttons svg {
+#PDSUinspectPanel .PDSUbuttons svg {
     position: relative;
     display: block;
     fill: #fff;
     height: 15px;
 }
-#PDS .PDSinfoCont
+#PDSUinspectPanel .PDSUinfoButton
 {
-    position: relative;
-    width: 100%;
-    padding: 0.7em;
-    overflow: hidden;
-}
-#PDS .PDSinfoCont .PDSinfoButton
-{
-    position: relative;
-    float: right;
+    position: absolute;
+    top: 0.7em;
+    right: 0.7em;
     height: 40px;
     width: 40px;
     background-color: #1e1e1e60;
@@ -163,7 +125,7 @@
     justify-content: center;
     border-radius: 100vmax;
 }
-#PDS .PDSinfoCont .PDSinfoButton svg
+#PDSUinspectPanel .PDSUinfoButton svg
 {
     position: relative;
     height: 50%;
