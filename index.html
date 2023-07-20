@@ -557,7 +557,7 @@
                     document.body.style.overflow = 'unset'
                     document.body.classList.remove("static")
                     pageSystem('Home')
-                    changeBar('var(--bar)')
+                    changeBar('#000000')
                     reloadFrame()
                     playSSCU()
                 }
@@ -933,7 +933,7 @@
 <div id="testbar">
     <button onclick="pageSystem('testing '+this.innerText);">PageSystem</button>
     <button onclick="alert(deviceCheck()); pageSystem('testing '+this.innerText);">DeviceCheck</button>
-    <button onclick="changeBar('#345456'); setTimeout(() => {changeBar('var(--bar)')},1000); pageSystem('testing '+this.innerText);">ColourSystem</button>
+    <button onclick="changeBar('#345456'); setTimeout(() => {changeBar('#000000')},1000); pageSystem('testing '+this.innerText);">ColourSystem</button>
     <button onclick="reloadFrame(); pageSystem('testing '+this.innerText);">MemoryClear</button>
     <button onclick="loadframe('testpage'); pageSystem('testing '+this.innerText);">EmbeddedPlayer</button>
     <button onclick="unloadframe(); pageSystem('testing '+this.innerText);">CloseEmbeddedPlayer</button>
