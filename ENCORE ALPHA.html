@@ -69,10 +69,9 @@
     background-color: #66666630;
     transition: 0.2s;
 }
-.dropdown .dropdownheader:active
+.dropdown.active .dropdownheader
 {
-    transition: 0s;
-    background-color: #66666640;
+    background-color: inherit;
 }
 .dropdown .dropdownheader img
 {
@@ -250,6 +249,15 @@
     {
         display: none;
     }
+    .dropdown .dropdownheader p
+    {
+        position: absolute;
+        left: 1em;
+        top: 1em;
+        margin: 0;
+        width: calc(100% - 2em);
+        text-align: center;
+    }
 }
     </style>
     <body>
@@ -349,7 +357,7 @@
                         </button>
                     </div>
                     <div class="exampleMenu" id="SSCmenu" style="display: none; margin-top: 1em;">
-                        <button style="background-color: #09af0030;" onclick="SSC_settings={'thumbs':document.getElementById('sscthumb').hasAttribute('active'),'progressBar':document.getElementById('sscbar').hasAttribute('active'),'sideButtons':document.getElementById('sscbuttons').hasAttribute('active'),'timer':10000,'style':1}; reloadSSC(SSC_settings);">
+                        <button style="background-color: #09af0030;" onclick="SSC_settings={'thumbs':document.getElementById('sscthumb').hasAttribute('active'),'progressBar':document.getElementById('sscbar').hasAttribute('active'),'sideButtons':document.getElementById('sscbuttons').hasAttribute('active'),'style':1}; reloadSSC(SSC_settings);">
                             Save Changes
                         </button>
                         <button class="active" active id="sscthumb" onclick="changeValues(this)">
@@ -363,7 +371,101 @@
                         </button>
                     </div>
                 </div>
+
+
+
+
+                <!-- section for ENCORE SSCU -->
+
+
+
+
+                <div class="contentbox">
+                    <p>ENCORE SSC also has an alternate model called ENCORE SSCU. SSCU </p>
+                    <hr>
+                    <p>Code that needs to be appended at the bottom of the HTML file:</p>
+                    <div class="codecontainer">
+                        <div class="codebox">
+<pre>
+<code>&lt;script src="https://natski.netlify.app/lib/js/ENCORE_SSC_ULT.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+    SSCU_settings={
+        'thumbs':true,
+        'sideButtons':true,
+        'style':1
+    }
+&lt;/script&gt;
+</code></pre>
+                        </div>
+                        <div class="copybox">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.39 850.39">
+                                <path d="M389.7,715.19h126.3v83.3c0,28.67-23.24,51.9-51.9,51.9H51.9c-28.66,0-51.9-23.23-51.9-51.9V227.1c0-28.66,23.24-51.9,51.9-51.9h245.9v448.09c0,50.68,41.23,91.9,91.9,91.9Z"/>
+                                <rect  x="334.39" width="516" height="675.19" rx="51.9" ry="51.9"/>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <p>Code that needs to be added into the HTML file:</p>
+
+                    <div class="codecontainer">
+                        <div class="codebox">
+<pre>
+<code>&lt;div id="SSCU" style="opacity: 0; display: none;"&gt;
+
+    &lt;div class="banner-bg-u"&gt; &lt;!-- duplicate 'banner-bg-u' for the amount of pages you want --&gt;
+
+        &lt;img src="path of background image" draggable="false" alt="" loading="eager"&gt;
+
+        &lt;a class="banner-button" href="insert link here"&gt;enter&lt;/a&gt;
+
+        &lt;!-- place content in here --&gt;
+
+    &lt;/div&gt;
+
+&lt;/div&gt;
+</code></pre>
+                        </div>
+                        <div class="copybox">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.39 850.39">
+                                <path d="M389.7,715.19h126.3v83.3c0,28.67-23.24,51.9-51.9,51.9H51.9c-28.66,0-51.9-23.23-51.9-51.9V227.1c0-28.66,23.24-51.9,51.9-51.9h245.9v448.09c0,50.68,41.23,91.9,91.9,91.9Z"/>
+                                <rect  x="334.39" width="516" height="675.19" rx="51.9" ry="51.9"/>
+                            </svg>
+                        </div>
+                    </div>
+                
+                    <p>ENCORE SSCU Example:</p>
+
+                    <div class="previewWindow" style="--height: 50vh; opacity: 0; margin: 1em 0;" id="SSCU"></div>
+
+                    <div class="exampleMenu">
+                        <button onclick="loadSystem('SSCU')">
+                            Load SSCU
+                        </button>
+                        <button onclick="unloadSystem('SSCU')">
+                            Unload SSCU
+                        </button>
+                    </div>
+                    <div class="exampleMenu" id="SSCUmenu" style="display: none; margin-top: 1em;">
+                        <button style="background-color: #09af0030;" onclick="SSCU_settings={'thumbs':document.getElementById('sscuthumb').hasAttribute('active'),'sideButtons':document.getElementById('sscubuttons').hasAttribute('active'),'style':1}; reloadSSC(SSC_settings);">
+                            Save Changes
+                        </button>
+                        <button class="active" active id="sscuthumb" onclick="changeValues(this)">
+                            Thumbs
+                        </button>
+                        <button class="active" active id="sscubuttons" onclick="changeValues(this)">
+                            Side Buttons
+                        </button>
+                    </div>
+                </div>
             </div>
+
+
+
+
+<!-- end of SSC -->
+
+
+
 
             <div class="dropdown" style="--colour: #44a8ff15;">
                 <div class="dropdownheader">
@@ -611,20 +713,42 @@
                             ssc.style.opacity = '1'
                             document.getElementById('SSCmenu').style.display = 'flex'
                             playSSC()
-                        }else {
+                        }else{
                             let script = document.createElement('script'),
                             settings = document.createElement('script');
                             ssc.innerHTML = '<div class="banner-bg"><img src="icon/img/ssc1.jpg" draggable="false" alt="" loading="eager"></div><div class="banner-bg"><img src="icon/img/ssc2.jpg" draggable="false" alt="" loading="eager"></div>'
                             script.id = 'SSCscript'
                             script.src = 'https://natski.netlify.com/lib/js/ENCORE_SSC.js'
                             settings.id = 'SSCsettings'
-                            settings.innerHTML = "SSC_settings={'thumbs':true,'progressBar':true,'sideButtons':true,'timer':10000,'style':1}"
+                            settings.innerHTML = "SSC_settings={'thumbs':true,'progressBar':true,'sideButtons':true,'style':1}"
                             document.body.appendChild(script)
                             document.body.appendChild(settings)
                             ssc.style.height = 'var(--height)'
                             document.getElementById('SSCmenu').style.display = 'flex'
                         }
                         break;
+
+                        case 'SSCU':
+                            let sscu = document.getElementById('SSCU');
+                            if(document.getElementById('SSCUscript')) {
+                                sscu.style.height = 'var(--height)'
+                                sscu.style.opacity = '1'
+                                document.getElementById('SSCUmenu').style.display = 'flex'
+                                playSSCU()
+                            }else{
+                                let script = document.createElement('script'),
+                                settings = document.createElement('script');
+                                sscu.innerHTML = '<div class="banner-bg-u"><img src="icon/img/ssc1.jpg" draggable="false" alt="" loading="eager"></div><div class="banner-bg-u"><img src="icon/img/ssc2.jpg" draggable="false" alt="" loading="eager"></div>'
+                                script.id = 'SSCUscript'
+                                script.src = 'https://natski.netlify.com/lib/js/ENCORE_SSC_ULT.js'
+                                settings.id = 'SSCUsettings'
+                                settings.innerHTML = "SSCU_settings={'thumbs':true,'sideButtons':true,'style':1}"
+                                document.body.appendChild(script)
+                                document.body.appendChild(settings)
+                                sscu.style.height = 'var(--height)'
+                                document.getElementById('SSCUmenu').style.display = 'flex'
+                            }
+                            break;
 
                     case 'PDS':
                         let pds = document.getElementById('PDS');
@@ -677,6 +801,13 @@
                         ssc.style.opacity = '0'
                         document.getElementById('SSCmenu').style.display = 'none'
                         pauseSSC()
+                        break;
+                    case 'SSCU':
+                        let sscu = document.getElementById('SSCU')
+                        sscu.style.height = '0'
+                        sscu.style.opacity = '0'
+                        document.getElementById('SSCUmenu').style.display = 'none'
+                        pauseSSCU()
                         break;
                     case 'PDS':
                         let pds = document.getElementById('PDS');
