@@ -115,8 +115,7 @@
 #SSCU .thumbs .thumb-u.active
 {
     width: 40px;
-    border: 6px solid var(--SSCUcolor);
-    background-color: var(--SSCUcolor);
+    background-color: transparent;
     pointer-events: none;
 }
 #SSCU .banner-bg-u
