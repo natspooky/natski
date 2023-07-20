@@ -2,7 +2,7 @@
 :root
 {
     --SSCcolor: #505050b0;
-    --SSCaccent: #222222;
+    --SSCaccent: #aaaaaa;
 }
 @media (hover:hover){
     #SSC .infoButton:hover::before
@@ -107,8 +107,8 @@
     border-radius: 100vmax;
     height: 20px;
     width: 20px;
-    border: 0px solid var(--SSCcolor);
-    background-color: var(--SSCcolor);
+    border: 0px solid var(--SSCaccent);
+    background-color: var(--SSCaccent);
     margin: 0 0.4em;
     transition: 0.2s;
     cursor: pointer;

@@ -86,8 +86,8 @@
     border-radius: 100vmax;
     height: 20px;
     width: 20px;
-    border: 6px solid var(--SSCUcolor);
-    background-color: var(--SSCUcolor);
+    border: 6px solid var(--SSCUaccent);
+    background-color: var(--SSCUaccent);
     overflow: hidden;
     margin: 0 0.4em;
     transition: 0.2s;
