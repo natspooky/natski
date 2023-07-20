@@ -35,6 +35,7 @@
     padding: 1.5em 0.6em;
     border-radius: 8px;
     border: 0;
+    border: 2px solid var(--SSCcolor);
     background-color: var(--SSCcolor);
     cursor: pointer;
 }
@@ -81,6 +82,7 @@
     display: flex;
     align-items: center;
     border-radius: 100vmax;
+    border: 2px solid var(--SSCcolor);
     background-color: var(--SSCcolor);
     bottom: 32px;
 }
@@ -147,6 +149,7 @@
     border-radius: 100vmax;
     color: #ffffff;
     text-decoration: none;
+    border: 2px solid var(--SSCcolor);
     background-color: var(--SSCcolor);
     height: 50px;
     line-height: 50px;
@@ -165,6 +168,7 @@
     right: 10px;
     height: 40px;
     width: 40px;
+    border: 2px solid var(--SSCcolor);
     background-color: #1e1e1e60;
     display: flex;
     align-items: center;
