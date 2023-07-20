@@ -62,7 +62,7 @@
     background-color: var(--SSCcolor);
     border-radius: 100vmax;
     overflow: hidden;
-    border: 2px solid #222222;
+    border: 2px solid #444444;
 }
 #SSC .progress .progress-bar
 {

@@ -126,7 +126,7 @@ header .imagebox
     display: flex;
     justify-content: center;
     align-items: center;
-    animation: headerimage 0.35s;
+    animation: headerimage 0.5s cubic-bezier(.61,.04,0,1.22);
 }
 header .imagebox img
 {
