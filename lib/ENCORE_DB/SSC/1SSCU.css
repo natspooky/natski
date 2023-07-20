@@ -2,7 +2,7 @@
 :root
 {
     --SSCUcolor: #505050b0;
-    --SSCUaccent: #333333;
+    --SSCUaccent: #222222;
 }
 @media (hover:hover){
     #SSCU .infoButton:hover::before
@@ -115,7 +115,7 @@
 #SSCU .thumbs .thumb-u.active
 {
     width: 40px;
-    background-color: transparent;
+    background-color: #555555;
     pointer-events: none;
 }
 #SSCU .banner-bg-u
