@@ -64,6 +64,8 @@ svg rect
     height: fit-content;
     overflow: hidden;
     max-width: 100%;
+    min-width: 260px;
+    min-height: 180px;
     background-color: #000000;
     display: block;
     box-shadow: 0 10px 10px #00000020;
@@ -73,6 +75,7 @@ svg rect
     position: relative;
     pointer-events: none;
     display: block;
+    width: 100%;
     min-width: 260px;
     min-height: 180px;
 }

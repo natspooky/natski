@@ -89,6 +89,7 @@ svg rect
     position: relative;
     pointer-events: none;
     display: block;
+    width: 100%;
     min-width: 330px;
     min-height: 330px;
 }
