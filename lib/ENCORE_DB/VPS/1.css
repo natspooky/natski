@@ -196,7 +196,7 @@ svg rect
 {
     transform: rotate(60deg);
 }
-.VPScontainer .controlBox .controlBar button.active .play, .VPScontainer .controlBox .controlBar button .pause
+.VPScontainer .controlBox .controlBar button.active .play, .VPScontainer .controlBox .controlBar button .pause, .VPScontainer .controlBox .controlBar .VPSbar
 {
     display: none;
 }
