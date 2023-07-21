@@ -153,14 +153,12 @@
 {
     position: absolute;
     display: block;
-    padding: 0em 1.8em;
+    padding: 0.5em 1.8em;
     border-radius: 100vmax;
     color: #ffffff;
     text-decoration: none;
     border: 2px solid var(--SSCcolor);
     background-color: var(--SSCcolor);
-    height: 50px;
-    line-height: 50px;
     cursor: pointer;
     bottom: 72px;
 }
