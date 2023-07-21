@@ -34,11 +34,15 @@
     appearance: none;
     -webkit-appearance: none;
 }
-#VPScontainer *
+.VPScontainer *, .VPScontainer
 {
     box-sizing: border-box;
     -ms-touch-action: manipulation;
     touch-action: manipulation;
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color:  rgba(255, 255, 255, 0);
+    font-family: 'Exo 2', sans-serif;
 }
 .VPSrange
 {
@@ -77,8 +81,8 @@ svg rect
     overflow: hidden;
     background-color: #000000;
     display: block;
+    max-width: 100%;
     box-shadow: 0 10px 10px #00000020;
-	font-family: 'Exo 2', sans-serif;
 }
 .VPScontainer .VPS
 {

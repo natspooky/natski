@@ -37,229 +37,8 @@
         <link rel="stylesheet" type="text/css" href="lib/css/main.css"/>
         <link rel="stylesheet" type="text/css" href="lib/css/animations.css"/>
         <link rel="stylesheet" type="text/css" media="screen and (orientation: portrait)" href="lib/css/scale.css"/>
-        
+        <link rel="stylesheet" type="text/css" href="lib/css/encore.css"/>
 	</head>
-    <style>
-@media (hover:hover) {
-    .dropdown .contentbox .codecontainer .copybox:hover
-    {
-        background-color: #66666640;
-    }
-}
-.dropdown
-{
-    position: relative;
-    display: block;
-    width: max(95vmin,68vw);
-    margin: 1em auto;
-    border-radius: 1.3em;
-    box-shadow: 0 10px 10px #00000020;
-    scroll-margin: 10px;
-    background-color: var(--colour);
-}
-.dropdown .dropdownheader
-{
-    position: relative;
-    z-index: 999;
-    width: 100%;
-    height: 5em;
-    padding: 1em;
-    border-radius: 1.3em;
-    cursor: pointer;
-    background-color: #66666630;
-    transition: 0.2s;
-}
-.dropdown.active .dropdownheader
-{
-    background-color: inherit;
-}
-.dropdown .dropdownheader img
-{
-    position: relative;
-    height: 3em;
-    width: 3em;
-    border-radius: 0.5em;
-}
-.dropdown .dropdownheader p
-{
-    position: relative;
-    display: inline-block;
-    line-height: 3em;
-    margin: 0 0.5em;
-    font-weight: bold;
-    vertical-align: top;
-}
-.dropdown .dropdownheader p span
-{
-    color: var(--textsub);
-}
-.dropdown .dropdownheader div
-{
-    position: absolute;
-    top: 1em;
-    right: 1em;
-    height: 3em;
-    width: 3em;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #66666620;
-    border-radius: 0.5em;
-}
-.dropdown .dropdownheader div svg
-{
-    position: relative;
-    width: 30%;
-    transform: rotate(90deg);
-    transition: transform 0.25s;
-}
-.dropdown .contentbox
-{
-    position: relative;
-    width: 100%;
-    display: none;
-    margin: 1em 0 0 0;
-    background-color: #66666630;
-    border-radius: 1.3em;
-    padding: 1em;
-    animation: opacity 0.5s;
-}
-.dropdown .contentbox hr
-{
-    margin: 0.8em 0;
-    border: 3px solid #66666620;
-    border-radius: 100vmax;
-}
-.dropdown .contentbox .codecontainer
-{
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-    margin: 1em 0;
-}
-.dropdown .contentbox .codecontainer .codebox
-{
-    position: relative;
-    float: left;
-    width: calc(100% - 4em);
-    padding: 1em;
-    min-height: 3em;
-    overflow-x: hidden;
-    user-select: text;
-    background-color: #66666620;
-    border-radius: 0.5em;
-}
-.dropdown .contentbox .codecontainer .copybox
-{
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    float: right;
-    width: 3em;
-    height: 3em;
-    cursor: pointer;
-    background-color: #66666620;
-    border-radius: 0.5em;
-}
-.dropdown .contentbox .codecontainer .copybox svg
-{
-    width: 30%;
-}
-.dropdown .contentbox .codecontainer .copybox::before
-{
-    content: 'copied!';
-    position: absolute;
-    right: calc(100% + 1.5em);
-    padding: 0.3em 0.5em;
-    top: 50%;
-    pointer-events: none;
-    border-radius: 0.3em;
-    opacity: 0;
-    font-weight: bold;
-    transform: translate(0,-50%);
-    background-color: #404040;
-    visibility: hidden;
-    transition: 0.5s;
-    transition-delay: 2s;
-}
-.dropdown .contentbox .codecontainer .copybox:active::before
-{
-    transition: 0s;
-    transition-delay: 0s;
-    visibility: visible;
-    opacity: 1;
-}
-.dropdown .contentbox .codecontainer .copybox:active
-{
-    background-color: #66666660;
-}
-.dropdown.active .dropdownheader div svg
-{
-    transform: rotate(0deg);
-}
-.dropdown.active .contentbox
-{
-    display: block;
-}
-.dropdown .previewWindow
-{
-    position: relative;
-    width: 100%;
-    background-color: #66666620;
-    border-radius: 0.5em;
-    margin: 1em 0;
-    height: 1em;
-    transition: 0.5s;
-}
-.dropdown .previewWindow.active
-{
-    height: var(--height);
-}
-.dropdown .exampleMenu
-{
-    position: relative;
-    width: 100%;
-    border-radius: 0.5em;
-    background-color: #66666620;
-    padding: 0.5em;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-}
-.dropdown .exampleMenu button
-{
-    position: relative;
-    padding: 0.5em;
-    font-weight: bold;
-    margin: 0.5em;
-    border: 0;
-    background-color: #66666620;
-    border-radius: 0.3em;
-    flex-grow: 1;
-    color: #e9e9e9;
-    transition: 0.1s;
-}
-.dropdown .exampleMenu button.active
-{
-    background-color: var(--themecoltrans);
-}
-@media screen and (orientation:portrait) {
-    .dropdown .dropdownheader p span
-    {
-        display: none;
-    }
-    .dropdown .dropdownheader p
-    {
-        position: absolute;
-        left: 1em;
-        top: 1em;
-        margin: 0;
-        width: calc(100% - 2em);
-        text-align: center;
-    }
-}
-    </style>
     <body>
         <div id="colourlesspanelback"></div>
         <div id="colourpanelback"></div>
@@ -270,7 +49,7 @@
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.35 850.35">
                     <path fill="var(--bar)" d="M850.35,48.04V802.31c0,26.53-21.51,48.04-48.04,48.04h-171.87c-18.33,0-35.64-8.4-46.98-22.8l-243.52-309.3c-29.93-38.02-91.02-16.85-91.02,31.53v252.55c0,26.52-21.5,48.02-48.02,48.02H48.02c-26.52,0-48.02-21.5-48.02-48.02V48.02C0,21.5,21.5,0,48.02,0H219.9c18.33,0,35.64,8.4,46.99,22.8l243.46,309.07c29.96,38.03,91.08,16.85,91.08-31.56V48.04c0-26.53,21.51-48.04,48.04-48.04h152.85c26.53,0,48.04,21.51,48.04,48.04Z"/>
                 </svg>
-                <img src="icon/thumbnails/encorealpha.gif" alt="encore v1" id="headerimage" draggable="false">
+                <img src="icon/thumbnails/encoreVone.gif" alt="encore v1" id="headerimage" draggable="false">
             </div>
             <h2>ENCORE V1</h2>
             <p>Setup & Information</p>
@@ -293,7 +72,36 @@
                 <div class="contentbox">
                     <p>ENCORE SSC is a preprogrammed javascript carousel package that can be added to any website without having to worry about any javascript programming.</p>
                     <hr>
-                    <p>Code that needs to be appended at the bottom of the HTML file:</p>
+
+                    <p>Code that needs to be added into your HTML file:</p>
+
+                    <div class="codecontainer">
+                        <div class="codebox">
+<pre>
+<code>&lt;div id="SSC" style="opacity: 0; display: none;"&gt;
+
+    &lt;div class="banner-bg"&gt; &lt;!-- duplicate 'banner-bg' for the amount of pages you want --&gt;
+
+        &lt;img src="path of background image" alt=""&gt;
+
+        &lt;a class="banner-button" href="insert link here"&gt;enter&lt;/a&gt;
+
+        &lt;!-- place content in here --&gt;
+
+    &lt;/div&gt;
+
+&lt;/div&gt;
+</code></pre>
+                        </div>
+                        <div class="copybox">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.39 850.39">
+                                <path d="M389.7,715.19h126.3v83.3c0,28.67-23.24,51.9-51.9,51.9H51.9c-28.66,0-51.9-23.23-51.9-51.9V227.1c0-28.66,23.24-51.9,51.9-51.9h245.9v448.09c0,50.68,41.23,91.9,91.9,91.9Z"/>
+                                <rect  x="334.39" width="516" height="675.19" rx="51.9" ry="51.9"/>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <p>Code that needs to be appended at the bottom of your HTML file:</p>
                     <div class="codecontainer">
                         <div class="codebox">
 <pre>
@@ -306,34 +114,6 @@
         'style':1
     }
 &lt;/script&gt;
-</code></pre>
-                        </div>
-                        <div class="copybox">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.39 850.39">
-                                <path d="M389.7,715.19h126.3v83.3c0,28.67-23.24,51.9-51.9,51.9H51.9c-28.66,0-51.9-23.23-51.9-51.9V227.1c0-28.66,23.24-51.9,51.9-51.9h245.9v448.09c0,50.68,41.23,91.9,91.9,91.9Z"/>
-                                <rect  x="334.39" width="516" height="675.19" rx="51.9" ry="51.9"/>
-                            </svg>
-                        </div>
-                    </div>
-
-                    <p>Code that needs to be added into the HTML file:</p>
-
-                    <div class="codecontainer">
-                        <div class="codebox">
-<pre>
-<code>&lt;div id="SSC" style="opacity: 0; display: none;"&gt;
-
-    &lt;div class="banner-bg"&gt; &lt;!-- duplicate 'banner-bg' for the amount of pages you want --&gt;
-
-        &lt;img src="path of background image" draggable="false" alt="" loading="eager"&gt;
-
-        &lt;a class="banner-button" href="insert link here"&gt;enter&lt;/a&gt;
-
-        &lt;!-- place content in here --&gt;
-
-    &lt;/div&gt;
-
-&lt;/div&gt;
 </code></pre>
                         </div>
                         <div class="copybox">
@@ -383,7 +163,37 @@
                 <div class="contentbox">
                     <p>ENCORE SSC also has an alternate model called ENCORE SSCU. This model not only combines the 'thumbs' and 'progress bar' from the original SSC script, but also makes each page scroll rather than fading in and out.</p>
                     <hr>
-                    <p>Code that needs to be appended at the bottom of the HTML file:</p>
+
+                    <p>Code that needs to be added into your HTML file:</p>
+
+                    <div class="codecontainer">
+                        <div class="codebox">
+<pre>
+<code>&lt;div id="SSCU" style="opacity: 0; display: none;"&gt;
+
+    &lt;div class="banner-bg-u"&gt; &lt;!-- duplicate 'banner-bg-u' for the amount of pages you want --&gt;
+
+        &lt;img src="path of background image" alt=""&gt;
+
+        &lt;a class="banner-button" href="insert link here"&gt;enter&lt;/a&gt;
+
+        &lt;!-- place content in here --&gt;
+
+    &lt;/div&gt;
+
+&lt;/div&gt;
+</code></pre>
+                        </div>
+                        <div class="copybox">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.39 850.39">
+                                <path d="M389.7,715.19h126.3v83.3c0,28.67-23.24,51.9-51.9,51.9H51.9c-28.66,0-51.9-23.23-51.9-51.9V227.1c0-28.66,23.24-51.9,51.9-51.9h245.9v448.09c0,50.68,41.23,91.9,91.9,91.9Z"/>
+                                <rect  x="334.39" width="516" height="675.19" rx="51.9" ry="51.9"/>
+                            </svg>
+                        </div>
+                    </div>
+
+
+                    <p>Code that needs to be appended at the bottom of your HTML file:</p>
                     <div class="codecontainer">
                         <div class="codebox">
 <pre>
@@ -395,34 +205,6 @@
         'style':1
     }
 &lt;/script&gt;
-</code></pre>
-                        </div>
-                        <div class="copybox">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.39 850.39">
-                                <path d="M389.7,715.19h126.3v83.3c0,28.67-23.24,51.9-51.9,51.9H51.9c-28.66,0-51.9-23.23-51.9-51.9V227.1c0-28.66,23.24-51.9,51.9-51.9h245.9v448.09c0,50.68,41.23,91.9,91.9,91.9Z"/>
-                                <rect  x="334.39" width="516" height="675.19" rx="51.9" ry="51.9"/>
-                            </svg>
-                        </div>
-                    </div>
-
-                    <p>Code that needs to be added into the HTML file:</p>
-
-                    <div class="codecontainer">
-                        <div class="codebox">
-<pre>
-<code>&lt;div id="SSCU" style="opacity: 0; display: none;"&gt;
-
-    &lt;div class="banner-bg-u"&gt; &lt;!-- duplicate 'banner-bg-u' for the amount of pages you want --&gt;
-
-        &lt;img src="path of background image" draggable="false" alt="" loading="eager"&gt;
-
-        &lt;a class="banner-button" href="insert link here"&gt;enter&lt;/a&gt;
-
-        &lt;!-- place content in here --&gt;
-
-    &lt;/div&gt;
-
-&lt;/div&gt;
 </code></pre>
                         </div>
                         <div class="copybox">
@@ -478,9 +260,26 @@
                     </div>
                 </div>
                 <div class="contentbox">
-                    <p>ENCORE PDS is a system used to display images in an interactable gallery that can be clicked on to open a big picture viewer for each image.</p>
+                    <p>ENCORE PDS is a system used to display PNG images in an interactable gallery that can be clicked to open a big picture view for each image.</p>
                     <hr>
-                    <p>Code that needs to be appended at the bottom of the HTML file:</p>
+
+                    <p>Code that needs to be added into your HTML file:</p>
+
+                    <div class="codecontainer">
+                        <div class="codebox">
+<pre>
+<code>&lt;div id="PDS"&gt;&lt;/div&gt;
+</code></pre>
+                        </div>
+                        <div class="copybox">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.39 850.39">
+                                <path d="M389.7,715.19h126.3v83.3c0,28.67-23.24,51.9-51.9,51.9H51.9c-28.66,0-51.9-23.23-51.9-51.9V227.1c0-28.66,23.24-51.9,51.9-51.9h245.9v448.09c0,50.68,41.23,91.9,91.9,91.9Z"/>
+                                <rect  x="334.39" width="516" height="675.19" rx="51.9" ry="51.9"/>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <p>Code that needs to be appended at the bottom of your HTML file:</p>
                     <div class="codecontainer">
                         <div class="codebox">
 <pre>
@@ -495,22 +294,6 @@
         'style':1
     }
 &lt;/script&gt;
-</code></pre>
-                        </div>
-                        <div class="copybox">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.39 850.39">
-                                <path d="M389.7,715.19h126.3v83.3c0,28.67-23.24,51.9-51.9,51.9H51.9c-28.66,0-51.9-23.23-51.9-51.9V227.1c0-28.66,23.24-51.9,51.9-51.9h245.9v448.09c0,50.68,41.23,91.9,91.9,91.9Z"/>
-                                <rect  x="334.39" width="516" height="675.19" rx="51.9" ry="51.9"/>
-                            </svg>
-                        </div>
-                    </div>
-
-                    <p>Code that needs to be added into the HTML file:</p>
-
-                    <div class="codecontainer">
-                        <div class="codebox">
-<pre>
-<code>&lt;div id="PDS"&gt;&lt;/div&gt;
 </code></pre>
                         </div>
                         <div class="copybox">
@@ -560,7 +343,27 @@
                 <div class="contentbox">
                     <p>ENCORE CLS is a system used to display formatted text files as the user scrolls further down the page.<br>text files can be formatted for ENCORE CLS by using the <b>ENCORE CLS Formatter</b> page.</p>
                     <hr>
-                    <p>Code that needs to be appended at the bottom of the HTML file:</p>
+                    
+
+                    <p>Code that needs to be added into your HTML file:</p>
+
+                    <div class="codecontainer">
+                        <div class="codebox">
+<pre>
+<code>&lt;div id="CLS"&gt;&lt;/div&gt;
+
+&lt;section id="CLSloader"&gt;&lt;/section&gt;
+</code></pre>
+                        </div>
+                        <div class="copybox">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.39 850.39">
+                                <path d="M389.7,715.19h126.3v83.3c0,28.67-23.24,51.9-51.9,51.9H51.9c-28.66,0-51.9-23.23-51.9-51.9V227.1c0-28.66,23.24-51.9,51.9-51.9h245.9v448.09c0,50.68,41.23,91.9,91.9,91.9Z"/>
+                                <rect  x="334.39" width="516" height="675.19" rx="51.9" ry="51.9"/>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <p>Code that needs to be appended at the bottom of your HTML file:</p>
                     <div class="codecontainer">
                         <div class="codebox">
 <pre>
@@ -573,24 +376,6 @@
         'style':1
     }
 &lt;/script&gt;
-</code></pre>
-                        </div>
-                        <div class="copybox">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.39 850.39">
-                                <path d="M389.7,715.19h126.3v83.3c0,28.67-23.24,51.9-51.9,51.9H51.9c-28.66,0-51.9-23.23-51.9-51.9V227.1c0-28.66,23.24-51.9,51.9-51.9h245.9v448.09c0,50.68,41.23,91.9,91.9,91.9Z"/>
-                                <rect  x="334.39" width="516" height="675.19" rx="51.9" ry="51.9"/>
-                            </svg>
-                        </div>
-                    </div>
-
-                    <p>Code that needs to be added into the HTML file:</p>
-
-                    <div class="codecontainer">
-                        <div class="codebox">
-<pre>
-<code>&lt;div id="CLS"&gt;&lt;/div&gt;
-
-&lt;section id="CLSloader"&gt;&lt;/section&gt;
 </code></pre>
                         </div>
                         <div class="copybox">
@@ -649,48 +434,27 @@
 
 
         <script>
-            switch(window.location.href.slice((window.location.href.length - 3), window.location.href.length)){
-                
-                case 'SSC':
-                    let ssc = document.getElementsByClassName('dropdown')[0];
-                    window.onload = function(){
-                        setTimeout(() => {
-                            ssc.classList.add('active')
-                            ssc.scrollIntoView({ behavior: "smooth", block: "start", inline: "start" });
-                        }, 615)
-                    }
-                    break;
-                case 'PDS':
-                    let pds = document.getElementsByClassName('dropdown')[1];
-                    window.onload = function(){
-                        setTimeout(() => {
-                            pds.classList.add('active')
-                            pds.scrollIntoView({ behavior: "smooth", block: "start", inline: "start" });
-                        }, 615)
-                    }
-                    break;
-                case 'CLS':
-                    let cls = document.getElementsByClassName('dropdown')[2];
-                    window.onload = function(){
-                        setTimeout(() => {
-                            cls.classList.add('active')
-                            cls.scrollIntoView({ behavior: "smooth", block: "start", inline: "start" });
-                        }, 615)
-                    }
-                    break;
-                case 'LSF':
-                let clsf = document.getElementsByClassName('dropdown')[3];
-                    window.onload = function(){
-                        setTimeout(() => {
-                            clsf.classList.add('active')
-                            clsf.scrollIntoView({ behavior: "smooth", block: "start", inline: "start" });
-                        }, 615)
-                    }
-                    break;
-
+            window.onload = function(){
+                let URLdata;
+                switch(window.location.href.slice((window.location.href.length - 3), window.location.href.length)){
+                    case 'SSC':
+                        URLdata = document.getElementsByClassName('dropdown')[0];
+                        break;
+                    case 'PDS':
+                        URLdata = document.getElementsByClassName('dropdown')[1];
+                        break;
+                    case 'CLS':
+                        URLdata = document.getElementsByClassName('dropdown')[2];
+                        break;
+                    case 'LSF':
+                        URLdata = document.getElementsByClassName('dropdown')[3];
+                        break;
+                }
+                setTimeout(() => {
+                    URLdata.classList.add('active')
+                    URLdata.scrollIntoView({ behavior: "smooth", block: "start", inline: "start" });
+                }, 615)
             }
-            
-
             
             for(let i = 0; i < document.getElementsByClassName('dropdownheader').length; i++) {
                 document.getElementsByClassName('dropdownheader')[i].addEventListener('click', function(){
@@ -716,7 +480,7 @@
                         }else{
                             let script = document.createElement('script'),
                             settings = document.createElement('script');
-                            ssc.innerHTML = '<div class="banner-bg"><img src="icon/img/ssc1.jpg" draggable="false" alt="" loading="eager"></div><div class="banner-bg"><img src="icon/img/ssc2.jpg" draggable="false" alt="" loading="eager"></div>'
+                            ssc.innerHTML = '<div class="banner-bg"><img src="icon/img/ssc1.jpg" alt=""></div><div class="banner-bg"><img src="icon/img/ssc2.jpg" alt=""></div>'
                             script.id = 'SSCscript'
                             script.src = 'https://natski.netlify.com/lib/js/ENCORE_SSC.js'
                             settings.id = 'SSCsettings'
@@ -738,7 +502,7 @@
                             }else{
                                 let script = document.createElement('script'),
                                 settings = document.createElement('script');
-                                sscu.innerHTML = '<div class="banner-bg-u"><img src="icon/img/ssc1.jpg" draggable="false" alt="" loading="eager"></div><div class="banner-bg-u"><img src="icon/img/ssc2.jpg" draggable="false" alt="" loading="eager"></div>'
+                                sscu.innerHTML = '<div class="banner-bg-u"><img src="icon/img/ssc1.jpg" alt=""></div><div class="banner-bg-u"><img src="icon/img/ssc2.jpg" alt=""></div>'
                                 script.id = 'SSCUscript'
                                 script.src = 'https://natski.netlify.com/lib/js/ENCORE_SSC_ULT.js'
                                 settings.id = 'SSCUsettings'
