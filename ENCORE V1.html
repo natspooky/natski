@@ -70,7 +70,7 @@
                     </div>
                 </div>
                 <div class="contentbox">
-                    <p>ENCORE SSC is a preprogrammed javascript carousel package that can be added to any website without having to worry about requiring any prior javascript knowledge.</p>
+                    <p>ENCORE SSC is a preprogrammed javascript carousel package that can be added to any website without the need for any prior javascript knowledge.</p>
                     <hr>
 
                     <p>Code that needs to be added into your HTML file:</p>
@@ -161,7 +161,7 @@
 
 
                 <div class="contentbox">
-                    <p>ENCORE SSC also has an alternate model called ENCORE SSCU. This model not only combines the 'thumbs' and 'progress bar' from the original SSC script, but also makes each page scroll to the next, rather than fading in and out between eachother.</p>
+                    <p>ENCORE SSC also has an alternate model called ENCORE SSCU. This model not only combines the 'thumbs' and 'progress bar' from the original SSC script, but also makes each page scroll to the next, rather than fading in and out between each other.</p>
                     <hr>
 
                     <p>Code that needs to be added into your HTML file:</p>
@@ -260,7 +260,7 @@
                     </div>
                 </div>
                 <div class="contentbox">
-                    <p>ENCORE PDS is a system used to display PNG images in an interactable gallery that can be clicked to open a big picture view for each image.</p>
+                    <p>ENCORE PDS is a system used to display PNG images in an interactable image gallery that can be interacted with to open a big picture view for each image.</p>
                     <hr>
 
                     <p>Code that needs to be added into your HTML file:</p>
@@ -291,6 +291,7 @@
         'classes':'additional classes',
         'colourSystem':true,
         'animations':true,
+        'controls':true,
         'style':1
     }
 &lt;/script&gt;
@@ -317,7 +318,70 @@
                         </button>
                     </div>
                     <div class="exampleMenu" id="PDSmenu" style="display: none; margin-top: 1em;">
-                        <button style="background-color: #09af0030;" onclick="PDS_settings={'path':'icon/OG_IMAGES/','fileCount':8,'classes':'null','colourSystem':document.getElementById('pdscol').hasAttribute('active'),'animations':document.getElementById('pdsani').hasAttribute('active'),'style':1}; reloadPDS(PDS_settings);">
+                        <button style="background-color: #09af0030;" onclick="PDS_settings={'path':'icon/OG_IMAGES/','fileCount':8,'classes':'null','colourSystem':document.getElementById('pdscol').hasAttribute('active'),'animations':document.getElementById('pdsani').hasAttribute('active'),'controls':true,'style':1}; reloadPDS(PDS_settings);">
+                            Save Changes
+                        </button>
+                        <button id="pdscol" onclick="changeValues(this)">
+                            Colour System
+                        </button>
+                        <button class="active" active id="pdsani" onclick="changeValues(this)">
+                            Animations
+                        </button>
+                        <button class="active" active id="pdscont" onclick="changeValues(this)">
+                            Controls
+                        </button>
+                    </div>
+                </div>
+
+
+                <!-- start of ENCORE PDSU -->
+
+
+                <div class="contentbox">
+                    <p>ENCORE PDS also has an alternate model called ENCORE PDSU. This model allows for the PDS big picture view to be directly attached onto already existing images displayed on a webpage.</p>
+                    <p>ENCORE PDS is a system used to display PNG images in an interactable image gallery that can be interacted with to open a big picture view for each image.</p>
+                    <hr>
+
+                    <p>Code that needs to be appended at the bottom of your HTML file:</p>
+                    <div class="codecontainer">
+                        <div class="codebox">
+<pre>
+<code>&lt;script src="https://natski.netlify.app/lib/js/ENCORE_PDS_ULT.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+    PDSU_settings={
+        'imageClass':'class to attach PDSU onto',
+        'colourSystem':true,
+        'animations':true,
+        'controls':true,
+        'style':1
+    }
+&lt;/script&gt;
+</code></pre>
+                        </div>
+                        <div class="copybox">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.39 850.39">
+                                <path d="M389.7,715.19h126.3v83.3c0,28.67-23.24,51.9-51.9,51.9H51.9c-28.66,0-51.9-23.23-51.9-51.9V227.1c0-28.66,23.24-51.9,51.9-51.9h245.9v448.09c0,50.68,41.23,91.9,91.9,91.9Z"/>
+                                <rect  x="334.39" width="516" height="675.19" rx="51.9" ry="51.9"/>
+                            </svg>
+                        </div>
+                    </div>
+                
+                    <p>ENCORE PDSU Example:</p>
+
+                    <div class="previewWindow" style="--height: 50vh; opacity: 0; overflow-y: scroll; margin: 1em 0;" id="PDSU">
+                        <img src="" draggable="false" class="attach">
+                    </div>
+
+                    <div class="exampleMenu">
+                        <button onclick="loadSystem('PDSU')">
+                            Load PDSU
+                        </button>
+                        <button onclick="unloadSystem('PDSU')">
+                            Unload PDSU
+                        </button>
+                    </div>
+                    <div class="exampleMenu" id="PDSUmenu" style="display: none; margin-top: 1em;">
+                        <button style="background-color: #09af0030;" onclick="PDS_settings={'imageClass':'PDSUexample','colourSystem':document.getElementById('pdscol').hasAttribute('active'),'animations':document.getElementById('pdsani').hasAttribute('active'),'controls':true,'style':1}; reloadPDS(PDS_settings);">
                             Save Changes
                         </button>
                         <button id="pdscol" onclick="changeValues(this)">

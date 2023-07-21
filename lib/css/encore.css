@@ -88,6 +88,10 @@
     border: 3px solid #66666620;
     border-radius: 100vmax;
 }
+.dropdown .contentbox p
+{
+    margin-top: 7px;
+}
 .dropdown .contentbox .codecontainer
 {
     position: relative;
