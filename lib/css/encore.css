@@ -206,6 +206,13 @@
 {
     background-color: var(--themecoltrans);
 }
+.attach
+{
+    position: relative;
+    width: 50%;
+    display: inline;
+    vertical-align: top;
+}
 @media screen and (orientation:portrait) {
     .dropdown .dropdownheader p span
     {

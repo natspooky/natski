@@ -338,7 +338,7 @@
 
 
                 <div class="contentbox">
-                    <p>ENCORE PDS also has an alternate model called ENCORE PDSU. This model allows for the PDS big picture view to be directly attached onto already existing images displayed on a webpage.</p>
+                    <p>ENCORE PDS also has an alternate model called ENCORE PDSU. This model allows for the PDSU big picture view to be directly attached onto already existing images displayed on a webpage.</p>
                     <hr>
 
                     <p>Code that needs to be appended at the bottom of your HTML file:</p>
@@ -366,9 +366,7 @@
                 
                     <p>ENCORE PDSU Example:</p>
 
-                    <div class="previewWindow" style="--height: 50vh; opacity: 0; overflow-y: scroll; margin: 1em 0;" id="PDSU">
-                        <img src="" draggable="false" class="attach">
-                    </div>
+                    <div class="previewWindow" style="--height: 50vh; opacity: 0; overflow-y: scroll; margin: 1em 0;" id="PDSU"></div>
 
                     <div class="exampleMenu">
                         <button onclick="loadSystem('PDSU')">
@@ -379,7 +377,7 @@
                         </button>
                     </div>
                     <div class="exampleMenu" id="PDSUmenu" style="display: none; margin-top: 1em;">
-                        <button style="background-color: #09af0030;" onclick="PDSU_settings={'imageClass':'PDSUexample','animations':document.getElementById('pdsuani').hasAttribute('active'),'controls':document.getElementById('pdsucont').hasAttribute('active'),'style':1}; reloadPDSU(PDSU_settings);">
+                        <button style="background-color: #09af0030;" onclick="PDSU_settings={'imageClass':'attach','animations':document.getElementById('pdsuani').hasAttribute('active'),'controls':document.getElementById('pdsucont').hasAttribute('active'),'style':1}; reloadPDSU(PDSU_settings);">
                             Save Changes
                         </button>
                         <button class="active" active id="pdsuani" onclick="changeValues(this)">
@@ -607,9 +605,10 @@
                             let script = document.createElement('script'),
                             settings = document.createElement('script');
                             script.id = 'PDSUscript'
+                            pdsu.innerHTML = '<img src="icon/img/kuru.gif" draggable="false" class="attach"><img src="icon/img/ssc2.jpg" draggable="false" class="attach"><img src="icon/img/ssc1.jpg" draggable="false" class="attach">'
                             script.src = 'https://natski.netlify.com/lib/js/ENCORE_PDS_ULT.js'
                             settings.id = 'PDSUsettings'
-                            settings.innerHTML = "PDSU_settings={'imageClass':'PDSUexample','animations':true,'controls':true,'style':1}"
+                            settings.innerHTML = "PDSU_settings={'imageClass':'attach','animations':true,'controls':true,'style':1}"
                             document.body.appendChild(script)
                             document.body.appendChild(settings)
                             pdsu.style.height = 'var(--height)'
