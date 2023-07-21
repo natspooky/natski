@@ -107,7 +107,7 @@
     padding: 1em;
     min-height: 3em;
     overflow-x: hidden;
-    user-select: text;
+    user-select: all;
     background-color: #66666620;
     border-radius: 0.5em;
 }
