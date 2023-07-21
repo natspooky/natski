@@ -326,6 +326,19 @@
                 }
             }
 
+            function unloadSystem(sys) {
+                let itemData;
+                switch(sys) {
+                    case 'VPS':
+                        itemData = document.getElementById('VPS')
+                        document.getElementById('VPSmenu').style.display = 'none'
+                        break;
+    
+                }
+                itemData.style.height = '0'
+                itemData.style.opacity = '0'
+            }
+
             function changeValues(e) {
                 e.classList.toggle('active')
                 if(e.hasAttribute('active')) {

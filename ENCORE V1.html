@@ -318,7 +318,7 @@
                         </button>
                     </div>
                     <div class="exampleMenu" id="PDSmenu" style="display: none; margin-top: 1em;">
-                        <button style="background-color: #09af0030;" onclick="PDS_settings={'path':'icon/OG_IMAGES/','fileCount':8,'classes':'null','colourSystem':document.getElementById('pdscol').hasAttribute('active'),'animations':document.getElementById('pdsani').hasAttribute('active'),'controls':true,'style':1}; reloadPDS(PDS_settings);">
+                        <button style="background-color: #09af0030;" onclick="PDS_settings={'path':'icon/OG_IMAGES/','fileCount':8,'classes':'null','colourSystem':document.getElementById('pdscol').hasAttribute('active'),'animations':document.getElementById('pdsani').hasAttribute('active'),'controls':document.getElementById('pdscont').hasAttribute('active'),'style':1}; reloadPDS(PDS_settings);">
                             Save Changes
                         </button>
                         <button id="pdscol" onclick="changeValues(this)">
@@ -339,7 +339,6 @@
 
                 <div class="contentbox">
                     <p>ENCORE PDS also has an alternate model called ENCORE PDSU. This model allows for the PDS big picture view to be directly attached onto already existing images displayed on a webpage.</p>
-                    <p>ENCORE PDS is a system used to display PNG images in an interactable image gallery that can be interacted with to open a big picture view for each image.</p>
                     <hr>
 
                     <p>Code that needs to be appended at the bottom of your HTML file:</p>
@@ -350,7 +349,6 @@
 &lt;script&gt;
     PDSU_settings={
         'imageClass':'class to attach PDSU onto',
-        'colourSystem':true,
         'animations':true,
         'controls':true,
         'style':1
@@ -381,14 +379,14 @@
                         </button>
                     </div>
                     <div class="exampleMenu" id="PDSUmenu" style="display: none; margin-top: 1em;">
-                        <button style="background-color: #09af0030;" onclick="PDS_settings={'imageClass':'PDSUexample','colourSystem':document.getElementById('pdscol').hasAttribute('active'),'animations':document.getElementById('pdsani').hasAttribute('active'),'controls':true,'style':1}; reloadPDS(PDS_settings);">
+                        <button style="background-color: #09af0030;" onclick="PDSU_settings={'imageClass':'PDSUexample','animations':document.getElementById('pdsuani').hasAttribute('active'),'controls':document.getElementById('pdsucont').hasAttribute('active'),'style':1}; reloadPDSU(PDSU_settings);">
                             Save Changes
                         </button>
-                        <button id="pdscol" onclick="changeValues(this)">
-                            Colour System
-                        </button>
-                        <button class="active" active id="pdsani" onclick="changeValues(this)">
+                        <button class="active" active id="pdsuani" onclick="changeValues(this)">
                             Animations
+                        </button>
+                        <button class="active" active id="pdsucont" onclick="changeValues(this)">
+                            Controls
                         </button>
                     </div>
                 </div>
@@ -556,27 +554,27 @@
                         }
                         break;
 
-                        case 'SSCU':
-                            let sscu = document.getElementById('SSCU');
-                            if(document.getElementById('SSCUscript')) {
-                                sscu.style.height = 'var(--height)'
-                                sscu.style.opacity = '1'
-                                document.getElementById('SSCUmenu').style.display = 'flex'
-                                playSSCU()
-                            }else{
-                                let script = document.createElement('script'),
-                                settings = document.createElement('script');
-                                sscu.innerHTML = '<div class="banner-bg-u"><img src="icon/img/ssc1.jpg" alt=""></div><div class="banner-bg-u"><img src="icon/img/ssc2.jpg" alt=""></div>'
-                                script.id = 'SSCUscript'
-                                script.src = 'https://natski.netlify.com/lib/js/ENCORE_SSC_ULT.js'
-                                settings.id = 'SSCUsettings'
-                                settings.innerHTML = "SSCU_settings={'thumbs':true,'sideButtons':true,'style':1}"
-                                document.body.appendChild(script)
-                                document.body.appendChild(settings)
-                                sscu.style.height = 'var(--height)'
-                                document.getElementById('SSCUmenu').style.display = 'flex'
-                            }
-                            break;
+                    case 'SSCU':
+                        let sscu = document.getElementById('SSCU');
+                        if(document.getElementById('SSCUscript')) {
+                            sscu.style.height = 'var(--height)'
+                            sscu.style.opacity = '1'
+                            document.getElementById('SSCUmenu').style.display = 'flex'
+                            playSSCU()
+                        }else{
+                            let script = document.createElement('script'),
+                            settings = document.createElement('script');
+                            sscu.innerHTML = '<div class="banner-bg-u"><img src="icon/img/ssc1.jpg" alt=""></div><div class="banner-bg-u"><img src="icon/img/ssc2.jpg" alt=""></div>'
+                            script.id = 'SSCUscript'
+                            script.src = 'https://natski.netlify.com/lib/js/ENCORE_SSC_ULT.js'
+                            settings.id = 'SSCUsettings'
+                            settings.innerHTML = "SSCU_settings={'thumbs':true,'sideButtons':true,'style':1}"
+                            document.body.appendChild(script)
+                            document.body.appendChild(settings)
+                            sscu.style.height = 'var(--height)'
+                            document.getElementById('SSCUmenu').style.display = 'flex'
+                        }
+                        break;
 
                     case 'PDS':
                         let pds = document.getElementById('PDS');
@@ -590,12 +588,33 @@
                             script.id = 'PDSscript'
                             script.src = 'https://natski.netlify.com/lib/js/ENCORE_PDS.js'
                             settings.id = 'PDSsettings'
-                            settings.innerHTML = "PDS_settings={'path':'icon/OG_IMAGES/','fileCount':8,'classes':'null','colourSystem':false,'animations':true,'style':1}"
+                            settings.innerHTML = "PDS_settings={'path':'icon/OG_IMAGES/','fileCount':8,'classes':'null','colourSystem':false,'animations':true,'controls':true,'style':1}"
                             document.body.appendChild(script)
                             document.body.appendChild(settings)
                             pds.style.height = 'var(--height)'
                             pds.style.opacity = '1'
                             document.getElementById('PDSmenu').style.display = 'flex'
+                        }
+                        break;
+
+                    case 'PDSU':
+                        let pdsu = document.getElementById('PDSU');
+                        if(document.getElementById('PDSUscript')) {
+                            pdsu.style.height = 'var(--height)'
+                            pdsu.style.opacity = '1'
+                            document.getElementById('PDSUmenu').style.display = 'flex'
+                        }else {
+                            let script = document.createElement('script'),
+                            settings = document.createElement('script');
+                            script.id = 'PDSUscript'
+                            script.src = 'https://natski.netlify.com/lib/js/ENCORE_PDS_ULT.js'
+                            settings.id = 'PDSUsettings'
+                            settings.innerHTML = "PDSU_settings={'imageClass':'PDSUexample','animations':true,'controls':true,'style':1}"
+                            document.body.appendChild(script)
+                            document.body.appendChild(settings)
+                            pdsu.style.height = 'var(--height)'
+                            pdsu.style.opacity = '1'
+                            document.getElementById('PDSUmenu').style.display = 'flex'
                         }
                         break;
                     
@@ -622,33 +641,32 @@
 
 
             function unloadSystem(sys) {
+                let itemData;
                 switch(sys) {
                     case 'SSC':
-                        let ssc = document.getElementById('SSC')
-                        ssc.style.height = '0'
-                        ssc.style.opacity = '0'
+                        itemData = document.getElementById('SSC')
                         document.getElementById('SSCmenu').style.display = 'none'
                         pauseSSC()
                         break;
                     case 'SSCU':
-                        let sscu = document.getElementById('SSCU')
-                        sscu.style.height = '0'
-                        sscu.style.opacity = '0'
+                        itemData = document.getElementById('SSCU')
                         document.getElementById('SSCUmenu').style.display = 'none'
                         pauseSSCU()
                         break;
                     case 'PDS':
-                        let pds = document.getElementById('PDS');
-                        pds.style.height = '0'
-                        pds.style.opacity = '0'
+                        itemData = document.getElementById('PDS');
                         document.getElementById('PDSmenu').style.display = 'none'
                         break;
+                    case 'PDSU':
+                        itemData = document.getElementById('PDSU');
+                        document.getElementById('PDSUmenu').style.display = 'none'
+                        break;
                     case 'CLS':
-                        let cls = document.getElementById('CLScontainer');
-                        cls.style.height = '0'
-                        cls.style.opacity = '0'
+                        itemData = document.getElementById('CLScontainer');
                         break;
                 }
+                itemData.style.height = '0'
+                itemData.style.opacity = '0'
             }
 
 
