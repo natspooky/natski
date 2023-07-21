@@ -137,7 +137,7 @@
                         </button>
                     </div>
                     <div class="exampleMenu" id="SSCmenu" style="display: none; margin-top: 1em;">
-                        <button style="background-color: #09af0030;" onclick="SSC_settings={'thumbs':document.getElementById('sscthumb').hasAttribute('active'),'progressBar':document.getElementById('sscbar').hasAttribute('active'),'sideButtons':document.getElementById('sscbuttons').hasAttribute('active'),'style':1}; reloadSSC(SSC_settings);">
+                        <button style="background-color: #09af0030;" onclick="SSC_settings={'thumbs':document.getElementById('sscthumb').hasAttribute('active'),'progressBar':document.getElementById('sscbar').hasAttribute('active'),'sideButtons':document.getElementById('sscbuttons').hasAttribute('active'),'style':1}; reloadSSC(SSC_settings); ENCOREalert(this.parentNode.id)">
                             Save Changes
                         </button>
                         <button class="active" active id="sscthumb" onclick="changeValues(this)">
@@ -228,7 +228,7 @@
                         </button>
                     </div>
                     <div class="exampleMenu" id="SSCUmenu" style="display: none; margin-top: 1em;">
-                        <button style="background-color: #09af0030;" onclick="SSCU_settings={'thumbs':document.getElementById('sscuthumb').hasAttribute('active'),'sideButtons':document.getElementById('sscubuttons').hasAttribute('active'),'style':1}; reloadSSCU(SSCU_settings);">
+                        <button style="background-color: #09af0030;" onclick="SSCU_settings={'thumbs':document.getElementById('sscuthumb').hasAttribute('active'),'sideButtons':document.getElementById('sscubuttons').hasAttribute('active'),'style':1}; reloadSSCU(SSCU_settings); ENCOREalert(this.parentNode.id)">
                             Save Changes
                         </button>
                         <button class="active" active id="sscuthumb" onclick="changeValues(this)">
@@ -318,7 +318,7 @@
                         </button>
                     </div>
                     <div class="exampleMenu" id="PDSmenu" style="display: none; margin-top: 1em;">
-                        <button style="background-color: #09af0030;" onclick="PDS_settings={'path':'icon/OG_IMAGES/','fileCount':8,'classes':'null','colourSystem':document.getElementById('pdscol').hasAttribute('active'),'animations':document.getElementById('pdsani').hasAttribute('active'),'controls':document.getElementById('pdscont').hasAttribute('active'),'style':1}; reloadPDS(PDS_settings);">
+                        <button style="background-color: #09af0030;" onclick="PDS_settings={'path':'icon/OG_IMAGES/','fileCount':8,'classes':'null','colourSystem':document.getElementById('pdscol').hasAttribute('active'),'animations':document.getElementById('pdsani').hasAttribute('active'),'controls':document.getElementById('pdscont').hasAttribute('active'),'style':1}; reloadPDS(PDS_settings); ENCOREalert(this.parentNode.id)">
                             Save Changes
                         </button>
                         <button id="pdscol" onclick="changeValues(this)">
@@ -377,7 +377,7 @@
                         </button>
                     </div>
                     <div class="exampleMenu" id="PDSUmenu" style="display: none; margin-top: 1em;">
-                        <button style="background-color: #09af0030;" onclick="PDSU_settings={'imageClass':'attach','animations':document.getElementById('pdsuani').hasAttribute('active'),'controls':document.getElementById('pdsucont').hasAttribute('active'),'style':1}; reloadPDSU(PDSU_settings);">
+                        <button style="background-color: #09af0030;" onclick="PDSU_settings={'imageClass':'attach','animations':document.getElementById('pdsuani').hasAttribute('active'),'controls':document.getElementById('pdsucont').hasAttribute('active'),'style':1}; reloadPDSU(PDSU_settings); ENCOREalert(this.parentNode.id)">
                             Save Changes
                         </button>
                         <button class="active" active id="pdsuani" onclick="changeValues(this)">
@@ -605,7 +605,7 @@
                             let script = document.createElement('script'),
                             settings = document.createElement('script');
                             script.id = 'PDSUscript'
-                            pdsu.innerHTML = '<img src="icon/img/kuru.gif" draggable="false" class="attach"><img src="icon/img/ssc2.jpg" draggable="false" class="attach"><img src="icon/img/ssc1.jpg" draggable="false" class="attach">'
+                            pdsu.innerHTML = '<img src="icon/img/kuru.gif" draggable="false" class="attach"><img src="icon/img/ssc1.jpg" draggable="false" class="attach">'
                             script.src = 'https://natski.netlify.com/lib/js/ENCORE_PDS_ULT.js'
                             settings.id = 'PDSUsettings'
                             settings.innerHTML = "PDSU_settings={'imageClass':'attach','animations':true,'controls':true,'style':1}"
@@ -677,8 +677,20 @@
                     e.setAttribute('active', '');
                 }
             }
+
+            let alertTimer;
+            function ENCOREalert(e) {
+                clearTimeout(alertTimer)
+                let alertbox = document.getElementById('ENCOREalert');
+                alertbox.innerHTML = 'Updated ' + e.substring(0, e.length - 4) + ' settings'
+                alertbox.classList.add('active')
+                alertTimer = setTimeout(() => {
+                    alertbox.classList.remove('active')
+                }, 2500);
+            }
         </script>
 
+        <div id="ENCOREalert"></div>
 
         <noscript>
             <h1>javascript is disabled</h1>

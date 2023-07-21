@@ -126,7 +126,7 @@
                         </button>
                     </div>
                     <div class="exampleMenu" id="VPSmenu" style="display: none; margin-top: 1em;">
-                        <button style="background-color: #09af0030;" onclick="SSC_settings={'thumbs':document.getElementById('sscthumb').hasAttribute('active'),'progressBar':document.getElementById('sscbar').hasAttribute('active'),'sideButtons':document.getElementById('sscbuttons').hasAttribute('active'),'style':1}; reloadSSC(SSC_settings);">
+                        <button style="background-color: #09af0030;" onclick="SSC_settings={'thumbs':document.getElementById('sscthumb').hasAttribute('active'),'progressBar':document.getElementById('sscbar').hasAttribute('active'),'sideButtons':document.getElementById('sscbuttons').hasAttribute('active'),'style':1}; reloadSSC(SSC_settings); ENCOREalert(this.parentNode.id)">
                             Save Changes
                         </button>
                         <button class="active" active id="sscthumb" onclick="changeValues(this)">
@@ -221,7 +221,7 @@
                         </button>
                     </div>
                     <div class="exampleMenu" id="SSCmenu" style="display: none; margin-top: 1em;">
-                        <button style="background-color: #09af0030;" onclick="SSC_settings={'thumbs':document.getElementById('sscthumb').hasAttribute('active'),'progressBar':document.getElementById('sscbar').hasAttribute('active'),'sideButtons':document.getElementById('sscbuttons').hasAttribute('active'),'style':1}; reloadSSC(SSC_settings);">
+                        <button style="background-color: #09af0030;" onclick="SSC_settings={'thumbs':document.getElementById('sscthumb').hasAttribute('active'),'progressBar':document.getElementById('sscbar').hasAttribute('active'),'sideButtons':document.getElementById('sscbuttons').hasAttribute('active'),'style':1}; reloadSSC(SSC_settings); ENCOREalert(this.parentNode.id)">
                             Save Changes
                         </button>
                         <button class="active" active id="sscthumb" onclick="changeValues(this)">
@@ -347,8 +347,20 @@
                     e.setAttribute('active', '');
                 }
             }
+
+            let alertTimer;
+            function ENCOREalert(e) {
+                clearTimeout(alertTimer)
+                let alertbox = document.getElementById('ENCOREalert');
+                alertbox.innerHTML = 'Updated ' + e.substring(0, e.length - 4) + ' settings'
+                alertbox.classList.add('active')
+                alertTimer = setTimeout(() => {
+                    alertbox.classList.remove('active')
+                }, 2500);
+            }
         </script>
 
+    <div id="ENCOREalert"></div>
 
         <noscript>
             <h1>javascript is disabled</h1>
