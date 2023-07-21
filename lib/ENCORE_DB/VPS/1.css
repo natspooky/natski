@@ -79,6 +79,7 @@ svg rect
     width: fit-content;
     height: fit-content;
     overflow: hidden;
+    border-radius: 0.5em;
     background-color: #000000;
     display: block;
     max-width: 100%;
