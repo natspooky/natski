@@ -29,11 +29,11 @@
 #SSCU
 {
     position: relative;
-    height: 100vh;
-    transform: scale(0.9);
-    width: 100%;
-    left: 0;
+    height: calc(100vh - 60px);
+    width: calc(100% - 60px);
+    left: 30px;
     top: 0;
+    margin-top: 30px;
     display: flex;
     justify-content: center;
     align-items: flex-end;

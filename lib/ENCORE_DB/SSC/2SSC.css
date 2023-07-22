@@ -4,10 +4,6 @@
     --SSCaccent: #0a0a0a;
 }
 @media (hover:hover){
-    #SSC .infoButton:hover
-    {
-        background-color: #eeeeee;
-    }
     #SSC .infoButton:hover::before
     {
         transform: translate(-0.5em,-50%);
@@ -37,12 +33,12 @@
 #SSC
 {
     position: relative;
-    height: 100vh;
-    width: 100%;
-    left: 0;
+    height: calc(100vh - 60px);
+    width: calc(100% - 60px);
+    left: 30px;
     top: 0;
-    transform: scale(0.9);
-    border-radius: 5px;
+    margin-top: 30px;
+    border-radius: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -52,8 +48,8 @@
 #SSC .pagebutton
 {
     position: absolute;
-    bottom: 0;
-    left: 0;
+    bottom: 10px;
+    left: 10px;
     height: 40px;
     width: 40px;
     border: 0;
@@ -69,7 +65,7 @@
     left: unset;
     border-right: unset;
     border-left: 1px solid #0a0a0a30;
-    right: 0;
+    right: 10px;
 }
 #SSC .pagebutton svg
 {
@@ -82,11 +78,10 @@
 #SSC .progress
 {
     position: absolute;
-    height: 1px;
+    height: 4px;
     width: 100%;
     left: 0;
-    bottom: 40px;
-    background-color: var(--SSCcolor);
+    top: 0px;
     overflow: hidden;
 }
 #SSC .progress .progress-bar
@@ -95,7 +90,7 @@
     left: 0;
     bottom: 0;
     height: 100%;
-    background-color: #0a0a0a90;
+    background-color: var(--SSCaccent);
     transform-origin: left;
     width: 100%;
     transition: 0.3s;
@@ -104,13 +99,14 @@
 {
     position: absolute;
     height: 40px;
-    width: 100%;
+    width: calc(100% - 20px);
     display: flex;
     align-items: center;
+    border: 1px solid #0a0a0a30;
+    border-radius: 5px;
     justify-content: center;
     background-color: var(--SSCcolor);
-    left: 0;
-    bottom: 0;
+    bottom: 10px;
 }
 #SSC .thumbs .thumb
 {
@@ -168,8 +164,9 @@
     color: var(--SSCaccent);
     text-decoration: none;
     background-color: var(--SSCcolor);
+    border: 1px solid #0a0a0a30;
     cursor: pointer;
-    bottom: 50px;
+    bottom: 60px;
 }
 @keyframes fadeIn
 {
@@ -179,16 +176,16 @@
 #SSC .infoButton
 {
     position: absolute;
-    bottom: 50px;
+    bottom: 60px;
     right: 10px;
     height: 40px;
     width: 40px;
     border-radius: 5px;
     background-color: var(--SSCcolor);
+    border: 1px solid #0a0a0a30;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: 0.2s;
 }
 #SSC .infoButton svg
 {
@@ -207,6 +204,7 @@
     transform: translate(0,-50%);
     background-color: var(--SSCcolor);
     color: var(--SSCaccent);
+    border: 1px solid #0a0a0a30;
     border-radius: 5px;
     opacity: 0;
     white-space: nowrap;

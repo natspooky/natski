@@ -4,10 +4,6 @@
     --SSCUaccent: #0a0a0a;
 }
 @media (hover:hover){
-    #SSCU .infoButton:hover
-    {
-        background-color: #eeeeee;
-    }
     #SSCU .infoButton:hover::before
     {
         transform: translate(-0.5em,-50%);
@@ -37,12 +33,12 @@
 #SSCU
 {
     position: relative;
-    height: 100vh;
-    width: 100%;
-    left: 0;
+    height: calc(100vh - 60px);
+    width: calc(100% - 60px);
+    left: 30px;
     top: 0;
-    transform: scale(0.9);
-    border-radius: 5px;
+    margin-top: 30px;
+    border-radius: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -52,8 +48,8 @@
 #SSCU .pagebutton-u
 {
     position: absolute;
-    bottom: 0;
-    left: 0;
+    bottom: 10px;
+    left: 10px;
     height: 40px;
     width: 40px;
     border: 0;
@@ -69,7 +65,7 @@
     left: unset;
     border-right: unset;
     border-left: 1px solid #0a0a0a30;
-    right: 0;
+    right: 10px;
 }
 #SSCU .pagebutton-u svg
 {
@@ -83,14 +79,14 @@
 {
     position: absolute;
     height: 40px;
-    width: 100%;
+    width: calc(100% - 20px);
     display: flex;
     align-items: center;
     justify-content: center;
-    border-top: 1px solid #0a0a0a30;
+    border: 1px solid #0a0a0a30;
     background-color: var(--SSCUcolor);
-    left: 0;
-    bottom: 0;
+    border-radius: 5px;
+    bottom: 10px;
 }
 #SSCU .thumbs .thumb-u
 {
@@ -118,6 +114,7 @@
 {
     border: 1px solid var(--SSCUaccent);
     width: 30px;
+    pointer-events: none;
 }
 #SSCU .thumbs .thumb-u .progress-u
 {
@@ -159,23 +156,24 @@
     border-radius: 5px;
     color: var(--SSCUaccent);
     text-decoration: none;
+    border: 1px solid #0a0a0a30;
     background-color: var(--SSCUcolor);
     cursor: pointer;
-    bottom: 50px;
+    bottom: 60px;
 }
 #SSCU .infoButton
 {
     position: absolute;
-    bottom: 50px;
+    bottom: 60px;
     right: 10px;
     height: 40px;
     width: 40px;
     border-radius: 5px;
     background-color: var(--SSCUcolor);
+    border: 1px solid #0a0a0a30;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: 0.2s;
 }
 #SSCU .infoButton svg
 {
@@ -194,6 +192,7 @@
     transform: translate(0,-50%);
     background-color: var(--SSCUcolor);
     color: var(--SSCUaccent);
+    border: 1px solid #0a0a0a30;
     border-radius: 5px;
     opacity: 0;
     white-space: nowrap;
