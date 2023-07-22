@@ -46,13 +46,12 @@
         <header>
             <div class="observe"></div>
             <div class="imagebox">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.39 850.39">
-                    <path fill="var(--bar)" d="M746.41,0H103.99C77.59,0,56.19,21.4,56.19,47.8V802.6c0,26.39,21.4,47.79,47.8,47.79H746.41c26.39,0,47.79-21.4,47.79-47.79V47.8C794.2,21.4,772.8,0,746.41,0Zm-36.6,749.3c0,9.22-7.48,16.7-16.71,16.7H157.29c-9.23,0-16.71-7.48-16.71-16.7V101.1c0-9.23,7.48-16.71,16.71-16.71H699.41c5.74,0,10.4,4.66,10.4,10.4V749.3Z"/>
-                    <rect fill="var(--bar)" x="371.3" y="-59.51" width="107.79" height="483.41" rx="53.9" ry="53.9" transform="translate(607.4 -243) rotate(90)"/>
-                    <rect fill="var(--bar)" x="397.5" y="186.14" width="55.4" height="323.31" rx="27.7" ry="27.7" transform="translate(772.99 -77.4) rotate(90)"/>
-                    <rect fill="var(--bar)" x="397.5" y="229.39" width="55.4" height="443.21" rx="27.7" ry="27.7" transform="translate(876.19 25.8) rotate(90)"/>
-                    <rect fill="var(--bar)" x="397.5" y="447.39" width="55.4" height="213.61" rx="27.7" ry="27.7" transform="translate(979.39 129) rotate(90)"/>
-                    <rect fill="var(--bar)" x="397.5" y="486.99" width="55.4" height="340.81" rx="27.7" ry="27.7" transform="translate(1082.59 232.2) rotate(90)"/>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 984.02 1133.86">
+                    <path fill="var(--bar)" d="M920.3,0H63.73C28.53,0,0,28.53,0,63.73v1006.4c0,35.19,28.53,63.72,63.73,63.72H920.3c35.19,0,63.72-28.53,63.72-63.72V63.73c0-35.2-28.53-63.73-63.72-63.73Zm-48.8,999.07c0,12.29-9.97,22.27-22.28,22.27H134.8c-12.31,0-22.28-9.97-22.28-22.27V134.8c0-12.31,9.97-22.28,22.28-22.28H857.63c7.65,0,13.87,6.21,13.87,13.87V999.07Z"/>
+                    <rect fill="var(--bar)" x="214.3" y="245.62" width="303.71" height="105.3" rx="52.65" ry="52.65"/>
+                    <rect fill="var(--bar)" x="214.3" y="426.7" width="507.58" height="105.3" rx="52.65" ry="52.65"/>
+                    <rect fill="var(--bar)" x="214.3" y="607.78" width="363.58" height="105.3" rx="52.65" ry="52.65"/>
+                    <rect fill="var(--bar)" x="214.3" y="788.86" width="427.58" height="105.3" rx="52.65" ry="52.65"/>
                 </svg>
                 <img src="icon/thumbnails/missing.png" alt="ENCORE CMS" id="headerimage" draggable="false">
          	</div>
@@ -62,7 +61,30 @@
 
         <style>
             @import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-            #contextMenu
+            #CMScontextMenu *, #CMScontextMenu
+            {
+                padding: 0;
+                margin: 0;
+                box-sizing: border-box;
+                font-family: 'Exo 2', sans-serif;
+            }
+            #CMScontextMenu *::-webkit-scrollbar
+            {
+                width: 5px;
+                background-color: transparent;
+                height: 0px;
+            }
+            #CMScontextMenu *::-webkit-scrollbar-thumb
+            {
+                background-color: #bcbcbc;
+                border-radius: 100vmax;
+                border: 0px;
+            }
+            #CMScontextMenu *::-webkit-scrollbar-thumb:hover
+            {
+                background-color: #e9e9e9;
+            }
+            #CMScontextMenu
             {
                 position: fixed;
                 top: 0;
@@ -83,37 +105,14 @@
                 pointer-events: none;
                 transition: transform 0.25s, opacity 0.25s, visibility 0.25s, height 0.25s;
             }
-            #contextMenu *
-            {
-                padding: 0;
-                margin: 0;
-                box-sizing: border-box;
-                font-family: 'Exo 2', sans-serif;
-            }
-            #contextMenu *::-webkit-scrollbar
-            {
-                width: 5px;
-                background-color: transparent;
-                height: 0px;
-            }
-            #contextMenu *::-webkit-scrollbar-thumb
-            {
-                background-color: #bcbcbc;
-                border-radius: 100vmax;
-                border: 0px;
-            }
-            #contextMenu *::-webkit-scrollbar-thumb:hover
-            {
-                background-color: #e9e9e9;
-            }
-            #contextMenu.active
+            #CMScontextMenu.active
             {
                 transform: scale(1);
                 opacity: 1;
                 visibility: visible;
                 pointer-events: all;
             }
-            #contextMenu .context
+            #CMScontextMenu .CMScontext
             {
                 position: absolute;
                 width: 100%;
@@ -124,15 +123,15 @@
                 display: block;
                 transition: 0.25s;
             }
-            #contextMenu .context.active, #contextMenu #CMS4500b5
+            #CMScontextMenu .CMScontext.active, #CMScontextMenu #CMS4500b5
             {
                 transform: translateX(0);
             }
-            #contextMenu #CMS4500b5.active
+            #CMScontextMenu #CMS4500b5.active
             {
                 transform: translateX(-100%);
             }
-            #contextMenu div button,#contextMenu div a
+            #CMScontextMenu div button
             {
                 position: relative;
                 display: flex;
@@ -141,7 +140,7 @@
                 overflow: hidden;
                 padding: 13px 0px 13px 13px;
             }
-            #contextMenu div button span,#contextMenu div a span
+            #CMScontextMenu div button span
             {
                 position: relative;
                 font-size: 1rem;
@@ -155,7 +154,7 @@
                 color: #e9e9e9;
                 text-overflow: ellipsis;
             }
-            #contextMenu .context .back
+            #CMScontextMenu .CMScontext .CMSback
             {
                 position: sticky;
                 top: 0;
@@ -163,11 +162,11 @@
                 
                 background-image: linear-gradient(to bottom, #666666af, #666666af, transparent);
             }
-            #contextMenu .context .back svg
+            #CMScontextMenu .CMScontext .CMSback svg
             {
                 transform: rotate(90deg) scale(0.8);
             }
-            #contextMenu div button svg,#contextMenu div a svg,#contextMenu div button img,#contextMenu div a img
+            #CMScontextMenu div button svg,#contextMenu div button img
             {
                 position: relative;
                 height: 20px;
@@ -180,7 +179,7 @@
                 flex-shrink: 0;
                 flex-grow: 0;
             }
-            #contextMenu div button .subpage,#contextMenu div a .subpage
+            #CMScontextMenu div button .CMSsubpage
             {
                 transform: rotate(-90deg) scale(0.5) translateY(0);
                 position: absolute;
@@ -189,23 +188,21 @@
                 margin: 0;
                 transition: 0.2s;
             }
-            #contextMenu div button:hover .subpage,#contextMenu div a:hover .subpage
+            #CMScontextMenu div button:hover .CMSsubpage
             {
                 transform: rotate(-90deg) scale(0.5) translateY(8px);
             }
-            #contextMenu div button:hover, #contextMenu div a:hover
+            #CMScontextMenu div button:hover
             {
                 background-color: #ffffff10;
             }
         </style>
 
 
+<div id="contextMenu"><div id="CMS4500b5" class="context"><button onclick="window.location=``"><span>homepagessdfsdfsd</span></button><button class="clickable" onclick="changeMenu(`CMS667118`)"><img src="icon/img/kuru.gif" alt="icon" draggable="false"><span>sdfasdfasdfasfasdfasdfasd</span><svg class="subpage" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.35 850.35"><path d="M816.99,312.17l-351.98,351.98c-22.01,22.01-57.69,22.01-79.7,0L33.32,312.17c-32.59-32.58-32.59-85.42,0-118h0c32.59-32.59,85.42-32.59,118,0L425.16,468.01,698.99,194.17c32.58-32.59,85.42-32.59,118,0h0c32.59,32.59,32.59,85.42,0,118Z"></path></svg></button><button onclick="window.location=``"><span>asdfasdfasdfasdfasfasdfas</span></button></div><div id="CMS667118" class="context"><button class="clickable back" onclick="resetMenu()"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.35 850.35"><path d="M816.99,312.17l-351.98,351.98c-22.01,22.01-57.69,22.01-79.7,0L33.32,312.17c-32.59-32.58-32.59-85.42,0-118h0c32.59-32.59,85.42-32.59,118,0L425.16,468.01,698.99,194.17c32.58-32.59,85.42-32.59,118,0h0c32.59,32.59,32.59,85.42,0,118Z"/></svg><span>Back</span></button><button onclick="window.location=``"><span>sdfgasdfasdfasdfasdfasdf</span></button><button onclick="window.location=``"><span>asdfasdfasdfasdfasdfas</span></button><button onclick="window.location=``"><span>fasdfasdfasdfasdfasdfasdfas</span></button><button onclick="window.location=``"><span>fasdfasdfasdfasdfasdfasdf</span></button></div></div>
 
-
-
-
-<div id="contextMenu"><div id="CMS4500b5" class="context"><a class="clickable" onclick="changeMenu(`CMS564680`)"><span>11</span><svg class="subpage" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.35 850.35"><path d="M816.99,312.17l-351.98,351.98c-22.01,22.01-57.69,22.01-79.7,0L33.32,312.17c-32.59-32.58-32.59-85.42,0-118h0c32.59-32.59,85.42-32.59,118,0L425.16,468.01,698.99,194.17c32.58-32.59,85.42-32.59,118,0h0c32.59,32.59,32.59,85.42,0,118Z"></path></svg></a></div><div id="CMS564680" class="context"><a class="clickable back" onclick="resetMenu()"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.35 850.35"><path d="M816.99,312.17l-351.98,351.98c-22.01,22.01-57.69,22.01-79.7,0L33.32,312.17c-32.59-32.58-32.59-85.42,0-118h0c32.59-32.59,85.42-32.59,118,0L425.16,468.01,698.99,194.17c32.58-32.59,85.42-32.59,118,0h0c32.59,32.59,32.59,85.42,0,118Z"/></svg><span>Back</span></a><a href=""><span>21</span></a><a href=""><span>22</span></a><a class="clickable" onclick="changeMenu(`CMS235074`)"><span>23</span><svg class="subpage" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.35 850.35"><path d="M816.99,312.17l-351.98,351.98c-22.01,22.01-57.69,22.01-79.7,0L33.32,312.17c-32.59-32.58-32.59-85.42,0-118h0c32.59-32.59,85.42-32.59,118,0L425.16,468.01,698.99,194.17c32.58-32.59,85.42-32.59,118,0h0c32.59,32.59,32.59,85.42,0,118Z"></path></svg></a><a href=""><span>24</span></a><a href=""><span>25</span></a><a href=""><span>26</span></a><a href=""><span>27</span></a></div><div id="CMS235074" class="context"><a class="clickable back" onclick="changeMenu(`CMS564680`)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.35 850.35"><path d="M816.99,312.17l-351.98,351.98c-22.01,22.01-57.69,22.01-79.7,0L33.32,312.17c-32.59-32.58-32.59-85.42,0-118h0c32.59-32.59,85.42-32.59,118,0L425.16,468.01,698.99,194.17c32.58-32.59,85.42-32.59,118,0h0c32.59,32.59,32.59,85.42,0,118Z"/></svg><span>Back</span></a><a href=""><span>33</span></a></div></div>
-
+<!--<div id="contextMenu"><div id="CMS4500b5" class="context"><a class="clickable" onclick="changeMenu(`CMS564680`)"><span>11</span><svg class="subpage" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.35 850.35"><path d="M816.99,312.17l-351.98,351.98c-22.01,22.01-57.69,22.01-79.7,0L33.32,312.17c-32.59-32.58-32.59-85.42,0-118h0c32.59-32.59,85.42-32.59,118,0L425.16,468.01,698.99,194.17c32.58-32.59,85.42-32.59,118,0h0c32.59,32.59,32.59,85.42,0,118Z"></path></svg></a></div><div id="CMS564680" class="context"><a class="clickable back" onclick="resetMenu()"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.35 850.35"><path d="M816.99,312.17l-351.98,351.98c-22.01,22.01-57.69,22.01-79.7,0L33.32,312.17c-32.59-32.58-32.59-85.42,0-118h0c32.59-32.59,85.42-32.59,118,0L425.16,468.01,698.99,194.17c32.58-32.59,85.42-32.59,118,0h0c32.59,32.59,32.59,85.42,0,118Z"/></svg><span>Back</span></a><a href=""><span>21</span></a><a href=""><span>22</span></a><a class="clickable" onclick="changeMenu(`CMS235074`)"><span>23</span><svg class="subpage" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.35 850.35"><path d="M816.99,312.17l-351.98,351.98c-22.01,22.01-57.69,22.01-79.7,0L33.32,312.17c-32.59-32.58-32.59-85.42,0-118h0c32.59-32.59,85.42-32.59,118,0L425.16,468.01,698.99,194.17c32.58-32.59,85.42-32.59,118,0h0c32.59,32.59,32.59,85.42,0,118Z"></path></svg></a><a href=""><span>24</span></a><a href=""><span>25</span></a><a href=""><span>26</span></a><a href=""><span>27</span></a></div><div id="CMS235074" class="context"><a class="clickable back" onclick="changeMenu(`CMS564680`)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.35 850.35"><path d="M816.99,312.17l-351.98,351.98c-22.01,22.01-57.69,22.01-79.7,0L33.32,312.17c-32.59-32.58-32.59-85.42,0-118h0c32.59-32.59,85.42-32.59,118,0L425.16,468.01,698.99,194.17c32.58-32.59,85.42-32.59,118,0h0c32.59,32.59,32.59,85.42,0,118Z"/></svg><span>Back</span></a><a href=""><span>33</span></a></div></div>
+-->
 
 
 

@@ -1,0 +1,417 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+:root
+{
+    --VPSprogressbar: #729ef6;
+}
+@media (hover:hover)
+{
+    .VPScontainer .controlBox .controlBar .VPSbar:hover .VPSbarChange::before
+    {
+        opacity: 1;
+    }
+    .VPScontainer .controlBox .controlBar .VPSbar:hover
+    {
+        height: 5px;
+    }
+    .VPScontainer .controlBox .controlBar button:hover, .VPScontainer .controlBox .controlBar .volumeContainer:hover,.VPScontainer .controlBox .controlBar .VPStime:hover,.VPScontainer .controlBox .settingsPanel button:hover
+    {
+        transition: 0s;
+        transition-delay: 0s;
+        background-color: #4b4b4b70;
+    }
+}
+@keyframes VPSbuffer {
+    from{
+        transform: translate(-50%,-50%) rotate(0deg);
+    }
+    to{
+        transform: translate(-50%,-50%) rotate(360deg);
+    }
+}
+::-webkit-media-controls,.VPS::-webkit-media-controls,.VPS::-webkit-media-controls-enclosure,::-webkit-media-controls-start-playback-button,::-webkit-media-controls-play-button,::-webkit-media-controls-panel
+{
+    display: none;
+    appearance: none;
+    -webkit-appearance: none;
+}
+.VPScontainer *, .VPScontainer
+{
+    box-sizing: border-box;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color:  rgba(255, 255, 255, 0);
+    font-family: 'Exo 2', sans-serif;
+}
+.VPSrange
+{
+   -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    cursor: pointer;
+}
+.VPSrange:focus
+{
+  outline: none;
+}
+.VPSrange::-webkit-slider-thumb
+{
+   -webkit-appearance: none;
+   appearance: none;
+   height: 20px;
+   width: 10px;
+}
+.VPSrange::-moz-range-thumb
+{
+   border: none;
+   border-radius: 0;
+   height: 20px;
+   width: 10px;
+}
+svg rect
+{
+    transition: 0.3s;
+}
+.VPScontainer
+{
+    position: relative;
+    width: fit-content;
+    height: fit-content;
+    overflow: hidden;
+    border-radius: 0.5em;
+    background-color: #000000;
+    display: block;
+    max-width: 100%;
+    min-width: 330px;
+    min-height: 330px;
+    box-shadow: 0 10px 10px #00000020;
+}
+.VPScontainer .VPS
+{
+    position: relative;
+    pointer-events: none;
+    display: block;
+    width: 100%;
+    min-width: 330px;
+    min-height: 330px;
+}
+.VPScontainer .VPS.full
+{
+    width: 100%;
+    height: 100%;
+}
+.VPScontainer .buffer
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    height: min(70px, 40%);
+    display: block;
+    fill: #e9e9e9;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0s;
+    pointer-events: none;
+}
+.VPScontainer .buffer.active
+{
+    animation: VPSbuffer 1.5s linear infinite;
+    opacity: 1;
+    visibility: visible;
+    transition: 0.3s;
+}
+.VPScontainer .controlBox
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #00000040;
+    opacity: 1;
+    transition: 0.3s;
+}
+.VPScontainer .controlBox .playField
+{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+.VPScontainer .controlBox .controlBar
+{
+    position: absolute;
+    padding: 0.4em 0em;
+    left: 0;
+    bottom: 0;
+    box-sizing: border-box;
+    height: calc(40px + 0.8em);
+    width: 100%;
+}
+.VPScontainer .controlBox .controlBar button
+{
+    position: relative;
+    float: left;
+    border: 0;
+    border-radius: 0.3em;
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 0.25em;
+    transition: 0.4s;
+    transition-delay: 0.1s;
+}
+.VPScontainer .controlBox .controlBar button:nth-last-of-type(2),.VPScontainer .controlBox .controlBar button:nth-last-of-type(1)
+{
+    float: right;
+}
+.VPScontainer .controlBox .controlBar button:first-of-type
+{
+    margin-left: 0.5em;
+}
+.VPScontainer .controlBox .controlBar button:nth-last-of-type(2)
+{
+    margin-right: 0.5em;
+}
+.VPScontainer .controlBox .controlBar button:active
+{
+    background-color: #4b4b4b40;
+}
+.VPScontainer .controlBox .controlBar button svg,.VPScontainer .controlBox .settingsPanel button svg
+{
+    position: relative;
+    display: block;
+    height: 50%;
+    fill: #e9e9e9;
+    transition: 0.3s;
+}
+.VPScontainer .controlBox .controlBar button.setting svg
+{
+    transform: rotate(60deg);
+}
+.VPScontainer .controlBox .controlBar button.active .play, .VPScontainer .controlBox .controlBar button .pause, .VPScontainer .controlBox .controlBar .VPSbar
+{
+    display: none;
+}
+.VPScontainer .controlBox .controlBar button.active .pause, .VPScontainer .controlBox .controlBar button .play
+{
+    display: block;
+}
+.VPScontainer .controlBox .controlBar .VPSbar
+{
+    position: absolute;
+    left: 10px;
+    right: 10px;
+    height: 2.5px;
+    box-sizing: initial;
+    background-color: #ffffff20;
+    bottom: 100%;
+    transition: 0.2s;
+}
+.VPScontainer .controlBox .controlBar .VPSbar .VPSinput
+{
+    position: absolute;
+    bottom: 0px;
+    left: -5px;
+    width: calc(100% + 10px);
+    height: 20px;
+    opacity: 0;
+}
+.VPScontainer .controlBox .controlBar .VPSbar .VPSbarChange
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background-color: var(--VPSprogressbar)
+}
+.VPScontainer .controlBox .controlBar .VPSbar .VPSbarChange::before
+{
+    content: '';
+    position: absolute;
+    height: 10px;
+    width: 10px;
+    right: -5px;
+    top: 50%;
+    transform: translate(0,-50%);
+    border-radius: 100vmax;
+    background-color: var(--VPSprogressbar);
+    opacity: 0;
+    transition: 0.2s;
+}
+.VPScontainer .controlBox .VPStitle
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0.6em;
+    color: #e9e9e9;
+    text-shadow: 0 0 5px #00000020;
+    font-size: 1.8rem;
+    width: 100%;
+    font-weight: bold;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.VPScontainer .controlBox .controlBar .volumeContainer
+{
+    position: relative;
+    float: left;
+    border-radius: 0.3em;
+    height: 40px;
+    padding: 17.5px 0;
+    width: 0px;
+    cursor: pointer;
+    background-color: transparent;
+    margin: 0;
+    box-sizing: border-box;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.4s;
+    transition-delay: 0s, 0.1s;
+    transition-property: all, background-color;
+}
+.VPScontainer .controlBox .controlBar .volumeContainer.active
+{
+    visibility: visible;
+    opacity: 1;
+    width: 80px;
+    padding: 17.5px 12px;
+    margin: 0 0.25em;
+}
+.VPScontainer .controlBox .controlBar .volumeContainer .volumeBack
+{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 100vmax;
+    background-color: #e9e9e940;
+    overflow: hidden;
+}
+.VPScontainer .controlBox .controlBar .volumeContainer .volumeBack .volumeVisible
+{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #e9e9e9;
+}
+.VPScontainer .controlBox .controlBar .volumeContainer .volumeInput
+{
+    position: absolute;
+    width: calc(100% - 16px);
+    height: 30px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+}
+.VPScontainer .controlBox .controlBar .VPStime
+{
+    position: relative;
+    float: left;
+    border-radius: 0.3em;
+    height: 40px;
+    width: auto;
+    padding: 0 10px;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    color: #e9e9e9;
+    align-items: center;
+    margin: 0 0.25em;
+    transition: 0.4s;
+    transition-delay: 0.1s;
+}
+.VPScontainer .controlBox .settingsPanel
+{
+    position: absolute;
+    bottom: calc(40px + 2em);
+    right: 1em;
+    width: 100px;
+    overflow: hidden;
+    opacity: 0;
+    border-radius: 0.5em;
+    visibility: hidden;
+    pointer-events: none;
+    display: block;
+    background-color: #00000080;
+    transition: 0.3s;
+}
+.VPScontainer .controlBox .settingsPanel.active
+{
+    opacity: 1;
+    pointer-events: unset;
+    visibility: visible;
+}
+.VPScontainer .controlBox .settingsPanel button
+{
+    position: relative;
+    display: block;
+    border: 0;
+    height: 40px;
+    width: 120px;
+    margin: 0.5em 0 0 0;
+    border-radius: 0.3em;
+    background-color: transparent;
+    color: #e9e9e9;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    overflow: hidden;
+    transition: 0.4s;
+    transition-delay: 0.1s;
+}
+.VPSplaybackMenu
+{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 0 0.5em 0.5em 0.5em;
+    transform: translateX(100%);
+    height: fit-content;
+    width: fit-content;
+    transition: 0.3s;
+}
+.VPSplaybackMenu.active
+{
+    transform: translateX(0);
+}
+.VPSmainSettings
+{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 0 0.5em 0.5em 0.5em;
+    transform: translateX(0);
+    height: fit-content;
+    width: fit-content;
+    transition: 0.3s;
+}
+.VPSmainSettings.active
+{
+    transform: translateX(-100%);
+}
+.VPScontainer .controlBox .settingsPanel button svg
+{
+    transition: 0s;
+}
+.VPScontainer .controlBox .settingsPanel button.loop
+{
+    background-color: #ffffff30;
+}
+.VPScontainer .controlBox .settingsPanel button.loop svg
+{
+    transition: 0.3s;
+    transform: rotate(-180deg);
+}
