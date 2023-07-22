@@ -33,11 +33,11 @@
 #SSCU
 {
     position: relative;
-    height: calc(100vh - 60px);
-    width: calc(100% - 60px);
-    left: 30px;
+    height: 100vh;
+    width: 100%;
+    left: 0;
     top: 0;
-    margin-top: 30px;
+    transform: scale(0.9);
     border-radius: 10px;
     display: flex;
     justify-content: center;

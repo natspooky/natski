@@ -29,11 +29,12 @@
 #SSC
 {
     position: relative;
-    height: calc(100vh - 30px);
-    width: calc(100% - 30px);
-    left: 15px;
+    height: 100vh;
+    width: 100%;
+    left: 0;
     top: 0;
-    margin-top: 15px;
+
+    transform: scale(0.9);
     display: flex;
     justify-content: center;
     align-items: flex-end;
