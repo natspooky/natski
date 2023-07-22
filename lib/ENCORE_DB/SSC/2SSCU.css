@@ -6,7 +6,7 @@
 @media (hover:hover){
     #SSCU .infoButton:hover
     {
-        transform: scale(1.1);
+        background-color: #eeeeee;
     }
     #SSCU .infoButton:hover::before
     {
@@ -175,7 +175,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    transform: scale(1);
     transition: 0.2s;
 }
 #SSCU .infoButton svg
