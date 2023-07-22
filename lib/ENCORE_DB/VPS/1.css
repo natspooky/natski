@@ -343,7 +343,7 @@ svg rect
     visibility: hidden;
     pointer-events: none;
     display: block;
-    background-color: #00000080;
+    background-color: #4b4b4b70;
     transition: 0.3s;
 }
 .VPScontainer .controlBox .settingsPanel.active
