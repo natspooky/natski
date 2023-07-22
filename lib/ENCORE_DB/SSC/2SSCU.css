@@ -4,6 +4,10 @@
     --SSCUaccent: #0a0a0a;
 }
 @media (hover:hover){
+    #SSCU .infoButton:hover
+    {
+        transform: scale(1.1);
+    }
     #SSCU .infoButton:hover::before
     {
         transform: translate(-0.5em,-50%);
@@ -37,6 +41,8 @@
     width: 100%;
     left: 0;
     top: 0;
+    transform: scale(0.9);
+    border-radius: 5px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -169,6 +175,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    transform: scale(1);
+    transition: 0.2s;
 }
 #SSCU .infoButton svg
 {
