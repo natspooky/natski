@@ -212,6 +212,7 @@
     top: 10px;
     left: 50%;
     transform: translate(-50%, -170%);
+    visibility: hidden;
     padding: 1em 1.5em;
     pointer-events: none;
     border-radius: 0.5em;
@@ -247,7 +248,8 @@
 }
 #ENCOREalert.active
 {
-    transform: translate(-50%, 0)
+    transform: translate(-50%, 0);
+    visibility: visible;
 }
 .attach
 {
