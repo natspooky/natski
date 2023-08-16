@@ -580,6 +580,8 @@
                     document.getElementById('iframe').style.opacity = '0'
                     setTimeout(() => {
                         document.getElementById('iframe').remove()
+                    }, 300)
+                    setTimeout(() => {
                         let frame = document.createElement('iframe'),
                         framecont = document.getElementById("iframePanel");
                         frame.id = 'iframe'
@@ -587,7 +589,7 @@
                         framecont.insertBefore(frame, frame.previousElementSibling);
                         framecont.insertBefore(frame, frame.previousElementSibling);
                         frame.src = x
-                    }, 310);
+                    }, 350);
                 }
 
 

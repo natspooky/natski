@@ -164,7 +164,7 @@
 #SSCU .infoButton
 {
     position: absolute;
-    bottom: 10px;
+    top: 10px;
     right: 10px;
     height: 40px;
     width: 40px;
