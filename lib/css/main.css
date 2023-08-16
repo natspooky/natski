@@ -197,7 +197,7 @@ header h2
     }
     .portanchor .titlebutton:hover
     {
-        background-color: #222222;
+        background-color: #66666635;
         transition: 0s;
     }
     .portanchor .titlebutton:hover:active
