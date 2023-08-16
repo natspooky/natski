@@ -558,34 +558,39 @@
                     document.body.classList.remove("static")
                     pageSystem('Home')
                     changeBar('#000000')
-                    reloadFrame()
+                    reloadFrame('')
                     playSSCU()
                 }
 
 
                 function loadframe(e) {
-                    reloadFrame()
+                    reloadFrame(e+'.html')
                     document.getElementById("SSCU").classList.add("active")
                     menuClose()
                     document.getElementById("iframePanel").classList.add("active")
                     document.body.style.position = 'fixed'
                     document.body.style.overflow = 'hidden'
-                    document.getElementById('iframe').src=e+'.html';
                     backPage(-1000)
                     pageSystem(e.charAt(0).toUpperCase() + e.slice(1))
                     pauseSSCU()
                 }
 
 
-                function reloadFrame() {
-                    document.getElementById('iframe').remove()
-                    let frame = document.createElement('iframe'),
-                    framecont = document.getElementById("iframePanel");
-                    frame.id = 'iframe'
-                    framecont.appendChild(frame)
-                    framecont.insertBefore(frame, frame.previousElementSibling);
-                    framecont.insertBefore(frame, frame.previousElementSibling);
+                function reloadFrame(x) {
+                    document.getElementById('iframe').style.opacity = '0'
+                    setTimeout(() => {
+                        document.getElementById('iframe').remove()
+                        let frame = document.createElement('iframe'),
+                        framecont = document.getElementById("iframePanel");
+                        frame.id = 'iframe'
+                        framecont.appendChild(frame)
+                        framecont.insertBefore(frame, frame.previousElementSibling);
+                        framecont.insertBefore(frame, frame.previousElementSibling);
+                        frame.src = x
+                    }, 310);
                 }
+
+
 
 
                 function changeBar(e){
@@ -934,7 +939,7 @@
     <button onclick="pageSystem('testing '+this.innerText);">PageSystem</button>
     <button onclick="alert(deviceCheck()); pageSystem('testing '+this.innerText);">DeviceCheck</button>
     <button onclick="changeBar('#345456'); setTimeout(() => {changeBar('#000000')},1000); pageSystem('testing '+this.innerText);">ColourSystem</button>
-    <button onclick="reloadFrame(); pageSystem('testing '+this.innerText);">MemoryClear</button>
+    <button onclick="reloadFrame(''); pageSystem('testing '+this.innerText);">MemoryClear</button>
     <button onclick="loadframe('testpage'); pageSystem('testing '+this.innerText);">EmbeddedPlayer</button>
     <button onclick="unloadframe(); pageSystem('testing '+this.innerText);">CloseEmbeddedPlayer</button>
 </div>
