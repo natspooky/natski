@@ -369,16 +369,28 @@ nav span
 .iframePanel button:last-child
 {
     margin: 10px 15px 0px 15px;
+    pointer-events: none;
     opacity: 0;
-    transform: scale(0.5);
-    visibility: hidden;
-    transition: 0.2s;
+    transform: translateY(-50px);
+    transition: 0.3s;
+}
+.iframePanel button:last-child svg
+{
+    transform: rotate(0deg);
+    transition: 0.3s;
 }
 .iframePanel button.revealed
 {
-    visibility: visible;
-    transform: scale(1);
+    transform: translateY(0px);
     opacity: 1;
+    pointer-events: all;
+    transition: 0.3s, opacity 0s;
+}
+.iframePanel button:last-child.revealed svg
+{
+    transform: rotate(90deg);
+    transition: 0.3s;
+    transition-delay: 0.3s;
 }
 main
 {
