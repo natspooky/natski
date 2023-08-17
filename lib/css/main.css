@@ -816,6 +816,8 @@ main article ul li a
     padding: 0.5em;
     background-color: #3a3a3a;
     z-index: 99999;
+    opacity: 0;
+    transition: 0.4s;
 }
 .slidecontainer
 {
