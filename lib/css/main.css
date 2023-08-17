@@ -322,6 +322,11 @@ nav span
 {
     font-weight: bold;
 }
+.covermenu hr
+{
+    border: 1px solid #e9e9e9;
+    border-radius: 100vmax;
+}
 .iframePanel
 {
     position: fixed;
@@ -936,6 +941,73 @@ main article ul li a
 	fill: none;
 	stroke: var(--maincol);
 	stroke-miterlimit: 10;
+}
+#NATredirect
+{
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translate(-50%, -170%);
+    visibility: hidden;
+    padding: 1em 1.5em;
+    pointer-events: none;
+    width: min(90%, 450px);
+    border-radius: 0.5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    background-color: rgb(0, 48, 106);
+    box-shadow: 0 5px 10px #00000025;
+    transition: 0.8s cubic-bezier(.61,.04,0,1.22);
+}
+#NATredirect p
+{
+    color: #e9e9e9;
+    font-weight: bold;
+}
+#NATredirect button
+{
+    position: relative;
+    height: 28px;
+    width: 28px;
+    pointer-events: all;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    border: 0px;
+    background-color: transparent;
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+#NATredirect button:first-of-type
+{
+    margin-right: 1em;
+}
+#NATredirect button:hover
+{
+    background-color: #66666650;
+}
+#NATredirect button svg
+{
+    position: relative;
+    height: 50%;
+    fill: #e9e9e9;
+}
+#NATredirect div
+{
+    position: relative;
+    margin: 0 1em;
+    background-color: #e9e9e9;
+    height: 20px;
+    border-radius: 100vmax;
+    width: 3px;
+}
+#NATredirect.active
+{
+    transform: translate(-50%, 0);
+    visibility: visible;
 }
 footer
 {

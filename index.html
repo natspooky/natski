@@ -290,7 +290,7 @@
         </style>
 
         <div id="loadscreen">
-            <svg style="position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); height: 10em; width: 10em; fill: #a1a1a1; animation: opacity 1s;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.35 850.35">
+            <svg style="position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); height: 10em; width: 10em; fill: var(--themecol); animation: opacity 1s;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.35 850.35">
                 <path d="M850.35,48.04V802.31c0,26.53-21.51,48.04-48.04,48.04h-171.87c-18.33,0-35.64-8.4-46.98-22.8l-243.52-309.3c-29.93-38.02-91.02-16.85-91.02,31.53v252.55c0,26.52-21.5,48.02-48.02,48.02H48.02c-26.52,0-48.02-21.5-48.02-48.02V48.02C0,21.5,21.5,0,48.02,0H219.9c18.33,0,35.64,8.4,46.99,22.8l243.46,309.07c29.96,38.03,91.08,16.85,91.08-31.56V48.04c0-26.53,21.51-48.04,48.04-48.04h152.85c26.53,0,48.04,21.51,48.04,48.04Z"/>
             </svg>
         </div>
@@ -397,11 +397,25 @@
 
         <div id="colourpanel"></div>
         <nav>
-            <a class="navbutton" href="index.html" name="NATSKI">
+            <button class="navbutton" name="NATSKI">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.35 850.35">
                     <path d="M850.35,48.04V802.31c0,26.53-21.51,48.04-48.04,48.04h-171.87c-18.33,0-35.64-8.4-46.98-22.8l-243.52-309.3c-29.93-38.02-91.02-16.85-91.02,31.53v252.55c0,26.52-21.5,48.02-48.02,48.02H48.02c-26.52,0-48.02-21.5-48.02-48.02V48.02C0,21.5,21.5,0,48.02,0H219.9c18.33,0,35.64,8.4,46.99,22.8l243.46,309.07c29.96,38.03,91.08,16.85,91.08-31.56V48.04c0-26.53,21.51-48.04,48.04-48.04h152.85c26.53,0,48.04,21.51,48.04,48.04Z"/>
                 </svg>
-            </a>
+               
+            </button>
+            
+            <button class="navbutton" name="NATSKI">
+                
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.35 850.35">
+                    <path d="M816.99,312.17l-351.98,351.98c-22.01,22.01-57.69,22.01-79.7,0L33.32,312.17c-32.59-32.58-32.59-85.42,0-118h0c32.59-32.59,85.42-32.59,118,0L425.16,468.01,698.99,194.17c32.58-32.59,85.42-32.59,118,0h0c32.59,32.59,32.59,85.42,0,118Z"/>
+                </svg>
+            </button>
+            <button class="navbutton" name="NATSKI">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.39 745.44">
+                    <path d="M850.39,372.72c0,17.2-6.97,32.76-18.24,44.03-11.27,11.27-26.84,18.24-44.04,18.24H212.03l204.55,204.55c24.23,24.23,24.23,63.5,0,87.73-12.11,12.11-27.98,18.17-43.86,18.17s-31.75-6.06-43.86-18.17L18.17,416.58c-24.23-24.23-24.23-63.5,0-87.73L328.86,18.17c24.22-24.23,63.5-24.23,87.72,0,12.12,12.11,18.17,27.99,18.17,43.86s-6.05,31.75-18.17,43.86l-204.55,204.55H788.11c34.4,0,62.28,27.88,62.28,62.28Z"/>
+                </svg>
+               
+            </button>
             <span id="pageTitle">Home</span>
             <button class="navbutton" name="settings" onclick="loadframe(this.name)">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1032.47 1032.53">
@@ -512,6 +526,9 @@
                     setTimeout(() => {
                         screen.remove()
                     }, 2500)
+                    if(window.location.href.length > 37) {
+                        loadframe(window.location.href.slice(38, window.location.href.length) + '.html')
+                    }
                 }
 
 
