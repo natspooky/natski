@@ -570,7 +570,7 @@
                 }
 
                 function backButton() {
-                    loadframe(backList[backList.length])
+                    loadframe(backList[backList.length - 1].substring(27, backList[backList.length].length - 5))
                     backList.pop()
                     
                 }
