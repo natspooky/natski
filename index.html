@@ -394,7 +394,7 @@
                     </svg>
                 -->
             </button>
-            <button class="navbutton" id="backbutton" style="display: flex;" name="back" onclick="loadframe('Portfolio')">
+            <button class="navbutton" id="backbutton" style="display: flex;" name="back" onclick="backButton()">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.35 850.35">
                     <path d="M816.99,312.17l-351.98,351.98c-22.01,22.01-57.69,22.01-79.7,0L33.32,312.17c-32.59-32.58-32.59-85.42,0-118h0c32.59-32.59,85.42-32.59,118,0L425.16,468.01,698.99,194.17c32.58-32.59,85.42-32.59,118,0h0c32.59,32.59,32.59,85.42,0,118Z"/>
                 </svg>
@@ -526,7 +526,8 @@
             </div>
         </div>
         <script>
-                let backnum = 0;
+                let backnum = 0,
+                backList = [];
 
 
                 function systemStart() {
@@ -548,7 +549,7 @@
                     let title = document.getElementById('pageTitle')
                     title.style.opacity = 0;
                     setTimeout(() => {
-                        title.innerHTML = e
+                        title.innerHTML = e.replace('%20', ' ')
                         title.style.opacity = 1;
                     }, 200)
                 }
@@ -556,14 +557,22 @@
 
                 function backPage(e){
                     backnum += e;
+                    backList.push(document.getElementById('iframe').src)
                     if(backnum < 0) {
                         backnum = 0
+                        backList = []
                     }
                     if(backnum > 0) {
                         document.getElementById('backbutton').classList.add('revealed')
                     }else {
                         document.getElementById('backbutton').classList.remove('revealed')
                     }
+                }
+
+                function backButton() {
+                    loadframe(backList[backList.length])
+                    backList.pop()
+                    backPage(-1)
                 }
             
 
