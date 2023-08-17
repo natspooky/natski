@@ -373,18 +373,20 @@ nav span
     opacity: 0;
     transform: translateY(-50px);
     transition: 0.3s;
+    transition-delay: 0.3s;
 }
 .iframePanel button:last-child svg
 {
     transform: rotate(0deg);
     transition: 0.3s;
 }
-.iframePanel button.revealed
+.iframePanel button:last-child.revealed
 {
     transform: translateY(0px);
     opacity: 1;
     pointer-events: all;
-    transition: 0.3s, opacity 0s;
+    transition: 0.3s;
+    transition-delay: 0s;
 }
 .iframePanel button:last-child.revealed svg
 {
