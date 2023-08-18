@@ -23,7 +23,7 @@
     --backpanel: #09111e;
     --textmain: #e9e9e9;
     --textsub: #8b8b8b;
-    --bar: #212f43;
+    --bar: #729ef6;
     --codewindow: #b5b5b5;
 }
 
@@ -685,7 +685,7 @@ main article ul li a
     z-index: 999;
     color: var(--textmain);
     border-radius: 10px;
-    background-color: #1e1e1e;
+    background-color: #0b1627;
     opacity: 0;
     visibility: hidden;
     transition: 0.2s;
@@ -810,7 +810,7 @@ main article ul li a
     max-width: 200px;
     font-size: 1.2rem;
     border-radius: 10px;
-    background-color: #3a3a3a;
+    background-color: #0b1627;
     animation: popout 0.3s;
 }
 #wordcount
