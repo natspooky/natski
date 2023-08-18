@@ -552,7 +552,7 @@
                     title.style.opacity = 0;
                     setTimeout(() => {
                         if(e.includes('#')){
-                            title.innerHTML = e.slice(0, e.indexOf('#')).replace('%20', ' ')
+                            title.innerHTML = e.slice(0, e.indexOf('#')).replace('%20', ' ').replace('.html', '')
                         }else{
                             title.innerHTML = e.replace('%20', ' ')
                         }
