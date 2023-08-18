@@ -83,43 +83,33 @@
 body, html {
     height: 500vh;
     width: 100%;
-    margin: 0;
-    padding: 0;
     overflow: visible;
-    position: relative;
-    user-select: none;
-    scroll-behavior: smooth;
-    -ms-touch-action: manipulation;
-    touch-action: manipulation;
+
+
     background-color: var(--accentcol);
 }
 
 
 
-
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 :root
 {
-    --SSCcolor: #ffffff;
-    --SSCaccent: #0a0a0a;
+    --SSCUcolor: #505050b0;
+    --SSCUaccent: #aaaaaa;
 }
 @media (hover:hover){
-    #SSC .infoButton:hover::before
+    #SSCU .infoButton:hover::before
     {
         transform: translate(-0.5em,-50%);
         opacity: 1;
         visibility: visible;
     }
-    #SSC .thumbs .thumb:hover
+    #SSCU .pagebutton-u:hover
     {
-        transform: scale(1.1);
-        border: 1px solid #0a0a0a;
-    }
-    #SSC .pagebutton:hover svg
-    {
-        transform: scale(1.2);
+        background-color: #00000070;
     }
 }
-#SSC *, #SSC
+#SSCU *, #SSCU
 {
     box-sizing: border-box;
     margin: 0;
@@ -129,111 +119,93 @@ body, html {
     -webkit-tap-highlight-color:  rgba(255, 255, 255, 0);
     font-family: 'Exo 2', sans-serif;
 }
-#SSC
+#SSCU
 {
     position: relative;
-    height: calc(100vh - 60px);
-    width: calc(100% - 60px);
-    left: 30px;
+    height: 100vh;
+    width: 100%;
+    left: 0;
     top: 0;
-    margin-top: 30px;
-    border-radius: 10px;
+    transform: scale(0.9);
     display: flex;
     justify-content: center;
-    align-items: center;
-    background-color: var(--SSCcolor);
+    align-items: flex-end;
+    border-radius: 28px;
     overflow: hidden;
 }
-#SSC .pagebutton
+#SSCU .pagebutton-u
 {
     position: absolute;
-    bottom: 10px;
-    left: 10px;
-    height: 40px;
-    width: 40px;
-    border: 0;
-    background-color: transparent;
-    border-right: 1px solid #0a0a0a30;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 15px;
+    padding: 1.5em 0.6em;
+    border-radius: 8px;
+    background-color: var(--SSCUcolor);
+    border: 2px solid var(--SSCUcolor);
     cursor: pointer;
-}
-#SSC .pagebutton:last-of-type
-{
-    left: unset;
-    border-right: unset;
-    border-left: 1px solid #0a0a0a30;
-    right: 10px;
-}
-#SSC .pagebutton svg
-{
-    display: block;
-    fill: var(--SSCaccent);
-    height: 12px;
-    transform: scale(1);
     transition: 0.2s;
 }
-#SSC .progress
+#SSCU .pagebutton-u:last-of-type
 {
-    position: absolute;
-    height: 4px;
-    width: 100%;
-    left: 0;
-    top: 0px;
-    overflow: hidden;
+    left: unset;
+    right: 15px;
 }
-#SSC .progress .progress-bar
+#SSCU .pagebutton-u svg
 {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    height: 100%;
-    background-color: var(--SSCaccent);
-    transform-origin: left;
-    width: 100%;
-    transition: 0.3s;
+    display: block;
+    fill: #e9e9e9;
+    height: 15px;
 }
-#SSC .thumbs
+#SSCU .pagebutton-u:active
+{
+    background-color: #222222;
+    transition: 0s;
+}
+#SSCU .thumbs
 {
     position: absolute;
-    height: 40px;
-    width: calc(100% - 20px);
     display: flex;
     align-items: center;
-    border: 1px solid #0a0a0a30;
-    border-radius: 5px;
-    justify-content: center;
-    background-color: var(--SSCcolor);
-    bottom: 10px;
+    bottom: 15px;
 }
-#SSC .thumbs .thumb
+#SSCU .thumbs .thumb-u
 {
     position: relative;
     border-radius: 100vmax;
     height: 10px;
     width: 10px;
-    border: 1px solid #0a0a0a30;
-    background-color: var(--SSCcolor);
-    margin: 0 0.8em;
-    transform: scale(1);
+    background-color: #656565;
+    overflow: hidden;
+    margin: 0 0.4em;
     transition: 0.2s;
     cursor: pointer;
 }
-#SSC .thumbs .thumb:first-of-type
+#SSCU .thumbs .thumb-u:first-of-type
 {
-    margin: 0 0.8em 0 0;
+    margin: 0 0.4em 0 0;
 }
-#SSC .thumbs .thumb:last-of-type
+#SSCU .thumbs .thumb-u:last-of-type
 {
-    margin: 0 0 0 0.8em;
+    margin: 0 0 0 0.4em;
 }
-#SSC .thumbs .thumb.active
+#SSCU .thumbs .thumb-u .progress-u
 {
-    background-color: var(--SSCaccent);
-    border: 1px solid var(--SSCaccent);
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform-origin: left;
+    width: 100%;
+    height: 100%;
+    transform: scaleX(0);
+    background-color: #e9e9e9;
 }
-#SSC .banner-bg
+#SSCU .thumbs .thumb-u.active
+{
+    width: 30px;
+    pointer-events: none;
+}
+#SSCU .banner-bg-u
 {
     position: absolute;
     left: 0;
@@ -243,9 +215,20 @@ body, html {
     display: none;
     align-items: center;
     justify-content: center;
-    animation: fadeIn 1s;
+    transition: 0.6s ease-in-out;
 }
-#SSC .banner-bg img
+#SSCU .banner-bg-u::after
+{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background-image: linear-gradient(to top, #000000c0, transparent);
+    pointer-events: none;
+}
+#SSCU .banner-bg-u img
 {
     position: absolute;
     left: 0;
@@ -254,57 +237,59 @@ body, html {
     width: 100%;
     object-fit: cover;
 }
-#SSC .banner-bg .banner-button
+#SSCU .banner-bg-u .banner-button
 {
     position: absolute;
     display: block;
-    padding: 0.5em 1.8em;
-    border-radius: 5px;
-    color: var(--SSCaccent);
+    padding: 0em 1.8em;
+    border-radius: 100vmax;
+    color: #ffffff;
     text-decoration: none;
-    background-color: var(--SSCcolor);
-    border: 1px solid #0a0a0a30;
+    background-color: var(--SSCUcolor);
+    border: 2px solid var(--SSCUcolor);
+    height: 50px;
+    line-height: 50px;
     cursor: pointer;
-    bottom: 60px;
+    bottom: 40px;
 }
 @keyframes fadeIn
 {
     from{opacity: 0.4;}
     to{opacity: 1;}
 }
-#SSC .infoButton
+#SSCU .infoButton
 {
     position: absolute;
-    bottom: 60px;
+    top: 10px;
     right: 10px;
     height: 40px;
     width: 40px;
-    border-radius: 5px;
-    background-color: var(--SSCcolor);
-    border: 1px solid #0a0a0a30;
+    background-color: var(--SSCUcolor);
+    border: 2px solid var(--SSCUcolor);
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: 100vmax;
 }
-#SSC .infoButton svg
+#SSCU .infoButton svg
 {
     position: relative;
-    height: 15px;
-    fill: var(--SSCaccent);
+    height: 50%;
+    fill: #e9e9e9;
     display: block;
 }
-#SSC .infoButton::before
+#SSCU .infoButton::before
 {
-    content: 'ENCORE SSC';
+    content: 'ENCORE SSCU';
     position: absolute;
     top: 50%;
     right: 100%;
-    padding: 0.45em;
+    padding: 0.5em;
     transform: translate(0,-50%);
-    background-color: var(--SSCcolor);
-    color: var(--SSCaccent);
-    border: 1px solid #0a0a0a30;
-    border-radius: 5px;
+    background-color: var(--SSCUcolor);
+    border: 2px solid var(--SSCUcolor);
+    color: #e9e9e9;
+    border-radius: 0.5em;
     opacity: 0;
     white-space: nowrap;
     visibility: hidden;
@@ -315,40 +300,45 @@ body, html {
 </style>
 
 
-<div id="SSC" style="opacity: 0; display: none;">
+<div id="SSCU" style="opacity: 0; display: none;">
 
-    <div class="banner-bg">
+    <div class="banner-bg-u">
 
-        <img src="icon/img/ssc1.jpg" alt="">
+        <img src="icon/img/ssc1.jpg" alt="ssc">
 
-        <a class="banner-button">1</a>
+        <div class="banner-button">Harold One</div>
+
     </div>
 
-    <div class="banner-bg">
+    <div class="banner-bg-u">
 
-        <img src="icon/img/ssc1.jpg" alt="">
-        <a class="banner-button">2</a>
+        <img src="icon/img/ssc2.jpg" alt="ssc">
+
+        <a class="banner-button">Harold Two</a>
+
     </div>
 
-    <div class="banner-bg">
+    <div class="banner-bg-u">
 
-        <img src="icon/img/ssc1.jpg" alt="">
-        <a class="banner-button">3</a>
+        <img src="icon/img/ssc3.jpg" alt="ssc">
+
+        <a class="banner-button">Harold Three</a>
+
     </div>
 
 </div>
 
 
 
-<script src="https://natski.netlify.app/lib/js/ENCORE_SSC.js"></script>
+<script src="https://natski.netlify.app/lib/js/ENCORE_SSC_ULT.js"></script>
 <script>
-    SSC_settings={
+    SSCU_settings={
         'thumbs':true,
         'sideButtons':true,
-        'progressBar':true,
         'style':null
     }
 </script>
+
 
 
 
