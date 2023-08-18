@@ -540,7 +540,11 @@
                     }, 2500)
                     setTimeout(() => {
                         if(window.location.href.length > 38) {
-                            loadframe(window.location.href.slice(38, window.location.href.length).replace('.html', ''))
+                            if(window.location.href.includes('#')){
+                                loadframe(window.location.href.slice(38, window.location.href.length))
+                            }else{
+                                loadframe(window.location.href.slice(38, window.location.href.length).replace('.html', ''))
+                            }
                         }
                     }, 1000)
                 }
