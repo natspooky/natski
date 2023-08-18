@@ -216,14 +216,20 @@ nav
     padding: 5px 20px;
     background-color: #00000065;
 }
-
 nav span
 {
+    position: relative;
     height: 100%;
     line-height: 40px;
     font-weight: bold;
     margin: 0 5px;
+    display: inline-block;
+    width: auto;
+    max-width: calc(100vw - 175px);
     opacity: 1;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
     transition: 0.2s;
 }
 .navbutton
@@ -339,7 +345,7 @@ nav span
     background-color: var(--accentcol);
     transform: translateY(100vh);
     visibility: hidden;
-    transition: 0.8s cubic-bezier(.61,.04,0,1.22), border 0.6s ease;
+    transition: 0.4s ease, border 0.6s ease;
 }
 .iframePanel.active
 {

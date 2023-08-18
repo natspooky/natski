@@ -538,9 +538,11 @@
                     setTimeout(() => {
                         screen.remove()
                     }, 2500)
-                    if(window.location.href.length > 38) {
-                            loadframe(window.location.href.slice(38, window.location.href.length))
-                    }
+                    setTimeout(() => {
+                        if(window.location.href.length > 38) {
+                            loadframe(window.location.href.slice(38, window.location.href.length).replace('.html', ''))
+                        }
+                    }, 1000)
                 }
 
 
@@ -549,7 +551,7 @@
                     let title = document.getElementById('pageTitle')
                     title.style.opacity = 0;
                     setTimeout(() => {
-                        title.innerHTML = e.replace('%20', ' ')
+                        title.innerHTML = e.slice(0, e.indexOf('#')).replace('%20', ' ')
                         title.style.opacity = 1;
                     }, 200)
                 }
@@ -665,6 +667,16 @@
                 function test() {
                     document.getElementById('testbar').classList.toggle('active')
                 }
+
+
+
+
+
+
+
+
+
+
 
 
                 function openMenu(e) {
