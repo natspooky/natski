@@ -610,7 +610,11 @@
 
 
                 function loadframe(e) {
-                    reloadFrame(e+'.html')
+                    if(e.includes('.html')){
+                        reloadFrame(e)
+                    }else{
+                        reloadFrame(e+'.html')
+                    }
                     document.getElementById("SSCU").classList.add("active")
                     menuClose()
                     document.getElementById("iframePanel").classList.add("active")
