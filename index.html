@@ -551,7 +551,11 @@
                     let title = document.getElementById('pageTitle')
                     title.style.opacity = 0;
                     setTimeout(() => {
-                        title.innerHTML = e.slice(0, e.indexOf('#')).replace('%20', ' ')
+                        if(e.contains('#')){
+                            title.innerHTML = e.slice(0, e.indexOf('#')).replace('%20', ' ')
+                        }else{
+                            title.innerHTML = e.replace('%20', ' ')
+                        }
                         title.style.opacity = 1;
                     }, 200)
                 }
