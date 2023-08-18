@@ -551,7 +551,7 @@
                     let title = document.getElementById('pageTitle')
                     title.style.opacity = 0;
                     setTimeout(() => {
-                        if(e.contains('#')){
+                        if(e.includes('#')){
                             title.innerHTML = e.slice(0, e.indexOf('#')).replace('%20', ' ')
                         }else{
                             title.innerHTML = e.replace('%20', ' ')
