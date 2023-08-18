@@ -193,7 +193,7 @@ header h2
     }
     main article .codewindow:hover
     {
-        background-color: #1e1e1e;
+        background-color: #0b1627;
     }
     .portanchor .titlebutton:hover
     {
@@ -525,7 +525,7 @@ main article .codewindow
     color: var(--codewindow);
     text-align: left;
     white-space: nowrap;
-    background-color: #222222;
+    background-color: #09111e;
     overflow-x: scroll;
 }
 main article .codewindow::-webkit-scrollbar
@@ -535,7 +535,7 @@ main article .codewindow::-webkit-scrollbar
 }
 main article .codewindow::-webkit-scrollbar-thumb
 {
-    border: 0px solid #222222;
+    border: 0px solid #09111e;
 }
 main article .displayframecont
 {
