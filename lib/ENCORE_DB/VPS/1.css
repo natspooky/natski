@@ -17,7 +17,7 @@
     {
         transition: 0s;
         transition-delay: 0s;
-        background-color: #66666640;
+        background-color: #ffffff30;
     }
 }
 @keyframes VPSbuffer {
@@ -421,7 +421,7 @@ svg rect
 }
 .VPScontainer .controlBox .settingsPanel button.loop
 {
-    background-color: #66666660;
+    background-color: #ffffff60;
 }
 .VPScontainer .controlBox .settingsPanel button.loop svg
 {
