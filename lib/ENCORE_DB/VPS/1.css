@@ -97,6 +97,8 @@
     min-width: 315px;
     min-height: 280px;
     object-fit: contain;
+    border-radius: 1px;
+    -webkit-border-radius: 1px;
 }
 .VPScontainer .VPS.full
 {
