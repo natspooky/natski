@@ -17,7 +17,7 @@
     {
         transition: 0s;
         transition-delay: 0s;
-        background-color: #4b4b4b70;
+        background-color: #66666640;
     }
 }
 @keyframes VPSbuffer {
@@ -83,7 +83,7 @@ svg rect
     background-color: #000000;
     display: block;
     max-width: 100%;
-    min-width: 310px;
+    min-width: 300px;
     min-height:280px;
     box-shadow: 0 10px 10px #00000020;
 }
@@ -93,7 +93,7 @@ svg rect
     pointer-events: none;
     display: block;
     width: 100%;
-    min-width: 310px;
+    min-width: 300px;
     min-height: 280px;
 }
 .VPScontainer .VPS.full
@@ -354,7 +354,7 @@ svg rect
     visibility: hidden;
     pointer-events: none;
     display: block;
-    background-color: #4b4b4b70;
+    background-color: #66666640;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     transition: 0.3s;
@@ -421,7 +421,7 @@ svg rect
 }
 .VPScontainer .controlBox .settingsPanel button.loop
 {
-    background-color: #ffffff30;
+    background-color: #66666660;
 }
 .VPScontainer .controlBox .settingsPanel button.loop svg
 {
