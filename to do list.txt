@@ -7,3 +7,5 @@ make better fullscreen icon
 make designs for CMS and VPS
 
 add a cinema mode to VPS
+
+make options to disable settings and controls
