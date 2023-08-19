@@ -11,7 +11,6 @@
     width: max(95vmin,68vw);
     margin: 1em auto;
     border-radius: 1.3em;
-    box-shadow: 0 10px 10px #00000020;
     scroll-margin: 10px;
     background-color: var(--colour);
 }
@@ -212,11 +211,15 @@ li:last-of-type
 }
 li::before
 {
-    content: "•";
-    color: var(--colour);
+    content: "";
+    background-color: var(--colour);
     display: inline-block;
-    width: 1em;
+    height: 0.5em;
+    width: 0.5em;
+    margin-bottom: 0.15em;
+    margin-right: 0.5em;
     margin-left: -1em;
+    border-radius: 50%;
 }
 #ENCOREalert
 {

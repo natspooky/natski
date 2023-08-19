@@ -130,6 +130,7 @@ svg rect
     height: 100%;
     width: 100%;
     background-color: #00000040;
+    background-image: linear-gradient(to top, #00000060, transparent, transparent, transparent, transparent);
     opacity: 1;
     transition: 0.3s;
 }
