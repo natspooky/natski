@@ -5,3 +5,5 @@ make vps have funtions with VPS in by using ctrl + f using '(e'
 make better fullscreen icon
 
 make designs for CMS and VPS
+
+add a cinema mode to VPS
