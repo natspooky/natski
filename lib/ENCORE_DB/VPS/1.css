@@ -92,8 +92,11 @@
     /*
         make height and width scale so that it doesnt break 
     */
+    height: 100%;
+    width: 100%;
     min-width: 315px;
     min-height: 280px;
+    object-fit: contain;
 }
 .VPScontainer .VPS.full
 {
