@@ -84,7 +84,7 @@ svg rect
     display: block;
     max-width: 100%;
     min-width: 330px;
-    min-height: 300px;
+    min-height:280px;
     box-shadow: 0 10px 10px #00000020;
 }
 .VPScontainer .VPS
@@ -94,7 +94,7 @@ svg rect
     display: block;
     width: 100%;
     min-width: 330px;
-    min-height: 300px;
+    min-height: 280px;
 }
 .VPScontainer .VPS.full
 {
