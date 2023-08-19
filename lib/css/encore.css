@@ -202,6 +202,18 @@
 {
     background-color: var(--themecoltrans);
 }
+li
+{
+    list-style: none;
+}
+li::before
+{
+    content: "•";
+    color: var(--colour);
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+}
 #ENCOREalert
 {
     position: fixed;
