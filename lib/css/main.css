@@ -415,6 +415,15 @@ main
     transition: 0.3s, opacity 1s;
     transform: scale(1);
 }
+.videoBox
+{
+    position: relative;
+    width: 100%;
+    margin-top: 1em;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
 main .title
 {
     color: var(--textmain);
