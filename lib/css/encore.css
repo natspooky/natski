@@ -206,6 +206,10 @@ li
 {
     list-style: none;
 }
+li:last-of-type
+{
+    margin-bottom: 0px;
+}
 li::before
 {
     content: "•";
