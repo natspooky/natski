@@ -133,7 +133,7 @@ svg rect
     opacity: 1;
     transition: 0.3s;
 }
-.VPScontainer .controlBox::after
+.VPScontainer .controlBox .playField::after
 {
     content: '';
     position: absolute;
@@ -141,7 +141,7 @@ svg rect
     bottom: 0;
     width: 100%;
     height: 100px;
-    z-index: -1;
+    pointer-events: none;
     background-image: linear-gradient(to top, #000000a0, transparent);
 }
 .VPScontainer .controlBox .playField
