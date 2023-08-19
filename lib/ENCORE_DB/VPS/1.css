@@ -89,7 +89,9 @@
     position: relative;
     pointer-events: none;
     display: block;
-    height: 100%;
+    /*
+        make height and width scale so that it doesnt break 
+    */
     min-width: 315px;
     min-height: 280px;
 }
