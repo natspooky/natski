@@ -165,11 +165,10 @@
 {
     content: 'ENCORE VPS';
     position: absolute;
-    top: calc(100% + 15px);
+    top: calc(100% + 10px);
     right: 10px;
     padding: 0.5em;
     background-color: #ffffff25;
-    border: 2px solid #ffffff25;
     color: #e9e9e9;
     border-radius: 0.5em;
     opacity: 0;
