@@ -85,6 +85,7 @@
     min-height: 280px;
     opacity: 0;
     box-shadow: 0 10px 10px #00000020;
+    transition: opacity 0.3s;
 }
 .VPScontainer .VPS
 {
