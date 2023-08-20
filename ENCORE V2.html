@@ -144,17 +144,11 @@
                         </button>
                     </div>
                     <div class="exampleMenu" id="VPSmenu" style="display: none; margin-top: 1em;">
-                        <button style="background-color: #09af0030;" onclick="SSC_settings={'thumbs':document.getElementById('sscthumb').hasAttribute('active'),'progressBar':document.getElementById('sscbar').hasAttribute('active'),'sideButtons':document.getElementById('sscbuttons').hasAttribute('active'),'style':1}; reloadSSC(SSC_settings); ENCOREalert(this.parentNode.id)">
+                        <button style="background-color: #09af0030;" onclick="VPS_settings={'controls':document.getElementById('vpscont').hasAttribute('active'),'style':1}; reloadVPS(VPS_settings); ENCOREalert(this.parentNode.id)">
                             Save Changes
                         </button>
-                        <button class="active" active id="sscthumb" onclick="changeValues(this)">
-                            Thumbs
-                        </button>
-                        <button class="active" active id="sscbar" onclick="changeValues(this)">
-                            Progress Bar
-                        </button>
-                        <button class="active" active id="sscbuttons" onclick="changeValues(this)">
-                            Side Buttons
+                        <button class="active" active id="vpscont" onclick="changeValues(this)">
+                            Controls
                         </button>
                     </div>
                 </div>
@@ -472,7 +466,7 @@
                     case 'VPS':
                         URLdata = document.getElementsByClassName('dropdown')[0];
                         break;
-                    case 'CHANGE THIS ':
+                    case 'PWS':
                         URLdata = document.getElementsByClassName('dropdown')[1];
                         break;
                     case 'CMS':
@@ -511,11 +505,11 @@
                         }else{
                             let script = document.createElement('script'),
                             settings = document.createElement('script');
-                            vps.innerHTML = '<video class="VPS" VPSwidth="0px" poster="icon/portimg/alevel/2thumb.png" title="Example Title" style="display: none;"><source src="icon/portimg/alevel/2.mp4"></video>'
+                            vps.innerHTML = '<video class="VPS" VPSwidth="max(58%, 85vmin)" poster="icon/videos/rainy.jpg" title="Rainy Boots (inabakumori)" style="display: none;"><source src="icon/videos/rainy.mp4"></video>'
                             script.id = 'VPSscript'
                             script.src = 'https://natski.netlify.com/lib/js/ENCORE_VPS.js'
                             settings.id = 'VPSsettings'
-                            settings.innerHTML = "VPS_settings={'thumbs':true,'progressBar':true,'sideButtons':true,'style':1}"
+                            settings.innerHTML = "VPS_settings={'controls':true,'style':1}"
                             document.body.appendChild(script)
                             document.body.appendChild(settings)
                             vps.style.height = 'var(--height)'
@@ -523,19 +517,31 @@
                             document.getElementById('VPSmenu').style.display = 'flex'
                         }
                         break;
+
+                        case 'PWS':
+                            let pws = document.getElementById('PWS');
+                            if(document.getElementById('PWSscript')) {
+                                pws.style.height = 'var(--height)'
+                                pws.style.opacity = '1'
+                                document.getElementById('PWSmenu').style.display = 'flex'
+                            }else{
+                                let script = document.createElement('script'),
+                                settings = document.createElement('script');
+                                pws.innerHTML = ''
+                                script.id = 'PWSscript'
+                                script.src = 'https://natski.netlify.com/lib/js/ENCORE_PWS.js'
+                                settings.id = 'PWSsettings'
+                                settings.innerHTML = "PWS_settings={'thumbs':true,'progressBar':true,'sideButtons':true,'style':1}"
+                                document.body.appendChild(script)
+                                document.body.appendChild(settings)
+                                pws.style.height = 'var(--height)'
+                                pws.style.opacity = '1'
+                                document.getElementById('PWSmenu').style.display = 'flex'
+                            }
+                            break;
                 }
             }
 
-            function unloadSystem(sys) {
-                switch(sys) {
-                    case 'VPS':
-                        let vps = document.getElementById('VPS')
-                        vps.style.height = '0'
-                        vps.style.opacity = '0'
-                        document.getElementById('VPSmenu').style.display = 'none'
-                        break;
-                }
-            }
 
             function unloadSystem(sys) {
                 let itemData;
@@ -543,6 +549,11 @@
                     case 'VPS':
                         itemData = document.getElementById('VPS')
                         document.getElementById('VPSmenu').style.display = 'none'
+                        break;
+
+                    case 'PWS':
+                        itemData = document.getElementById('PWS')
+                        document.getElementById('PWSmenu').style.display = 'none'
                         break;
     
                 }
