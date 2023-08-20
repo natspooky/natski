@@ -199,6 +199,7 @@ svg rect
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 20;
 }
 .VPScontainer .controlBox .controlBar button.setting svg
 {
