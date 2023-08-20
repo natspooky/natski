@@ -71,6 +71,7 @@ svg rect
     min-height: 170px;
     background-color: #000000;
     display: block;
+    opacity: 0;
     box-shadow: 0 10px 10px #00000020;
 }
 .VPScontainer .VPS
