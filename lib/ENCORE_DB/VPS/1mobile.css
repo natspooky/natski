@@ -153,7 +153,7 @@ svg rect
     justify-content: center;
     align-items: center;
 }
-.VPScontainer .controlBox .controlBar button svg,.VPScontainer .controlBox .settingsPanel button svg
+.VPScontainer .controlBox .controlBar button svg,.VPScontainer .controlBox .settingsPanel button svg, .VPScontainer .controlBox .VPSinfoButton
 {
     position: relative;
     display: block;
@@ -178,9 +178,6 @@ svg rect
     right: 25px;
     height: 15px;
     width: 15px;
-    padding: 0;
-    box-sizing: border-box;
-    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
 }
 .VPScontainer .controlBox .controlBar .VPSsettings
 {
@@ -188,9 +185,20 @@ svg rect
     right: 25px;
     height: 20px;
     width: 20px;
-    padding: 0;
-    box-sizing: border-box;
-    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+}
+.VPScontainer .controlBox .VPSinfoButton
+{
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    border: 0;
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .VPScontainer .controlBox .controlBar button.setting svg
 {
