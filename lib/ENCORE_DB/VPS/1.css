@@ -80,7 +80,7 @@
     background-color: #000000;
     display: block;
     max-width: 100%;
-    max-height: 90vh;
+    max-height: 85vh;
     min-width: 315px;
     min-height: 280px;
     opacity: 0;
@@ -93,7 +93,7 @@
     pointer-events: none;
     display: block;
     width: 100%;
-    max-height: 90vh;
+    max-height: 85vh;
     min-width: 315px;
     min-height: 280px;
     object-fit: contain;
