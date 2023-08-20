@@ -8,4 +8,6 @@ make designs for CMS and VPS
 
 add a cinema mode to VPS
 
-make options to disable settings and controls
+make options to disable controls
+
+add link to v2 through VPS
