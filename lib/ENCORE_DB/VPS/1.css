@@ -138,6 +138,14 @@
     opacity: 1;
     transition: 0.3s;
 }
+.VPScontainer .controlBox .VPSinfoButton
+{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    height: 40px;
+    width: 40px;
+}
 .VPScontainer .controlBox .playField::after
 {
     content: '';
@@ -200,7 +208,7 @@
 {
     background-color: #4b4b4b40;
 }
-.VPScontainer .controlBox .controlBar button svg,.VPScontainer .controlBox .settingsPanel button svg
+.VPScontainer .controlBox .controlBar button svg,.VPScontainer .controlBox .settingsPanel button svg, .VPScontainer .controlBox .VPSinfoButton svg
 {
     position: relative;
     display: block;
