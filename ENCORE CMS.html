@@ -200,8 +200,12 @@
 
 
 
-<main style="text-align: center; font-weight: bold; font-size: 1.2rem; padding: 5em 0;">
-    right click anywhere to open the menu! (change text for mobile)
+<main style="text-align: center; font-weight: bold; font-size: 1.2rem; padding: 5em 0; display: none;" id="NonMob">
+    right click anywhere to open the menu!
+</main>
+
+<main style="text-align: center; font-weight: bold; font-size: 1.2rem; padding: 5em 0; display: none;" id="Mob">
+    context menus are not available on mobile devices
 </main>
 
 
@@ -228,7 +232,11 @@
 
         <script src="lib/js/ENCORE_NAT.js"></script>
         <script>
-            // put code to change text based on MOBILE
+            if(!NATdeviceCheck()){
+                document.getElementById('NonMob').style.display = 'block'
+            }else{
+                document.getElementById('Mob').style.display = 'block'
+            }
         </script>
         <script src="lib/js/ENCORE_CMS.js"></script>
         <script>
