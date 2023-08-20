@@ -48,8 +48,8 @@
             border: 2px solid #66666640;
             border-radius: 1em;
             width: fit-content;
-            display: block;
-            margin: 1em auto;
+            display: inline-block;
+            margin: 0.2em auto;
             transition: 0.1s;
         }
         .encore:hover div
@@ -92,16 +92,20 @@
 
 
         <main>
+            <article style="text-align: center; animation: opacity 1s;">
+                <p style="text-align: center;">Each version of <span>ENCORE</span> contains at least 3 Javascript plugins for use on other websites.</p>
+            </article>
+
             <a onclick="parent.loadframe('ENCORE V1');parent.backPage(1)" class="encore">
                 <div>
-                    <img src="icon/thumbnails_small/websites.png" alt="" draggable="false">
+                    <img src="icon/thumbnails_small/ENCOREV1.png" alt="" draggable="false">
                     <p>ENCORE V1</p>
                 </div>
             </a>
-            <!--
-            <a href="ENCORE V2.html" onclick="parent.pageSystem('ENCORE V2');" class="encore">
+<!--
+            <a onclick="parent.loadframe('ENCORE V2');parent.backPage(1)" class="encore">
                 <div>
-                    <img src="icon/thumbnails/encoreVtwo.gif" alt="" draggable="false">
+                    <img src="icon/thumbnails_small/ENCOREV2.png" alt="" draggable="false">
                     <p>ENCORE V2</p>
                 </div>
             </a>-->

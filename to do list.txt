@@ -11,3 +11,5 @@ add a cinema mode to VPS
 make options to disable controls
 
 add link to v2 through VPS
+
+add more detailed instructions to V1
