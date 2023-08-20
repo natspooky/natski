@@ -13,3 +13,7 @@ make options to disable controls
 add link to v2 through VPS
 
 add more detailed instructions to V1
+
+write a better VPS description and add control toggle
+
+make better instructions for CLS, PDS, PDSU, VPS, SSC
