@@ -24,8 +24,10 @@ make PDS have num/num in top center of window
 
 add to changelog
 
-add loader to PDS
+add loader to PDS fullscrn
 
 fix settings spreading across VPS
 
 add pause VPS function to the V2 page
+
+add autoplay to vps?
