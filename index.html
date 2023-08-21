@@ -357,7 +357,7 @@
                 </a>
                 <a name="ENCORE V1" onclick="loadframe(this.name);backPage(-1000)">
                     <div class="featurebanner" name="Information about every ENCORE V1 package">
-                        <img src="icon/thumbnails_small/websites.png" alt="page icon" draggable="false">
+                        <img src="icon/thumbnails_small/ENCOREV1.png" alt="page icon" draggable="false">
                         <p>Setup & Info</p>
                         <span>ENCORE V1</span>
                     </div>
@@ -603,6 +603,7 @@
             
 
                 function unloadframe() {
+                    removeLoader()
                     document.getElementById("SSCU").classList.remove("active")
                     menuClose()
                     document.getElementById("iframePanel").classList.remove("active")
@@ -617,7 +618,7 @@
 
 
                 function loadframe(e) {
-                    resetLoader()
+                    addLoader()
                     if(e.includes('.html')){
                         reloadFrame(e)
                     }else{
@@ -643,6 +644,7 @@
                         framecont.appendChild(frame)
                         framecont.insertBefore(frame, frame.previousElementSibling);
                         framecont.insertBefore(frame, frame.previousElementSibling);
+                        frame.onload = function(){removeLoader()}
                         frame.src = x
                     }, 255);
                 }
@@ -684,15 +686,14 @@
                     document.getElementById('testbar').classList.toggle('active')
                 }
 
-                function resetLoader() {
-                    let loader = document.getElementById('NATloader');
-                    loader.style.display = 'none'
-                    setTimeout(() => {
-                        loader.style.display = 'block'
-                    }, 10);
+
+                function removeLoader(){
+                    document.getElementById('NATloader').style.display = 'none'
                 }
 
-
+                function addLoader(){
+                    document.getElementById('NATloader').style.display = 'block'
+                }
 
 
 

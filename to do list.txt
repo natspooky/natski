@@ -29,3 +29,5 @@ make loader for iframepanel
 add loader to PDS
 
 fix settings spreading across VPS
+
+add pause VPS function to the V2 page
