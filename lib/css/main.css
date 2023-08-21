@@ -210,6 +210,10 @@ header h2
         visibility: visible;
         opacity: 1;
     }
+    .featurebanner:hover p, .featurebanner:hover span
+    {
+        opacity: 0;
+    }
 }
 nav
 {
@@ -701,11 +705,13 @@ main article ul li a
 .featurebanner p
 {
     font-weight: bold;
+    transition: 0.3s;
 }
 .featurebanner span
 {
     font-weight: unset;
     color: var(--displaycolourdark);
+    transition: 0.3s;
 }
 .featurebanner svg
 {
@@ -733,9 +739,9 @@ main article ul li a
     z-index: 999;
     color: var(--textmain);
     border-radius: 10px;
-    background-color: #729ef640;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    background-color: #729ef620;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
     opacity: 0;
     visibility: hidden;
     transition: 0.3s;
