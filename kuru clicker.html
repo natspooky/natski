@@ -38,6 +38,8 @@
         <link rel="stylesheet" type="text/css" href="lib/css/animations.css"/>
         <link rel="stylesheet" type="text/css" media="screen and (orientation: portrait)" href="lib/css/scale.css"/>
         <link rel="prefetch" href="icon/img/kuru.gif">
+        <link rel="prefetch" href="icon/img/ki.gif">
+        <link rel="prefetch" href="icon/img/nahida.gif">
         <link rel="prefetch" href="icon/audio/kuru.mp3">
         <link rel="prefetch" href="icon/audio/kuruine.mp3">
 	</head>
@@ -183,7 +185,6 @@
                 <p id="kuruCombo">
                     Kuru Max Combo: <span id="combo">0</span>
                 </p>
-                <span class="kuruParticle"></span>
                 <div class="kuruButton" id="kuruButton">
                     <p>Click to kuru!</p>
                     <img src="icon/img/kuru.gif">
@@ -240,7 +241,20 @@
 
             function kuruImage() {
                 let image = document.createElement('img');
-                image.src = 'icon/img/kuru.gif'
+                switch(Math.floor(Math.random() * 150)){
+                    default:
+                        image.src = 'icon/img/kuru.gif'
+                        break;
+                    case 1:
+                        image.src = 'icon/img/ki.gif'
+                        break;
+                    case 2:
+                        image.src = 'icon/img/nahida.gif'
+                        break;
+                    case 3:
+                        image.src = 'icon/img/traveler.gif'
+                        break;
+                }
                 image.className = 'kuruImage'
                 document.getElementById('kuruContainer').appendChild(image)
                 setTimeout(() => {
