@@ -205,7 +205,12 @@ header h2
         transform: scale(1.05);
         transition: 0s;
     }
+    .featurebanner:hover::before
+    {
+        visibility: visible;
+        opacity: 1;
     }
+}
 nav
 {
     position: fixed;
@@ -681,18 +686,8 @@ main article ul li a
     background-color: var(--accentcoltranslighter);
     line-height: 1.5em;
     text-align: left;
-    transition: 0.2s;
-}
-.featurebanner:hover
-{
-    background-color: var(--accentcoltrans);
-    transition: 0s;
-}
-.featurebanner:hover::before
-{
-    transform: translateY(0) translateX(-50%);
-    opacity: 1;
-    visibility: visible;
+    transition: 0.3s;
+    overflow: hidden;
 }
 .featurebanner img
 {
@@ -712,25 +707,38 @@ main article ul li a
     font-weight: unset;
     color: var(--displaycolourdark);
 }
+.featurebanner svg
+{
+    position: absolute;
+    height: 200%;
+    right: 5%;
+    top: -40%;
+    fill: #66666610;
+}
 .featurebanner::before
 {
     pointer-events: none;
     content: attr(name);
     position: absolute;
-    top: calc(0.5em + 100%);
-    transform: translateY(1em) translateX(-50%);
-    left: 50%;
-    padding: 0.5em;
-    width: 90%;
-    text-align: center;
-    line-height: 1.5rem;
+    top: 0.5em;
+    left: 4em;
+    width: calc(100% - 4.5em);
+    height: 3em;
+    text-align: left;
+    box-sizing: border-box;
+    padding: 0 0.7em;
+    line-height: 1em;
+    display: flex;
+    align-items: center;
     z-index: 999;
     color: var(--textmain);
     border-radius: 10px;
-    background-color: #0b1627;
+    background-color: #729ef640;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     opacity: 0;
     visibility: hidden;
-    transition: 0.2s;
+    transition: 0.3s;
 }
 .chapterselector
 {

@@ -24,8 +24,6 @@ make PDS have num/num in top center of window
 
 add to changelog
 
-make loader for iframepanel
-
 add loader to PDS
 
 fix settings spreading across VPS

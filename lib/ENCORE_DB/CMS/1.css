@@ -96,7 +96,6 @@
     position: sticky;
     top: 0;
     z-index: 999;
-    
     background-image: linear-gradient(to bottom, #666666af, #666666af, transparent);
 }
 #CMScontextMenu .CMScontext .CMSback svg
