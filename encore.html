@@ -40,6 +40,21 @@
         
 	</head>
     <style>
+        @media (hover:hover){
+            .encore div:hover
+            {
+                border-radius: 1.5em;
+            }
+            .encore div:hover img
+            {
+                transform: scale(1.23);
+                transform-origin: top;
+            }
+            .encore div:hover p
+            {
+                opacity: 0;
+            }
+        }
         .encore div
         {
             position: relative;
@@ -49,8 +64,8 @@
             border-radius: 1em;
             width: fit-content;
             display: inline-block;
-            margin: 0.2em auto;
-            transition: 0.1s;
+            margin: 0.5em;
+            transition: 0.1s, border-radius 0.3s;
         }
         .encore:hover div
         {
@@ -62,6 +77,8 @@
             width: 8em;
             height: 8em;
             border-radius: 0.5em;
+            z-index: 10;
+            transition: 0.3s;
         }
         .encore div p
         {
@@ -71,6 +88,8 @@
             text-align: center;
             pointer-events: none;
             font-weight: bold;
+            opacity: 1;
+            transition: 0.3s;
         }
     </style>
 
@@ -88,13 +107,14 @@
             </div>
             <h2>ENCORE</h2>
         </header>
-
-
-
+<!--
         <main>
             <article style="text-align: center; animation: opacity 1s;">
                 <p style="text-align: center;">Each version of <span>ENCORE</span> contains at least 3 Javascript plugins for use on other websites.</p>
-            </article>
+            </article> 
+        </main>
+-->
+        <main style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center;">
 
             <a onclick="parent.loadframe('ENCORE V1');parent.backPage(1)" class="encore">
                 <div>
@@ -102,13 +122,13 @@
                     <p>ENCORE V1</p>
                 </div>
             </a>
-<!--
+
             <a onclick="parent.loadframe('ENCORE V2');parent.backPage(1)" class="encore">
                 <div>
                     <img src="icon/thumbnails_small/ENCOREV2.png" alt="" draggable="false">
                     <p>ENCORE V2</p>
                 </div>
-            </a>-->
+            </a>
         </main>
 
 
