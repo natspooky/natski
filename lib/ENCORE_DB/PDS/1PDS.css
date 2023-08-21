@@ -165,11 +165,11 @@
 #PDSinspectPanel span
 {
     position: absolute;
-    padding: 0.6em 0.8em;
+    padding: 0.4em 1em;
     top: 0.8em;
     left: 50%;
     transform: translateX(-50%);
-    border-radius: 5px;
+    border-radius: 10px;
     background-color: var(--PDScolor);
     border: 2px solid var(--PDScolor);
     font-weight: bold;
