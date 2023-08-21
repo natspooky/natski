@@ -617,6 +617,7 @@
 
 
                 function loadframe(e) {
+                    resetLoader()
                     if(e.includes('.html')){
                         reloadFrame(e)
                     }else{
@@ -685,10 +686,10 @@
 
                 function resetLoader() {
                     let loader = document.getElementById('NATloader');
-                    loader.style.animation = 'unset'
+                    loader.style.display = 'none'
                     setTimeout(() => {
-                        loader.style.animation = 'NATloader 1.8s infinite ease-in-out'
-                    }, 5);
+                        loader.style.display = 'block'
+                    }, 10);
                 }
 
 
