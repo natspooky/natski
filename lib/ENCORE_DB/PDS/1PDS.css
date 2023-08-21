@@ -162,7 +162,7 @@
     fill: #fff;
     height: 15px;
 }
-#PDSinspectPanel .PDScounter
+#PDSinspectPanel #PDScounter
 {
     position: absolute;
     padding: 0.4em 1em;
