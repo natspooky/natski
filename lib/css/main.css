@@ -213,6 +213,7 @@ header h2
     .featurebanner:hover p, .featurebanner:hover span
     {
         opacity: 0;
+        transform: translateY(7px);
     }
 }
 nav
@@ -693,6 +694,11 @@ main article ul li a
     transition: 0.3s;
     overflow: hidden;
 }
+.featurebanner:active
+{
+    background-color: #00000070;
+    transition: 0s;
+}
 .featurebanner img
 {
     margin: 0 0.5em 0 0;
@@ -705,11 +711,13 @@ main article ul li a
 .featurebanner p
 {
     font-weight: bold;
+    transform: translateX(0);
     transition: 0.3s;
 }
 .featurebanner span
 {
     font-weight: unset;
+    transform: translateX(0);
     color: var(--displaycolourdark);
     transition: 0.3s;
 }
@@ -739,7 +747,7 @@ main article ul li a
     z-index: 999;
     color: var(--textmain);
     border-radius: 10px;
-    background-color: #729ef620;
+    background-color: #729ef615;
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
     opacity: 0;
