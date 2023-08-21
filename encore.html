@@ -60,7 +60,7 @@
             position: relative;
             padding: 1em 2em;
             background-color: #66666610;
-            border: 2px solid #66666640;
+            border: 1px solid #66666640;
             border-radius: 1em;
             width: fit-content;
             display: inline-block;
@@ -90,6 +90,16 @@
             font-weight: bold;
             opacity: 1;
             transition: 0.3s;
+        }
+        @media (orientation: portrait) {
+            .encore div
+            {
+                width: 90vw;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
         }
     </style>
 
