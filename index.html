@@ -382,7 +382,7 @@
 
         <div class="iframePanel" id="iframePanel">
 
-            <span class="NATloader"></span>
+            <span id="NATloader"></span>
 
 
             <iframe id="iframe"></iframe>
@@ -683,7 +683,13 @@
                     document.getElementById('testbar').classList.toggle('active')
                 }
 
-
+                function resetLoader() {
+                    let loader = document.getElementById('NATloader');
+                    loader.style.animation = 'unset'
+                    setTimeout(() => {
+                        loader.style.animation = 'NATloader 1.8s infinite ease-in-out'
+                    }, 5);
+                }
 
 
 

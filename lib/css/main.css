@@ -400,14 +400,14 @@ nav span
     transition: 0.3s;
     transition-delay: 0.3s;
 }
-.NATloader, .NATloader:before, .NATloader:after {
+#NATloader, #NATloader:before, #NATloader:after {
     border-radius: 50%;
     width: 2.5em;
     height: 2.5em;
     animation-fill-mode: both;
     animation: NATloader 1.8s infinite ease-in-out;
   }
-  .NATloader {
+  #NATloader {
     color: var(--themecol);
     font-size: 7px;
     position: absolute;
@@ -417,17 +417,16 @@ nav span
     transform: translateZ(0) translateY(-50%) translateX(-50%);
     animation-delay: -0.16s;
   }
-  .NATloader:before,
-  .NATloader:after {
+  #NATloader:before,#NATloader:after {
     content: '';
     position: absolute;
     top: 0;
   }
-  .NATloader:before {
+  #NATloader:before {
     left: -3.5em;
     animation-delay: -0.32s;
   }
-  .NATloader:after {
+  #NATloader:after {
     left: 3.5em;
   }
   
