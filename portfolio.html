@@ -312,5 +312,33 @@
             <p>ENCORE.js requires javascript in order to run, please enable javascript</p>
         </noscript>
         <script src="lib/js/ENCORE_NAT.js"></script>
+
+        <script>
+            function colourSystem(e) { 
+    if(preference!=='true') {
+        let a, o, c, s, l = document.createElement("canvas"), 
+        r = l.getContext && l.getContext("2d"), 
+        n = {r: 0, g: 0, b: 0}, 
+        i = 0;
+        c = l.height = e.naturalHeight || e.offsetHeight || e.height, 
+        o = l.width = e.naturalWidth || e.offsetWidth || e.width, 
+        r.drawImage(e, 0, 0), 
+        s = (a = r.getImageData(0, 0, o, c)).data.length;
+        for (let g = 0; g < s; g += 4) n.r += a.data[g], n.g += a.data[g + 1], 
+        n.b += a.data[g + 2], i++;
+        n.r = Math.floor(n.r / i), 
+        n.g = Math.floor(n.g / i), 
+        n.b = Math.floor(n.b / i)
+        return "rgba(" + n.r + "," + n.g + "," + n.b + ","
+    }
+}
+
+
+window.onload = function(){
+    for(let i = 0; i < document.getElementsByTagName('img').length; i++){
+    document.getElementsByTagName('img')[i].parentNode.style.backgroundImage = 'linear-gradient(to right,'+colourSystem(document.getElementsByTagName('img')[i]) +'0.7), transparent)'
+}
+}
+        </script>
     </body>
 </html>

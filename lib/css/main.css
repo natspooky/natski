@@ -940,6 +940,7 @@ main article ul li a
     display: inline-block;
     height: fit-content;
     width: fit-content;
+    flex-grow: 1;
     border-radius: 20px;
     margin: 5px 10px 0px 10px;
     scroll-snap-align: start;
@@ -952,7 +953,7 @@ main article ul li a
 {
     position: relative;
     padding: 1em;
-    width: fit-content;
+    width: 100%;
     height: fit-content;
     background-color: #66666620;
     border-radius: 20px;
