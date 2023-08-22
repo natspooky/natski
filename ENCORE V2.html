@@ -149,10 +149,10 @@
                         </button>
                     </div>
                     <div class="exampleMenu" id="VPSmenu" style="display: none; margin-top: 1em;">
-                        <button style="background-color: #09af0030;" onclick="VPS_settings={'loop':document.getElementById('vpsloop').hasAttribute('active'),'style':1}; reloadVPS(VPS_settings); ENCOREalert(this.parentNode.id)">
+                        <button style="background-color: #09af0030;" onclick="VPS_settings={'loop':document.getElementById('vpsloop').hasAttribute('active'),'style':1}; reloadVPS(); ENCOREalert(this.parentNode.id)">
                             Save Changes
                         </button>
-                        <button class="active" active id="vpsloop" onclick="changeValues(this)">
+                        <button id="vpsloop" onclick="changeValues(this)">
                             Loop
                         </button>
                     </div>
