@@ -122,7 +122,8 @@
 <code>&lt;script src="https://natski.netlify.app/lib/js/ENCORE_VPS.js"&gt;&lt;/script&gt;
 &lt;script&gt;
     VPS_settings={
-        'controls':true,
+        'autoplay':false,
+        'loop':false,
         'style':1
     }
 &lt;/script&gt;
@@ -149,11 +150,14 @@
                         </button>
                     </div>
                     <div class="exampleMenu" id="VPSmenu" style="display: none; margin-top: 1em;">
-                        <button style="background-color: #09af0030;" onclick="VPS_settings={'controls':document.getElementById('vpscont').hasAttribute('active'),'style':1}; reloadVPS(VPS_settings); ENCOREalert(this.parentNode.id)">
+                        <button style="background-color: #09af0030;" onclick="VPS_settings={'autoplay':document.getElementById('vpsauto').hasAttribute('active'),'loop':document.getElementById('vpsloop').hasAttribute('active'),'style':1}; reloadVPS(VPS_settings); ENCOREalert(this.parentNode.id)">
                             Save Changes
                         </button>
-                        <button class="active" active id="vpscont" onclick="changeValues(this)">
-                            Controls
+                        <button class="active" active id="vpsauto" onclick="changeValues(this)">
+                            Autoplay
+                        </button>
+                        <button class="active" active id="vpsloop" onclick="changeValues(this)">
+                            Loop
                         </button>
                     </div>
                 </div>
@@ -514,7 +518,7 @@
                             script.id = 'VPSscript'
                             script.src = 'https://natski.netlify.com/lib/js/ENCORE_VPS.js'
                             settings.id = 'VPSsettings'
-                            settings.innerHTML = "VPS_settings={'controls':true,'style':1}"
+                            settings.innerHTML = "VPS_settings={'autoplay':false,'loop':false,'style':1}"
                             document.body.appendChild(script)
                             document.body.appendChild(settings)
                             vps.style.height = 'var(--height)'

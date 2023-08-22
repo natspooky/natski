@@ -30,6 +30,6 @@ fix settings spreading across VPS
 
 add pause VPS function to the V2 page
 
-add autoplay to vps?
+make VPS have a reset VPS function
 
 sneakstash width for portrait is 740px
