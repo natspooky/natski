@@ -713,15 +713,15 @@
                 function openMenu(e) {
                     resetMenu()
                     let menu = document.getElementById('contextMenu');
-                    menu.style.top = e.clientY + 5 + 'px'
-                    menu.style.left = e.clientX + 5 + 'px'
-                    menu.style.height = menu.children[0].offsetHeight + 'px'
+                    menu.style.top = `${e.clientY + 5}px`
+                    menu.style.left = `${e.clientX + 5}px`
+                    menu.style.height = `${menu.children[0].offsetHeight}px`
                     menu.classList.add('active')
                     if (menu.children[0].offsetHeight + menu.offsetTop >= window.innerHeight - 20) {
-                        menu.style.top = window.innerHeight - menu.children[0].offsetHeight - 20 + 'px'
+                        menu.style.top = `${window.innerHeight - menu.children[0].offsetHeight - 20}px`
                     }
                     if(menu.offsetWidth + menu.offsetLeft >= window.innerWidth - 20){
-                        menu.style.left = window.innerWidth - menu.children[0].offsetWidth - 20 + 'px'
+                        menu.style.left = `${window.innerWidth - menu.children[0].offsetWidth - 20}px`
                     }
                 }
 
@@ -741,7 +741,7 @@
                     }
                     document.getElementById(e).classList.add('active')
                     document.getElementById('mainContext').classList.add('active')
-                    menu.style.height = document.getElementById(e).offsetHeight + 'px'
+                    menu.style.height = `${document.getElementById(e).offsetHeight}px`
                 }
 
                 function resetMenu() {
@@ -750,7 +750,7 @@
                     for(let i = 0; i < tiles.length; i++) {
                         tiles[i].classList.remove('active')
                     }
-                    menu.style.height = menu.children[0].offsetHeight + 'px'
+                    menu.style.height = `${menu.children[0].offsetHeight}px`
                 }
         </script>
 
