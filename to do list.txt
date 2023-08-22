@@ -33,3 +33,5 @@ add pause VPS function to the V2 page
 make VPS have a reset VPS function
 
 sneakstash width for portrait is 740px
+
+make kuru clicker run on a canvas
