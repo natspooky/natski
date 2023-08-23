@@ -1,36 +1,27 @@
 make vps have classnames with VPS in
 
-make vps have funtions with VPS in by using ctrl + f using '(e'
-
 make better fullscreen icon
 
-make designs for CMS and VPS
+make designs for PWS
 
 add a cinema mode to VPS
 
-make options to disable controls
 
-add link to v2 through VPS
+add link to v2 through VPS info icon
+
+make info link through CLS
 
 add more detailed instructions to V1
 
-write a better VPS description and add control toggle
+write a better VPS description
 
 make better instructions for CLS, PDS, PDSU, VPS, SSC, CLSF
 
 change text in ENCORE.html
 
-make PDS have num/num in top center of window
-
 add to changelog
 
-add loader to PDS fullscrn
-
-fix settings spreading across VPS
-
-add pause VPS function to the V2 page
-
-make VPS have a reset VPS function
+fix settings spreading across VPS {breaks with slow devices}
 
 sneakstash width for portrait is 740px
 

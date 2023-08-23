@@ -367,7 +367,7 @@
     border: 1px solid #3e3e3e40;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    transition: 0.3s;
+    transition: opacity 0.3s, height 0.3s, visibility 0.3s;
 }
 .VPScontainer .controlBox .settingsPanel.active
 {
