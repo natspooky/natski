@@ -957,6 +957,7 @@ main article ul li a
     height: fit-content;
     background-color: #66666620;
     border-radius: 20px;
+    overflow: hidden;
     transition: 0.2s;
 }
 .portanchor .titlebutton div
