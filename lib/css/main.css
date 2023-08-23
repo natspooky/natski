@@ -25,6 +25,7 @@
     --textsub: #8b8b8b;
     --bar: #729ef6;
     --codewindow: #b5b5b5;
+    --NATcol: transparent;
 }
 
 ::-webkit-scrollbar-thumb
@@ -940,7 +941,6 @@ main article ul li a
     display: inline-block;
     height: fit-content;
     width: fit-content;
-    flex-grow: 1;
     border-radius: 20px;
     margin: 5px 10px 0px 10px;
     scroll-snap-align: start;
@@ -953,7 +953,7 @@ main article ul li a
 {
     position: relative;
     padding: 1em;
-    width: 100%;
+    width: fit-content;
     height: fit-content;
     background-color: #66666620;
     border-radius: 20px;
@@ -1003,6 +1003,17 @@ main article ul li a
     position: relative;
     display: inline-block;
     color: var(--textsub);
+}
+.portanchor .titlebutton::before
+{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--NATcol);
+    transition: 0.3s;
 }
 #CLSloader
 {
@@ -1180,15 +1191,6 @@ noscript
     main .title
     {
         padding: 0 0.5em;
-    }
-    .portanchor
-    {
-        width: fit-content;
-        flex-grow: 0;
-    }
-    .portanchor .titlebutton
-    {
-        width: fit-content;
     }
     .portanchor .titlebutton div
     {
