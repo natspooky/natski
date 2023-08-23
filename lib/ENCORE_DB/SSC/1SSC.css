@@ -37,7 +37,7 @@
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    background-color: #101010;
+    background-color: transparent;
     border: 2px solid var(--SSCcolor);
     border-radius: 10px;
     overflow: hidden;
@@ -47,7 +47,8 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    height: 100px;
+    height: 200px;
+    width: 200px;
     display: block;
     fill: #66666620;
     transform: translate(-50%,-50%);
