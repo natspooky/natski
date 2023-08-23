@@ -317,9 +317,24 @@
 
 window.onload = function(){
     for(let i = 1; i < document.getElementsByTagName('img').length; i++){
-        document.getElementsByTagName('img')[i].parentNode.parentNode.style.backgroundImage = "radial-gradient(circle farthest-side at top left,"+colourSystem(document.getElementsByTagName('img')[i])+" 0.3), transparent)"
+        if(preference!=='true') {
+            let pageimg = document.getElementsByTagName('img')[i]
+            if(pageimg.complete && pageimg.naturalHeight !== 0){
+                setTimeout(() => {
+                    pageimg.parentNode.parentNode.style.backgroundImage = "radial-gradient(circle farthest-side at top left,"+colourSystem(pageimg)+" 0.25), transparent)"
+                }, 50);
+            }else{
+                pageimg.onload = function(){
+                    setTimeout(() => {
+                        pageimg.parentNode.parentNode.style.backgroundImage = "radial-gradient(circle farthest-side at top left,"+colourSystem(pageimg)+" 0.25), transparent)"
+                    }, 50);
+                }
+            }
+        }
     }
-}
+}  
+
+
         </script>
     </body>
 </html>

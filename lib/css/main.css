@@ -1181,6 +1181,15 @@ noscript
     {
         padding: 0 0.5em;
     }
+    .portanchor
+    {
+        width: fit-content;
+        flex-grow: 0;
+    }
+    .portanchor .titlebutton
+    {
+        width: fit-content;
+    }
     .portanchor .titlebutton div
     {
         width: 150px;
