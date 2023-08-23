@@ -47,7 +47,8 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    height: 70%;
+    height: 100px;
+    display: block;
     fill: #66666620;
     transform: translate(-50%,-50%);
 }
