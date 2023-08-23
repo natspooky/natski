@@ -336,7 +336,7 @@
 
 window.onload = function(){
     for(let i = 0; i < document.getElementsByTagName('img').length; i++){
-    document.getElementsByTagName('img')[i].parentNode.parentNode.style.backgroundImage = 'linear-gradient(to right,'+colourSystem(document.getElementsByTagName('img')[i]) +'0.4), transparent)'
+    document.getElementsByTagName('img')[i].parentNode.parentNode.style.backgroundImage = "radial-gradient(circle farthest-side at top left,"+colourSystem(document.getElementsByTagName('img')[i])+" 0.2), transparent)"
 }
 }
         </script>
