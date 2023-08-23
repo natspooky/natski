@@ -42,24 +42,6 @@
     border-radius: 10px;
     overflow: hidden;
 }
-#SSC .SSCsvg
-{
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-#SSC .SSCsvg svg
-{
-    position: relative;
-    height: 200px;
-    display: block;
-    fill: #66666605;
-}
 #SSC .pagebutton
 {
     position: absolute;
