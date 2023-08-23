@@ -220,7 +220,7 @@ header h2
     .featurebanner:hover svg
     {
         fill: #66666630;
-        transform: translateY(-15px);
+        transform: translateY(-15px) rotate(15deg);
     }
 }
 nav
@@ -734,6 +734,7 @@ main article ul li a
     height: 200%;
     right: 5%;
     top: -40%;
+    transform: translateY(0) rotate(15deg);
     fill: #66666610;
     transition: 0.3s;
 }
