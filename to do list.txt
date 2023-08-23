@@ -39,3 +39,9 @@ make closing settings put back to main setting page VPS
 make ENCORE page use SSCU
 
 make multiple SSCU pages possible
+
+optimise all ENCORE to be in smaller chunks
+
+put ENCORE CMSF into a js file [CME]
+
+make index buttons have aria-label
