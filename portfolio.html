@@ -317,21 +317,20 @@
 
 window.onload = function(){
     if(preference!=='true' && !NATdeviceCheck()) {
-        for(let i = 1; i < document.getElementsByTagName('img').length; i++){
-            setTimeout(() => {
-                let pageimg = document.getElementsByTagName('img')[i]
-                if(pageimg.complete && pageimg.naturalHeight !== 0){
+        let img = document.getElementsByTagName('img');
+        for(let i = 1; i < img.length; i++){
+            let pageimg = img[i]
+            if(pageimg.complete && pageimg.naturalHeight !== 0){
+                setTimeout(() => {
+                    pageimg.parentNode.parentNode.style.setProperty('--NATcol', colourSystem(pageimg)+" 0.1)")
+                }, 615);
+            }else{
+                pageimg.onload = function(){
                     setTimeout(() => {
                         pageimg.parentNode.parentNode.style.setProperty('--NATcol', colourSystem(pageimg)+" 0.1)")
                     }, 615);
-                }else{
-                    pageimg.onload = function(){
-                        setTimeout(() => {
-                            pageimg.parentNode.parentNode.style.setProperty('--NATcol', colourSystem(pageimg)+" 0.1)")
-                        }, 615);
-                    }
                 }
-            }, 500);
+            }
         }
     }
 }  
