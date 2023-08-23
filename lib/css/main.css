@@ -1015,7 +1015,7 @@ main article ul li a
     width: 100%;
     height: 100%;
     background-color: var(--NATcol);
-    transition: 0.3s;
+    transition: 1s;
 }
 #CLSloader
 {
