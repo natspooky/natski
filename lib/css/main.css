@@ -202,7 +202,7 @@ header h2
     }
     .portanchor .titlebutton:hover:active
     {
-        transform: scale(1.05);
+        background-color: #66666640;
         transition: 0s;
     }
     .featurebanner:hover::before
@@ -1003,6 +1003,15 @@ main article ul li a
     position: relative;
     display: inline-block;
     color: var(--textsub);
+}
+.portanchor .titlebutton svg
+{
+    position: absolute;
+    height: 200%;
+    right: 5%;
+    top: -40%;
+    fill: #66666610;
+    transition: 0.3s;
 }
 #CLSloader
 {
