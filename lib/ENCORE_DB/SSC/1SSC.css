@@ -42,6 +42,15 @@
     border-radius: 10px;
     overflow: hidden;
 }
+#SSC .SSCsvg
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 70%;
+    fill: #66666620;
+    transform: translate(-50%,-50%);
+}
 #SSC .pagebutton
 {
     position: absolute;
