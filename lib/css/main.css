@@ -940,7 +940,7 @@ main article ul li a
     display: inline-block;
     height: fit-content;
     width: fit-content;
-    flex-grow: 1;
+    flex-grow: 0;
     border-radius: 20px;
     margin: 5px 10px 0px 10px;
     scroll-snap-align: start;
@@ -1003,15 +1003,6 @@ main article ul li a
     position: relative;
     display: inline-block;
     color: var(--textsub);
-}
-.portanchor .titlebutton svg
-{
-    position: absolute;
-    height: 200%;
-    right: 5%;
-    top: -40%;
-    fill: #66666610;
-    transition: 0.3s;
 }
 #CLSloader
 {
