@@ -32,3 +32,5 @@ add descriptions to PDSU based on image 'name'
 attach PWS onto SSC
 
 make background of most ENCORE be the accociated SVG
+
+make closing settings put back to main setting page VPS
