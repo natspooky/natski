@@ -940,7 +940,7 @@ main article ul li a
     display: inline-block;
     height: fit-content;
     width: fit-content;
-    flex-grow: 0;
+    flex-grow: 1;
     border-radius: 20px;
     margin: 5px 10px 0px 10px;
     scroll-snap-align: start;
