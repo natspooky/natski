@@ -322,12 +322,12 @@ window.onload = function(){
             if(pageimg.complete && pageimg.naturalHeight !== 0){
                 setTimeout(() => {
                     pageimg.parentNode.parentNode.style.setProperty('--NATcol', colourSystem(pageimg)+" 0.1)")
-                }, 50);
+                }, 615);
             }else{
                 pageimg.onload = function(){
                     setTimeout(() => {
                         pageimg.parentNode.parentNode.style.setProperty('--NATcol', colourSystem(pageimg)+" 0.1)")
-                    }, 50);
+                    }, 615);
                 }
             }
         }
