@@ -66,14 +66,9 @@
             <article style="animation: opacity 1s;">
                 <p style="text-align: left;"><span>V2</span> consists of 3 plugins and a formatter:<br><br><ul>
                     <li style="--colour: #3b43e0;"><span>ENCORE VPS <b>//</b> Video Player System</span></li>
-                    <li style="--colour: #000000;"><span>COMING SOON</span></li>
-                    <li style="--colour: #000000;"><span>COMING SOON</span></li>
-                    <li style="--colour: #000000;"><span>COMING SOON</span></li>
-                    <!--
-                    <li style="--colour: #44a8ff;"><span>ENCORE PWS <b>//</b> Parallax Window System</span></li>
-                    <li style="--colour: #44ff4d;"><span>ENCORE CMS <b>//</b> Context Menu System</span></li>
+                    <li style="--colour: #e13333;"><span>ENCORE PWS <b>//</b> Parallax Window System</span></li>
+                    <li style="--colour: #ed5b21;"><span>ENCORE CMS <b>//</b> Context Menu System</span></li>
                     <li style="--colour: #d4d4d4;"><span>ENCORE CMSF <b>//</b> Context Menu System Formatter</span></li>
-                -->
                 </ul>
             </p>
             </article>
@@ -159,10 +154,10 @@
                 </div>
             </div>
 
-<!--
-            <div class="dropdown" id="encoreCMS" style="--colour: #00000015;">
+
+            <div class="dropdown" id="encoreCMS" style="--colour: #ff000015;">
                 <div class="dropdownheader">
-                    <img src="icon/thumbnails_small/CMS.png" alt="PWS" draggable="false">
+                    <img src="icon/thumbnails_small/PWS.png" alt="PWS" draggable="false">
                     <p>ENCORE PWS<span>  •  Parallax Window System</span></p>
                     <div>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.35 850.35">
@@ -171,86 +166,7 @@
                     </div>
                 </div>
                 <div class="contentbox">
-                    <p>ENCORE SSC is a preprogrammed javascript carousel package that can be added to any website without having to worry about any javascript programming.</p>
-                    <hr>
-
-                    <p>Code that needs to be added into your HTML file:</p>
-
-                    <div class="codecontainer">
-                        <div class="codebox">
-<pre>
-<code>&lt;div id="SSC" style="opacity: 0; display: none;"&gt;
-
-    &lt;div class="banner-bg"&gt; &lt;!-- duplicate 'banner-bg' for the amount of pages you want --&gt;
-
-        &lt;img src="path of background image" alt=""&gt;
-
-        &lt;a class="banner-button" href="insert link here"&gt;enter&lt;/a&gt;
-
-        &lt;!-- place content in here --&gt;
-
-    &lt;/div&gt;
-
-&lt;/div&gt;
-</code></pre>
-                        </div>
-                        <div class="copybox">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.39 850.39">
-                                <path d="M389.7,715.19h126.3v83.3c0,28.67-23.24,51.9-51.9,51.9H51.9c-28.66,0-51.9-23.23-51.9-51.9V227.1c0-28.66,23.24-51.9,51.9-51.9h245.9v448.09c0,50.68,41.23,91.9,91.9,91.9Z"/>
-                                <rect  x="334.39" width="516" height="675.19" rx="51.9" ry="51.9"/>
-                            </svg>
-                        </div>
-                    </div>
-
-                    <p>Code that needs to be appended at the bottom of your HTML file:</p>
-                    <div class="codecontainer">
-                        <div class="codebox">
-<pre>
-<code>&lt;script src="https://natski.netlify.app/lib/js/ENCORE_SSC.js"&gt;&lt;/script&gt;
-&lt;script&gt;
-    SSC_settings={
-        'thumbs':true,
-        'progressBar':true,
-        'sideButtons':true,
-        'style':1
-    }
-&lt;/script&gt;
-</code></pre>
-                        </div>
-                        <div class="copybox">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.39 850.39">
-                                <path d="M389.7,715.19h126.3v83.3c0,28.67-23.24,51.9-51.9,51.9H51.9c-28.66,0-51.9-23.23-51.9-51.9V227.1c0-28.66,23.24-51.9,51.9-51.9h245.9v448.09c0,50.68,41.23,91.9,91.9,91.9Z"/>
-                                <rect  x="334.39" width="516" height="675.19" rx="51.9" ry="51.9"/>
-                            </svg>
-                        </div>
-                    </div>
-                
-                    <p>ENCORE SSC Example:</p>
-
-                    <div class="previewWindow" style="--height: 50vh; opacity: 0; margin: 1em 0;" id="SSC"></div>
-
-                    <div class="exampleMenu">
-                        <button onclick="loadSystem('SSC')">
-                            Load SSC
-                        </button>
-                        <button onclick="unloadSystem('SSC')">
-                            Unload SSC
-                        </button>
-                    </div>
-                    <div class="exampleMenu" id="SSCmenu" style="display: none; margin-top: 1em;">
-                        <button style="background-color: #09af0030;" onclick="SSC_settings={'thumbs':document.getElementById('sscthumb').hasAttribute('active'),'progressBar':document.getElementById('sscbar').hasAttribute('active'),'sideButtons':document.getElementById('sscbuttons').hasAttribute('active'),'style':1}; reloadSSC(SSC_settings); ENCOREalert(this.parentNode.id)">
-                            Save Changes
-                        </button>
-                        <button class="active" active id="sscthumb" onclick="changeValues(this)">
-                            Thumbs
-                        </button>
-                        <button class="active" active id="sscbar" onclick="changeValues(this)">
-                            Progress Bar
-                        </button>
-                        <button class="active" active id="sscbuttons" onclick="changeValues(this)">
-                            Side Buttons
-                        </button>
-                    </div>
+                    [testing in progress]
                 </div>
             </div>
 
@@ -258,7 +174,7 @@
 
 
 
-            <div class="dropdown" id="encoreCMS" style="--colour: #00000015;">
+            <div class="dropdown" id="encoreCMS" style="--colour: #ff800015;">
                 <div class="dropdownheader">
                     <img src="icon/thumbnails_small/CMS.png" alt="CMS" draggable="false">
                     <p>ENCORE CMS<span>  •  Context Menu System</span></p>
@@ -269,93 +185,14 @@
                     </div>
                 </div>
                 <div class="contentbox">
-                    <p>ENCORE SSC is a preprogrammed javascript carousel package that can be added to any website without having to worry about any javascript programming.</p>
-                    <hr>
-
-                    <p>Code that needs to be added into your HTML file:</p>
-
-                    <div class="codecontainer">
-                        <div class="codebox">
-<pre>
-<code>&lt;div id="SSC" style="opacity: 0; display: none;"&gt;
-
-    &lt;div class="banner-bg"&gt; &lt;!-- duplicate 'banner-bg' for the amount of pages you want --&gt;
-
-        &lt;img src="path of background image" alt=""&gt;
-
-        &lt;a class="banner-button" href="insert link here"&gt;enter&lt;/a&gt;
-
-        &lt;!-- place content in here --&gt;
-
-    &lt;/div&gt;
-
-&lt;/div&gt;
-</code></pre>
-                        </div>
-                        <div class="copybox">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.39 850.39">
-                                <path d="M389.7,715.19h126.3v83.3c0,28.67-23.24,51.9-51.9,51.9H51.9c-28.66,0-51.9-23.23-51.9-51.9V227.1c0-28.66,23.24-51.9,51.9-51.9h245.9v448.09c0,50.68,41.23,91.9,91.9,91.9Z"/>
-                                <rect  x="334.39" width="516" height="675.19" rx="51.9" ry="51.9"/>
-                            </svg>
-                        </div>
-                    </div>
-
-                    <p>Code that needs to be appended at the bottom of your HTML file:</p>
-                    <div class="codecontainer">
-                        <div class="codebox">
-<pre>
-<code>&lt;script src="https://natski.netlify.app/lib/js/ENCORE_SSC.js"&gt;&lt;/script&gt;
-&lt;script&gt;
-    SSC_settings={
-        'thumbs':true,
-        'progressBar':true,
-        'sideButtons':true,
-        'style':1
-    }
-&lt;/script&gt;
-</code></pre>
-                        </div>
-                        <div class="copybox">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.39 850.39">
-                                <path d="M389.7,715.19h126.3v83.3c0,28.67-23.24,51.9-51.9,51.9H51.9c-28.66,0-51.9-23.23-51.9-51.9V227.1c0-28.66,23.24-51.9,51.9-51.9h245.9v448.09c0,50.68,41.23,91.9,91.9,91.9Z"/>
-                                <rect  x="334.39" width="516" height="675.19" rx="51.9" ry="51.9"/>
-                            </svg>
-                        </div>
-                    </div>
-                
-                    <p>ENCORE SSC Example:</p>
-
-                    <div class="previewWindow" style="--height: 50vh; opacity: 0; margin: 1em 0;" id="SSC"></div>
-
-                    <div class="exampleMenu">
-                        <button onclick="loadSystem('SSC')">
-                            Load SSC
-                        </button>
-                        <button onclick="unloadSystem('SSC')">
-                            Unload SSC
-                        </button>
-                    </div>
-                    <div class="exampleMenu" id="SSCmenu" style="display: none; margin-top: 1em;">
-                        <button style="background-color: #09af0030;" onclick="SSC_settings={'thumbs':document.getElementById('sscthumb').hasAttribute('active'),'progressBar':document.getElementById('sscbar').hasAttribute('active'),'sideButtons':document.getElementById('sscbuttons').hasAttribute('active'),'style':1}; reloadSSC(SSC_settings); ENCOREalert(this.parentNode.id)">
-                            Save Changes
-                        </button>
-                        <button class="active" active id="sscthumb" onclick="changeValues(this)">
-                            Thumbs
-                        </button>
-                        <button class="active" active id="sscbar" onclick="changeValues(this)">
-                            Progress Bar
-                        </button>
-                        <button class="active" active id="sscbuttons" onclick="changeValues(this)">
-                            Side Buttons
-                        </button>
-                    </div>
+                    [testing in progress]
                 </div>
             </div>
 
 
-            <div class="dropdown" id="encoreCMS" style="--colour: #00000015;">
+            <div class="dropdown" id="encoreCMS" style="--colour: #ffffff15;">
                 <div class="dropdownheader">
-                    <img src="icon/thumbnails_small/CMS.png" alt="CMSF" draggable="false">
+                    <img src="icon/thumbnails_small/CMSF.png" alt="CMSF" draggable="false">
                     <p>ENCORE CMSF<span>  •  Context Menu System Formatter</span></p>
                     <div>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.35 850.35">
@@ -364,90 +201,11 @@
                     </div>
                 </div>
                 <div class="contentbox">
-                    <p>ENCORE SSC is a preprogrammed javascript carousel package that can be added to any website without having to worry about any javascript programming.</p>
-                    <hr>
-
-                    <p>Code that needs to be added into your HTML file:</p>
-
-                    <div class="codecontainer">
-                        <div class="codebox">
-<pre>
-<code>&lt;div id="SSC" style="opacity: 0; display: none;"&gt;
-
-    &lt;div class="banner-bg"&gt; &lt;!-- duplicate 'banner-bg' for the amount of pages you want --&gt;
-
-        &lt;img src="path of background image" alt=""&gt;
-
-        &lt;a class="banner-button" href="insert link here"&gt;enter&lt;/a&gt;
-
-        &lt;!-- place content in here --&gt;
-
-    &lt;/div&gt;
-
-&lt;/div&gt;
-</code></pre>
-                        </div>
-                        <div class="copybox">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.39 850.39">
-                                <path d="M389.7,715.19h126.3v83.3c0,28.67-23.24,51.9-51.9,51.9H51.9c-28.66,0-51.9-23.23-51.9-51.9V227.1c0-28.66,23.24-51.9,51.9-51.9h245.9v448.09c0,50.68,41.23,91.9,91.9,91.9Z"/>
-                                <rect  x="334.39" width="516" height="675.19" rx="51.9" ry="51.9"/>
-                            </svg>
-                        </div>
-                    </div>
-
-                    <p>Code that needs to be appended at the bottom of your HTML file:</p>
-                    <div class="codecontainer">
-                        <div class="codebox">
-<pre>
-<code>&lt;script src="https://natski.netlify.app/lib/js/ENCORE_SSC.js"&gt;&lt;/script&gt;
-&lt;script&gt;
-    SSC_settings={
-        'thumbs':true,
-        'progressBar':true,
-        'sideButtons':true,
-        'style':1
-    }
-&lt;/script&gt;
-</code></pre>
-                        </div>
-                        <div class="copybox">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.39 850.39">
-                                <path d="M389.7,715.19h126.3v83.3c0,28.67-23.24,51.9-51.9,51.9H51.9c-28.66,0-51.9-23.23-51.9-51.9V227.1c0-28.66,23.24-51.9,51.9-51.9h245.9v448.09c0,50.68,41.23,91.9,91.9,91.9Z"/>
-                                <rect  x="334.39" width="516" height="675.19" rx="51.9" ry="51.9"/>
-                            </svg>
-                        </div>
-                    </div>
-                
-                    <p>ENCORE SSC Example:</p>
-
-                    <div class="previewWindow" style="--height: 50vh; opacity: 0; margin: 1em 0;" id="SSC"></div>
-
-                    <div class="exampleMenu">
-                        <button onclick="loadSystem('SSC')">
-                            Load SSC
-                        </button>
-                        <button onclick="unloadSystem('SSC')">
-                            Unload SSC
-                        </button>
-                    </div>
-                    <div class="exampleMenu" id="SSCmenu" style="display: none; margin-top: 1em;">
-                        <button style="background-color: #09af0030;" onclick="SSC_settings={'thumbs':document.getElementById('sscthumb').hasAttribute('active'),'progressBar':document.getElementById('sscbar').hasAttribute('active'),'sideButtons':document.getElementById('sscbuttons').hasAttribute('active'),'style':1}; reloadSSC(SSC_settings); ENCOREalert(this.parentNode.id)">
-                            Save Changes
-                        </button>
-                        <button class="active" active id="sscthumb" onclick="changeValues(this)">
-                            Thumbs
-                        </button>
-                        <button class="active" active id="sscbar" onclick="changeValues(this)">
-                            Progress Bar
-                        </button>
-                        <button class="active" active id="sscbuttons" onclick="changeValues(this)">
-                            Side Buttons
-                        </button>
-                    </div>
+                    [testing in progress]
                 </div>
             </div>
 
-        -->
+        
 
 
         </main>
