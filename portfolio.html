@@ -317,16 +317,16 @@
 
 window.onload = function(){
     for(let i = 1; i < document.getElementsByTagName('img').length; i++){
-        if(preference!=='true') {
+        if(preference!=='true' && !NATdeviceCheck()) {
             let pageimg = document.getElementsByTagName('img')[i]
             if(pageimg.complete && pageimg.naturalHeight !== 0){
                 setTimeout(() => {
-                    pageimg.parentNode.parentNode.style.backgroundImage = "radial-gradient(circle farthest-side at top left,"+colourSystem(pageimg)+" 0.25), transparent)"
+                    pageimg.parentNode.parentNode.style.backgroundImage = "radial-gradient(circle farthest-side at top left,"+colourSystem(pageimg)+" 0.15), transparent)"
                 }, 50);
             }else{
                 pageimg.onload = function(){
                     setTimeout(() => {
-                        pageimg.parentNode.parentNode.style.backgroundImage = "radial-gradient(circle farthest-side at top left,"+colourSystem(pageimg)+" 0.25), transparent)"
+                        pageimg.parentNode.parentNode.style.backgroundImage = "radial-gradient(circle farthest-side at top left,"+colourSystem(pageimg)+" 0.15), transparent)"
                     }, 50);
                 }
             }
