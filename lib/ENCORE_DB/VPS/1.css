@@ -106,6 +106,18 @@
     height: 100%;
     max-height: 100vh;
 }
+.VPScontainer.full
+{
+    height: 100vh;
+    width: 100vw;
+    max-height: 100vh;
+}
+.VPScontainer.full .VPS
+{
+    height: 100%;
+    width: 100%;
+    max-height: 100vh;
+}
 .VPScontainer .buffer
 {
     position: absolute;
