@@ -45,6 +45,24 @@
     background-color: var(--SSCUcolor);
     overflow: hidden;
 }
+#SSCU .SSCUsvg
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#SSCU .SSCUsvg svg
+{
+    position: relative;
+    height: 200px;
+    display: block;
+    fill: #66666630;
+}
 #SSCU .pagebutton-u
 {
     position: absolute;
