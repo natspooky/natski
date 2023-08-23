@@ -321,12 +321,12 @@ window.onload = function(){
             let pageimg = document.getElementsByTagName('img')[i]
             if(pageimg.complete && pageimg.naturalHeight !== 0){
                 setTimeout(() => {
-                    pageimg.parentNode.parentNode.style.backgroundImage = "radial-gradient(circle farthest-side at top left,"+colourSystem(pageimg)+" 0.15), transparent)"
+                    pageimg.parentNode.parentNode.style.backgroundColor = colourSystem(pageimg)+" 0.15)"
                 }, 50);
             }else{
                 pageimg.onload = function(){
                     setTimeout(() => {
-                        pageimg.parentNode.parentNode.style.backgroundImage = "radial-gradient(circle farthest-side at top left,"+colourSystem(pageimg)+" 0.15), transparent)"
+                        pageimg.parentNode.parentNode.style.backgroundColor = colourSystem(pageimg)+" 0.15)"
                     }, 50);
                 }
             }
