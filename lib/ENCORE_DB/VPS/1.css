@@ -236,10 +236,10 @@
 {
     content: attr(name);
     position: absolute;
-    padding: 0.2em 0.4em;
-    border-radius: 0.3em;
+    padding: 0.4em 0.6em;
+    border-radius: 0.4em;
     pointer-events: none;
-    background-color: #00000070;
+    background-color: #00000090;
     color: #e9e9e9;
     white-space: nowrap;
     bottom: 110%;
@@ -253,12 +253,17 @@
 {
     right: 0%;
     left: unset;
+    transform: translate(0,0);
 }
 .VPScontainer .controlBox .controlBar button:hover::before
 {
     transform: translate(-50%,-10px);
     opacity: 1;
     visibility: visible;
+}
+.VPScontainer .controlBox .controlBar button:nth-last-of-type(4):hover::before
+{
+    transform: translate(0,-10px);
 }
 .VPScontainer .controlBox .controlBar .VPSbar
 {
