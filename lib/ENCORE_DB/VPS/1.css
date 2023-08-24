@@ -192,7 +192,7 @@
     transition: 0.4s;
     transition-delay: 0.1s;
 }
-.VPScontainer .controlBox .controlBar button:nth-last-of-type(3),.VPScontainer .controlBox .controlBar button:nth-last-of-type(2),.VPScontainer .controlBox .controlBar button:nth-last-of-type(1)
+.VPScontainer .controlBox .controlBar button:nth-last-of-type(4),.VPScontainer .controlBox .controlBar button:nth-last-of-type(3),.VPScontainer .controlBox .controlBar button:nth-last-of-type(2),.VPScontainer .controlBox .controlBar button:nth-last-of-type(1)
 {
     float: right;
 }
@@ -200,7 +200,7 @@
 {
     margin-left: 0.5em;
 }
-.VPScontainer .controlBox .controlBar button:nth-last-of-type(3)
+.VPScontainer .controlBox .controlBar button:nth-last-of-type(4)
 {
     margin-right: 0.5em;
 }
