@@ -284,7 +284,7 @@
     color: #e9e9e9;
     text-shadow: 0 0 5px #00000020;
     font-size: 1.8rem;
-    width: calc(100% - 55px);
+    width: 100%;
     font-weight: bold;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -355,9 +355,20 @@
     justify-content: center;
     color: #e9e9e9;
     align-items: center;
+    visibility: visible;
+    opacity: 1;
     margin: 0 0.25em;
     transition: 0.4s;
-    transition-delay: 0.1s;
+    transition-delay: 0s, 0.1s;
+    transition-property: all, background-color;
+}
+.VPScontainer .controlBox .controlBar .VPStime.active
+{
+    visibility: hidden;
+    opacity: 0;
+    width: 0;
+    padding: 0;
+    margin: 0;
 }
 .VPScontainer .controlBox .settingsPanel
 {
