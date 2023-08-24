@@ -81,7 +81,7 @@
     display: block;
     max-width: 100%;
     max-height: 85vh;
-    min-width: 315px;
+    min-width: 330px;
     min-height: 280px;
     opacity: 0;
     box-shadow: 0 10px 10px #00000020;
@@ -94,7 +94,7 @@
     display: block;
     width: 100%;
     max-height: 85vh;
-    min-width: 315px;
+    min-width: 330px;
     min-height: 280px;
     object-fit: contain;
     border-radius: 1px;

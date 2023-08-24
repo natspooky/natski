@@ -42,6 +42,14 @@ change PDSU in V1 to look better
 
 watch hyperplexed to understand logic for SSCU
 
-fix icons in VPS mobile
+make VPS settings look better lol
 
 make controlbar pointer-events none and make a ontouchdown/onclick to toggle menu
+
+make PIP for VPS
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1133.85 984.02">
+  <path d="M1070.14,0H63.73C28.53,0,0,28.53,0,63.73V920.3c0,35.19,28.53,63.72,63.73,63.72h1006.4c35.19,0,63.72-28.53,63.72-63.72V63.73C1133.85,28.53,1105.32,0,1070.13,0h.01Zm-48.8,794.54c0,12.29-9.97,22.27-22.27,22.27H134.8c-12.31,0-22.28-9.97-22.28-22.27V181.08c0-7.65,6.21-13.87,13.87-13.87H999.07c12.29,0,22.27,9.97,22.27,22.28V794.54h0Z"/>
+  <rect x="542.99" y="439.21" width="377.79" height="277.04" rx="62.86" ry="62.86"/>
+</svg>
+
+make context menu for VPS
