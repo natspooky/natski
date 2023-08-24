@@ -350,7 +350,7 @@
     height: 40px;
     width: auto;
     padding: 0 10px;
-    background-color: blue;
+    background-color: transparent;
     display: flex;
     flex-wrap: nowrap;
     white-space: nowrap;
