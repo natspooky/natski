@@ -46,6 +46,6 @@ make VPS settings look better lol
 
 make controlbar pointer-events none and make a ontouchdown/onclick to toggle menu
 
-make PIP for VPS work
-
 make context menu for VPS
+
+make a /video.html#videoId page
