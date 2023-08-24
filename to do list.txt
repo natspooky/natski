@@ -53,3 +53,5 @@ make PIP for VPS
 </svg>
 
 make context menu for VPS
+
+make VPS have popup names for buttons
