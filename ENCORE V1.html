@@ -428,7 +428,7 @@
                         <button style="background-color: #09af0030;" onclick="PDS_settings={'path':'icon/OG_IMAGES/','fileCount':8,'classes':'null','colourSystem':document.getElementById('pdscol').hasAttribute('active'),'animations':document.getElementById('pdsani').hasAttribute('active'),'controls':document.getElementById('pdscont').hasAttribute('active'),'style':1}; reloadPDS(PDS_settings); ENCOREalert(this.parentNode.id)">
                             Save Changes
                         </button>
-                        <button id="pdscol" onclick="changeValues(this)">
+                        <button class="active" active id="pdscol" onclick="changeValues(this)">
                             Colour System
                         </button>
                         <button class="active" active id="pdsani" onclick="changeValues(this)">
@@ -693,7 +693,7 @@
                             script.id = 'PDSscript'
                             script.src = 'https://natski.netlify.com/lib/js/ENCORE_PDS.js'
                             settings.id = 'PDSsettings'
-                            settings.innerHTML = "PDS_settings={'path':'icon/OG_IMAGES/','fileCount':8,'classes':'null','colourSystem':false,'animations':true,'controls':true,'style':1}"
+                            settings.innerHTML = "PDS_settings={'path':'icon/OG_IMAGES/','fileCount':8,'classes':'null','colourSystem':true,'animations':true,'controls':true,'style':1}"
                             document.body.appendChild(script)
                             document.body.appendChild(settings)
                             pds.style.height = 'var(--height)'

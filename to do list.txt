@@ -1,7 +1,5 @@
 make vps have classnames with VPS in
 
-make better fullscreen icon
-
 make designs for PWS
 
 add link to v2 through VPS info icon
@@ -26,11 +24,6 @@ add descriptions to PDSU based on image 'name'
 
 attach PWS onto SSC
 
-make background of most ENCORE be the accociated SVG
-
-make closing settings put back to main setting page VPS
-
-
 make ENCORE page use SSCU
 
 make multiple SSCU pages possible
@@ -41,4 +34,8 @@ put ENCORE CMSF into a js file [CME]
 
 make index buttons have aria-label
 
-make minimize icon for VPS
+put the CLS loader inside of the CLS DIV to make it smaller
+
+make CLS panel (if panel is smaller than window height => pull another)
+
+change PDSU in V1 to look better
