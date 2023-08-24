@@ -45,3 +45,5 @@ optimise all ENCORE to be in smaller chunks
 put ENCORE CMSF into a js file [CME]
 
 make index buttons have aria-label
+
+make minimize icon for VPS
