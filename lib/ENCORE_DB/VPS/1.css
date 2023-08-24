@@ -224,11 +224,11 @@
 {
     transition: 0.3s;
 }
-.VPScontainer .controlBox .controlBar button.active .play, .VPScontainer .controlBox .controlBar button .pause, .VPScontainer .controlBox .controlBar .VPSbar
+.VPScontainer .controlBox .controlBar button.active .play, .VPScontainer .controlBox .controlBar button .pause, .VPScontainer .controlBox .controlBar .VPSbar,.VPScontainer .controlBox .controlBar button .minSVG, .VPScontainer .controlBox .controlBar button.active .fullscreenSVG
 {
     display: none;
 }
-.VPScontainer .controlBox .controlBar button.active .pause, .VPScontainer .controlBox .controlBar button .play
+.VPScontainer .controlBox .controlBar button.active .pause, .VPScontainer .controlBox .controlBar button .play,.VPScontainer .controlBox .controlBar button.active .minSVG, .VPScontainer .controlBox .controlBar button .fullscreenSVG
 {
     display: block;
 }
