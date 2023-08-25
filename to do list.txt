@@ -52,6 +52,6 @@ allow CMS to choose what element to activate on {document, id, class}
 
 give VPS buttons an aria label
 
-give homepage aria labels
+give homepage sidemenu aria labels
 
 give vps mobile a title in the top left
