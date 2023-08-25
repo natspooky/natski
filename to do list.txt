@@ -48,4 +48,10 @@ make controlbar pointer-events none and make a ontouchdown/onclick to toggle men
 
 make context menu for VPS
 
-make a /video.html#videoId page
+allow CMS to choose what element to activate on {document, id, class}
+
+give VPS buttons an aria label
+
+give homepage aria labels
+
+give vps mobile a title in the top left
