@@ -55,3 +55,5 @@ give VPS buttons an aria label
 give homepage sidemenu aria labels
 
 give vps mobile a title in the top left
+
+maybe make ENCORE DES into something
