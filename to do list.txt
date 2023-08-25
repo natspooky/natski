@@ -57,3 +57,6 @@ give homepage sidemenu aria labels
 give vps mobile a title in the top left
 
 maybe make ENCORE DES into something
+
+make kuru kuru gif smaller
+make sound kuru more compressed

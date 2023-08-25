@@ -103,6 +103,243 @@
         }
     </style>
 
+<style>
+    #SSCU
+    {
+        height: 100%;
+        transform: scale(0.87);
+        border-radius: 25px;
+        overflow: hidden;
+        margin: 0;
+        background-color: #66666610;
+        border: 2px solid #66666640;
+        box-shadow: 0 10px 20px #00000070;
+        transition: 0.45s;
+    }
+    .SSCUsvg
+    {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .SSCUsvg svg
+    {
+        position: relative;
+        height: 200px;
+        display: block;
+        fill: #66666630;
+    }
+    .banner-bg-u
+    {
+        position: absolute;
+        display: none;
+        top: 0;
+        left: 0;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+        transition: 0.6s ease-in-out;
+    }
+    .banner-bg-u::before
+    {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: linear-gradient(to top left, transparent, #000000b0);
+    }
+    .banner-bg-u img
+    {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        z-index: -1;
+    }
+    .banner-bg-u button
+    {
+        position: absolute;
+        bottom: 60px;
+        background-color: #66666620;
+        border: 1px solid #66666640;
+        color: var(--themecol);
+        border-radius: 100vmax;
+        padding: 10px 50px;
+        font-size: 2rem;
+        font-weight: bold;
+        transition: 0.2s;
+    }
+    .banner-bg-u div
+    {
+        position: relative;
+        width: min(80%, 700px);
+        background-color: #66666620;
+        border-radius: 20px;
+        padding: 1em 1em 1em 1em;
+        font-size: 1.45rem;
+        overflow: hidden;
+        border: 1px solid #66666640;
+        animation: fadeup 0.9s;
+    }
+    .banner-bg-u div h1
+    {
+        position: relative;
+        line-height: 60px;
+        font-size: min(4rem, 10vw);
+    }
+    .banner-bg-u div hr
+    {
+        border: 1px solid var(--maincol);
+        border-radius: 100vmax;
+    }
+    .banner-bg-u div svg
+    {
+        position: relative;
+        float: left;
+        width: 65px;
+        margin-right: 1em;
+        border-radius: 5px;
+        transition: 0s;
+    }
+    .banner-bg-u div p
+    {
+        margin-top: 1em;
+    }
+    .pagebutton-u
+    {
+        position: absolute;
+        top: 50%;
+        left: 15px;
+        width: fit-content;
+        transform: translateY(-50%);
+        padding: 25px 10px;
+        border-radius: 10px;
+        background-color: #66666620;
+        border: 1px solid #66666640;
+        transform-origin: top;
+        transition: 0.2s;
+    }
+    .pagebutton-u:last-of-type
+    {
+        left: unset;
+        right: 15px;
+    }
+    .pagebutton-u svg
+    {
+        height: 15px;
+    }
+    .thumbs
+    {
+        position: absolute;
+        bottom: 15px;
+        width: fit-content;
+        height: 30px;
+        display: flex;
+        justify-content: center;
+        padding: 5px 0;
+        border-radius: 100vmax;
+    }
+    .thumbs .thumb-u
+    {
+        position: relative;
+        height: 20px;
+        width: 20px;
+        margin: 0 5px;
+        background-color: #66666640;
+        border-radius: 100vmax;
+        cursor: pointer;
+        overflow: hidden;
+        border: 5px solid #66666640;
+        transition: border 0.2s, width 0.2s, background-color 0.4s;
+    }
+    .thumbs .thumb-u .progress-u
+    {
+        position: absolute;
+        transform-origin: left;
+        height: 100%;
+        width: 100%;
+        background-color: var(--themecol);
+    }
+    .thumbs .thumb-u.active,.thumbs .thumb-u.active:hover
+    {
+        width: 40px;
+        background-color: #66666660;
+        pointer-events: none;
+    }
+    .thumbs .thumb-u:hover
+    {
+        background-color: #66666660;
+    }
+    #SSC .infoButton
+    {
+        display: none;
+    }
+    @media (hover: hover){
+        .pagebutton-u:hover
+        {
+            background-color: #66666640;
+        }
+        .pagebutton-u:active
+        {
+            background-color: #66666670;
+            transition: 0s;
+        }
+        .banner-bg-u button:hover
+        {
+            background-color: #66666640;
+        }
+        .banner-bg-u button:active
+        {
+            background-color: #66666670;
+            transition: 0s;
+        }
+    }
+    @media (orientation: portrait)
+    {
+        .banner-bg-u div
+        {
+            margin: 0.6em 1em 1em 1em;
+            animation: unset;
+        }
+        .banner-bg-u div svg
+        {
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0.07;
+            width: 100%;
+            height: 100%;
+            transform: scale(0.9);
+            object-fit: cover;
+        }
+        .banner-bg-u div h1
+        {
+            text-align: center;
+            width: 100%;
+            line-height: normal;
+        }
+        .banner-bg-u div p
+        {
+            width: 100%;
+            text-align: center;
+        }
+        .pagebutton-u
+        {
+            display: none;
+        }
+    }
+</style>
+
     <body>
         <div id="colourlesspanelback"></div>
         <div id="colourpanelback"></div>
@@ -123,9 +360,9 @@
                 <p style="text-align: center;">Each version of <span>ENCORE</span> contains at least 3 Javascript plugins for use on other websites.</p>
             </article> 
         </main>
+-->
 
-
-<div id="SSCU" style="opacity: 0; display: none;">
+<div id="SSCU">
 
     <div class="banner-bg-u">
 
@@ -146,7 +383,7 @@
     </div>
 
 </div>
--->
+
 
         <main style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center;">
 
@@ -184,7 +421,7 @@
             <p>ENCORE.js requires javascript in order to run, please enable javascript</p>
         </noscript>
         <script src="lib/js/ENCORE_NAT.js"></script>
-<!--       <script src="https://natski.netlify.app/lib/js/ENCORE_SSC_ULT.js"></script>
+<!--        <script src="https://natski.netlify.app/lib/js/ENCORE_SSC_ULT.js"></script>
         <script>
             SSCU_settings={
                 'thumbs':true,
