@@ -767,12 +767,12 @@
                         let pageimg = img[i]
                         if(pageimg.complete && pageimg.naturalHeight !== 0){
                             setTimeout(() => {
-                                pageimg.parentNode.children[0].style.fill = colourSystem(pageimg)+" 0.06)"
+                                pageimg.parentNode.children[0].style.fill = colourSystem(pageimg)+" 1)"
                             }, 615);
                         }else{
                             pageimg.onload = function(){
                                 setTimeout(() => {
-                                    pageimg.parentNode.children[0].style.fill = colourSystem(pageimg)+" 0.06)"
+                                    pageimg.parentNode.children[0].style.fill = colourSystem(pageimg)+" 1)" //0.06
                                 }, 615);
                             }
                         }
