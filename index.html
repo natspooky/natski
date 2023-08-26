@@ -137,7 +137,6 @@
                 position: absolute;
                 bottom: 60px;
                 background-color: #66666620;
-                border: 1px solid #66666640;
                 color: var(--themecol);
                 border-radius: 100vmax;
                 padding: 10px 50px;
@@ -154,7 +153,6 @@
                 padding: 1em 1em 1em 1em;
                 font-size: 1.45rem;
                 overflow: hidden;
-                border: 1px solid #66666640;
                 animation: fadeup 0.9s;
             }
             .banner-bg-u div h1
@@ -191,7 +189,6 @@
                 padding: 25px 10px;
                 border-radius: 10px;
                 background-color: #66666620;
-                border: 1px solid #66666640;
                 transform-origin: top;
                 transition: 0.2s;
             }
@@ -208,12 +205,11 @@
             {
                 position: absolute;
                 bottom: 15px;
-                width: fit-content;
-                height: 30px;
                 display: flex;
                 justify-content: center;
+                width: fit-content;
+                height: fit-content;
                 padding: 5px 0;
-                border-radius: 100vmax;
             }
             .thumbs .thumb-u
             {
@@ -221,11 +217,11 @@
                 height: 20px;
                 width: 20px;
                 margin: 0 5px;
-                background-color: #66666640;
+                background-color: #66666620;
                 border-radius: 100vmax;
                 cursor: pointer;
                 overflow: hidden;
-                border: 5px solid #66666640;
+                border: 5px solid #66666620;
                 transition: border 0.2s, width 0.2s, background-color 0.4s;
             }
             .thumbs .thumb-u .progress-u
@@ -236,15 +232,11 @@
                 width: 100%;
                 background-color: var(--themecol);
             }
-            .thumbs .thumb-u.active,.thumbs .thumb-u.active:hover
+            .thumbs .thumb-u.active
             {
                 width: 40px;
                 background-color: #66666660;
                 pointer-events: none;
-            }
-            .thumbs .thumb-u:hover
-            {
-                background-color: #66666660;
             }
             #SSCU .infoButton
             {
@@ -268,6 +260,10 @@
                 {
                     background-color: #66666670;
                     transition: 0s;
+                }
+                .thumbs .thumb-u:hover
+                {
+                    background-color: #66666660;
                 }
             }
             @media (orientation: portrait)
