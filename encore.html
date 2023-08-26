@@ -117,8 +117,12 @@
         margin: 0;
         background-color: #66666610;
         border: 2px solid #66666640;
-        box-shadow: 0 10px 20px #00000070;
-        transition: 0.45s;
+        box-shadow: 0 10px 20px #05090f70;
+        transition: 0.3s;
+    }
+    #SSCU:hover
+    {
+        filter: grayscale(0);
     }
     .SSCUsvg
     {
@@ -207,6 +211,7 @@
         top: 15px;
         left: 25px;
         font-size: 3rem;
+        white-space: nowrap;
         color: #e9e9e9;
     }
     .banner-bg-u .subtxt
@@ -215,10 +220,15 @@
         left: 25px;
         top: 70px;
         color: #666666;
+        white-space: nowrap;
     }
     .banner-bg-u article
     {
-
+        position: relative;
+        width: 70%;
+        padding: 1em;
+        text-align: center;
+        font-size: 1.15rem;
     }
     .banner-bg-u .banner-button
     {
@@ -259,6 +269,8 @@
         position: absolute;
         bottom: 15px;
         left: 15px;
+        display: flex;
+        justify-content: center;
         width: fit-content;
         height: fit-content;
         padding: 5px 0;
@@ -325,6 +337,27 @@
         {
             display: none;
         }
+        .banner-bg-u svg
+        {
+            animation: unset;
+        }
+        .banner-bg-u h1, .banner-bg-u .subtxt, .thumbs
+        {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .thumbs
+        {
+            width: 100%;
+        }
+        .banner-bg-u article
+        {
+            width: 97%;
+        }
+        .banner-bg-u .ENCicon
+        {
+            margin-bottom: 15px;
+        }
     }
 </style>
 
@@ -345,7 +378,7 @@
 
         <main>
             <article style="text-align: center; animation: opacity 1s; margin: 0 auto;">
-                <p style="text-align: center;">Each version of <span>ENCORE</span> contains at least 3 Javascript plugins for use on other websites.</p>
+                <p style="text-align: center;"><span>ENCORE</span> is a series of Javascript plugins made for the sole purpose of providing different widgets that can be used without any JS knowledge</p>
             </article> 
         </main>
 
@@ -359,11 +392,13 @@
         </svg>
 
         <h1>ENCORE V1</h1>
-        <p class="subtxt">V1 Packages</p>
+        <p class="subtxt">Info About V1 Packages</p>
 
-        <img class="ENCicon" src="icon/thumbnails/ENCOREV1.png">
+        <img class="ENCicon" src="icon/thumbnails/ENCOREV1.png" draggable="false">
 
-    
+        <article>
+            ENCORE V1 contains 3 main packages: SSC, PDS and CLS. <br> V1 also includes a formatter created for use with CLS
+        </article>
 
         <a class="banner-button" onclick="parent.loadframe('ENCORE V1');parent.backPage(1)">enter</a>
 
@@ -379,7 +414,7 @@
         <h1>ENCORE SSC</h1>
         <p class="subtxt">Slide Show Container</p>
 
-        <img class="ENCicon" src="icon/thumbnails/SSC.png">
+        <img class="ENCicon" src="icon/thumbnails/SSC.png" draggable="false">
 
         <a class="banner-button" onclick="parent.loadframe('ENCORE SSC');parent.backPage(1)">enter</a>
 
@@ -400,7 +435,7 @@
         <h1>ENCORE PDS</h1>
         <p class="subtxt">Picture Display System</p>
 
-        <img class="ENCicon" src="icon/thumbnails/PDS.png">
+        <img class="ENCicon" src="icon/thumbnails/PDS.png" draggable="false">
 
         <a class="banner-button" onclick="parent.loadframe('ENCORE PDS');parent.backPage(1)">enter</a>
 
@@ -420,7 +455,7 @@
         <h1>ENCORE CLS</h1>
         <p class="subtxt">Changelog System</p>
 
-        <img class="ENCicon" src="icon/thumbnails/CLS.png">
+        <img class="ENCicon" src="icon/thumbnails/CLS.png" draggable="false">
 
         <a class="banner-button" onclick="parent.loadframe('ENCORE CLS');parent.backPage(1)">enter</a>
 
@@ -434,9 +469,9 @@
         </svg>
 
         <h1>ENCORE V2</h1>
-        <p class="subtxt">V2 Packages</p>
+        <p class="subtxt">Info About V2 Packages</p>
 
-        <img class="ENCicon" src="icon/thumbnails/ENCOREV2.png">
+        <img class="ENCicon" src="icon/thumbnails/ENCOREV2.png" draggable="false">
 
         <a class="banner-button" onclick="parent.loadframe('ENCORE V2');parent.backPage(1)">enter</a>
 
@@ -453,7 +488,7 @@
         <h1>ENCORE VPS</h1>
         <p class="subtxt">Video Player System</p>
 
-        <img class="ENCicon" src="icon/thumbnails/VPS.png">
+        <img class="ENCicon" src="icon/thumbnails/VPS.png" draggable="false">
 
         <a class="banner-button" onclick="parent.loadframe('ENCORE VPS');parent.backPage(1)">enter</a>
 
@@ -472,9 +507,9 @@
         <h1>ENCORE PWS</h1>
         <p class="subtxt">Parallax Window System</p>
 
-        <img class="ENCicon" src="icon/thumbnails/PWS.png">
+        <img class="ENCicon" src="icon/thumbnails/PWS.png" draggable="false">
 
-        <a class="banner-button" onclick="parent.loadframe('ENCORE PWS');parent.backPage(1)">enter</a>
+        <a class="banner-button" onclick="//parent.loadframe('ENCORE PWS');parent.backPage(1)">coming soon</a>
 
     </div>
 
@@ -492,9 +527,9 @@
         <h1>ENCORE CMS</h1>
         <p class="subtxt">Context Menu System</p>
 
-        <img class="ENCicon" src="icon/thumbnails/CMS.png">
+        <img class="ENCicon" src="icon/thumbnails/CMS.png" draggable="false">
 
-        <a class="banner-button" onclick="parent.loadframe('ENCORE CMS');parent.backPage(1)">enter</a>
+        <a class="banner-button" onclick="//parent.loadframe('ENCORE CMS');parent.backPage(1)">coming soon</a>
 
     </div>
 
@@ -527,6 +562,5 @@
                 'style':null
             }
         </script>
-
     </body>
 </html>
