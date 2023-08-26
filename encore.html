@@ -111,20 +111,16 @@
     }
     #SSCU
     {
-        height: 100%;
-        width: 100%;
-        transform: scale(0.87);
+        position: relative;
+        height: 80%;
+        width: max(95vmin,68vw);
+        display: block;
+        margin: 20px auto;
         border-radius: 25px;
         overflow: hidden;
-        margin: 0;
         background-color: #66666610;
         border: 2px solid #66666640;
         box-shadow: 0 10px 20px #05090f70;
-        transition: 0.3s;
-    }
-    #SSCU:hover
-    {
-        filter: grayscale(0);
     }
     .SSCUsvg
     {
@@ -370,6 +366,10 @@
         {
             display: none;
         }
+        #SSCU
+        {
+            height: 90%;
+        }
     }
 </style>
 
@@ -412,7 +412,7 @@
             ENCORE V1 contains SSC, PDS, CLS and CLSF
         </article>
 
-        <a class="banner-button" onclick="parent.loadframe('ENCORE V1');parent.backPage(1)">enter</a>
+        <a class="banner-button" onclick="parent.loadframe('ENCORE V1');parent.backPage(1)">view</a>
 
     </div>
 
@@ -428,7 +428,11 @@
 
         <img class="ENCicon" src="icon/thumbnails/SSC.png" draggable="false">
 
-        <a class="banner-button" onclick="parent.loadframe('ENCORE SSC');parent.backPage(1)">enter</a>
+        <article>
+            ENCORE SSC can create both sliding carousels and fading carousels
+        </article>
+
+        <a class="banner-button" onclick="parent.loadframe('ENCORE SSC');parent.backPage(1)">view</a>
 
     </div>
 
@@ -449,7 +453,11 @@
 
         <img class="ENCicon" src="icon/thumbnails/PDS.png" draggable="false">
 
-        <a class="banner-button" onclick="parent.loadframe('ENCORE PDS');parent.backPage(1)">enter</a>
+        <article>
+            ENCORE PDS creates both image galleries and an interactable viewer for each image
+        </article>
+
+        <a class="banner-button" onclick="parent.loadframe('ENCORE PDS');parent.backPage(1)">view</a>
 
     </div>
 
@@ -469,7 +477,11 @@
 
         <img class="ENCicon" src="icon/thumbnails/CLS.png" draggable="false">
 
-        <a class="banner-button" onclick="parent.loadframe('ENCORE CLS');parent.backPage(1)">enter</a>
+        <article>
+            ENCORE CLS loads and presents changelog files created by CLSF
+        </article>
+
+        <a class="banner-button" onclick="parent.loadframe('ENCORE CLS');parent.backPage(1)">view</a>
 
     </div>
 
@@ -489,7 +501,10 @@
 
         <img class="ENCicon" src="icon/thumbnails/CLSF.png" draggable="false">
 
-        <a class="banner-button" onclick="parent.loadframe('ENCORE CLSF');parent.backPage(1)">enter</a>
+        <article>
+            ENCORE CLSF formats changelog files for use with CLS
+        </article>
+        <a class="banner-button" onclick="parent.loadframe('ENCORE CLSF');parent.backPage(1)">view</a>
 
     </div>
 
@@ -505,7 +520,11 @@
 
         <img class="ENCicon" src="icon/thumbnails/ENCOREV2.png" draggable="false">
 
-        <a class="banner-button" onclick="parent.loadframe('ENCORE V2');parent.backPage(1)">enter</a>
+        <article>
+            ENCORE V2 contains VPS, PWS, CMS and CMSF
+        </article>
+
+        <a class="banner-button" onclick="parent.loadframe('ENCORE V2');parent.backPage(1)">view</a>
 
     </div>
 
@@ -522,7 +541,7 @@
 
         <img class="ENCicon" src="icon/thumbnails/VPS.png" draggable="false">
 
-        <a class="banner-button" onclick="parent.loadframe('ENCORE VPS');parent.backPage(1)">enter</a>
+        <a class="banner-button" onclick="parent.loadframe('ENCORE VPS');parent.backPage(1)">view</a>
 
     </div>
 
@@ -589,7 +608,7 @@
 
 
 <main>
-    <article class="gridcontainer" style="grid-template-columns: 1fr">
+    <article class="gridcontainer" style="grid-template-columns: 1fr;">
         <a onclick="parent.loadframe('ENCORE V1');parent.backPage(1)">
             <div class="featurebanner" name="Information about every ENCORE V1 package">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.39 850.35">
@@ -755,6 +774,15 @@
                 'thumbs':true,
                 'sideButtons':true,
                 'style':null
+            }
+        </script>
+        <script src="lib/js/ENCORE_PDS_ULT.js"></script>
+        <script>
+            PDSU_settings={
+                'imageClass':'ENCicon',
+                'animations':true,
+                'controls':true,
+                'style':1
             }
         </script>
         <script>
