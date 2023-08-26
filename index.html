@@ -57,6 +57,7 @@
                 justify-content: center;
                 align-items: center;
                 transition: 0.5s;
+                transition-delay: 0.5s;
             }
             #loadscreen.loaded
             {
@@ -566,7 +567,7 @@
                     screen.classList.add('loaded')
                     setTimeout(() => {
                         screen.remove()
-                    }, 600)
+                    }, 1100)
                     setTimeout(() => {
                         if(window.location.href.length > 38) {
                             if(window.location.href.includes('#')){
