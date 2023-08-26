@@ -250,7 +250,7 @@ svg rect
     position: absolute;
     top: 25px;
     left: 25px;
-    width: calc(100% - 110px);
+    width: calc(100% - 90px);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
