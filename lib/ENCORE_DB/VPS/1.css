@@ -248,7 +248,7 @@
     opacity: 0;
     visibility: hidden;
     transform: translateX(-50%);
-    transition: 0.3s;
+    transition: 0.1s;
 }
 .VPScontainer .controlBox .controlBar button:nth-last-of-type(4)::before
 {
