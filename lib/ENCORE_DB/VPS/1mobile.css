@@ -248,11 +248,14 @@ svg rect
 .VPScontainer .controlBox .VPStitle
 {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: calc(100% - 80px);
+    top: 25px;
+    left: 25px;
+    width: calc(100% - 110px);
     white-space: nowrap;
     text-overflow: ellipsis;
+    font-weight: bold;
+    pointer-events: none;
+    z-index: 2;
     color: #e9e9e9;
 }
 .VPScontainer .controlBox .controlBar .VPStime
