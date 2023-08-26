@@ -105,8 +105,8 @@
 
 <style>
     @keyframes slideLeft {
-        from{transform: translateX(10%) translateY(5%) rotate(15deg);}
-        to{transform: translateX(0) translateY(0) rotate(15deg);}
+        from{transform: translateX(10%) translateY(5%) rotate(15deg); opacity: 0;}
+        to{transform: translateX(0) translateY(0) rotate(15deg); opacity: 1;}
     }
     #SSCU
     {
@@ -671,7 +671,7 @@
                 </svg>
                 <img src="icon/thumbnails_small/ENCOREV2.png" alt="page icon" draggable="false">
                 <p>Setup & Info</p>
-                <span>kuru kuru</span>
+                <span>ENCORE V2</span>
             </div>
         </a>
 
@@ -682,8 +682,8 @@
                     <path d="M1070.14,54.39H63.73C28.53,54.39,0,82.92,0,118.12V974.69c0,35.19,28.53,63.72,63.73,63.72h1006.4c35.19,0,63.72-28.53,63.72-63.72V118.12c0-35.2-28.53-63.73-63.72-63.73Zm-48.8,794.54c0,12.29-9.97,22.27-22.27,22.27H134.8c-12.31,0-22.28-9.97-22.28-22.27V235.47c0-7.65,6.21-13.87,13.87-13.87H999.07c12.29,0,22.27,9.97,22.27,22.28V848.93h0Z"></path>
                 </svg>
                 <img src="icon/thumbnails_small/VPS.png" alt="page icon" draggable="false">
-                <p>Kuru Clicker</p>
-                <span>kuru kuru</span>
+                <p>ENCORE VPS</p>
+                <span>ENCORE V2</span>
             </div>
         </a>
 
@@ -696,8 +696,8 @@
                     <path d="M624.58,200.05l-151.59,151.59c-5.53,5.53-12.83,8.21-20.07,8.05-.31,.03-55.15,.03-55.46,0-7.22,.18-14.53-2.51-20.06-8.03L225.81,200.05c-10.76-10.76-10.76-28.22,0-38.98l37.86-37.86c10.77-10.77,28.22-10.76,38.98,0l68.22,68.22V27.57c0-15.2,12.35-27.55,27.55-27.55h53.56c15.21-.01,27.56,12.33,27.55,27.55V191.43s68.22-68.22,68.22-68.22c10.76-10.76,28.22-10.76,38.98,0l37.86,37.86c10.76,10.76,10.76,28.22,0,38.98Z"></path>
                 </svg>
                 <img src="icon/thumbnails_small/PWS.png" alt="page icon" draggable="false">
-                <p>Kuru Clicker</p>
-                <span>kuru kuru</span>
+                <p>ENCORE PWS</p>
+                <span>ENCORE V2</span>
             </div>
         </a>
 
@@ -711,8 +711,8 @@
                     <rect x="214.3" y="788.86" width="427.58" height="105.3" rx="52.65" ry="52.65"></rect>
                 </svg>
                 <img src="icon/thumbnails_small/CMS.png" alt="page icon" draggable="false">
-                <p>Kuru Clicker</p>
-                <span>kuru kuru</span>
+                <p>ENCORE CMS</p>
+                <span>ENCORE V2</span>
             </div>
         </a>
 
@@ -726,8 +726,8 @@
                     <rect x="214.3" y="788.86" width="427.58" height="105.3" rx="52.65" ry="52.65"></rect>
                 </svg>
                 <img src="icon/thumbnails_small/CMSF.png" alt="page icon" draggable="false">
-                <p>Kuru Clicker</p>
-                <span>kuru kuru</span>
+                <p>ENCORE CMSF</p>
+                <span>ENCORE V2</span>
             </div>
         </a>
     </article>
@@ -767,12 +767,12 @@
                         let pageimg = img[i]
                         if(pageimg.complete && pageimg.naturalHeight !== 0){
                             setTimeout(() => {
-                                pageimg.parentNode.children[0].style.fill = colourSystem(pageimg)+" 1)"
+                                pageimg.parentNode.children[0].style.fill = colourSystem(pageimg)+" 0.08)"
                             }, 615);
                         }else{
                             pageimg.onload = function(){
                                 setTimeout(() => {
-                                    pageimg.parentNode.children[0].style.fill = colourSystem(pageimg)+" 1)" //0.06
+                                    pageimg.parentNode.children[0].style.fill = colourSystem(pageimg)+" 0.08)" //0.06
                                 }, 615);
                             }
                         }
