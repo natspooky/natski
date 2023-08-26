@@ -105,12 +105,9 @@
 
 <style>
     @keyframes slideLeft {
-        0%{transform: translateX(10%) translateY(5%) rotate(15deg); opacity: 0;}
-        20%{transform: translateX(10%) translateY(5%) rotate(15deg); opacity: 0;}
-        60%{transform: translateX(0) translateY(0) rotate(15deg); opacity: 1;}
-        75%{transform: translateX(0) translateY(0) rotate(15deg); opacity: 1;}
-        87%{transform: translateX(-10%) translateY(-5%) rotate(15deg); opacity:0;}
-        100%{transform: translateX(-10%) translateY(-5%) rotate(15deg); opacity:0;}
+        0%{opacity: 0;}
+        20%{opacity: 0;}
+        100%{opacity: 1;}
     }
     #SSCU
     {
@@ -204,7 +201,7 @@
         height: 150%;
         fill: #729ef605;
         transform: rotate(15deg);
-        animation: slideLeft 12s cubic-bezier(.28,.64,.44,.95);
+        animation: slideLeft 4s cubic-bezier(.28,.64,.44,.95);
     }
     .banner-bg-u h1
     {
