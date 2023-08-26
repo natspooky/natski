@@ -252,6 +252,7 @@ svg rect
     left: 25px;
     width: calc(100% - 110px);
     white-space: nowrap;
+    overflow: hidden;
     text-overflow: ellipsis;
     font-weight: bold;
     pointer-events: none;
@@ -285,6 +286,7 @@ svg rect
     pointer-events: none;
     background-color: #1e1e1e;
     opacity: 0;
+    z-index: 20;
     transition: opacity 0.3s, transform 0.3s, visibility 0.3s, height 0.3s;
 }
 .VPScontainer .controlBox .settingsPanel.active
