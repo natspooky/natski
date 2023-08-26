@@ -66,3 +66,5 @@ change the vertical view of images back to 250 and get rid of the text
 make ENCORE have coloured background bassed on each image in SSC
 
 make CLS have a unique filetype?
+
+finish adding sub titles to each encore slide
