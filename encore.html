@@ -298,15 +298,11 @@
         width: 100%;
         background-color: var(--themecol);
     }
-    .thumbs .thumb-u.active,.thumbs .thumb-u.active:hover
+    .thumbs .thumb-u.active
     {
         width: 40px;
         background-color: #66666660;
         pointer-events: none;
-    }
-    .thumbs .thumb-u:hover
-    {
-        background-color: #66666660;
     }
     #SSCU .infoButton
     {
@@ -330,6 +326,10 @@
         {
             background-color: #66666670;
             transition: 0s;
+        }
+        .thumbs .thumb-u:hover
+        {
+            background-color: #66666660;
         }
     }
     @media (orientation: portrait)
@@ -357,7 +357,12 @@
         }
         .banner-bg-u .ENCicon
         {
-            margin-bottom: 15px;
+            margin-bottom: 0px;
+            fill: #729ef615;
+        }
+        .banner-bg-u::after
+        {
+            display: none;
         }
     }
 </style>
