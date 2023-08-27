@@ -104,11 +104,6 @@
     </style>
 
 <style>
-    @keyframes slideLeft {
-        0%{opacity: 0;}
-        20%{opacity: 0;}
-        100%{opacity: 1;}
-    }
     #SSCU
     {
         position: relative;
@@ -152,7 +147,6 @@
         overflow: hidden;
         background-color: var(--backpanel);
         border-radius: 20px;
-        transition: 0.6s ease-in-out;
     }
     .banner-bg-u::before
     {
@@ -201,7 +195,6 @@
         height: 150%;
         fill: #729ef605;
         transform: rotate(15deg);
-        animation: slideLeft 4s cubic-bezier(.28,.64,.44,.95);
     }
     .banner-bg-u h1
     {
@@ -334,10 +327,6 @@
         .pagebutton-u
         {
             display: none;
-        }
-        .banner-bg-u svg
-        {
-            animation: unset;
         }
         .banner-bg-u h1, .banner-bg-u .subtxt, .thumbs
         {
@@ -795,6 +784,8 @@
             SSCU_settings={
                 'thumbs':true,
                 'sideButtons':true,
+                'timer':10000,
+                'slideSpeed':600,
                 'style':null
             }
         </script>

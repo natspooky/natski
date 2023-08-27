@@ -140,7 +140,6 @@
     display: none;
     align-items: center;
     justify-content: center;
-    transition: 0.6s ease-in-out;
 }
 #SSCU .banner-bg-u::after
 {
