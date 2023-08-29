@@ -190,17 +190,18 @@
     .banner-bg-u svg
     {
         position: absolute;
-        top: -20%;
-        right: -10%;
+        top: -15%;
+        right: -15%;
         height: 150%;
         fill: #729ef6;
         opacity: 0.08;
-        transform: rotate(15deg);
-        transition: 0.6s;
+        transform: rotate(15deg) translate(0, 0);
+        transition: 1.5s;
     }
     .banner-bg-u svg.active
     {
         opacity: 0.15;
+        transform: rotate(15deg) translate(-5%, -1%);;
     }
     .banner-bg-u h1
     {
@@ -279,7 +280,7 @@
         width: 20px;
         margin: 0 5px;
         display: inline-block;
-        background-color: #66666620;
+        background-color: #66666605;
         border-radius: 100vmax;
         cursor: pointer;
         overflow: hidden;
@@ -314,14 +315,10 @@
             background-color: #66666670;
             transition: 0s;
         }
-        .banner-bg-u button:hover
+        .banner-bg-u .banner-button:hover
         {
-            background-color: #66666640;
-        }
-        .banner-bg-u button:active
-        {
-            background-color: #66666670;
-            transition: 0s;
+            background-color: var(--themecol);
+            color: #0a0a0a;
         }
         .thumbs .thumb-u:hover
         {
