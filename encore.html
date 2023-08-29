@@ -193,8 +193,14 @@
         top: -20%;
         right: -10%;
         height: 150%;
-        fill: #729ef605;
+        fill: #729ef6;
+        opacity: 0.08;
         transform: rotate(15deg);
+        transition: 0.6s;
+    }
+    .banner-bg-u svg.active
+    {
+        opacity: 0.15;
     }
     .banner-bg-u h1
     {
@@ -339,7 +345,8 @@
         }
         .banner-bg-u svg
         {
-            fill: #729ef615;
+            fill: #729ef6;
+            opacity: 0.15;
         }
         .banner-bg-u article
         {
@@ -812,16 +819,26 @@
                         let pageimg = img[i]
                         if(pageimg.complete && pageimg.naturalHeight !== 0){
                             setTimeout(() => {
-                                pageimg.parentNode.children[0].style.fill = colourSystem(pageimg)+" 0.08)"
+                                pageimg.parentNode.children[0].style.fill = colourSystem(pageimg)+" 1)"
                             }, 615);
                         }else{
                             pageimg.onload = function(){
                                 setTimeout(() => {
-                                    pageimg.parentNode.children[0].style.fill = colourSystem(pageimg)+" 0.08)" //0.06
+                                    pageimg.parentNode.children[0].style.fill = colourSystem(pageimg)+" 1)" //0.06
                                 }, 615);
                             }
                         }
                     }
+                }
+                let links = document.getElementsByClassName('banner-button'),
+                len = links.length
+                for(let i = 0; i < len; i++) {
+                    links[i].addEventListener('mouseover', function(){
+                        links[i].parentNode.children[0].classList.add('active')
+                    })
+                    links[i].addEventListener('mouseout', function(){
+                        links[i].parentNode.children[0].classList.remove('active')
+                    })
                 }
             }
         </script>

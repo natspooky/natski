@@ -59,7 +59,7 @@ make CLS have a unique filetype?
 
 create a tilt encore using perspective and rotate
 
-rebuild VPS with event target
+rebuild VPS with event target for each
 
 make explination of each setting
 
