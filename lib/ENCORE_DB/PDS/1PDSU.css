@@ -130,8 +130,8 @@
 #PDSUinspectPanel .PDSUinfoButton
 {
     position: absolute;
-    top: 0.7em;
-    right: 0.7em;
+    top: 15px;
+    right: 15px;
     height: 40px;
     width: 40px;
     border: 2px solid var(--PDSUcolor);
@@ -177,7 +177,7 @@
 {
     position: absolute;
     padding: 0.4em 1em;
-    top: 0.7em;
+    top: 15px;
     left: 50%;
     font-size: 0.9rem;
     transform: translateX(-50%);
