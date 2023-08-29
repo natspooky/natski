@@ -62,3 +62,6 @@ create a tilt encore using perspective and rotate
 rebuild VPS with event target
 
 make explination of each setting
+
+add swipe option to SSC & SSCU
+{touchstart, touchmove, touchend}
