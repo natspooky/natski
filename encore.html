@@ -136,7 +136,7 @@
         right: -15%;
         height: 150%;
         fill: #729ef6;
-        opacity: 0.08;
+        opacity: 0.05;
         transform: rotate(15deg) translate(0, 0);
         transition: 1.5s;
     }
@@ -774,7 +774,8 @@
                     }
                 }
                 let links = document.getElementsByClassName('banner-button'),
-                len = links.length
+                len = links.length;
+
                 for(let i = 0; i < len; i++) {
                     links[i].addEventListener('mouseover', function(){
                         links[i].parentNode.children[0].classList.add('active')
@@ -783,6 +784,36 @@
                         links[i].parentNode.children[0].classList.remove('active')
                     })
                 }
+
+
+
+
+                if(!NATdeviceCheck()){
+                    let x = document.getElementsByClassName('banner-bg-u'),
+                    sscu = document.getElementById('SSCU')
+                    for(let i = 0; i < x.length; i++){
+
+                        x[i].addEventListener("mousemove", function(e) {
+                        let pagY = e.pageY - sscu.offsetTop - (sscu.offsetHeight / 2),
+                        pagX = e.pageX - sscu.offsetLeft - (sscu.offsetWidth / 2);
+
+                            x[i].children[3].animate({
+                                transform: "translate(" + pagX / 20 + "px," + pagY / 20 + "px) rotate("+ pagX / 100 +"deg)"
+                            }, { duration: 1500, fill: 'forwards'})
+                        })
+
+
+                        x[i].addEventListener("mouseleave", function() {
+                    
+                            x[i].children[3].animate({
+                                transform: "translate(0px) rotate(0deg)"
+                            }, { duration: 1000, fill: 'forwards',easing: "ease"})
+                        })
+
+                    }
+            
+                }
+
             }
         </script>
         
