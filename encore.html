@@ -779,9 +779,11 @@
                 for(let i = 0; i < len; i++) {
                     links[i].addEventListener('mouseover', function(){
                         links[i].parentNode.children[0].classList.add('active')
+                        pauseSSCU()
                     })
                     links[i].addEventListener('mouseout', function(){
                         links[i].parentNode.children[0].classList.remove('active')
+                        playSSCU()
                     })
                 }
 
