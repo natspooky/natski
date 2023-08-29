@@ -317,7 +317,7 @@
         }
         .banner-bg-u .banner-button:hover
         {
-            background-color: var(--themecol);
+            background-color: var(--theme);
             color: #0a0a0a;
         }
         .thumbs .thumb-u:hover
@@ -428,7 +428,7 @@
         <img class="ENCicon" src="icon/thumbnails/SSC.png" draggable="false">
 
         <article>
-            ENCORE SSC can create both sliding carousels and fading carousels
+            ENCORE SSC can create both sliding and fading carousels
         </article>
 
         <a class="banner-button" onclick="parent.loadframe('ENCORE SSC');parent.backPage(1)">view</a>
@@ -816,12 +816,16 @@
                         let pageimg = img[i]
                         if(pageimg.complete && pageimg.naturalHeight !== 0){
                             setTimeout(() => {
-                                pageimg.parentNode.children[0].style.fill = colourSystem(pageimg)+" 1)"
+                                let theme = colourSystem(pageimg)
+                                pageimg.parentNode.children[0].style.fill = theme+" 1)"
+                                pageimg.parentNode.children[5].setAttribute('--theme', theme+" 0.8)")
                             }, 615);
                         }else{
                             pageimg.onload = function(){
                                 setTimeout(() => {
-                                    pageimg.parentNode.children[0].style.fill = colourSystem(pageimg)+" 1)" //0.06
+                                    let theme = colourSystem(pageimg)
+                                    pageimg.parentNode.children[0].style.fill = theme+" 1)"
+                                    pageimg.parentNode.children[5].setAttribute('--theme', theme+" 0.8)")
                                 }, 615);
                             }
                         }
