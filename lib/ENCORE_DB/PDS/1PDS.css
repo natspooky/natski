@@ -62,12 +62,16 @@
     overflow: hidden;
     background-color: #00000080;
     pointer-events: none;
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
     visibility: hidden;
     transition: 0.3s;
 }
 #PDSinspectPanel.active {
     visibility: visible;
     opacity: 1;
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
     pointer-events: unset;
 }
 #PDSinspectPanel section {
