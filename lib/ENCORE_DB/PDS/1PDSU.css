@@ -26,7 +26,8 @@
     z-index: 999;
     overflow: hidden;
     background-color: #00000080;
-    filter: blur(5px);
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
     pointer-events: none;
     visibility: hidden;
     transition: 0.3s;
@@ -34,6 +35,8 @@
 #PDSUinspectPanel.active {
     visibility: visible;
     opacity: 1;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
     pointer-events: unset;
 }
 #PDSUinspectPanel section {
