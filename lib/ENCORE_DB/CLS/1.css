@@ -61,7 +61,7 @@
     top: 0px;
     height: 100%;
     width: 4px;
-    background-color: var(--themecol);
+    background-color:#66666620;
     border-radius: 100vmax;
 }
 #CLS article div img
