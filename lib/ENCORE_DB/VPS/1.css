@@ -34,7 +34,7 @@
     appearance: none;
     -webkit-appearance: none;
 }
-.VPScontainer *, .VPScontainer
+.VPScontainer *, .VPScontainer, #VPSpopup
 {
     box-sizing: border-box;
     -ms-touch-action: manipulation;
