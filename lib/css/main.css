@@ -695,7 +695,7 @@ main article ul li a
     position: relative;
     padding: 0.5em;
     border-radius: 18px;
-    background-color: var(--accentcoltranslighter);
+    background-color: #00000025;
     line-height: 1.5em;
     text-align: left;
     transition: 0.3s;
