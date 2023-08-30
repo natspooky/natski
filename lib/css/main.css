@@ -507,6 +507,52 @@ main article img
     margin: 0.7em 0;
     background-color: #66666620;
 }
+
+main article div
+{
+    position: relative;
+    width: min(calc(100% - 30px), 600px);
+    height: fit-content;
+    margin: 0 0 40px 30px;
+    max-height: 70vh;
+}
+main article div::after
+{
+    content: attr(name);
+    position: absolute;
+    bottom: -27px;
+    font-style: italic;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    pointer-events: all;
+    left: 0px;
+    color: #e9e9e9a0;
+}
+main article div::before
+{
+    content: '';
+    position: absolute;
+    left: -18.5px;
+    top: 0px;
+    height: 100%;
+    width: 4px;
+    background-color: var(--themecol);
+    border-radius: 100vmax;
+}
+main article div img
+{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    max-height: 70vh;
+    margin: 0;
+    display: block;
+    object-fit: contain;
+    background-color: #66666620;
+    border-radius: 10px;
+}
 main article hr
 {
     border: 2px solid #66666620;
