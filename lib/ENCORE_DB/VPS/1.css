@@ -257,6 +257,11 @@
     left: unset;
     transform: translateX(0);
 }
+.VPScontainer .controlBox .controlBar button:first-of-type::before
+{
+    left: 0%;
+    transform: translateX(0);
+}
 .VPScontainer .controlBox .controlBar button:hover::before
 {
     opacity: 1;
