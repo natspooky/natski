@@ -21,10 +21,10 @@
     line-height: 1.55rem;
     font-size: 1.2rem;
     display: block;
-    width: min(900px,95%);
+    width: min(950px,95%);
     border-radius: 20px;
     padding: 1em;
-    background-color: #66666640;
+    background-color: #66666630;
     margin: 10px auto;
     text-align: justify;
     user-select: text;
