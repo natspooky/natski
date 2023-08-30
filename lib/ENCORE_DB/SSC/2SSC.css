@@ -161,6 +161,7 @@
     position: absolute;
     display: block;
     padding: 0.5em 1.8em;
+    font-size: 16px;
     border-radius: 5px;
     color: var(--SSCaccent);
     text-decoration: none;
@@ -208,6 +209,7 @@
     border: 1px solid #0a0a0a30;
     border-radius: 5px;
     opacity: 0;
+    font-size: 16px;
     white-space: nowrap;
     visibility: hidden;
     pointer-events: none;

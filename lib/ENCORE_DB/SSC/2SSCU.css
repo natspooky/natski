@@ -175,6 +175,7 @@
     color: var(--SSCUaccent);
     text-decoration: none;
     border: 1px solid #0a0a0a30;
+    font-size: 16px;
     background-color: var(--SSCUcolor);
     cursor: pointer;
     bottom: 60px;
@@ -214,6 +215,7 @@
     border-radius: 5px;
     opacity: 0;
     white-space: nowrap;
+    font-size: 16px;
     visibility: hidden;
     pointer-events: none;
     font-weight: bold;
