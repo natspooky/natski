@@ -65,3 +65,5 @@ make explination of each setting
 
 add swipe option to SSC & SSCU
 {touchstart, touchmove, touchend}
+
+create a video on error for VPS
