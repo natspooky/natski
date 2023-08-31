@@ -275,6 +275,7 @@
     height: 2.5px;
     box-sizing: initial;
     background-color: #ffffff20;
+    border-radius: 100vmax;
     bottom: 100%;
     transition: 0.2s;
 }
@@ -294,6 +295,7 @@
     left: 0;
     width: 0%;
     height: 100%;
+    border-radius: 100vmax;
     background-color: var(--VPSprogressbar)
 }
 .VPScontainer .controlBox .controlBar .VPSbar .VPSbarChange::before
