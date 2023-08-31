@@ -288,9 +288,9 @@ svg rect
     visibility: hidden;
     display: block;
     pointer-events: none;
-    background-color: #00000020;
-    backdrop-filter: blur(7px);
-    -webkit-backdrop-filter: blur(7px);
+    background-color: #00000030;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     opacity: 0;
     z-index: 20;
     transition: opacity 0.3s, transform 0.3s, visibility 0.3s, height 0.3s;
