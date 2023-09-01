@@ -335,7 +335,8 @@ svg rect
     display: block;
     border: 0;
     height: 40px;
-    width: 100%;
+    width: 50%;
+    border-radius: 0.5em;
     margin: 0;
     font-size: 13px;
     background-color: transparent;
