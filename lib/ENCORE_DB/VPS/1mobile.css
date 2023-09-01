@@ -219,6 +219,7 @@ svg rect
 .VPScontainer .controlBox .controlBar button.setting svg
 {
     transform: rotate(60deg);
+    fill: red;
 }
 .VPScontainer .controlBox .controlBar button.active .play, .VPScontainer .controlBox .controlBar button .pause, .VPScontainer .controlBox .controlBar .VPSbar, .VPScontainer .controlBox .controlBar button .minSVG, .VPScontainer .controlBox .controlBar button.active .fullscreenSVG
 {
@@ -312,7 +313,7 @@ svg rect
     overflow: hidden;
     box-sizing: border-box;
     transform: scale(0.8);
-    border-radius: 0.3em;
+    border-radius: 0.4em;
     visibility: hidden;
     display: block;
     background-color: rgba(0, 0, 0, 0.627);
@@ -386,12 +387,6 @@ svg rect
 .VPSmainSettings.active
 {
     transform: translateX(-100%);
-}
-.VPScontainer .controlBox .settingsPanel button:active
-{
-    transition: 0s;
-    transition-delay: 0s;
-    background-color: #81818130;
 }
 .VPScontainer .controlBox .settingsPanel button svg
 {
