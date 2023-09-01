@@ -134,9 +134,10 @@ svg rect
     position: absolute;
     height: 100%;
     width: 100%;
+    background-color: transparent;
     top: 0;
     left: 0;
-    display: none;
+    display: block;
 }
 .VPScontainer .controlBox .controlBar
 {
@@ -145,6 +146,7 @@ svg rect
     top: 0;
     height: 100%;
     width: 100%;
+    pointer-events: none;
     background-color: #00000045;
 }
 .VPScontainer .controlBox .controlBar button
@@ -156,6 +158,7 @@ svg rect
     cursor: pointer;
     background-color: transparent;
     display: flex;
+    pointer-events: all;
     justify-content: center;
     align-items: center;
 }
@@ -165,6 +168,7 @@ svg rect
     display: block;
     height: 100%;
     fill: #e9e9e9;
+    pointer-events: all;
     transition: 0.4s;
 }
 .VPScontainer .controlBox .controlBar .VPSplay
@@ -175,6 +179,7 @@ svg rect
     height: 55px;
     width: 55px;
     padding: 0;
+    pointer-events: all;
     transition: 0.2s;
     -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
 }
@@ -184,6 +189,7 @@ svg rect
     right: 25px;
     height: 15px;
     width: 15px;
+    pointer-events: all;
 }
 .VPScontainer .controlBox .controlBar .VPSsettings
 {
@@ -191,6 +197,7 @@ svg rect
     right: 25px;
     height: 20px;
     width: 20px;
+    pointer-events: all;
 }
 .VPScontainer .controlBox .controlBar button.setting svg
 {
@@ -214,6 +221,7 @@ svg rect
     background-color: #ffffff50;
     bottom: 20px;
     border-radius: 100vmax;
+    pointer-events: all;
     transition: 0.2s;
 }
 .VPScontainer .controlBox .controlBar .VPSbar .VPSinput
@@ -225,6 +233,7 @@ svg rect
     width: calc(100% + 10px);
     height: 35px;
     opacity: 0;
+    pointer-events: all;
     -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
 }
 .VPScontainer .controlBox .controlBar .VPSbar .VPSbarChange
@@ -235,6 +244,7 @@ svg rect
     width: 0%;
     height: 100%;
     border-radius: 100vmax;
+    pointer-events: all;
     background-color: var(--VPSprogressbar)
 }
 .VPScontainer .controlBox .controlBar .VPSbar .VPSbarChange::before
@@ -291,6 +301,7 @@ svg rect
     background-color: #000000a0;;
     opacity: 0;
     z-index: 20;
+    pointer-events: all;
     transition: opacity 0.3s, transform 0.3s, visibility 0.3s, height 0.3s;
 }
 .VPScontainer .controlBox .settingsPanel.active

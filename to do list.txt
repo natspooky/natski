@@ -69,3 +69,5 @@ add swipe option to SSC & SSCU
 create a video on error for VPS
 
 make buffer for VPS
+
+fix VPS buggin if you scroll to the end of the video
