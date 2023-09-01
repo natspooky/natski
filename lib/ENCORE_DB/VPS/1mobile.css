@@ -364,6 +364,9 @@ svg rect
     transform: translateX(100%);
     height: 100%;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     overflow-y: scroll;
     transition: 0.3s;
 }
@@ -381,6 +384,7 @@ svg rect
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     height: 100%;
     width: 100%;
     transition: 0.3s;
