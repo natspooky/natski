@@ -71,3 +71,5 @@ create a video on error for VPS
 make buffer for VPS
 
 fix VPS buggin if you scroll to the end of the video
+
+to make settings better, make if there are more than 4 elements in a settings element than start to sroll
