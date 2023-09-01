@@ -234,6 +234,11 @@
     fill: #e9e9e9;
     transition: 0.3s;
 }
+.VPScontainer .controlBox .controlBar button .minCinSVG
+{
+    height: unset;
+    width: 55%;
+}
 .VPScontainer .controlBox .controlBar button.setting
 {
     transition-delay: 0s;
@@ -247,7 +252,7 @@
 {
     transition: 0.3s;
 }
-.VPScontainer .controlBox .controlBar button.active .play, .VPScontainer .controlBox .controlBar button .pause, .VPScontainer .controlBox .controlBar .VPSbar,.VPScontainer .controlBox .controlBar button .minSVG, .VPScontainer .controlBox .controlBar button.active .fullscreenSVG, .VPScontainer .controlBox .controlBar button .minCinSVG, .VPScontainer .controlBox .controlBar button.active .maxCinSVG
+.VPScontainer .controlBox .controlBar button.active .play, .VPScontainer .controlBox .controlBar button .pause, .VPScontainer .controlBox .controlBar .VPSbar,.VPScontainer .controlBox .controlBar button .minSVG, .VPScontainer .controlBox .controlBar button.active .fullscreenSVG,.VPScontainer .controlBox .controlBar button .minCinSVG, .VPScontainer .controlBox .controlBar button.active .maxCinSVG
 {
     display: none;
 }
