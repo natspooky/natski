@@ -247,11 +247,11 @@
 {
     transition: 0.3s;
 }
-.VPScontainer .controlBox .controlBar button.active .play, .VPScontainer .controlBox .controlBar button .pause, .VPScontainer .controlBox .controlBar .VPSbar,.VPScontainer .controlBox .controlBar button .minSVG, .VPScontainer .controlBox .controlBar button.active .fullscreenSVG
+.VPScontainer .controlBox .controlBar button.active .play, .VPScontainer .controlBox .controlBar button .pause, .VPScontainer .controlBox .controlBar .VPSbar,.VPScontainer .controlBox .controlBar button .minSVG, .VPScontainer .controlBox .controlBar button.active .fullscreenSVG, .VPScontainer .controlBox .controlBar button .minCinSVG, .VPScontainer .controlBox .controlBar button.active .maxCinSVG
 {
     display: none;
 }
-.VPScontainer .controlBox .controlBar button.active .pause, .VPScontainer .controlBox .controlBar button .play,.VPScontainer .controlBox .controlBar button.active .minSVG, .VPScontainer .controlBox .controlBar button .fullscreenSVG
+.VPScontainer .controlBox .controlBar button.active .pause, .VPScontainer .controlBox .controlBar button .play,.VPScontainer .controlBox .controlBar button.active .minSVG, .VPScontainer .controlBox .controlBar button .fullscreenSVG, .VPScontainer .controlBox .controlBar button.active .minCinSVG, .VPScontainer .controlBox .controlBar button .maxCinSVG
 {
     display: block;
 }
