@@ -161,6 +161,7 @@ svg rect
     pointer-events: all;
     justify-content: center;
     align-items: center;
+    transition: 0.2s;
 }
 .VPScontainer .controlBox .controlBar button svg,.VPScontainer .controlBox .settingsPanel button svg
 {
@@ -189,7 +190,6 @@ svg rect
     right: 25px;
     height: 15px;
     width: 15px;
-    pointer-events: all;
 }
 .VPScontainer .controlBox .controlBar .VPSsettings
 {
@@ -197,7 +197,6 @@ svg rect
     right: 25px;
     height: 20px;
     width: 20px;
-    pointer-events: all;
 }
 .VPScontainer .controlBox .controlBar button.setting svg
 {
@@ -272,6 +271,7 @@ svg rect
     pointer-events: none;
     z-index: 2;
     color: #e9e9e9;
+    transition: 0.2s;
 }
 .VPScontainer .controlBox .controlBar .VPStime
 {
