@@ -64,6 +64,15 @@
     background-color:#66666620;
     border-radius: 100vmax;
 }
+#CLS article div .CLSsvg
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: min(90%, 400px);
+    fill: #66666620;
+}
 #CLS article div img
 {
     position: relative;
