@@ -157,19 +157,15 @@
     margin: 0 auto;
     padding: 0.5em 2em;
     border-radius: 10px;
-    background-color: var(--displaycolourtrans);
+    background-color: #66666620;
 }
 #CLSloader div svg
 {
+    position: relative;
     height: 15px;
+    fill: #e9e9e9;
     animation: rotate 1s linear infinite;
-    stroke-linecap: round;
-	stroke-width: 90px;
-	fill: none;
-	stroke: var(--maincol);
-	stroke-miterlimit: 10;
 }
-
 .red
 {
     fill: #ff6961;
