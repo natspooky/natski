@@ -71,7 +71,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     height: min(90%, 400px);
-    fill: #66666620;
+    fill: #66666610;
 }
 #CLS article div img
 {
@@ -82,7 +82,9 @@
     display: block;
     object-fit: contain;
     background-color: #66666620;
+    opacity: 0;
     border-radius: 10px;
+    transition: 0.3s;
 }
 #CLS article hr
 {
