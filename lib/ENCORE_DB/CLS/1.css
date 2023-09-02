@@ -37,6 +37,7 @@
     width: min(calc(100% - 30px), 600px);
     height: fit-content;
     margin: 0 0 40px 30px;
+    border-radius: 10px;
     background-color: #66666620;
     max-height: 70vh;
 }
