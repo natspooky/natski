@@ -12,15 +12,11 @@ write a better VPS description
 
 make better instructions for CLS, PDS, PDSU, VPS, SSC, CLSF
 
-change text in ENCORE.html
-
 add to changelog
 
 sneakstash width for portrait is 740px
 
 make kuru clicker run on a canvas
-
-add descriptions to PDSU based on image 'name'
 
 attach PWS onto SSC
 
@@ -39,10 +35,6 @@ make CLS panel (if panel is smaller than window height => pull another)
 change PDSU in V1 to look better
 
 watch hyperplexed to understand logic for SSCU
-
-make VPS settings look better lol
-
-make controlbar pointer-events none and make a ontouchdown/onclick to toggle menu
 
 make context menu for VPS
 
@@ -69,5 +61,3 @@ add swipe option to SSC & SSCU
 create a video on error for VPS
 
 make buffer for VPS
-
-make it so CLE doesnt require images
