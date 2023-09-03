@@ -59,3 +59,5 @@ create a video on error for VPS
 make buffer for VPS
 
 make it so fullscreen changes based on event listener
+
+add custom style additions to CLSF section

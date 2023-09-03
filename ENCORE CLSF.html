@@ -288,12 +288,29 @@ main article div img
     background-color: unset;
     border-radius: unset;
 }
+textarea
+{
+    position: relative;
+    width: 90%;
+    min-width: 90%;
+    max-width: 90%;
+    min-height: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 15px;
+    background-color: #66666630;
+    border: 0px;
+    border-radius: 10px;
+    padding: 10px;
+    color: #e9e9e9;
+}
         </style>
+        <style id="customStyle"></style>
+        <textarea id="stylesheetSystem" onkeyup="document.getElementById('customStyle').innerHTML = document.getElementById('stylesheetSystem').value" placeholder="test custom styles for embedded log elements here!"></textarea>
         <main id="CLS">
             <h1 style="margin-bottom: 0.5em;">PREVIEW</h1>
             <article id="prev"></article>
         </main>
-
 
 
 
