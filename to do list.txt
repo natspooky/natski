@@ -4,8 +4,6 @@ make designs for PWS
 
 add link to v2 through VPS info icon
 
-make info link through CLS
-
 add more detailed instructions to V1
 
 write a better VPS description
@@ -18,10 +16,6 @@ sneakstash width for portrait is 740px
 
 make kuru clicker run on a canvas
 
-attach PWS onto SSC
-
-make ENCORE page use SSCU
-
 make multiple SSCU pages possible
 
 optimise all ENCORE to be in smaller chunks
@@ -29,8 +23,6 @@ optimise all ENCORE to be in smaller chunks
 put ENCORE CMSF into a js file [CME]
 
 change PDSU in V1 to look better
-
-watch hyperplexed to understand logic for SSCU
 
 make context menu for VPS
 
@@ -43,21 +35,12 @@ maybe make ENCORE DES into something
 make kuru kuru gif smaller
 make sound kuru more compressed
 
-make CLS have a unique filetype?
-
-create a tilt encore using perspective and rotate
-
 rebuild VPS with event target for each
 
 make explination of each setting
-
-add swipe option to SSC & SSCU
-{touchstart, touchmove, touchend}
 
 create a video on error for VPS
 
 make buffer for VPS
 
 make it so fullscreen changes based on event listener
-
-add custom style additions to CLSF section
