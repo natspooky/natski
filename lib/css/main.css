@@ -177,6 +177,10 @@ header h2
     {
         background-color: #66666670;
     }
+    .navbutton:hover svg
+    {
+        transform: scale(1.1);
+    }
     .navbutton:active::before
     {
         transform: scale(0.9);
