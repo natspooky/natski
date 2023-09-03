@@ -28,8 +28,6 @@ optimise all ENCORE to be in smaller chunks
 
 put ENCORE CMSF into a js file [CME]
 
-put the CLS loader inside of the CLS DIV to make it smaller
-
 change PDSU in V1 to look better
 
 watch hyperplexed to understand logic for SSCU
