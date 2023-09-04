@@ -558,7 +558,7 @@
     justify-content: center;
     z-index: 99999;
     font-size: 16px;
-    background-color: rgb(106, 0, 0);
+    background-color: #6a0000;
     box-shadow: 0 5px 10px #00000025;
     transition: 0.8s cubic-bezier(.61,.04,0,1.22);
 }

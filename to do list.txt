@@ -44,3 +44,13 @@ create a video on error for VPS
 make buffer for VPS
 
 make it so fullscreen changes based on event listener
+
+make ENCORE pages have ENCOREalert
+
+make SSC and SSCU not break with functions when only one banner-bg
+
+make explanation for banner-bg section of SSC and SSCU
+
+add mutation observer to VPS
+
+fix vps expanding into example

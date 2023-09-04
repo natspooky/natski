@@ -89,7 +89,7 @@
                     </div>
                 </div>
                 <div class="contentbox">
-                    <p>ENCORE VPS is a frontend Javascript plugin that encases videos to give them unique styles and extra functionality without needing to touch any Javascript code.</p>
+                    <p>ENCORE VPS is a frontend Javascript plugin that encases videos to give them unique styles and extra functionality without needing to learn any Javascript.</p>
                     <hr>
 
                     <p>Code that needs to be added into your HTML file:</p>
@@ -107,6 +107,12 @@
                                 <path d="M389.7,715.19h126.3v83.3c0,28.67-23.24,51.9-51.9,51.9H51.9c-28.66,0-51.9-23.23-51.9-51.9V227.1c0-28.66,23.24-51.9,51.9-51.9h245.9v448.09c0,50.68,41.23,91.9,91.9,91.9Z"/>
                                 <rect  x="334.39" width="516" height="675.19" rx="51.9" ry="51.9"/>
                             </svg>
+                        </div>
+                        <div class="codeInfo">
+                            <span>VPSwidth</span>: sets the width of the VPS video. This accepts every standard CSS unit (px, %, vw, etc...)<br><br>
+                            <span>poster</span>: asigns a thumbnail to VPS. This accepts .JPG, .PNG, .GIF, .AVIF and .WEBP images<br><br>
+                            <span>title</span>: allocates a custom title for VPS to display<br><br>
+                            <span>src</span>: this takes video URLs in order to play them in VPS. This accepts .MP4, .WEBM and .OGG videos
                         </div>
                     </div>
 
@@ -128,6 +134,10 @@
                                 <path d="M389.7,715.19h126.3v83.3c0,28.67-23.24,51.9-51.9,51.9H51.9c-28.66,0-51.9-23.23-51.9-51.9V227.1c0-28.66,23.24-51.9,51.9-51.9h245.9v448.09c0,50.68,41.23,91.9,91.9,91.9Z"/>
                                 <rect  x="334.39" width="516" height="675.19" rx="51.9" ry="51.9"/>
                             </svg>
+                        </div>
+                        <div class="codeInfo">
+                            <span>loop</span>: automatically sets videos to loop when loaded by VPS<br><br>
+                            <span>style</span>: chooses the current style that will be applied to VPS when it loads. This value can only be 1
                         </div>
                     </div>
                 
@@ -224,6 +234,8 @@
 
         <script>
             window.onload = function(){
+                createObserver({root: null,rootMargin: "0px"}, ENCobserveDesc, document.getElementsByClassName('codeInfo'))
+                createObserver({root: null,rootMargin: "0px"}, ENCobserveCode, document.getElementsByClassName('codebox'))
                 let URLdata;
                 switch(window.location.href.slice((window.location.href.length - 3), window.location.href.length)){
                     case 'VPS':
@@ -343,6 +355,20 @@
                 alertTimer = setTimeout(() => {
                     alertbox.classList.remove('active')
                 }, 2000);
+            }
+
+            function ENCobserveDesc(entries) {
+                entries.forEach(entry => {
+                    entry.target.style.opacity = entry.isIntersecting ? "1" : "0"
+                    entry.target.style.transform = entry.isIntersecting ? "translateX(0)" : "translateX(1em)"
+                })
+            }
+
+            function ENCobserveCode(entries) {
+                entries.forEach(entry => {
+                    entry.target.style.opacity = entry.isIntersecting ? "1" : "0"
+                    entry.target.style.transform = entry.isIntersecting ? "translateX(0)" : "translateX(-0.5em)"
+                })
             }
         </script>
 

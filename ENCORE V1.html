@@ -104,7 +104,7 @@
 
         &lt;img src="path of background image" alt=""&gt;
 
-        &lt;a class="banner-button" href="insert link here"&gt;enter&lt;/a&gt;
+        &lt;a class="banner-button" href="insert link here"&gt;button text&lt;/a&gt;
 
         &lt;!-- place content in here --&gt;
 
@@ -143,11 +143,16 @@
                                 <rect  x="334.39" width="516" height="675.19" rx="51.9" ry="51.9"/>
                             </svg>
                         </div>
+                        <div class="codeInfo">
+                            <span>thumbs</span>: creates a button for every slide. This is used to see what slide the user is currently on and also quickly switches to the designated slide when clicked<br><br>
+                            <span>progressBar</span>: creates a progress bar that showcases the time until the next slide will be displayed in SSC<br><br>
+                            <span>sideButtons</span>: creates a pair of buttons that are used to switch between the next and previous slides in SSC<br><br>
+                            <span>timer</span>: sets the time taken between transitioning to the next slide in SSC. This value is measured in milliseconds<br><br>
+                            <span>style</span>: chooses the current style that will be applied to SSC when it loads. This value can be either 1 or 2
+                        </div>
                     </div>
 
-
                     <p>ENCORE SSC also has a set of functions that are used to allow more flexibility to your website. These functions include the ability to play, pause and reload SSC. These can be used inside of other javascript functions or attached onto javascript event listeners.</p>
-
                     <div class="codecontainer">
                         <div class="codebox">
 <pre>
@@ -159,6 +164,9 @@
                                 <path d="M389.7,715.19h126.3v83.3c0,28.67-23.24,51.9-51.9,51.9H51.9c-28.66,0-51.9-23.23-51.9-51.9V227.1c0-28.66,23.24-51.9,51.9-51.9h245.9v448.09c0,50.68,41.23,91.9,91.9,91.9Z"/>
                                 <rect  x="334.39" width="516" height="675.19" rx="51.9" ry="51.9"/>
                             </svg>
+                        </div>
+                        <div class="codeInfo">
+                            This function can be called to pause the SSC timer until a user clicks on a thumb, side button or the playSSC() function is called in the page
                         </div>
                     </div>
                     <div class="codecontainer">
@@ -173,6 +181,41 @@
                                 <rect  x="334.39" width="516" height="675.19" rx="51.9" ry="51.9"/>
                             </svg>
                         </div>
+                        <div class="codeInfo">
+                            This function can be called to start the SSC timer after the pauseSSC() function has be called in the page
+                        </div>
+                    </div>
+                    <div class="codecontainer">
+                        <div class="codebox">
+<pre>
+<code>nextSlideSSC()
+</code></pre>
+                        </div>
+                        <div class="copybox">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.39 850.39">
+                                <path d="M389.7,715.19h126.3v83.3c0,28.67-23.24,51.9-51.9,51.9H51.9c-28.66,0-51.9-23.23-51.9-51.9V227.1c0-28.66,23.24-51.9,51.9-51.9h245.9v448.09c0,50.68,41.23,91.9,91.9,91.9Z"/>
+                                <rect  x="334.39" width="516" height="675.19" rx="51.9" ry="51.9"/>
+                            </svg>
+                        </div>
+                        <div class="codeInfo">
+                            This function can be called to progress to the subsequent slide in SSC
+                        </div>
+                    </div>
+                    <div class="codecontainer">
+                        <div class="codebox">
+<pre>
+<code>previousSlideSSC()
+</code></pre>
+                        </div>
+                        <div class="copybox">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.39 850.39">
+                                <path d="M389.7,715.19h126.3v83.3c0,28.67-23.24,51.9-51.9,51.9H51.9c-28.66,0-51.9-23.23-51.9-51.9V227.1c0-28.66,23.24-51.9,51.9-51.9h245.9v448.09c0,50.68,41.23,91.9,91.9,91.9Z"/>
+                                <rect  x="334.39" width="516" height="675.19" rx="51.9" ry="51.9"/>
+                            </svg>
+                        </div>
+                        <div class="codeInfo">
+                            This function can be called to progress to the preceding slide in SSC
+                        </div>
                     </div>
                     <div class="codecontainer">
                         <div class="codebox">
@@ -185,6 +228,9 @@
                                 <path d="M389.7,715.19h126.3v83.3c0,28.67-23.24,51.9-51.9,51.9H51.9c-28.66,0-51.9-23.23-51.9-51.9V227.1c0-28.66,23.24-51.9,51.9-51.9h245.9v448.09c0,50.68,41.23,91.9,91.9,91.9Z"/>
                                 <rect  x="334.39" width="516" height="675.19" rx="51.9" ry="51.9"/>
                             </svg>
+                        </div>
+                        <div class="codeInfo">
+                            This function can be called to restart SSC. This can be used in cases where the settings need to be updated during the use of SSC
                         </div>
                     </div>
                 
@@ -239,7 +285,7 @@
 
         &lt;img src="path of background image" alt=""&gt;
 
-        &lt;a class="banner-button" href="insert link here"&gt;enter&lt;/a&gt;
+        &lt;a class="banner-button" href="insert link here"&gt;button text&lt;/a&gt;
 
         &lt;!-- place content in here --&gt;
 
@@ -279,6 +325,13 @@
                                 <rect  x="334.39" width="516" height="675.19" rx="51.9" ry="51.9"/>
                             </svg>
                         </div>
+                        <div class="codeInfo">
+                            <span>thumbs</span>: creates a button for every slide. This is used to see what slide the user is currently on while also displaying the time until the next slide will be displayed in SSCU. thumbs also quickly switch to the designated slide when clicked<br><br>
+                            <span>sideButtons</span>: creates a pair of buttons that are used to switch between the next and previous slides in SSC<br><br>
+                            <span>timer</span>: sets the time taken between transitioning to the next slide in SSC. This value is measured in milliseconds<br><br>
+                            <span>slideSpeed</span>: sets the time taken by the slides when transitioning between eachother. This value is measured in milliseconds<br><br>
+                            <span>style</span>: chooses the current style that will be applied to SSC when it loads. This value can be either 1, 2 or 3
+                        </div>
                     </div>
 
 
@@ -296,6 +349,9 @@
                                 <rect  x="334.39" width="516" height="675.19" rx="51.9" ry="51.9"/>
                             </svg>
                         </div>
+                        <div class="codeInfo">
+                            This function can be called to pause the SSCU timer until a user clicks on a thumb, side button or the playSSCU() function is called in the page
+                        </div>
                     </div>
                     <div class="codecontainer">
                         <div class="codebox">
@@ -309,6 +365,41 @@
                                 <rect  x="334.39" width="516" height="675.19" rx="51.9" ry="51.9"/>
                             </svg>
                         </div>
+                        <div class="codeInfo">
+                            This function can be called to start the SSCU timer after the pauseSSCU() function has be called in the page
+                        </div>
+                    </div>
+                    <div class="codecontainer">
+                        <div class="codebox">
+<pre>
+<code>nextSlideSSCU()
+</code></pre>
+                        </div>
+                        <div class="copybox">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.39 850.39">
+                                <path d="M389.7,715.19h126.3v83.3c0,28.67-23.24,51.9-51.9,51.9H51.9c-28.66,0-51.9-23.23-51.9-51.9V227.1c0-28.66,23.24-51.9,51.9-51.9h245.9v448.09c0,50.68,41.23,91.9,91.9,91.9Z"/>
+                                <rect  x="334.39" width="516" height="675.19" rx="51.9" ry="51.9"/>
+                            </svg>
+                        </div>
+                        <div class="codeInfo">
+                            This function can be called to progress to the subsequent slide in SSCU
+                        </div>
+                    </div>
+                    <div class="codecontainer">
+                        <div class="codebox">
+<pre>
+<code>previousSlideSSCU()
+</code></pre>
+                        </div>
+                        <div class="copybox">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.39 850.39">
+                                <path d="M389.7,715.19h126.3v83.3c0,28.67-23.24,51.9-51.9,51.9H51.9c-28.66,0-51.9-23.23-51.9-51.9V227.1c0-28.66,23.24-51.9,51.9-51.9h245.9v448.09c0,50.68,41.23,91.9,91.9,91.9Z"/>
+                                <rect  x="334.39" width="516" height="675.19" rx="51.9" ry="51.9"/>
+                            </svg>
+                        </div>
+                        <div class="codeInfo">
+                            This function can be called to progress to the preceding slide in SSCU
+                        </div>
                     </div>
                     <div class="codecontainer">
                         <div class="codebox">
@@ -321,6 +412,9 @@
                                 <path d="M389.7,715.19h126.3v83.3c0,28.67-23.24,51.9-51.9,51.9H51.9c-28.66,0-51.9-23.23-51.9-51.9V227.1c0-28.66,23.24-51.9,51.9-51.9h245.9v448.09c0,50.68,41.23,91.9,91.9,91.9Z"/>
                                 <rect  x="334.39" width="516" height="675.19" rx="51.9" ry="51.9"/>
                             </svg>
+                        </div>
+                        <div class="codeInfo">
+                            This function can be called to restart SSCU. This can be used in cases where the settings need to be updated during the use of SSCU
                         </div>
                     </div>
 
@@ -413,6 +507,33 @@
                                 <rect  x="334.39" width="516" height="675.19" rx="51.9" ry="51.9"/>
                             </svg>
                         </div>
+                        <div class="codeInfo">
+                            <span>path</span>: asigns the file path of the images for use in PDS. All images must be named numbers incrementing upwards from 1 (eg: 1.png, 2.png, 3.png, etc...). PDS currently only accepts images in a .PNG format<br><br>
+                            <span>fileCount</span>: sets the number of images that need to be loaded<br><br>
+                            <span>classes</span>: adds additional classes to the images created by PDS (if no classes are required then "null" should be used)<br><br>
+                            <span>colourSystem</span>: adds an average colour background to each image in the PDS image gallery<br><br>
+                            <span>animations</span>: sets onclick animations for the PDS image viewer<br><br>
+                            <span>controls</span>: creates buttons to navigate the PDS image viewer<br><br>
+                            <span>style</span>: chooses the current style that will be applied to PDS when it loads. This value can only be 1
+                        </div>
+                    </div>
+
+                    <p>ENCORE PDS also has functions that are used to allow more flexibility to your website. This can be used inside of other javascript functions or attached onto javascript event listeners.</p>
+                    <div class="codecontainer">
+                        <div class="codebox">
+<pre>
+<code>reloadPDS(PDS_settings)
+</code></pre>
+                        </div>
+                        <div class="copybox">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.39 850.39">
+                                <path d="M389.7,715.19h126.3v83.3c0,28.67-23.24,51.9-51.9,51.9H51.9c-28.66,0-51.9-23.23-51.9-51.9V227.1c0-28.66,23.24-51.9,51.9-51.9h245.9v448.09c0,50.68,41.23,91.9,91.9,91.9Z"/>
+                                <rect  x="334.39" width="516" height="675.19" rx="51.9" ry="51.9"/>
+                            </svg>
+                        </div>
+                        <div class="codeInfo">
+                            This function can be called to restart PDS. This can be used in cases where the settings need to be updated during the use of PDS
+                        </div>
                     </div>
                 
                     <p>ENCORE PDS Example:</p>
@@ -472,6 +593,30 @@
                                 <rect  x="334.39" width="516" height="675.19" rx="51.9" ry="51.9"/>
                             </svg>
                         </div>
+                        <div class="codeInfo">
+                            <span>imageClass</span>: asigns the class that PDSU will attach onto for use with the PDSU image viewer<br><br>
+                            <span>animations</span>: sets onclick animations for the PDSU image viewer<br><br>
+                            <span>controls</span>: creates buttons to navigate the PDSU image viewer<br><br>
+                            <span>style</span>: chooses the current style that will be applied to PDSU when it loads. This value can only be 1
+                        </div>
+                    </div>
+
+                    <p>ENCORE PDSU also has functions that are used to allow more flexibility to your website. This can be used inside of other javascript functions or attached onto javascript event listeners.</p>
+                    <div class="codecontainer">
+                        <div class="codebox">
+<pre>
+<code>reloadPDSU(PDSU_settings)
+</code></pre>
+                        </div>
+                        <div class="copybox">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.39 850.39">
+                                <path d="M389.7,715.19h126.3v83.3c0,28.67-23.24,51.9-51.9,51.9H51.9c-28.66,0-51.9-23.23-51.9-51.9V227.1c0-28.66,23.24-51.9,51.9-51.9h245.9v448.09c0,50.68,41.23,91.9,91.9,91.9Z"/>
+                                <rect  x="334.39" width="516" height="675.19" rx="51.9" ry="51.9"/>
+                            </svg>
+                        </div>
+                        <div class="codeInfo">
+                            This function can be called to restart PDSU. This can be used in cases where the settings need to be updated during the use of PDSU
+                        </div>
                     </div>
                 
                     <p>ENCORE PDSU Example:</p>
@@ -511,7 +656,7 @@
                     </div>
                 </div>
                 <div class="contentbox">
-                    <p>ENCORE CLS is a system used to display formatted text files as the user scrolls further down the page.<br>text files can be formatted for ENCORE CLS by using the <b>ENCORE CLS Formatter</b> page.</p>
+                    <p>ENCORE CLS is a system used to display formatted NTSK files as the user scrolls further down the page.<br>NTSK files can be formatted for ENCORE CLS by using the <b>ENCORE CLS Formatter</b> page.</p>
                     <hr>
                     
 
@@ -552,6 +697,12 @@
                                 <rect  x="334.39" width="516" height="675.19" rx="51.9" ry="51.9"/>
                             </svg>
                         </div>
+                        <div class="codeInfo">
+                            <span>path</span>: asigns the file path of the logs for use in CLS. All logs must be named numbers incrementing upwards from 1 (eg: 1.ntsk, 2.ntsk, 3.ntsk, etc...). CLS only accepts logs in a .NTSK format<br><br>
+                            <span>fileCount</span>: sets the number of logs that need to be loaded<br><br>
+                            <span>container</span>: sets the container that contains the #CLS element. This value must be the ID of the container (eg: document.getElementById("ID of element")). If the container is the body of the document then "null" should be used<br><br>
+                            <span>style</span>: chooses the current style that will be applied to CLS when it loads. This value can only be 1
+                        </div>
                     </div>
                 
                     <p>ENCORE CLS Example:</p>
@@ -582,7 +733,13 @@
                     </div>
                 </div>
                 <div class="contentbox">
-                    [testing in progress]
+                    <p>ENCORE CLSF is a system to format NTSK files for use with ENCORE CLS</p>
+                    <hr>
+                    <div class="exampleMenu" style="margin-top: 1em;">
+                        <button onclick="parent.loadframe('ENCORE CLSF');parent.backPage(1)">
+                            Open ENCORE CLSF
+                        </button>
+                    </div>
                 </div>
             </div>
         </main>
@@ -601,6 +758,8 @@
 
         <script>
             window.onload = function(){
+                createObserver({root: null,rootMargin: "0px"}, ENCobserveDesc, document.getElementsByClassName('codeInfo'))
+                createObserver({root: null,rootMargin: "0px"}, ENCobserveCode, document.getElementsByClassName('codebox'))
                 let URLdata;
                 switch(window.location.href.slice((window.location.href.length - 3), window.location.href.length)){
                     case 'SSC':
@@ -793,6 +952,20 @@
                 alertTimer = setTimeout(() => {
                     alertbox.classList.remove('active')
                 }, 2000);
+            }
+
+            function ENCobserveDesc(entries) {
+                entries.forEach(entry => {
+                    entry.target.style.opacity = entry.isIntersecting ? "1" : "0"
+                    entry.target.style.transform = entry.isIntersecting ? "translateX(0)" : "translateX(1em)"
+                })
+            }
+
+            function ENCobserveCode(entries) {
+                entries.forEach(entry => {
+                    entry.target.style.opacity = entry.isIntersecting ? "1" : "0"
+                    entry.target.style.transform = entry.isIntersecting ? "translateX(0)" : "translateX(-0.5em)"
+                })
             }
         </script>
 

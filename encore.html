@@ -629,7 +629,7 @@
         </a>
 
         <a onclick="parent.loadframe('ENCORE CLSF');parent.backPage(1)">
-            <div class="featurebanner" name="A tool used to format text files for ENCORE CLS">
+            <div class="featurebanner" name="A tool used to format NTSK files for ENCORE CLS">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.41 850.41">
                     <path d="M426.35,666.54c12.75,0,23.08,10.33,23.08,23.08s-10.33,23.08-23.08,23.08H188.55c-12.75,0-23.08-10.34-23.08-23.08,0-6.38,2.58-12.14,6.76-16.32,4.17-4.18,9.95-6.76,16.32-6.76h237.8Z"/>
                     <path d="M286.6,540.72H145.89c-12.74,0-23.08-10.33-23.08-23.07,0-6.37,2.59-12.15,6.76-16.32s9.95-6.76,16.32-6.76h106.43l13.27,22.99c5.35,9.26,12.56,17.1,21.01,23.16Z"/>
@@ -740,7 +740,7 @@
                 'thumbs':true,
                 'sideButtons':true,
                 'timer':10000,
-                'slideSpeed':600,
+                'slideSpeed':400,
                 'style':null
             }
         </script>
@@ -776,6 +776,7 @@
                         }
                     }
                 }
+                
                 let links = document.getElementsByClassName('banner-button'),
                 len = links.length;
 
@@ -799,11 +800,11 @@
                     for(let i = 0; i < x.length; i++){
 
                         x[i].addEventListener("mousemove", function(e) {
-                        let pagY = e.pageY - sscu.offsetTop - (sscu.offsetHeight / 2),
-                        pagX = e.pageX - sscu.offsetLeft - (sscu.offsetWidth / 2);
+                            let pagY = (e.pageY - sscu.offsetTop - (sscu.offsetHeight / 2)) / 100,
+                            pagX = (e.pageX - sscu.offsetLeft - (sscu.offsetWidth / 2)) / 100;
 
                             x[i].children[3].animate({
-                                transform: "translate(" + pagX / 20 + "px," + pagY / 20 + "px) rotate("+ pagX / 100 +"deg)"
+                                transform: "translate(" + pagX * 5 + "px," + pagY * 5 + "px) rotate("+ pagX / 2 +"deg)"
                             }, { duration: 1500, fill: 'forwards'})
                         })
 

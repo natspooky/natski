@@ -61,6 +61,10 @@
     display: block;
     transition: 0.25s;
 }
+#CMScontextMenu .CMScontext.sub
+{
+    transition: translateX(-100%);
+}
 #CMScontextMenu .CMScontext.active, #CMScontextMenu #CMS4500b5
 {
     transform: translateX(0);
@@ -103,7 +107,7 @@
 {
     transform: rotate(90deg) scale(0.8);
 }
-#CMScontextMenu div button svg,#contextMenu div button img
+#CMScontextMenu div button svg,#CMScontextMenu div button img
 {
     position: relative;
     height: 20px;

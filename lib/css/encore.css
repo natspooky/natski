@@ -110,6 +110,26 @@
     overflow: hidden;
     margin: 1em 0;
 }
+.dropdown .contentbox .codecontainer .codeInfo
+{
+    position: relative;
+    color: #e9e9e990;
+    margin-top: 0.5em;
+    width: calc(100% - 4.8em);
+    padding: 1em;
+    overflow: hidden;
+    white-space: normal;
+    background-color: #66666615;
+    border-radius: 0.5em;
+    min-height: 3em;
+    float: left;
+    transition: 1s;
+}
+.dropdown .contentbox .codecontainer .codeInfo span
+{
+    color: #e9e9e9e0;
+    font-weight: bold;
+}
 .dropdown .contentbox .codecontainer .codebox
 {
     position: relative;
@@ -119,9 +139,10 @@
     min-height: 3em;
     overflow-x: scroll;
     overflow-y: hidden;
-    user-select: all;
+    user-select: text;
     background-color: #66666620;
     border-radius: 0.5em;
+    transition: 1s;
 }
 .dropdown .contentbox .codecontainer .copybox
 {
@@ -139,30 +160,6 @@
 .dropdown .contentbox .codecontainer .copybox svg
 {
     width: 30%;
-}
-.dropdown .contentbox .codecontainer .copybox::before
-{
-    content: 'copied!';
-    position: absolute;
-    right: calc(100% + 1.5em);
-    padding: 0.3em 0.5em;
-    top: 50%;
-    pointer-events: none;
-    border-radius: 0.3em;
-    opacity: 0;
-    font-weight: bold;
-    transform: translate(0,-50%);
-    background-color: #404040;
-    visibility: hidden;
-    transition: 0.5s;
-    transition-delay: 2s;
-}
-.dropdown .contentbox .codecontainer .copybox:active::before
-{
-    transition: 0s;
-    transition-delay: 0s;
-    visibility: visible;
-    opacity: 1;
 }
 .dropdown .contentbox .codecontainer .copybox:active
 {
@@ -312,5 +309,9 @@ li span b
         margin: 0;
         width: calc(100% - 2em);
         text-align: center;
+    }
+    .dropdown .contentbox .codecontainer .codeInfo
+    {
+        width: calc(100% - 1em);
     }
 }
