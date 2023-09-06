@@ -312,20 +312,18 @@ svg rect
     min-height: 100%;
     overflow: hidden;
     box-sizing: border-box;
-    transform: scale(0.8);
     border-radius: 0.4em;
     visibility: hidden;
     display: block;
     background-color: rgba(0, 0, 0, 0.627);
     opacity: 0;
     z-index: 20;
-    pointer-events: all;
-    transition: opacity 0.3s ease 0s, transform 0.3s ease 0s, visibility 0.3s ease 0s, height 0.3s ease 0s;
+    pointer-events: none;
+    transition: opacity 0.2s ease 0s, visibility 0.2s ease 0s;
 }
 
 .VPScontainer .controlBox .settingsPanel.active {
     visibility: visible;
-    transform: scale(1);
     pointer-events: unset;
     opacity: 1;
 }
