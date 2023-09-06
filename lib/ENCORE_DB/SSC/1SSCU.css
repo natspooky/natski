@@ -221,3 +221,10 @@
     font-weight: bold;
     transition: 0.2s;
 }
+@media (orientation: portrait)
+{
+    #SSCU
+    {
+        height: 85vh;
+    }
+}

@@ -59,26 +59,7 @@
         --codewindow: #b5b5b5;
     }
 
-::-webkit-scrollbar-thumb
-{
-    background-color: var(--displaycolour);
-    border: 2px solid var(--accentcol);
-    border-radius: 100vmax;
-}
-::-webkit-scrollbar-thumb:hover
-{
-    border: 2px solid var(--displaycolour);
-}
-::-webkit-scrollbar
-{
-    width: 0px;
-	height: 0px;
-    background-color: var(--accentcol);
-}
-.itemContainer::-webkit-scrollbar,.itemContainer div p::-webkit-scrollbar
-{
-    width: 0;
-}
+
 
 body, html {
     height: 500vh;
@@ -239,7 +220,6 @@ body, html {
 {
     overflow: visible;
 }
-
 .VPScontainer .VPScanvas
 {
     position: absolute;
@@ -248,11 +228,14 @@ body, html {
     height: calc(100% + 50px);
     width: calc(100% + 50px);
     transform: translate(-50%, -50%);
-    opacity: 0.3;
+    opacity: 0;
     pointer-events: none;
-    filter: blur(20px);
+    filter: blur(18px);
+    transition: 2s;
+}.VPScontainer .VPScanvas.active
+{
+    opacity: 0.3;
 }
-
 .VPScontainer .VPS
 {
     border-radius: 0.5em;
@@ -266,7 +249,6 @@ body, html {
     height: 100%;
     width: 100%;
 }
-
 .VPScontainer .controlBox
 {
     overflow: hidden;
@@ -278,9 +260,15 @@ body, html {
 }
 </style>
 
+
+
+
+
+
+
 <main style="display: flex; justify-content: center; margin: 100px 0;">
 <video class="VPS" VPSwidth="50%" poster="icon/videos/COLORsthumb.png" title="colors" style="display: none; opacity: 1;">
-    <source src="icon/videos/batter.mp4">
+    <source src="icon/videos/COLORs.mp4">
 </video>
 </main>
 
@@ -292,6 +280,9 @@ body, html {
         'style':1
     }
 </script>
+
+
+
 
     </body>
 </html>
