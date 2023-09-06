@@ -124,6 +124,7 @@
 &lt;script&gt;
     VPS_settings={
         'loop':false,
+        'bokeh':true,
         'style':1
     }
 &lt;/script&gt;
@@ -137,6 +138,7 @@
                         </div>
                         <div class="codeInfo">
                             <span>loop</span>: automatically sets videos to loop when loaded by VPS<br><br>
+                            <span>bokeh</span>: change<br><br>
                             <span>style</span>: chooses the current style that will be applied to VPS when it loads. This value can only be 1
                         </div>
                     </div>
@@ -154,11 +156,14 @@
                         </button>
                     </div>
                     <div class="exampleMenu" id="VPSmenu" style="display: none; margin-top: 1em;">
-                        <button style="background-color: #09af0030;" onclick="VPS_settings={'loop':document.getElementById('vpsloop').hasAttribute('active'),'style':1}; reloadVPS(); ENCOREalert(this.parentNode.id)">
+                        <button style="background-color: #09af0030;" onclick="VPS_settings={'loop':document.getElementById('vpsloop').hasAttribute('active'),'bokeh':document.getElementById('vpsloop').hasAttribute('active'),'style':1}; reloadVPS(VPS_settings); ENCOREalert(this.parentNode.id)">
                             Save Changes
                         </button>
                         <button id="vpsloop" onclick="changeValues(this)">
                             Loop
+                        </button>
+                        <button class="active" active id="vpsbokeh" onclick="changeValues(this)">
+                            Bokeh
                         </button>
                     </div>
                 </div>

@@ -54,3 +54,5 @@ make explanation for banner-bg section of SSC and SSCU
 add mutation observer to VPS
 
 fix vps expanding into example
+
+add reload VPS to the vps functions list in V2
