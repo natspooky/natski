@@ -775,26 +775,8 @@
                             }
                         }
                     }
-                }
-                
-                let links = document.getElementsByClassName('banner-button'),
-                len = links.length;
-
-                for(let i = 0; i < len; i++) {
-                    links[i].addEventListener('mouseover', function(){
-                        links[i].parentNode.children[0].classList.add('active')
-                        pauseSSCU()
-                    })
-                    links[i].addEventListener('mouseout', function(){
-                        links[i].parentNode.children[0].classList.remove('active')
-                        playSSCU()
-                    })
-                }
-
-
-
-
-                if(!NATdeviceCheck()){
+                    
+                    if(!NATdeviceCheck()){
                     let x = document.getElementsByClassName('banner-bg-u'),
                     sscu = document.getElementById('SSCU')
                     for(let i = 0; i < x.length; i++){
@@ -818,6 +800,21 @@
 
                     }
             
+                }
+                }
+                
+                let links = document.getElementsByClassName('banner-button'),
+                len = links.length;
+
+                for(let i = 0; i < len; i++) {
+                    links[i].addEventListener('mouseover', function(){
+                        links[i].parentNode.children[0].classList.add('active')
+                        pauseSSCU()
+                    })
+                    links[i].addEventListener('mouseout', function(){
+                        links[i].parentNode.children[0].classList.remove('active')
+                        playSSCU()
+                    })
                 }
 
             }
