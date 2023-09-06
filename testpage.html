@@ -34,7 +34,6 @@
         <meta name="twitter:site" content="@natspooky_">
         <meta name="twitter:creator" content="@natspooky_">
         <meta name="twitter:card" content="summary">
-        <link rel="stylesheet" type="text/css" href="lib/ENCORE_DB/CLS/1.css"/>
 	</head>
     <body>
         <style>
@@ -219,6 +218,7 @@ body, html {
 .VPScontainer
 {
     overflow: visible;
+    background: transparent; box-shadow: 0 10px 10px #00000000
 }
 .VPScontainer .VPScanvas
 {
@@ -232,13 +232,15 @@ body, html {
     pointer-events: none;
     filter: blur(45px);
     transition: 2s;
-}.VPScontainer .VPScanvas.active
+}
+.VPScontainer .VPScanvas.active
 {
     opacity: 0.4;
 }
 .VPScontainer .VPS
 {
     border-radius: 0.5em;
+    opacity: 0;
 }
 .VPScontainer .VPS.full, .VPScontainer .VPS.full + .controlBox, .VPScontainer.full .controlBox
 {
@@ -268,7 +270,7 @@ body, html {
 
 <main style="display: flex; justify-content: center; margin: 100px 0;">
 <video class="VPS" VPSwidth="50%" poster="icon/videos/COLORsthumb.png" title="colors" style="display: none; opacity: 1;">
-    <source src="icon/videos/COLORs.mp4">
+    <source src="icon/videos/batter.mp4">
 </video>
 </main>
 
