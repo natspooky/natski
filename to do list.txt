@@ -57,6 +57,4 @@ fix vps expanding into example
 
 add reload VPS to the vps functions list in V2
 
-remake the settings icon coz it looks kinda mid
-
-seperate the layers of icons for the use in art portfolio
+add intersection observer to VPS in order to make bokeh disapear when not in frame

@@ -131,6 +131,7 @@
     opacity: 0;
     pointer-events: none;
     filter: blur(45px);
+    -webkit-filter: blur(45px);
     transition: opacity 2s;
 }
 .VPScontainer .VPScanvas.active
