@@ -557,7 +557,8 @@
         <script>
          
                 let backnum = 0,
-                backList = [];
+                backList = [],
+                preference = localStorage.getItem("performance");
 
 
                 function systemStart() {
@@ -578,7 +579,7 @@
                         }
                     }, 1000)
 
-                    if(!deviceCheck()){
+                    if(!deviceCheck() && preference!=='true'){
                         let x = document.getElementsByClassName('banner-bg-u'),
                         sscu = document.getElementById('SSCU')
                         for(let i = 0; i < x.length; i++){
