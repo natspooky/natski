@@ -100,14 +100,16 @@
                 left: calc(100% - 30px);
                 background: #fff;
             }
-            input[type="checkbox"]:hover::after
-            {
-                -webkit-transform: scale(.7);
-                        transform: scale(.7);
-            }
             main article h3
             {
                 margin: 0;
+            }
+            @media (hover: hover) {
+                input[type="checkbox"]:hover::after
+                {
+                    -webkit-transform: scale(.7);
+                            transform: scale(.7);
+                }
             }
         </style>
 
