@@ -66,7 +66,7 @@
             <article style="animation: opacity 1s;">
                 <p style="text-align: left;"><span>V2</span> consists of 3 plugins and a formatter:<br><br><ul>
                     <li style="--colour: #3b43e0;"><span>ENCORE VPS <b>//</b> Video Player System</span></li>
-                    <li style="--colour: #e13333;"><span>ENCORE PWS <b>//</b> Parallax Window System</span></li>
+                    <li style="--colour: #e13333;"><span>ENCORE PSS <b>//</b> Parallax Window System</span></li>
                     <li style="--colour: #ed5b21;"><span>ENCORE CMS <b>//</b> Context Menu System</span></li>
                     <li style="--colour: #d4d4d4;"><span>ENCORE CMSF <b>//</b> Context Menu System Formatter</span></li>
                 </ul>
@@ -172,8 +172,8 @@
 
             <div class="dropdown" id="encoreCMS" style="--colour: #ff000015;">
                 <div class="dropdownheader">
-                    <img src="icon/thumbnails_small/PWS.png" alt="PWS" draggable="false">
-                    <p>ENCORE PWS<span>  •  Parallax Window System</span></p>
+                    <img src="icon/thumbnails_small/PSS.png" alt="PSS" draggable="false">
+                    <p>ENCORE PSS<span>  •  Parallax Window System</span></p>
                     <div>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.35 850.35">
                             <path d="M816.99,312.17l-351.98,351.98c-22.01,22.01-57.69,22.01-79.7,0L33.32,312.17c-32.59-32.58-32.59-85.42,0-118h0c32.59-32.59,85.42-32.59,118,0L425.16,468.01,698.99,194.17c32.58-32.59,85.42-32.59,118,0h0c32.59,32.59,32.59,85.42,0,118Z"/>
@@ -246,7 +246,7 @@
                     case 'VPS':
                         URLdata = document.getElementsByClassName('dropdown')[0];
                         break;
-                    case 'PWS':
+                    case 'PSS':
                         URLdata = document.getElementsByClassName('dropdown')[1];
                         break;
                     case 'CMS':
@@ -298,25 +298,25 @@
                         }
                         break;
 
-                        case 'PWS':
-                            let pws = document.getElementById('PWS');
-                            if(document.getElementById('PWSscript')) {
-                                pws.style.height = 'var(--height)'
-                                pws.style.opacity = '1'
-                                document.getElementById('PWSmenu').style.display = 'flex'
+                        case 'PSS':
+                            let PSS = document.getElementById('PSS');
+                            if(document.getElementById('PSSscript')) {
+                                PSS.style.height = 'var(--height)'
+                                PSS.style.opacity = '1'
+                                document.getElementById('PSSmenu').style.display = 'flex'
                             }else{
                                 let script = document.createElement('script'),
                                 settings = document.createElement('script');
-                                pws.innerHTML = ''
-                                script.id = 'PWSscript'
-                                script.src = 'https://natski.netlify.com/lib/js/ENCORE_PWS.js'
-                                settings.id = 'PWSsettings'
-                                settings.innerHTML = "PWS_settings={'thumbs':true,'progressBar':true,'sideButtons':true,'style':1}"
+                                PSS.innerHTML = ''
+                                script.id = 'PSSscript'
+                                script.src = 'https://natski.netlify.com/lib/js/ENCORE_PSS.js'
+                                settings.id = 'PSSsettings'
+                                settings.innerHTML = "PSS_settings={'thumbs':true,'progressBar':true,'sideButtons':true,'style':1}"
                                 document.body.appendChild(script)
                                 document.body.appendChild(settings)
-                                pws.style.height = 'var(--height)'
-                                pws.style.opacity = '1'
-                                document.getElementById('PWSmenu').style.display = 'flex'
+                                PSS.style.height = 'var(--height)'
+                                PSS.style.opacity = '1'
+                                document.getElementById('PSSmenu').style.display = 'flex'
                             }
                             break;
                 }
@@ -332,9 +332,9 @@
                         pauseVPS(0)
                         break;
 
-                    case 'PWS':
-                        itemData = document.getElementById('PWS')
-                        document.getElementById('PWSmenu').style.display = 'none'
+                    case 'PSS':
+                        itemData = document.getElementById('PSS')
+                        document.getElementById('PSSmenu').style.display = 'none'
                         break;
     
                 }
