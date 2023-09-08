@@ -51,8 +51,8 @@
     border-radius: 23px;
     box-shadow: 0 0 40px #00000060;
     background-color: #e9e9e915;
-    transform: translate(-50%,-50%);
     pointer-events: none;
+    transform-origin: top left;
 }
 #PDSUinspectPanel #PDSUinspectImage.active {
     height: auto;
