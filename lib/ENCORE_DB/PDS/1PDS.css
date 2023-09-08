@@ -70,6 +70,7 @@
     visibility: visible;
     opacity: 1;
     pointer-events: unset;
+    transition: 0s;
 }
 #PDSinspectPanel section {
     position: absolute;
