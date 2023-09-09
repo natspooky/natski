@@ -60,3 +60,5 @@ add reload VPS to the vps functions list in V2
 add intersection observer to VPS in order to make bokeh disapear when not in frame
 
 fix PDS super high script evaluation
+
+make PDS have an image transition delay
