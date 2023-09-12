@@ -62,3 +62,5 @@ add intersection observer to VPS in order to make bokeh disapear when not in fra
 fix PDS super high script evaluation
 
 add loader using body onload for alevel and gcse art pages
+
+update CLS in V1 to inform users about how CLS div needs to be placed inside another container or in the body itself
