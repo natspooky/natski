@@ -61,7 +61,10 @@
                 transform: scaleX(-100%);
             }
 
-
+            input{
+                position: relative;
+                
+            }
         </style>
 
         <div id="colourlesspanelback"></div>
@@ -88,15 +91,15 @@
                 <canvas id="canvas"></canvas>
                 <canvas id="facecanvas"></canvas>
             </div>
-            <article>
-                temp text
+            <article style="display: flex; justify-content: right;">
+                <input type="range" max="200" min="50" value="125" step="1" onchange="changethresh(this)" style="width: 50%; flex-grow: 1;">
+                <input type="color" oninput="changecol('red',this)">
+                <input type="color" oninput="changecol('green',this)">
+                <input type="color" oninput="changecol('blue',this)">
             </article>
         </main>
 
 </div>
-
-
-<img id="source" src="icon/img/test.png" width="300" height="227" />
 
 
         <footer>
