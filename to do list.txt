@@ -61,4 +61,4 @@ add intersection observer to VPS in order to make bokeh disapear when not in fra
 
 fix PDS super high script evaluation
 
-make PDS have an image transition delay
+add loader using body onload for alevel and gcse art pages
