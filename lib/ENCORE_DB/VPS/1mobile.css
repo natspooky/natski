@@ -405,3 +405,28 @@ svg rect
     transition: 0.3s;
     transform: rotate(-180deg);
 }
+.VPScontainer .VPSerror
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.VPScontainer .VPSerror svg
+{
+    position: relative;
+    height: 50%;
+    fill: #e9e9e9;
+    margin-bottom: 10px;
+}
+.VPScontainer .VPSerror p
+{
+    position: relative;
+    width: 100%;
+    text-align: center;
+}
