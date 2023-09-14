@@ -66,3 +66,5 @@ add loader using body onload for alevel and gcse art pages
 update CLS in V1 to inform users about how CLS div needs to be placed inside another container or in the body itself
 
 fix VPS error handle giving errors 
+
+update about page
