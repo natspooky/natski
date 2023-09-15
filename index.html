@@ -297,12 +297,62 @@
                     display: none;
                 }
             }
+
+
+
+
+            #loadscreen::before, #loadscreen::after
+            {
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                height: 20em;
+                width: 20em;
+                transform: translate(-50%,-50%) skewX(-30deg);
+                background-color: #000000;
+                transition: 0.9s;
+                transition-delay: 0.3s;
+            }
+            #loadscreen::before, #loadscreen::after
+            {
+                z-index: 2;
+            }
+            #loadscreen::after
+            {
+                transform: translate(-150%,-50%) skewX(-30deg);
+                transition-delay: 0.4s;
+            }
+
+            #loadscreen.first::before
+            {
+                transform: translate(100%,-50%) skewX(-30deg);
+            }
+
+            #loadscreen.first::after
+            {
+                transform: translate(50%,-50%) skewX(-30deg);
+            }
+
+            #loadscreen #outline
+            {
+                transition: 0.4s;
+                opacity: 0;
+            }
+            #loadscreen.first #outline
+            {
+                opacity: 0.2;
+            }
+
         </style>
 
         <div id="loadscreen">
             <svg style="position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); height: 10em; width: 10em; fill: var(--themecol);" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.35 850.35">
                 <path d="M850.35,48.04V802.31c0,26.53-21.51,48.04-48.04,48.04h-171.87c-18.33,0-35.64-8.4-46.98-22.8l-243.52-309.3c-29.93-38.02-91.02-16.85-91.02,31.53v252.55c0,26.52-21.5,48.02-48.02,48.02H48.02c-26.52,0-48.02-21.5-48.02-48.02V48.02C0,21.5,21.5,0,48.02,0H219.9c18.33,0,35.64,8.4,46.99,22.8l243.46,309.07c29.96,38.03,91.08,16.85,91.08-31.56V48.04c0-26.53,21.51-48.04,48.04-48.04h152.85c26.53,0,48.04,21.51,48.04,48.04Z"/>
             </svg>
+            <svg id="outline" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); height: 10em; width: 10em; fill: var(--themecol); z-index: 5;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.41 850.41">
+                <path d="M802.35,22.02c14.36,0,26.04,11.68,26.04,26.04V802.33c0,14.36-11.68,26.04-26.04,26.04h-171.87c-11.66,0-22.48-5.25-29.69-14.41l-243.52-309.3c-13.97-17.75-34.69-27.93-56.85-27.93-18.51,0-36.89,7.17-50.43,19.67-14.85,13.71-23.03,32.68-23.03,53.4v252.55c0,14.35-11.67,26.02-26.02,26.02H48.06c-14.35,0-26.02-11.67-26.02-26.02V48.04c0-14.35,11.67-26.02,26.02-26.02H219.94c11.66,0,22.49,5.25,29.7,14.41l243.46,309.07c13.98,17.75,34.71,27.93,56.86,27.93,36.13,0,73.5-27.35,73.5-73.11V48.06c0-14.36,11.68-26.04,26.04-26.04h152.85M802.35,.02h-152.85c-26.53,0-48.04,21.51-48.04,48.04v252.27c0,31.22-25.41,51.11-51.5,51.11-14.37,0-28.94-6.04-39.58-19.55L266.93,22.82C255.59,8.42,238.27,.02,219.94,.02H48.06C21.54,.02,.04,21.52,.04,48.04V802.35c0,26.52,21.5,48.02,48.02,48.02H200.94c26.52,0,48.02-21.5,48.02-48.02v-252.55c0-31.2,25.39-51.08,51.46-51.07,14.36,0,28.93,6.04,39.56,19.54l243.52,309.3c11.34,14.4,28.65,22.8,46.98,22.8h171.87c26.53,0,48.04-21.51,48.04-48.04V48.06C850.39,21.53,828.88,.02,802.35,.02h0Z"/>
+              </svg>
         </div>
 
         <header class="slideshowcontainer" id="SSCU">
@@ -565,10 +615,13 @@
                     let screen = document.getElementById('loadscreen');
                     document.body.style.position='unset';
                     document.body.style.overflow='unset';
-                    screen.classList.add('loaded')
+                    screen.classList.add('first')
+                    setTimeout(() => {
+                        screen.classList.add('loaded')
+                    }, 1000);
                     setTimeout(() => {
                         screen.remove()
-                    }, 1100)
+                    }, 2500)
                     setTimeout(() => {
                         if(window.location.href.length > 38) {
                             if(window.location.href.includes('#')){
