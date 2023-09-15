@@ -61,10 +61,60 @@
                 transform: scaleX(-100%);
             }
 
-            input{
-                position: relative;
-                
-            }
+            input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none; 
+  margin: 0 10px;
+  cursor: pointer;
+  outline: none;
+  background-color: transparent;
+  height: 15px;
+  overflow: hidden;
+  border-radius: 16px;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 15px;
+  background: #66666620;
+  border-radius: 16px;
+}
+
+input[type="range"]::-moz-range-track {
+  height: 15px;
+  background: #66666620;
+  border-radius: 16px;
+}
+
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none; 
+  height: 15px;
+  width: 15px;
+  background-color: #fff;
+  border-radius: 50%;
+  border: 4px solid var(--themecol);
+  box-shadow: -407px 0 0 400px var(--themecol);
+  transition: 0.3s;
+}
+
+input[type="range"]:hover::-webkit-slider-thumb{
+    border: 2px solid var(--themecol);
+}
+
+input[type="range"]::-moz-range-thumb {
+  height: 15px;
+  width: 15px;
+  background-color: #fff;
+  border-radius: 50%;
+  border: 4px solid var(--themecol);
+  box-shadow: -407px 0 0 400px var(--themecol);
+  transition: 0.3s;
+}
+
+input[type="range"]::-moz-range-thumb {
+    border: 2px solid var(--themecol);
+}
         </style>
 
         <div id="colourlesspanelback"></div>
@@ -91,7 +141,7 @@
                 <canvas id="canvas"></canvas>
                 <canvas id="facecanvas"></canvas>
             </div>
-            <article style="display: flex; justify-content: right;">
+            <article style="display: flex; justify-content: right; align-items: center;">
                 <input type="range" max="200" min="50" value="125" step="1" onchange="changethresh(this)" style="width: 50%; flex-grow: 1;">
                 <input type="color" oninput="changecol('red',this)">
                 <input type="color" oninput="changecol('green',this)">
