@@ -95,7 +95,7 @@
                 position: relative;
                 height: 45px;
                 width: 45px;
-                transform: scale(0.5);
+                transform: scale(0.3);
                 object-fit: contain;
                 background-color: var(--themecol);
                 transition: 0.3s;
@@ -107,10 +107,49 @@
             }
 
 
-            .logo {
-                background-color: #e9e9e9;
-                -webkit-mask: url(logo.svg) no-repeat center;
-                mask: url(logo.svg) no-repeat center;
+            #GISbanner
+            {
+                position: fixed;
+                top: 10px;
+                left: 10px;
+                right: 10px;
+                border-radius: 1em;
+                box-sizing: initial;
+                height: 70px;
+                display: flex;
+                align-items: center;
+                background-color: #000;
+                transform: translateY(-120%);
+                transition: 0.3s;
+            }
+            #GISbanner.active
+            {
+                transform: translateY(0%);
+            }
+            #GISbanner button
+            {
+                position: relative;
+                height: 50px;
+                width: 50px;
+                background-color: #ffffff10;
+                display: flex;
+                margin: 0 10px;
+                border-radius: 0.6em;
+                align-items: center;
+                justify-content: center;
+            }
+            #GISbanner button svg
+            {
+                position: relative;
+                height: 50%;
+                fill: #e9e9e9;
+            }
+            #GISbanner div
+            {
+                position: relative;
+                height: 40px;
+                width: 40px;
+                background-color: var(--themecol);
             }
         </style>
 
@@ -247,8 +286,6 @@
                 <button>
                     <GIS-icon title="line_arrow_down"></GIS-icon>
                 </button>
-
-
             </article>
 
             <article>
@@ -300,14 +337,44 @@
 
         <script>
             window.onload = function(){
-                let icon = document.getElementsByTagName('GIS-icon');
-                console.log(icon)
-                for(let i = 0; i < icon.length; i++){
+                let icon = document.getElementsByTagName('GIS-icon'),
+                buttons = document.getElementsByTagName('button');
+                for(let i = 0; i < icon.length; i++) {
                     icon[i].style.mask = 'url("https://natski.netlify.app/icon/img' + icon[i].title + '.svg") no-repeat center'
                     icon[i].style.webkitMask = 'url("https://natski.netlify.app/icon/svg/ENCORE_GIS/' + icon[i].title + '.svg") no-repeat center'
                 }
+                for(let x = 0; x < buttons.length - 2; x++) {
+                    buttons[x].onclick = function(){
+                        selectIcon(buttons[x].children[0].title)
+                    }
+                }
+            }
+
+            function selectIcon(iconName) {
+                let banner = document.getElementById('GISbanner')
+                banner.classList.add('active')
+                banner.children[1].innerHTML = iconName
+                banner.children[2].style.mask = 'url("https://natski.netlify.app/icon/img' + iconName + '.svg") no-repeat center'
+                banner.children[2].style.webkitMask = 'url("https://natski.netlify.app/icon/svg/ENCORE_GIS/' + iconName + '.svg") no-repeat center'
+                banner.children[3].onclick = function(){
+                    copyIcon(iconName)
+                }
             }
         </script>
+
+        <div id="GISbanner">
+            <button onclick="document.getElementById('GISbanner').classList.remove('active')">
+                <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 616.14 616.14">
+                    <path d="M593.94,593.61c-14.82,14.84-34.25,22.26-53.68,22.26s-38.81-7.4-53.62-22.2l-178.51-178.3-178.3,178.51c-29.62,29.65-77.66,29.68-107.31,.06-14.84-14.81-22.25-34.25-22.25-53.68s7.39-38.81,22.19-53.62l178.3-178.51L22.25,129.83c-29.64-29.62-29.67-77.66-.06-107.31C37.01,7.68,56.44,.27,75.87,.27s38.82,7.39,53.63,22.19l178.51,178.3L486.31,22.25c29.61-29.64,77.65-29.67,107.3-.06,14.84,14.82,22.26,34.25,22.26,53.69s-7.4,38.81-22.2,53.62l-178.3,178.51,178.51,178.3c29.65,29.61,29.68,77.65,.06,107.3Z"/>
+                </svg>
+            </button>
+
+            <p>text</p>
+
+            <div></div>
+
+            <button></button>
+        </div>
 
         <noscript>
             <h1>javascript is disabled</h1>
