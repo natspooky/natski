@@ -72,40 +72,34 @@
             main article button
             {
                 position: relative;
-                height: 80px;
-                min-width: 80px;
+                height: 50px;
+                min-width: 50px;
                 margin: 0.5em;
-                background-color: transparent;
+                background-color: #66666620;
                 width: unset;
                 flex-grow: 1;
                 display: flex;
                 overflow: hidden;
                 justify-content: center;
                 align-items: center;
-                box-shadow: 0 0 0px transparent;
                 border-radius: 10px;
                 transition: 0.3s;
-            }
-            main article button:hover
-            {
-                
-                box-shadow: 0 0 5px var(--themecol);
             }
             main article button:active
             {
                 transition: 0s;
                 background-color: var(--themecoltrans);
             }
-            main article button b
+            main article button GIS-icon
             {
                 position: relative;
-                height: 50px;
-                width: 50px;
+                height: 20px;
+                width: 20px;
                 object-fit: contain;
                 background-color: var(--themecol);
                 transition: 0.3s;
             }
-            main article button:hover b
+            main article button:hover GIS-icon
             {
                 background-color: #e9e9e9;
             }
@@ -121,68 +115,99 @@
         <main style="position: relative; width: 100%;">
             <article>
                 <button>
-                    <b title="terminal"></b>
-                </button>
-
-                <button name="red">
-                    
+                    <GIS-icon title="terminal"></GIS-icon>
                 </button>
 
                 <button>
-                    
+                    <GIS-icon title="avatar"></GIS-icon>
                 </button>
 
                 <button>
-                    
+                    <GIS-icon title="gear"></GIS-icon>
                 </button>
 
                 <button>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.39 850.39">
-                        <path d="M802.6,56.19H47.8C21.4,56.19,0,77.59,0,103.99V746.41c0,26.39,21.4,47.79,47.8,47.79H802.6c26.39,0,47.79-21.4,47.79-47.79V103.99c0-26.4-21.4-47.8-47.79-47.8Zm-36.6,595.9c0,9.22-7.48,16.7-16.7,16.7H101.1c-9.23,0-16.71-7.48-16.71-16.7V192c0-5.74,4.66-10.4,10.4-10.4H749.3c9.22,0,16.7,7.48,16.7,16.71v453.78Z"/>
-                        <rect x="193.2" y="603.88" width="463.99" height="38.8" rx="18.3" ry="18.3"/>
-                      </svg>
+                    <GIS-icon title="alert"></GIS-icon>
                 </button>
 
                 <button>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.39 850.39">
-                        <path d="M802.6,56.19H47.8C21.4,56.19,0,77.59,0,103.99V746.41c0,26.39,21.4,47.79,47.8,47.79H802.6c26.39,0,47.79-21.4,47.79-47.79V103.99c0-26.4-21.4-47.8-47.79-47.8Zm-36.6,595.9c0,9.22-7.48,16.7-16.7,16.7H101.1c-9.23,0-16.71-7.48-16.71-16.7V192c0-5.74,4.66-10.4,10.4-10.4H749.3c9.22,0,16.7,7.48,16.7,16.71v453.78Z"/>
-                        <rect x="193.2" y="603.88" width="463.99" height="38.8" rx="18.3" ry="18.3"/>
-                      </svg>
+                    <GIS-icon title="browser"></GIS-icon>
                 </button>
 
                 <button>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.39 850.39">
-                        <path d="M802.6,56.19H47.8C21.4,56.19,0,77.59,0,103.99V746.41c0,26.39,21.4,47.79,47.8,47.79H802.6c26.39,0,47.79-21.4,47.79-47.79V103.99c0-26.4-21.4-47.8-47.79-47.8Zm-36.6,595.9c0,9.22-7.48,16.7-16.7,16.7H101.1c-9.23,0-16.71-7.48-16.71-16.7V192c0-5.74,4.66-10.4,10.4-10.4H749.3c9.22,0,16.7,7.48,16.7,16.71v453.78Z"/>
-                        <rect x="193.2" y="603.88" width="463.99" height="38.8" rx="18.3" ry="18.3"/>
-                      </svg>
+                    <GIS-icon title="plus"></GIS-icon>
                 </button>
 
                 <button>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.39 850.39">
-                        <path d="M802.6,56.19H47.8C21.4,56.19,0,77.59,0,103.99V746.41c0,26.39,21.4,47.79,47.8,47.79H802.6c26.39,0,47.79-21.4,47.79-47.79V103.99c0-26.4-21.4-47.8-47.79-47.8Zm-36.6,595.9c0,9.22-7.48,16.7-16.7,16.7H101.1c-9.23,0-16.71-7.48-16.71-16.7V192c0-5.74,4.66-10.4,10.4-10.4H749.3c9.22,0,16.7,7.48,16.7,16.71v453.78Z"/>
-                        <rect x="193.2" y="603.88" width="463.99" height="38.8" rx="18.3" ry="18.3"/>
-                      </svg>
+                    <GIS-icon title="checkmark"></GIS-icon>
                 </button>
 
                 <button>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.39 850.39">
-                        <path d="M802.6,56.19H47.8C21.4,56.19,0,77.59,0,103.99V746.41c0,26.39,21.4,47.79,47.8,47.79H802.6c26.39,0,47.79-21.4,47.79-47.79V103.99c0-26.4-21.4-47.8-47.79-47.8Zm-36.6,595.9c0,9.22-7.48,16.7-16.7,16.7H101.1c-9.23,0-16.71-7.48-16.71-16.7V192c0-5.74,4.66-10.4,10.4-10.4H749.3c9.22,0,16.7,7.48,16.7,16.71v453.78Z"/>
-                        <rect x="193.2" y="603.88" width="463.99" height="38.8" rx="18.3" ry="18.3"/>
-                      </svg>
+                    <GIS-icon title="cross"></GIS-icon>
                 </button>
 
                 <button>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.39 850.39">
-                        <path d="M802.6,56.19H47.8C21.4,56.19,0,77.59,0,103.99V746.41c0,26.39,21.4,47.79,47.8,47.79H802.6c26.39,0,47.79-21.4,47.79-47.79V103.99c0-26.4-21.4-47.8-47.79-47.8Zm-36.6,595.9c0,9.22-7.48,16.7-16.7,16.7H101.1c-9.23,0-16.71-7.48-16.71-16.7V192c0-5.74,4.66-10.4,10.4-10.4H749.3c9.22,0,16.7,7.48,16.7,16.71v453.78Z"/>
-                        <rect x="193.2" y="603.88" width="463.99" height="38.8" rx="18.3" ry="18.3"/>
-                      </svg>
+                    <GIS-icon title="chain"></GIS-icon>
                 </button>
 
                 <button>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.39 850.39">
-                        <path d="M802.6,56.19H47.8C21.4,56.19,0,77.59,0,103.99V746.41c0,26.39,21.4,47.79,47.8,47.79H802.6c26.39,0,47.79-21.4,47.79-47.79V103.99c0-26.4-21.4-47.8-47.79-47.8Zm-36.6,595.9c0,9.22-7.48,16.7-16.7,16.7H101.1c-9.23,0-16.71-7.48-16.71-16.7V192c0-5.74,4.66-10.4,10.4-10.4H749.3c9.22,0,16.7,7.48,16.7,16.71v453.78Z"/>
-                        <rect x="193.2" y="603.88" width="463.99" height="38.8" rx="18.3" ry="18.3"/>
-                      </svg>
+                    <GIS-icon title="arrow_left"></GIS-icon>
+                </button>
+
+                <button>
+                    <GIS-icon title="arrow_right"></GIS-icon>
+                </button>
+
+                <button>
+                    <GIS-icon title="arrow_up"></GIS-icon>
+                </button>
+
+                <button>
+                    <GIS-icon title="arrow_down"></GIS-icon>
+                </button>
+
+                <button>
+                    <GIS-icon title="mini_arrow_left"></GIS-icon>
+                </button>
+
+                <button>
+                    <GIS-icon title="mini_arrow_right"></GIS-icon>
+                </button>
+
+                <button>
+                    <GIS-icon title="mini_arrow_up"></GIS-icon>
+                </button>
+
+                <button>
+                    <GIS-icon title="mini_arrow_down"></GIS-icon>
+                </button>
+
+
+            </article>
+
+            <article>
+                <button>
+                    <GIS-icon title="SSC"></GIS-icon>
+                </button>
+
+                <button>
+                    <GIS-icon title="PDS"></GIS-icon>
+                </button>
+
+                <button>
+                    <GIS-icon title="CLS"></GIS-icon>
+                </button>
+
+                <button>
+                    <GIS-icon title="VPS"></GIS-icon>
+                </button>
+
+                <button>
+                    <GIS-icon title="PSS"></GIS-icon>
+                </button>
+
+                <button>
+                    <GIS-icon title="CMS"></GIS-icon>
                 </button>
             </article>
         </main>
@@ -201,7 +226,7 @@
 
         <script>
             window.onload = function(){
-                let icon = document.getElementsByTagName('b');
+                let icon = document.getElementsByTagName('GIS-icon');
                 console.log(icon)
                 for(let i = 0; i < icon.length; i++){
                     icon[i].style.mask = 'url("https://natski.netlify.app/icon/img' + icon[i].title + '.svg") no-repeat center'
