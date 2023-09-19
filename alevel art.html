@@ -54,6 +54,7 @@
             <h2>Alevel Art</h2>
         </header>
 
+        <span id="NATloader" style="position: relative; transform: unset; left: unset;  top: unset; margin: 2em auto 6em auto;"></span>
 
         <main id="PDS"></main>
 
@@ -101,6 +102,11 @@
             <h1>javascript is disabled</h1>
             <p>ENCORE.js requires javascript in order to run, please enable javascript</p>
         </noscript>
+        <script>
+            window.onload = function(){
+                document.getElementById('NATloader').style.display = 'none'
+            }
+        </script>
         <script src="lib/js/ENCORE_NAT.js"></script>
         <script src="lib/js/ENCORE_PDS.js"></script>
         <script>
