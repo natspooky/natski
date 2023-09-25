@@ -68,3 +68,7 @@ update CLS in V1 to inform users about how CLS div needs to be placed inside ano
 fix VPS error handle giving errors 
 
 update about page
+
+make settings page built into homepage, cubic-bezier(.33,.13,.39,1.28)
+
+make bokeh follow the fps of the video

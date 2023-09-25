@@ -59,16 +59,18 @@
     }
 
 
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 body, html {
     height: 500vh;
     width: 100%;
     overflow: visible;
     background-color: var(--accentcol);
+    font-family: 'Exo 2', sans-serif;
+    font-size: 16px;
 }
 
 
-@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 :root
 {
     --SSCScolor: #505050b0;
@@ -172,7 +174,7 @@ body, html {
 
 
 
-
+<!--
 
 <div id="SSCS" style="opacity: 0; display: none;">
 
@@ -215,7 +217,7 @@ body, html {
     }
 </script>
 
-<!--
+
 <script src="lib/js/ENCORE_VPS.js"></script>
 <script>
     VPS_settings={
@@ -226,6 +228,471 @@ body, html {
 </script>
 -->
 
+
+<style>
+
+
+::-webkit-scrollbar-thumb
+{
+    background-color: var(--displaycolour);
+    border: 2px solid var(--accentcol);
+    border-radius: 100vmax;
+}
+::-webkit-scrollbar-thumb:hover
+{
+    border: 2px solid var(--displaycolour);
+}
+::-webkit-scrollbar
+{
+    width: 0px;
+	height: 0px;
+    background-color: transparent;
+}
+
+
+
+
+
+    #settingsPanel
+    {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: min(100%, 400px);
+        height: 100vh;
+        box-sizing: border-box;
+        overflow-y: scroll;
+        background-color: #66666640;
+    }
+    #settingsPanel .setting
+    {
+        position: relative;
+        padding: 1em;
+        display: block;
+        width: 100%;
+        height: auto;
+        box-sizing: border-box;
+    }
+    #settingsPanel .setting
+    {
+        position: relative;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    #settingsPanel .setting p
+    {
+        position: relative;
+        color: #fff;
+
+    }
+    #settingsPanel h1
+    {
+        position: relative;
+        padding: 0.5em 1em 0 0.7em;
+        margin: 0;
+        width: 100%;
+        color: #fff;
+    }
+    #settingsBG
+    {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: #00000090;
+        height: 0px;
+        overflow: hidden;
+        transition: opacity 0.2s,height 0.15s, transform 0.15s cubic-bezier(.5,.53,.53,1.46);
+    }
+
+    input[type="checkbox"]
+    {
+        font-size: 30px;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+                appearance: none;
+        width: 60px;
+        height: 30px;
+        background: #66666660;
+        border-radius: 15px;
+        position: relative;
+        cursor: pointer;
+        border: 0px;
+        outline: none;
+        -webkit-transition: all .2s ease-in-out;
+        transition: all .2s ease-in-out;
+    }
+
+    input[type="checkbox"]:checked
+    {
+        background: var(--themecol);
+    }
+    
+    input[type="checkbox"]::after
+    {
+        position: absolute;
+        content: "";
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: #777;
+        -webkit-transform: scale(.5);
+                transform: scale(.5);
+        left: 0;
+        -webkit-transition: all .2s ease-in-out;
+        transition: all .2s ease-in-out;
+    }
+    
+    input[type="checkbox"]:checked::after
+    {
+        left: calc(100% - 30px);
+        background: #fff;
+    }
+
+    input[type="range"]
+    {
+        -webkit-appearance: none;
+        appearance: none; 
+        margin: 0 10px;
+        cursor: pointer;
+        outline: none;
+        background-color: transparent;
+        height: 30px;
+        overflow: hidden;
+        border-radius: 16px;
+    }
+
+    input[type="range"]::-webkit-slider-runnable-track
+    {
+        height: 30px;
+        background: #66666660;
+        border-radius: 16px;
+    }
+
+    input[type="range"]::-moz-range-track
+    {
+        height: 30px;
+        background: #66666660;
+        border-radius: 16px;
+    }
+
+    input[type="range"]::-webkit-slider-thumb
+    {
+        -webkit-appearance: none;
+        appearance: none; 
+        height: 30px;
+        width: 30px;
+        background-color: #fff;
+        border-radius: 50%;
+        border: 8px solid var(--themecol);
+        box-shadow: -715px 0 0 700px var(--themecol);
+        transition: 0.2s ease-in-out;
+    }
+
+    input[type="range"]::-moz-range-thumb
+    {
+        height: 30px;
+        width: 30px;
+        background-color: #fff;
+        border-radius: 50%;
+        border: 0px solid var(--themecol);
+        box-shadow: -715px 0 0 700px var(--themecol);
+        transition: 0.2s ease-in-out;
+    }
+
+
+    input[type="radio"]
+    {
+        font-size: 30px;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+                appearance: none;
+        width: 30px;
+        height: 30px;
+        background: #66666660;
+        border-radius: 100vmax;
+        position: relative;
+        cursor: pointer;
+        border: 0px;
+        outline: none;
+        -webkit-transition: all .2s ease-in-out;
+        transition: all .2s ease-in-out;
+    }
+
+    input[type="radio"]:checked
+    {
+        background: var(--themecol);
+    }
+    
+    input[type="radio"]::after
+    {
+        position: absolute;
+        content: "";
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: #777;
+        -webkit-transform: scale(.5);
+                transform: scale(.5);
+        left: 0;
+        top: 0;
+        -webkit-transition: all .2s ease-in-out;
+        transition: all .2s ease-in-out;
+    }
+    
+    input[type="radio"]:checked::after
+    {
+        background: #fff;
+    }
+
+
+    @media (hover: hover) {
+        input[type="checkbox"]:hover::after
+        {
+            -webkit-transform: scale(.7);
+                    transform: scale(.7);
+        }
+        input[type="range"]:hover::-webkit-slider-thumb
+        {
+            border: 5px solid var(--themecol);
+        }
+        input[type="range"]:hover::-moz-range-thumb
+        {
+            border: 0px solid var(--themecol);
+        }
+        input[type="radio"]:hover::after
+        {
+            -webkit-transform: scale(.7);
+                    transform: scale(.7);
+        }
+    }
+
+    .selection
+    {
+        position: relative;
+        box-sizing: border-box;
+        height: 30px;
+        background-color: #66666660;
+        width: 100%;
+        border-radius: 15px;     
+        overflow: hidden;
+        cursor: pointer;
+        user-select: none;
+        transition: 0.2s;
+    }
+    .selection::after
+    {
+        content: '';
+        position: absolute;
+        right: 0px;
+        top: 0;
+        transform: rotate(90deg) scale(0.5);
+        height: 30px;
+        width: 30px;
+        white-space: nowrap;
+        background-color: #fff;
+        mask: url(https://natski.netlify.app/icon/svg/ENCORE_GIS/line_arrow_down.svg) center center no-repeat;
+        -webkit-mask: url(https://natski.netlify.app/icon/svg/ENCORE_GIS/line_arrow_down.svg) center center no-repeat;
+        transition: 0.2s;
+    }
+    .selection.active::after
+    {
+        transform: rotate(0) scale(0.5);
+    }
+    .selection .item
+    {
+        position: relative;
+        height: 30px;
+        display: block;
+        padding: 0 0 0 15px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        line-height: 30px;
+        width: 100%;
+        box-sizing: border-box;
+        border-top: 2px solid #66666640;
+        color: #fff;
+        font-weight: bold;
+    }
+    .selection .header
+    {
+        position: relative;
+        height: 30px;
+        display: block;
+        padding: 0 30px 0 15px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        line-height: 30px;
+        width: 100%;
+        box-sizing: border-box;
+        color: #fff;
+        font-weight: bold;
+    }
+
+
+    #informationPopup
+    {
+        position: absolute;
+        height: 30px;
+        left: 0;
+        top: 0;
+        width: 0;
+        border-radius: 100vmax;
+        background-color: var(--themecol);
+        line-height: 30px;
+        color: #fff;
+        pointer-events: none;
+        overflow: hidden;
+        opacity: 0;
+        transition: opacity 0.2s ease 0.3s, width 0.15s, transform 0.2s;
+    }
+    #informationPopup p
+    {
+        margin: 0;
+        padding: 0 15px;
+        width: fit-content;
+        box-sizing: border-box;
+    }
+</style>
+
+
+<div id="settingsPanel">
+    <div id="settingsBG"></div>
+    <section>
+        <h1>SETTINGS</h1>
+        <span class="setting">
+            <input type="range" name="dfgnfdghdfthgnmdfxgjnfyjhmgdfsdfhnmjy">
+        </span>
+    
+    
+        <span class="setting">
+            <p>setting title</p>
+            <input type="checkbox">
+            <input type="checkbox">
+            <input type="checkbox" name="red">
+            
+        </span>
+    
+        <span class="setting">
+            <input type="radio">
+            <input type="radio">
+            <input type="radio">
+            <input type="radio">
+        </span>
+    
+        <span class="setting">
+            <div class="selection" name="yeah">
+                <div class="itemContainer">
+                    <span class="header">
+                        Choose Camera
+                    </span>
+                    <span class="item">
+                        carsegrhrsgrsg
+                    </span>
+                    <span class="item">
+                        carsrhjytdrghetyhgrg
+                    </span>
+                    <span class="item">
+                        car
+                    </span>
+                    <span class="item">
+                        car
+                    </span>
+                </div>
+            </div>
+        </span>
+    </section>
+</div>
+<div id="informationPopup"></div>
+
+
+
+<script>
+    let settingsItem = document.getElementsByClassName('setting'),
+    settingsBG = document.getElementById('settingsBG'),
+    settings = document.getElementById('settingsPanel');
+
+
+    for(let i = 0; i < settingsItem.length; i++){
+        settingsItem[i].addEventListener('mouseenter', function(){
+            settingsBG.style.transform = 'translateY('+ this.offsetTop +'px)'
+            settingsBG.style.height = this.offsetHeight + 'px'
+        })
+    }
+
+    settings.addEventListener('mouseenter',function(){
+        settingsBG.style.opacity = '1'
+    })
+
+    settings.addEventListener('mouseleave',function(){
+        settingsBG.style.opacity = '0'
+    })
+
+
+    let selections = document.getElementsByClassName('selection');
+    for(let i = 0; i < selections.length; i++){
+        selections[i].addEventListener('click', function(){
+            selectionToggle(this)
+        })
+        selections[i].addEventListener('mouseenter', function(){
+            popupSystem(this)
+        })
+        selections[i].addEventListener('mouseleave', function(){
+            popup.style.opacity = '0'
+        })
+        for(let x = 1; x < selections[i].children[0].childElementCount; x++){
+            selections[i].children[0].children[x].addEventListener('click', function(){
+                selections[i].children[0].children[0].value = this.value
+                selections[i].children[0].children[0].innerHTML = this.innerText
+            })
+        }
+    }
+
+
+    function selectionToggle(e){
+        let settingsBG = document.getElementById('settingsBG');
+        e.classList.toggle('active')
+        if(e.style.height != e.children[0].offsetHeight + 'px') {
+            e.style.height = e.children[0].offsetHeight + 'px'
+        }else{
+            e.style.height = '30px'
+        }
+    }
+
+    let inputs = document.getElementsByTagName('input'),
+    popup = document.getElementById('informationPopup')
+    for(let i = 0; i < inputs.length; i++){
+        inputs[i].addEventListener('mouseenter', function(){
+            popupSystem(this)
+        })
+
+        inputs[i].addEventListener('mouseleave', function(){
+            popup.style.opacity = '0'
+        })
+
+        if(inputs[i].type == 'range'){
+            inputs[i].addEventListener('input',function(){
+                popup.innerHTML = '<p>'+ inputs[i].value +'</p>'
+                popup.style.width = popup.children[0].offsetWidth + 'px'
+            })
+
+            inputs[i].addEventListener('change',function(){
+                popup.innerHTML = '<p>'+ this.name +'</p>'
+                popup.style.width = popup.children[0].offsetWidth + 'px'
+            })
+        }
+    }
+
+
+
+    function popupSystem(e){
+        popup.style.opacity = '1'
+        popup.style.transform = 'translate('+ (e.offsetLeft + e.offsetWidth + 15)+'px,' + (e.parentNode.offsetTop + (e.offsetTop)) +'px)'
+        popup.innerHTML = '<p>'+ e.getAttribute('name') +'</p>'
+        popup.style.width = popup.children[0].offsetWidth + 'px'
+    }
+
+</script>
 
 
     </body>
