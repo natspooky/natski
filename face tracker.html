@@ -453,7 +453,7 @@
             </article>
             <div class="facecontainer">
                 <canvas id="video" autoplay muted playsinline></canvas>
-                <canvas id="canvas" style="display: none;"></canvas>
+                <canvas id="canvas"></canvas>
                 <canvas id="facecanvas"></canvas>
             </div>
             <article style="display: flex; justify-content: right; align-items: center;">
@@ -514,25 +514,25 @@
                             <span class="header">
                                 Select FPS
                             </span>
-                            <span class="item" value="60" onclick="changeCameraData(this.innerText,'fps')">
+                            <span class="item" value="60" onclick="changeCameraData(60,'fps')">
                                 60
                             </span>
-                            <span class="item" value="50" onclick="changeCameraData(this.innerText,'fps')">
+                            <span class="item" value="50" onclick="changeCameraData(50,'fps')">
                                 50
                             </span>
-                            <span class="item" value="40" onclick="changeCameraData(this.innerText,'fps')">
+                            <span class="item" value="40" onclick="changeCameraData(40,'fps')">
                                 40
                             </span>
-                            <span class="item" value="30" onclick="changeCameraData(this.innerText,'fps')">
+                            <span class="item" value="30" onclick="changeCameraData(30,'fps')">
                                 30 - recommended
                             </span>
-                            <span class="item" value="20" onclick="changeCameraData(this.innerText,'fps')">
+                            <span class="item" value="20" onclick="changeCameraData(20,'fps')">
                                 20
                             </span>
-                            <span class="item" value="15" onclick="changeCameraData(this.innerText,'fps')">
+                            <span class="item" value="15" onclick="changeCameraData(15,'fps')">
                                 15
                             </span>
-                            <span class="item" value="10" onclick="changeCameraData(this.innerText,'fps')">
+                            <span class="item" value="10" onclick="changeCameraData(10,'fps')">
                                 10
                             </span>
                         </div>
@@ -595,6 +595,11 @@
                 <span class="setting">
                     <p>Display tracking calculation</p>
                     <input type="checkbox" info="shows the output coordinates of each<br>anchor point">
+                </span>
+
+                <span class="setting">
+                    <p>Display tracking points</p>
+                    <input type="checkbox" checked info="shows the tracking points on the users<br>camera display">
                 </span>
 
                 <span class="setting" style="display: flex; justify-content: space-evenly; flex-wrap: wrap;">
