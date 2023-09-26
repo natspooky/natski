@@ -302,7 +302,6 @@
         overflow: hidden;
         cursor: pointer;
         user-select: none;
-        transition: 0.2s;
     }
     .selection::after
     {
@@ -323,6 +322,12 @@
     {
         transform: rotate(0) scale(0.4);
     }
+    .selection.active
+    {
+        overflow: visible;
+        border-radius: 15px 15px 0 0;
+        z-index: 3;
+    }
     .selection .item
     {
         position: relative;
@@ -334,9 +339,14 @@
         line-height: 30px;
         width: 100%;
         box-sizing: border-box;
-        border-top: 2px solid #66666640;
+        background-color: #2e2e2e;
+        border-top: 2px solid #00000049;
         color: #fff;
         font-weight: bold;
+    }
+    .selection .item:last-of-type
+    {
+        border-radius: 0 0 15px 15px;
     }
     .selection .header
     {
@@ -535,23 +545,23 @@
                 <h1>Tracking</h1>
                 <span class="setting">
                     <p>Threshold</p>
-                    <input type="range" min="100" max="170" value="125" name="changes how close the detected colours have to be compared to the RBG values">
+                    <input type="range" min="100" max="170" value="125" name="changes how close the detected colours<br>have to be to the RBG values">
                 </span>
                 <span class="setting">
                     <p>Vertical Sensitivity</p>
-                    <input type="range" min="0" max="2" value="1" step="0.05" name="changes how close the detected colours have to be compared to the RBG values">
+                    <input type="range" min="0" max="2" value="1" step="0.05" name="changes how much the tracker<br>will move the model in the Y-axis">
                 </span>
                 <span class="setting">
                     <p>Horizontal Sensitivity</p>
-                    <input type="range" min="0" max="2" value="1" step="0.05" name="changes how close the detected colours have to be compared to the RBG values">
+                    <input type="range" min="0" max="2" value="1" step="0.05" name="changes how much the tracker<br>will move the model in the X-axis">
                 </span>
                 <span class="setting">
                     <p>Lock head to center</p>
-                    <input type="checkbox" min="100" max="170" value="125" name="changes how close the detected colours have to be compared to the RBG values">
+                    <input type="checkbox" min="100" max="170" value="125" name="locks the model to the center of the cenvas">
                 </span>
                 <span class="setting">
                     <p>Lock rotation to center</p>
-                    <input type="checkbox" min="100" max="170" value="125" name="changes how close the detected colours have to be compared to the RBG values">
+                    <input type="checkbox" min="100" max="170" value="125" name="locks rotation to the center of the model">
                 </span>
             </section>
 

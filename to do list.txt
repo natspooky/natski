@@ -72,3 +72,5 @@ update about page
 make settings page built into homepage, cubic-bezier(.33,.13,.39,1.28)
 
 make bokeh follow the fps of the video
+
+URGENT MAKE VPS TURN OFF bokeh IF NOT IN FRAME
