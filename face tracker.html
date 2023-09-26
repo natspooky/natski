@@ -84,7 +84,7 @@
     }
     #settingsPanel section
     {
-        border-bottom: 2px solid #66666630;
+        border-bottom: 2px solid #ffffff20;
     }
     #settingsPanel section:last-of-type
     {
@@ -109,7 +109,28 @@
     {
         position: relative;
         color: #fff;
+        width: 100%;
+        flex-shrink: 0;
         margin: 0 0 1em 0;
+    }
+    #settingsPanel .setting p i
+    {
+        opacity: 0.4;
+        font-size: 14px;
+    }
+    #settingsPanel .setting .radio
+    {
+        display: inline-flex;
+        flex-direction: column-reverse;
+        align-items: center;
+        justify-content: center;
+        width: 30%;
+    }
+    #settingsPanel .setting .radio svg
+    {
+        width: 90%;
+        margin-bottom: 20px;
+        fill: #fff;
     }
     #settingsPanel h1
     {
@@ -138,7 +159,7 @@
         background-color: #ffffff20;
         height: 0px;
         overflow: hidden;
-        transition: opacity 0.2s,height 0.15s, transform 0.15s cubic-bezier(.33,.13,.39,1.28);
+        transition: opacity 0.35s,height 0.15s, transform 0.15s cubic-bezier(.5,1.05,.41,1.18);
     }
 
     input[type="checkbox"]
@@ -431,7 +452,7 @@
             </article>
             <div class="facecontainer">
                 <canvas id="video" autoplay muted playsinline></canvas>
-                <canvas id="canvas"></canvas>
+                <canvas id="canvas" style="display: none;"></canvas>
                 <canvas id="facecanvas"></canvas>
             </div>
             <article style="display: flex; justify-content: right; align-items: center;">
@@ -454,7 +475,7 @@
             <a onclick="parent.loadframe('Privacy Policy');parent.backPage(1)">Privacy Policy</a>
         </footer>
 
-        <div id="settingsPanel">
+        <div id="settingsPanel" class="active">
             <div id="settingsBG"></div>
             <section>
                 <h1>Tracker Settings</h1>
@@ -484,9 +505,9 @@
                 </span>
             </section>
             <section>
-                <h1>Quality</h1>
+                <h1><GIS-icon title="sparkle"></GIS-icon>Quality</h1>
                 <span class="setting">
-                    <p>FPS</p>
+                    <p>FPS<br><i>this will not effect accuracy</i></p>
                     <div class="selection" name="Lets you choose the framerate<br>you wish the program to run at">
                         <div class="itemContainer">
                             <span class="header">
@@ -517,7 +538,7 @@
                     </div>
                 </span>
                 <span class="setting">
-                    <p>Resolution</p>
+                    <p>Resolution<br><i>this will not effect accuracy</i></p>
                     <div class="selection" name="Lets you choose the resolution<br>of the camera input">
                         <div class="itemContainer">
                             <span class="header">
@@ -540,7 +561,7 @@
                 <h1><GIS-icon title="PSS"></GIS-icon>Tracking</h1>
                 <span class="setting">
                     <p>Threshold</p>
-                    <input type="range" min="100" max="170" value="125" name="changes how close the detected colours<br>have to be to the RBG values" onchange="changethresh(this)">
+                    <input type="range" min="0" max="2" value="1" step="0.05" name="changes how close the detected colours<br>have to be to the RBG values" onchange="changethresh(this)">
                 </span>
                 <span class="setting">
                     <p>Vertical Sensitivity</p>
@@ -572,7 +593,31 @@
                 <h1><GIS-icon title="SSC"></GIS-icon>Visuals</h1>
                 <span class="setting">
                     <p>Display tracking calculation</p>
-                    <input type="checkbox" checked name="changes how close the detected colours<br>have to be to the RBG values">
+                    <input type="checkbox" name="changes how close the detected colours<br>have to be to the RBG values">
+                </span>
+
+                <span class="setting" style="display: flex; justify-content: space-evenly; flex-wrap: wrap;">
+                    <p>Layout</p>
+                    <div class="radio">
+                        <input type="radio" checked name="changes how close the detected colours<br>have to be to the RBG values">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.41 850.41">
+                            <rect class="cls-1" x="28.25" y="28.27" width="793.89" height="376.13" rx="52.02" ry="52.02"/>
+                            <rect class="cls-1" x="28.25" y="446.04" width="793.89" height="376.12" rx="52.02" ry="52.02"/>
+                          </svg>
+                    </div>
+                    <div class="radio">
+                        <input type="radio" name="changes how close the detected colours<br>have to be to the RBG values">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.41 850.41">
+                            <rect class="cls-1" x="446.01" y="28.27" width="376.13" height="793.89" rx="52.02" ry="52.02"/>
+                            <rect class="cls-1" x="28.25" y="28.27" width="376.12" height="793.89" rx="52.02" ry="52.02"/>
+                          </svg>
+                    </div>
+                    <div class="radio">
+                        <input type="radio" name="changes how close the detected colours<br>have to be to the RBG values">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.41 850.41">
+                            <rect class="cls-1" x="28.25" y="28.27" width="793.89" height="793.89" rx="52.02" ry="52.02"/>
+                          </svg>
+                    </div>
                 </span>
             </section>
 
