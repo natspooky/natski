@@ -86,6 +86,10 @@
     {
         border-bottom: 2px solid #66666630;
     }
+    #settingsPanel section:last-of-type
+    {
+        margin-bottom: 150px;
+    }
     #settingsPanel .setting
     {
         position: relative;
@@ -111,9 +115,19 @@
     {
         position: relative;
         padding: 0.9em 1em 0.5em 0.7em;
+        display: flex;
+        align-items: center;
         margin: 0;
         width: 100%;
         color: #fff;
+    }
+    #settingsPanel h1 GIS-icon
+    {
+        position: relative;
+        height: 20px;
+        width: 20px;
+        margin-right: 10px;
+        background-color: #fff;
     }
     #settingsBG
     {
@@ -121,7 +135,7 @@
         top: 0;
         left: 0;
         width: 100%;
-        background-color: #ffffff15;
+        background-color: #ffffff20;
         height: 0px;
         overflow: hidden;
         transition: opacity 0.2s,height 0.15s, transform 0.15s cubic-bezier(.33,.13,.39,1.28);
@@ -446,7 +460,7 @@
                 <h1>Tracker Settings</h1>
             </section>
             <section>
-                <h1>Input</h1>
+                <h1><GIS-icon title="input"></GIS-icon>Input</h1>
                 <span class="setting">
                     <p>Camera</p>
                     <div class="selection" name="Lets you choose which camera<br>input you would like to use" id="videoInput">
@@ -488,7 +502,7 @@
                                 40
                             </span>
                             <span class="item" value="30" onclick="changeCameraData(this.innerText,'fps')">
-                                30
+                                30 - recommended
                             </span>
                             <span class="item" value="20" onclick="changeCameraData(this.innerText,'fps')">
                                 20
@@ -516,14 +530,14 @@
                                 720p
                             </span>
                             <span class="item" onclick="changeCameraData('640 480','resolution')">
-                                480p
+                                480p - recommended
                             </span>
                         </div>
                     </div>
                 </span>
             </section>
             <section>
-                <h1>Tracking</h1>
+                <h1><GIS-icon title="PSS"></GIS-icon>Tracking</h1>
                 <span class="setting">
                     <p>Threshold</p>
                     <input type="range" min="100" max="170" value="125" name="changes how close the detected colours<br>have to be to the RBG values" onchange="changethresh(this)">
@@ -545,8 +559,20 @@
                     <input type="checkbox" name="locks rotation to the center of the model">
                 </span>
                 <span class="setting">
-                    <p>Track audio</p>
-                    <input type="checkbox" checked name="locks rotation to the center of the model">
+                    <p>Audio tracking</p>
+                    <input type="checkbox" checked name="toggles the audio tracking used to<br>move the mouth">
+                </span>
+                <span class="setting">
+                    <p>Video tracking</p>
+                    <input type="checkbox" checked name="toggles the video tracking used to<br>move the head">
+                </span>
+            </section>
+
+            <section>
+                <h1><GIS-icon title="SSC"></GIS-icon>Visuals</h1>
+                <span class="setting">
+                    <p>Display tracking calculation</p>
+                    <input type="checkbox" checked name="changes how close the detected colours<br>have to be to the RBG values">
                 </span>
             </section>
 
@@ -558,8 +584,10 @@
             <p>ENCORE.js requires javascript in order to run, please enable javascript</p>
         </noscript>
         <script src="lib/js/ENCORE_NAT.js"></script>
+        <script src="lib/js/ENCORE_GIS.js"></script>
         <script src="lib/js/ENCORE_SMS.js"></script>
         <script src="lib/js/ENCORE_APF.js"></script>
+
         <script src="lib/js/Face_Tracker.js"></script>
     </body>
 </html>
