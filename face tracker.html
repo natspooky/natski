@@ -424,6 +424,26 @@
         font-weight: bold;
     }
 
+    .SMSbutton
+    {
+        position: relative;
+        width: 100%;
+        line-height: 30px;
+        background-color: #66666660;
+        border-radius: 100vmax;
+        transition: 0.2s;
+        color: #fff;
+        font-weight: bold;
+    }
+    .SMSbutton:hover
+    {
+        background-color: var(--themecoltrans);
+    }
+    .SMSbutton:active
+    {
+        transition: 0s;
+        background-color: var(--themecol);
+    }
     #informationPopup
     {
         position: fixed;
@@ -589,23 +609,11 @@
             <section>
                 <h1><GIS-icon title="PSS"></GIS-icon>Tracking</h1>
                 <span class="setting">
-                    <p>Threshold</p>
-                    <input type="range" min="0" max="2" value="1" step="0.01" info="changes how close the detected colours<br>have to be to the RBG values" onchange="changethresh(this)">
-                </span>
-                <span class="setting">
-                    <p>Vertical Sensitivity</p>
-                    <input type="range" min="0" max="2" value="1" step="0.01" info="changes how much the tracker<br>will move the model in the Y-axis">
-                </span>
-                <span class="setting">
-                    <p>Horizontal Sensitivity</p>
-                    <input type="range" min="0" max="2" value="1" step="0.01" info="changes how much the tracker<br>will move the model in the X-axis">
-                </span>
-                <span class="setting">
-                    <p>Lock head to center</p>
+                    <p>Lock Head to Center</p>
                     <input type="checkbox" info="locks the model to the center of the cenvas" onclick="trackerSettings.LocationLock = toggleSwitch(this)">
                 </span>
                 <span class="setting">
-                    <p>Lock rotation to center</p>
+                    <p>Lock Rotation to Center</p>
                     <input type="checkbox" info="locks rotation to the center of the model" onclick="trackerSettings.RotationLock = toggleSwitch(this)">
                 </span>
                 <span class="setting">
@@ -619,14 +627,34 @@
             </section>
 
             <section>
+                <h1><GIS-icon title="config"></GIS-icon>Calibration</h1>
+                <span class="setting">
+                    <p>Threshold</p>
+                    <input type="range" min="0" max="2" value="1" step="0.01" info="changes how close the detected colours<br>have to be to the RBG values" onchange="changethresh(this)">
+                </span>
+                <span class="setting">
+                    <p>Vertical Sensitivity</p>
+                    <input type="range" min="0" max="2" value="1" step="0.01" info="changes how much the tracker<br>will move the model in the Y-axis">
+                </span>
+                <span class="setting">
+                    <p>Horizontal Sensitivity</p>
+                    <input type="range" min="0" max="2" value="1" step="0.01" info="changes how much the tracker<br>will move the model in the X-axis">
+                </span>
+                <span class="setting">
+                    <p>Auto Calibration</p>
+                    <button class="SMSbutton" info="" onclick="autoCalibrate()">calibrate</button>
+                </span>
+            </section>
+
+            <section>
                 <h1><GIS-icon title="SSC"></GIS-icon>Visuals</h1>
                 <span class="setting">
-                    <p>Display tracking calculation</p>
+                    <p>Display Tracking Calculation</p>
                     <input type="checkbox" info="shows the output coordinates of each<br>anchor point" onclick="trackerSettings.ShowCalculations = toggleSwitch(this); document.getElementById('canvas').classList.toggle('hidden')">
                 </span>
 
                 <span class="setting">
-                    <p>Display tracking points</p>
+                    <p>Display Tracking Points</p>
                     <input type="checkbox" checked info="shows the tracking points on the users<br>camera display" onclick="trackerSettings.ShowTrackingPoints = toggleSwitch(this)">
                 </span>
 
