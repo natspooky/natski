@@ -42,23 +42,49 @@
     <body>
 
         <style>
-            .facecontainer
+            #container
             {
                 position: relative;
                 width: 100%;
                 display: flex;
                 justify-content: center;
+                align-items: center;
                 flex-wrap: wrap;
             }
             #video, #canvas, #facecanvas
             {
                 position: relative;
                 background-color: #66666640;
-                margin: 1em 0.5em;
+                margin: 0.5em;
                 border-radius: 1em;
                 height: 40vh;
                 width: auto;
                 transform: scaleX(-100%);
+            }
+            .hidden
+            {
+                display: none;
+            }
+            #container.row
+            {
+                flex-direction: row;
+            }
+            #container.column
+            {
+                flex-direction: column;
+            }
+            #container.track #video
+            {
+                display: none;
+            }
+            .button
+            {
+                position: relative;
+                padding: 0.5em;
+                background-color: #66666640;
+                color: #fff;
+                font-weight: bold;
+                border-radius: 0.5em;
             }
 
     #settingsPanel
@@ -451,19 +477,20 @@
 
                 add info detailing tracking status
             </article>
-            <div class="facecontainer">
+            <div id="container" class="row">
                 <canvas id="video" autoplay muted playsinline></canvas>
-                <canvas id="canvas"></canvas>
+                <canvas id="canvas" class="hidden"></canvas>
                 <canvas id="facecanvas"></canvas>
             </div>
             <article style="display: flex; justify-content: right; align-items: center;">
                 <button onclick="document.getElementById('settingsPanel').classList.toggle('active')">menu</button>
+
+                <button></button>
                 <input type="color" oninput="changecol('red',this)">
                 <input type="color" oninput="changecol('green',this)">
                 <input type="color" oninput="changecol('blue',this)">
             </article>
         </main>
-
 
 
         <footer>
@@ -563,31 +590,31 @@
                 <h1><GIS-icon title="PSS"></GIS-icon>Tracking</h1>
                 <span class="setting">
                     <p>Threshold</p>
-                    <input type="range" min="0" max="2" value="1" step="0.05" info="changes how close the detected colours<br>have to be to the RBG values" onchange="changethresh(this)">
+                    <input type="range" min="0" max="2" value="1" step="0.01" info="changes how close the detected colours<br>have to be to the RBG values" onchange="changethresh(this)">
                 </span>
                 <span class="setting">
                     <p>Vertical Sensitivity</p>
-                    <input type="range" min="0" max="2" value="1" step="0.05" info="changes how much the tracker<br>will move the model in the Y-axis">
+                    <input type="range" min="0" max="2" value="1" step="0.01" info="changes how much the tracker<br>will move the model in the Y-axis">
                 </span>
                 <span class="setting">
                     <p>Horizontal Sensitivity</p>
-                    <input type="range" min="0" max="2" value="1" step="0.05" info="changes how much the tracker<br>will move the model in the X-axis">
+                    <input type="range" min="0" max="2" value="1" step="0.01" info="changes how much the tracker<br>will move the model in the X-axis">
                 </span>
                 <span class="setting">
                     <p>Lock head to center</p>
-                    <input type="checkbox" info="locks the model to the center of the cenvas">
+                    <input type="checkbox" info="locks the model to the center of the cenvas" onclick="trackerSettings.LocationLock = toggleSwitch(this)">
                 </span>
                 <span class="setting">
                     <p>Lock rotation to center</p>
-                    <input type="checkbox" info="locks rotation to the center of the model">
+                    <input type="checkbox" info="locks rotation to the center of the model" onclick="trackerSettings.RotationLock = toggleSwitch(this)">
                 </span>
                 <span class="setting">
                     <p>Audio tracking</p>
-                    <input type="checkbox" checked info="toggles the audio tracking used to<br>move the mouth">
+                    <input type="checkbox" checked info="toggles the audio tracking used to<br>move the mouth" onclick="trackerSettings.AudioTracking = toggleSwitch(this)">
                 </span>
                 <span class="setting">
                     <p>Video tracking</p>
-                    <input type="checkbox" checked info="toggles the video tracking used to<br>move the head">
+                    <input type="checkbox" checked info="toggles the video tracking used to<br>move the head" onclick="trackerSettings.VideoTracking = toggleSwitch(this)">
                 </span>
             </section>
 
@@ -595,32 +622,32 @@
                 <h1><GIS-icon title="SSC"></GIS-icon>Visuals</h1>
                 <span class="setting">
                     <p>Display tracking calculation</p>
-                    <input type="checkbox" info="shows the output coordinates of each<br>anchor point">
+                    <input type="checkbox" info="shows the output coordinates of each<br>anchor point" onclick="trackerSettings.ShowCalculations = toggleSwitch(this); document.getElementById('canvas').classList.toggle('hidden')">
                 </span>
 
                 <span class="setting">
                     <p>Display tracking points</p>
-                    <input type="checkbox" checked info="shows the tracking points on the users<br>camera display">
+                    <input type="checkbox" checked info="shows the tracking points on the users<br>camera display" onclick="trackerSettings.ShowTrackingPoints = toggleSwitch(this)">
                 </span>
 
                 <span class="setting" style="display: flex; justify-content: space-evenly; flex-wrap: wrap;">
                     <p>Layout</p>
                     <div class="radio">
-                        <input type="radio" checked name="layout" info="displays the camera and tracking screen in a column">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.41 850.41">
-                            <rect class="cls-1" x="28.25" y="28.27" width="793.89" height="376.13" rx="52.02" ry="52.02"/>
-                            <rect class="cls-1" x="28.25" y="446.04" width="793.89" height="376.12" rx="52.02" ry="52.02"/>
-                          </svg>
-                    </div>
-                    <div class="radio">
-                        <input type="radio" name="layout" info="displays the camera and tracking screen in a row">
+                        <input type="radio" checked name="layout" info="displays the camera and tracking screen in a column" info="row" onclick="layoutChange(this)">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.41 850.41">
                             <rect class="cls-1" x="446.01" y="28.27" width="376.13" height="793.89" rx="52.02" ry="52.02"/>
                             <rect class="cls-1" x="28.25" y="28.27" width="376.12" height="793.89" rx="52.02" ry="52.02"/>
                           </svg>
                     </div>
                     <div class="radio">
-                        <input type="radio" name="layout" info="only displays the tracking screen">
+                        <input type="radio" name="layout" info="displays the camera and tracking screen in a row" info="column" onclick="layoutChange(this)">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.41 850.41">
+                            <rect class="cls-1" x="28.25" y="28.27" width="793.89" height="376.13" rx="52.02" ry="52.02"/>
+                            <rect class="cls-1" x="28.25" y="446.04" width="793.89" height="376.12" rx="52.02" ry="52.02"/>
+                          </svg>
+                    </div>
+                    <div class="radio">
+                        <input type="radio" name="layout" info="only displays the tracking screen" info="track" onclick="layoutChange(this)">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.41 850.41">
                             <rect class="cls-1" x="28.25" y="28.27" width="793.89" height="793.89" rx="52.02" ry="52.02"/>
                           </svg>
