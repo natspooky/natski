@@ -65,6 +65,8 @@ make bokeh follow the fps of the video
 
 URGENT MAKE VPS TURN OFF bokeh IF NOT IN FRAME
 
-remove info icons 
+remove info icons for ENCORE things
 
 console.log big ol cumm boy
+
+background: conic-gradient(var(--themecol), transparent);
