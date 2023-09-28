@@ -624,13 +624,18 @@
                         screen.remove()
                     }, 2500)
                     setTimeout(() => {
-                        if(window.location.href.length > 38) {
-                            if(window.location.href.includes('#')){
-                                loadframe(window.location.href.slice(38, window.location.href.length))
+
+                        let url = window.location.href
+                        if(url.includes('index.html')) {
+                            if(url.includes('#')){
+                                loadframe(url.slice(38, url.length))
                             }else{
-                                loadframe(window.location.href.slice(38, window.location.href.length).replace('.html', ''))
+                                loadframe(url.slice(38, url.length).replace('.html', ''))
                             }
                         }
+
+                    
+
                     }, 1000)
 
 
@@ -666,8 +671,13 @@
                     let title = document.getElementById('pageTitle')
                     title.style.opacity = 0;
                     setTimeout(() => {
+                        let titleLength = (e.match(/%20/g) || []).length
                         if(e.includes('#')){
-                            title.innerHTML = e.slice(0, e.indexOf('#')).replace('%20', ' ').replace('.html', '')
+                            let tempTitle = e.slice(0, e.indexOf('#'))
+                            for(let i = 0; i < titleLength; i++){
+                                tempTitle = tempTitle.replace('%20', ' ')
+                            }
+                            title.innerHTML = tempTitle.replace('.html', '')
                         }else{
                             title.innerHTML = e.replace('%20', ' ')
                         }
@@ -690,8 +700,8 @@
                     }
                 }
 
-                function backButton() {
-                    loadframe(backList[backList.length - 1].substring(27, backList[backList.length - 1].length - 5))
+                function backButton() {//check this lol
+                    loadframe(backList[backList.length - 1].substring(backList[backList.length - 1].indexOf('/',10), backList[backList.length - 1].length - (backList[backList.length - 1].length - backList[backList.length - 1].indexOf('.html'))))
                     backList.pop()
                     backnum -= 1
                     if(backnum <= 0) {
