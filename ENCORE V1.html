@@ -761,7 +761,7 @@
                 createObserver({root: null,rootMargin: "0px"}, ENCobserveDesc, document.getElementsByClassName('codeInfo'))
                 createObserver({root: null,rootMargin: "0px"}, ENCobserveCode, document.getElementsByClassName('codebox'))
                 let URLdata;
-                switch(window.location.href.slice((window.location.href.length - 3), window.location.href.length)){
+                switch(window.location.href.slice((window.location.href.indexOf('#') + 1), window.location.href.length)){
                     case 'SSC':
                         URLdata = document.getElementsByClassName('dropdown')[0];
                         break;
@@ -771,7 +771,7 @@
                     case 'CLS':
                         URLdata = document.getElementsByClassName('dropdown')[2];
                         break;
-                    case 'LSF':
+                    case 'CLSF':
                         URLdata = document.getElementsByClassName('dropdown')[3];
                         break;
                     default:

@@ -2,13 +2,9 @@ make vps have classnames with VPS in
 
 make designs for PWS
 
-add link to v2 through VPS info icon
-
-add more detailed instructions to V1
-
 write a better VPS description
 
-make better instructions for CLS, PDS, PDSU, VPS, SSC, CLSF
+make better instructions for VPS
 
 add to changelog
 
@@ -20,11 +16,9 @@ make multiple SSCU pages possible
 
 optimise all ENCORE to be in smaller chunks
 
-put ENCORE CMSF into a js file [CME]
-
 change PDSU in V1 to look better
 
-make context menu for VPS
+make context menu for VPS // nvm make this a synergy
 
 allow CMS to choose what element to activate on {document, id, class}
 
@@ -61,11 +55,7 @@ add intersection observer to VPS in order to make bokeh disapear when not in fra
 
 fix PDS super high script evaluation
 
-add loader using body onload for alevel and gcse art pages
-
 update CLS in V1 to inform users about how CLS div needs to be placed inside another container or in the body itself
-
-fix VPS error handle giving errors 
 
 update about page
 
@@ -74,3 +64,7 @@ make settings page built into homepage, cubic-bezier(.33,.13,.39,1.28)
 make bokeh follow the fps of the video
 
 URGENT MAKE VPS TURN OFF bokeh IF NOT IN FRAME
+
+remove info icons 
+
+console.log big ol cumm boy
