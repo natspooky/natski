@@ -451,15 +451,15 @@ nav span
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #111111;
+    background-color: #66666640;
 }
 
 #NATloader::after
 {
     position: relative;
     content: '';
-    height: 50px;
-    width: 50px;
+    height: 60px;
+    width: 60px;
     background-image: conic-gradient(from 54deg, transparent, var(--themecol)); 
     mask: url(https://natski.netlify.app/icon/svg/ENCORE_GIS/loader.svg) center center no-repeat;
     -webkit-mask: url(https://natski.netlify.app/icon/svg/ENCORE_GIS/loader.svg) center center no-repeat;
