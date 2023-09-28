@@ -677,6 +677,8 @@
                             for(let i = 0; i < titleLength; i++){
                                 tempTitle = tempTitle.replace('%20', ' ')
                             }
+                            console.log(tempTitle)
+                            console.log(tempTitle.replace('.html', ''))
                             title.innerHTML = tempTitle.replace('.html', '')
                         }else{
                             title.innerHTML = e.replace('%20', ' ')
@@ -700,8 +702,8 @@
                     }
                 }
 
-                function backButton() {//check this lol
-                    loadframe(backList[backList.length - 1].substring(backList[backList.length - 1].indexOf('/',10), backList[backList.length - 1].length - (backList[backList.length - 1].length - backList[backList.length - 1].indexOf('.html'))))
+                function backButton() {
+                    loadframe(backList[backList.length - 1].substring((backList[backList.length - 1].indexOf('/',10) + 1), backList[backList.length - 1].length - (backList[backList.length - 1].length - backList[backList.length - 1].indexOf('.html'))))
                     backList.pop()
                     backnum -= 1
                     if(backnum <= 0) {
@@ -853,6 +855,7 @@
                     }
                     menu.style.height = `${menu.children[0].offsetHeight}px`
                 }
+
         </script>
 
 
