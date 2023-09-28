@@ -440,39 +440,32 @@ nav span
     transition: 0.3s;
     transition-delay: 0.3s;
 }
-#NATloader, #NATloader:before, #NATloader:after {
-    border-radius: 50%;
-    width: 2.5em;
-    height: 2.5em;
-    animation-fill-mode: both;
-    animation: NATloader 1.8s infinite ease-in-out;
-  }
-  #NATloader {
-    color: var(--themecol);
-    font-size: 7px;
+#NATloader {
+    position: relative;
+    border-radius: 15px;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #111111;
+}
+
+#NATloader::after
+{
     position: absolute;
-    top: 50%;
-    left: 50%;
-    text-indent: -9999em;
-    transform: translateZ(0) translateY(-50%) translateX(-50%);
-    animation-delay: -0.16s;
-  }
-  #NATloader:before,#NATloader:after {
     content: '';
-    position: absolute;
-    top: 0;
-  }
-  #NATloader:before {
-    left: -3.5em;
-    animation-delay: -0.32s;
-  }
-  #NATloader:after {
-    left: 3.5em;
-  }
+    height: 50px;
+    width: 50px;
+    background-image: conic-gradient(from 54deg, transparent, var(--themecol)); 
+    mask: url(https://natski.netlify.app/icon/svg/ENCORE_GIS/loader.svg) center center no-repeat;
+    -webkit-mask: url(https://natski.netlify.app/icon/svg/ENCORE_GIS/loader.svg) center center no-repeat;
+    animation: NATloader 1.8s infinite linear;
+}
   
   @keyframes NATloader {
-    0%, 80%, 100% { box-shadow: 0 2.5em 0 -1.3em }
-    40% { box-shadow: 0 2.5em 0 0 }
+    from{transform: rotate(0);}
+    to{transform: rotate(360deg);}
   }
 main
 {
