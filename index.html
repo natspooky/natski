@@ -704,7 +704,7 @@
                 }
 
                 function backButton() {
-                    loadframe(backList[backList.length - 1].substring(0, backList[backList.length - 1].length - (backList[backList.length - 1].length - backList[backList.length - 1].indexOf('.html'))))
+                    loadframe(backList[backList.length - 1].slice(backList[backList.length - 1].indexOf('/',10), backList[backList.length - 1].length - (backList[backList.length - 1].length - backList[backList.length - 1].indexOf('.html'))))
                     backList.pop()
                     backnum -= 1
                     if(backnum <= 0) {
