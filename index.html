@@ -678,8 +678,8 @@
                             tempTitle = tempTitle.replace('%20', ' ')
                         }
                         
-                        if(e.includes('.html')){
-                            title.innerHTML = tempTitle.slice(0, e.indexOf('.html'))
+                        if(tempTitle.includes('.html')){
+                            title.innerHTML = tempTitle.slice(0, tempTitle.indexOf('.html'))
                         }else{
                             title.innerHTML = tempTitle
                         }
@@ -704,7 +704,7 @@
                 }
 
                 function backButton() {
-                    loadframe(backList[backList.length - 1].substring((backList[backList.length - 1].indexOf('/',10) + 1), backList[backList.length - 1].length - (backList[backList.length - 1].length - backList[backList.length - 1].indexOf('.html'))))
+                    loadframe(backList[backList.length - 1].substring(0, backList[backList.length - 1].length - (backList[backList.length - 1].length - backList[backList.length - 1].indexOf('.html'))))
                     backList.pop()
                     backnum -= 1
                     if(backnum <= 0) {
