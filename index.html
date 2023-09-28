@@ -628,7 +628,7 @@
                         let url = window.location.href
                         if(url.includes('index.html')) {
                             if(url.includes('#')){
-                                loadframe(url.slice(38, url.length))
+                                loadframe(url.slice(url.indexOf('#') + 1, url.length))
                             }else{
                                 loadframe(url.slice(38, url.length).replace('.html', ''))
                             }
@@ -678,9 +678,12 @@
                             for(let i = 0; i < titleLength; i++){
                                 tempTitle = tempTitle.replace('%20', ' ')
                             }
-                            console.log(tempTitle)
-                            console.log(tempTitle.replace('.html', ''))
-                            title.innerHTML = tempTitle.replace('.html', '')
+                            if(tempTitle.includes('.html')){
+                                title.innerHTML = tempTitle.slice(0, tempTitle.indexOf('.html'))
+                            }else{
+                                title.innerHTML = tempTitle
+                            }
+                            
                         }else{
                             title.innerHTML = e.replace('%20', ' ')
                         }
