@@ -672,21 +672,18 @@
                     let title = document.getElementById('pageTitle')
                     title.style.opacity = 0;
                     setTimeout(() => {
-                        let titleLength = (e.match(/%20/g) || []).length
-                        if(e.includes('#')){
-                            let tempTitle = e.slice(0, e.indexOf('#'))
-                            for(let i = 0; i < titleLength; i++){
-                                tempTitle = tempTitle.replace('%20', ' ')
-                            }
-                            if(tempTitle.includes('.html')){
-                                title.innerHTML = tempTitle.slice(0, tempTitle.indexOf('.html'))
-                            }else{
-                                title.innerHTML = tempTitle
-                            }
-                            
-                        }else{
-                            title.innerHTML = e.replace('%20', ' ')
+                        let titleLength = (e.match(/%20/g) || []).length,
+                        tempTitle = e
+                        for(let i = 0; i < titleLength; i++){
+                            tempTitle = tempTitle.replace('%20', ' ')
                         }
+                        
+                        if(e.includes('.html')){
+                            title.innerHTML = tempTitle.slice(0, e.indexOf('.html'))
+                        }else{
+                            title.innerHTML = tempTitle
+                        }
+
                         title.style.opacity = 1;
                     }, 200)
                 }
