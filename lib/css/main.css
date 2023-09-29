@@ -445,9 +445,9 @@ nav span
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-    border-radius: 20px;
-    width: 85px;
-    height: 85px;
+    border-radius: 15px;
+    width: 90px;
+    height: 90px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -465,11 +465,10 @@ nav span
     -webkit-mask: url(https://natski.netlify.app/icon/svg/ENCORE_GIS/loader.svg) center center no-repeat;
     animation: NATloader 1.8s infinite linear;
 }
-  
-  @keyframes NATloader {
+@keyframes NATloader {
     from{transform: rotate(0);}
     to{transform: rotate(360deg);}
-  }
+}
 main
 {
     animation: opacity 0.8s;

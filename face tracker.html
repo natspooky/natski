@@ -112,10 +112,28 @@
     #settingsPanel section
     {
         border-bottom: 2px solid #ffffff20;
+        transition: 0.25s;
     }
     #settingsPanel section:last-of-type
     {
         margin-bottom: 150px;
+    }
+    #settingsPanel section.active
+    {
+        pointer-events: none;
+        background-color: #66666640;
+        opacity: 0.2;
+    }
+    #NATloader
+    {
+        background-color: #191919;
+        opacity: 0;
+        pointer-events: none;
+        transition: 0.25s, top 0s;
+    }
+    #NATloader.active
+    {
+        opacity: 1;
     }
     #settingsPanel .setting
     {
@@ -636,7 +654,7 @@
                 <h1><GIS-icon title="config"></GIS-icon>Calibration</h1>
                 <span class="setting">
                     <p>Threshold</p>
-                    <input type="range" class="SSMinput" min="0" max="2" value="1" step="0.01" info="changes how close the detected colours<br>have to be to the RBG values" onchange="changethresh(this)">
+                    <input type="range" class="SSMinput" id="Threshold" min="0" max="2" value="1" step="0.01" info="changes how close the detected colours<br>have to be to the RBG values" onchange="changethresh(this)">
                 </span>
                 <span class="setting">
                     <p>Vertical Sensitivity</p>
@@ -648,9 +666,23 @@
                 </span>
                 <span class="setting">
                     <p>Auto Calibration</p>
-                    <button class="SSMbutton SSMinput" info="automatically calculates the best settings<br>for the user" onclick="autoCalibrate()">calibrate</button>
+                    <button class="SSMbutton SSMinput" info="automatically calculates the best settings<br>for the user" onclick="autoCalibrate(this)">calibrate</button>
                 </span>
             </section>
+
+            <script>
+                function autoCalibrate(e){
+                    document.getElementById('NATloader').style.top = (e.parentNode.parentNode.offsetTop + e.parentNode.parentNode.offsetHeight / 2) + 'px'
+                    document.getElementById('NATloader').classList.add('active')
+                    e.parentNode.parentNode.classList.add('active')
+
+                    setTimeout(() => {
+                        document.getElementById('NATloader').classList.remove('active')
+                        e.parentNode.parentNode.classList.remove('active')
+                        document.getElementById('Threshold').value = Math.random()*2
+                    },1000)
+                }
+            </script>
 
             <section>
                 <h1><GIS-icon title="SSC"></GIS-icon>Visuals</h1>
@@ -686,11 +718,9 @@
                             <rect class="cls-1" x="28.25" y="28.27" width="793.89" height="793.89" rx="52.02" ry="52.02"/>
                           </svg>
                     </div>
-
-                    
                 </span>
             </section>
-
+            <div id="NATloader"></div>
         </div>
         <div id="informationPopup"></div>
 
