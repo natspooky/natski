@@ -294,9 +294,12 @@ header h1 span
 #SSC .banner-bg p
 {
     position: absolute;
-    top: 20px;
-    left: 20px;
+    bottom: 30px;
     font-size: 20px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 24px;
+    background-color: #00000090;
     color: #fff;
 }
 #SSC .banner-bg img
@@ -539,7 +542,7 @@ header .headerBottom GIS-icon
             <div class="headerBottom">
                 <GIS-icon title="line_arrow_down"></GIS-icon>
             </div>
-            <h1>Jeds <span id="agePos">18</span><sup>th</sup> birthday bash!<br>- funhouse gallery -</h1>
+            <h1>Jeds <span id="agePos">18</span><sup>th</sup> birthday bash!<br>- gallery -</h1>
         </header>
 
         <main>
@@ -558,26 +561,75 @@ header .headerBottom GIS-icon
 
                 <div class="banner-bg">
             
-                    <img src="path of background image" alt="">    
+                    <img src="icon/jbdb/15.jpg" alt="">  
+                    <p>jed embracing his inner pirate for all to see</p>  
             
                 </div>
 
                 <div class="banner-bg">
             
-                    <img src="path of background image" alt="">    
-            
+                    <img src="icon/jbdb/14.jpg" alt="">    
+                    <p>jed enjoying a yumme bug sandwich :D</p>
                 </div>
 
                 <div class="banner-bg">
             
-                    <img src="path of background image" alt="">    
-            
+                    <img src="icon/jbdb/18.jpg" alt="">    
+                    <p>jed experiencing baldness</p>
                 </div>
 
                 <div class="banner-bg">
             
-                    <img src="path of background image" alt="">    
+                    <img src="icon/jbdb/26.jpg" alt="">    
+                    <p>el sumbraro es muy guay</p>
+                </div>
+
+                <div class="banner-bg">
             
+                    <img src="icon/jbdb/4.jpg" alt="">    
+                    <p>jed eating the opium ramen</p>
+                </div>
+
+                <div class="banner-bg">
+            
+                    <img src="icon/jbdb/6.jpg" alt="">    
+                    <p>matching pfps?!?!?</p>
+                </div>
+
+                <div class="banner-bg">
+            
+                    <img src="icon/jbdb/23.jpg" alt="">    
+                    <p>jed X aquaman crossover</p>
+                </div>
+
+                <div class="banner-bg">
+            
+                    <img src="icon/jbdb/28.jpg" alt="">    
+                    <p>miku miku oo eee ooo ?</p>
+                </div>
+
+                <div class="banner-bg">
+            
+                    <img src="icon/jbdb/20.jpg" alt="">    
+                    <p>no</p>
+                </div>
+
+                <div class="banner-bg">
+            
+                    <img src="icon/jbdb/11.jpg" alt="">    
+                    <p>peekaboo</p>
+                </div>
+
+                <div class="banner-bg">
+            
+                    <img src="icon/jbdb/3.jpg" alt="">    
+                    <p>little pokemon battle :)</p>
+                </div>
+
+                <div class="banner-bg">
+            
+                    <img src="icon/jbdb/2.jpg" alt="">    
+                    <p>what is happening</p>
                 </div>
             
             </div>
@@ -602,8 +654,8 @@ header .headerBottom GIS-icon
 
         <div id="letter" onclick="this.classList.toggle('active'); document.getElementById('cards').classList.toggle('active')">
             <div>
-                <h1>fwefw</h1>
-                <p>fsdfsdfsdf</p>
+                <h1>test</h1>
+                <p>test</p>
                 <img class="stamp" src="icon/jbdb/stamp.png">
             </div>
         </div>
@@ -707,7 +759,6 @@ timer = setInterval(function(){
 
 function playMusic(){
     let audio = document.getElementById('audio')
-    musicCount = Math.floor(Math.random()*(musicList.length - 1))
     audio.src = 'icon/jbdb/music/' + musicList[musicCount] + '.mp3'
     audio.play()
     document.getElementById('musicTitle').innerHTML = musicList[musicCount]
