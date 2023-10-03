@@ -88,8 +88,13 @@
     border: 4px solid transparent;
     background-color: #e9e9e915;
     border-radius: 23px;
+    cursor: grab;
     box-shadow: 0 0 40px #00000060;
     transform-origin: top left;
+}
+#PDSinspectPanel #PDSinspectImage:active
+{
+    cursor: grabbing;
 }
 #PDSinspectPanel #PDSinspectImage.active {
     height: auto;
@@ -113,6 +118,42 @@
 #PDSinspectPanel.active div
 {
     transform: translateY(0) translateX(-50%);
+}
+#PDSinspectPanel div button
+{
+    position: relative;
+    background-color: transparent;
+    border: 0;
+    height: 25px;
+    width: 25px;
+    margin: 0 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.2s;
+}
+
+
+#PDSinspectPanel div button svg
+{
+    position: relative;
+    fill: #e9e9e9;
+    display: block;
+    width: 12px;
+    height: 12px;
+}
+
+#PDSinspectPanel div button:hover
+{
+    background-color: #ffffff20;
+}
+
+#PDSinspectPanel div button:active
+{
+    background-color: #ffffff30;
+    transition: 0s;
 }
 #PDSinspectPanel .PDSbuttons {
     position: absolute;
