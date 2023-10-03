@@ -16,7 +16,7 @@ make multiple SSCU pages possible
 
 optimise all ENCORE to be in smaller chunks
 
-change PDSU in V1 to look better
+change PDSU images style in V1 to look better
 
 make context menu for VPS // nvm make this a synergy
 
@@ -64,8 +64,6 @@ make settings page built into homepage, cubic-bezier(.33,.13,.39,1.28)
 make bokeh follow the fps of the video
 
 URGENT MAKE VPS TURN OFF bokeh IF NOT IN FRAME
-
-make PDSU have navigators like hoyo lab with zoom & drag option
 
 give SSC and SSCU the option to not be timed
 
