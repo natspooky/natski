@@ -11,6 +11,10 @@
     #PDS .PDSrow .PDScolumn img:hover {
         transform: scale(1.01);
     }
+    #PDSinspectPanel div button:hover
+    {
+        background-color: #ffffff20;
+    }
 }
 #PDS *,#PDSinspectPanel *, #PDS, #PDSinspectPanel
 {
@@ -147,10 +151,6 @@
     display: block;
     width: 12px;
     height: 12px;
-}
-#PDSinspectPanel div button:hover
-{
-    background-color: #ffffff20;
 }
 
 #PDSinspectPanel div button:active
