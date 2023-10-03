@@ -53,7 +53,7 @@ add reload VPS to the vps functions list in V2
 
 add intersection observer to VPS in order to make bokeh disapear when not in frame
 
-fix PDS super high script evaluation
+fix PDS super high script evaluation (dont push items to list, place them directly into div)
 
 update CLS in V1 to inform users about how CLS div needs to be placed inside another container or in the body itself
 
@@ -65,18 +65,8 @@ make bokeh follow the fps of the video
 
 URGENT MAKE VPS TURN OFF bokeh IF NOT IN FRAME
 
-remove info icons for ENCORE things
-
-console.log big ol cumm boy
-
-background: conic-gradient(var(--themecol), transparent);
-
-<div style="position: relative; height: 40px; width: 40px; background-image: conic-gradient(from 54deg, transparent, var(--themecol)); -webkit-mask: url(https://natski.netlify.app/icon/svg/ENCORE_GIS/loader.svg) center center no-repeat;">
-
 make PDSU have navigators like hoyo lab with zoom & drag option
 
 give SSC and SSCU the option to not be timed
 
 maybe make animated splash screens of ENCORE systems
-
-make index SSC have the new ENCORE icon
