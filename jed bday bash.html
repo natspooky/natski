@@ -479,6 +479,18 @@ header .headerBottom GIS-icon
     right: 30px;
     width: 200px;
 }
+#letter div h1
+{
+    font-size: 52px;
+    margin-bottom: 10px;
+}
+#letter div p
+{
+    position: relative;
+    float: left;
+    width: 700px;
+    font-size: 24px;
+}
 .bar
 {
     position: relative;
@@ -576,6 +588,13 @@ header .headerBottom GIS-icon
 <div id="coverDisplay">
     <h1 id="age">1</h1>
 </div>
+
+<script>
+    const birthday = new Date('August 19, 1975 23:15:30');
+    if(birthday.getDay() != 3){
+        window.location.href = 'https://google.com'
+    }
+</script>
         <header>
             <div id="SSCU" style="opacity: 0; display: none;">
 
@@ -699,20 +718,6 @@ header .headerBottom GIS-icon
             
             </div>
             
-            <div class="bar">
-                <h1>mysterious game?!?!?!</h1>
-            </div>
-            <div id="guess" class="active">
-                <img src="icon/img/1.png" alt="" draggable="false">
-                <div>
-                    <button onclick="guessFalse()">not Jed</button>
-
-                    <button onclick="guessTrue()">Jed</button>
-
-                    <button onclick="guessFalse()">John</button>
-                </div>
-                <h1 id="answer"></h1>
-            </div>
 
             <div class="bar">
                 <h1>mysterious video?!?!?!</h1>
@@ -734,8 +739,8 @@ header .headerBottom GIS-icon
 
         <div id="letter" onclick="this.classList.toggle('active'); document.getElementById('cards').classList.toggle('active')">
             <div>
-                <h1>test</h1>
-                <p>test</p>
+                <h1>Letter to Jed</h1>
+                <p>Congrats on being able to drink and drive!!!<br>this is a little note i wanted to share with ya since we’ve known each other since year 7 now (proper mental that is)<br>I just wanted to tell you how much fun every event and burger night has been and how you are truly one of the best people i know. You always help me out and try to look out for me and I always super super appreciate it. So to show my gratitude I put together a little appreciation gallery for you which includes all of your favourite things! (music, font, etc...) :D. I hope we will both enjoy another year of hanging out together!<br>I hope you have an awesome birthday bro!!! [drinking and driving is advised{i know this is the second time i have made this joke, but its just really funny}]</p>
                 <img class="stamp" src="icon/jbdb/stamp.png">
             </div>
         </div>
