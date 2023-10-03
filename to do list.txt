@@ -72,3 +72,9 @@ console.log big ol cumm boy
 background: conic-gradient(var(--themecol), transparent);
 
 <div style="position: relative; height: 40px; width: 40px; background-image: conic-gradient(from 54deg, transparent, var(--themecol)); -webkit-mask: url(https://natski.netlify.app/icon/svg/ENCORE_GIS/loader.svg) center center no-repeat;">
+
+make PDS and PDSU have navigators like hoyo lab with zoom & drag option
+
+give SSC and SSCU the option to not be timed
+
+maybe make animated splash screens of ENCORE systems

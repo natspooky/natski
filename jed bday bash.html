@@ -302,6 +302,10 @@ header h1 span
     background-color: #00000090;
     color: #fff;
 }
+#SSC
+{
+    border: 2px solid #66666660;
+}
 #SSC .banner-bg img
 {
     object-fit: contain;
@@ -504,6 +508,67 @@ header .headerBottom GIS-icon
     display: block;
 }
 
+#guess
+{
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: scale(0.85);
+    border: 2px solid #66666660;
+    border-radius: 10px;
+}
+#guess img
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+    opacity: 1;
+    filter: blur(10px) brightness(10) grayscale(10) contrast(10);
+    transition: 0s;
+}
+#guess.active img
+{
+    filter: blur(0px) brightness(1) grayscale(0) contrast(1);
+    transition: 0.3s;
+}
+#guess div
+{
+    position: absolute;
+    bottom: 20px;
+}
+#guess div button
+{
+    font-size: 30px;
+    color: #fff;
+    margin: 0 0.25em;
+    padding: 0.5em 1.5em;
+    border-radius: 20px;
+    background-color: #ffb03859;
+}
+#guess h1
+{
+    position: relative;
+    color: #ffb038;
+}
+
+#guess::after
+{
+    content: 'GUESS WHO';
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    color: #fff;
+    font-size: 30px;
+    background-color: #000;
+    border-radius: 10px;
+}
+
         </style>
 <div id="coverDisplayMain">
     <h1>loading data . . .</h1>
@@ -634,6 +699,21 @@ header .headerBottom GIS-icon
             
             </div>
             
+            <div class="bar">
+                <h1>mysterious game?!?!?!</h1>
+            </div>
+            <div id="guess" class="active">
+                <img src="icon/img/1.png" alt="" draggable="false">
+                <div>
+                    <button onclick="guessFalse()">not Jed</button>
+
+                    <button onclick="guessTrue()">Jed</button>
+
+                    <button onclick="guessFalse()">John</button>
+                </div>
+                <h1 id="answer"></h1>
+            </div>
+
             <div class="bar">
                 <h1>mysterious video?!?!?!</h1>
             </div>

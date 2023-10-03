@@ -218,7 +218,7 @@ body, html {
 }
 #settingsPanel h1
 {
-    position: relative;
+    position: sticky;
     padding: 0.9em 1em 0.5em 0.7em;
     display: flex;
     align-items: center;
@@ -525,6 +525,56 @@ body, html {
 
 
 
+
+
+
+
+
+
+#PDSinspectPanel #PDScounter
+{
+    position: absolute;
+    padding: 0.4em 1em;
+    top: 0.7em;
+    left: 50%;
+    font-size: 16px;
+    transform: translateX(-50%);
+    border-radius: 10px;
+    background-color: var(--PDScolor);
+    border: 2px solid var(--PDScolor);
+    font-weight: bold;
+    color: #e9e9e9;
+}
+#PDSinspectPanel div #PDScounter
+{
+    position: relative;
+    line-height: 30px;
+    padding: 0 10px;
+    background-color: #666;
+}
+
+
+
+
+#PDSinspectPanel div button
+{
+    position: relative;
+    background-color: #666;
+    border: 0;
+    height: 30px;
+    width: 30px;
+    margin: 0 0.5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#PDSinspectPanel div button svg
+{
+    position: relative;
+    fill: #e9e9e9;
+    height: 20px;
+}
+
 </style>
 
 
@@ -748,6 +798,8 @@ body, html {
     <div id="SSMloader"></div>
 </div>
 
+<div id="PDS"></div>
+
 <script>
     function autoCalibrate(e){
         document.getElementById('SSMloader').style.top = (e.parentNode.parentNode.offsetTop + e.parentNode.parentNode.offsetHeight / 2) + 'px'
@@ -770,6 +822,18 @@ body, html {
     }
 </script>
 <script src="lib/js/ENCORE_GIS.js"></script>
+<script src="lib/js/ENCORE_PDS.js"></script>
+<script>
+    PDS_settings={
+        'path':'https://natski.netlify.app/icon/OG_IMAGES/',
+        'fileCount':4,
+        'classes':'null',
+        'colourSystem':true,
+        'animations':true,
+        'controls':true,
+        'style':1
+    }
+</script>
 
     </body>
 </html>
