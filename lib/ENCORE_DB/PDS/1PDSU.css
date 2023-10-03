@@ -21,6 +21,34 @@
     font-family: 'Exo 2', sans-serif;
     font-size: 16px;
 }
+#PDSinspectPanel {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    z-index: 9999;
+    overflow: hidden;
+    background-color: #00000080;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    pointer-events: none;
+    visibility: hidden;
+    transition: 0.3s;
+}
+#PDSinspectPanel.active {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: unset;
+    transition: 0.2s;
+}
+#PDSinspectPanel section {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+}
 #PDSUinspectPanel #PDSUinspectImage {
     position: fixed;
     height: 70%;
