@@ -68,3 +68,5 @@ URGENT MAKE VPS TURN OFF bokeh IF NOT IN FRAME
 give SSC and SSCU the option to not be timed
 
 maybe make animated splash screens of ENCORE systems
+
+remake home icon
