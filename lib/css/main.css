@@ -460,6 +460,7 @@ nav span
     content: '';
     height: 60px;
     width: 60px;
+    border-radius: 50%;
     background-image: conic-gradient(from 89deg, transparent, var(--themecol)); 
     mask: url(https://natski.netlify.app/icon/svg/ENCORE_GIS/loader.svg) center center no-repeat;
     -webkit-mask: url(https://natski.netlify.app/icon/svg/ENCORE_GIS/loader.svg) center center no-repeat;
