@@ -61,8 +61,6 @@ update about page
 
 make settings page built into homepage, cubic-bezier(.33,.13,.39,1.28)
 
-make bokeh follow the fps of the video
-
 URGENT MAKE VPS TURN OFF bokeh IF NOT IN FRAME
 
 give SSC and SSCU the option to not be timed
@@ -70,3 +68,11 @@ give SSC and SSCU the option to not be timed
 maybe make animated splash screens of ENCORE systems
 
 remake home icon
+
+check south hamptoon thing
+
+make artwork
+
+remake PS
+
+do physics essay
