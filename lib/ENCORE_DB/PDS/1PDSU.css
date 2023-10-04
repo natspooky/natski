@@ -133,8 +133,8 @@
     transform: translateY(-50%);
     padding: 25px 10px;
     border-radius: 10px;
-    border: 2px solid var(--PDSUcolor);
     background-color: var(--PDSUcolor);
+    border: 2px solid var(--PDSUcolor);
     transition: 0.2s;
 }
 #PDSUinspectPanel .PDSUbuttons:last-of-type {
