@@ -138,14 +138,32 @@
                         </div>
                         <div class="codeInfo">
                             <span>loop</span>: automatically sets videos to loop when loaded by VPS<br><br>
-                            <span>bokeh</span>: sets an ambient color falloff that surrounds VPS to give it a bokeh effect while playing<br><br>
+                            <span>bokeh</span>: sets an ambient color falloff that surrounds VPS to give the video more immersion while playing<br><br>
                             <span>style</span>: chooses the current style that will be applied to VPS when it loads. This value can only be 1
+                        </div>
+                    </div>
+
+                    <p>ENCORE VPS also has functions that are used to allow more flexibility to your website. This can be used inside of other javascript functions or attached onto javascript event listeners.</p>
+                    <div class="codecontainer">
+                        <div class="codebox">
+<pre>
+<code>reloadVPS(VPS_settings)
+</code></pre>
+                        </div>
+                        <div class="copybox">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.39 850.39">
+                                <path d="M389.7,715.19h126.3v83.3c0,28.67-23.24,51.9-51.9,51.9H51.9c-28.66,0-51.9-23.23-51.9-51.9V227.1c0-28.66,23.24-51.9,51.9-51.9h245.9v448.09c0,50.68,41.23,91.9,91.9,91.9Z"/>
+                                <rect  x="334.39" width="516" height="675.19" rx="51.9" ry="51.9"/>
+                            </svg>
+                        </div>
+                        <div class="codeInfo">
+                            This function can be called to restart VPS. This can be used in cases where the settings need to be updated during the use of VPS
                         </div>
                     </div>
                 
                     <p>ENCORE VPS Example:</p>
 
-                    <div class="previewWindow" style="--height: 50vh; opacity: 0; margin: 1em 0; overflow: hidden; display: flex; justify-content: center; align-items: center;" id="VPS"></div>
+                    <div class="previewWindow" style="--height: 65vh; opacity: 0; margin: 1em 0; overflow: hidden; display: flex; justify-content: center; align-items: center;" id="VPS"></div>
 
                     <div class="exampleMenu">
                         <button onclick="loadSystem('VPS')">
