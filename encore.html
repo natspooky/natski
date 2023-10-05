@@ -52,7 +52,7 @@
         width: max(95vmin,68vw);
         display: block;
         margin: 20px auto;
-        border-radius: 20px;
+        border-radius: 1.75em;
         border: 2px solid #66666620;
         overflow: hidden;
         background-color: #66666610;
@@ -88,7 +88,7 @@
         width: 100%;
         overflow: hidden;
         background-color: var(--backpanel);
-        border-radius: 20px;
+        border-radius: 1.75em;
     }
     .banner-bg-u::before
     {
@@ -314,6 +314,35 @@
             bottom: 60px;
             margin-top: 0px;
         }
+    }
+    .gridcontainer
+    {
+        overflow: hidden;
+        border-radius: 1.75em;
+    }
+    .gridcontainer::before
+    {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background-color: var(--gradColour);
+    }
+
+    .featurebanner
+    {
+        background-color: #ffffff05;
+        box-shadow: 5px 5px 5px #00000005;
+    }
+    .featurebanner svg
+    {
+        fill: #ffffff05;
+    }
+    .featurebanner:hover svg
+    {
+        fill: #ffffff15;
     }
 </style>
 
@@ -571,7 +600,7 @@
 
 
 <main>
-    <article class="gridcontainer" style="grid-template-columns: 1fr;">
+    <article class="gridcontainer" style="grid-template-columns: 1fr; --gradColour: #ba63fd10;">
         <a onclick="parent.loadframe('404');parent.backPage(1)">
             <div class="featurebanner" name="Showcases how different ENCORE packages can be combined">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.41 850.41">
@@ -585,7 +614,7 @@
             </div>
         </a>
     </article>
-    <article class="gridcontainer" style="grid-template-columns: 1fr;">
+    <article class="gridcontainer" style="grid-template-columns: 1fr; --gradColour: #cf14cf10;">
         <a onclick="parent.loadframe('ENCORE V1');parent.backPage(1)">
             <div class="featurebanner" name="Information about every ENCORE V1 package">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.39 850.35">
@@ -660,7 +689,7 @@
             </div>
         </a>
     </article>
-    <article class="gridcontainer" style="grid-template-columns: 1fr;">
+    <article class="gridcontainer" style="grid-template-columns: 1fr; --gradColour: #2ae39910;">
         <a onclick="parent.loadframe('ENCORE V2');parent.backPage(1)">
             <div class="featurebanner" name="Information about every ENCORE V2 package">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.39 850.35">
@@ -730,7 +759,7 @@
         </a>
     </article>
 
-    <article class="gridcontainer" style="grid-template-columns: 1fr;">
+    <article class="gridcontainer" style="grid-template-columns: 1fr; --gradColour: #ff000010;">
         <a onclick="parent.loadframe('404');parent.backPage(1)">
             <div class="featurebanner" name="Information about every ENCORE V3 package">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.39 850.35">

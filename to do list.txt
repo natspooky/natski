@@ -76,3 +76,7 @@ make artwork
 remake PS
 
 do physics essay
+
+make art based on deja vu sign for liminal
+
+make spiral art
