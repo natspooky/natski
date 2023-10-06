@@ -82,3 +82,5 @@ make art based on deja vu sign for liminal
 make spiral art
 
 make GIS have style loader
+
+i should probs optimise VPS
