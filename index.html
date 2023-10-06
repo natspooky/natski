@@ -683,7 +683,7 @@
                             x[i].addEventListener("mousemove", function(e) {
                             let pagY = (e.pageY - sscu.offsetTop - (sscu.offsetHeight / 2)) / 100,
                             pagX = (e.pageX - sscu.offsetLeft - (sscu.offsetWidth / 2)) / 100,
-                            rotation = pagX / 20
+                            rotation = pagX / 10
 
                                 x[i].children[0].animate({
                                     transform: `translate(${pagX * 4}px,${pagY * 4}px) scale(1.07) rotate(${rotation}deg)`
