@@ -77,10 +77,14 @@ remake PS
 
 do physics essay
 
-make art based on deja vu sign for liminal
-
 make spiral art
 
-make GIS have style loader
-
 i should probs optimise VPS
+
+make a GIS adapter for setting up icons in other apps
+
+disable PDS change image buttons if there are less than 2 images but allow for them to be reinabled if images are added
+
+make rotate PDS & rotate PDS icon
+
+message lynden
