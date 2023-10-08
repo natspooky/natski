@@ -88,3 +88,5 @@ disable PDS change image buttons if there are less than 2 images but allow for t
 make rotate PDS & rotate PDS icon
 
 message lynden
+
+redesign the dropdown menu in SSM
