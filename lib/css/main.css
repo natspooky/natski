@@ -446,8 +446,8 @@ nav span
     left: 50%;
     transform: translate(-50%,-50%);
     border-radius: 15px;
-    width: 90px;
-    height: 90px;
+    width: 70px;
+    height: 70px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -458,8 +458,8 @@ nav span
 {
     position: relative;
     content: '';
-    height: 60px;
-    width: 60px;
+    height: 40px;
+    width: 40px;
     border-radius: 50%;
     background-image: conic-gradient(from 89deg, transparent, var(--themecol)); 
     mask: url(https://natski.netlify.app/icon/svg/ENCORE_GIS/loader.svg) center center no-repeat;

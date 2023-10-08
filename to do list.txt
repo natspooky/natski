@@ -90,3 +90,5 @@ make rotate PDS & rotate PDS icon
 message lynden
 
 redesign the dropdown menu in SSM
+
+maybe redesign all things to fit PDS mini menu
