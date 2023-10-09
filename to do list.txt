@@ -67,8 +67,6 @@ give SSC and SSCU the option to not be timed
 
 maybe make animated splash screens of ENCORE systems
 
-remake home icon
-
 check south hamptoon thing
 
 make artwork
@@ -86,8 +84,6 @@ make a GIS adapter for setting up icons in other apps
 disable PDS change image buttons if there are less than 2 images but allow for them to be reinabled if images are added
 
 make rotate PDS & rotate PDS icon
-
-message lynden
 
 redesign the dropdown menu in SSM
 
