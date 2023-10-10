@@ -1,0 +1,50 @@
+#GIScontainer, #GIScontainer *
+{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color:  rgba(255, 255, 255, 0);
+}
+#GIScontainer
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    max-width: 245px;
+    max-height: 50vh;
+    overflow-y: scroll;
+    background-color: #66666640;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    transform: scale(0.9);
+    transition: transform 0.3s;
+}
+#GIScontainer button
+{
+    position: relative;
+    width: 40px;
+    height: 40px;
+    margin: 10px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+#GIScontainer button GIS-icon
+{
+    position: relative;
+    height: 20px;
+    width: 20px;
+    background-color: var(--themecol);
+}
+#GIScontainer input
+{
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background-color: #66666640;
+    backdrop-filter: blur(5px);
+}

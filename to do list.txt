@@ -88,3 +88,11 @@ make rotate PDS & rotate PDS icon
 redesign the dropdown menu in SSM
 
 maybe redesign all things to fit PDS mini menu
+
+redesign CLSF 
+
+add GISE to CLSF and CMSF
+
+make the dropdowns in SSM use SVG instead of GIS for the arrows
+
+fix PDSU and PDS loader being off center

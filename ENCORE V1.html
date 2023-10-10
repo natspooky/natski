@@ -78,7 +78,6 @@
             </article>
 
 
-            <!-- show css path for edits -->
             <div class="dropdown" id="encoreSSC" style="--colour: #6f00ff0c;">
                 <div class="dropdownheader">
                     <img src="icon/thumbnails_small/SSC.png" alt="SSC" draggable="false">
@@ -247,7 +246,7 @@
                         </button>
                     </div>
                     <div class="exampleMenu" id="SSCmenu" style="display: none; margin-top: 1em;">
-                        <button style="background-color: #09af0030;" onclick="SSC_settings={'thumbs':document.getElementById('sscthumb').hasAttribute('active'),'progressBar':document.getElementById('sscbar').hasAttribute('active'),'sideButtons':document.getElementById('sscbuttons').hasAttribute('active'),'timer':10000,'style':1}; reloadSSC(SSC_settings); ENCOREalert(this.parentNode.id)">
+                        <button style="background-color: #09af0030;" onclick="SSC_settings={'thumbs':document.getElementById('sscthumb').hasAttribute('active'),'progressBar':document.getElementById('sscbar').hasAttribute('active'),'sideButtons':document.getElementById('sscbuttons').hasAttribute('active'),'timer':10000,'style':1}; reloadSSC(SSC_settings); ENCOREalert(this.parentNode.id,'settings')">
                             Save Changes
                         </button>
                         <button class="active" active id="sscthumb" onclick="changeValues(this)">
@@ -432,7 +431,7 @@
                         </button>
                     </div>
                     <div class="exampleMenu" id="SSCUmenu" style="display: none; margin-top: 1em;">
-                        <button style="background-color: #09af0030;" onclick="SSCU_settings={'thumbs':document.getElementById('sscuthumb').hasAttribute('active'),'sideButtons':document.getElementById('sscubuttons').hasAttribute('active'),'timer':10000,'slideSpeed':400,'style':1}; reloadSSCU(SSCU_settings); ENCOREalert(this.parentNode.id)">
+                        <button style="background-color: #09af0030;" onclick="SSCU_settings={'thumbs':document.getElementById('sscuthumb').hasAttribute('active'),'sideButtons':document.getElementById('sscubuttons').hasAttribute('active'),'timer':10000,'slideSpeed':400,'style':1}; reloadSSCU(SSCU_settings); ENCOREalert(this.parentNode.id,'settings')">
                             Save Changes
                         </button>
                         <button class="active" active id="sscuthumb" onclick="changeValues(this)">
@@ -549,7 +548,7 @@
                         </button>
                     </div>
                     <div class="exampleMenu" id="PDSmenu" style="display: none; margin-top: 1em;">
-                        <button style="background-color: #09af0030;" onclick="PDS_settings={'path':'icon/OG_IMAGES/','fileCount':8,'classes':'null','colourSystem':document.getElementById('pdscol').hasAttribute('active'),'animations':document.getElementById('pdsani').hasAttribute('active'),'controls':document.getElementById('pdscont').hasAttribute('active'),'style':1}; reloadPDS(PDS_settings); ENCOREalert(this.parentNode.id)">
+                        <button style="background-color: #09af0030;" onclick="PDS_settings={'path':'icon/OG_IMAGES/','fileCount':8,'classes':'null','colourSystem':document.getElementById('pdscol').hasAttribute('active'),'animations':document.getElementById('pdsani').hasAttribute('active'),'controls':document.getElementById('pdscont').hasAttribute('active'),'style':1}; reloadPDS(PDS_settings); ENCOREalert(this.parentNode.id,'settings')">
                             Save Changes
                         </button>
                         <button class="active" active id="pdscol" onclick="changeValues(this)">
@@ -632,7 +631,7 @@
                         </button>
                     </div>
                     <div class="exampleMenu" id="PDSUmenu" style="display: none; margin-top: 1em;">
-                        <button style="background-color: #09af0030;" onclick="PDSU_settings={'imageClass':'attach','animations':document.getElementById('pdsuani').hasAttribute('active'),'controls':document.getElementById('pdsucont').hasAttribute('active'),'style':1}; reloadPDSU(PDSU_settings); ENCOREalert(this.parentNode.id)">
+                        <button style="background-color: #09af0030;" onclick="PDSU_settings={'imageClass':'attach','animations':document.getElementById('pdsuani').hasAttribute('active'),'controls':document.getElementById('pdsucont').hasAttribute('active'),'style':1}; reloadPDSU(PDSU_settings); ENCOREalert(this.parentNode.id,'settings')">
                             Save Changes
                         </button>
                         <button class="active" active id="pdsuani" onclick="changeValues(this)">
@@ -782,18 +781,7 @@
                     URLdata.scrollIntoView({ behavior: "smooth", block: "start", inline: "start" });
                 }, 615)
             }
-            
-            for(let i = 0; i < document.getElementsByClassName('dropdownheader').length; i++) {
-                document.getElementsByClassName('dropdownheader')[i].addEventListener('click', function(){
-                    this.parentNode.classList.toggle('active')
-                })
-            }
-
-            for(let i = 0; i < document.getElementsByClassName('copybox').length; i++) {
-                document.getElementsByClassName('copybox')[i].addEventListener('click', function(){
-                    navigator.clipboard.writeText(document.getElementsByClassName('codebox')[i].innerText)
-                })
-            }
+        
 
             function loadSystem(sys) {
                 switch(sys) {
@@ -934,41 +922,8 @@
                 itemData.style.height = '0'
                 itemData.style.opacity = '0'
             }
-
-
-            function changeValues(e) {
-                e.classList.toggle('active')
-                if(e.hasAttribute('active')) {
-                    e.removeAttribute('active');
-                }else {
-                    e.setAttribute('active', '');
-                }
-            }
-
-            let alertTimer;
-            function ENCOREalert(e) {
-                clearTimeout(alertTimer)
-                let alertbox = document.getElementById('ENCOREalert');
-                alertbox.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 692.13 496.44"><path d="M692.13,75.84c0,21.49-9.08,42.85-26.74,57.86L259.79,478.38c-14.27,12.13-31.73,18.06-49.1,18.06-21.49,0-42.84-9.08-57.85-26.74L18.06,311.1c-27.14-31.94-23.25-79.82,8.68-106.96,14.28-12.13,31.73-18.06,49.1-18.06,21.5,0,42.85,9.09,57.86,26.75l85.64,100.77L567.12,18.06c31.94-27.13,79.82-23.25,106.96,8.69,12.12,14.27,18.05,31.72,18.05,49.09Z"/></svg><div></div><p>Updated ' + e.substring(0, e.length - 4) + ' settings</p>'
-                alertbox.classList.add('active')
-                alertTimer = setTimeout(() => {
-                    alertbox.classList.remove('active')
-                }, 2000);
-            }
-
-            function ENCobserveDesc(entries) {
-                entries.forEach(entry => {
-                    entry.target.style.opacity = entry.isIntersecting ? "1" : "0"
-                    entry.target.style.transform = entry.isIntersecting ? "translateX(0)" : "translateX(1em)"
-                })
-            }
-
-            function ENCobserveCode(entries) {
-                entries.forEach(entry => {
-                    entry.target.style.opacity = entry.isIntersecting ? "1" : "0"
-                    entry.target.style.transform = entry.isIntersecting ? "translateX(0)" : "translateX(-0.5em)"
-                })
-            }
+    
+      
         </script>
 
         <div id="ENCOREalert"></div>
@@ -978,5 +933,6 @@
             <p>ENCORE.js requires javascript in order to run, please enable javascript</p>
         </noscript>
         <script src="lib/js/ENCORE_NAT.js"></script>
+        <script src="lib/js/ENCORE_VERSION_FUNCTIONS.js"></script>
     </body>
 </html>
