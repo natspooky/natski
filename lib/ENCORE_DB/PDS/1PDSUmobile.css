@@ -15,7 +15,8 @@
     font-family: 'Exo 2', sans-serif;
     font-size: 16px;
 }
-#PDSUinspectPanel {
+#PDSUinspectPanel
+{
     position: fixed;
     height: 100%;
     width: 100%;
@@ -29,19 +30,22 @@
     visibility: hidden;
     transition: 0.3s;
 }
-#PDSUinspectPanel.active {
+#PDSUinspectPanel.active
+{
     visibility: visible;
     opacity: 1;
     pointer-events: unset;
     transition: 0.2s;
 }
-#PDSUinspectPanel section {
+#PDSUinspectPanel section
+{
     position: absolute;
     height: 100%;
     width: 100%;
     cursor: pointer;
 }
-#PDSUinspectPanel #PDSUinspectImage {
+#PDSUinspectPanel #PDSUinspectImage
+{
     position: fixed;
     height: 70%;
     opacity: 0;
@@ -53,7 +57,8 @@
     pointer-events: none;
     transform-origin: top left;
 }
-#PDSUinspectPanel #PDSUinspectImage.active {
+#PDSUinspectPanel #PDSUinspectImage.active
+{
     height: auto;
     width: 80%;
 }
@@ -114,7 +119,8 @@
     background-color: #ffffff30;
     transition: 0s;
 }
-#PDSUinspectPanel .PDSUbuttons {
+#PDSUinspectPanel .PDSUbuttons
+{
     position: absolute;
     top: 50%;
     cursor: pointer;
@@ -127,15 +133,18 @@
     background-color: var(--PDSUcolor);
     transition: 0.2s;
 }
-#PDSUinspectPanel .PDSUbuttons:last-of-type {
+#PDSUinspectPanel .PDSUbuttons:last-of-type
+{
     left: unset;
     right: 15px;
 }
-#PDSUinspectPanel .PDSUbuttons:active {
+#PDSUinspectPanel .PDSUbuttons:active
+{
     background-color: #222222;
     transition: 0s;
 }
-#PDSUinspectPanel .PDSUbuttons svg {
+#PDSUinspectPanel .PDSUbuttons svg
+{
     position: relative;
     display: block;
     fill: #fff;

@@ -15,26 +15,30 @@
     font-family: 'Exo 2', sans-serif;
     font-size: 16px;
 }
-#PDS {
+#PDS
+{
     position: relative;
     width: 100%;
     height: auto;
     display: block;
     padding: 0.5em;
 }
-#PDS .PDSrow {
+#PDS .PDSrow
+{
     position: relative;
     width: 100%;
     display: inline-block;
     vertical-align: top;
 }
-#PDS .PDSrow .PDScolumn {
+#PDS .PDSrow .PDScolumn
+{
     width: 50%;
     position: relative;
     display: inline-block;
     vertical-align: top;
 }
-#PDS .PDSrow .PDScolumn img {
+#PDS .PDSrow .PDScolumn img
+{
     position: relative;
     display: block;
     height: auto;
@@ -47,7 +51,8 @@
     float: left;
     transform: scale(1);
 }
-#PDSinspectPanel {
+#PDSinspectPanel
+{
     position: fixed;
     height: 100%;
     width: 100%;
@@ -61,19 +66,22 @@
     visibility: hidden;
     transition: 0.3s;
 }
-#PDSinspectPanel.active {
+#PDSinspectPanel.active
+{
     visibility: visible;
     opacity: 1;
     pointer-events: unset;
     transition: 0.2s;
 }
-#PDSinspectPanel section {
+#PDSinspectPanel section
+{
     position: absolute;
     height: 100%;
     width: 100%;
     cursor: pointer;
 }
-#PDSinspectPanel #PDSinspectImage {
+#PDSinspectPanel #PDSinspectImage
+{
     position: fixed;
     height: 70%;
     opacity: 0;
@@ -85,7 +93,8 @@
     pointer-events: none;
     transform-origin: top left;
 }
-#PDSinspectPanel #PDSinspectImage.active {
+#PDSinspectPanel #PDSinspectImage.active
+{
     height: auto;
     width: 80%;
 }
@@ -146,7 +155,8 @@
     background-color: #ffffff30;
     transition: 0s;
 }
-#PDSinspectPanel .PDSbuttons {
+#PDSinspectPanel .PDSbuttons
+{
     position: absolute;
     top: 50%;
     left: 15px;
@@ -159,15 +169,18 @@
     border: 2px solid var(--PDScolor);
     transition: 0.2s;
 }
-#PDSinspectPanel .PDSbuttons:last-of-type {
+#PDSinspectPanel .PDSbuttons:last-of-type
+{
     left: unset;
     right: 15px;
 }
-#PDSinspectPanel .PDSbuttons:active {
+#PDSinspectPanel .PDSbuttons:active
+{
     background-color: #222222;
     transition: 0s;
 }
-#PDSinspectPanel .PDSbuttons svg {
+#PDSinspectPanel .PDSbuttons svg
+{
     position: relative;
     display: block;
     fill: #fff;
