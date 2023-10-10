@@ -96,3 +96,7 @@ add GISE to CLSF and CMSF
 make the dropdowns in SSM use SVG instead of GIS for the arrows
 
 fix PDSU and PDS loader being off center
+
+add link to icon selection from GIS in V3
+
+give VPS a working buffer

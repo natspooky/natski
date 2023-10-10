@@ -555,12 +555,12 @@ body, html {
     left: 0;
     min-width: 240px;
     max-width: 245px;
-    max-height: 50vh;
+    max-height: 300px;
     overflow-y: scroll;
     background-color: #000000e0;
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
-    transform: scale(0.9);
+    transform: translateX(-50%) scale(0.9);
     border-radius: 20px;
     opacity: 0;
     visibility: hidden;
@@ -569,7 +569,7 @@ body, html {
 #GIScontainer.active
 {
     opacity: 1;
-    transform: scale(1);
+    transform: translateX(-50%) scale(1);
     visibility: visible;
 }
 #GIScontainer button
@@ -652,10 +652,36 @@ body, html {
     border-radius: 10px;
     -webkit-backdrop-filter: blur(5px);
     backdrop-filter: blur(5px);
+    cursor: pointer;
 }
 #GIScontainer div:hover
 {
     background-color: #2d2d2de0;
+}
+#GIScontainer div::before
+{
+    content: 'GIS Setup';
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    transform: translate(-20px,-50%);
+    opacity: 0;
+    border-radius: 10px;
+    padding: 0 35px;
+    height: 100%;
+    font-weight: bold;
+    display: flex;
+    color: #e9e9e9;
+    background-color: #101010e0;
+    white-space: nowrap;
+    align-items: center;
+    visibility: hidden;
+    pointer-events: none;
+}
+#GIScontainer div:hover::before
+{
+    opacity: 1;
+    visibility: visible;
 }
 #GIScontainer div GIS-icon
 {
@@ -664,6 +690,30 @@ body, html {
     height: 25px;
     background-color: #e9e9e9;
     pointer-events: none;
+}
+.GIS-link
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #66666620;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.GIS-link div
+{
+    position: relative;
+    height: 20px;
+    width: 20px;
+    background-color: #e9e9e9;
+    pointer-events: none;
+    mask: url(https://natski.netlify.app/icon/svg/ENCORE_GIS/information.svg) no-repeat center;
+    -webkit-mask: url(https://natski.netlify.app/icon/svg/ENCORE_GIS/information.svg) no-repeat center;
 }
 </style>
 
@@ -726,7 +776,7 @@ body, html {
 -->
 
 
-<div id="settingsPanel" class="open GIS-link">
+<div id="settingsPanel" class="open">
     <div id="settingsBG"></div>
     <section>
         <h1>Tracker Settings</h1>
@@ -889,6 +939,8 @@ body, html {
 </div>
 
 <div id="PDS"></div>
+
+<div class="GIS-link GIS-item" name="446342"><div></div></div>
 
 <script>
     function autoCalibrate(e){

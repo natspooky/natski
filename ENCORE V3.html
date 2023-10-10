@@ -66,9 +66,9 @@
             <article style="animation: opacity 1s;">
                 <p style="text-align: left;"><span>V3</span> consists of 3 plugins and a formatter:<br><br><ul>
                     <li style="--colour: #3b43e0;"><span>ENCORE VPS <b>//</b> Video Player System</span></li>
-                    <li style="--colour: #e13333;"><span>ENCORE PSS <b>//</b> Parallax Window System</span></li>
-                    <li style="--colour: #ed5b21;"><span>ENCORE CMS <b>//</b> Context Menu System</span></li>
-                    <li style="--colour: #d4d4d4;"><span>ENCORE CMSF <b>//</b> Context Menu System Formatter</span></li>
+                    <li style="--colour: #e13333;"><span>ENCORE GIS <b>//</b> General Icon System</span></li>
+                    <li style="--colour: #ed5b21;"><span>ENCORE SSM <b>//</b> Simple Settings Menu</span></li>
+                    <li style="--colour: #d4d4d4;"><span>ENCORE SSMF <b>//</b> Simple Settings Menu Formatter</span></li>
                 </ul>
             </p>
             </article>
@@ -78,7 +78,7 @@
             </article>
 
 
-            <div class="dropdown" id="encoreVPS" style="--colour: #000dff0c;">
+            <div class="dropdown" style="--colour: #000dff0c;">
                 <div class="dropdownheader">
                     <img src="icon/thumbnails_small/VPS.png" alt="VPS" draggable="false">
                     <p>ENCORE VPS<span>  •  Video Player System</span></p>
@@ -188,10 +188,73 @@
             </div>
 
 
-            <div class="dropdown" id="encoreCMS" style="--colour: #ff00000c;">
+            <div class="dropdown" style="--colour: #000dff0c;">
                 <div class="dropdownheader">
-                    <img src="icon/thumbnails_small/PSS.png" alt="PSS" draggable="false">
-                    <p>ENCORE PSS<span>  •  Parallax Window System</span></p>
+                    <img src="icon/thumbnails_small/GIS.png" alt="GIS" draggable="false">
+                    <p>ENCORE GIS<span>  •  General Icon System</span></p>
+                    <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.35 850.35">
+                            <path d="M816.99,312.17l-351.98,351.98c-22.01,22.01-57.69,22.01-79.7,0L33.32,312.17c-32.59-32.58-32.59-85.42,0-118h0c32.59-32.59,85.42-32.59,118,0L425.16,468.01,698.99,194.17c32.58-32.59,85.42-32.59,118,0h0c32.59,32.59,32.59,85.42,0,118Z"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="contentbox">
+                    <p>ENCORE GIS is a frontend Javascript plugin that allows users to link a wide array of icons to their websites.</p>
+                    <hr>
+
+                    <p>Code that needs to be appended at the bottom of your HTML file:</p>
+                    <div class="codecontainer">
+                        <div class="codebox">
+<pre>
+<code>&lt;script src="https://natski.netlify.app/lib/js/ENCORE_GIS.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+    GIS_settings={
+        'style':1
+    }
+&lt;/script&gt;
+</code></pre>
+                        </div>
+                        <div class="copybox">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.39 850.39">
+                                <path d="M389.7,715.19h126.3v83.3c0,28.67-23.24,51.9-51.9,51.9H51.9c-28.66,0-51.9-23.23-51.9-51.9V227.1c0-28.66,23.24-51.9,51.9-51.9h245.9v448.09c0,50.68,41.23,91.9,91.9,91.9Z"/>
+                                <rect  x="334.39" width="516" height="675.19" rx="51.9" ry="51.9"/>
+                            </svg>
+                        </div>
+                        <div class="codeInfo">
+                            <span>style</span>: chooses the current style that will be applied to GIS when it loads. This value can only be 1
+                        </div>
+                    </div>
+
+                    <p>Browse every icon supplied by ENCORE GIS here:</p>
+                    <div class="exampleMenu" style="margin: 1em 0;">
+                        <button onclick="parent.loadframe('ENCORE GIS');parent.backPage(1)">
+                            Open ENCORE GIS
+                        </button>
+                    </div>
+                
+                    <p>ENCORE VPS Example:</p>
+
+                    <div class="previewWindow" style="--height: 150px; opacity: 0; margin: 1em 0; overflow: hidden; display: flex; justify-content: center; align-items: center;" id="GIS"></div>
+
+                    <div class="exampleMenu">
+                        <button onclick="loadSystem('GIS')">
+                            Load GIS
+                        </button>
+                        <button onclick="unloadSystem('GIS')">
+                            Unload GIS
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+            <div class="dropdown" style="--colour: #ff80000c;">
+                <div class="dropdownheader">
+                    <img src="icon/thumbnails_small/SSM.png" alt="SSM" draggable="false">
+                    <p>ENCORE SSM<span>  •  Simple Settings Menu</span></p>
                     <div>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.35 850.35">
                             <path d="M816.99,312.17l-351.98,351.98c-22.01,22.01-57.69,22.01-79.7,0L33.32,312.17c-32.59-32.58-32.59-85.42,0-118h0c32.59-32.59,85.42-32.59,118,0L425.16,468.01,698.99,194.17c32.58-32.59,85.42-32.59,118,0h0c32.59,32.59,32.59,85.42,0,118Z"/>
@@ -204,29 +267,10 @@
             </div>
 
 
-
-
-
-            <div class="dropdown" id="encoreCMS" style="--colour: #ff80000c;">
+            <div class="dropdown" style="--colour: #ffffff0c;">
                 <div class="dropdownheader">
-                    <img src="icon/thumbnails_small/CMS.png" alt="CMS" draggable="false">
-                    <p>ENCORE CMS<span>  •  Context Menu System</span></p>
-                    <div>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.35 850.35">
-                            <path d="M816.99,312.17l-351.98,351.98c-22.01,22.01-57.69,22.01-79.7,0L33.32,312.17c-32.59-32.58-32.59-85.42,0-118h0c32.59-32.59,85.42-32.59,118,0L425.16,468.01,698.99,194.17c32.58-32.59,85.42-32.59,118,0h0c32.59,32.59,32.59,85.42,0,118Z"/>
-                        </svg>
-                    </div>
-                </div>
-                <div class="contentbox">
-                    [testing in progress]
-                </div>
-            </div>
-
-
-            <div class="dropdown" id="encoreCMS" style="--colour: #ffffff0c;">
-                <div class="dropdownheader">
-                    <img src="icon/thumbnails_small/CMSF.png" alt="CMSF" draggable="false">
-                    <p>ENCORE CMSF<span>  •  Context Menu System Formatter</span></p>
+                    <img src="icon/thumbnails_small/SSMF.png" alt="SSMF" draggable="false">
+                    <p>ENCORE SSMF<span>  •  Simple Settings Menu Formatter</span></p>
                     <div>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.35 850.35">
                             <path d="M816.99,312.17l-351.98,351.98c-22.01,22.01-57.69,22.01-79.7,0L33.32,312.17c-32.59-32.58-32.59-85.42,0-118h0c32.59-32.59,85.42-32.59,118,0L425.16,468.01,698.99,194.17c32.58-32.59,85.42-32.59,118,0h0c32.59,32.59,32.59,85.42,0,118Z"/>
@@ -264,13 +308,13 @@
                     case 'VPS':
                         URLdata = document.getElementsByClassName('dropdown')[0];
                         break;
-                    case 'PSS':
+                    case 'GIS':
                         URLdata = document.getElementsByClassName('dropdown')[1];
                         break;
-                    case 'CMS':
+                    case 'SSM':
                         URLdata = document.getElementsByClassName('dropdown')[2];
                         break;
-                    case 'CMSF':
+                    case 'SSMF':
                         URLdata = document.getElementsByClassName('dropdown')[3];
                         break;
                     default:
@@ -307,25 +351,23 @@
                         }
                         break;
 
-                        case 'PSS':
-                            let PSS = document.getElementById('PSS');
-                            if(document.getElementById('PSSscript')) {
-                                PSS.style.height = 'var(--height)'
-                                PSS.style.opacity = '1'
-                                document.getElementById('PSSmenu').style.display = 'flex'
+                        case 'GIS':
+                            let GIS = document.getElementById('GIS');
+                            if(document.getElementById('GISscript')) {
+                                GIS.style.height = 'var(--height)'
+                                GIS.style.opacity = '1'
                             }else{
                                 let script = document.createElement('script'),
                                 settings = document.createElement('script');
-                                PSS.innerHTML = ''
-                                script.id = 'PSSscript'
-                                script.src = 'https://natski.netlify.com/lib/js/ENCORE_PSS.js'
-                                settings.id = 'PSSsettings'
-                                settings.innerHTML = "PSS_settings={'thumbs':true,'progressBar':true,'sideButtons':true,'style':1}"
+                                GIS.innerHTML = '<GIS-icon title="home"></GIS-icon><GIS-icon title="avatar"></GIS-icon><GIS-icon title="gear"></GIS-icon><GIS-icon title="terminal"></GIS-icon>'
+                                script.id = 'GISscript'
+                                script.src = 'https://natski.netlify.com/lib/js/ENCORE_GIS.js'
+                                settings.id = 'GISsettings'
+                                settings.innerHTML = "GIS_settings={'style':1}"
                                 document.body.appendChild(script)
                                 document.body.appendChild(settings)
-                                PSS.style.height = 'var(--height)'
-                                PSS.style.opacity = '1'
-                                document.getElementById('PSSmenu').style.display = 'flex'
+                                GIS.style.height = 'var(--height)'
+                                GIS.style.opacity = '1'
                             }
                             break;
                 }
@@ -340,9 +382,8 @@
                         pauseVPS(0)
                         break;
 
-                    case 'PSS':
-                        itemData = document.getElementById('PSS')
-                        document.getElementById('PSSmenu').style.display = 'none'
+                    case 'GIS':
+                        itemData = document.getElementById('GIS')
                         break;
     
                 }
@@ -353,6 +394,14 @@
 
     <div id="ENCOREalert"></div>
 
+    <style>
+        GIS-icon
+        {
+            background-color: #e9e9e9;
+            font-size: 40px;
+            margin: 20px;
+        }
+    </style>
         <noscript>
             <h1>javascript is disabled</h1>
             <p>ENCORE.js requires javascript in order to run, please enable javascript</p>
