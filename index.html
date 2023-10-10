@@ -142,7 +142,7 @@
                 color: var(--themecol);
                 border-radius: 100vmax;
                 padding: 10px 50px;
-                font-size: 1.8rem;
+                font-size: 1.3rem;
                 font-weight: bold;
                 transition: 0.2s;
             }
@@ -154,7 +154,6 @@
                 border-radius: 20px;
                 padding: 1em;
                 font-size: 1.45rem;
-                transform: scale(1.07);
                 overflow: hidden;
             }
             .banner-bg-u div h1
@@ -243,11 +242,19 @@
                 pointer-events: none;
             }
 
+            main .firstArticle
+            {
+                width: 10%;
+            }
+            main.active .firstArticle
+            {
+                width: 50%;
+            }
             main article
             {
                 opacity: 0;
                 transform: translateY(50px);
-                transition: 0s;
+                transition: transform 0.5s, opacity 0.5s, width 0.5s;
                 transition-delay: 0s;
             }
 
@@ -255,7 +262,6 @@
             {
                 opacity: 1;
                 transform: translateY(0);
-                transition: transform 0.5s, opacity 0.5s;
                 transition-delay: var(--delay);
             }
 
@@ -424,8 +430,8 @@
         </header>
 
         <main style="position: relative;">
-            <article style="padding: 5px; width: 50%; opacity: 1; transform: translateY(0);"></article>
-            <article style="text-align: left; --delay: 0.3s;" class="gridcontainer">
+            <article style="padding: 5px; transform: translateY(0); --delay: 0.1s;" class="firstArticle"></article>
+            <article style="text-align: left; --delay: 0.5s;" class="gridcontainer">
                 <a name="ENCORE PDS" onclick="loadframe(this.name);backPage(-1000)">
                     <div class="featurebanner" name="A frontend plugin for creating image galleries">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.39 850.39">
@@ -455,11 +461,11 @@
                 </a>
             </article>
 
-            <article style="text-align: center; --delay: 0.4s;">
+            <article style="text-align: center; --delay: 0.6s;">
                 <span>drinking bleach ( •̀ ω •́ )</span>
             </article>
 
-            <article style="text-align: center; --delay: 0.5s;">
+            <article style="text-align: center; --delay: 0.7s;">
                 <span>ENCORE V1.1.3</span>
             </article>
 
@@ -680,7 +686,7 @@
                                 }, { duration: 2500, fill: 'forwards'})
 
                                 x[i].children[1].animate({
-                                    transform: `translate(${pagX * 1.5}px,${pagY * 1.5}px) scale(1.07) rotate(${rotation}deg)`
+                                    transform: `translate(${pagX * 1.5}px,${pagY * 1.5}px) scale(1) rotate(${rotation}deg)`
                                 }, { duration: 2500, fill: 'forwards'})
 
                             })
@@ -690,7 +696,7 @@
                                 }, { duration: 1500, fill: 'forwards', easing: "ease"})
 
                                 x[i].children[1].animate({
-                                    transform: "translate(0px) scale(1.07) rotate(0deg)"
+                                    transform: "translate(0px) scale(1) rotate(0deg)"
                                 }, { duration: 1500, fill: 'forwards', easing: "ease"})
                             })
                     
