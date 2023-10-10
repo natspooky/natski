@@ -194,6 +194,6 @@
 }
 @keyframes PDSU
 {
-    from{transform: rotate(0);}
-    to{transform: rotate(360deg);}
+    from{transform: translate(-50%, -50%) rotate(0);}
+    to{transform: translate(-50%, -50%) rotate(360deg);}
 }

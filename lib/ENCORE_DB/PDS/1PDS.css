@@ -216,7 +216,7 @@
     top: 50%;
     left: 50%;
     display: none;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) rotate(0);
     border-radius: 50%;
     width: 40px;
     height: 40px;
@@ -229,8 +229,8 @@
 }
 @keyframes PDS
 {
-    from{transform: rotate(0);}
-    to{transform: rotate(360deg);}
+    from{transform: translate(-50%, -50%) rotate(0);}
+    to{transform: translate(-50%, -50%) rotate(360deg);}
 }
 @media (orientation: portrait) {
     #PDS .PDSrow {
