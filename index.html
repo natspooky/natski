@@ -807,7 +807,7 @@
                     if(e.includes('.html')){
                         reloadFrame(e)
                     }else{
-                        reloadFrame(e+'.html')
+                        reloadFrame(`${e}.html`)
                     }
                     document.getElementById("SSCU").classList.add("active")
                     menuClose()
@@ -838,7 +838,7 @@
 
                 function changeBar(e){
                     document.getElementById('colourpanel').style.backgroundColor = e
-                    document.getElementById('iframePanel').style.borderTop = '3px solid ' + e
+                    document.getElementById('iframePanel').style.borderTop = `3px solid ${e}`
                 }
 
 
