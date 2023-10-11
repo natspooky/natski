@@ -1,10 +1,6 @@
 make vps have classnames with VPS in
 
-make designs for PWS
-
-write a better VPS description
-
-make better instructions for VPS
+make designs for PSS
 
 add to changelog
 
@@ -13,8 +9,6 @@ sneakstash width for portrait is 740px
 make kuru clicker run on a canvas
 
 make multiple SSCU pages possible
-
-optimise all ENCORE to be in smaller chunks
 
 change PDSU images style in V1 to look better
 
@@ -31,25 +25,13 @@ make sound kuru more compressed
 
 rebuild VPS with event target for each
 
-make explination of each setting
-
-create a video on error for VPS
-
 make buffer for VPS
-
-make it so fullscreen changes based on event listener
-
-make ENCORE pages have ENCOREalert
 
 make SSC and SSCU not break with functions when only one banner-bg
 
 make explanation for banner-bg section of SSC and SSCU
 
-add mutation observer to VPS
-
 fix vps expanding into example
-
-add reload VPS to the vps functions list in V2
 
 add intersection observer to VPS in order to make bokeh disapear when not in frame
 
@@ -64,8 +46,6 @@ make settings page built into homepage, cubic-bezier(.33,.13,.39,1.28)
 URGENT MAKE VPS TURN OFF bokeh IF NOT IN FRAME
 
 give SSC and SSCU the option to not be timed
-
-maybe make animated splash screens of ENCORE systems
 
 check south hamptoon thing
 
@@ -102,3 +82,5 @@ add link to icon selection from GIS in V3
 give VPS a working buffer
 
 make background video for INDEX page
+
+add swipe gestures to PDS?
