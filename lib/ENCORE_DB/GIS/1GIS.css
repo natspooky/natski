@@ -1,5 +1,6 @@
 GIS-icon
 {
+    position: relative;
     box-sizing: border-box;
     padding: 0;
     -ms-touch-action: manipulation;
@@ -8,7 +9,6 @@ GIS-icon
     border-radius: 0;
     width: 1em;
     height: 1em;
-    font-size: 12px;
 }
 GIS-icon *
 {
