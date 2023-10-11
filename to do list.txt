@@ -94,3 +94,5 @@ make colour recursion check for CMSF to prevent same colours
 add instructions on how to style GIS in V3
 
 make changelog talking about GIS intergration
+
+maybe make CMSF have a similar system to PDS transform options
