@@ -163,9 +163,7 @@
 }
 .GIS-link
 {
-    position: absolute;
-    top: 50%;
-    left: 50%;
+    position: relative;
     height: 40px;
     width: 40px;
     display: none;
