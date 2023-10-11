@@ -108,6 +108,8 @@
     position: sticky;
     top: 0;
     z-index: 999;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
     background-color: var(--CMScolour);
 }
 #CMScontextMenu .CMScontext .CMSback svg
