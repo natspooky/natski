@@ -57,6 +57,9 @@
     left: 0;
     top: 0;
     overflow-x: hidden;
+    overflow-y: scroll;
+    max-height: 300px;
+    height: auto;
     transform: translateX(100%);
     display: block;
     transition: 0.25s;
