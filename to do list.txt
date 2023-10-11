@@ -84,3 +84,11 @@ give VPS a working buffer
 make background video for INDEX page
 
 add swipe gestures to PDS?
+
+make icon for GIS
+
+put GIS in CMSF
+
+make colour recursion check for CMSF to prevent same colours
+
+add instructions on how to style GIS in V3
