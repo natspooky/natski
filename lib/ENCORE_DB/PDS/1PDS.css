@@ -78,8 +78,8 @@
     z-index: 9999;
     overflow: hidden;
     background-color: #00000080;
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
     pointer-events: none;
     visibility: hidden;
     transition: 0.3s;
