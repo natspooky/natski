@@ -141,7 +141,7 @@
 }
 #PDSUinspectPanel .PDSUbuttons:active
 {
-    background-color: #222222;
+    background-color: #ffffff30;
     transition: 0s;
 }
 #PDSUinspectPanel .PDSUbuttons svg

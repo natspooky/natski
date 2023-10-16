@@ -108,3 +108,7 @@ make magnifying icon
 make the numbers a fixed size in PDS and PDSU mini menu
 
 add close button to PDS and PDSU
+
+add download icon to GIS
+
+make preview icon

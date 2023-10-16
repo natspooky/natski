@@ -177,7 +177,7 @@
 }
 #PDSinspectPanel .PDSbuttons:active
 {
-    background-color: #222222;
+    background-color: #ffffff30;
     transition: 0s;
 }
 #PDSinspectPanel .PDSbuttons svg
