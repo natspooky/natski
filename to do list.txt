@@ -95,21 +95,15 @@ add instructions on how to style GIS in V3
 
 make changelog talking about GIS intergration
 
-maybe make CMSF have a similar system to PDS transform options
+maybe make CMSF and CLS have a similar system to PDS transform options
 
-make dreem pool smaller for alevel art
+make dream pool smaller for alevel art
 
 make it so that editors arent available on mobile
 
 make vps blur better by using CTX blur
 
-make magnifying icon
-
-make the numbers a fixed size in PDS and PDSU mini menu
-
 add close button to PDS and PDSU
-
-add download icon to GIS
 
 make preview icon
 
