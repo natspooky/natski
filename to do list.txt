@@ -114,3 +114,5 @@ add download icon to GIS
 make preview icon
 
 fix PDS having weird spacing in mobile or portrait
+
+fix PDS lag with bg blur
