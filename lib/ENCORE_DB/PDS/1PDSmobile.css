@@ -61,7 +61,7 @@
     opacity: 0;
     z-index: 9999;
     overflow: hidden;
-    background-color: #00000080;
+    background-color: #0000009e;
     pointer-events: none;
     visibility: hidden;
     transition: 0.3s;
@@ -121,7 +121,9 @@
 {
     position: relative;
     line-height: 25px;
-    padding: 0 10px;
+    width: 65px;
+    display: flex;
+    justify-content: center;
     color: #e9e9e9;
     white-space: nowrap;
     font-weight: bold;
@@ -165,8 +167,7 @@
     transform: translateY(-50%);
     padding: 25px 10px;
     border-radius: 10px;
-    background-color: var(--PDScolor);
-    border: 2px solid var(--PDScolor);
+    background-color: #000000c0;
     transition: 0.2s;
 }
 #PDSinspectPanel .PDSbuttons:last-of-type

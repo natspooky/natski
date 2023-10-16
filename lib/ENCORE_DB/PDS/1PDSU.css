@@ -7,7 +7,7 @@
 @media (hover: hover) {
     #PDSUinspectPanel .PDSUbuttons:hover
     {
-        background-color: #00000070;
+        background-color: #ffffff20;
     }
     #PDSUinspectPanel div button:hover
     {
@@ -101,7 +101,9 @@
 {
     position: relative;
     line-height: 25px;
-    padding: 0 10px;
+    width: 65px;
+    display: flex;
+    justify-content: center;
     color: #e9e9e9;
     white-space: nowrap;
     font-weight: bold;
@@ -164,8 +166,7 @@
     transform: translateY(-50%);
     padding: 25px 10px;
     border-radius: 10px;
-    background-color: var(--PDSUcolor);
-    border: 2px solid var(--PDSUcolor);
+    background-color: #000000c0;
     transition: 0.2s;
 }
 #PDSUinspectPanel .PDSUbuttons:last-of-type
