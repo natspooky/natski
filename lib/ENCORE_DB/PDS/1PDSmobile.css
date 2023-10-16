@@ -61,7 +61,7 @@
     opacity: 0;
     z-index: 9999;
     overflow: hidden;
-    background-color: #0000009e;
+    background-color: #000000a0;
     pointer-events: none;
     visibility: hidden;
     transition: 0.3s;
