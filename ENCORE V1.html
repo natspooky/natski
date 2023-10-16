@@ -312,7 +312,7 @@
         'thumbs':true,
         'sideButtons':true,
         'timer':10000,
-        'slideSpeed':400,
+        'slideSpeed':500,
         'style':1
     }
 &lt;/script&gt;
@@ -431,7 +431,7 @@
                         </button>
                     </div>
                     <div class="exampleMenu" id="SSCUmenu" style="display: none; margin-top: 1em;">
-                        <button style="background-color: #09af0030;" onclick="SSCU_settings={'thumbs':document.getElementById('sscuthumb').hasAttribute('active'),'sideButtons':document.getElementById('sscubuttons').hasAttribute('active'),'timer':10000,'slideSpeed':400,'style':1}; reloadSSCU(SSCU_settings); ENCOREalert(this.parentNode.id,'settings')">
+                        <button style="background-color: #09af0030;" onclick="SSCU_settings={'thumbs':document.getElementById('sscuthumb').hasAttribute('active'),'sideButtons':document.getElementById('sscubuttons').hasAttribute('active'),'timer':10000,'slideSpeed':500,'style':1}; reloadSSCU(SSCU_settings); ENCOREalert(this.parentNode.id,'settings')">
                             Save Changes
                         </button>
                         <button class="active" active id="sscuthumb" onclick="changeValues(this)">
@@ -821,7 +821,7 @@
                             script.id = 'SSCUscript'
                             script.src = 'https://natski.netlify.com/lib/js/ENCORE_SSC_ULT.js'
                             settings.id = 'SSCUsettings'
-                            settings.innerHTML = "SSCU_settings={'thumbs':true,'sideButtons':true,'timer':10000,'slideSpeed':400,'style':1}"
+                            settings.innerHTML = "SSCU_settings={'thumbs':true,'sideButtons':true,'timer':10000,'slideSpeed':500,'style':1}"
                             document.body.appendChild(script)
                             document.body.appendChild(settings)
                             sscu.style.height = 'var(--height)'

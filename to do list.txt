@@ -112,3 +112,5 @@ add close button to PDS and PDSU
 add download icon to GIS
 
 make preview icon
+
+fix PDS having weird spacing in mobile or portrait
