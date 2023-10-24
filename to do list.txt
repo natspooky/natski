@@ -117,3 +117,5 @@ maybe make side buttons not appear on mobile for PDS?
 
 
 make randomiser to add splash text to index
+
+add colourSystem setting to PDSU in ENCORE, CHANGELOG and others.

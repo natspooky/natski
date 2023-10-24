@@ -579,6 +579,7 @@
 &lt;script&gt;
     PDSU_settings={
         'imageClass':'class to attach PDSU onto',
+        'colourSystem':true,
         'animations':true,
         'controls':true,
         'style':1
@@ -594,6 +595,7 @@
                         </div>
                         <div class="codeInfo">
                             <span>imageClass</span>: asigns the class that PDSU will attach onto for use with the PDSU image viewer<br><br>
+                            <span>colourSystem</span>: adds an average colour background to each image in the PDSU image viewer<br><br>
                             <span>animations</span>: sets onclick animations for the PDSU image viewer<br><br>
                             <span>controls</span>: creates buttons to navigate the PDSU image viewer<br><br>
                             <span>style</span>: chooses the current style that will be applied to PDSU when it loads. This value can only be 1
@@ -631,8 +633,11 @@
                         </button>
                     </div>
                     <div class="exampleMenu" id="PDSUmenu" style="display: none; margin-top: 1em;">
-                        <button style="background-color: #09af0030;" onclick="PDSU_settings={'imageClass':'attach','animations':document.getElementById('pdsuani').hasAttribute('active'),'controls':document.getElementById('pdsucont').hasAttribute('active'),'style':1}; reloadPDSU(PDSU_settings); ENCOREalert(this.parentNode.id,'settings')">
+                        <button style="background-color: #09af0030;" onclick="PDSU_settings={'imageClass':'attach','colourSystem':document.getElementById('pdsucol').hasAttribute('active'),'animations':document.getElementById('pdsuani').hasAttribute('active'),'controls':document.getElementById('pdsucont').hasAttribute('active'),'style':1}; reloadPDSU(PDSU_settings); ENCOREalert(this.parentNode.id,'settings')">
                             Save Changes
+                        </button>
+                        <button class="active" active id="pdsucol" onclick="changeValues(this)">
+                            Colour System
                         </button>
                         <button class="active" active id="pdsuani" onclick="changeValues(this)">
                             Animations
@@ -863,7 +868,7 @@
                             pdsu.innerHTML = '<img src="icon/img/kuru.gif" draggable="false" class="attach"><img src="icon/img/ssc1.jpg" draggable="false" class="attach">'
                             script.src = 'https://natski.netlify.com/lib/js/ENCORE_PDS_ULT.js'
                             settings.id = 'PDSUsettings'
-                            settings.innerHTML = "PDSU_settings={'imageClass':'attach','animations':true,'controls':true,'style':1}"
+                            settings.innerHTML = "PDSU_settings={'imageClass':'attach','colourSystem':true,'animations':true,'controls':true,'style':1}"
                             document.body.appendChild(script)
                             document.body.appendChild(settings)
                             pdsu.style.height = 'var(--height)'
