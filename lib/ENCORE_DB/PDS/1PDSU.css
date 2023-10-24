@@ -66,7 +66,7 @@
     display: block;
     border: 4px solid transparent;
     background-color: #e9e9e915;
-    border-radius: 23px;
+    border-radius: 13px;
     user-select: none;
     box-shadow: 0 0 40px #00000060;
     transform-origin: top left;
@@ -82,8 +82,8 @@
     left: 50%;
     bottom: 15px;
     background-color: #000000c0;
-    padding: 5px 0;
-    border-radius: 10px;
+    padding: 10px 5px;
+    border-radius: 13px;
     display: flex;
     justify-content: center;
     width: fit-content;
@@ -127,8 +127,8 @@
     position: relative;
     fill: #e9e9e9;
     display: block;
-    width: 12px;
-    height: 12px;
+    width: 13px;
+    height: 13px;
 }
 #PDSUinspectPanel div button:active
 {
@@ -143,14 +143,14 @@
     font-size: 12px;
     font-weight: bold;
     border-radius: inherit;
-    bottom: calc(100% + 10px);
+    bottom: calc(100% + 15px);
     left: 50%;
     transform: translateX(-50%);
-    background-color: #000000;
+    background-color: #000000c0;
     color: #e9e9e9;
     pointer-events: none;
     white-space: nowrap;
-    transition: 0s;
+    transition: 0.1s;
     transition-delay: 0s;
     opacity: 0;
 }
@@ -162,8 +162,8 @@
     cursor: pointer;
     width: fit-content;
     transform: translateY(-50%);
-    padding: 25px 10px;
-    border-radius: 10px;
+    padding: 25px 12px;
+    border-radius: 13px;
     background-color: #000000c0;
     transition: 0.2s;
 }

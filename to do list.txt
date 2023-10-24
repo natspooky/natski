@@ -109,4 +109,6 @@ make preview icon
 
 fix PDS having weird spacing in mobile or portrait
 
-fix PDS lag with bg blur
+redesign SSC and SSCU to resemble PDS and PDSU
+
+change portfolio slide
