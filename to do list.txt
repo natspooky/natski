@@ -111,4 +111,9 @@ fix PDS having weird spacing in mobile or portrait
 
 redesign SSC and SSCU to resemble PDS and PDSU
 
-change portfolio slide
+change portfolio slide in index to have two images and then the title
+
+maybe make side buttons not appear on mobile for PDS?
+
+
+make randomiser to add splash text to index
