@@ -18,8 +18,6 @@ allow CMS to choose what element to activate on {document, id, class}
 
 give homepage sidemenu aria labels
 
-maybe make ENCORE DES into something
-
 make kuru kuru gif smaller
 make sound kuru more compressed
 
@@ -47,35 +45,23 @@ URGENT MAKE VPS TURN OFF bokeh IF NOT IN FRAME
 
 give SSC and SSCU the option to not be timed
 
-check south hamptoon thing
-
 make artwork
 
 remake PS
-
-do physics essay
 
 make spiral art
 
 i should probs optimise VPS
 
-make a GIS adapter for setting up icons in other apps
-
 disable PDS change image buttons if there are less than 2 images but allow for them to be reinabled if images are added
-
-make rotate PDS & rotate PDS icon
 
 redesign the dropdown menu in SSM
 
-maybe redesign all things to fit PDS mini menu
-
 redesign CLSF 
 
-add GISE to CLSF and CMSF
+add GISE to CMSF
 
 make the dropdowns in SSM use SVG instead of GIS for the arrows
-
-fix PDSU and PDS loader being off center
 
 add link to icon selection from GIS in V3
 
@@ -85,17 +71,13 @@ make background video for INDEX page
 
 add swipe gestures to PDS?
 
-make icon for GIS
-
 put GIS in CMSF
-
-make colour recursion check for CMSF to prevent same colours
 
 add instructions on how to style GIS in V3
 
 make changelog talking about GIS intergration
 
-maybe make CMSF and CLS have a similar system to PDS transform options
+maybe make CLS have a similar system to PDS transform options
 
 make dream pool smaller for alevel art
 
@@ -109,14 +91,12 @@ make preview icon
 
 fix PDS having weird spacing in mobile or portrait
 
-redesign SSC and SSCU to resemble PDS and PDSU
-
 change portfolio slide in index to have two images and then the title
 
-maybe make side buttons not appear on mobile for PDS?
+maybe make side buttons not appear on mobile for PDS?#
 
-make randomiser to add splash text to index
-
-add colourSystem setting to PDSU in ENCORE, CHANGELOG and others.
+swipe controls for PDS and PDSU
 
 make PDSU and PDS have a draggable bg with exit button (or not but still add exit button)
+
+add more features to ENCORE DES and maybe make into an ENCORE
