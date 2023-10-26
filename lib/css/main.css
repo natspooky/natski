@@ -458,8 +458,8 @@ nav span
 {
     position: relative;
     content: '';
-    height: 40px;
-    width: 40px;
+    height: 35px;
+    width: 35px;
     border-radius: 50%;
     background-image: conic-gradient(from 85deg, transparent, var(--themecol)); 
     mask: url(https://natski.netlify.app/icon/svg/ENCORE_GIS/loader.svg) center center no-repeat;

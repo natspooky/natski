@@ -100,3 +100,5 @@ swipe controls for PDS and PDSU
 make PDSU and PDS have a draggable bg with exit button (or not but still add exit button)
 
 add more features to ENCORE DES and maybe make into an ENCORE
+
+replace N behind portfolio with a video
