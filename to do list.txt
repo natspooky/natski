@@ -4,8 +4,6 @@ make designs for PSS
 
 add to changelog
 
-sneakstash width for portrait is 740px
-
 make kuru clicker run on a canvas
 
 make multiple SSCU pages possible
@@ -15,8 +13,6 @@ change PDSU images style in V1 to look better
 make context menu for VPS // nvm make this a synergy
 
 allow CMS to choose what element to activate on {document, id, class}
-
-give homepage sidemenu aria labels
 
 make kuru kuru gif smaller
 make sound kuru more compressed
@@ -30,8 +26,6 @@ make SSC and SSCU not break with functions when only one banner-bg
 make explanation for banner-bg section of SSC and SSCU
 
 fix vps expanding into example
-
-add intersection observer to VPS in order to make bokeh disapear when not in frame
 
 fix PDS super high script evaluation (dont push items to list, place them directly into div)
 
@@ -53,8 +47,6 @@ make spiral art
 
 i should probs optimise VPS
 
-disable PDS change image buttons if there are less than 2 images but allow for them to be reinabled if images are added
-
 redesign the dropdown menu in SSM
 
 redesign CLSF 
@@ -66,12 +58,6 @@ make the dropdowns in SSM use SVG instead of GIS for the arrows
 add link to icon selection from GIS in V3
 
 give VPS a working buffer
-
-make background video for INDEX page
-
-add swipe gestures to PDS?
-
-put GIS in CMSF
 
 add instructions on how to style GIS in V3
 
@@ -91,14 +77,12 @@ make preview icon
 
 fix PDS having weird spacing in mobile or portrait
 
-change portfolio slide in index to have two images and then the title
-
-maybe make side buttons not appear on mobile for PDS?#
-
-swipe controls for PDS and PDSU
-
-make PDSU and PDS have a draggable bg with exit button (or not but still add exit button)
-
 add more features to ENCORE DES and maybe make into an ENCORE
 
 replace N behind portfolio with a video
+
+use DOMmATRIX to fix current issue with CMSF
+
+add intersection observer to VPS in order to make bokeh disapear when not in frame
+
+disable PDS change image buttons if there are less than 2 images but allow for them to be reinabled if images are added

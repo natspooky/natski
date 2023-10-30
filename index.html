@@ -236,7 +236,6 @@
                 width: 40px;
                 pointer-events: none;
             }
-
             main .firstArticle
             {
                 width: 10%;
@@ -252,15 +251,12 @@
                 transition: transform 0.5s, opacity 0.5s, width 0.5s;
                 transition-delay: 0s;
             }
-
             main.active article
             {
                 opacity: 1;
                 transform: translateY(0);
                 transition-delay: var(--delay);
             }
-
-
             @media (hover: hover){
                 .pagebutton-u:hover
                 {
@@ -308,26 +304,23 @@
                     display: none;
                 }
             }
-
             .banner-bg-u .encore
-                    {
-                        position: relative;
-                        display: block;
-                        width: min(85%, 500px);
-                        margin: 35px 0 20px 0;
-                        height: auto;
-                        fill: #e9e9e9;
-                        background-color: #00000060;
-                        backdrop-filter: blur(7px);
-                        -webkit-backdrop-filter: blur(7px);
-                    }
-
-                    .banner-bg-u .encore.portfo
-                    {
-                        width: min(70%, 350px);
-                        border-radius: 7px;
-                    }
-
+            {
+                position: relative;
+                display: block;
+                width: min(85%, 500px);
+                margin: 35px 0 20px 0;
+                height: auto;
+                fill: #e9e9e9;
+                background-color: #00000060;
+                backdrop-filter: blur(7px);
+                -webkit-backdrop-filter: blur(7px);
+            }
+            .banner-bg-u .encore.portfo
+            {
+                width: min(70%, 350px);
+                border-radius: 7px;
+            }
             #loadscreen::before, #loadscreen::after
             {
                 content: '';
@@ -347,17 +340,14 @@
                 transform: translate(-150%,-50%) skewX(-30deg);
                 transition-delay: 0.4s;
             }
-
             #loadscreen.first::before
             {
                 transform: translate(100%,-50%) skewX(-30deg);
             }
-
             #loadscreen.first::after
             {
                 transform: translate(50%,-50%) skewX(-30deg);
             }
-
             #loadscreen #outline
             {
                 transition: 0.4s;
@@ -367,7 +357,6 @@
             {
                 opacity: 0.2;
             }
-
         </style>
 
         <div id="loadscreen">

@@ -61,7 +61,7 @@
     width: calc(100% - 0.5em);
     margin: 0.25em;
     border-radius: 7px;
-    cursor: pointer;
+    cursor: zoom-in;
     float: left;
     background-color: #e9e9e915;
     border: 4px solid transparent;
