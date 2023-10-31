@@ -62,6 +62,9 @@
                 if(window.location !== window.parent.location){
                     window.open('https://natski.netlify.app/epq.html', '_blank').focus();
                 }else{
+                    if(document.getElementById('NATredirect')){
+                        document.getElementById('NATredirect').remove()
+                    }
                     document.getElementById('wordcount').remove()
                     document.getElementById('chapselec').remove()
                     document.getElementById('printer').remove()

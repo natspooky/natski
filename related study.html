@@ -57,13 +57,37 @@
             <h2>Related Study</h2>
         </header>
 
+
+        <script>
+            function printver() {
+                if(window.location !== window.parent.location){
+                    window.open('https://natski.netlify.app/epq.html', '_blank').focus();
+                }else{
+                    if(document.getElementById('NATredirect')){
+                        document.getElementById('NATredirect').remove()
+                    }
+                    document.getElementById('wordcount').remove()
+                    document.getElementById('chapselec').remove()
+                    document.getElementById('printer').remove()
+                    setTimeout(() => {
+                        window.print()
+                    },100) 
+                }
+            }
+        </script>
+
+    <button id="printer" style="position: relative; z-index: 9999; padding: 0.5em 1em; display: block; margin: 1em auto; background-color: rgba(0, 128, 0, 0.3); font-size: 1.1rem; font-weight: bold; border-radius: 100vmax; cursor: pointer;" onclick="printver()">print document</button>
+
+
         <main>
+
+            
         
 
             <article style="animation: slide 0.6s">
                 <h4 style="position: relative; top: unset;">what is liminality and how can its effect be used in art</h4>
+                <p style="margin-top: 0.5em; width: 100%; position: relative; text-align: center;">Michael Earle</p>
                 <hr class="mini">
-                <h5><div></div>all elements are subject to change</h5>
                 <h3><div id="00"></div><span>00</span> Introduction</h3>
                 <hr>
 
@@ -161,8 +185,9 @@ Each of these art pieces are also benefited by the idea of misophonia. <span>Mis
                     
                     I then decided to focus solely on weirdcore for the next piece I created. This art was based off of the strange text that usually surrounds the images based on the weirdcore aesthetic and out of place messages that don't fit with the normal environmental expectations that come with the scene shown to the viewer.<br><img class="colourimage"  src="icon/portimg/alevel/14.png" alt="headers" draggable="false"><br>
 
-                    For this piece, I placed the sign on a chain link fence that covers an endlessly dark scene. The sign itself conveys the principle of weirdcore through using a message that doesn't fit with any possible scenario, but rather conveys the severity of an unknown and impossible situation to the viewer and from this, distorting the users perception of the current situation at hand.
+                    For this piece, I placed the sign on a chain link fence that covers an endlessly dark scene. The sign itself conveys the principle of weirdcore through using a message that doesn't fit with any possible scenario, but rather conveys the severity of an unknown and impossible situation to the viewer and from this, distorting the users perception of the current situation at hand. I got the idea of using signs to convey the message of weirdcore images from other weirdcore images of the same nature, for example:<br><img class="colourimage"  src="icon/essayimgs/weirdcore sign.jpg" alt="headers" draggable="false"><br>
 
+                    In most cases similar to these two images, the themes of the message passed along by the signs usually represent the previously mentioned feeling of <span>anemoia<a class="sourcer" name="Nostalgia for a time or a place one has never known">[?]</a></span> or more accurately, they prey on the idea that these spaces created inside of liminality may invoke a sense of déjà vu which adds a larger impact to the message being conveyed.
                 <br><br>
 
 
@@ -200,6 +225,9 @@ Each of these art pieces are also benefited by the idea of misophonia. <span>Mis
 
                 <ul>
                     <li>
+                        <a href="https://www.reddit.com/media?url=https%3A%2F%2Fpreview.redd.it%2Fns5wjlebkks41.jpg%3Fauto%3Dwebp%26s%3D123b2ad2373b7508be1b5eed7382f416723dee79" target="_blank">Reddit.com. 2019. weirdcore sign. [image] https://www.reddit.com/media?url=https%3A%2F%2Fpreview.redd.it%2Fns5wjlebkks41.jpg%3Fauto%3Dwebp%26s%3D123b2ad2373b7508be1b5eed7382f416723dee79</a>
+                    </li>
+                    <li>
                         <a href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_nFLH3I9qJuBwfo2mq209iRjTMCqU6iIylg&usqp=CAU" target="_blank">Aesthetics.fandom.com. n.d. dreamcore pool. [image] https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_nFLH3I9qJuBwfo2mq209iRjTMCqU6iIylg&usqp=CAU</a>
                     </li>
                     <li>
@@ -235,7 +263,7 @@ Each of these art pieces are also benefited by the idea of misophonia. <span>Mis
             <a onclick="parent.loadframe('Privacy Policy');parent.backPage(1)">Privacy Policy</a>
         </footer>
 
-        <div class="chapterselector">
+        <div class="chapterselector" id="chapselec">
             <a href="#00"><p name="Introduction">00</p></a>
             <a href="#01"><p name="What are liminal spaces">01</p></a>
             <a href="#02"><p name="What makes liminal spaces unsettling">02</p></a>
