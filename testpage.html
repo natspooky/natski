@@ -101,7 +101,6 @@ body, html {
     position: fixed;
     top: 0;
     left: 0;
-    padding-top: 10px;
     width: min(100%, 400px);
     height: 100vh;
     overflow-y: scroll;
@@ -119,9 +118,18 @@ body, html {
 }
 #SSM section
 {
-    position: static;
+    position: relative;
     border-bottom: 2px solid #ffffff20;
     transition: 0.4s;
+    animation: SSMfadeup 0.3s ease;
+}
+@keyframes SSMfadeup{
+    from{transform: translateY(30px); opacity: 0;}
+    to{transform: translateY(0); opacity: 1;}
+}
+#SSM section:nth-of-type(2)
+{
+    animation: unset;
 }
 #SSM section:last-of-type
 {
