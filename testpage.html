@@ -73,7 +73,7 @@ body, html {
 {
     --SSMcolour: #729ef6;
 }
-#settingsPanel, #settingsPanel *
+#SSM, #SSM *
 {
     box-sizing: border-box;
     margin: 0;
@@ -85,18 +85,18 @@ body, html {
     font-size: 16px;
     user-select: none;
 }
-#settingsPanel::-webkit-scrollbar-thumb
+#SSM::-webkit-scrollbar-thumb
 {
     background-color: #e9e9e9;
     border-radius: 100vmax;
 }
-#settingsPanel::-webkit-scrollbar
+#SSM::-webkit-scrollbar
 {
     width: 5px;
 	height: 0px;
     background-color: transparent;
 }
-#settingsPanel
+#SSM
 {
     position: fixed;
     top: 0;
@@ -111,23 +111,23 @@ body, html {
     visibility: hidden;
     transition: 0.3s;
 }
-#settingsPanel.open
+#SSM.open
 {
     opacity: 1;
     visibility: visible;
     transform: translateX(0);
 }
-#settingsPanel section
+#SSM section
 {
     position: static;
     border-bottom: 2px solid #ffffff20;
     transition: 0.4s;
 }
-#settingsPanel section:last-of-type
+#SSM section:last-of-type
 {
     margin-bottom: 100px;
 }
-#settingsPanel section.loading
+#SSM section.loading
 {
     pointer-events: none;
     background-color: #66666640;
@@ -148,28 +148,33 @@ body, html {
     background-color: #191919;
     opacity: 0;
     pointer-events: none;
-    transition: 0.4s, top 0s;
+    transition: 0s, top 0s;
 }
 #SSMloader::after
 {
     position: relative;
     content: '';
-    height: 40px;
-    width: 40px;
-    background-image: conic-gradient(from 89deg, transparent, var(--SSMcolour)); 
+    height: 35px;
+    width: 35px;
+    background-image: conic-gradient(from 85deg, transparent, var(--themecol)); 
     mask: url(https://natski.netlify.app/icon/svg/ENCORE_GIS/loader.svg) center center no-repeat;
     -webkit-mask: url(https://natski.netlify.app/icon/svg/ENCORE_GIS/loader.svg) center center no-repeat;
-    animation: SSMloader 1.3s infinite linear;
 }
 #SSMloader.loading
 {
     opacity: 1;
+    transition: 0.4s, top 0s;
 }
-@keyframes SSMloader {
+#SSMloader.loading::after
+{
+    animation: SSMloader 1.3s infinite linear;
+}
+@keyframes SSMloader
+{
     from{transform: rotate(0);}
     to{transform: rotate(360deg);}
 }
-#settingsPanel .setting
+#SSM .SSMcategory
 {
     position: relative;
     padding: 1em;
@@ -177,12 +182,12 @@ body, html {
     width: 100%;
     height: auto;
 }
-#settingsPanel .setting
+#SSM .SSMcategory
 {
     position: relative;
     width: 100%;
 }
-#settingsPanel .setting p
+#SSM .SSMcategory p
 {
     position: relative;
     color: #e9e9e9;
@@ -190,18 +195,18 @@ body, html {
     flex-shrink: 0;
     margin: 0 0 1em 0;
 }
-#settingsPanel .setting p i
+#SSM .SSMcategory p i
 {
     opacity: 0.4;
     font-size: 14px;
 }
-#settingsPanel .setting.radioSetting
+#SSM .SSMcategory.radioSetting
 {
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
 }
-#settingsPanel .setting.radioSetting .radio
+#SSM .SSMcategory.radioSetting .radio
 {
     position: static;
     display: inline-flex;
@@ -210,13 +215,13 @@ body, html {
     justify-content: center;
     width: 30%;
 }
-#settingsPanel .setting.radioSetting .radio svg
+#SSM .SSMcategory.radioSetting .radio svg
 {
     width: 90%;
     margin-bottom: 20px;
     fill: #e9e9e9;
 }
-#settingsPanel h1
+#SSM h1
 {
     position: sticky;
     padding: 0.9em 1em 0.5em 0.7em;
@@ -226,7 +231,7 @@ body, html {
     width: 100%;
     color: #e9e9e9;
 }
-#settingsPanel h1 GIS-icon
+#SSM h1 GIS-icon
 {
     position: relative;
     height: 20px;
@@ -234,7 +239,7 @@ body, html {
     margin-right: 10px;
     background-color: #e9e9e9;
 }
-#settingsBG
+#SSMbg
 {
     position: absolute;
     top: 0;
@@ -339,8 +344,6 @@ body, html {
     box-shadow: -715px 0 0 700px var(--SSMcolour);
     transition: 0.2s ease-in-out;
 }
-
-
 .SSMinput[type="radio"]
 {
     font-size: 30px;
@@ -358,12 +361,10 @@ body, html {
     -webkit-transition: all .2s ease-in-out;
     transition: all .2s ease-in-out;
 }
-
 .SSMinput[type="radio"]:checked
 {
     background: var(--SSMcolour);
 }
-
 .SSMinput[type="radio"]::after
 {
     position: absolute;
@@ -379,13 +380,31 @@ body, html {
     -webkit-transition: all .2s ease-in-out;
     transition: all .2s ease-in-out;
 }
-
 .SSMinput[type="radio"]:checked::after
 {
     background: #e9e9e9;
 }
 
-#settingsPanel .setting .selection
+.SSMinput[type="text"]
+{
+    position: relative;
+    height: 30px;
+    width: 100%;
+    background-color: #66666660;
+    font-weight: bold;
+    border: 0;
+    text-indent: 15px;
+    padding: 0 30px 0 15px;
+    padding-left: 30px;
+    color: #e9e9e9;
+    border-radius: 100vmax;
+}
+.SSMinput[type="text"]:focus
+{
+    outline: none;
+}
+
+#SSM .SSMcategory .selection
 {
     position: relative;
     height: 30px;
@@ -396,7 +415,7 @@ body, html {
     cursor: pointer;
     user-select: none;
 }
-#settingsPanel .setting .selection::after
+#SSM .SSMcategory .selection::after
 {
     content: '';
     position: absolute;
@@ -411,17 +430,16 @@ body, html {
     -webkit-mask: url(https://natski.netlify.app/icon/svg/ENCORE_GIS/line_arrow_down.svg) center center no-repeat;
     transition: 0.2s;
 }
-#settingsPanel .setting .selection.active::after
+#SSM .SSMcategory .selection.active::after
 {
     transform: rotate(0) scale(0.4);
 }
-#settingsPanel .setting .selection.active
+#SSM .SSMcategory .selection.active
 {
     overflow: visible;
-    border-radius: 15px 15px 0 0;
     z-index: 3;
 }
-#settingsPanel .setting .selection .item
+#SSM .SSMcategory .selection .item
 {
     position: relative;
     height: 30px;
@@ -431,21 +449,27 @@ body, html {
     text-overflow: ellipsis;
     line-height: 30px;
     width: 100%;
-    background-color: #2e2e2e;
-    border-top: 2px solid #00000049;
+    background-color: var(--SSMcolour);
+    border-top: 2px solid #00000030;
     color: #e9e9e9;
     font-weight: bold;
 }
-#settingsPanel .setting .selection .item:last-of-type
+#SSM .SSMcategory .selection .item:last-of-type
 {
     border-radius: 0 0 15px 15px;
 }
-#settingsPanel .setting .selection .header
+#SSM .SSMcategory .selection .item:nth-of-type(2)
+{
+    border-radius: 15px 15px 0 0;
+    border: 0;
+}
+#SSM .SSMcategory .selection .header
 {
     position: relative;
     height: 30px;
     display: block;
     padding: 0 30px 0 15px;
+    margin-bottom: 10px;
     overflow: hidden;
     text-overflow: ellipsis;
     line-height: 30px;
@@ -470,7 +494,7 @@ body, html {
     transition: 0s;
     background-color: var(--SSMcolour);
 }
-#informationPopup
+#SSMinfo
 {
     position: absolute;
     min-height: 30px;
@@ -488,7 +512,7 @@ body, html {
     padding: 0.5em 1em;
     transition: opacity 0.2s ease 0.3s, width 0.15s, transform 0.2s;
 }
-#informationPopup p
+#SSMinfo p
 {
     position: relative;
     width: 100%;
@@ -513,7 +537,7 @@ body, html {
         -webkit-transform: scale(.7);
                 transform: scale(.7);
     }
-    #settingsPanel::-webkit-scrollbar-thumb:hover
+    #SSM::-webkit-scrollbar-thumb:hover
     {
         background-color: #e9e9e9;
     }
@@ -716,266 +740,30 @@ body, html {
     -webkit-mask: url(https://natski.netlify.app/icon/svg/ENCORE_GIS/information.svg) no-repeat center;
 }
 
-
-
-
-
-
-
-
-
-
-
-@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-@media (hover:hover){
-    #SSC .pagebutton:hover,#SSC .banner-bg .banner-button:hover,#SSC .thumbs .thumb:hover
-    {
-        background-color: #ffffff20;
-    }
-}
-#SSC *, #SSC
-{
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    -ms-touch-action: manipulation;
-    touch-action: manipulation;
-    -webkit-tap-highlight-color:  rgba(255, 255, 255, 0);
-    font-family: 'Exo 2', sans-serif;
-}
-#SSC
-{
-    position: relative;
-    height: 100vh;
-    width: 100%;
-    left: 0;
-    top: 0;
-    transform: scale(0.9);
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    background-color: transparent;
-    border: 2px solid #000000c0;
-    border-radius: 10px;
-    overflow: hidden;
-}
-#SSC .pagebutton
-{
-    position: absolute;
-    top: 50%;
-    cursor: pointer;
-    left: 15px;
-    width: fit-content;
-    transform: translateY(-50%);
-    padding: 25px 10px;
-    border-radius: 10px;
-    border: 0;
-    background-color: #000000c0;
-    transition: 0.2s;
-}
-#SSC .pagebutton:last-of-type
-{
-    left: unset;
-    right: 15px;
-}
-#SSC .pagebutton svg
-{
-    display: block;
-    fill: #e9e9e9;
-    height: 15px;
-}
-#SSC .pagebutton:active
-{
-    background-color: #ffffff30;
-    transition: 0s;
-}
-#SSC .progress
-{
-    position: relative;
-    height: 7px;
-    width: 100px;
-    bottom: 15px;
-    background-color: #000000c0;
-    border-radius: 100vmax;
-    border: 2px solid transparent;
-    overflow: hidden;
-}
-#SSC .progress .progress-bar
-{
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    background-color: #e9e9e9;
-    transform-origin: left;
-    width: 100%;
-}
-#SSC .thumbs
-{
-    position: absolute;
-    display: flex;
-    align-items: center;
-    bottom: 37px;
-}
-#SSC .thumbs .thumb
-{
-    position: relative;
-    border-radius: 100vmax;
-    height: 20px;
-    width: 20px;
-    border: 0px solid var(--SSCaccent);
-    background-color: #000000c0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0 0.4em;
-    transition: 0.2s;
-    cursor: pointer;
-}
-#SSC .thumbs .thumb:first-of-type
-{
-    margin: 0 0.4em 0 0;
-}
-#SSC .thumbs .thumb:last-of-type
-{
-    margin: 0 0 0 0.4em;
-}
-#SSC .thumbs .thumb::before
-{
-    content: '';
-    position: relative;
-    height: 10px;
-    width: 10px;
-    border-radius: 100vmax;
-    opacity: 0;
-    transform: scale(0.5);
-    background-color: #e9e9e9;
-    transition: 0.2s;
-}
-#SSC .thumbs .thumb.active::before
-{
-    opacity: 1;
-    transform: scale(1);
-}
-#SSC .banner-bg
-{
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 100%;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    animation: fadeIn 1s;
-}
-#SSC .banner-bg img
-{
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-}
-#SSC .banner-bg .banner-button
-{
-    position: absolute;
-    display: block;
-    padding: 0em 1.8em;
-    height: 50px;
-    line-height: 50px;
-    border-radius: 100vmax;
-    color: #e9e9e9;
-    text-decoration: none;
-    border: 0;
-    background-color: #000000c0;
-    cursor: pointer;
-    font-size: 16px;
-    bottom: 72px;
-    transition: 0.2s;
-}
-@keyframes fadeIn
-{
-    from{opacity: 0.4;}
-    to{opacity: 1;}
-}
-@media (orientation: portrait)
-{
-    #SSC
-    {
-        height: 85vh;
-    }
-}
 </style>
 
 
 
 
 
-<!--
-
-<div id="SSCS" style="opacity: 0; display: none;">
-
-    <div class="banner-bg-s">
-
-        <p>yeah</p>
-
-    </div>
-
-    <div class="banner-bg-s">
-
-        <p>yeah</p>
-
-    </div>
-
-    <div class="banner-bg-s">
-
-        <p>yeah yeah yeah yeah</p>
-
-    </div>
-
-    <div class="banner-bg-s">
-
-        <p>yeah</p>
-
-    </div>
-
-</div>
 
 
-
-<script src="lib/js/ENCORE_SSC_S.js"></script>
-<script>
-    SSCS_settings={
-        'thumbs':true,
-        'sideButtons':true,
-        'timer':10000,
-        'slideSpeed':400,
-        'style':1
-    }
-</script>
-
-
-<script src="lib/js/ENCORE_VPS.js"></script>
-<script>
-    VPS_settings={
-        'loop':true,
-        'bokeh':true,
-        'style':1
-    }
-</script>
--->
-
-<!--
-<div id="settingsPanel" class="open">
-    <div id="settingsBG"></div>
+<div id="SSM" class="open">
+    <div id="SSMbg"></div>
     <section>
         <h1>Tracker Settings</h1>
     </section>
+
+    <section>
+        <h1><GIS-icon title="magnify"></GIS-icon>Search</h1>
+        <span class="SSMcategory">
+            <input class="SSMinput" type="text" info="Lets you search for a specific setting" placeholder="Search">
+        </span>
+    </section>
+
     <section>
         <h1><GIS-icon title="input"></GIS-icon>Input</h1>
-        <span class="setting">
+        <span class="SSMcategory">
             <p>Camera</p>
             <div class="selection SSMinput" info="Lets you choose which camera input you would like to use" id="videoInput">
                 <div class="itemContainer">
@@ -986,7 +774,7 @@ body, html {
             </div>
         </span>
 
-        <span class="setting">
+        <span class="SSMcategory">
             <p>Microphone</p>
             <div class="selection SSMinput" info="Lets you choose which microphone input you would like to use" id="audioInput">
                 <div class="itemContainer">
@@ -999,7 +787,7 @@ body, html {
     </section>
     <section>
         <h1><GIS-icon title="sparkle"></GIS-icon>Quality</h1>
-        <span class="setting">
+        <span class="SSMcategory">
             <p>FPS<br><i>does not affect accuracy</i></p>
             <div class="selection SSMinput" info="Lets you choose the framerate you wish the program to run at">
                 <div class="itemContainer">
@@ -1030,7 +818,7 @@ body, html {
                 </div>
             </div>
         </span>
-        <span class="setting">
+        <span class="SSMcategory">
             <p>Resolution<br><i>does not affect accuracy</i></p>
             <div class="selection SSMinput" info="Lets you choose the resolution of the camera input">
                 <div class="itemContainer">
@@ -1052,19 +840,19 @@ body, html {
     </section>
     <section>
         <h1><GIS-icon title="PSS"></GIS-icon>Tracking</h1>
-        <span class="setting">
+        <span class="SSMcategory">
             <p>Lock Movement to Center</p>
             <input type="checkbox" class="SSMinput" info="locks the model to the center of the cenvas" onclick="trackerSettings.LocationLock = toggleSwitch(this)">
         </span>
-        <span class="setting">
+        <span class="SSMcategory">
             <p>Lock Rotation to Center</p>
             <input type="checkbox" class="SSMinput" info="locks rotation to the center of the model" onclick="trackerSettings.RotationLock = toggleSwitch(this)">
         </span>
-        <span class="setting">
+        <span class="SSMcategory">
             <p>Audio tracking</p>
             <input type="checkbox" class="SSMinput" checked info="toggles the audio tracking used to move the mouth" onclick="trackerSettings.AudioTracking = toggleSwitch(this)">
         </span>
-        <span class="setting">
+        <span class="SSMcategory">
             <p>Video tracking</p>
             <input type="checkbox" class="SSMinput" checked info="toggles the video tracking used to move the head" onclick="trackerSettings.VideoTracking = toggleSwitch(this)">
         </span>
@@ -1072,19 +860,19 @@ body, html {
 
     <section>
         <h1><GIS-icon title="config"></GIS-icon>Calibration</h1>
-        <span class="setting">
+        <span class="SSMcategory">
             <p>Threshold</p>
             <input type="range" class="SSMinput" id="Threshold" min="0" max="2" value="1" step="0.01" info="changes how close the detected colours have to be to the RBG values" onchange="changethresh(this)">
         </span>
-        <span class="setting">
+        <span class="SSMcategory">
             <p>Vertical Sensitivity</p>
             <input type="range" class="SSMinput" min="0" max="2" value="1" step="0.01" info="changes how much the tracker will move the model in the Y-axis">
         </span>
-        <span class="setting">
+        <span class="SSMcategory">
             <p>Horizontal Sensitivity</p>
             <input type="range" class="SSMinput" min="0" max="2" value="1" step="0.01" info="changes how much the tracker will move the model in the X-axis">
         </span>
-        <span class="setting">
+        <span class="SSMcategory">
             <p>Auto Calibration</p>
             <button class="SSMbutton SSMinput" info="automatically calculates the best settings for the user" onclick="autoCalibrate(this)">calibrate</button>
         </span>
@@ -1092,17 +880,17 @@ body, html {
 
     <section>
         <h1><GIS-icon title="SSC"></GIS-icon>Visuals</h1>
-        <span class="setting">
+        <span class="SSMcategory">
             <p>Display Tracking Calculation</p>
             <input type="checkbox" class="SSMinput" info="shows the output coordinates of each anchor point" onclick="trackerSettings.ShowCalculations = toggleSwitch(this); document.getElementById('canvas').classList.toggle('hidden')">
         </span>
 
-        <span class="setting">
+        <span class="SSMcategory">
             <p>Display Tracking Points</p>
             <input type="checkbox" class="SSMinput" checked info="shows the tracking points on the users camera display" onclick="trackerSettings.ShowTrackingPoints = toggleSwitch(this)">
         </span>
 
-        <span class="setting radioSetting">
+        <span class="SSMcategory radioSetting">
             <p>Layout</p>
             <div class="radio">
                 <input type="radio" class="SSMinput" checked name="layout" info="displays the camera and tracking screen in a column" classInfo="row" onclick="layoutChange(this)">
@@ -1126,7 +914,7 @@ body, html {
             </div>
         </span>
     </section>
-    <div id="informationPopup"></div>
+    <div id="SSMinfo"></div>
     <div id="SSMloader"></div>
 </div>
 
@@ -1150,41 +938,15 @@ body, html {
     SSM_settings = {
         'style':1
     }
-</script>-->
+</script>
 
-
-
-<div id="SSC" style="opacity: 0; display: none;">
-
-    <div class="banner-bg">
-
-        <img src="icon/img/2.png" alt="">
-
-        <a class="banner-button" href="insert link here">button text</a>
-
-    </div>
-
-    <div class="banner-bg">
-
-        <img src="icon/img/2.png" alt="">
-
-        <a class="banner-button" href="insert link here">button text</a>
-
-    </div>
-
-</div>
-
-
-<script src="https://natski.netlify.app/lib/js/ENCORE_SSC.js"></script>
+<script src="lib/js/ENCORE_GIS.js"></script>
 <script>
-    SSC_settings={
-        'thumbs':true,
-        'progressBar':true,
-        'sideButtons':true,
-        'timer':10000,
+    GIS_settings = {
         'style':null
     }
 </script>
+
 
 
 
