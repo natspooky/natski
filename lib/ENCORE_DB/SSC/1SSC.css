@@ -18,11 +18,11 @@
 #SSC
 {
     position: relative;
-    height: 100vh;
-    width: 100%;
+    height: calc(100vh - 15px);
+    width: calc(100% - 15px);
+    margin: 30px;
     left: 0;
     top: 0;
-    transform: scale(0.9);
     display: flex;
     justify-content: center;
     align-items: flex-end;
@@ -176,6 +176,6 @@
 {
     #SSC
     {
-        height: 85vh;
+        height: calc(85vh - 15px);
     }
 }
