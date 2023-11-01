@@ -371,9 +371,6 @@
         <header class="slideshowcontainer" id="SSCU">
 
             <div class="banner-bg-u">
-                <video style="position: absolute; width: 100%; height: 100%; opacity: 0; object-fit: cover; transition: 1s;" id="videoSSC" muted loop>
-                    <source src="icon/videos/Comp 3_1.mp4">
-                </video>
                 <img src="icon/img/1trans.png" draggable="false" alt="ssc" loading="eager" style="opacity: 0.5;">
                 <img src="icon/img/1.png" draggable="false" alt="ssc" loading="eager">
                 <svg class="encore portfo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 238.72 138.55">
@@ -401,7 +398,6 @@
             </div>
         -->
             <div class="banner-bg-u">
-                <div style="display: none;"></div>
                 <img src="icon/img/3trans.png" draggable="false" alt="ssc" loading="eager" style="background-color: #04090f;">
                 <img src="icon/img/3.png" draggable="false" alt="ssc" loading="eager">
                 <svg class="encore" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 556.04 114.77">
@@ -675,21 +671,21 @@
                             pagX = (e.pageX - sscu.offsetLeft - (sscu.offsetWidth / 2)) / 100,
                             rotation = pagX / 20
 
-                                x[i].children[1].animate({
+                                x[i].children[0].animate({
                                     transform: `translate(${pagX * 1.5}px,${pagY * 1.5}px) scale(1.07) rotate(${rotation}deg)`
                                 }, { duration: 2500, fill: 'forwards'})
 
-                                x[i].children[2].animate({
+                                x[i].children[1].animate({
                                     transform: `translate(${pagX * 3}px,${pagY * 3}px) scale(1.07) rotate(${rotation}deg)`
                                 }, { duration: 2500, fill: 'forwards'})
 
                             })
                             x[i].addEventListener("mouseleave", function() {
-                                x[i].children[1].animate({
+                                x[i].children[0].animate({
                                     transform: "translate(0px) scale(1.07) rotate(0deg)"
                                 }, { duration: 1500, fill: 'forwards', easing: "ease"})
 
-                                x[i].children[2].animate({
+                                x[i].children[1].animate({
                                     transform: "translate(0px) scale(1.07) rotate(0deg)"
                                 }, { duration: 1500, fill: 'forwards', easing: "ease"})
                             })
@@ -697,20 +693,6 @@
 
                             
               
-                        }
-                    }
-
-
-
-                    let vid = document.getElementById('videoSSC')
-                    console.log(vid.readyState)
-                    if(vid.canplay){
-                        vid.play()
-                        vid.style.opacity = '0.6'
-                    }else{
-                        vid.onloadeddata = function(){
-                            vid.play()
-                            vid.style.opacity = '0.6'
                         }
                     }
                 }
