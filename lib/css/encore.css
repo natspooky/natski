@@ -32,14 +32,15 @@
 }
 .dropdown .dropdownheader
 {
-    position: relative;
+    position: sticky;
+    top: 0;
     z-index: 999;
     width: 100%;
     height: 5em;
     padding: 1em;
-    border-radius: 1.3em;
+    border-radius: 0 0 1.3em 1.3em;
     cursor: pointer;
-    background-color: #66666630;
+    background-color: var(--backpanel);
     transition: 0.2s;
 }
 .dropdown .dropdownheader img
@@ -91,7 +92,7 @@
     background-color: #66666630;
     border-radius: 1.3em;
     padding: 1em;
-    animation: opacity 0.5s;
+    animation: fadeencore 0.5s;
 }
 .dropdown .contentbox hr
 {
@@ -294,6 +295,11 @@ li span b
     width: 50%;
     display: inline;
     vertical-align: top;
+}
+
+@keyframes fadeencore {
+    from{opacity: 0.4; transform: translateY(30px);}
+    to{opacity: 1; transform: translateY(0);}
 }
 
 @media screen and (orientation:portrait) {
