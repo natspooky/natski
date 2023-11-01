@@ -90,3 +90,5 @@ disable PDS change image buttons if there are less than 2 images but allow for t
 make pds background be the grab element and add a close button
 
 make this ^ for PDSU and add styling for PDS
+
+make settings buttons black
