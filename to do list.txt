@@ -95,4 +95,4 @@ put close button in CMSF to the right
 
 remove side buttons in SSC and SSCU for mobile
 
-make PDS imgs wait until being scrolled to be visible
+make PDS grid work better on mobile {display a different way if mobile is detected} so that the indexes are correct and spacing is removed
