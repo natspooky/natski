@@ -124,8 +124,8 @@
 #PDSinspectPanel #PDScloser
 {
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 15px;
+    right: 15px;
     border-radius: 13px;
     padding: 10px;
     background-color: #000000c0;
