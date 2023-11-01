@@ -1,0 +1,486 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+:root
+{
+    --SSMcolour: #729ef6;
+}
+#SSM, #SSM *
+{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color:  rgba(255, 255, 255, 0);
+    font-family: 'Exo 2', sans-serif;
+    font-size: 16px;
+    user-select: none;
+}
+#SSM::-webkit-scrollbar-thumb
+{
+    background-color: #e9e9e9;
+    border-radius: 100vmax;
+}
+#SSM::-webkit-scrollbar
+{
+    width: 5px;
+	height: 0px;
+    background-color: transparent;
+}
+#SSM
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: min(100%, 400px);
+    height: 100vh;
+    overflow-y: scroll;
+    background-color: #000000e0;
+    transform: translateX(-20%);
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s;
+}
+#SSM.open
+{
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+}
+#SSM section
+{
+    position: relative;
+    border-bottom: 2px solid #ffffff20;
+    transition: 0.4s;
+    animation: SSMfadeup 0.3s ease;
+}
+@keyframes SSMfadeup{
+    from{transform: translateY(30px); opacity: 0;}
+    to{transform: translateY(0); opacity: 1;}
+}
+#SSM section:nth-of-type(2)
+{
+    animation: unset;
+}
+#SSM section:last-of-type
+{
+    margin-bottom: 100px;
+}
+#SSM section.loading
+{
+    pointer-events: none;
+    background-color: #66666640;
+    opacity: 0.2;
+}
+#SSMloader
+{
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border-radius: 15px;
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #191919;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0s, top 0s;
+}
+#SSMloader::after
+{
+    position: relative;
+    content: '';
+    height: 35px;
+    width: 35px;
+    background-image: conic-gradient(from 85deg, transparent, var(--themecol)); 
+    mask: url(https://natski.netlify.app/icon/svg/ENCORE_GIS/loader.svg) center center no-repeat;
+    -webkit-mask: url(https://natski.netlify.app/icon/svg/ENCORE_GIS/loader.svg) center center no-repeat;
+}
+#SSMloader.loading
+{
+    opacity: 1;
+    transition: 0.4s, top 0s;
+}
+#SSMloader.loading::after
+{
+    animation: SSMloader 1.3s infinite linear;
+}
+@keyframes SSMloader
+{
+    from{transform: rotate(0);}
+    to{transform: rotate(360deg);}
+}
+#SSM .SSMcategory
+{
+    position: relative;
+    padding: 1em;
+    display: block;
+    width: 100%;
+    height: auto;
+}
+#SSM .SSMcategory
+{
+    position: relative;
+    width: 100%;
+}
+#SSM .SSMcategory p
+{
+    position: relative;
+    color: #e9e9e9;
+    width: 100%;
+    flex-shrink: 0;
+    margin: 0 0 1em 0;
+}
+#SSM .SSMcategory p i
+{
+    opacity: 0.4;
+    font-size: 14px;
+}
+#SSM .SSMcategory.radioSetting
+{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+#SSM .SSMcategory.radioSetting .radio
+{
+    position: static;
+    display: inline-flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+    width: 30%;
+}
+#SSM .SSMcategory.radioSetting .radio svg
+{
+    width: 90%;
+    margin-bottom: 20px;
+    fill: #e9e9e9;
+}
+#SSM h1
+{
+    position: sticky;
+    padding: 0.9em 1em 0.5em 0.7em;
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    width: 100%;
+    color: #e9e9e9;
+}
+#SSM h1 GIS-icon
+{
+    position: relative;
+    height: 20px;
+    width: 20px;
+    margin-right: 10px;
+    background-color: #e9e9e9;
+}
+#SSMbg
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #ffffff20;
+    height: 0px;
+    overflow: hidden;
+    transition: opacity 0.35s,height 0.1s, transform 0.15s cubic-bezier(.5,1.05,.41,1.18);
+}
+.SSMinput[type="checkbox"]
+{
+    font-size: 30px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 60px;
+    height: 30px;
+    background: #66666660;
+    border-radius: 15px;
+    position: relative;
+    cursor: pointer;
+    border: 0px;
+    outline: none;
+    -webkit-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+}
+
+.SSMinput[type="checkbox"]:checked
+{
+    background: var(--SSMcolour);
+}
+
+.SSMinput[type="checkbox"]::after
+{
+    position: absolute;
+    content: "";
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #777;
+    -webkit-transform: scale(.5);
+            transform: scale(.5);
+    left: 0;
+    -webkit-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+}
+
+.SSMinput[type="checkbox"]:checked::after
+{
+    left: calc(100% - 30px);
+    background: #e9e9e9;
+}
+
+.SSMinput[type="range"]
+{
+    -webkit-appearance: none;
+    appearance: none; 
+    width: 100%;
+    cursor: pointer;
+    outline: none;
+    background-color: transparent;
+    height: 30px;
+    overflow: hidden;
+    border-radius: 16px;
+}
+
+.SSMinput[type="range"]::-webkit-slider-runnable-track
+{
+    height: 30px;
+    background: #66666660;
+    border-radius: 16px;
+}
+
+.SSMinput[type="range"]::-moz-range-track
+{
+    height: 30px;
+    background: #66666660;
+    border-radius: 16px;
+}
+
+.SSMinput[type="range"]::-webkit-slider-thumb
+{
+    -webkit-appearance: none;
+    appearance: none; 
+    height: 30px;
+    width: 30px;
+    background-color: #e9e9e9;
+    border-radius: 50%;
+    border: 8px solid var(--SSMcolour);
+    box-shadow: -715px 0 0 700px var(--SSMcolour);
+    transition: 0.2s ease-in-out;
+}
+
+.SSMinput[type="range"]::-moz-range-thumb
+{
+    height: 30px;
+    width: 30px;
+    background-color: #e9e9e9;
+    border-radius: 50%;
+    border: 0px solid var(--SSMcolour);
+    box-shadow: -715px 0 0 700px var(--SSMcolour);
+    transition: 0.2s ease-in-out;
+}
+.SSMinput[type="radio"]
+{
+    font-size: 30px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+            appearance: none;
+    width: 30px;
+    height: 30px;
+    background: #66666660;
+    border-radius: 100vmax;
+    position: relative;
+    cursor: pointer;
+    border: 0px;
+    outline: none;
+    -webkit-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+}
+.SSMinput[type="radio"]:checked
+{
+    background: var(--SSMcolour);
+}
+.SSMinput[type="radio"]::after
+{
+    position: absolute;
+    content: "";
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #777;
+    -webkit-transform: scale(.5);
+            transform: scale(.5);
+    left: 0;
+    top: 0;
+    -webkit-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+}
+.SSMinput[type="radio"]:checked::after
+{
+    background: #e9e9e9;
+}
+
+.SSMinput[type="text"]
+{
+    position: relative;
+    height: 30px;
+    width: 100%;
+    background-color: #66666660;
+    font-weight: bold;
+    border: 0;
+    text-indent: 15px;
+    padding: 0 30px 0 15px;
+    padding-left: 30px;
+    color: #e9e9e9;
+    border-radius: 100vmax;
+}
+.SSMinput[type="text"]:focus
+{
+    outline: none;
+}
+
+#SSM .SSMcategory .selection
+{
+    position: relative;
+    height: 30px;
+    background-color: #66666660;
+    width: 100%;
+    border-radius: 15px;     
+    overflow: hidden;
+    cursor: pointer;
+    user-select: none;
+}
+#SSM .SSMcategory .selection::after
+{
+    content: '';
+    position: absolute;
+    right: 0px;
+    top: 0;
+    transform: rotate(90deg) scale(0.4);
+    height: 30px;
+    width: 30px;
+    white-space: nowrap;
+    background-color: #e9e9e9;
+    mask: url(https://natski.netlify.app/icon/svg/ENCORE_GIS/line_arrow_down.svg) center center no-repeat;
+    -webkit-mask: url(https://natski.netlify.app/icon/svg/ENCORE_GIS/line_arrow_down.svg) center center no-repeat;
+    transition: 0.2s;
+}
+#SSM .SSMcategory .selection.active::after
+{
+    transform: rotate(0) scale(0.4);
+}
+#SSM .SSMcategory .selection.active
+{
+    overflow: visible;
+    z-index: 3;
+}
+#SSM .SSMcategory .selection .item
+{
+    position: relative;
+    height: 30px;
+    display: block;
+    padding: 0 0 0 15px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 30px;
+    width: 100%;
+    background-color: var(--SSMcolour);
+    border-top: 2px solid #00000030;
+    color: #e9e9e9;
+    font-weight: bold;
+}
+#SSM .SSMcategory .selection .item:last-of-type
+{
+    border-radius: 0 0 15px 15px;
+}
+#SSM .SSMcategory .selection .item:nth-of-type(2)
+{
+    border-radius: 15px 15px 0 0;
+    border: 0;
+}
+#SSM .SSMcategory .selection .header
+{
+    position: relative;
+    height: 30px;
+    display: block;
+    padding: 0 30px 0 15px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 30px;
+    width: 100%;
+    color: #e9e9e9;
+    font-weight: bold;
+}
+.SSMbutton
+{
+    position: relative;
+    width: 100%;
+    line-height: 30px;
+    background-color: #66666660;
+    border: 0;
+    border-radius: 100vmax;
+    transition: 0.2s;
+    color: #e9e9e9;
+    font-weight: bold;
+}
+.SSMbutton:active
+{
+    transition: 0s;
+    background-color: var(--SSMcolour);
+}
+#SSMinfo
+{
+    position: absolute;
+    min-height: 30px;
+    height: auto;
+    left: 1em;
+    top: 0;
+    width: calc(100% - 2em);
+    border-radius: 15px;
+    background-color: var(--SSMcolour);
+    line-height: 15px;
+    color: #e9e9e9;
+    pointer-events: none;
+    overflow: hidden;
+    opacity: 0;
+    padding: 0.5em 1em;
+    transition: opacity 0.2s ease 0.3s, width 0.15s, transform 0.2s;
+}
+#SSMinfo p
+{
+    position: relative;
+    width: 100%;
+    text-align: center;
+}
+@media (hover: hover) {
+    .SSMinput[type="checkbox"]:hover::after
+    {
+        -webkit-transform: scale(.7);
+                transform: scale(.7);
+    }
+    .SSMinput[type="range"]:hover::-webkit-slider-thumb
+    {
+        border: 5px solid var(--SSMcolour);
+    }
+    .SSMinput[type="range"]:hover::-moz-range-thumb
+    {
+        border: 0px solid var(--SSMcolour);
+    }
+    .SSMinput[type="radio"]:hover::after
+    {
+        -webkit-transform: scale(.7);
+                transform: scale(.7);
+    }
+    #SSM::-webkit-scrollbar-thumb:hover
+    {
+        background-color: #e9e9e9;
+    }
+    .SSMbutton:hover
+    {
+        background-color: var(--SSMcolour);
+    }
+}

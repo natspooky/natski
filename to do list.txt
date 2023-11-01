@@ -94,3 +94,5 @@ add button that recenters PDS
 put close button in CMSF to the right
 
 remove side buttons in SSC and SSCU for mobile
+
+make PDS imgs wait until being scrolled to be visible
