@@ -43,6 +43,18 @@
     background-color: var(--backpanel);
     transition: 0.2s;
 }
+.dropdown .dropdownheader::before
+{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    background-color: #000000;
+
+}
 .dropdown .dropdownheader img
 {
     position: relative;
