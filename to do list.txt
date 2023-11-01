@@ -87,8 +87,10 @@ add intersection observer to VPS in order to make bokeh disapear when not in fra
 
 disable PDS change image buttons if there are less than 2 images but allow for them to be reinabled if images are added
 
-make pds background be the grab element and add a close button
-
-make this ^ for PDSU and add styling for PDS
-
 make settings buttons black
+
+add button that recenters PDS
+
+put close button in CMSF to the right
+
+remove side buttons in SSC and SSCU for mobile

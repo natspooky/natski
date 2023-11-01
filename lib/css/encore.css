@@ -27,7 +27,7 @@
     width: max(95vmin,68vw);
     margin: 1em auto;
     border-radius: 1.3em;
-    scroll-margin: 10px;
+    scroll-margin: 0px;
     contain: paint;
     background-color: var(--colour);
 }
@@ -321,7 +321,7 @@ li span b
 }
 
 @keyframes fadeencore {
-    from{opacity: 0.4; transform: translateY(-30px);}
+    from{opacity: 0.4; transform: translateY(-20px);}
     to{opacity: 1; transform: translateY(0);}
 }
 
