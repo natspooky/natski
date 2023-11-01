@@ -54,7 +54,7 @@
     position: absolute;
     height: 100%;
     width: 100%;
-    cursor: pointer;
+    cursor: grab;
 }
 #PDSUinspectPanel #PDSUinspectImage
 {
@@ -68,6 +68,7 @@
     background-color: #e9e9e915;
     border-radius: 13px;
     user-select: none;
+    pointer-events: none;
     box-shadow: 0 0 40px #00000060;
     transform-origin: top left;
 }

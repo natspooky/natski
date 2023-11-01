@@ -86,3 +86,7 @@ use DOMmATRIX to fix current issue with CMSF
 add intersection observer to VPS in order to make bokeh disapear when not in frame
 
 disable PDS change image buttons if there are less than 2 images but allow for them to be reinabled if images are added
+
+make pds background be the grab element and add a close button
+
+make this ^ for PDSU and add styling for PDS
