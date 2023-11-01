@@ -28,6 +28,7 @@
     margin: 1em auto;
     border-radius: 1.3em;
     scroll-margin: 10px;
+    contain: paint;
     background-color: var(--colour);
 }
 .dropdown .dropdownheader
@@ -40,7 +41,8 @@
     padding: 1em;
     border-radius: 0 0 1.3em 1.3em;
     cursor: pointer;
-    background-color: var(--backpanel);
+    overflow: hidden;
+    background-color: transparent;
     transition: 0.2s;
 }
 .dropdown .dropdownheader::before
@@ -51,8 +53,7 @@
     left: 0;
     height: 100%;
     width: 100%;
-    z-index: -1;
-    background-color: #000000;
+    background-color: #00000060;
 
 }
 .dropdown .dropdownheader img
