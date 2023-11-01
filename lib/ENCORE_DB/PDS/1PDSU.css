@@ -88,6 +88,7 @@
     border-radius: 13px;
     padding: 10px;
     background-color: #000000c0;
+    transition: 0.2s;
 }
 #PDSUinspectPanel #PDSUcloser:active
 {
