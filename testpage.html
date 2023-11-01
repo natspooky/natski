@@ -756,7 +756,7 @@ body, html {
 
 
 
-<div id="SSM" class="open">
+<div id="SSM" class="open" style="display: none;">
     <div id="SSMbg"></div>
     <section>
         <h1>Tracker Settings</h1>
@@ -765,7 +765,7 @@ body, html {
     <section>
         <h1><GIS-icon title="magnify"></GIS-icon>Search</h1>
         <span class="SSMcategory">
-            <input class="SSMinput" type="text" info="Lets you search for a specific setting" placeholder="Search">
+            <input class="SSMinput" type="text" ssminfo="Lets you search for a specific setting" placeholder="Search">
         </span>
     </section>
 
@@ -773,7 +773,7 @@ body, html {
         <h1><GIS-icon title="input"></GIS-icon>Input</h1>
         <span class="SSMcategory">
             <p>Camera</p>
-            <div class="selection SSMinput" info="Lets you choose which camera input you would like to use" id="videoInput">
+            <div class="selection SSMinput" ssminfo="Lets you choose which camera input you would like to use" id="videoInput">
                 <div class="itemContainer">
                     <span class="header">
                         Select Camera
@@ -784,7 +784,7 @@ body, html {
 
         <span class="SSMcategory">
             <p>Microphone</p>
-            <div class="selection SSMinput" info="Lets you choose which microphone input you would like to use" id="audioInput">
+            <div class="selection SSMinput" ssminfo="Lets you choose which microphone input you would like to use" id="audioInput">
                 <div class="itemContainer">
                     <span class="header">
                         Select Microphone
@@ -797,7 +797,7 @@ body, html {
         <h1><GIS-icon title="sparkle"></GIS-icon>Quality</h1>
         <span class="SSMcategory">
             <p>FPS<br><i>does not affect accuracy</i></p>
-            <div class="selection SSMinput" info="Lets you choose the framerate you wish the program to run at">
+            <div class="selection SSMinput" ssminfo="Lets you choose the framerate you wish the program to run at">
                 <div class="itemContainer">
                     <span class="header">
                         Select FPS
@@ -828,7 +828,7 @@ body, html {
         </span>
         <span class="SSMcategory">
             <p>Resolution<br><i>does not affect accuracy</i></p>
-            <div class="selection SSMinput" info="Lets you choose the resolution of the camera input">
+            <div class="selection SSMinput" ssminfo="Lets you choose the resolution of the camera input">
                 <div class="itemContainer">
                     <span class="header">
                         Select Resolution
@@ -850,19 +850,19 @@ body, html {
         <h1><GIS-icon title="PSS"></GIS-icon>Tracking</h1>
         <span class="SSMcategory">
             <p>Lock Movement to Center</p>
-            <input type="checkbox" class="SSMinput" info="locks the model to the center of the cenvas" onclick="trackerSettings.LocationLock = toggleSwitch(this)">
+            <input type="checkbox" class="SSMinput" ssminfo="locks the model to the center of the cenvas" onclick="trackerSettings.LocationLock = toggleSwitch(this)">
         </span>
         <span class="SSMcategory">
             <p>Lock Rotation to Center</p>
-            <input type="checkbox" class="SSMinput" info="locks rotation to the center of the model" onclick="trackerSettings.RotationLock = toggleSwitch(this)">
+            <input type="checkbox" class="SSMinput" ssminfo="locks rotation to the center of the model" onclick="trackerSettings.RotationLock = toggleSwitch(this)">
         </span>
         <span class="SSMcategory">
             <p>Audio tracking</p>
-            <input type="checkbox" class="SSMinput" checked info="toggles the audio tracking used to move the mouth" onclick="trackerSettings.AudioTracking = toggleSwitch(this)">
+            <input type="checkbox" class="SSMinput" checked ssminfo="toggles the audio tracking used to move the mouth" onclick="trackerSettings.AudioTracking = toggleSwitch(this)">
         </span>
         <span class="SSMcategory">
             <p>Video tracking</p>
-            <input type="checkbox" class="SSMinput" checked info="toggles the video tracking used to move the head" onclick="trackerSettings.VideoTracking = toggleSwitch(this)">
+            <input type="checkbox" class="SSMinput" checked ssminfo="toggles the video tracking used to move the head" onclick="trackerSettings.VideoTracking = toggleSwitch(this)">
         </span>
     </section>
 
@@ -870,19 +870,19 @@ body, html {
         <h1><GIS-icon title="config"></GIS-icon>Calibration</h1>
         <span class="SSMcategory">
             <p>Threshold</p>
-            <input type="range" class="SSMinput" id="Threshold" min="0" max="2" value="1" step="0.01" info="changes how close the detected colours have to be to the RBG values" onchange="changethresh(this)">
+            <input type="range" class="SSMinput" id="Threshold" min="0" max="2" value="1" step="0.01" ssminfo="changes how close the detected colours have to be to the RBG values" onchange="changethresh(this)">
         </span>
         <span class="SSMcategory">
             <p>Vertical Sensitivity</p>
-            <input type="range" class="SSMinput" min="0" max="2" value="1" step="0.01" info="changes how much the tracker will move the model in the Y-axis">
+            <input type="range" class="SSMinput" min="0" max="2" value="1" step="0.01" ssminfo="changes how much the tracker will move the model in the Y-axis">
         </span>
         <span class="SSMcategory">
             <p>Horizontal Sensitivity</p>
-            <input type="range" class="SSMinput" min="0" max="2" value="1" step="0.01" info="changes how much the tracker will move the model in the X-axis">
+            <input type="range" class="SSMinput" min="0" max="2" value="1" step="0.01" ssminfo="changes how much the tracker will move the model in the X-axis">
         </span>
         <span class="SSMcategory">
             <p>Auto Calibration</p>
-            <button class="SSMbutton SSMinput" info="automatically calculates the best settings for the user" onclick="autoCalibrate(this)">calibrate</button>
+            <button class="SSMbutton SSMinput" ssminfo="automatically calculates the best settings for the user" onclick="autoCalibrate(this)">calibrate</button>
         </span>
     </section>
 
@@ -890,32 +890,32 @@ body, html {
         <h1><GIS-icon title="SSC"></GIS-icon>Visuals</h1>
         <span class="SSMcategory">
             <p>Display Tracking Calculation</p>
-            <input type="checkbox" class="SSMinput" info="shows the output coordinates of each anchor point" onclick="trackerSettings.ShowCalculations = toggleSwitch(this); document.getElementById('canvas').classList.toggle('hidden')">
+            <input type="checkbox" class="SSMinput" ssminfo="shows the output coordinates of each anchor point" onclick="trackerSettings.ShowCalculations = toggleSwitch(this); document.getElementById('canvas').classList.toggle('hidden')">
         </span>
 
         <span class="SSMcategory">
             <p>Display Tracking Points</p>
-            <input type="checkbox" class="SSMinput" checked info="shows the tracking points on the users camera display" onclick="trackerSettings.ShowTrackingPoints = toggleSwitch(this)">
+            <input type="checkbox" class="SSMinput" checked ssminfo="shows the tracking points on the users camera display" onclick="trackerSettings.ShowTrackingPoints = toggleSwitch(this)">
         </span>
 
         <span class="SSMcategory radioSetting">
             <p>Layout</p>
             <div class="radio">
-                <input type="radio" class="SSMinput" checked name="layout" info="displays the camera and tracking screen in a column" classInfo="row" onclick="layoutChange(this)">
+                <input type="radio" class="SSMinput" checked name="layout" ssminfo="displays the camera and tracking screen in a column" classInfo="row" onclick="layoutChange(this)">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.41 850.41">
                     <rect class="cls-1" x="446.01" y="28.27" width="376.13" height="793.89" rx="52.02" ry="52.02"/>
                     <rect class="cls-1" x="28.25" y="28.27" width="376.12" height="793.89" rx="52.02" ry="52.02"/>
                   </svg>
             </div>
             <div class="radio">
-                <input type="radio" class="SSMinput" name="layout" info="displays the camera and tracking screen in a row" classInfo="column" onclick="layoutChange(this)">
+                <input type="radio" class="SSMinput" name="layout" ssminfo="displays the camera and tracking screen in a row" classInfo="column" onclick="layoutChange(this)">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.41 850.41">
                     <rect class="cls-1" x="28.25" y="28.27" width="793.89" height="376.13" rx="52.02" ry="52.02"/>
                     <rect class="cls-1" x="28.25" y="446.04" width="793.89" height="376.12" rx="52.02" ry="52.02"/>
                   </svg>
             </div>
             <div class="radio">
-                <input type="radio" class="SSMinput" name="layout" info="only displays the tracking screen" classInfo="track" onclick="layoutChange(this)">
+                <input type="radio" class="SSMinput" name="layout" ssminfo="only displays the tracking screen" classInfo="track" onclick="layoutChange(this)">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.41 850.41">
                     <rect class="cls-1" x="28.25" y="28.27" width="793.89" height="793.89" rx="52.02" ry="52.02"/>
                   </svg>
