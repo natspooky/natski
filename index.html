@@ -704,7 +704,7 @@
 
                     let vid = document.getElementById('videoSSC')
                     console.log(vid.readyState)
-                    if(vid.readyState >= 2){
+                    if(vid.canplay){
                         vid.play()
                         vid.style.opacity = '0.6'
                     }else{
