@@ -85,16 +85,16 @@ use DOMmATRIX to fix current issue with CMSF
 
 add intersection observer to VPS in order to make bokeh disapear when not in frame
 
-disable PDS change image buttons if there are less than 2 images but allow for them to be reinabled if images are added
+disable PDSU change image buttons if there are less than 2 images but allow for them to be reinabled if images are added
 
-make settings buttons black
+make settings buttons black handles
 
 add button that recenters PDS
 
 put close button in CMSF to the right
 
-remove side buttons in SSC and SSCU for mobile
-
 make PDS grid work better on mobile {display a different way if mobile is detected} so that the indexes are correct and spacing is removed
 
 add png favicon to site
+
+make better feature banner on index similar to Phase Connect
