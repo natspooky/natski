@@ -33,8 +33,6 @@ update CLS in V1 to inform users about how CLS div needs to be placed inside ano
 
 update about page
 
-make settings page built into homepage, cubic-bezier(.33,.13,.39,1.28)
-
 URGENT MAKE VPS TURN OFF bokeh IF NOT IN FRAME
 
 give SSC and SSCU the option to not be timed
@@ -46,8 +44,6 @@ remake PS
 make spiral art
 
 i should probs optimise VPS
-
-redesign the dropdown menu in SSM
 
 redesign CLSF 
 
@@ -61,21 +57,17 @@ give VPS a working buffer
 
 add instructions on how to style GIS in V3
 
-make changelog talking about GIS intergration
+make a changelog talking about GIS intergration
 
 maybe make CLS have a similar system to PDS transform options
 
-make dream pool smaller for alevel art
+make dream pool smaller for alevel art page
 
 make it so that editors arent available on mobile
 
 make vps blur better by using CTX blur
 
-add close button to PDS and PDSU
-
 make preview icon
-
-fix PDS having weird spacing in mobile or portrait
 
 add more features to ENCORE DES and maybe make into an ENCORE
 
@@ -85,16 +77,16 @@ use DOMmATRIX to fix current issue with CMSF
 
 add intersection observer to VPS in order to make bokeh disapear when not in frame
 
-disable PDSU change image buttons if there are less than 2 images but allow for them to be reinabled if images are added
-
 make settings buttons black handles
 
 add button that recenters PDS
 
 put close button in CMSF to the right
 
-make PDS grid work better on mobile {display a different way if mobile is detected} so that the indexes are correct and spacing is removed
-
 add png favicon to site
 
 make better feature banner on index similar to Phase Connect
+
+pls redesign CLSF
+
+add context menu to CMSF :)

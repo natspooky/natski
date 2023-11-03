@@ -27,7 +27,7 @@
     width: max(95vmin,68vw);
     margin: 1em auto;
     border-radius: 1.3em;
-    scroll-margin: 0px;
+    scroll-margin: 10px;
     contain: paint;
     background-color: var(--colour);
 }
