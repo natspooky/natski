@@ -171,6 +171,9 @@
 }
 #SSM h1 GIS-icon
 {
+    position: relative;
+    font-size: 16px;
+    margin-right: 10px;
     background-color: #e9e9e9;
 }
 #SSMbg
