@@ -125,26 +125,11 @@
 
 
         <main>
-            <article>
-                make tutorial and labels for settings
-
-                add settings for cameras and other
-
-                add info detailing tracking status
-            </article>
             <div id="container" class="row">
                 <canvas id="video" autoplay muted playsinline></canvas>
                 <canvas id="canvas" class="hidden"></canvas>
                 <canvas id="facecanvas"></canvas>
             </div>
-            <article style="display: flex; justify-content: right; align-items: center;">
-                <button onclick="document.getElementById('settingsPanel').classList.toggle('active')">menu</button>
-
-                <button></button>
-                <input type="color" oninput="changecol('red',this)">
-                <input type="color" oninput="changecol('green',this)">
-                <input type="color" oninput="changecol('blue',this)">
-            </article>
         </main>
 
 
@@ -159,7 +144,7 @@
             <a onclick="parent.loadframe('Privacy Policy');parent.backPage(1)">Privacy Policy</a>
         </footer>
 
-        <div id="SSM" class="open" style="display: none;">
+        <div id="SSM" style="display: none;">
             <div id="SSMbg"></div>
             <section>
                 <h1>Tracker Settings</h1>
