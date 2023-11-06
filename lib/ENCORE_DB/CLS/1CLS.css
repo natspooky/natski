@@ -156,14 +156,6 @@
 #CLS article section GIS-icon
 {
     position: relative;
-    box-sizing: border-box;
-    padding: 0;
-    -ms-touch-action: manipulation;
-    touch-action: manipulation;
-    -webkit-tap-highlight-color:  rgba(255, 255, 255, 0);
-    border-radius: 0;
-    width: 1em;
-    height: 1em;
     font-size: 15px;
     margin: 0 0.45em;
     flex-shrink: 0;
