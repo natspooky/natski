@@ -226,10 +226,18 @@
     transition: all .2s ease-in-out;
 }
 
+.SSMinput[type="checkbox"]:active::after
+{
+    width: 35px;
+}
 .SSMinput[type="checkbox"]:checked::after
 {
     left: calc(100% - 30px);
     background: #e9e9e9;
+}
+.SSMinput[type="checkbox"]:active:checked::after{
+    width: 35px;
+    left: calc(100% - 35px);
 }
 
 .SSMinput[type="range"]
@@ -342,7 +350,7 @@
     outline: none;
 }
 
-#SSM .SSMcategory .selection
+#SSM .SSMcategory .SSMselection
 {
     position: relative;
     height: 30px;
@@ -353,7 +361,7 @@
     cursor: pointer;
     user-select: none;
 }
-#SSM .SSMcategory .selection::after
+#SSM .SSMcategory .SSMselection::after
 {
     content: '';
     position: absolute;
@@ -368,16 +376,16 @@
     -webkit-mask: url(https://natski.netlify.app/icon/svg/ENCORE_GIS/line_arrow_down.svg) center center no-repeat;
     transition: 0.2s;
 }
-#SSM .SSMcategory .selection.active::after
+#SSM .SSMcategory .SSMselection.active::after
 {
     transform: rotate(0) scale(0.4);
 }
-#SSM .SSMcategory .selection.active
+#SSM .SSMcategory .SSMselection.active
 {
     overflow: visible;
     z-index: 3;
 }
-#SSM .SSMcategory .selection .item
+#SSM .SSMcategory .SSMselection .item
 {
     position: relative;
     height: 30px;
@@ -392,16 +400,16 @@
     color: #e9e9e9;
     font-weight: bold;
 }
-#SSM .SSMcategory .selection .item:last-of-type
+#SSM .SSMcategory .SSMselection .item:last-of-type
 {
     border-radius: 0 0 15px 15px;
 }
-#SSM .SSMcategory .selection .item:nth-of-type(2)
+#SSM .SSMcategory .SSMselection .item:nth-of-type(2)
 {
     border-radius: 15px 15px 0 0;
     border: 0;
 }
-#SSM .SSMcategory .selection .header
+#SSM .SSMcategory .SSMselection .header
 {
     position: relative;
     height: 30px;

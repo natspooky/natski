@@ -420,7 +420,7 @@ body, html {
     outline: none;
 }
 
-#SSM .SSMcategory .selection
+#SSM .SSMcategory .SSMselection
 {
     position: relative;
     height: 30px;
@@ -431,7 +431,7 @@ body, html {
     cursor: pointer;
     user-select: none;
 }
-#SSM .SSMcategory .selection::after
+#SSM .SSMcategory .SSMselection::after
 {
     content: '';
     position: absolute;
@@ -446,16 +446,16 @@ body, html {
     -webkit-mask: url(https://natski.netlify.app/icon/svg/ENCORE_GIS/line_arrow_down.svg) center center no-repeat;
     transition: 0.2s;
 }
-#SSM .SSMcategory .selection.active::after
+#SSM .SSMcategory .SSMselection.active::after
 {
     transform: rotate(0) scale(0.4);
 }
-#SSM .SSMcategory .selection.active
+#SSM .SSMcategory .SSMselection.active
 {
     overflow: visible;
     z-index: 3;
 }
-#SSM .SSMcategory .selection .item
+#SSM .SSMcategory .SSMselection .item
 {
     position: relative;
     height: 30px;
@@ -470,16 +470,16 @@ body, html {
     color: #e9e9e9;
     font-weight: bold;
 }
-#SSM .SSMcategory .selection .item:last-of-type
+#SSM .SSMcategory .SSMselection .item:last-of-type
 {
     border-radius: 0 0 15px 15px;
 }
-#SSM .SSMcategory .selection .item:nth-of-type(2)
+#SSM .SSMcategory .SSMselection .item:nth-of-type(2)
 {
     border-radius: 15px 15px 0 0;
     border: 0;
 }
-#SSM .SSMcategory .selection .header
+#SSM .SSMcategory .SSMselection .header
 {
     position: relative;
     height: 30px;
@@ -781,7 +781,7 @@ body, html {
         <h1><GIS-icon title="input"></GIS-icon>Input</h1>
         <span class="SSMcategory">
             <p>Camera</p>
-            <div class="selection SSMinput" ssminfo="Lets you choose which camera input you would like to use" id="videoInput">
+            <div class="SSMselection SSMinput" ssminfo="Lets you choose which camera input you would like to use" id="videoInput">
                 <div class="itemContainer">
                     <span class="header">
                         Select Camera
@@ -792,7 +792,7 @@ body, html {
 
         <span class="SSMcategory">
             <p>Microphone</p>
-            <div class="selection SSMinput" ssminfo="Lets you choose which microphone input you would like to use" id="audioInput">
+            <div class="SSMselection SSMinput" ssminfo="Lets you choose which microphone input you would like to use" id="audioInput">
                 <div class="itemContainer">
                     <span class="header">
                         Select Microphone
@@ -805,7 +805,7 @@ body, html {
         <h1><GIS-icon title="sparkle"></GIS-icon>Quality</h1>
         <span class="SSMcategory">
             <p>FPS<br><i>does not affect accuracy</i></p>
-            <div class="selection SSMinput" ssminfo="Lets you choose the framerate you wish the program to run at">
+            <div class="SSMselection SSMinput" ssminfo="Lets you choose the framerate you wish the program to run at">
                 <div class="itemContainer">
                     <span class="header">
                         Select FPS
@@ -836,7 +836,7 @@ body, html {
         </span>
         <span class="SSMcategory">
             <p>Resolution<br><i>does not affect accuracy</i></p>
-            <div class="selection SSMinput" ssminfo="Lets you choose the resolution of the camera input">
+            <div class="SSMselection SSMinput" ssminfo="Lets you choose the resolution of the camera input">
                 <div class="itemContainer">
                     <span class="header">
                         Select Resolution
@@ -970,39 +970,3 @@ body, html {
     </body>
 </html>
 
-
-
-
-
-
-
-
-
-<div class="selection SSMinput" ssminfo="Lets you choose the framerate you wish the program to run at">
-    <div class="itemContainer">
-        <span class="header">
-            Select FPS
-        </span>
-        <span class="item" value="60" onclick="changeCameraData(60,'fps')">
-            60
-        </span>
-        <span class="item" value="50" onclick="changeCameraData(50,'fps')">
-            50
-        </span>
-        <span class="item" value="40" onclick="changeCameraData(40,'fps')">
-            40
-        </span>
-        <span class="item" value="30" onclick="changeCameraData(30,'fps')">
-            30 - recommended
-        </span>
-        <span class="item" value="20" onclick="changeCameraData(20,'fps')">
-            20
-        </span>
-        <span class="item" value="15" onclick="changeCameraData(15,'fps')">
-            15
-        </span>
-        <span class="item" value="10" onclick="changeCameraData(10,'fps')">
-            10
-        </span>
-    </div>
-</div>
