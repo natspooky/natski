@@ -181,6 +181,6 @@
     width: 20px;
     background-color: #e9e9e9;
     pointer-events: none;
-    mask: url(https://natski.netlify.app/icon/svg/ENCORE_GIS/information.svg) no-repeat center;
-    -webkit-mask: url(https://natski.netlify.app/icon/svg/ENCORE_GIS/information.svg) no-repeat center;
+    mask: url(https://natski.netlify.app/icon/svg/ENCORE_GIS/GIS.svg) no-repeat center;
+    -webkit-mask: url(https://natski.netlify.app/icon/svg/ENCORE_GIS/GIS.svg) no-repeat center;
 }
