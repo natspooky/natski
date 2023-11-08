@@ -72,10 +72,56 @@
 </main>
 
 
+<style>
+            #CMSalert
+            {
+                position: fixed;
+                top: 10px;
+                left: 50%;
+                transform: translate(-50%, -170%);
+                visibility: hidden;
+                padding: 1em 1.5em;
+                pointer-events: none;
+                border-radius: 0.5em;
+                display: flex;
+                align-items: center;
+                z-index: 9999;
+                background-color: #029000;
+                box-shadow: 0 5px 10px #00000025;
+                transition: 0.8s cubic-bezier(.61,.04,0,1.22);
+            }
+            #CMSalert p
+            {
+                white-space: nowrap;
+                color: #e9e9e9;
+                font-weight: bold;
+            }
+            #CMSalert svg
+            {
+                position: relative;
+                height: 12px;
+                flex-grow: 0;
+                flex-shrink: 0;
+                fill: #e9e9e9;
+            }
+            #CMSalert div
+            {
+                position: relative;
+                margin: 0 1em;
+                background-color: #e9e9e9;
+                height: 20px;
+                border-radius: 100vmax;
+                width: 3px;
+            }
+            #CMSalert.active
+            {
+                transform: translate(-50%, 0);
+                visibility: visible;
+            }
+</style>
 
-<div style="display: none;" id="CMScontextMenu"><div id="CMS4500b5" class="CMScontext"><button onclick="CMSalert()"><img src="https://natski.netlify.app/icon/thumbnails_small/PDS.png" alt="icon" draggable="false"><span>function</span></button><button onclick="window.location=``"><img src="https://natski.netlify.app/icon/thumbnails_small/GIS.png" alt="icon" draggable="false"><span>link</span></button><button class="CMSclickable" onclick="CMSchangeMenu(`CMS424186`)"><img src="https://natski.netlify.app/icon/thumbnails_small/PSS.png" alt="icon" draggable="false"><span>sub page</span><svg class="CMSsubpage" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.35 850.35"><path d="M816.99,312.17l-351.98,351.98c-22.01,22.01-57.69,22.01-79.7,0L33.32,312.17c-32.59-32.58-32.59-85.42,0-118h0c32.59-32.59,85.42-32.59,118,0L425.16,468.01,698.99,194.17c32.58-32.59,85.42-32.59,118,0h0c32.59,32.59,32.59,85.42,0,118Z"></path></svg></button></div><div id="CMS424186" class="CMScontext"><button class="CMSclickable CMSback" onclick="CMSresetMenu()"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.35 850.35"><path d="M816.99,312.17l-351.98,351.98c-22.01,22.01-57.69,22.01-79.7,0L33.32,312.17c-32.59-32.58-32.59-85.42,0-118h0c32.59-32.59,85.42-32.59,118,0L425.16,468.01,698.99,194.17c32.58-32.59,85.42-32.59,118,0h0c32.59,32.59,32.59,85.42,0,118Z"/></svg><span>Back</span></button><button onclick="CMSalert()"><img src="https://natski.netlify.app/icon/thumbnails_small/PDS.png" alt="icon" draggable="false"><span>function</span></button><button onclick="window.location=``"><img src="https://natski.netlify.app/icon/thumbnails_small/GIS.png" alt="icon" draggable="false"><span>link</span></button><button class="CMSclickable" onclick="CMSchangeMenu(`CMS599040`)"><img src="https://natski.netlify.app/icon/thumbnails_small/PSS.png" alt="icon" draggable="false"><span>sub page</span><svg class="CMSsubpage" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.35 850.35"><path d="M816.99,312.17l-351.98,351.98c-22.01,22.01-57.69,22.01-79.7,0L33.32,312.17c-32.59-32.58-32.59-85.42,0-118h0c32.59-32.59,85.42-32.59,118,0L425.16,468.01,698.99,194.17c32.58-32.59,85.42-32.59,118,0h0c32.59,32.59,32.59,85.42,0,118Z"></path></svg></button></div><div id="CMS599040" class="CMScontext"><button class="CMSclickable CMSback" onclick="CMSchangeMenu(`CMS424186`)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.35 850.35"><path d="M816.99,312.17l-351.98,351.98c-22.01,22.01-57.69,22.01-79.7,0L33.32,312.17c-32.59-32.58-32.59-85.42,0-118h0c32.59-32.59,85.42-32.59,118,0L425.16,468.01,698.99,194.17c32.58-32.59,85.42-32.59,118,0h0c32.59,32.59,32.59,85.42,0,118Z"/></svg><span>Back</span></button><button onclick="CMSalert()"><img src="https://natski.netlify.app/icon/thumbnails_small/PDS.png" alt="icon" draggable="false"><span>function</span></button><button onclick="window.location=``"><img src="https://natski.netlify.app/icon/thumbnails_small/GIS.png" alt="icon" draggable="false"><span>link</span></button><button class="CMSclickable" onclick="CMSchangeMenu(`CMS815847`)"><img src="https://natski.netlify.app/icon/thumbnails_small/PSS.png" alt="icon" draggable="false"><span>sub page</span><svg class="CMSsubpage" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.35 850.35"><path d="M816.99,312.17l-351.98,351.98c-22.01,22.01-57.69,22.01-79.7,0L33.32,312.17c-32.59-32.58-32.59-85.42,0-118h0c32.59-32.59,85.42-32.59,118,0L425.16,468.01,698.99,194.17c32.58-32.59,85.42-32.59,118,0h0c32.59,32.59,32.59,85.42,0,118Z"></path></svg></button></div><div id="CMS815847" class="CMScontext"><button class="CMSclickable CMSback" onclick="CMSchangeMenu(`CMS599040`)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.35 850.35"><path d="M816.99,312.17l-351.98,351.98c-22.01,22.01-57.69,22.01-79.7,0L33.32,312.17c-32.59-32.58-32.59-85.42,0-118h0c32.59-32.59,85.42-32.59,118,0L425.16,468.01,698.99,194.17c32.58-32.59,85.42-32.59,118,0h0c32.59,32.59,32.59,85.42,0,118Z"/></svg><span>Back</span></button><button onclick="CMSalert()"><img src="https://natski.netlify.app/icon/thumbnails_small/PDS.png" alt="icon" draggable="false"><span>function</span></button><button onclick="window.location=``"><img src="https://natski.netlify.app/icon/thumbnails_small/GIS.png" alt="icon" draggable="false"><span>link</span></button></div></div>
 
-
+<div style="display: none; --CMScolour: #ff941a80;" id="CMScontextMenu"><div id="CMS4500b5" class="CMScontext"><button onclick="return"><img src="https://natski.netlify.app/icon/thumbnails_small/CMS.png" alt="icon" draggable="false"><span>Image icon</span></button><button onclick="return"><GIS-icon title="GIS"></GIS-icon><span>GIS icon</span></button><button class="CMSclickable" onclick="CMSchangeMenu(`CMS772027`)"><GIS-icon title="input"></GIS-icon><span>Sub page</span><svg class="CMSsubpage" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.35 850.35"><path d="M816.99,312.17l-351.98,351.98c-22.01,22.01-57.69,22.01-79.7,0L33.32,312.17c-32.59-32.58-32.59-85.42,0-118h0c32.59-32.59,85.42-32.59,118,0L425.16,468.01,698.99,194.17c32.58-32.59,85.42-32.59,118,0h0c32.59,32.59,32.59,85.42,0,118Z"></path></svg></button></div><div id="CMS772027" class="CMScontext"><button class="CMSclickable CMSback" onclick="CMSresetMenu()"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.35 850.35"><path d="M816.99,312.17l-351.98,351.98c-22.01,22.01-57.69,22.01-79.7,0L33.32,312.17c-32.59-32.58-32.59-85.42,0-118h0c32.59-32.59,85.42-32.59,118,0L425.16,468.01,698.99,194.17c32.58-32.59,85.42-32.59,118,0h0c32.59,32.59,32.59,85.42,0,118Z"/></svg><span>Back</span></button><button onclick="CMSalert()"><GIS-icon title="gear"></GIS-icon><span>Function</span></button><button onclick="window.location=`https://natski.netlify.app/index.html#ENCORE%20CMS`"><GIS-icon title="chain"></GIS-icon><span>Link</span></button><button class="CMSclickable" onclick="CMSchangeMenu(`CMS106147`)"><GIS-icon title="input"></GIS-icon><span>Sub page</span><svg class="CMSsubpage" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.35 850.35"><path d="M816.99,312.17l-351.98,351.98c-22.01,22.01-57.69,22.01-79.7,0L33.32,312.17c-32.59-32.58-32.59-85.42,0-118h0c32.59-32.59,85.42-32.59,118,0L425.16,468.01,698.99,194.17c32.58-32.59,85.42-32.59,118,0h0c32.59,32.59,32.59,85.42,0,118Z"></path></svg></button></div><div id="CMS106147" class="CMScontext"><button class="CMSclickable CMSback" onclick="CMSchangeMenu(`CMS772027`)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.35 850.35"><path d="M816.99,312.17l-351.98,351.98c-22.01,22.01-57.69,22.01-79.7,0L33.32,312.17c-32.59-32.58-32.59-85.42,0-118h0c32.59-32.59,85.42-32.59,118,0L425.16,468.01,698.99,194.17c32.58-32.59,85.42-32.59,118,0h0c32.59,32.59,32.59,85.42,0,118Z"/></svg><span>Back</span></button><button onclick="return"><GIS-icon title="information"></GIS-icon><span>example</span></button></div></div>
 
         <footer>
             <div>
@@ -88,6 +134,8 @@
             <a onclick="parent.loadframe('Privacy Policy');parent.backPage(1)">Privacy Policy</a>
         </footer>
 
+        <div id="CMSalert"></div>
+
         <noscript>
             <h1>javascript is disabled</h1>
             <p>ENCORE.js requires javascript in order to run, please enable javascript</p>
@@ -99,6 +147,18 @@
                 document.getElementById('NonMob').style.display = 'block'
             }else{
                 document.getElementById('Mob').style.display = 'block'
+            }
+
+            let CMSalertTimer = null
+
+            function CMSalert() {
+                clearTimeout(CMSalertTimer)
+                let alertbox = document.getElementById('CMSalert');
+                alertbox.innerHTML = `<p>Function Clicked!</p>`
+                alertbox.classList.add('active')
+                CMSalertTimer = setTimeout(() => {
+                    alertbox.classList.remove('active')
+                }, 2000);
             }
         </script>
         <script src="lib/js/ENCORE_CMS.js"></script>
