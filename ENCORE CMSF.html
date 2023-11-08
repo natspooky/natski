@@ -499,12 +499,23 @@
                 z-index: 999;
                 background-color: #181818;
             }
+            #menuBut
+            {
+                position: relative;
+                margin: 30px auto;
+                display: block;
+                border-radius: 100vmax;
+                padding: 10px 20px;
+                background-color: #e9e9e9;
+                color: var(--backpanel);
+                font-weight: bold;
+            }
         </style>
         
         
         <main>
             <article style="text-align: center;">ENCORE CMSF is a tool used to format HTML code for use with ENCORE CMS</article>
-            <button onclick="openEdit()" style="position: relative;">button</button>
+            <button onclick="openEdit()" id="menuBut">Open CMSF</button>
         </main>
 
         <div id="editWindow">

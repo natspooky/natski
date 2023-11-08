@@ -461,10 +461,10 @@ nav span
     height: 35px;
     width: 35px;
     border-radius: 50%;
-    background-image: conic-gradient(from 78deg, transparent, var(--themecol)); 
+    background-image: conic-gradient(from 78deg, transparent, var(--themecol));
     mask: url(https://natski.netlify.app/icon/svg/ENCORE_GIS/loader.svg) center center no-repeat;
     -webkit-mask: url(https://natski.netlify.app/icon/svg/ENCORE_GIS/loader.svg) center center no-repeat;
-    animation: NATloader 1s infinite linear;
+    animation: NATloader 1.2s infinite linear;
 }
 @keyframes NATloader {
     from{transform: rotate(0);}
