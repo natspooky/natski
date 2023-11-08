@@ -90,3 +90,7 @@ make better feature banner on index similar to Phase Connect
 pls redesign CLSF
 
 add context menu to CMSF :)
+
+add recenter button 
+
+make it so the thing scales based on center of page
