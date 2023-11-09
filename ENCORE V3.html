@@ -81,7 +81,7 @@
             <div class="dropdown" style="--colour: #000dff0c;">
                 <div class="dropdownheader">
                     <img src="icon/thumbnails_small/VPS.png" alt="VPS" draggable="false">
-                    <p>ENCORE VPS<span>  •  Video Player System</span></p>
+                    <p>ENCORE DES<span>  •  Dynamic Essay System</span></p>
                     <div>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.35 850.35">
                             <path d="M816.99,312.17l-351.98,351.98c-22.01,22.01-57.69,22.01-79.7,0L33.32,312.17c-32.59-32.58-32.59-85.42,0-118h0c32.59-32.59,85.42-32.59,118,0L425.16,468.01,698.99,194.17c32.58-32.59,85.42-32.59,118,0h0c32.59,32.59,32.59,85.42,0,118Z"/>
@@ -89,101 +89,7 @@
                     </div>
                 </div>
                 <div class="contentbox">
-                    <p>ENCORE VPS is a frontend Javascript plugin that encases videos to give them unique styles and extra functionality without needing to learn any Javascript.</p>
-                    <hr>
-
-                    <p>Code that needs to be added into your HTML file:</p>
-
-                    <div class="codecontainer">
-                        <div class="codebox">
-<pre>
-<code>&lt;video class="VPS" VPSwidth="the width of the video" poster="URL of the video thumbnail" title="title of the video" style="display: none;"&gt;
-    &lt;source src="URL of the video"&gt;
-&lt;/video&gt;
-</code></pre>
-                        </div>
-                        <div class="copybox">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.39 850.39">
-                                <path d="M389.7,715.19h126.3v83.3c0,28.67-23.24,51.9-51.9,51.9H51.9c-28.66,0-51.9-23.23-51.9-51.9V227.1c0-28.66,23.24-51.9,51.9-51.9h245.9v448.09c0,50.68,41.23,91.9,91.9,91.9Z"/>
-                                <rect  x="334.39" width="516" height="675.19" rx="51.9" ry="51.9"/>
-                            </svg>
-                        </div>
-                        <div class="codeInfo">
-                            <span>VPSwidth</span>: sets the width of the VPS video. This accepts every standard CSS unit (px, %, vw, etc...)<br><br>
-                            <span>poster</span>: asigns a thumbnail to VPS. This accepts .JPG, .PNG, .GIF, .AVIF and .WEBP images<br><br>
-                            <span>title</span>: allocates a custom title for VPS to display<br><br>
-                            <span>src</span>: this takes video URLs in order to play them in VPS. This accepts .MP4, .WEBM and .OGG videos
-                        </div>
-                    </div>
-
-                    <p>Code that needs to be appended at the bottom of your HTML file:</p>
-                    <div class="codecontainer">
-                        <div class="codebox">
-<pre>
-<code>&lt;script src="https://natski.netlify.app/lib/js/ENCORE_VPS.js"&gt;&lt;/script&gt;
-&lt;script&gt;
-    VPS_settings={
-        'loop':false,
-        'bokeh':true,
-        'style':1
-    }
-&lt;/script&gt;
-</code></pre>
-                        </div>
-                        <div class="copybox">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.39 850.39">
-                                <path d="M389.7,715.19h126.3v83.3c0,28.67-23.24,51.9-51.9,51.9H51.9c-28.66,0-51.9-23.23-51.9-51.9V227.1c0-28.66,23.24-51.9,51.9-51.9h245.9v448.09c0,50.68,41.23,91.9,91.9,91.9Z"/>
-                                <rect  x="334.39" width="516" height="675.19" rx="51.9" ry="51.9"/>
-                            </svg>
-                        </div>
-                        <div class="codeInfo">
-                            <span>loop</span>: automatically sets videos to loop when loaded by VPS<br><br>
-                            <span>bokeh</span>: sets an ambient color falloff that surrounds VPS to give the video more immersion while playing<br><br>
-                            <span>style</span>: chooses the current style that will be applied to VPS when it loads. This value can only be 1
-                        </div>
-                    </div>
-
-                    <p>ENCORE VPS also has functions that are used to allow more flexibility to your website. This can be used inside of other javascript functions or attached onto javascript event listeners.</p>
-                    <div class="codecontainer">
-                        <div class="codebox">
-<pre>
-<code>reloadVPS(VPS_settings)
-</code></pre>
-                        </div>
-                        <div class="copybox">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.39 850.39">
-                                <path d="M389.7,715.19h126.3v83.3c0,28.67-23.24,51.9-51.9,51.9H51.9c-28.66,0-51.9-23.23-51.9-51.9V227.1c0-28.66,23.24-51.9,51.9-51.9h245.9v448.09c0,50.68,41.23,91.9,91.9,91.9Z"/>
-                                <rect  x="334.39" width="516" height="675.19" rx="51.9" ry="51.9"/>
-                            </svg>
-                        </div>
-                        <div class="codeInfo">
-                            This function can be called to restart VPS. This can be used in cases where the settings need to be updated during the use of VPS
-                        </div>
-                    </div>
-                
-                    <p>ENCORE VPS Example:</p>
-
-                    <div class="previewWindow" style="--height: 65vh; opacity: 0; margin: 1em 0; overflow: hidden; display: flex; justify-content: center; align-items: center;" id="VPS"></div>
-
-                    <div class="exampleMenu">
-                        <button onclick="loadSystem('VPS')">
-                            Load VPS
-                        </button>
-                        <button onclick="unloadSystem('VPS')">
-                            Unload VPS
-                        </button>
-                    </div>
-                    <div class="exampleMenu" id="VPSmenu" style="display: none; margin-top: 1em;">
-                        <button style="background-color: #09af0030;" onclick="VPS_settings={'loop':document.getElementById('vpsloop').hasAttribute('active'),'bokeh':document.getElementById('vpsloop').hasAttribute('active'),'style':1}; reloadVPS(VPS_settings); ENCOREalert(this.parentNode.id,'settings')">
-                            Save Changes
-                        </button>
-                        <button id="vpsloop" onclick="changeValues(this)">
-                            Loop
-                        </button>
-                        <button class="active" active id="vpsbokeh" onclick="changeValues(this)">
-                            Bokeh
-                        </button>
-                    </div>
+                    [testing in progress]
                 </div>
             </div>
 
@@ -232,7 +138,7 @@
                         </button>
                     </div>
                 
-                    <p>ENCORE VPS Example:</p>
+                    <p>ENCORE GIS Example:</p>
 
                     <div class="previewWindow" style="--height: 150px; opacity: 0; margin: 1em 0; overflow: hidden; display: flex; justify-content: center; align-items: center;" id="GIS"></div>
 
@@ -358,14 +264,29 @@
                                 GIS.style.opacity = '1'
                             }else{
                                 let script = document.createElement('script'),
-                                settings = document.createElement('script');
-                                GIS.innerHTML = '<GIS-icon title="home"></GIS-icon><GIS-icon title="avatar"></GIS-icon><GIS-icon title="gear"></GIS-icon><GIS-icon title="terminal"></GIS-icon>'
+                                settings = document.createElement('script'),
+                                GISVALUES = ['home','terminal','avatar','gear','alert','browser','chain','bookshelf','cellar','rotate','maximise','minimise','pause','play','prev','next','audio','copy','information','loop','pip','screen','magnify_minus','magnify_plus','magnify','minus','plus','checkmark','cross','arrow_left','arrow_right','arrow_up','arrow_down','mini_arrow_left','mini_arrow_right','mini_arrow_up','mini_arrow_down','line_arrow_left','line_arrow_right','line_arrow_up','line_arrow_down','input','output','download','sparkle','config','preview','ENCORE','SSC','PDS','CLS','CLSF','VPS','PSS','CMS','CMSF','GIS','SSM','SSMF'];
+                                for(let i = 0; i < GISVALUES.length; i++){
+                                    let ico = document.createElement('GIS-icon')
+                                    ico.title = GISVALUES[i]
+                                    ico.style.visibility = 'hidden'
+                                    document.body.appendChild(ico)
+                                }
+                                GIS.innerHTML = '<GIS-icon class="changer" title="home"></GIS-icon><GIS-icon class="changer" title="avatar"></GIS-icon><GIS-icon class="changer" title="gear"></GIS-icon><GIS-icon class="changer" title="terminal"></GIS-icon>'
                                 script.id = 'GISscript'
                                 script.src = 'https://natski.netlify.com/lib/js/ENCORE_GIS.js'
                                 settings.id = 'GISsettings'
                                 settings.innerHTML = "GIS_settings={'style':1}"
                                 document.body.appendChild(script)
                                 document.body.appendChild(settings)
+                                let icons = document.getElementsByClassName('changer')
+                                setInterval(() => {
+                                    let x = Math.floor(Math.random() * (icons.length)),
+                                    y = Math.floor(Math.random() * (GISVALUES.length - 1));
+                                    icons[x].style.mask = `url(https://natski.netlify.app/icon/svg/ENCORE_GIS/${GISVALUES[y]}.svg) no-repeat center`
+                                    icons[x].style.webkitMask = `url(https://natski.netlify.app/icon/svg/ENCORE_GIS/${GISVALUES[y]}.svg) no-repeat center`
+                                    icons[x].title = GISVALUES[y]
+                                }, 1000);
                                 GIS.style.height = 'var(--height)'
                                 GIS.style.opacity = '1'
                             }
@@ -395,11 +316,17 @@
     <div id="ENCOREalert"></div>
 
     <style>
-        GIS-icon
+        .previewWindow GIS-icon
         {
             background-color: #e9e9e9;
             font-size: 40px;
             margin: 20px;
+            transform: scale(1);
+            transition: 0.2s;
+        }
+        .previewWindow GIS-icon:hover
+        {
+            transform: scale(1.3);
         }
     </style>
         <noscript>
