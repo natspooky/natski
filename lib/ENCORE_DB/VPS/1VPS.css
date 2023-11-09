@@ -5,15 +5,15 @@
 }
 @media (hover:hover)
 {
-    .VPScontainer .controlBox .controlBar .VPSbar:hover .VPSbarChange::before
+    .VPScontainer .VPScontrolBox .VPScontrolBar .VPSbar:hover .VPSbarChange::before
     {
         opacity: 1;
     }
-    .VPScontainer .controlBox .controlBar .VPSbar:hover
+    .VPScontainer .VPScontrolBox .VPScontrolBar .VPSbar:hover
     {
         height: 5px;
     }
-    .VPScontainer .controlBox .controlBar button:hover, .VPScontainer .controlBox .controlBar .volumeContainer:hover,.VPScontainer .controlBox .controlBar .VPStime:hover,.VPScontainer .controlBox .settingsPanel button:hover
+    .VPScontainer .VPScontrolBox .VPScontrolBar button:hover, .VPScontainer .VPScontrolBox .VPScontrolBar .volumeContainer:hover,.VPScontainer .VPScontrolBox .VPScontrolBar .VPStime:hover,.VPScontainer .VPScontrolBox .settingsPanel button:hover
     {
         transition: 0s;
         transition-delay: 0s;
@@ -157,7 +157,7 @@
     border-radius: 1px;
     -webkit-border-radius: 1px;
 }
-.VPScontainer .VPS.full + .controlBox, .VPScontainer.full .controlBox
+.VPScontainer .VPS.full + .VPScontrolBox, .VPScontainer.full .VPScontrolBox
 {
     border-radius: 0px;
 }
@@ -196,7 +196,7 @@
     visibility: visible;
     transition: 0.3s;
 }
-.VPScontainer .controlBox
+.VPScontainer .VPScontrolBox
 {
     position: absolute;
     top: 0;
@@ -209,7 +209,7 @@
     border-radius: 0.49em;
     transition: 0.3s;
 }
-.VPScontainer .controlBox .playField::after
+.VPScontainer .VPScontrolBox .playField::after
 {
     content: '';
     position: absolute;
@@ -220,7 +220,7 @@
     pointer-events: none;
     background-image: linear-gradient(to top, #000000a0, transparent);
 }
-.VPScontainer .controlBox .playField
+.VPScontainer .VPScontrolBox .playField
 {
     position: absolute;
     height: 100%;
@@ -228,7 +228,7 @@
     top: 0;
     left: 0;
 }
-.VPScontainer .controlBox .controlBar
+.VPScontainer .VPScontrolBox .VPScontrolBar
 {
     position: absolute;
     padding: 0.4em 0em;
@@ -238,7 +238,7 @@
     height: calc(40px + 0.8em);
     width: 100%;
 }
-.VPScontainer .controlBox .controlBar button
+.VPScontainer .VPScontrolBox .VPScontrolBar button
 {
     position: relative;
     float: left;
@@ -255,23 +255,23 @@
     transition: 0.4s;
     transition-delay: 0.1s;
 }
-.VPScontainer .controlBox .controlBar button:nth-last-of-type(4),.VPScontainer .controlBox .controlBar button:nth-last-of-type(3),.VPScontainer .controlBox .controlBar button:nth-last-of-type(2),.VPScontainer .controlBox .controlBar button:nth-last-of-type(1)
+.VPScontainer .VPScontrolBox .VPScontrolBar button:nth-last-of-type(4),.VPScontainer .VPScontrolBox .VPScontrolBar button:nth-last-of-type(3),.VPScontainer .VPScontrolBox .VPScontrolBar button:nth-last-of-type(2),.VPScontainer .VPScontrolBox .VPScontrolBar button:nth-last-of-type(1)
 {
     float: right;
 }
-.VPScontainer .controlBox .controlBar button:first-of-type
+.VPScontainer .VPScontrolBox .VPScontrolBar button:first-of-type
 {
     margin-left: 0.5em;
 }
-.VPScontainer .controlBox .controlBar button:nth-last-of-type(4)
+.VPScontainer .VPScontrolBox .VPScontrolBar button:nth-last-of-type(4)
 {
     margin-right: 0.5em;
 }
-.VPScontainer .controlBox .controlBar button:active
+.VPScontainer .VPScontrolBox .VPScontrolBar button:active
 {
     background-color: #4b4b4b40;
 }
-.VPScontainer .controlBox .controlBar button svg,.VPScontainer .controlBox .settingsPanel button svg
+.VPScontainer .VPScontrolBox .VPScontrolBar button svg,.VPScontainer .VPScontrolBox .settingsPanel button svg
 {
     position: relative;
     display: block;
@@ -279,33 +279,33 @@
     fill: #e9e9e9;
     transition: 0.3s;
 }
-.VPScontainer .controlBox .controlBar button .minCinSVG
+.VPScontainer .VPScontrolBox .VPScontrolBar button .minCinSVG
 {
     height: unset;
     width: 55%;
 }
-.VPScontainer .controlBox .controlBar button.setting
+.VPScontainer .VPScontrolBox .VPScontrolBar button.setting
 {
     transition-delay: 0s;
     background-color: #ffffff32;
 }
-.VPScontainer .controlBox .controlBar button.setting svg
+.VPScontainer .VPScontrolBox .VPScontrolBar button.setting svg
 {
     transform: rotate(60deg);
 }
-.VPScontainer .controlBox .controlBar button svg rect
+.VPScontainer .VPScontrolBox .VPScontrolBar button svg rect
 {
     transition: 0.3s;
 }
-.VPScontainer .controlBox .controlBar button.active .play, .VPScontainer .controlBox .controlBar button .pause, .VPScontainer .controlBox .controlBar .VPSbar,.VPScontainer .controlBox .controlBar button .minSVG, .VPScontainer .controlBox .controlBar button.active .fullscreenSVG,.VPScontainer .controlBox .controlBar button .minCinSVG, .VPScontainer .controlBox .controlBar button.active .maxCinSVG, .VPScontainer .controlBox .controlBar button.active .openPipSVG, .VPScontainer .controlBox .controlBar button .closePipSVG
+.VPScontainer .VPScontrolBox .VPScontrolBar button.active .play, .VPScontainer .VPScontrolBox .VPScontrolBar button .pause, .VPScontainer .VPScontrolBox .VPScontrolBar .VPSbar,.VPScontainer .VPScontrolBox .VPScontrolBar button .minSVG, .VPScontainer .VPScontrolBox .VPScontrolBar button.active .fullscreenSVG,.VPScontainer .VPScontrolBox .VPScontrolBar button .minCinSVG, .VPScontainer .VPScontrolBox .VPScontrolBar button.active .maxCinSVG, .VPScontainer .VPScontrolBox .VPScontrolBar button.active .openPipSVG, .VPScontainer .VPScontrolBox .VPScontrolBar button .closePipSVG
 {
     display: none;
 }
-.VPScontainer .controlBox .controlBar button.active .pause, .VPScontainer .controlBox .controlBar button .play,.VPScontainer .controlBox .controlBar button.active .minSVG, .VPScontainer .controlBox .controlBar button .fullscreenSVG, .VPScontainer .controlBox .controlBar button.active .minCinSVG, .VPScontainer .controlBox .controlBar button .maxCinSVG, .VPScontainer .controlBox .controlBar button .openPipSVG, .VPScontainer .controlBox .controlBar button.active .closePipSVG
+.VPScontainer .VPScontrolBox .VPScontrolBar button.active .pause, .VPScontainer .VPScontrolBox .VPScontrolBar button .play,.VPScontainer .VPScontrolBox .VPScontrolBar button.active .minSVG, .VPScontainer .VPScontrolBox .VPScontrolBar button .fullscreenSVG, .VPScontainer .VPScontrolBox .VPScontrolBar button.active .minCinSVG, .VPScontainer .VPScontrolBox .VPScontrolBar button .maxCinSVG, .VPScontainer .VPScontrolBox .VPScontrolBar button .openPipSVG, .VPScontainer .VPScontrolBox .VPScontrolBar button.active .closePipSVG
 {
     display: block;
 }
-.VPScontainer .controlBox .controlBar button::before
+.VPScontainer .VPScontrolBox .VPScontrolBar button::before
 {
     content: attr(name);
     position: absolute;
@@ -323,23 +323,23 @@
     transform: translateX(-50%);
     transition: 0.1s;
 }
-.VPScontainer .controlBox .controlBar button:nth-last-of-type(4)::before
+.VPScontainer .VPScontrolBox .VPScontrolBar button:nth-last-of-type(4)::before
 {
     right: 0%;
     left: unset;
     transform: translateX(0);
 }
-.VPScontainer .controlBox .controlBar button:first-of-type::before
+.VPScontainer .VPScontrolBox .VPScontrolBar button:first-of-type::before
 {
     left: 0%;
     transform: translateX(0);
 }
-.VPScontainer .controlBox .controlBar button:hover::before
+.VPScontainer .VPScontrolBox .VPScontrolBar button:hover::before
 {
     opacity: 1;
     visibility: visible;
 }
-.VPScontainer .controlBox .controlBar .VPSbar
+.VPScontainer .VPScontrolBox .VPScontrolBar .VPSbar
 {
     position: absolute;
     left: 10px;
@@ -351,7 +351,7 @@
     bottom: 100%;
     transition: 0.2s;
 }
-.VPScontainer .controlBox .controlBar .VPSbar .VPSinput
+.VPScontainer .VPScontrolBox .VPScontrolBar .VPSbar .VPSinput
 {
     position: absolute;
     bottom: 0px;
@@ -360,7 +360,7 @@
     height: 20px;
     opacity: 0;
 }
-.VPScontainer .controlBox .controlBar .VPSbar .VPSbarChange
+.VPScontainer .VPScontrolBox .VPScontrolBar .VPSbar .VPSbarChange
 {
     position: absolute;
     top: 0;
@@ -370,7 +370,7 @@
     border-radius: 100vmax;
     background-color: var(--VPSprogressbar)
 }
-.VPScontainer .controlBox .controlBar .VPSbar .VPSbarChange::before
+.VPScontainer .VPScontrolBox .VPScontrolBar .VPSbar .VPSbarChange::before
 {
     content: '';
     position: absolute;
@@ -384,7 +384,7 @@
     opacity: 0;
     transition: 0.2s;
 }
-.VPScontainer .controlBox .VPStitle
+.VPScontainer .VPScontrolBox .VPStitle
 {
     position: absolute;
     top: 0;
@@ -399,7 +399,7 @@
     white-space: nowrap;
     overflow: hidden;
 }
-.VPScontainer .controlBox .controlBar .volumeContainer
+.VPScontainer .VPScontrolBox .VPScontrolBar .volumeContainer
 {
     position: relative;
     float: left;
@@ -417,7 +417,7 @@
     transition-delay: 0s, 0.1s;
     transition-property: all, background-color;
 }
-.VPScontainer .controlBox .controlBar .volumeContainer.active
+.VPScontainer .VPScontrolBox .VPScontrolBar .volumeContainer.active
 {
     visibility: visible;
     opacity: 1;
@@ -425,7 +425,7 @@
     padding: 17.5px 12px;
     margin: 0 0.25em;
 }
-.VPScontainer .controlBox .controlBar .volumeContainer .volumeBack
+.VPScontainer .VPScontrolBox .VPScontrolBar .volumeContainer .volumeBack
 {
     position: relative;
     width: 100%;
@@ -434,14 +434,14 @@
     background-color: #e9e9e940;
     overflow: hidden;
 }
-.VPScontainer .controlBox .controlBar .volumeContainer .volumeBack .volumeVisible
+.VPScontainer .VPScontrolBox .VPScontrolBar .volumeContainer .volumeBack .volumeVisible
 {
     position: absolute;
     width: 100%;
     height: 100%;
     background-color: #e9e9e9;
 }
-.VPScontainer .controlBox .controlBar .volumeContainer .volumeInput
+.VPScontainer .VPScontrolBox .VPScontrolBar .volumeContainer .volumeInput
 {
     position: absolute;
     width: calc(100% - 16px);
@@ -451,7 +451,7 @@
     transform: translate(-50%, -50%);
     opacity: 0;
 }
-.VPScontainer .controlBox .controlBar .VPStime
+.VPScontainer .VPScontrolBox .VPScontrolBar .VPStime
 {
     position: relative;
     float: left;
@@ -474,7 +474,7 @@
     transition-delay: 0s, 0.1s;
     transition-property: all, background-color;
 }
-.VPScontainer .controlBox .controlBar .VPStime.active
+.VPScontainer .VPScontrolBox .VPScontrolBar .VPStime.active
 {
     visibility: hidden;
     opacity: 0;
@@ -482,11 +482,11 @@
     padding: 0;
     margin: 0;
 }
-.VPScontainer .controlBox .controlBar .VPStime div
+.VPScontainer .VPScontrolBox .VPScontrolBar .VPStime div
 {
     pointer-events: none;
 }
-.VPScontainer .controlBox .settingsPanel
+.VPScontainer .VPScontrolBox .settingsPanel
 {
     position: absolute;
     bottom: calc(40px + 2em);
@@ -503,13 +503,13 @@
     backdrop-filter: blur(10px);
     transition: opacity 0.3s, height 0.3s, visibility 0.3s;
 }
-.VPScontainer .controlBox .settingsPanel.active
+.VPScontainer .VPScontrolBox .settingsPanel.active
 {
     opacity: 1;
     pointer-events: unset;
     visibility: visible;
 }
-.VPScontainer .controlBox .settingsPanel button
+.VPScontainer .VPScontrolBox .settingsPanel button
 {
     position: relative;
     display: block;
@@ -535,7 +535,7 @@
     right: 0;
     transform: translateX(100%);
     height: fit-content;
-    width: fit-content;
+    width: 100%;
     max-height: 160px;
     overflow-y: scroll;
     transition: 0.3s;
@@ -562,15 +562,15 @@
 {
     transform: translateX(-100%);
 }
-.VPScontainer .controlBox .settingsPanel button svg
+.VPScontainer .VPScontrolBox .settingsPanel button svg
 {
     transition: 0s;
 }
-.VPScontainer .controlBox .settingsPanel button.loop
+.VPScontainer .VPScontrolBox .settingsPanel button.loop
 {
     background-color: #ffffff40;
 }
-.VPScontainer .controlBox .settingsPanel button.loop svg
+.VPScontainer .VPScontrolBox .settingsPanel button.loop svg
 {
     transition: 0.3s;
     transform: rotate(-180deg);

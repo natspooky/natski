@@ -136,7 +136,7 @@ svg rect
     visibility: visible;
     transition: 0.3s;
 }
-.VPScontainer .controlBox
+.VPScontainer .VPScontrolBox
 {
     position: absolute;
     top: 0;
@@ -146,7 +146,7 @@ svg rect
     opacity: 1;
     transition: 0.3s;
 }
-.VPScontainer .controlBox .playField
+.VPScontainer .VPScontrolBox .playField
 {
     position: absolute;
     height: 100%;
@@ -156,7 +156,7 @@ svg rect
     left: 0;
     display: block;
 }
-.VPScontainer .controlBox .controlBar
+.VPScontainer .VPScontrolBox .VPScontrolBar
 {
     position: absolute;
     left: 0;
@@ -166,7 +166,7 @@ svg rect
     pointer-events: none;
     background-color: #00000045;
 }
-.VPScontainer .controlBox .controlBar button
+.VPScontainer .VPScontrolBox .VPScontrolBar button
 {
     position: absolute;
     border: 0;
@@ -180,7 +180,7 @@ svg rect
     align-items: center;
     transition: 0.2s;
 }
-.VPScontainer .controlBox .controlBar button svg,.VPScontainer .controlBox .settingsPanel button svg
+.VPScontainer .VPScontrolBox .VPScontrolBar button svg,.VPScontainer .VPScontrolBox .settingsPanel button svg
 {
     position: relative;
     display: block;
@@ -189,7 +189,7 @@ svg rect
     pointer-events: all;
     transition: 0.4s;
 }
-.VPScontainer .controlBox .controlBar .VPSplay
+.VPScontainer .VPScontrolBox .VPScontrolBar .VPSplay
 {
     top: 50%;
     left: 50%;
@@ -201,14 +201,14 @@ svg rect
     transition: 0.2s;
     -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
 }
-.VPScontainer .controlBox .controlBar .VPSscreen
+.VPScontainer .VPScontrolBox .VPScontrolBar .VPSscreen
 {
     bottom: 45px;
     right: 25px;
     height: 15px;
     width: 15px;
 }
-.VPScontainer .controlBox .controlBar .VPSsettings
+.VPScontainer .VPScontrolBox .VPScontrolBar .VPSsettings
 {
     top: 25px;
     right: 25px;
@@ -216,20 +216,20 @@ svg rect
     width: 20px;
     z-index: 30;
 }
-.VPScontainer .controlBox .controlBar button.setting svg
+.VPScontainer .VPScontrolBox .VPScontrolBar button.setting svg
 {
     transform: rotate(60deg);
     fill: red;
 }
-.VPScontainer .controlBox .controlBar button.active .play, .VPScontainer .controlBox .controlBar button .pause, .VPScontainer .controlBox .controlBar .VPSbar, .VPScontainer .controlBox .controlBar button .minSVG, .VPScontainer .controlBox .controlBar button.active .fullscreenSVG
+.VPScontainer .VPScontrolBox .VPScontrolBar button.active .play, .VPScontainer .VPScontrolBox .VPScontrolBar button .pause, .VPScontainer .VPScontrolBox .VPScontrolBar .VPSbar, .VPScontainer .VPScontrolBox .VPScontrolBar button .minSVG, .VPScontainer .VPScontrolBox .VPScontrolBar button.active .fullscreenSVG
 {
     display: none;
 }
-.VPScontainer .controlBox .controlBar button.active .pause, .VPScontainer .controlBox .controlBar button .play,.VPScontainer .controlBox .controlBar button.active .minSVG, .VPScontainer .controlBox .controlBar button .fullscreenSVG
+.VPScontainer .VPScontrolBox .VPScontrolBar button.active .pause, .VPScontainer .VPScontrolBox .VPScontrolBar button .play,.VPScontainer .VPScontrolBox .VPScontrolBar button.active .minSVG, .VPScontainer .VPScontrolBox .VPScontrolBar button .fullscreenSVG
 {
     display: block;
 }
-.VPScontainer .controlBox .controlBar .VPSbar
+.VPScontainer .VPScontrolBox .VPScontrolBar .VPSbar
 {
     position: absolute;
     left: 25px;
@@ -242,7 +242,7 @@ svg rect
     pointer-events: all;
     transition: 0.2s;
 }
-.VPScontainer .controlBox .controlBar .VPSbar .VPSinput
+.VPScontainer .VPScontrolBox .VPScontrolBar .VPSbar .VPSinput
 {
     position: absolute;
     top: 50%;
@@ -254,7 +254,7 @@ svg rect
     pointer-events: all;
     -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
 }
-.VPScontainer .controlBox .controlBar .VPSbar .VPSbarChange
+.VPScontainer .VPScontrolBox .VPScontrolBar .VPSbar .VPSbarChange
 {
     position: absolute;
     top: 0;
@@ -265,7 +265,7 @@ svg rect
     pointer-events: all;
     background-color: var(--VPSprogressbar)
 }
-.VPScontainer .controlBox .controlBar .VPSbar .VPSbarChange::before
+.VPScontainer .VPScontrolBox .VPScontrolBar .VPSbar .VPSbarChange::before
 {
     content: '';
     position: absolute;
@@ -277,7 +277,7 @@ svg rect
     border-radius: 100vmax;
     background-color: var(--VPSprogressbar);
 }
-.VPScontainer .controlBox .VPStitle
+.VPScontainer .VPScontrolBox .VPStitle
 {
     position: absolute;
     top: 25px;
@@ -292,7 +292,7 @@ svg rect
     color: #e9e9e9;
     transition: 0.2s;
 }
-.VPScontainer .controlBox .controlBar .VPStime
+.VPScontainer .VPScontrolBox .VPScontrolBar .VPStime
 {
     position: absolute;
     bottom: 45px;
@@ -304,7 +304,7 @@ svg rect
     color: #e9e9e9;
     align-items: center;
 }
-.VPScontainer .controlBox .settingsPanel {
+.VPScontainer .VPScontrolBox .settingsPanel {
     position: absolute;
     top: 0;
     left: 0;
@@ -322,12 +322,12 @@ svg rect
     transition: opacity 0.2s ease 0s, visibility 0.2s ease 0s;
 }
 
-.VPScontainer .controlBox .settingsPanel.active {
+.VPScontainer .VPScontrolBox .settingsPanel.active {
     visibility: visible;
     pointer-events: unset;
     opacity: 1;
 }
-.VPScontainer .controlBox .settingsPanel button
+.VPScontainer .VPScontrolBox .settingsPanel button
 {
     position: relative;
     display: block;
@@ -350,7 +350,7 @@ svg rect
     transition-delay: 0.1s;
     -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
 }
-.VPScontainer .controlBox .settingsPanel button svg
+.VPScontainer .VPScontrolBox .settingsPanel button svg
 {
     height: 50%;
 }
@@ -392,15 +392,15 @@ svg rect
 {
     transform: translateX(-100%);
 }
-.VPScontainer .controlBox .settingsPanel button svg
+.VPScontainer .VPScontrolBox .settingsPanel button svg
 {
     transition: 0s;
 }
-.VPScontainer .controlBox .settingsPanel button.loop
+.VPScontainer .VPScontrolBox .settingsPanel button.loop
 {
     background-color: #ffffff30;
 }
-.VPScontainer .controlBox .settingsPanel button.loop svg
+.VPScontainer .VPScontrolBox .settingsPanel button.loop svg
 {
     transition: 0.3s;
     transform: rotate(-180deg);
