@@ -117,6 +117,7 @@
     min-width: 425px;
     min-height: 235px;
     opacity: 0;
+    overflow: hidden;
     box-shadow: 0 10px 10px #00000020;
     transition: opacity 0.3s;
 }
@@ -130,8 +131,6 @@
     transform: translate(-50%, -50%);
     opacity: 0;
     pointer-events: none;
-    filter: blur(45px);
-    -webkit-filter: blur(45px);
     transition: opacity 2s;
 }
 .VPScontainer .VPScanvas.active
