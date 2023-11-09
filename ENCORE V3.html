@@ -281,12 +281,13 @@
                                 document.body.appendChild(settings)
                                 let icons = document.getElementsByClassName('changer')
                                 setInterval(() => {
-                                    let x = Math.floor(Math.random() * (icons.length)),
-                                    y = Math.floor(Math.random() * (GISVALUES.length - 1));
-                                    icons[x].style.mask = `url(https://natski.netlify.app/icon/svg/ENCORE_GIS/${GISVALUES[y]}.svg) no-repeat center`
-                                    icons[x].style.webkitMask = `url(https://natski.netlify.app/icon/svg/ENCORE_GIS/${GISVALUES[y]}.svg) no-repeat center`
-                                    icons[x].title = GISVALUES[y]
-                                }, 1000);
+                                    for(let x = 0; x < icons.length; x++){
+                                        let y = Math.floor(Math.random() * (GISVALUES.length - 1));
+                                        icons[x].style.mask = `url(https://natski.netlify.app/icon/svg/ENCORE_GIS/${GISVALUES[y]}.svg) no-repeat center`
+                                        icons[x].style.webkitMask = `url(https://natski.netlify.app/icon/svg/ENCORE_GIS/${GISVALUES[y]}.svg) no-repeat center`
+                                        icons[x].title = GISVALUES[y]
+                                    }
+                                }, 2000);
                                 GIS.style.height = 'var(--height)'
                                 GIS.style.opacity = '1'
                             }
@@ -322,7 +323,7 @@
             font-size: 40px;
             margin: 20px;
             transform: scale(1);
-            transition: 0.2s;
+            transition: all 0.6s,transform 0.2s;
         }
         .previewWindow GIS-icon:hover
         {
