@@ -124,11 +124,10 @@
 .VPScontainer .VPScanvas
 {
     position: absolute;
-    left: 50%;
-    top: 50%;
-    height: calc(100% + 80px);
-    width: calc(100% + 80px);
-    transform: translate(-50%, -50%);
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
     opacity: 0;
     pointer-events: none;
     transition: opacity 2s;
