@@ -88,3 +88,5 @@ add context menu to CMSF :)
 add recenter button 
 
 make it so the thing scales based on center of page
+
+maybe add a search bar to the center of the nav bar?
