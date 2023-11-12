@@ -65,10 +65,6 @@ make dream pool smaller for alevel art page
 
 make it so that editors arent available on mobile
 
-make vps blur better by using CTX blur
-
-make preview icon
-
 add more features to ENCORE DES and maybe make into an ENCORE
 
 replace N behind portfolio with a video
@@ -80,8 +76,6 @@ add intersection observer to VPS in order to make bokeh disapear when not in fra
 make settings buttons black handles
 
 add button that recenters PDS
-
-put close button in CMSF to the right
 
 add png favicon to site
 

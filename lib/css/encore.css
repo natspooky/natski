@@ -110,7 +110,7 @@
     margin: 1em 0 0 0;
     background-color: #66666630;
     border-radius: 1.3em;
-    padding: 1em;
+    padding: 0.5em 1.5em 1.5em 1.5em;
     animation: fadeencore 0.5s;
 }
 .dropdown .contentbox hr
@@ -121,7 +121,7 @@
 }
 .dropdown .contentbox p
 {
-    margin-top: 7px;
+    margin-top: 1.5em;
 }
 .dropdown .contentbox .codecontainer
 {
