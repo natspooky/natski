@@ -54,7 +54,7 @@
     left: -2%;
     height: 104%;
     width: 104%;
-    background-color: #0000007b;
+    background-image: linear-gradient(to right, #00000060,#0000007b);
 
 }
 .dropdown .dropdownheader img
