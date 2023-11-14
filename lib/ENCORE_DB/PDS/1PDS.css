@@ -69,7 +69,7 @@
     float: left;
     overflow: hidden;
     background-color: #f0f0f015;
-    border: 4px solid transparent;
+    border: 2px solid transparent;
     transform: scale(1);
 }
 #PDSinspectPanel
