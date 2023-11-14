@@ -76,6 +76,8 @@
     z-index: 9999;
     overflow: hidden;
     background-color: #000000a0;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     pointer-events: none;
     visibility: hidden;
     transition: 0.3s;

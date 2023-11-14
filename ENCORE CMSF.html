@@ -93,6 +93,7 @@
                 padding: 10px 0 10px 10px;
                 display: block;
                 width: fit-content;
+                pointer-events: none;
                 border-left: 3px solid var(--colour);
             }
             .subitem:first-of-type
@@ -235,7 +236,7 @@
                 margin: 0 10px 0 0;
                 font-size: 1.1rem;
                 border-radius: 10px;
-                transition: 0.3s;
+                transition: 0.3s, width 0s, padding 0s, margin 0s;
             }
             .item .imageLink
             {
@@ -483,7 +484,7 @@
                 overflow: hidden;
                 border-radius: 25px;
                 transform: scale(1) translateY(5%);
-                transition: 1s;
+                transition: 0.5s;
             }
             #containerWindow.active
             {
@@ -581,8 +582,7 @@
         </div>
         
 
-        <div style="display: none; --CMScolour: #80808080;" id="CMScontextMenu"><div id="CMS4500b5" class="CMScontext"><button onclick=""><GIS-icon title="GIS"></GIS-icon><span>asd</span></button><button onclick=""><GIS-icon title="GIS"></GIS-icon><span>asd</span></button><button onclick=""><GIS-icon title="GIS"></GIS-icon><span>asd</span></button><button onclick=""><GIS-icon title="GIS"></GIS-icon><span>asd</span></button></div></div>
-
+        
         <footer>
             <div>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.35 850.35">
@@ -603,13 +603,7 @@
         <script src="lib/js/ENCORE_CME.js"></script>
         <script src="lib/js/ENCORE_GIS_INBUILT.js"></script>
 
-        <script src="lib/js/ENCORE_CMS.js"></script>
-        <script>
-            CMS_settings = {
-                'attachment':null,
-                'style':1
-            }
-        </script>
+    
 
     </body>
 </html>
