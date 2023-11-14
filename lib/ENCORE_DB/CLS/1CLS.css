@@ -35,7 +35,7 @@
     border-radius: 20px;
     padding: 1em;
     background-color: #66666630;
-    margin: 10px auto;
+    margin: 10px auto 20px auto;
     text-align: justify;
     user-select: text;
     color: #f0f0f0;
@@ -164,6 +164,14 @@
 #CLS article section GIS-icon *
 {
     display: none;
+}
+#CLS article.CLSerror
+{
+    height: 150px;
+    background-image: url('https://natski.netlify.app/icon/svg/ENCORE_GIS/alert.svg');
+    background-repeat: no-repeat;
+    background-size: 80px;
+    background-position: center;
 }
 #CLSloader
 {
