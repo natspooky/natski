@@ -207,7 +207,7 @@
     opacity: 1;
     overflow: hidden;
     border-radius: 0.49em;
-    transition: 0.3s;
+    transition: 0.3s, cursor 0s;
 }
 .VPScontainer .VPScontrolBox.VPShidden
 {
