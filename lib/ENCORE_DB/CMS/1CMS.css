@@ -105,6 +105,8 @@
     top: 0;
     z-index: 999;
     background-color: var(--CMScolour);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
 }
 #CMScontextMenu .CMScontext .CMSback svg
 {
