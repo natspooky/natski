@@ -284,15 +284,9 @@
 {
     position: relative;
     display: block;
-    height: 50%;
     width: 50%;
     fill: #f0f0f0;
     transition: 0.3s;
-}
-.VPScontainer .VPScontrolBox .VPScontrolBar button .minCinSVG
-{
-    height: unset;
-    width: 55%;
 }
 .VPScontainer .VPScontrolBox .VPScontrolBar button.setting
 {
