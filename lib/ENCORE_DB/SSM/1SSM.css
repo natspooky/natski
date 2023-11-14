@@ -17,7 +17,7 @@
 }
 #SSM::-webkit-scrollbar-thumb
 {
-    background-color: #e9e9e9;
+    background-color: #f0f0f0;
     border-radius: 100vmax;
     border: 0;
 }
@@ -129,7 +129,7 @@
 #SSM .SSMcategory p
 {
     position: relative;
-    color: #e9e9e9;
+    color: #f0f0f0;
     width: 100%;
     flex-shrink: 0;
     margin: 0 0 1em 0;
@@ -158,7 +158,7 @@
 {
     width: 90%;
     margin-bottom: 20px;
-    fill: #e9e9e9;
+    fill: #f0f0f0;
 }
 #SSM h1
 {
@@ -168,14 +168,14 @@
     align-items: center;
     font-size: 24px;
     width: 100%;
-    color: #e9e9e9;
+    color: #f0f0f0;
 }
 #SSM h1 GIS-icon
 {
     position: relative;
     font-size: 20px;
     margin-right: 10px;
-    background-color: #e9e9e9;
+    background-color: #f0f0f0;
 }
 #SSMbg
 {
@@ -233,7 +233,7 @@
 .SSMinput[type="checkbox"]:checked::after
 {
     left: calc(100% - 30px);
-    background: #e9e9e9;
+    background: #f0f0f0;
 }
 .SSMinput[type="checkbox"]:active:checked::after{
     width: 35px;
@@ -273,7 +273,7 @@
     appearance: none; 
     height: 30px;
     width: 30px;
-    background-color: #e9e9e9;
+    background-color: #f0f0f0;
     border-radius: 50%;
     border: 8px solid var(--SSMcolour);
     box-shadow: -715px 0 0 700px var(--SSMcolour);
@@ -284,7 +284,7 @@
 {
     height: 30px;
     width: 30px;
-    background-color: #e9e9e9;
+    background-color: #f0f0f0;
     border-radius: 50%;
     border: 0px solid var(--SSMcolour);
     box-shadow: -715px 0 0 700px var(--SSMcolour);
@@ -328,7 +328,7 @@
 }
 .SSMinput[type="radio"]:checked::after
 {
-    background: #e9e9e9;
+    background: #f0f0f0;
 }
 
 .SSMinput[type="text"]
@@ -342,7 +342,7 @@
     text-indent: 15px;
     padding: 0 30px 0 15px;
     padding-left: 30px;
-    color: #e9e9e9;
+    color: #f0f0f0;
     border-radius: 100vmax;
 }
 .SSMinput[type="text"]:focus
@@ -371,7 +371,7 @@
     height: 30px;
     width: 30px;
     white-space: nowrap;
-    background-color: #e9e9e9;
+    background-color: #f0f0f0;
     mask: url(https://natski.netlify.app/icon/svg/ENCORE_GIS/line_arrow_down.svg) center center no-repeat;
     -webkit-mask: url(https://natski.netlify.app/icon/svg/ENCORE_GIS/line_arrow_down.svg) center center no-repeat;
     transition: 0.2s;
@@ -397,7 +397,7 @@
     width: 100%;
     background-color: var(--SSMcolour);
     border-top: 2px solid #00000030;
-    color: #e9e9e9;
+    color: #f0f0f0;
     font-weight: bold;
 }
 #SSM .SSMcategory .SSMselection .item:last-of-type
@@ -420,7 +420,7 @@
     text-overflow: ellipsis;
     line-height: 30px;
     width: 100%;
-    color: #e9e9e9;
+    color: #f0f0f0;
     font-weight: bold;
 }
 .SSMbutton
@@ -432,7 +432,7 @@
     border: 0;
     border-radius: 100vmax;
     transition: 0.2s;
-    color: #e9e9e9;
+    color: #f0f0f0;
     font-weight: bold;
 }
 .SSMbutton:active
@@ -451,7 +451,7 @@
     border-radius: 15px;
     background-color: var(--SSMcolour);
     line-height: 15px;
-    color: #e9e9e9;
+    color: #f0f0f0;
     pointer-events: none;
     overflow: hidden;
     opacity: 0;
@@ -485,7 +485,7 @@
     }
     #SSM::-webkit-scrollbar-thumb:hover
     {
-        background-color: #e9e9e9;
+        background-color: #f0f0f0;
     }
     .SSMbutton:hover
     {

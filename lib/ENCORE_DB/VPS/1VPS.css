@@ -36,7 +36,7 @@
 }
 ::-webkit-scrollbar-thumb
 {
-    background-color: #e9e9e9;
+    background-color: #f0f0f0;
     border-radius: 100vmax;
     border: 0px;
 }
@@ -56,7 +56,7 @@
     opacity: 0;
 }
 .VPScontainer:has(video:picture-in-picture)::before {
-    color: #e9e9e9;
+    color: #f0f0f0;
     content: 'VPS is playing in Picture In Picture Mode';
     position: absolute;
     left: 50%;
@@ -183,7 +183,7 @@
     transform: translate(-50%,-50%);
     height: min(70px, 40%);
     display: block;
-    fill: #e9e9e9;
+    fill: #f0f0f0;
     opacity: 0;
     visibility: hidden;
     transition: 0s;
@@ -276,7 +276,7 @@
     position: relative;
     display: block;
     height: 50%;
-    fill: #e9e9e9;
+    fill: #f0f0f0;
     transition: 0.3s;
 }
 .VPScontainer .VPScontrolBox .VPScontrolBar button .minCinSVG
@@ -313,7 +313,7 @@
     border-radius: 0.4em;
     pointer-events: none;
     background-color: #0a0a0a;
-    color: #e9e9e9;
+    color: #f0f0f0;
     white-space: nowrap;
     z-index: 999;
     bottom: calc(110% + 10px);
@@ -390,7 +390,7 @@
     top: 0;
     left: 0;
     padding: 0.6em;
-    color: #e9e9e9;
+    color: #f0f0f0;
     text-shadow: 0 0 5px #00000020;
     font-size: 1.8rem;
     width: 100%;
@@ -431,7 +431,7 @@
     width: 100%;
     height: 100%;
     border-radius: 100vmax;
-    background-color: #e9e9e940;
+    background-color: #f0f0f040;
     overflow: hidden;
 }
 .VPScontainer .VPScontrolBox .VPScontrolBar .volumeContainer .volumeBack .volumeVisible
@@ -439,7 +439,7 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    background-color: #e9e9e9;
+    background-color: #f0f0f0;
 }
 .VPScontainer .VPScontrolBox .VPScontrolBar .volumeContainer .volumeInput
 {
@@ -465,7 +465,7 @@
     white-space: nowrap;
     overflow: hidden;
     justify-content: center;
-    color: #e9e9e9;
+    color: #f0f0f0;
     align-items: center;
     visibility: visible;
     opacity: 1;
@@ -518,7 +518,7 @@
     width: 120px;
     font-size: 13px;
     background-color: transparent;
-    color: #e9e9e9;
+    color: #f0f0f0;
     font-weight: bold;
     display: flex;
     align-items: center;
@@ -598,7 +598,7 @@
 }
 #VPSpopup p
 {
-    color: #e9e9e9;
+    color: #f0f0f0;
     font-weight: bold;
     pointer-events: none;
     margin: 0px;
@@ -627,7 +627,7 @@
 {
     position: relative;
     height: 50%;
-    fill: #e9e9e9;
+    fill: #f0f0f0;
     margin-bottom: 10px;
 }
 .VPScontainer .VPSerror p
