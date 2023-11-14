@@ -209,6 +209,11 @@
     border-radius: 0.49em;
     transition: 0.3s;
 }
+.VPScontainer .VPScontrolBox.VPShidden
+{
+    opacity: 0;
+    cursor: none;
+}
 .VPScontainer .VPScontrolBox .playField::after
 {
     content: '';

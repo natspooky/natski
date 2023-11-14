@@ -146,6 +146,11 @@ svg rect
     opacity: 1;
     transition: 0.3s;
 }
+.VPScontainer .VPScontrolBox.VPShidden
+{
+    opacity: 0;
+    cursor: none;
+}
 .VPScontainer .VPScontrolBox .playField
 {
     position: absolute;
