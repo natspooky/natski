@@ -62,7 +62,7 @@
     top: 0;
     opacity: 0;
     display: block;
-    border: 4px solid transparent;
+    border: 2px solid transparent;
     background-color: #f0f0f015;
     border-radius: 13px;
     user-select: none;
