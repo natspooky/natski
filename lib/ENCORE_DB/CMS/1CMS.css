@@ -105,7 +105,8 @@
     top: 0;
     z-index: 999;
     background-color: var(--CMScolour);
-    backdrop-filter: hue-rotate(90deg);
+    backdrop-filter: brightness(0.4);
+    -webkit-backdrop-filter: brightness(0.4);
 }
 #CMScontextMenu .CMScontext .CMSback svg
 {
