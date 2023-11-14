@@ -95,3 +95,5 @@ make VPS content box toggle between active rather than opacity
 and add invisible cursor
 
 remove SSCU icon from back of SSCU
+
+make encore headers go from colour to gray
