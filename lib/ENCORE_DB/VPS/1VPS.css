@@ -214,10 +214,6 @@
     opacity: 0;
     cursor: none;
 }
-.VPScontainer .VPScontrolBox:hover.VPShidden
-{
-    cursor: none;
-}
 .VPScontainer .VPScontrolBox.VPShidden:hover
 {
     cursor: none;
