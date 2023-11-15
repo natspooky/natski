@@ -532,6 +532,11 @@
     transition: 0.4s;
     transition-delay: 0.1s;
 }
+.VPScontainer .VPScontrolBox .settingsPanel button svg
+{
+    height: 50%;
+    width: unset;
+}
 .VPSplaybackMenu
 {
     position: absolute;
