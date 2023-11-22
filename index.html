@@ -68,13 +68,19 @@
             .slideshowcontainer
             {
                 position: fixed;
-                height: calc(100% - 50px);
+                height: calc(100vh - 50px);
                 transform: translateY(0);
                 border-radius: 0px;
                 overflow: hidden;
                 margin: 50px 0 0 0;
                 background-color: #66666610;
                 transition: 0.45s, transform 0s;
+            }
+            .slideshowcontainerBlock
+            {
+                position: relative;
+                height: 100vh;
+                width: 100%;
             }
             .SSCUsvg
             {
@@ -224,7 +230,7 @@
             main
             {
                 background-color: #0a0a0a;
-                padding-top: 60px;
+                padding: 60px 0;
                 opacity: 0;
             }
             main::before
@@ -332,6 +338,24 @@
                     height: 30px;
                     top: -30px;
                 }
+                .slideshowcontainer
+                {
+                    position: fixed;
+                    height: calc(85vh - 50px);
+                    transform: translateY(0);
+                    border-radius: 0px;
+                    overflow: hidden;
+                    margin: 50px 0 0 0;
+                    background-color: #66666610;
+                    transition: 0.45s, transform 0s;
+                }
+                .slideshowcontainerBlock
+                {
+                    position: relative;
+                    height: 85vh;
+                    width: 100%;
+                    z-index: -10;
+                }
             }
             .banner-bg-u .encore
             {
@@ -438,7 +462,7 @@
             </div>
         </header>
 
-        <div style="position: relative; width: 100%; height: 100%; z-index: -2; pointer-events: none;"></div>
+        <div class="slideshowcontainerBlock"></div>
 
         <main style="position: relative;">
             <div class="scrollContainer">
