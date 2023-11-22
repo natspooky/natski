@@ -40,7 +40,7 @@
         <link rel="stylesheet" type="text/css" media="screen and (orientation: portrait)" href="lib/css/scale.css"/>
         
 	</head>
-    <body onload="systemStart();" style="background-image: linear-gradient(to bottom, rgb(40, 11, 87), transparent); position: fixed;">
+    <body onload="systemStart();">
         <style>
             #loadscreen
             {
@@ -68,7 +68,7 @@
             .slideshowcontainer
             {
                 position: fixed;
-                height: calc(100vh - 50px);
+                height: calc(100% - 50px);
                 transform: translateY(0);
                 border-radius: 0px;
                 overflow: hidden;
@@ -78,7 +78,9 @@
             .slideshowcontainerBlock
             {
                 position: relative;
-                height: 100vh;
+                height: 100%;
+                z-index: -20;
+                pointer-events: none;
                 width: 100%;
             }
             .SSCUsvg
@@ -336,24 +338,6 @@
                 {
                     height: 30px;
                     top: -30px;
-                }
-                .slideshowcontainer
-                {
-                    position: fixed;
-                    height: calc(85vh - 50px);
-                    transform: translateY(0);
-                    border-radius: 0px;
-                    overflow: hidden;
-                    margin: 50px 0 0 0;
-                    background-color: #66666610;
-                    transition: 0.45s, transform 0s;
-                }
-                .slideshowcontainerBlock
-                {
-                    position: relative;
-                    height: 85vh;
-                    width: 100%;
-                    z-index: -10;
                 }
             }
             .banner-bg-u .encore
@@ -708,10 +692,12 @@
                         })
 
                     }else{
-                        let main = document.querySelector('main')
-                        document.addEventListener('scroll', function(e){
-                            main.style.opacity = Math.min(window.scrollY / 200, 1)
-                        })
+                        let main = document.querySelector('main'),
+                        sscu = document.getElementById('SSCU'),
+                        panel = document.getElementsByClassName('slideshowcontainerBlock')[0]
+                        panel.remove()
+                        sscu.style.position = 'relative'
+                        main.style.opacity = '1'
                     }
                 }
 
