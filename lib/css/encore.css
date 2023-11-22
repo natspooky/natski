@@ -24,7 +24,7 @@
 {
     position: relative;
     display: block;
-    width: max(95vmin,68vw);
+    width: max(95vmin,80vw);
     margin: 1em auto;
     border-radius: 1.3em;
     scroll-margin: 10px;
