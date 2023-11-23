@@ -102,8 +102,62 @@ add situational buttons to CMS (eg. if CMStarget == 'burger')
 
 make the text inputs in CMSF have a popout window similar to GISE
 
+change transform translate into margin so that i can do funny zoom
 
-make SSC and SSCU classes with multiple possible instances
+make SSCU and SSCU have multiple instances
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
