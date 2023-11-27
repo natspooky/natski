@@ -102,7 +102,8 @@ add situational buttons to CMS (eg. if CMStarget == 'burger')
 
 make the text inputs in CMSF have a popout window similar to GISE
 
-change transform translate into margin so that i can do funny zoom
+change transform translate into margin so that i can do funny zoom (change transform point when using margin so that it is always in the center)
+replace the initial translate when openinging editor with a margin
 
 make SSCU and SSCU have multiple instances
 
