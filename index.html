@@ -447,12 +447,176 @@
 
         <div class="slideshowcontainerBlock"></div>
 
+        <style>
+            #SSC
+            {
+                position: relative;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: flex-end;
+                background-color: transparent;
+                border: 0px;
+                overflow: hidden;
+            }
+            #SSC .pagebutton
+            {
+                position: absolute;
+                top: 50%;
+                cursor: pointer;
+                left: 15px;
+                width: fit-content;
+                transform: translateY(-50%);
+                padding: 15px 5px;
+                border-radius: 8px;
+                border: 2px solid transparent;
+                background-color: #000000c0;
+                transition: 0.2s;
+            }
+            #SSC .pagebutton:last-of-type
+            {
+                left: unset;
+                right: 15px;
+            }
+            #SSC .pagebutton svg
+            {
+                display: block;
+                fill: #f0f0f0;
+                height: 10px;
+            }
+            #SSC .pagebutton:active
+            {
+                background-color: #ffffff30;
+                transition: 0s;
+            }
+            #SSC .progress
+            {
+                position: absolute;
+                height: 7px;
+                width: 100px;
+                bottom: 10px;
+                left: 10px;
+                border: 2px solid transparent;
+                background-color: #000000c0;
+                border-radius: 100vmax;
+                overflow: hidden;
+            }
+            #SSC .progress .progress-bar
+            {
+                position: absolute;
+                left: 0;
+                top: 0;
+                height: 100%;
+                background-color: #f0f0f0;
+                transform-origin: left;
+                width: 100%;
+            }
+            #SSC .thumbs
+            {
+                position: absolute;
+                display: flex;
+                align-items: center;
+                bottom: 37px;
+            }
+            #SSC .thumbs .thumb
+            {
+                position: relative;
+                border-radius: 100vmax;
+                height: 20px;
+                width: 20px;
+                border: 0;
+                background-color: #000000c0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin: 0 0.4em;
+                border: 2px solid transparent;
+                transition: 0.2s;
+                cursor: pointer;
+            }
+            #SSC .thumbs .thumb:first-of-type
+            {
+                margin: 0 0.4em 0 0;
+            }
+            #SSC .thumbs .thumb:last-of-type
+            {
+                margin: 0 0 0 0.4em;
+            }
+            #SSC .thumbs .thumb::before
+            {
+                content: '';
+                position: relative;
+                height: 10px;
+                width: 10px;
+                border-radius: 100vmax;
+                opacity: 0;
+                transform: scale(0.5);
+                background-color: #f0f0f0;
+                transition: 0.2s;
+            }
+            #SSC .thumbs .thumb.active::before
+            {
+                opacity: 1;
+                transform: scale(1);
+            }
+            #SSC .banner-bg
+            {
+                position: absolute;
+                left: 0;
+                top: 0;
+                height: 100%;
+                width: 100%;
+                display: none;
+                align-items: center;
+                justify-content: center;
+                animation: fadeIn 1s;
+            }
+            #SSC .banner-bg img
+            {
+                position: absolute;
+                left: 0;
+                top: 0;
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+            }
+            #SSC .banner-bg .banner-button
+            {
+                position: absolute;
+                display: block;
+                padding: 0em 1.8em;
+                height: 50px;
+                line-height: 50px;
+                border-radius: 100vmax;
+                color: #f0f0f0;
+                text-decoration: none;
+                border: 2px solid transparent;
+                background-color: #000000c0;
+                cursor: pointer;
+                font-size: 16px;
+                bottom: 72px;
+                transition: 0.2s;
+            }
+            @keyframes fadeIn
+            {
+                from{opacity: 0.4;}
+                to{opacity: 1;}
+            }
+        </style>
+
         <main style="position: relative;">
             <div class="scrollContainer">
                 <div class="scrollHeader">
                     <div id="SSC" style="opacity: 0; display: none;">
 
-                        <div class="banner-bg"> <!-- duplicate 'banner-bg' for the amount of pages you want -->
+                        <div class="banner-bg">
+                    
+                            <img src="path of background image" alt="">
+
+                            <a></a>
+                    
+                        </div>
+                        <div class="banner-bg">
                     
                             <img src="path of background image" alt="">
 
