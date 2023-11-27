@@ -115,7 +115,11 @@
     height: 100%;
     width: 100%;
     z-index: -1;
-    background-color: #00000070;
+    background-color: #00000065;
+}
+#CMScontextMenu .CMScontext .CMSback:hover::before
+{
+    background-color: #00000080;
 }
 #CMScontextMenu .CMScontext .CMSback svg
 {
