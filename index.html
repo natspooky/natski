@@ -230,8 +230,9 @@
             }
             main
             {
+                position: relative;
                 background-color: #0a0a0a;
-                padding: 60px 0;
+                padding: 60px 0 20px 0;
                 opacity: 0;
             }
             main::before
@@ -267,7 +268,7 @@
             main .scrollContainer .scrollHeader #SSC
             {
                 position: relative;
-                flex-grow: 3;
+                flex-grow: 7;
                 height: 100%;
                 background-color: #66666620;
             }
@@ -288,21 +289,44 @@
             {
                 position: relative;
                 font-size: 1.3rem;
+                line-height: 20px;
+                display: flex;
+                height: fit-content;
+                align-items: center;
+                font-weight: bold;
                 margin: 0 0 6px 0;
+                padding: 0 0 5px 0;
             }
             main .scrollContainer .scrollHeader .scrollPanel .panelInfo .panelTitle GIS-icon
             {
                 position: relative;
                 flex-shrink: 0;
                 background-color: #f0f0f0;
-                font-size: 16px;
-                width: 1em;
-                height: 1em;
+                margin: 0;
+                padding: 11px;
+                margin: 0 7px 0 0;
+                height: 0;
+                width: 0;
+                font-size: 0;
             }
             main .scrollContainer .scrollHeader .scrollPanel .panelInfo .panelData
             {
+                position: relative;
                 font-size: 1rem;
+                padding: 0 0 8px 55px;
                 color: #f0f0f080;
+            }
+            main .scrollContainer .scrollHeader .scrollPanel .panelInfo .panelData::before
+            {
+                content: '';
+                position: absolute;
+                left: 35px;
+                top: 50%;
+                transform: translateY(calc(-50% - 4px));
+                width: 10px;
+                height: 3px;
+                background-color: #f0f0f080;
+                border-radius: 100vmax;
             }
             main .scrollContainer .scrollBody
             {
@@ -330,39 +354,6 @@
                 .thumbs .thumb-u:hover
                 {
                     background-color: #66666680;
-                }
-            }
-            @media (orientation: portrait)
-            {
-                .banner-bg-u div
-                {
-                    margin: 0.6em 1em 1em 1em;
-                    animation: unset;
-                }
-                .banner-bg-u div svg
-                {
-                    display: none;
-                }
-                .banner-bg-u div h1
-                {
-                    text-align: center;
-                    width: 100%;
-                    line-height: normal;
-                }
-                .banner-bg-u div p,.banner-bg-u span p
-                {
-                    width: 100%;
-                    text-align: center;
-                    font-size: 20px;
-                }
-                .pagebutton-u
-                {
-                    display: none;
-                }
-                main::before
-                {
-                    height: 30px;
-                    top: -30px;
                 }
             }
             .banner-bg-u .encore
@@ -633,6 +624,58 @@
                 from{opacity: 0.4;}
                 to{opacity: 1;}
             }
+
+
+            @media (orientation: portrait)
+            {
+                .banner-bg-u div
+                {
+                    margin: 0.6em 1em 1em 1em;
+                    animation: unset;
+                }
+                .banner-bg-u div svg
+                {
+                    display: none;
+                }
+                .banner-bg-u div h1
+                {
+                    text-align: center;
+                    width: 100%;
+                    line-height: normal;
+                }
+                .banner-bg-u div p,.banner-bg-u span p
+                {
+                    width: 100%;
+                    text-align: center;
+                    font-size: 20px;
+                }
+                .pagebutton-u
+                {
+                    display: none;
+                }
+                main::before
+                {
+                    height: 30px;
+                    top: -30px;
+                }
+                main .scrollContainer .scrollHeader
+                {
+                    flex-direction: column;
+                    height: auto;
+                }
+                main .scrollContainer .scrollHeader #SSC
+                {
+                    flex-grow: 0;
+                    width: 100%;
+                    height: 225px;
+                }
+                main .scrollContainer .scrollHeader .scrollPanel
+                {
+                    flex-grow: 0;
+                    width: 100%;
+                }
+
+            }
         </style>
 
         <main style="position: relative;">
@@ -642,14 +685,14 @@
 
                         <div class="banner-bg">
                     
-                            <img src="icon/slides/alevel/1.png" alt="">
+                            <img src="icon/portimg/alevel/12.png" alt="">
 
                             
                     
                         </div>
                         <div class="banner-bg">
                     
-                            <img src="icon/slides/alevel/1.png" alt="">
+                            <img src="icon/portimg/alevel/13.png" alt="">
 
                             
                     
@@ -659,20 +702,33 @@
                     <div class="scrollPanel">
                         <div class="panelInfo">
                             <p class="panelTitle">
-                                <GIS-icon title="alert"></GIS-icon>
-                                text
+                                <GIS-icon title="browser"></GIS-icon>
+                                Site Version
                             </p>
                             <p class="panelData">
-                                burger
+                                N2.0
                             </p>
                         </div>
                         <div class="panelInfo">
-                            <p class="panelTitle"></p>
-                            <p class="panelData"></p>
+                            <p class="panelTitle">
+                                <GIS-icon title="ENCORE"></GIS-icon>
+                                ENCORE Version
+                            </p>
+                            <p class="panelData">
+                                v1.2.3
+                            </p>
                         </div>
                         <div class="panelInfo">
-                            <p class="panelTitle"></p>
-                            <p class="panelData"></p>
+                            <p class="panelTitle">
+                                <GIS-icon title="gear"></GIS-icon>
+                                Current Projects
+                            </p>
+                            <p class="panelData">
+                                ENCORE PSS
+                            </p>
+                            <p class="panelData">
+                                ENCORE VPS
+                            </p>
                         </div>
                     </div>
                 </div>
