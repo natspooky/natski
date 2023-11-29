@@ -108,7 +108,7 @@ replace the initial translate when openinging editor with a margin
 make SSCU and SSCU have multiple instances
 
 
-
+fix weird sizing issues of CMS and GIS on index.html
 
 
 

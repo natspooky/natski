@@ -232,7 +232,7 @@
             {
                 position: relative;
                 background-color: #0a0a0a;
-                padding: 60px 0 20px 0;
+                padding: 30px 0 20px 0;
                 opacity: 0;
             }
             main::before
@@ -272,6 +272,17 @@
                 height: 100%;
                 background-color: #66666620;
             }
+            main .scrollContainer .scrollHeader #SSC span
+            {
+                position: absolute;
+                top: 10px;
+                left: 10px;
+                color: #f0f0f0;
+                font-weight: bold;
+                background-color: #000000c0;
+                padding: 7px 12px;
+                border-radius: 7px;
+            }
             main .scrollContainer .scrollHeader .scrollPanel
             {
                 position: relative;
@@ -285,6 +296,10 @@
             {
                 position: relative;
                 width: 100%;
+            }
+            main .scrollContainer .scrollHeader .scrollPanel .panelInfo .panelImage
+            {
+
             }
             main .scrollContainer .scrollHeader .scrollPanel .panelInfo .panelTitle
             {
@@ -333,10 +348,78 @@
             {
                 position: relative;
                 display: block;
-                height: 100%;
+                height: auto;
                 width: 100%;
                 padding: 15px;
-                background-color: #66666620;
+                background-color: #66666610;
+            }
+            main .scrollContainer .scrollBody .scrollTitle
+            {
+                position: relative;
+                font-size: 1.3rem;
+            }
+            main .scrollContainer .scrollBody .scrollIcons
+            {
+                position: relative;
+                width: 100%;
+                display: flex;
+                flex-wrap: wrap;
+                padding: 10px 0 0 0;
+            }
+            main .scrollContainer .scrollBody .scrollIcons button
+            {
+                position: relative;
+                flex-grow: 1;
+                height: 80px;
+                margin: 10px;
+            }
+            main .scrollContainer .scrollBody .scrollIcons button::before
+            {
+                content: '';
+                position: absolute;
+                top: -10%;
+                left: -10%;
+                width: 120%;
+                height: 120%;
+                background-image: url(icon/svg/ENCORE_ICONS/ENCORE.svg);
+                background-repeat: no-repeat;
+                background-position: center center;
+                opacity: 0;
+                transform: scale(1);
+                transition: 0.3s;
+            }
+            main .scrollContainer .scrollBody .scrollIcons button:hover::before
+            {
+                transform: scale(1.2);
+                opacity: 0.1;
+            }
+            main .scrollContainer .scrollBody .scrollIcons button::after
+            {
+                content: attr(name);
+                position: absolute;
+                padding: 5px 10px;
+                left: 50%;
+                top: 100%;
+                font-weight: bold;
+                opacity: 0;
+                transform: translate(-50%, -10%);
+                transition: 0.3s;
+            }
+            main .scrollContainer .scrollBody .scrollIcons button GIS-icon
+            {
+                position: relative;
+                padding: 35px;
+                background-color: #f0f0f0;
+                transition: 0.15s;
+            }
+            main .scrollContainer .scrollBody .scrollIcons button:hover GIS-icon
+            {
+                background-color: var(--themecol);
+            }
+            main .scrollContainer .scrollBody .scrollIcons button:hover::after
+            {
+                transform: translate(-50%, -10%);
+                opacity: 1;
             }
             @media (hover: hover){
                 .pagebutton-u:hover
@@ -537,7 +620,6 @@
                 padding: 0;
                 bottom: 10px;
                 right: 10px;
-                z-index: 10;
                 pointer-events: unset;
             }
             #SSC .thumbs .thumb
@@ -699,7 +781,7 @@
                             
                     
                         </div>
-                    
+                        <span>Featured</span>
                     </div>
                     <div class="scrollPanel">
                         <div class="panelInfo">
@@ -732,7 +814,36 @@
                     </div>
                 </div>
                 <div class="scrollBody">
-                    
+                    <h1 class="scrollTitle">ENCORE Plugins</h1>
+                    <div class="scrollIcons">
+                        <button name="SSC">
+                            <GIS-icon title="SSC"></GIS-icon>
+                        </button>
+                        <button name="PDS">
+                            <GIS-icon title="PDS"></GIS-icon>
+                        </button>
+                        <button name="CLS">
+                            <GIS-icon title="CLS"></GIS-icon>
+                        </button>
+                        <button name="CLSF">
+                            <GIS-icon title="CLSF"></GIS-icon>
+                        </button>
+                        <button name="VPS">
+                            <GIS-icon title="VPS"></GIS-icon>
+                        </button>
+                        <button name="PSS">
+                            <GIS-icon title="PSS"></GIS-icon>
+                        </button>
+                        <button name="CMS">
+                            <GIS-icon title="CMS"></GIS-icon>
+                        </button>
+                        <button name="CMSF">
+                            <GIS-icon title="CMSF"></GIS-icon>
+                        </button>
+                        <button name="GIS">
+                            <GIS-icon title="GIS"></GIS-icon>
+                        </button>
+                    </div>
                 </div>
             </div>
 
