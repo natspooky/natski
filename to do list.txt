@@ -110,6 +110,7 @@ make SSCU and SSCU have multiple instances
 
 fix weird sizing issues of CMS and GIS on index.html
 
+make all element creations into a function to save space
 
 
 
