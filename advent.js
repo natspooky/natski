@@ -1,4 +1,4 @@
-fetch("test.txt")
+/*fetch("test.txt")
   .then((res) => res.text())
   .then((text) => {
     let array = text.split('\n'),
@@ -18,7 +18,7 @@ function calculat(e, numList){
         }
         for(let b = 0; b < 2; b++) {
             r += 1
-            valueArray.push(checkbf(e, r, i))  
+            valueArray.push(checkbf(e, r, i))
         }
         total += Number((valueArray[0].toString()) + (valueArray[1].toString()))
     }
@@ -41,4 +41,4 @@ function getSTRnum(e, r, i, numList) {
         }
     }
     return e[i]
-}
+}*/
