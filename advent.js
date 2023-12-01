@@ -64,4 +64,5 @@ function getSTRnum(e, r, i, numList){
             }
         }
     }
+    return e[i]
 }
