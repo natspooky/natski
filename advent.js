@@ -54,7 +54,7 @@ function checkbf(e, r, i) {
 
 function getSTRnum(e, r, i, numList){
     console.log(e[i], i, (r % 2 == 0) ? 'op' : 'strt')
-    for(let y = 0; y < e[i].length - 5; y++) {
+    for(let y = 0; y < e[i].length - 4; y++) {
         let miniVal = e[i].slice(((r % 2 == 0) ? e[i].length - 6 : y), ((r % 2 == 0) ? (e[i].length - 1 - y) : y + 5));
         console.log(miniVal)
         for(let v = 0; v < numList.length; v++) {
