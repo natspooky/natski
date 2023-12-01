@@ -28,8 +28,7 @@ function calculat(e, numList){
         for(let x = 0; x < 2; x++) {
 
             r += 1
-            let n = getSTRnum(e, r, i, numList)
-            e[i] = n
+            e[i] = getSTRnum(e, r, i, numList)
             
         }
 
@@ -54,9 +53,8 @@ function checkbf(e, r, i) {
 
 
 function getSTRnum(e, r, i, numList){
-    console.log('e')
-    let tt = e[i].length - 5
-    for(let y = 0; y < tt; y++) {
+    console.log(e[i])
+    for(let y = 0; y < e[i].length - 5; y++) {
         let miniVal = e[i].slice(((r % 2 == 0) ? e[i].length - 6 : y), ((r % 2 == 0) ? (e[i].length - 1 - y) : y + 5));
         for(let v = 0; v < numList.length; v++) {
             if(miniVal.indexOf(numList[v][0]) != -1) {
