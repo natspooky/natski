@@ -28,7 +28,7 @@ function calculat(e, numList){
         for(let x = 0; x < 2; x++) {
 
             r += 1
-            e[i] = getSTRnum(e, r, i, numList)
+            e[i] = getSTRnum(e, r, nume = 1, numList)
             
         }
 
