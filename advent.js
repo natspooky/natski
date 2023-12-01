@@ -59,8 +59,8 @@ function getSTRnum(e, r, i, numList){
         console.log(miniVal)
         for(let v = 0; v < numList.length; v++) {
             if(miniVal.indexOf(numList[v][0]) != -1) {
-                console.log((e[i].slice(0, ((r % 2 == 0) ? e[i].length - 6 : y)) + miniVal.replace(numList[v][0], numList[v][1]) + e[i].slice(((r % 2 == 0) ? (e[i].length - 1 - y) : y + 5), e[i].length)))
-                return (e[i].slice(0, ((r % 2 == 0) ? e[i].length - 6 : y)) + miniVal.replace(numList[v][0], numList[v][1]) + e[i].slice(((r % 2 == 0) ? (e[i].length - 1 - y) : y + 5), e[i].length))
+                console.log((e[i].slice(0, ((r % 2 == 0) ? e[i].length - 5 - y : y)) + miniVal.replace(numList[v][0], v + 1) + e[i].slice(((r % 2 == 0) ? (e[i].length - y) : y + 5), e[i].length)))
+                return (e[i].slice(0, ((r % 2 == 0) ? e[i].length - 5 - y : y)) + miniVal.replace(numList[v][0], v + 1) + e[i].slice(((r % 2 == 0) ? (e[i].length - y) : y + 5), e[i].length))
             }
         }
     }
