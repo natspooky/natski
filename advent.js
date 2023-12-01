@@ -44,8 +44,8 @@ function calculat(e, numList){
 
 function checkbf(e, r, i) {
     for(let y = 0; y < e[i].length; y++) {
-        if(!isNaN(e[i][ ((r % 2 == 0) ? e[i].length : 0) + y * ((r % 2 == 0) ? -1 : 1)])) {
-            return e[i][((r % 2 == 0) ? e[i].length : 0) + y * ((r % 2 == 0) ? -1 : 1)]
+        if(!isNaN(e[i][ ((r % 2 == 0) ? e[i].length - 1 : 0) + y * ((r % 2 == 0) ? -1 : 1)])) {
+            return e[i][((r % 2 == 0) ? e[i].length - 1 : 0) + y * ((r % 2 == 0) ? -1 : 1)]
         }
     }
 }
