@@ -30,7 +30,6 @@ function calculat(e, numList){
             r += 1
             e[i] = getSTRnum(e, r, i, numList)
             
-
         }
 
         for(let b = 0; b < 2; b++) {
@@ -67,6 +66,7 @@ function checkbf(e, r, i) {
 
 
 function getSTRnum(e, r, i, numList){
+    console.log('e')
     for(let y = 0; y < e[i].length - 5; y++) {
 
         let miniVal = e[i].slice(((r % 2 == 0) ? e[i].length - 6 : y), ((r % 2 == 0) ? (e[i].length - 1 - y) : y + 5));
