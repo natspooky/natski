@@ -28,7 +28,7 @@ function calculat(e, numList){
         for(let x = 0; x < 2; x++) {
 
             r += 1
-            e[i] = getSTRnum(e, r, nume = 1, numList)
+            e[i] = getSTRnum(e, r, i, numList)
             
         }
 
@@ -45,7 +45,7 @@ function calculat(e, numList){
 function checkbf(e, r, i) {
     for(let y = 0; y < e[i].length; y++) {
         if(!isNaN(e[i][ ((r % 2 == 0) ? e[i].length - 1 : 0) + y * ((r % 2 == 0) ? -1 : 1)])) {
-            return e[i][ ((r % 2 == 0) ? e[i].length - 1 : 0) + y * ((r % 2 == 0) ? -1 : 1)]
+            return e[i][((r % 2 == 0) ? e[i].length - 1 : 0) + y * ((r % 2 == 0) ? -1 : 1)]
         }
     }
 }
@@ -53,11 +53,13 @@ function checkbf(e, r, i) {
 
 
 function getSTRnum(e, r, i, numList){
-    console.log(e[i+ 1], i + 1)
+    console.log(e[i+ 1], i)
     for(let y = 0; y < e[i].length - 5; y++) {
         let miniVal = e[i].slice(((r % 2 == 0) ? e[i].length - 6 : y), ((r % 2 == 0) ? (e[i].length - 1 - y) : y + 5));
+        console.log(miniVal)
         for(let v = 0; v < numList.length; v++) {
             if(miniVal.indexOf(numList[v][0]) != -1) {
+                console.log((e[i].slice(0, ((r % 2 == 0) ? e[i].length - 6 : y)) + miniVal.replace(numList[v][0], numList[v][1]) + e[i].slice(((r % 2 == 0) ? (e[i].length - 1 - y) : y + 5), e[i].length)))
                 return (e[i].slice(0, ((r % 2 == 0) ? e[i].length - 6 : y)) + miniVal.replace(numList[v][0], numList[v][1]) + e[i].slice(((r % 2 == 0) ? (e[i].length - 1 - y) : y + 5), e[i].length))
             }
         }
