@@ -7,6 +7,7 @@
 fetch("test.txt")
   .then((res) => res.text())
   .then((text) => {
+    console.log('loaded')
     let array = text.split('\n'),
     numList = [['one','o1e'],['two','t2o'],['three','t3e'],['four','f4r'],['five','f5e'],['six','s6x'],['seven','s7n'],['eight','e8t'],['nine','n9e']]
     calculat(array, numList)
