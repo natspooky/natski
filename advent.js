@@ -1,21 +1,11 @@
-
-
-
-
-
-
 fetch("test.txt")
   .then((res) => res.text())
   .then((text) => {
-    console.log('loaded')
     let array = text.split('\n'),
     numList = [['one','o1e'],['two','t2o'],['three','t3e'],['four','f4r'],['five','f5e'],['six','s6x'],['seven','s7n'],['eight','e8t'],['nine','n9e']]
     calculat(array, numList)
    })
   .catch((e) => console.error(e));
-
-
-
 function calculat(e, numList){
     let strLen =  e.length,
     total = 0;
@@ -34,7 +24,6 @@ function calculat(e, numList){
     }
     console.log(total)
 }
-
 function checkbf(e, r, i) {
     for(let y = 0; y < e[i].length; y++) {
         if(!isNaN(e[i][ ((r % 2 == 0) ? e[i].length - 1 : 0) + y * ((r % 2 == 0) ? -1 : 1)])) {
@@ -42,15 +31,11 @@ function checkbf(e, r, i) {
         }
     }
 }
-
-function getSTRnum(e, r, i, numList){
-    console.log(e[i], i, (r % 2 == 0) ? 'op' : 'strt')
+function getSTRnum(e, r, i, numList) {
     for(let y = 0; y < e[i].length - 4; y++) {
         let miniVal = e[i].slice(((r % 2 == 0) ? e[i].length - 5 - y : y), ((r % 2 == 0) ? (e[i].length - y) : y + 5));
-        console.log(miniVal)
         for(let v = 0; v < numList.length; v++) {
             if(miniVal.indexOf(numList[v][0]) != -1) {
-                console.log((e[i].slice(0, ((r % 2 == 0) ? e[i].length - 5 - y : y)) + miniVal.replace(numList[v][0], numList[v][1]) + e[i].slice(((r % 2 == 0) ? (e[i].length - y) : y + 5), e[i].length)))
                 return (e[i].slice(0, ((r % 2 == 0) ? e[i].length - 5 - y : y)) + miniVal.replace(numList[v][0], numList[v][1]) + e[i].slice(((r % 2 == 0) ? (e[i].length - y) : y + 5), e[i].length))
             }
         }
