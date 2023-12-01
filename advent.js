@@ -33,54 +33,34 @@ function calculat(e, numList){
         }
 
         for(let b = 0; b < 2; b++) {
-
             r += 1
-            valueArray.push(checkbf(e, r, i))
-            
+            valueArray.push(checkbf(e, r, i))  
         }
-
-
-
         total += Number((valueArray[0].toString()) + (valueArray[1].toString()))
-
     }
-
     console.log(total)
-
 }
 
 
 function checkbf(e, r, i) {
-
     for(let y = 0; y < e[i].length; y++) {
-
         if(!isNaN(e[i][ ((r % 2 == 0) ? e[i].length - 1 : 0) + y * ((r % 2 == 0) ? -1 : 1)])) {
             return e[i][ ((r % 2 == 0) ? e[i].length - 1 : 0) + y * ((r % 2 == 0) ? -1 : 1)]
         }
-
     }
-
-    
 }
 
 
 
 function getSTRnum(e, r, i, numList){
     console.log('e')
-    for(let y = 0; y < e[i].length - 5; y++) {
-
+    let tt = e[i].length - 5
+    for(let y = 0; y < tt; y++) {
         let miniVal = e[i].slice(((r % 2 == 0) ? e[i].length - 6 : y), ((r % 2 == 0) ? (e[i].length - 1 - y) : y + 5));
-        
         for(let v = 0; v < numList.length; v++) {
-
             if(miniVal.indexOf(numList[v][0]) != -1) {
-
                 return (e[i].slice(0, ((r % 2 == 0) ? e[i].length - 6 : y)) + miniVal.replace(numList[v][0], numList[v][1]) + e[i].slice(((r % 2 == 0) ? (e[i].length - 1 - y) : y + 5), e[i].length))
-
             }
-
         }
-     
-
     }
 }
