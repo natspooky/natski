@@ -5,6 +5,10 @@
         background-color: #ffffff20;
         border: 2px solid #ffffff20;
     }
+    #SSCU:hover .pagebutton-u
+    {
+        opacity: 1;
+    }
 }
 #SSCU *, #SSCU
 {
@@ -63,6 +67,7 @@
     border-radius: 10px;
     border: 2px solid transparent;
     background-color: #000000c0;
+    opacity: 0;
     transition: 0.2s;
 }
 #SSCU .pagebutton-u:last-of-type

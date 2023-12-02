@@ -369,26 +369,7 @@
                 height: 80px;
                 margin: 10px;
             }
-            main .scrollContainer .scrollBody .scrollIcons button::before
-            {
-                content: '';
-                position: absolute;
-                top: -10%;
-                left: -10%;
-                width: 120%;
-                height: 120%;
-                background-image: url(icon/svg/ENCORE_ICONS/ENCORE.svg);
-                background-repeat: no-repeat;
-                background-position: center center;
-                opacity: 0;
-                transform: scale(1);
-                transition: 0.3s;
-            }
-            main .scrollContainer .scrollBody .scrollIcons button:hover::before
-            {
-                transform: scale(1.2);
-                opacity: 0.1;
-            }
+            
             main .scrollContainer .scrollBody .scrollIcons button::after
             {
                 content: attr(name);
@@ -411,6 +392,7 @@
             main .scrollContainer .scrollBody .scrollIcons button:hover GIS-icon
             {
                 background-color: var(--themecol);
+                mask-repeat: no-repeat;
             }
             main .scrollContainer .scrollBody .scrollIcons button:hover::after
             {
@@ -567,6 +549,7 @@
                 border-radius: 8px;
                 border: 2px solid transparent;
                 background-color: #000000c0;
+                opacity: 0;
                 transition: 0.2s;
             }
             #SSC .pagebutton:last-of-type
@@ -584,6 +567,10 @@
             {
                 background-color: #ffffff30;
                 transition: 0s;
+            }
+            #SSC:hover .pagebutton
+            {
+                opacity: 1;
             }
             #SSC .progress
             {

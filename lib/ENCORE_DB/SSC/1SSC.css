@@ -5,6 +5,10 @@
         background-color: #ffffff20;
         border: 2px solid #ffffff20;
     }
+    #SSC:hover .pagebutton
+    {
+        opacity: 1;
+    }
 }
 #SSC *, #SSC
 {
@@ -44,6 +48,7 @@
     border-radius: 10px;
     border: 2px solid transparent;
     background-color: #000000c0;
+    opacity: 0;
     transition: 0.2s;
 }
 #SSC .pagebutton:last-of-type
