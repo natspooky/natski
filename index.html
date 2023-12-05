@@ -283,6 +283,23 @@
                 padding: 7px 12px;
                 border-radius: 7px;
             }
+            main .scrollContainer .scrollHeader #SSC .SSCcontainer
+            {
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                animation: featured 0.6s;
+            }
+            main .scrollContainer .scrollHeader #SSC .SSCcontainer GIS-icon
+            {
+                position: relative;
+                display: inline-block;
+                width: 90px;
+                height: 90px;
+                margin: 0 15px 0 0;
+                background-color: #f0f0f0;
+            }
             main .scrollContainer .scrollHeader .scrollPanel
             {
                 position: relative;
@@ -366,26 +383,18 @@
             {
                 position: relative;
                 flex-grow: 1;
+                display: flex;
+                align-items: center;
+                justify-content: center;
                 height: 80px;
                 margin: 10px;
-            }
-            
-            main .scrollContainer .scrollBody .scrollIcons button::after
-            {
-                content: attr(name);
-                position: absolute;
-                padding: 5px 10px;
-                left: 50%;
-                top: 100%;
-                font-weight: bold;
-                opacity: 0;
-                transform: translate(-50%, -10%);
-                transition: 0.3s;
             }
             main .scrollContainer .scrollBody .scrollIcons button GIS-icon
             {
                 position: relative;
-                padding: 35px;
+                width: 80px;
+                height: 100%;
+                display: block;
                 background-color: #f0f0f0;
                 transition: 0.15s;
             }
@@ -393,11 +402,6 @@
             {
                 background-color: var(--themecol);
                 mask-repeat: no-repeat;
-            }
-            main .scrollContainer .scrollBody .scrollIcons button:hover::after
-            {
-                transform: translate(-50%, -10%);
-                opacity: 1;
             }
             @media (hover: hover){
                 .pagebutton-u:hover
@@ -417,6 +421,23 @@
                 {
                     background-color: #66666680;
                 }
+                main .scrollContainer .scrollBody .scrollIcons button::after
+            {
+                content: attr(name);
+                position: absolute;
+                padding: 5px 10px;
+                left: 50%;
+                top: 100%;
+                font-weight: bold;
+                opacity: 0;
+                transform: translate(-50%, -5%);
+                transition: 0.3s;
+            }
+            main .scrollContainer .scrollBody .scrollIcons button:hover::after
+            {
+                transform: translate(-50%, -5%);
+                opacity: 1;
+            }
             }
             .banner-bg-u .encore
             {
@@ -659,31 +680,16 @@
                 justify-content: center;
                 animation: fadeIn 1s;
             }
-            #SSC .banner-bg img
-            {
-                position: absolute;
-                left: 0;
-                top: 0;
-                height: 100%;
-                width: 100%;
-                object-fit: cover;
-            }
-            #SSC .banner-bg .banner-button
+            #SSC .banner-bg button
             {
                 position: absolute;
                 display: block;
-                padding: 0em 1.8em;
-                height: 50px;
-                line-height: 50px;
-                border-radius: 100vmax;
-                color: #f0f0f0;
-                text-decoration: none;
-                border: 2px solid transparent;
-                background-color: #000000c0;
-                cursor: pointer;
-                font-size: 16px;
-                bottom: 72px;
-                transition: 0.2s;
+                top: 0;
+                left: 0;
+                height: 100%;
+                width: 100%;
+                background-color: transparent;
+                border: 0;
             }
             @keyframes fadeIn
             {
@@ -750,18 +756,32 @@
                 <div class="scrollHeader">
                     <div id="SSC" style="opacity: 0; display: none;">
 
-                        <div class="banner-bg">
+                        <div class="banner-bg" style="background-color: rgba(174, 0, 255, 0.15);">
                     
-                            <img src="icon/portimg/alevel/12.png" alt="">
+                            <div class="SSCcontainer">
+                                <GIS-icon title="CLS"></GIS-icon>
+                                <div class="SSCtextWrapper">
+                                    <h1>CHANGELOG</h1>
+                                    <p>Info about the most recent<br>changes to ENCORE</p>
+                                </div>
+                            </div>
+
+                            <button onclick="loadframe('Changelog')"></button>
 
                             
                     
                         </div>
-                        <div class="banner-bg">
+                        <div class="banner-bg" style="background-color: rgba(255, 0, 0, 0.15);">
                     
-                            <img src="icon/portimg/alevel/13.png" alt="">
+                            <div class="SSCcontainer">
+                                <GIS-icon title="GIS"></GIS-icon>
+                                <div class="SSCtextWrapper">
+                                    <h1>GIS PURGE</h1>
+                                    <p>GIS icons is currently<br>undergoing a full redesign</p>
+                                </div>
+                            </div>
 
-                            
+                            <button onclick="loadframe('ENCORE GIS')"></button>
                     
                         </div>
                         <span>Featured</span>
@@ -799,31 +819,31 @@
                 <div class="scrollBody">
                     <h1 class="scrollTitle">ENCORE Plugins</h1>
                     <div class="scrollIcons">
-                        <button name="SSC">
+                        <button name="SSC" onclick="loadframe('ENCORE SSC')">
                             <GIS-icon title="SSC"></GIS-icon>
                         </button>
-                        <button name="PDS">
+                        <button name="PDS" onclick="loadframe('ENCORE PDS')">
                             <GIS-icon title="PDS"></GIS-icon>
                         </button>
-                        <button name="CLS">
+                        <button name="CLS" onclick="loadframe('ENCORE CLS')">
                             <GIS-icon title="CLS"></GIS-icon>
                         </button>
-                        <button name="CLSF">
+                        <button name="CLSF" onclick="loadframe('ENCORE CLSF')">
                             <GIS-icon title="CLSF"></GIS-icon>
                         </button>
-                        <button name="VPS">
+                        <button name="VPS" onclick="loadframe('ENCORE VPS')">
                             <GIS-icon title="VPS"></GIS-icon>
                         </button>
-                        <button name="PSS">
+                        <button name="PSS" onclick="loadframe('ENCORE PSS')">
                             <GIS-icon title="PSS"></GIS-icon>
                         </button>
-                        <button name="CMS">
+                        <button name="CMS" onclick="loadframe('ENCORE CMS')">
                             <GIS-icon title="CMS"></GIS-icon>
                         </button>
-                        <button name="CMSF">
+                        <button name="CMSF" onclick="loadframe('ENCORE CMSF')">
                             <GIS-icon title="CMSF"></GIS-icon>
                         </button>
-                        <button name="GIS">
+                        <button name="GIS" onclick="loadframe('ENCORE GIS')">
                             <GIS-icon title="GIS"></GIS-icon>
                         </button>
                     </div>

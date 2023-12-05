@@ -42,3 +42,9 @@
     from{transform: translateX(200%);}
     to{transform: translateX(0);}
 }
+
+
+@keyframes featured {
+    from{opacity: 0; transform: translateY(30px);}
+    to{opacity: 1; transform: translateY(0);}
+}
