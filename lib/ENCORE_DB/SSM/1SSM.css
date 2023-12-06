@@ -385,7 +385,7 @@
     overflow: visible;
     z-index: 3;
 }
-#SSM .SSMcategory .SSMselection .item
+#SSM .SSMcategory .SSMselection .SSMitem
 {
     position: relative;
     height: 30px;
@@ -400,11 +400,11 @@
     color: #f0f0f0;
     font-weight: bold;
 }
-#SSM .SSMcategory .SSMselection .item:last-of-type
+#SSM .SSMcategory .SSMselection .SSMitem:last-of-type
 {
     border-radius: 0 0 15px 15px;
 }
-#SSM .SSMcategory .SSMselection .item:nth-of-type(2)
+#SSM .SSMcategory .SSMselection .SSMitem:nth-of-type(2)
 {
     border-radius: 15px 15px 0 0;
     border: 0;
