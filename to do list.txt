@@ -123,9 +123,11 @@ remake download in new style
 remake loop in new style
 make video for art have vhs effect and use quotes saved in phone camera roll
 
+add keybinds to VPS
 
+redesign GIS popup for ENCORE GIS page
 
-
+add search bar to GIS
 
 
 
