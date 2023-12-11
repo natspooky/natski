@@ -8,13 +8,11 @@
       }
     </style>
   </defs>
-  <rect class="cls-1" x="0" y="351.53" width="83.63" height="148.34" rx="32.21" ry="32.21" transform="translate(83.63 851.39) rotate(-180)"/>
-  <rect class="cls-1" x="766.76" y="351.53" width="83.63" height="148.34" rx="32.21" ry="32.21" transform="translate(1617.16 851.39) rotate(-180)"/>
-  <rect class="cls-1" x="96.1" y="241.25" width="83.63" height="368.9" rx="32.21" ry="32.21" transform="translate(275.83 851.39) rotate(180)"/>
-  <rect class="cls-1" x="192.2" y="272.48" width="83.63" height="306.44" rx="32.21" ry="32.21" transform="translate(468.02 851.39) rotate(180)"/>
-  <rect class="cls-1" x="288.29" y="344.91" width="83.63" height="161.58" rx="32.21" ry="32.21" transform="translate(660.22 851.39) rotate(180)"/>
-  <rect class="cls-1" x="384.39" y="222.16" width="83.63" height="407.07" rx="32.21" ry="32.21" transform="translate(852.41 851.39) rotate(180)"/>
-  <rect class="cls-1" x="480.49" y="283.75" width="83.63" height="283.89" rx="32.21" ry="32.21" transform="translate(1044.61 851.39) rotate(180)"/>
-  <rect class="cls-1" x="576.59" y="173.15" width="83.63" height="505.09" rx="32.21" ry="32.21" transform="translate(1236.8 851.39) rotate(180)"/>
-  <rect class="cls-1" x="672.68" y="323.88" width="83.63" height="203.63" rx="32.21" ry="32.21" transform="translate(1429 851.39) rotate(180)"/>
+  <rect class="cls-1" x="1.35" y="351.53" width="83.63" height="148.34" rx="32.21" ry="32.21" transform="translate(86.32 851.39) rotate(-180)"/>
+  <rect class="cls-1" x="765.42" y="351.53" width="83.63" height="148.34" rx="32.21" ry="32.21" transform="translate(1614.47 851.39) rotate(-180)"/>
+  <rect class="cls-1" x="129.54" y="272.04" width="83.63" height="307.31" rx="32.21" ry="32.21" transform="translate(342.71 851.39) rotate(180)"/>
+  <rect class="cls-1" x="257.73" y="222.16" width="83.63" height="407.07" rx="32.21" ry="32.21" transform="translate(599.1 851.39) rotate(180)"/>
+  <rect class="cls-1" x="385.93" y="283.75" width="83.63" height="283.89" rx="32.21" ry="32.21" transform="translate(855.49 851.39) rotate(180)"/>
+  <rect class="cls-1" x="514.12" y="173.15" width="83.63" height="505.09" rx="32.21" ry="32.21" transform="translate(1111.88 851.39) rotate(180)"/>
+  <rect class="cls-1" x="645.2" y="313.68" width="83.63" height="224.03" rx="32.21" ry="32.21" transform="translate(1374.03 851.39) rotate(180)"/>
 </svg>
