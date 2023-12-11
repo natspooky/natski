@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.4 850.39">
-  <path d="M761.78,268.94h0c48.94,0,88.62,39.68,88.62,88.62v135.27c0,48.94-39.68,88.62-88.62,88.62h0c-48.94,0-88.62-39.68-88.62-88.62v-135.27c0-48.94,39.68-88.62,88.62-88.62Z"/>
-  <path d="M312.01,268.94h0c48.94,0,88.62,39.68,88.62,88.62v135.27c0,48.94-39.68,88.62-88.62,88.62h0c-48.94,0-88.62-39.68-88.62-88.62v-135.27c0-48.94,39.68-88.62,88.62-88.62Z"/>
-  <path d="M538.39,59.66h0c48.94,0,88.62,39.68,88.62,88.62V702.11c0,48.94-39.68,88.62-88.62,88.62h0c-48.94,0-88.62-39.68-88.62-88.62V148.28c0-48.94,39.68-88.62,88.62-88.62Z"/>
-  <path d="M88.62,0h0c48.94,0,88.62,39.68,88.62,88.62V761.77c0,48.94-39.68,88.62-88.62,88.62h0c-48.94,0-88.62-39.68-88.62-88.62V88.62C0,39.68,39.68,0,88.62,0Z"/>
+<svg id="Layer_44" data-name="Layer 44" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.89 850.9">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #010101;
+        stroke-width: 0px;
+      }
+    </style>
+  </defs>
+  <rect class="cls-1" x="0" y="351.53" width="83.63" height="148.34" rx="32.21" ry="32.21" transform="translate(83.63 851.39) rotate(-180)"/>
+  <rect class="cls-1" x="766.76" y="351.53" width="83.63" height="148.34" rx="32.21" ry="32.21" transform="translate(1617.16 851.39) rotate(-180)"/>
+  <rect class="cls-1" x="96.1" y="241.25" width="83.63" height="368.9" rx="32.21" ry="32.21" transform="translate(275.83 851.39) rotate(180)"/>
+  <rect class="cls-1" x="192.2" y="272.48" width="83.63" height="306.44" rx="32.21" ry="32.21" transform="translate(468.02 851.39) rotate(180)"/>
+  <rect class="cls-1" x="288.29" y="344.91" width="83.63" height="161.58" rx="32.21" ry="32.21" transform="translate(660.22 851.39) rotate(180)"/>
+  <rect class="cls-1" x="384.39" y="222.16" width="83.63" height="407.07" rx="32.21" ry="32.21" transform="translate(852.41 851.39) rotate(180)"/>
+  <rect class="cls-1" x="480.49" y="283.75" width="83.63" height="283.89" rx="32.21" ry="32.21" transform="translate(1044.61 851.39) rotate(180)"/>
+  <rect class="cls-1" x="576.59" y="173.15" width="83.63" height="505.09" rx="32.21" ry="32.21" transform="translate(1236.8 851.39) rotate(180)"/>
+  <rect class="cls-1" x="672.68" y="323.88" width="83.63" height="203.63" rx="32.21" ry="32.21" transform="translate(1429 851.39) rotate(180)"/>
 </svg>
