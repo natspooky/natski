@@ -409,7 +409,7 @@
     border-radius: 15px 15px 0 0;
     border: 0;
 }
-#SSM .SSMcategory .SSMselection .SSMitem:only-child
+#SSM .SSMcategory .SSMselection .SSMitem:last-of-type:nth-of-type(2)
 {
     border-radius: 15px;
     border: 0;
