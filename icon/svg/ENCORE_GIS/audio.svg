@@ -8,11 +8,9 @@
       }
     </style>
   </defs>
-  <rect class="cls-1" x="1.35" y="351.53" width="83.63" height="148.34" rx="32.21" ry="32.21" transform="translate(86.32 851.39) rotate(-180)"/>
-  <rect class="cls-1" x="765.42" y="351.53" width="83.63" height="148.34" rx="32.21" ry="32.21" transform="translate(1614.47 851.39) rotate(-180)"/>
-  <rect class="cls-1" x="129.54" y="272.04" width="83.63" height="307.31" rx="32.21" ry="32.21" transform="translate(342.71 851.39) rotate(180)"/>
-  <rect class="cls-1" x="257.73" y="222.16" width="83.63" height="407.07" rx="32.21" ry="32.21" transform="translate(599.1 851.39) rotate(180)"/>
-  <rect class="cls-1" x="385.93" y="283.75" width="83.63" height="283.89" rx="32.21" ry="32.21" transform="translate(855.49 851.39) rotate(180)"/>
-  <rect class="cls-1" x="514.12" y="173.15" width="83.63" height="505.09" rx="32.21" ry="32.21" transform="translate(1111.88 851.39) rotate(180)"/>
-  <rect class="cls-1" x="645.2" y="313.68" width="83.63" height="224.03" rx="32.21" ry="32.21" transform="translate(1374.03 851.39) rotate(180)"/>
+  <rect class="cls-1" x="1.35" y="326.96" width="83.63" height="197.47" rx="32.21" ry="32.21" transform="translate(86.32 851.39) rotate(180)"/>
+  <rect class="cls-1" x="765.42" y="326.96" width="83.63" height="197.47" rx="32.21" ry="32.21" transform="translate(1614.47 851.39) rotate(180)"/>
+  <rect class="cls-1" x="192.36" y="127.61" width="83.63" height="596.18" rx="32.21" ry="32.21" transform="translate(468.36 851.39) rotate(180)"/>
+  <rect class="cls-1" x="383.38" y="278.31" width="83.63" height="294.77" rx="32.21" ry="32.21" transform="translate(850.39 851.39) rotate(180)"/>
+  <rect class="cls-1" x="574.4" y="212.49" width="83.63" height="426.42" rx="32.21" ry="32.21" transform="translate(1232.43 851.39) rotate(180)"/>
 </svg>
