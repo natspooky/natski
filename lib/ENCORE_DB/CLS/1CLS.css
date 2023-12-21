@@ -105,6 +105,8 @@
     width: 200px;
     background-color: #0a0a0a;
     pointer-events: none;
+    object-fit: contain;
+    padding: 40px 0;
     transition: 0s;
     transition-delay: 0s;
 }
