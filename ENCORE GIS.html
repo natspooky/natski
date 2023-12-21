@@ -87,6 +87,10 @@
                 border-radius: 10px;
                 transition: 0.3s;
             }
+            main article button.hidden
+            {
+                display: none;
+            }
             main article button:hover
             {
                 background-color: #ffffff20;
@@ -196,29 +200,50 @@
 
         <main style="position: relative; width: 100%;">
             <div class="searchBox">
-                <input placeholder="Search GIS">
+                <input placeholder="Search GIS" oninput="searchGIS(this)">
                 <GIS-icon title="magnify"></GIS-icon>
             </div>
             <article id="iconGrid"></article>
         </main>
 
+
         <style>
             .searchBox
             {
-
+                position: relative;
+                height: fit-content;
+                width: fit-content;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: #ffffff20;
+                border: 2px solid #ffffff20;
+                border-radius: 10px;
+                margin: 20px auto;
             }
             .searchBox input
             {
-
+                position: relative;
+                display: inline-block;
+                height: 35px;
+                padding: 5px 5px 5px 15px;
+                width: min(80%, 200px);
+                border: 0;
+                color: #f0f0f0;
+                background-color: transparent;
+            }
+            .searchBox input:focus
+            {
+                outline: none;
             }
             .searchBox GIS-icon
             {
                 position: relative;
                 width: 20px;
-                box-sizing: border-box;
-                display: block;
-                background-color: #f0f0f0;
+                display: inline-block;
+                background-color: #ffffff50;
                 height: 20px;
+                margin: 7.5px;
                 
             }
         </style>
@@ -235,10 +260,10 @@
         </footer>
 
         <script>
+            let icons = ['home','terminal','avatar','gear','alert','browser','chain','bookshelf','cellar','rotate','albums','maximise','minimise','pause','play','prev','next','audio','copy','information','loop','pip','screen','magnify_minus','magnify_plus','magnify','minus','plus','checkmark','cross','arrow_left','arrow_right','arrow_up','arrow_down','mini_arrow_left','mini_arrow_right','mini_arrow_up','mini_arrow_down','line_arrow_left','line_arrow_right','line_arrow_up','line_arrow_down','input','output','download','sparkle','config','preview','ENCORE','SSC','PDS','CLS','CLSF','VPS','PSS','CMS','CMSF','GIS','SSM','SSMF']
             window.onload = function(){
                 let icon = document.getElementsByTagName('GIS-icon'),
-                container = document.getElementById('iconGrid'),
-                icons = ['home','terminal','avatar','gear','alert','browser','chain','bookshelf','cellar','rotate','albums','maximise','minimise','pause','play','prev','next','audio','copy','information','loop','pip','screen','magnify_minus','magnify_plus','magnify','minus','plus','checkmark','cross','arrow_left','arrow_right','arrow_up','arrow_down','mini_arrow_left','mini_arrow_right','mini_arrow_up','mini_arrow_down','line_arrow_left','line_arrow_right','line_arrow_up','line_arrow_down','input','output','download','sparkle','config','preview','ENCORE','SSC','PDS','CLS','CLSF','VPS','PSS','CMS','CMSF','GIS','SSM','SSMF']
+                container = document.getElementById('iconGrid')
               
                 
                 for(let i = 0; i < icons.length; i++) {
@@ -268,6 +293,18 @@
 
             function copyIcon(icon) {
                 navigator.clipboard.writeText('<GIS-icon title="'+icon+'"></GIS-icon>');
+            }
+
+            function searchGIS(e){
+                let buttons = document.getElementsByTagName('GIS-icon'),
+                length = icons.length + 1;
+                for(let i = 0; i < length; i++){
+                    if(!(buttons[i].title.toLowerCase()).includes((e.value).toLowerCase())){
+                        buttons[i].parentNode.classList.add('hidden')
+                    }else{
+                        buttons[i].parentNode.classList.remove('hidden')
+                    }
+                }
             }
         </script>
 
