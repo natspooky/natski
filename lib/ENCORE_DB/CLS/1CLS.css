@@ -99,6 +99,15 @@
     transition: 0.3s;
     transition-delay: 0.7s;
 }
+#CLS article div img.CLSerror
+{
+    height: 100px;
+    width: 100px;
+    background-color: #0a0a0a;
+    pointer-events: none;
+    transition: 0s;
+    transition-delay: 0s;
+}
 #CLS article hr
 {
     border: 2px solid #66666640;
