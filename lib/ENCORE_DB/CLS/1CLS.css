@@ -102,7 +102,6 @@
 #CLS article div img.CLSerror
 {
     height: 200px;
-    width: 200px;
     background-color: #0a0a0a;
     pointer-events: none;
     object-fit: contain;
