@@ -127,7 +127,7 @@ add keybinds to VPS
 
 redesign GIS popup for ENCORE GIS page
 
-add search bar to GIS
+replace old icons with new gis varient
 
 
 
