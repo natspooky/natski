@@ -259,7 +259,7 @@ nav span
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    border-radius: 5px;
+    border-radius: 7px;
     transition: 0.2s;
 }
 .navbutton svg
