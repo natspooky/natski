@@ -129,7 +129,7 @@ redesign GIS popup for ENCORE GIS page
 
 replace old icons with new gis varient
 
-
+change icons on CMS to match new GIS icons
 
 
 
