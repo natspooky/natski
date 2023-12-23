@@ -117,10 +117,7 @@ make a design in illustrator of four cubes
 have the top right cube be rotated and hollow
 make all cubed rounded
 
-remake input and output in new style
-remake alert in new style
-remake download in new style
-remake loop in new style
+
 make video for art have vhs effect and use quotes saved in phone camera roll
 
 add keybinds to VPS
