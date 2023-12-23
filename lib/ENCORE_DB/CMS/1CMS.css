@@ -171,5 +171,5 @@
 }
 #CMScontextMenu div button:hover GIS-icon,#CMScontextMenu div button:hover svg,#CMScontextMenu div button:hover img
 {
-    transform: scale(1.2);
+    transform: scale(1.15);
 }
