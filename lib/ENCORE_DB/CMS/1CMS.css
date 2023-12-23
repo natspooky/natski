@@ -133,6 +133,7 @@
     pointer-events: none;
     flex-shrink: 0;
     flex-grow: 0;
+    transition: transform 0.1s;
 }
 #CMScontextMenu div button GIS-icon
 {
@@ -144,6 +145,7 @@
     pointer-events: none;
     flex-shrink: 0;
     flex-grow: 0;
+    transition: transform 0.1s;
 }
 #CMScontextMenu div button GIS-icon *
 {
@@ -166,4 +168,8 @@
 #CMScontextMenu div button:hover
 {
     background-color: #ffffff10;
+}
+#CMScontextMenu div button:hover GIS-icon,#CMScontextMenu div button:hover svg,#CMScontextMenu div button:hover img
+{
+    transform: scale(1.1);
 }
