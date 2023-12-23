@@ -121,10 +121,6 @@
 {
     background-color: #00000080;
 }
-#CMScontextMenu .CMScontext .CMSback svg
-{
-    transform: rotate(90deg) scale(0.8);
-}
 #CMScontextMenu div button svg,#CMScontextMenu div button img
 {
     position: relative;
