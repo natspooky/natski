@@ -132,7 +132,7 @@ change copy and chevron icons in ENCORE v pages to match GIS
 
 make changelog for redesigns of icons and PDS
 
-
+make CMS use a list for attachemnts so you can have a context menu over multiple different elements
 
 
 
