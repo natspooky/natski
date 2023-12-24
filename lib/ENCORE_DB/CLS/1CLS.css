@@ -187,6 +187,7 @@
     width: 15px;
     margin: 0 0.4em;
     flex-shrink: 0;
+    background-color: #f0f0f0;
 }
 #CLS article section GIS-icon
 {
@@ -230,17 +231,4 @@
     height: 15px;
     fill: #f0f0f0;
     animation: rotate 1s linear infinite;
-}
-.red
-{
-    fill: #ff6961;
-}
-.green
-{
-    fill: #77dd77;
-}
-.white
-{
-    fill: #dcdcdc;
-    transform: scale(0.75);
 }
