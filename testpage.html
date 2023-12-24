@@ -764,8 +764,27 @@ body, html {
 
 
 
-
-
+@keyframes CLSfade
+{
+    from{opacity: 0;}
+    to{opacity: 1;}
+}
+@keyframes CLSload
+{
+    from{transform: rotate(0);}
+    to{transform: rotate(360deg);}
+}
+@media (hover:hover){
+    #CLS article div:hover::before
+    {
+        background-color:#f0f0f0;
+    }
+    #CLS article section p .CLScredit a:hover
+    {
+        color: #f0f0f0;
+        text-decoration: underline;
+    }
+}
 #CLS *, #CLSloader, #CLS
 {
     box-sizing: border-box;
@@ -793,14 +812,14 @@ body, html {
     user-select: text;
     color: #f0f0f0;
     margin: 0 auto;
-    border-bottom: 2px solid #ffffff30;
-    animation: CLS 0.6s;
+    border-bottom: 2px dashed #ffffff30;
+    animation: CLSfade 0.6s;
 }
 #CLS article:last-of-type
 {
     border-radius: 0 0 20px 20px;
     margin: 0 auto 20px auto;
-    border: 0;
+    border-bottom: 0;
 }
 #CLS article:nth-of-type(1)
 {
@@ -813,12 +832,37 @@ body, html {
     margin: 10px auto 20px auto;
     border-bottom: 0;
 }
+#CLS article .CLSsubtext
+{
+    position: relative;
+    width: 100%;
+    display: block;
+    height: fit-content;
+    padding: 0 0 12px 28px;
+    margin: -5px 0 0 0;
+    line-height: 14px;
+    font-size: 14px;
+    color: #f0f0f090;
+}
+#CLS article .CLSsubtext ul
+{
+    position: relative;
+    width: calc(100% - 20px);
+    margin: 20px 0 0 20px;
+}
+#CLS article .CLSsubtext ul li
+{
+    position: relative;
+    line-height: 14px;
+    font-size: 14px;
+    margin: 0 0 2px 0;
+}
 #CLS article div
 {
     position: relative;
     width: min(calc(100% - 30px), 600px);
     height: fit-content;
-    margin: 0 0 40px 30px;
+    margin: 0 0 40px 28px;
     border-radius: 10px;
     background-color: #66666620;
     max-height: 85vh;
@@ -833,7 +877,7 @@ body, html {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    pointer-events: all;
+    pointer-events: none;
     left: 0px;
     color: #f0f0f0a0;
 }
@@ -841,10 +885,11 @@ body, html {
 {
     content: '';
     position: absolute;
-    left: -18.5px;
+    left: -16px;
     top: 0px;
     height: 100%;
-    width: 4px;
+    width: 3px;
+    pointer-events: none;
     background-color:#ffffff20;
     border-radius: 100vmax;
     transition: 0.2s;
@@ -870,9 +915,10 @@ body, html {
     border-radius: 10px;
     background-color: transparent;
     transition: 0.3s;
+    border: 2px solid transparent;
     transition-delay: 0.7s;
 }
-#CLS article div img.CLSerror
+#CLS article div.CLSerror img
 {
     height: 200px;
     background-color: #0a0a0a;
@@ -881,6 +927,14 @@ body, html {
     padding: 40px 0;
     transition: 0s, opacity 0.3s;
     transition-delay: 0s, opacity 0.7s;
+}
+#CLS article div.CLSerror::after
+{
+    text-decoration: line-through;
+}
+#CLS article div.CLSerror::before
+{
+    background-color:#0a0a0a;
 }
 #CLS article hr
 {
@@ -910,11 +964,11 @@ body, html {
     position: relative;
     padding: 0.3em;
     top: unset;
-    background-color: #66666620;
+    background-color: #66666610;
     border: 2px solid #66666610;
     text-align: center;
-    font-size: 2rem;
-    line-height: 2rem;
+    font-size: 1.7rem;
+    line-height: 1.7rem;
     border-radius: 7px;
     z-index: 10;
 }
@@ -929,11 +983,27 @@ body, html {
 {
     text-align: left;
 }
+#CLS article section p .CLScredit
+{
+    position: relative;
+    font-size: 0.9rem;
+    line-height: 1.2rem;
+    margin: 0 0 0 10px;
+    font-weight: bold;
+    color: #f0f0f0b0;
+}
+#CLS article section p .CLScredit a
+{
+    color: #709bff;
+    cursor: pointer;
+
+}
 #CLS article section svg
 {
     width: 15px;
     margin: 0 0.4em;
     flex-shrink: 0;
+    fill: #f0f0f0;
 }
 #CLS article section GIS-icon
 {
@@ -976,21 +1046,9 @@ body, html {
     position: relative;
     height: 15px;
     fill: #f0f0f0;
-    animation: rotate 1s linear infinite;
+    animation: CLSload 1s linear infinite;
 }
-.red
-{
-    fill: #ff6961;
-}
-.green
-{
-    fill: #77dd77;
-}
-.white
-{
-    fill: #dcdcdc;
-    transform: scale(0.75);
-}
+
 
 
 
@@ -1201,18 +1259,29 @@ body, html {
     }
 </script>
 
-<main id="CLS"></main>
+<main id="CLS">
+    <article class="CLSlog">
+        <h4>03 / 10 / 2023</h4>
+        <hr class="mini">
+        <h3>ENCORE V1</h3>
+        <hr>
+        <section>
+            <svg class="green" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 609.73 609.73"><path d="M305.04,609.73c-15.82,.01-30.15-6.4-40.52-16.76-10.37-10.37-16.76-24.65-16.76-40.45l-.11-190.37-190.37,.11C25.66,362.28,.02,336.66,0,305.04c-.02-15.82,6.4-30.14,16.77-40.51s24.65-16.76,40.45-16.77l190.37-.11-.11-190.37C247.46,25.67,273.07,.02,304.69,0c15.82-.01,30.14,6.4,40.51,16.77s16.77,24.65,16.77,40.45l.11,190.37,190.37-.11c31.61-.02,57.26,25.6,57.28,57.21,.01,15.82-6.4,30.15-16.77,40.52-10.37,10.37-24.65,16.76-40.45,16.76l-190.37,.11,.11,190.37c.02,31.62-25.59,57.26-57.21,57.28Z"></path></svg>
+            <p>Added a link to CLSF to the V1 information &amp; setup page<span class="CLScredit">by <a>adasd</a></span></p>
+        </section>
+        <span class="CLSsubtext">
+            asdhjasjfdshfjdsjf
+            <ul>
+                <li>sdfsdf</li>
+                <li>sdsdfsdf</li>
+                <li>sdfsdf</li>
+                <li>sdfsdf</li>
+            </ul>
+        </span>
+        <div name="https://natski.netlify.app/icon/CHANGELOG_IMGS/V1/CLSF.png"><svg class="CLSsvg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.39 850.39"><path d="M746.41,0H103.99C77.59,0,56.19,21.4,56.19,47.8V802.6c0,26.39,21.4,47.79,47.8,47.79H746.41c26.39,0,47.79-21.4,47.79-47.79V47.8C794.2,21.4,772.8,0,746.41,0Zm-36.6,749.3c0,9.22-7.48,16.7-16.71,16.7H157.29c-9.23,0-16.71-7.48-16.71-16.7V101.1c0-9.23,7.48-16.71,16.71-16.71H699.41c5.74,0,10.4,4.66,10.4,10.4V749.3Z"></path><rect x="371.3" y="-59.51" width="107.79" height="483.41" rx="53.9" ry="53.9" transform="translate(607.4 -243) rotate(90)"></rect><rect x="397.5" y="186.14" width="55.4" height="323.31" rx="27.7" ry="27.7" transform="translate(772.99 -77.4) rotate(90)"></rect><rect x="397.5" y="229.39" width="55.4" height="443.21" rx="27.7" ry="27.7" transform="translate(876.19 25.8) rotate(90)"></rect><rect x="397.5" y="447.39" width="55.4" height="213.61" rx="27.7" ry="27.7" transform="translate(979.39 129) rotate(90)"></rect><rect x="397.5" y="486.99" width="55.4" height="340.81" rx="27.7" ry="27.7" transform="translate(1082.59 232.2) rotate(90)"></rect></svg><img class="CLSimage" src="https://natski.netlify.app/icon/CHANGELOG_IMGS/V1/CLSF.png" alt="https://natski.netlify.app/icon/CHANGELOG_IMGS/V1/CLSF.png" draggable="false" style="cursor: zoom-in; opacity: 1;"></div><h3>ENCORE PDS</h3><hr><section><svg class="green" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 609.73 609.73"><path d="M305.04,609.73c-15.82,.01-30.15-6.4-40.52-16.76-10.37-10.37-16.76-24.65-16.76-40.45l-.11-190.37-190.37,.11C25.66,362.28,.02,336.66,0,305.04c-.02-15.82,6.4-30.14,16.77-40.51s24.65-16.76,40.45-16.77l190.37-.11-.11-190.37C247.46,25.67,273.07,.02,304.69,0c15.82-.01,30.14,6.4,40.51,16.77s16.77,24.65,16.77,40.45l.11,190.37,190.37-.11c31.61-.02,57.26,25.6,57.28,57.21,.01,15.82-6.4,30.15-16.77,40.52-10.37,10.37-24.65,16.76-40.45,16.76l-190.37,.11,.11,190.37c.02,31.62-25.59,57.26-57.21,57.28Z"></path></svg><p>Added the option to move and zoom in on selected images in PDS &amp; PDSU</p></section><div name="https://natski.netlify.app/icon/CHANGELOG_IMGS/PDS/nav.png"><svg class="CLSsvg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.39 850.39"><path d="M746.41,0H103.99C77.59,0,56.19,21.4,56.19,47.8V802.6c0,26.39,21.4,47.79,47.8,47.79H746.41c26.39,0,47.79-21.4,47.79-47.79V47.8C794.2,21.4,772.8,0,746.41,0Zm-36.6,749.3c0,9.22-7.48,16.7-16.71,16.7H157.29c-9.23,0-16.71-7.48-16.71-16.7V101.1c0-9.23,7.48-16.71,16.71-16.71H699.41c5.74,0,10.4,4.66,10.4,10.4V749.3Z"></path><rect x="371.3" y="-59.51" width="107.79" height="483.41" rx="53.9" ry="53.9" transform="translate(607.4 -243) rotate(90)"></rect><rect x="397.5" y="186.14" width="55.4" height="323.31" rx="27.7" ry="27.7" transform="translate(772.99 -77.4) rotate(90)"></rect><rect x="397.5" y="229.39" width="55.4" height="443.21" rx="27.7" ry="27.7" transform="translate(876.19 25.8) rotate(90)"></rect><rect x="397.5" y="447.39" width="55.4" height="213.61" rx="27.7" ry="27.7" transform="translate(979.39 129) rotate(90)"></rect><rect x="397.5" y="486.99" width="55.4" height="340.81" rx="27.7" ry="27.7" transform="translate(1082.59 232.2) rotate(90)"></rect></svg><img class="CLSimage" src="https://natski.netlify.app/icon/CHANGELOG_IMGS/PDS/nav.png" alt="https://natski.netlify.app/icon/CHANGELOG_IMGS/PDS/nav.png" draggable="false" style="cursor: zoom-in; opacity: 1;"></div><section><svg class="green" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 609.73 609.73"><path d="M305.04,609.73c-15.82,.01-30.15-6.4-40.52-16.76-10.37-10.37-16.76-24.65-16.76-40.45l-.11-190.37-190.37,.11C25.66,362.28,.02,336.66,0,305.04c-.02-15.82,6.4-30.14,16.77-40.51s24.65-16.76,40.45-16.77l190.37-.11-.11-190.37C247.46,25.67,273.07,.02,304.69,0c15.82-.01,30.14,6.4,40.51,16.77s16.77,24.65,16.77,40.45l.11,190.37,190.37-.11c31.61-.02,57.26,25.6,57.28,57.21,.01,15.82-6.4,30.15-16.77,40.52-10.37,10.37-24.65,16.76-40.45,16.76l-190.37,.11,.11,190.37c.02,31.62-25.59,57.26-57.21,57.28Z"></path></svg><p>Added the ability to use .JPG images in PDS</p></section><section><svg class="green" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 692.13 496.44"><path d="M692.13,75.84c0,21.49-9.08,42.85-26.74,57.86L259.79,478.38c-14.27,12.13-31.73,18.06-49.1,18.06-21.49,0-42.84-9.08-57.85-26.74L18.06,311.1c-27.14-31.94-23.25-79.82,8.68-106.96,14.28-12.13,31.73-18.06,49.1-18.06,21.5,0,42.85,9.09,57.86,26.75l85.64,100.77L567.12,18.06c31.94-27.13,79.82-23.25,106.96,8.69,12.12,14.27,18.05,31.72,18.05,49.09Z"></path></svg><p>Fixed PDSU not connecting to new images that contain the PDSU connection class</p></section><h3>ENCORE CLS</h3><hr><section><svg class="green" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 692.13 496.44"><path d="M692.13,75.84c0,21.49-9.08,42.85-26.74,57.86L259.79,478.38c-14.27,12.13-31.73,18.06-49.1,18.06-21.49,0-42.84-9.08-57.85-26.74L18.06,311.1c-27.14-31.94-23.25-79.82,8.68-106.96,14.28-12.13,31.73-18.06,49.1-18.06,21.5,0,42.85,9.09,57.86,26.75l85.64,100.77L567.12,18.06c31.94-27.13,79.82-23.25,106.96,8.69,12.12,14.27,18.05,31.72,18.05,49.09Z"></path></svg><p>Fixed images not scaling correctly in CLS</p></section><h3>ENCORE V2</h3><hr><section><svg class="green" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 609.73 609.73"><path d="M305.04,609.73c-15.82,.01-30.15-6.4-40.52-16.76-10.37-10.37-16.76-24.65-16.76-40.45l-.11-190.37-190.37,.11C25.66,362.28,.02,336.66,0,305.04c-.02-15.82,6.4-30.14,16.77-40.51s24.65-16.76,40.45-16.77l190.37-.11-.11-190.37C247.46,25.67,273.07,.02,304.69,0c15.82-.01,30.14,6.4,40.51,16.77s16.77,24.65,16.77,40.45l.11,190.37,190.37-.11c31.61-.02,57.26,25.6,57.28,57.21,.01,15.82-6.4,30.15-16.77,40.52-10.37,10.37-24.65,16.76-40.45,16.76l-190.37,.11,.11,190.37c.02,31.62-25.59,57.26-57.21,57.28Z"></path></svg><p>Added VPS to the V2 information &amp; setup page</p></section><div name="https://natski.netlify.app/icon/CHANGELOG_IMGS/V2/VPS.png"><svg class="CLSsvg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.39 850.39"><path d="M746.41,0H103.99C77.59,0,56.19,21.4,56.19,47.8V802.6c0,26.39,21.4,47.79,47.8,47.79H746.41c26.39,0,47.79-21.4,47.79-47.79V47.8C794.2,21.4,772.8,0,746.41,0Zm-36.6,749.3c0,9.22-7.48,16.7-16.71,16.7H157.29c-9.23,0-16.71-7.48-16.71-16.7V101.1c0-9.23,7.48-16.71,16.71-16.71H699.41c5.74,0,10.4,4.66,10.4,10.4V749.3Z"></path><rect x="371.3" y="-59.51" width="107.79" height="483.41" rx="53.9" ry="53.9" transform="translate(607.4 -243) rotate(90)"></rect><rect x="397.5" y="186.14" width="55.4" height="323.31" rx="27.7" ry="27.7" transform="translate(772.99 -77.4) rotate(90)"></rect><rect x="397.5" y="229.39" width="55.4" height="443.21" rx="27.7" ry="27.7" transform="translate(876.19 25.8) rotate(90)"></rect><rect x="397.5" y="447.39" width="55.4" height="213.61" rx="27.7" ry="27.7" transform="translate(979.39 129) rotate(90)"></rect><rect x="397.5" y="486.99" width="55.4" height="340.81" rx="27.7" ry="27.7" transform="translate(1082.59 232.2) rotate(90)"></rect></svg><img class="CLSimage" src="https://natski.netlify.app/icon/CHANGELOG_IMGS/V2/VPS.png" alt="https://natski.netlify.app/icon/CHANGELOG_IMGS/V2/VPS.png" draggable="false" style="cursor: zoom-in; opacity: 1;"></div><h3>ENCORE VPS</h3><hr><section><svg class="green" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 609.73 609.73"><path d="M305.04,609.73c-15.82,.01-30.15-6.4-40.52-16.76-10.37-10.37-16.76-24.65-16.76-40.45l-.11-190.37-190.37,.11C25.66,362.28,.02,336.66,0,305.04c-.02-15.82,6.4-30.14,16.77-40.51s24.65-16.76,40.45-16.77l190.37-.11-.11-190.37C247.46,25.67,273.07,.02,304.69,0c15.82-.01,30.14,6.4,40.51,16.77s16.77,24.65,16.77,40.45l.11,190.37,190.37-.11c31.61-.02,57.26,25.6,57.28,57.21,.01,15.82-6.4,30.15-16.77,40.52-10.37,10.37-24.65,16.76-40.45,16.76l-190.37,.11,.11,190.37c.02,31.62-25.59,57.26-57.21,57.28Z"></path></svg><p>Added 'bokeh' setting to VPS</p></section><section><svg class="green" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 692.13 496.44"><path d="M692.13,75.84c0,21.49-9.08,42.85-26.74,57.86L259.79,478.38c-14.27,12.13-31.73,18.06-49.1,18.06-21.49,0-42.84-9.08-57.85-26.74L18.06,311.1c-27.14-31.94-23.25-79.82,8.68-106.96,14.28-12.13,31.73-18.06,49.1-18.06,21.5,0,42.85,9.09,57.86,26.75l85.64,100.77L567.12,18.06c31.94-27.13,79.82-23.25,106.96,8.69,12.12,14.27,18.05,31.72,18.05,49.09Z"></path></svg><p>Fixed VPS not connecting to new videos with the VPS connection class</p></section></article><section id="CLSloader"><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1118.94 1118.94"><path d="M1118.94,559.47c0,308.99-250.48,559.47-559.47,559.47C250.73,1118.94,0,868.21,0,559.47,0,250.48,250.48,0,559.47,0c67.59,0,132.38,11.99,192.36,33.96,31.61,11.58,52.71,41.56,52.71,75.22h0c0,55.73-55.47,94.18-107.81,75.03-41.87-15.32-87.01-23.83-134.1-24.2-221.74-1.72-401.71,176.02-402.63,397.77-.92,221.96,179.2,402.08,401.16,401.16,221.74-.92,399.48-180.89,397.77-402.63-.37-47.08-8.88-92.23-24.2-134.1-19.15-52.34,19.3-107.81,75.03-107.81h0c33.66,0,63.64,21.1,75.22,52.71,21.97,59.98,33.96,124.77,33.96,192.36Z"></path></svg></div></section></main>
 
 
-<script src="lib/js/ENCORE_CLS.js"></script>
-<script>
-    CLS_settings={
-        'path':'https://natski.netlify.app/lib/ENCORE_DB/CLS/log',
-        'fileCount':4,
-        'container':null,
-        'style':0
-    }
-</script>
+
 
 
     </body>

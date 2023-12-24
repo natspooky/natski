@@ -154,6 +154,8 @@ make new example CLS page once completed
 
 make CLS example include GIS icons
 
+make CLS styling have its own version of GIS that doesnt require any styling from GIS itself
+
 make global styles for both CLSF and CMSF
 
 work on art project

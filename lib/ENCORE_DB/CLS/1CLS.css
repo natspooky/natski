@@ -14,6 +14,11 @@
     {
         background-color:#f0f0f0;
     }
+    #CLS article section p .CLScredit a:hover
+    {
+        color: #f0f0f0;
+        text-decoration: underline;
+    }
 }
 #CLS *, #CLSloader, #CLS
 {
@@ -62,12 +67,37 @@
     margin: 10px auto 20px auto;
     border-bottom: 0;
 }
+#CLS article .CLSsubtext
+{
+    position: relative;
+    width: 100%;
+    display: block;
+    height: fit-content;
+    padding: 0 0 12px 28px;
+    margin: -5px 0 0 0;
+    line-height: 14px;
+    font-size: 14px;
+    color: #f0f0f090;
+}
+#CLS article .CLSsubtext ul
+{
+    position: relative;
+    width: calc(100% - 20px);
+    margin: 20px 0 0 20px;
+}
+#CLS article .CLSsubtext ul li
+{
+    position: relative;
+    line-height: 14px;
+    font-size: 14px;
+    margin: 0 0 2px 0;
+}
 #CLS article div
 {
     position: relative;
     width: min(calc(100% - 30px), 600px);
     height: fit-content;
-    margin: 0 0 40px 30px;
+    margin: 0 0 40px 28px;
     border-radius: 10px;
     background-color: #66666620;
     max-height: 85vh;
@@ -90,7 +120,7 @@
 {
     content: '';
     position: absolute;
-    left: -18px;
+    left: -16px;
     top: 0px;
     height: 100%;
     width: 3px;
@@ -120,6 +150,7 @@
     border-radius: 10px;
     background-color: transparent;
     transition: 0.3s;
+    border: 2px solid transparent;
     transition-delay: 0.7s;
 }
 #CLS article div.CLSerror img
@@ -168,11 +199,11 @@
     position: relative;
     padding: 0.3em;
     top: unset;
-    background-color: #66666620;
+    background-color: #66666610;
     border: 2px solid #66666610;
     text-align: center;
-    font-size: 2rem;
-    line-height: 2rem;
+    font-size: 1.7rem;
+    line-height: 1.7rem;
     border-radius: 7px;
     z-index: 10;
 }
@@ -186,6 +217,21 @@
 #CLS article section p
 {
     text-align: left;
+}
+#CLS article section p .CLScredit
+{
+    position: relative;
+    font-size: 0.9rem;
+    line-height: 1.2rem;
+    margin: 0 0 0 10px;
+    font-weight: bold;
+    color: #f0f0f0b0;
+}
+#CLS article section p .CLScredit a
+{
+    color: #709bff;
+    cursor: pointer;
+
 }
 #CLS article section svg
 {
