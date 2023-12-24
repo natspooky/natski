@@ -150,6 +150,8 @@ change style on dates to look better
 
 
 
+make global styles for both CLSF and CMSF
+
 
 
 
