@@ -90,10 +90,10 @@
 {
     content: '';
     position: absolute;
-    left: -18.5px;
+    left: -18px;
     top: 0px;
     height: 100%;
-    width: 4px;
+    width: 3px;
     pointer-events: none;
     background-color:#ffffff20;
     border-radius: 100vmax;

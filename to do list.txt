@@ -152,6 +152,8 @@ make CLSF autoCapitalise the first letter of titles and logs
 
 make new example CLS page once completed
 
+make CLS example include GIS icons
+
 make global styles for both CLSF and CMSF
 
 work on art project
