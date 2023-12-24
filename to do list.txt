@@ -150,6 +150,7 @@ change style on dates to look better
 
 make CLSF autoCapitalise the first letter of titles and logs
 
+make new example CLS page once completed
 
 make global styles for both CLSF and CMSF
 

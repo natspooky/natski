@@ -12,7 +12,7 @@
 @media (hover:hover){
     #CLS article div:hover::before
     {
-        background-color:#ffffff60;
+        background-color:#f0f0f0;
     }
 }
 #CLS *, #CLSloader, #CLS
