@@ -148,6 +148,7 @@ format dates in CLSF to become the names of the months
 
 change style on dates to look better
 
+make CLSF autoCapitalise the first letter of titles and logs
 
 
 make global styles for both CLSF and CMSF
