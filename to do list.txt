@@ -134,17 +134,19 @@ make changelog for redesigns of icons and PDS
 
 make CMS use a list for attachemnts so you can have a context menu over multiple different elements
 
+add subtext and subtext lists to CLS
 
+add optional author names to CLS [eg. 'by natski']
 
+add multiple image option to CLS
 
+add video option to CLS
 
+add subtitle to dates in changelog
 
+format dates in CLSF to become the names of the months
 
-
-
-
-
-
+change style on dates to look better
 
 
 
