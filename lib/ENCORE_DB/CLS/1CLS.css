@@ -235,6 +235,7 @@
 }
 #CLS article section svg
 {
+    position: relative;
     width: 15px;
     margin: 0 0.4em;
     flex-shrink: 0;
@@ -243,8 +244,10 @@
 #CLS article section GIS-icon
 {
     position: relative;
-    font-size: 15px;
-    margin: 0 0.45em;
+    font-size: 1.2rem;
+    margin: 0 0.4em;
+    width: 15px;
+    height: 15px;
     flex-shrink: 0;
     background-color: #f0f0f0;
 }

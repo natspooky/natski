@@ -36,6 +36,7 @@
         <meta name="twitter:card" content="summary">
         <link rel="stylesheet" type="text/css" href="lib/css/main.css"/>
         <link rel="stylesheet" type="text/css" href="lib/css/animations.css"/>
+        <link rel="stylesheet" type="text/css" href="lib/css/editor.css"/>
         <link rel="stylesheet" type="text/css" media="screen and (orientation: portrait)" href="lib/css/scale.css"/>
         <link rel="stylesheet" type="text/css" href="lib/ENCORE_DB/GIS/1GIS.css"/>
 	</head>
@@ -233,7 +234,7 @@
         </header>
 
         <a style="position: relative; margin: 1em auto; display: block; padding: 0.5em 1em; color: #f0f0f0; text-decoration: none; background-color: rgba(255, 0, 225, 0.337); width: fit-content; border-radius: 100vmax;" onclick="parent.loadframe('ENCORE V1.html#CLSF');parent.backPage(1)">Setup & Information</a>
-
+<!--
         <main style="animation: opacity 1s;">
             <input class="dateLog" type="date" id="date">
         </main>
@@ -247,118 +248,395 @@
             <button class="logbutton" onclick="saveCLS('preview')">Preview</button>
         </div>
         <hr>
-        <style>
-            main article,main article hr,main article .mini,main article h3,main article h4,main article section,main article section p,main article section svg,.red,.white,.green
-            {
-                transition: 0.5s;
-            }
-            main article
-            {
-                margin: 0px auto 20px auto;
-            }
+    -->
 
-            main .title
-{
-    color: unset;
-    font-size: unset;
-    font-weight: unset;
-    margin: unset;
-    padding: unset;
-}
-main article
-{
-    position: unset;
-    line-height: unset;
-    font-size: unset;
-    display: unset;
-    width: unset;
-    border-radius: unset;
-    padding: unset;
-    margin: unset;
-    background-color: unset;
-    text-align: unset;
-    user-select: unset;
-    color: unset;
-}
-main article img
-{
-    position: unset;
-    max-height: unset;
-    width: unset;
-    object-fit: unset;
-    border-radius: unset;
-    margin:unset;
-    background-color: unset;
-}
+    <style>
+        @keyframes CMSfadeUp
+        {
+            from{transform: translateY(-15px);}
+            to{transform: translateY(0);}
+        }
+        @keyframes CMSfadeOpacity
+        {
+            from{opacity: 0;}
+            to{opacity: 1;}
+        }
+        .subitem
+        {
+            position: relative;
+            margin: 0px 0 0 69px;
+            padding: 10px 0 10px 10px;
+            display: block;
+            width: fit-content;
+            pointer-events: none;
+            border-left: 3px solid var(--colour);
+        }
+        .subitem:first-of-type
+        {
+            padding: 30px 0 10px 10px;
+            margin: -10px 0 0 69px;
+            animation: CMSfadeUp 0.5s;
+        }
+        .mainitem
+        {
+            position: relative;
+            padding: 0 0 15px 15px;
+            display: block;
+            width: fit-content;
+            margin: 0 0 0 50px;
+        }
+        .mainitem:first-of-type::before
+        {
+            content: '';
+            position: absolute;
+            left: -2px;
+            bottom: 100%;
+            height: 50px;
+            width: 3px;
+        }
+        .subitem:last-of-type
+        {
+            border-radius: 0 0 0 20px;
+            border-bottom: 3px solid var(--colour);
+        }
+        .subitem:last-of-type::after
+        {
+            content: '';
+            position: absolute;
+            bottom: -2.5px;
+            left: 100%;
+            height: 3px;
+            width: 40px;
+            border: 0px;
+            border-bottom: 3px solid transparent;
+            border-image-source: linear-gradient(to right, var(--colour), transparent);
+            border-image-slice: 1;
+        }
+        .item
+        {
+            position: relative;
+            height: 40px;
+            pointer-events: all;
+            width: fit-content;
+            display: flex;
+            align-items: center;
+            border-radius: 10px; 
+            margin: 0px;
+            background-color: #141414;
+            animation: CMSfadeOpacity 0.4s;
+        }
+        .item *
+        {
+            flex-grow: 0;
+            flex-shrink: 0;
+        }
+        .item *::before, .toolbar button::before, .toolbar input::before
+        {
+            content: attr(name);
+            position: absolute;
+            left: 50%;
+            bottom: calc(100% + 0.5em);
+            font-size: 1rem;
+            transform: translate(-50%, 1em);
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            color: #f0f0f0;
+            white-space: nowrap;
+            z-index: 9999;
+            padding: 0.5em;
+            background-color: #222222;
+            border-radius: 0.5em;
+            transition: 0.3s;
+        }
+        .item *:hover::before, .toolbar button:hover::before,.toolbar input:hover::before
+        {
+            opacity: 1;
+            visibility: visible;
+            transform: translate(-50%,0);
+        }
+        .item::after
+        {
+            content: '';
+            background-color: var(--colour);
+            position: absolute;
+            left: calc(100% + 6px);
+            top: 50%;
+            transform: translateY(-50%);
+            height: 50%;
+            width: 5px;
+            border-radius: 100vmax;
+        }
+        .item button
+        {
+            position: relative;
+            height: 40px;
+            width: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            background-color: #66666640;
+            transition: 0.2s;
+        }
+        .item .remove:hover
+        {
+            background-color: #6b000050;
+        }
+        .item .add:hover
+        {
+            background-color: #196b0050;
+        }
+        .item button svg
+        {
+            position: relative;
+            display: block;
+            fill: #f0f0f0;
+            height: 33%;
+            transform: scale(1);
+            transition: 0.2s;
+        }
+        .item button:hover svg
+        {
+            transform: scale(1.15);
+        }
+        .item input[type=text]
+        {
+            position: relative;
+            height: 100%;
+            border: 0;
+            color: #f0f0f0;
+            padding: 0 1em;
+            width: 170px;
+            margin: 0 10px 0 0;
+            font-size: 1.1rem;
+            border-radius: 10px;
+            transition: 0.3s, width 0s, padding 0s, margin 0s;
+        }
+        .item .imageLink
+        {
+            background-color: #00b7ff30;
+        }
+        .item .buttonName
+        {
+            background-color: #c300ff30;
+        }
+        .item .function
+        {
+            background-color: #ffea0030;
+        }
+        .item input[type=text]:focus
+        {
+            outline: 0;
+        }
+        .item input[type="checkbox"]
+        {
+            position: relative;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            width: 40px;
+            height: 40px;
+            margin: 0 10px;
+            border-radius: 10px;
+            background-color: transparent;
+            cursor: pointer;
+            outline: none;
+            transition: 0.3s;
+        }
+        .item input[type="checkbox"]:hover
+        {
+            background-color: #66666620;
+        }
+        .item input[type="checkbox"]::after
+        {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            height: 30px;
+            width: 30px;
+            background-color: #ffffff20;
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%,-50%) scale(0.8);
+            transition: transform 0.3s;
+        }
+        .item input[type="checkbox"]:hover::after
+        {
+            transform: translate(-50%,-50%) scale(0.9);
+        }
+        .item input[type="checkbox"]:checked::after
+        {
+            background-color: var(--colour);
+            transform: translate(-50%,-50%) scale(1);
+        }
+        .item input[type="checkbox"]:checked:hover::after
+        {
+            transform: translate(-50%,-50%) scale(1.1);
+        }
+        .item input[type="checkbox"]:checked ~ .function
+        {
+            width: 0px;
+            margin: 0;
+            padding: 0;
+        }
+        .selection
+        {
+            position: relative;
+            height: 40px;
+            background-color: #66666640;
+            width: 130px;
+            margin-right: 10px;
+            border-radius: 10px;     
+            overflow: hidden;
+            cursor: pointer;
+            user-select: none;
+        }
+        .selection div
+        {
+            position: relative;
+        }
+        .selection::after
+        {
+            content: '';
+            position: absolute;
+            right: 0px;
+            top: 0;
+            transform: rotate(90deg) scale(0.35);
+            height: 40px;
+            width: 40px;
+            white-space: nowrap;
+            background-color: #f0f0f0;
+            mask: url(https://natski.netlify.app/icon/svg/ENCORE_GIS/line_arrow_down.svg) center center no-repeat;
+            -webkit-mask: url(https://natski.netlify.app/icon/svg/ENCORE_GIS/line_arrow_down.svg) center center no-repeat;
+            transition: 0.2s;
+        }
+        .selection.active::after
+        {
+            transform: rotate(0) scale(0.35);
+        }
+        .selection.active
+        {
+            overflow: visible;
+            z-index: 99;
+        }
+        .selection .listItem
+        {
+            position: relative;
+            height: 40px;
+            display: block;
+            padding: 0 0 0 15px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            line-height: 40px;
+            width: 100%;
+            background-color: var(--themecol);
+            border-top: 2px solid #00000030;
+            color: #f0f0f0;
+            font-weight: bold;
+        }
+        .selection .listItem::before
+        {
+            content: '';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%) translateX(0);
+            right: 10px;
+            left: unset;
+            height: 20px;
+            width: 5px;
+            padding: 0;
+            border-radius: 100vmax;
+            background-color: #f0f0f0;
+            opacity: 0;
+        }
+        .selection .listItem:hover::before
+        {
+            opacity: 1;
+        }
+        .selection .listItem:last-of-type
+        {
+            border-radius: 0 0 10px 10px;
+        }
+        .selection .listItem:nth-of-type(2)
+        {
+            border-radius: 10px 10px 0 0;
+            border: 0;
+        }
+        .selection .header
+        {
+            position: relative;
+            height: 40px;
+            display: block;
+            padding: 0 30px 0 15px;
+            margin-bottom: 10px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            line-height: 40px;
+            width: 100%;
+            color: #f0f0f0;
+            font-weight: bold;
+        }
+        .selection .header::before, .selection::before, .selection div::before
+        {
+            content: unset;
+        }
+        .GIS-item
+        {
+            margin-right: 10px;
+        }
+    </style>
 
-main article div
-{
-    position: unset;
-    width: unset;
-    height: unset;
-    margin: unset;
-    max-height: unset;
-}
-main article div::after
-{
-    content: unset;
-    position: unset;
-    bottom: unset;
-    font-style: unset;
-    width: unset;
-    overflow: unset;
-    text-overflow: unset;
-    white-space: unset;
-    pointer-events: unset;
-    left: unset;
-    color: unset;
-}
-main article div::before
-{
-    content: '';
-    position: unset;
-    left: unset;
-    top: unset;
-    height: unset;
-    width: unset;
-    background-color: unset;
-    border-radius: unset;
-}
-main article div img
-{
-    position: unset;
-    width: unset;
-    height: unset;
-    max-height: unset;
-    margin: unset;
-    display: unset;
-    object-fit: unset;
-    background-color: unset;
-    border-radius: unset;
-}
-textarea
-{
-    position: relative;
-    width: 90%;
-    min-width: 90%;
-    max-width: 90%;
-    min-height: 100px;
-    left: 50%;
-    transform: translateX(-50%);
-    margin-bottom: 15px;
-    background-color: #66666630;
-    border: 0px;
-    border-radius: 10px;
-    padding: 10px;
-    color: #f0f0f0;
-}
-        </style>
-        <style id="customStyle"></style>
-        <textarea id="stylesheetSystem" onkeyup="document.getElementById('customStyle').innerHTML = document.getElementById('stylesheetSystem').value" placeholder="test custom styles for embedded log elements here!"></textarea>
-        <main id="CLS">
-            <h1 style="margin-bottom: 0.5em;">PREVIEW</h1>
-            <article id="prev"></article>
+        <main>
+            <article style="text-align: center;"><span>ENCORE CLSF</span> is a tool used to format NTSK code for use with <span>ENCORE CLS</span></article>
+            <button onclick="toggleEditor()" id="menuBut">Open CLSF</button>
         </main>
+
+
+        <div id="containerWindow">
+            <div id="preview">
+                <div class="previewWindow CMS"></div>
+                <div class="toolbar">
+        
+                    <button onclick="togglePreview()" name="Close Preview" style="--col: #00485e89;">
+                        <GIS-icon title="hidden"></GIS-icon>
+                    </button>
+    
+              
+                </div>
+            </div>
+            <div id="editWindow">
+                <div id="editContainer"></div>
+    
+                <div class="toolbar">
+                    <input type="color" id="CMScolour" name="CMS Colour" value="#808080">
+    
+                    <button onclick="addItem(null,'container');setPosition()" name="Add New Item" style="--col: #005e0089;">
+                        <GIS-icon title="plus"></GIS-icon>
+                    </button>
+        
+                    <button onclick="document.getElementById('editContainer').innerHTML='';resetEditor();" name="Reset CMSF" style="--col: #5e000089;">
+                        <GIS-icon title="loop"></GIS-icon>
+                    </button>
+        
+                    <button onclick="togglePreview();generatePages('prev'); " name="Preview CMS" style="--col: #00485e89;">
+                        <GIS-icon title="preview"></GIS-icon>
+                    </button>
+    
+                    <button onclick="generatePages('copy')" name="Format to Clipboard" style="--col: #00485e89;">
+                        <GIS-icon title="copy"></GIS-icon>
+                    </button>
+                </div>
+
+            </div>
+            <button class="closeBut" onclick="toggleEditor()" style="--col: #5e000089;">
+                <GIS-icon title="cross"></GIS-icon>
+            </button>
+        </div>
+
+
+      
 
 
 
@@ -381,6 +659,7 @@ textarea
         </noscript>
 
         <script src="lib/js/ENCORE_NAT.js"></script>
+        <script src="lib/js/ENCORE_EDITOR.js"></script>
         <script src="lib/js/ENCORE_CLE.js"></script>
         <script src="lib/js/ENCORE_GIS_INBUILT.js"></script>
     </body>
