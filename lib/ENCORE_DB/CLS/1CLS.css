@@ -16,7 +16,7 @@
     }
     #CLS article section p .CLScredit a:hover
     {
-        color: #f0f0f0;
+        color: #f0f0f0e0;
         text-decoration: underline;
     }
 }
@@ -229,7 +229,7 @@
 }
 #CLS article section p .CLScredit a
 {
-    color: #709bff;
+    color: #f0f0f0d0;
     cursor: pointer;
 
 }
