@@ -268,7 +268,8 @@
                 width: min(90%, 80vmax);
                 border-radius: 20px;
                 overflow: hidden;
-                background-color: #729ef630;
+            
+                background-image: linear-gradient(to bottom right, #729ef630, #4c77cc30);
             }
             main .scrollContainer .scrollHeader
             {
@@ -278,15 +279,15 @@
                 width: 100%;
                 height: 250px;
             }
-            main .scrollContainer .scrollHeader #SSC
+            main .scrollContainer .scrollHeader .SSC
             {
                 position: relative;
                 flex-grow: 7;
                 height: 100%;
                 background-color: #66666610;
-                border-bottom: 2px solid #0a0a0a20;
+                border-bottom: 2px solid #f0f0f005;
             }
-            main .scrollContainer .scrollHeader #SSC span
+            main .scrollContainer .scrollHeader .SSC span
             {
                 position: absolute;
                 top: 10px;
@@ -297,7 +298,7 @@
                 padding: 7px 12px;
                 border-radius: 7px;
             }
-            main .scrollContainer .scrollHeader #SSC .SSCcontainer
+            main .scrollContainer .scrollHeader .SSC .SSCcontainer
             {
                 position: relative;
                 display: flex;
@@ -305,7 +306,7 @@
                 justify-content: center;
                 animation: featured 0.55s ease;
             }
-            main .scrollContainer .scrollHeader #SSC .SSCcontainer GIS-icon
+            main .scrollContainer .scrollHeader .SSC .SSCcontainer GIS-icon
             {
                 position: relative;
                 display: inline-block;
@@ -321,16 +322,21 @@
                 height: 100%;
                 display: flex;
                 flex-direction: column;
-                justify-content: center;
                 padding: 23px 15px 15px 15px;
                 background-color: #66666610;
-                border-left: 2px solid #0a0a0a20;
-                border-bottom: 2px solid #0a0a0a20;
+                border-left: 2px solid #f0f0f005;
+                border-bottom: 2px solid #f0f0f005;
             }
             main .scrollContainer .scrollHeader .scrollPanel .panelInfo
             {
                 position: relative;
                 width: 100%;
+                height: auto;
+                flex-grow: 1;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                padding: 0 0 8px 0;
             }
             main .scrollContainer .scrollHeader .scrollPanel .panelInfo .panelTitle
             {
@@ -350,17 +356,16 @@
                 flex-shrink: 0;
                 background-color: #f0f0f0;
                 margin: 0;
-                padding: 11px;
-                margin: 0 7px 0 0;
-                height: 0;
-                width: 0;
+                margin: 0 12px 0 0;
+                height: 22px;
+                width: 22px;
                 font-size: 0;
             }
             main .scrollContainer .scrollHeader .scrollPanel .panelInfo .panelData
             {
                 position: relative;
                 font-size: 1rem;
-                padding: 0 0 8px 55px;
+                padding: 0 0 0 55px;
                 color: #f0f0f080;
             }
             main .scrollContainer .scrollHeader .scrollPanel .panelInfo .panelData::before
@@ -369,7 +374,7 @@
                 position: absolute;
                 left: 35px;
                 top: 50%;
-                transform: translateY(calc(-50% - 4px));
+                transform: translateY(-50%);
                 width: 10px;
                 height: 3px;
                 background-color: #f0f0f080;
@@ -388,6 +393,17 @@
             {
                 position: relative;
                 font-size: 1.3rem;
+                padding: 0 0 15px 0;
+                display: flex;
+                align-items: center;
+                border-bottom: 3px solid #f0f0f010;
+            }
+            main .scrollContainer .scrollBody .scrollTitle GIS-icon
+            {
+                display: inline-block;
+                background-color: #f0f0f0;
+                font-size: 22px;
+                margin: 0 12px 0 0;
             }
             main .scrollContainer .scrollBody .scrollIcons
             {
@@ -395,7 +411,10 @@
                 width: 100%;
                 display: flex;
                 flex-wrap: wrap;
-                padding: 10px 0 0 0;
+                padding: 10px;
+                margin-top: 15px;
+                border-radius: 10px;
+                background-color: #f0f0f010;
             }
             main .scrollContainer .scrollBody .scrollIcons button
             {
@@ -414,12 +433,8 @@
                 height: 100%;
                 display: block;
                 background-color: #f0f0f0;
+                transform: translateY(0);
                 transition: 0.15s;
-            }
-            main .scrollContainer .scrollBody .scrollIcons button:hover GIS-icon
-            {
-                background-color: var(--themecol);
-                mask-repeat: no-repeat;
             }
             @media (hover: hover){
                 .pagebutton-u:hover
@@ -457,8 +472,13 @@
             }
             main .scrollContainer .scrollBody .scrollIcons button:hover::after
             {
-                transform: translate(-50%, -5%);
+                transform: translate(-50%, -10px);
                 opacity: 1;
+            }
+            main .scrollContainer .scrollBody .scrollIcons button:hover GIS-icon
+            {
+                background-color: var(--themecol);
+                transform: translateY(-10px);
             }
             }
             .banner-bg-u .encore
@@ -569,7 +589,7 @@
         <div class="slideshowcontainerBlock"></div>
 
         <style>
-            #SSC
+            .SSC
             {
                 position: relative;
                 height: 100%;
@@ -580,7 +600,7 @@
                 border: 0px;
                 overflow: hidden;
             }
-            #SSC .pagebutton
+            .SSC .pagebutton
             {
                 position: absolute;
                 top: 50%;
@@ -595,27 +615,27 @@
                 opacity: 0;
                 transition: 0.2s;
             }
-            #SSC .pagebutton:last-of-type
+            .SSC .pagebutton:last-of-type
             {
                 left: unset;
                 right: 10px;
             }
-            #SSC .pagebutton svg
+            .SSC .pagebutton svg
             {
                 display: block;
                 fill: #f0f0f0;
                 height: 10px;
             }
-            #SSC .pagebutton:active
+            .SSC .pagebutton:active
             {
                 background-color: #ffffff30;
                 transition: 0s;
             }
-            #SSC:hover .pagebutton
+            .SSC:hover .pagebutton
             {
                 opacity: 1;
             }
-            #SSC .progress
+            .SSC .progress
             {
                 position: absolute;
                 height: 7px;
@@ -627,7 +647,7 @@
                 border-radius: 100vmax;
                 overflow: hidden;
             }
-            #SSC .progress .progress-bar
+            .SSC .progress .progress-bar
             {
                 position: absolute;
                 left: 0;
@@ -637,7 +657,7 @@
                 transform-origin: left;
                 width: 100%;
             }
-            #SSC .thumbs
+            .SSC .thumbs
             {
                 position: absolute;
                 display: flex;
@@ -648,7 +668,7 @@
                 right: 10px;
                 pointer-events: unset;
             }
-            #SSC .thumbs .thumb
+            .SSC .thumbs .thumb
             {
                 position: relative;
                 border-radius: 100vmax;
@@ -665,15 +685,15 @@
                 pointer-events: unset;
                 cursor: pointer;
             }
-            #SSC .thumbs .thumb:first-of-type
+            .SSC .thumbs .thumb:first-of-type
             {
                 margin: 0 5px 0 0;
             }
-            #SSC .thumbs .thumb:last-of-type
+            .SSC .thumbs .thumb:last-of-type
             {
                 margin: 0 0 0 5px;
             }
-            #SSC .thumbs .thumb::before
+            .SSC .thumbs .thumb::before
             {
                 content: '';
                 position: relative;
@@ -685,12 +705,12 @@
                 background-color: #f0f0f0;
                 transition: 0.2s;
             }
-            #SSC .thumbs .thumb.active::before
+            .SSC .thumbs .thumb.active::before
             {
                 opacity: 1;
                 transform: scale(1);
             }
-            #SSC .banner-bg
+            .SSC .banner-bg
             {
                 position: absolute;
                 left: 0;
@@ -702,7 +722,7 @@
                 justify-content: center;
                 animation: fadeIn 1s;
             }
-            #SSC .banner-bg button
+            .SSC .banner-bg button
             {
                 position: absolute;
                 display: block;
@@ -757,7 +777,7 @@
                     flex-direction: column;
                     height: auto;
                 }
-                main .scrollContainer .scrollHeader #SSC
+                main .scrollContainer .scrollHeader .SSC
                 {
                     flex-grow: 0;
                     width: 100%;
@@ -776,7 +796,7 @@
 
             <div class="scrollContainer">
                 <div class="scrollHeader">
-                    <div id="SSC" style="opacity: 0; display: none;">
+                    <div id="SSC" class="SSC" style="opacity: 0; display: none;">
 
                         <div class="banner-bg" style="background-color: rgba(174, 0, 255, 0.15);">
                     
@@ -839,7 +859,7 @@
                     </div>
                 </div>
                 <div class="scrollBody">
-                    <h1 class="scrollTitle">ENCORE Plugins</h1>
+                    <h1 class="scrollTitle"><GIS-icon title="puzzle"></GIS-icon>ENCORE Plugins</h1>
                     <div class="scrollIcons">
                         <button name="SSC" onclick="loadframe('ENCORE SSC')">
                             <GIS-icon title="SSC"></GIS-icon>
@@ -893,7 +913,7 @@
                     </div>
                 </div>
                 <div class="scrollBody">
-                    
+                    <h1 class="scrollTitle"><GIS-icon title="alert"></GIS-icon>WIP</h1>
                 </div>
             </div>
         </main>
