@@ -137,13 +137,27 @@
             {
                 position: absolute;
                 bottom: 60px;
-                background-color: #f0f0f0;
-                color: #000;
-                border-radius: 100vmax;
+                background-color: var(--themecol);
+                color: #f0f0f0;
+                border-radius: 10px;
                 padding: 10px 50px;
                 font-size: 1.3rem;
                 font-weight: bold;
                 transition: 0.2s;
+            }
+            .banner-bg-u button::before
+            {
+                content: '';
+                position: absolute;
+                top: 50%;
+                right: 10px;
+                height: 50%;
+                width: 6px;
+                transform: translateY(-50%);
+                border-radius: 100vmax;
+                background-color: #f0f0f0;
+                opacity: 0;
+                transition: 0.1s;
             }
             .banner-bg-u div
             {
@@ -417,14 +431,14 @@
                     background-color: #66666660;
                     transition: 0s;
                 }
-                .banner-bg-u button:hover
-                {
-                    background-color: var(--themecol);
-                }
                 .thumbs .thumb-u:hover
                 {
                     background-color: #66666680;
                 }
+                .banner-bg-u button:hover::before
+            {
+                opacity: 1;
+            }
                 main .scrollContainer .scrollBody .scrollIcons button::after
             {
                 content: attr(name);
