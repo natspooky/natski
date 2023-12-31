@@ -161,6 +161,8 @@ make global styles for both CLSF and CMSF
 work on art project
 
 
+add detection system to SSC to locate if a new SSC window has been added (once it is a class system)
+
 
 
 
