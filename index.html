@@ -137,13 +137,13 @@
             {
                 position: absolute;
                 bottom: 60px;
-                background-color: var(--themecol);
+                background-color: #66666620;
                 color: #f0f0f0;
                 border-radius: 10px;
                 padding: 10px 50px;
                 font-size: 1.3rem;
                 font-weight: bold;
-                transition: 0.2s;
+                transition: 0.1s;
             }
             .banner-bg-u button::before
             {
@@ -152,7 +152,7 @@
                 top: 50%;
                 right: 10px;
                 height: 50%;
-                width: 6px;
+                width: 5px;
                 transform: translateY(-50%);
                 border-radius: 100vmax;
                 background-color: #f0f0f0;
@@ -235,7 +235,7 @@
                 transform-origin: left;
                 height: 100%;
                 width: 100%;
-                background-color: var(--themecol);
+                background-color: #f0f0f0;
             }
             .thumbs .thumb-u.active
             {
@@ -438,6 +438,10 @@
                 .banner-bg-u button:hover::before
             {
                 opacity: 1;
+            }
+            .banner-bg-u button:hover
+            {
+                background-color: #66666630;
             }
                 main .scrollContainer .scrollBody .scrollIcons button::after
             {
@@ -1279,7 +1283,7 @@
         </script>
         <script src="lib/js/ENCORE_SSC.js"></script>
         <script>
-            SSC_settings={'thumbs':true,'progressBar':true,'sideButtons':true,'timer':10000,'style':null}
+            SSC_settings={'thumbs':true,'progressBar':true,'sideButtons':true,'timer':15000,'style':null}
         </script>
         
         <script src="lib/js/ENCORE_CMS.js"></script>
