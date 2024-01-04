@@ -978,6 +978,7 @@ main article ul li a
     background-color: #66666620;
     border-radius: 20px;
     overflow: hidden;
+    border: 2px solid var(--NATcol);
     transition: 0.2s;
 }
 .portanchor .titlebutton div
