@@ -177,8 +177,8 @@
 .GIS-link div
 {
     position: relative;
-    height: 50%;
-    width: 50%;
+    height: 40%;
+    width: 40%;
     background-color: #f0f0f0;
     pointer-events: none;
     mask: url(https://natski.netlify.app/icon/svg/ENCORE_GIS/GIS.svg) no-repeat center;

@@ -163,7 +163,8 @@ work on art project
 
 add detection system to SSC to locate if a new SSC window has been added (once it is a class system)
 
-
+make a bin icon for GIS
+set the reset buttons in editors to the bin icon
 
 
 
