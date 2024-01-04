@@ -322,12 +322,12 @@ window.onload = function(){
             let pageimg = img[i]
             if(pageimg.complete && pageimg.naturalHeight !== 0){
                 setTimeout(() => {
-                    pageimg.parentNode.parentNode.style.setProperty('--NATcol', colourSystem(pageimg)+" 0.1)")
+                    pageimg.parentNode.parentNode.style.setProperty('--NATcol', colourSystem(pageimg)+" 0.2)")
                 }, 615);
             }else{
                 pageimg.onload = function(){
                     setTimeout(() => {
-                        pageimg.parentNode.parentNode.style.setProperty('--NATcol', colourSystem(pageimg)+" 0.1)")
+                        pageimg.parentNode.parentNode.style.setProperty('--NATcol', colourSystem(pageimg)+" 0.2)")
                     }, 615);
                 }
             }
