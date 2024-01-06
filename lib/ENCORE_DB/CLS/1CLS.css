@@ -240,7 +240,7 @@
     width: 15px;
     margin: 0 0.4em 0 0;
     flex-shrink: 0;
-    fill: #f0f0f0;
+    fill: #f0f0f060;
 }
 #CLS article section GIS-icon
 {
@@ -250,7 +250,7 @@
     width: 15px;
     height: 15px;
     flex-shrink: 0;
-    background-color: #f0f0f0;
+    background-color: #f0f0f060;
 }
 #CLS article section GIS-icon *
 {
