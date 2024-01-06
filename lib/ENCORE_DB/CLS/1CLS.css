@@ -181,9 +181,10 @@
 {
     width: 90%;
     display: block;
-    background-image: linear-gradient(to right, transparent,#8f8f8f, transparent);
-    height: 4px;
+    background-image: unset;
+    height: 2px;
     border: 0;
+    background-color: #66666640;
     margin: 1em auto 0.8em auto;
 }
 #CLS article h3
@@ -237,7 +238,7 @@
 {
     position: relative;
     width: 15px;
-    margin: 0 0.4em;
+    margin: 0 0.4em 0 0;
     flex-shrink: 0;
     fill: #f0f0f0;
 }
@@ -245,7 +246,7 @@
 {
     position: relative;
     font-size: 1.2rem;
-    margin: 0 0.4em;
+    margin: 0 0.4em 0 0;
     width: 15px;
     height: 15px;
     flex-shrink: 0;
