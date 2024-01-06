@@ -97,7 +97,7 @@
     position: relative;
     width: min(calc(100% - 30px), 600px);
     height: fit-content;
-    margin: 0 0 40px 28px;
+    margin: 0 0 40px 22px;
     border-radius: 10px;
     background-color: #66666620;
     max-height: 85vh;
@@ -125,7 +125,7 @@
     height: 100%;
     width: 3px;
     pointer-events: none;
-    background-color:#ffffff20;
+    background-color:#f0f0f060;
     border-radius: 100vmax;
     transition: 0.2s;
 }
