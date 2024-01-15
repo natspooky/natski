@@ -164,7 +164,7 @@
                     <div class="SSMselection SSMinput" ssminfo="Lets you choose which camera input you would like to use" id="videoInput">
                         <div class="itemContainer">
                             <span class="header">
-                                Select Camera
+                                Automatic
                             </span>
                         </div>
                     </div>
@@ -175,7 +175,7 @@
                     <div class="SSMselection SSMinput" ssminfo="Lets you choose which microphone input you would like to use" id="audioInput">
                         <div class="itemContainer">
                             <span class="header">
-                                Select Microphone
+                                Automatic
                             </span>
                         </div>
                     </div>
@@ -188,7 +188,7 @@
                     <div class="SSMselection SSMinput" ssminfo="Lets you choose the framerate you wish the program to run at">
                         <div class="itemContainer">
                             <span class="header">
-                                Select FPS
+                                Automatic
                             </span>
                             <span class="SSMitem" value="60" onclick="changeCameraData(60,'fps')">
                                 60
@@ -200,7 +200,7 @@
                                 40
                             </span>
                             <span class="SSMitem" value="30" onclick="changeCameraData(30,'fps')">
-                                30 - recommended
+                                30
                             </span>
                             <span class="SSMitem" value="20" onclick="changeCameraData(20,'fps')">
                                 20
@@ -219,7 +219,7 @@
                     <div class="SSMselection SSMinput" ssminfo="Lets you choose the resolution of the camera input">
                         <div class="itemContainer">
                             <span class="header">
-                                Select Resolution
+                                Automatic
                             </span>
                             <span class="SSMitem" onclick="changeCameraData('1920 1080','resolution')">
                                 1080p
@@ -228,7 +228,7 @@
                                 720p
                             </span>
                             <span class="SSMitem" onclick="changeCameraData('640 480','resolution')">
-                                480p - recommended
+                                480p
                             </span>
                         </div>
                     </div>
@@ -257,8 +257,16 @@
             <section>
                 <h1><GIS-icon title="config"></GIS-icon>Calibration</h1>
                 <span class="SSMcategory">
-                    <p>Threshold</p>
-                    <input type="range" class="SSMinput" id="Threshold" min="0" max="2" value="1" step="0.01" ssminfo="changes how close the detected colours have to be to the RBG values" onchange="changethresh(this)">
+                    <p>Threshold Red</p>
+                    <input type="range" class="SSMinput" id="ThresholdR" min="0" max="2" value="1" step="0.01" ssminfo="changes how similar the RGB values have to be compared to the red value" onchange="changethresh(this)">
+                </span>
+                <span class="SSMcategory">
+                    <p>Threshold Green</p>
+                    <input type="range" class="SSMinput" id="ThresholdG" min="0" max="2" value="1" step="0.01" ssminfo="changes how similar the RGB values have to be compared to the green value" onchange="changethresh(this)">
+                </span>
+                <span class="SSMcategory">
+                    <p>Threshold Blue</p>
+                    <input type="range" class="SSMinput" id="ThresholdB" min="0" max="2" value="1" step="0.01" ssminfo="changes how similar the RGB values have to be compared to the blue value" onchange="changethresh(this)">
                 </span>
                 <span class="SSMcategory">
                     <p>Vertical Sensitivity</p>
@@ -270,7 +278,7 @@
                 </span>
                 <span class="SSMcategory">
                     <p>Auto Calibration</p>
-                    <button class="SSMbutton SSMinput" ssminfo="automatically calculates the best settings for the user" onclick="autoCalibrate(this)">calibrate</button>
+                    <button class="SSMbutton SSMinput" ssminfo="automatically calculates the best settings for the user" onclick="startCalibrate()">calibrate</button>
                 </span>
             </section>
         
