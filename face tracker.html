@@ -51,7 +51,6 @@
                 overflow: hidden;
                 background-color: #66666640;
                 border-radius: 100vmax;
-                transition: opacity 0.3s;
             }
             #vol #volume
             {
@@ -85,11 +84,6 @@
                 height: 40vh;
                 width: auto;
                 transform: scaleX(-100%);
-                transition: opacity 0.3s;
-            }
-            #video.hide
-            {
-                opacity: 0;
             }
             .hidden
             {
@@ -156,10 +150,10 @@
 
         <main>
             <div id="container" class="row">
-                <div id="vol" class="hide">
+                <div id="vol">
                     <div id="volume"></div>
                 </div>
-                <canvas id="video" autoplay muted playsinline class="hide"></canvas>
+                <canvas id="video" autoplay muted playsinline></canvas>
                 <canvas id="canvas" class="hidden"></canvas>
                 <canvas id="facecanvas"></canvas>
             </div>
