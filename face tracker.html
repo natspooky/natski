@@ -42,10 +42,31 @@
     <body>
 
         <style>
+            #vol 
+            {
+                position: relative;
+                width: 9%;
+            }
+            #vol span
+            {
+                position: relative;
+                height: 200px;
+                width: 8px;
+                background-color: #fff;
+            }
+            #vol span div
+            {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                bottom: 0;
+                left: 0;
+                background-color: blue;
+            }
             #container
             {
                 position: relative;
-                width: 100%;
+                width: 90%;
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -125,6 +146,11 @@
 
 
         <main>
+            <div id="vol">
+                <span>
+                    <div id="volume"></span>
+                </span>
+            </div>
             <div id="container" class="row">
                 <canvas id="video" autoplay muted playsinline></canvas>
                 <canvas id="canvas" class="hidden"></canvas>
