@@ -42,14 +42,14 @@
     <body>
 
         <style>
-            #vol 
+            #vol
             {
                 position: relative;
-                width: 8px;
-                height: 200px;
+                width: fit-content;
+                height: fit-content;
+                padding: 5px;
                 background-color: #fff;
             }
-
             #vol #volume
             {
                 position: absolute;
@@ -60,6 +60,10 @@
                 left: 0;
                 transform-origin: bottom;
                 background-color: blue;
+            }
+            #vol.large #volume
+            {
+                background-color: red;
             }
             #container
             {
