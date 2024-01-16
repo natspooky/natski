@@ -51,6 +51,7 @@
                 overflow: hidden;
                 background-color: #66666640;
                 border-radius: 100vmax;
+                transition: opacity 0.3s;
             }
             #vol #volume
             {
@@ -84,6 +85,11 @@
                 height: 40vh;
                 width: auto;
                 transform: scaleX(-100%);
+                transition: opacity 0.3s;
+            }
+            #video.hide
+            {
+                opacity: 0;
             }
             .hidden
             {
