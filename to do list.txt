@@ -170,7 +170,7 @@ make a desktop like environment for the cellar
 
 make the buttons hide when moving image in pds and pdsu
 
-
+make encore versions look like the swipe up menu in INDEX 
 
 
 
