@@ -5,12 +5,12 @@
     --SSCUaccent: #aaaaaa;
 }
 @media (hover:hover){
-    #SSCU .pagebutton-u:hover
+    .SSCU .pagebutton-u:hover
     {
         background-color: #b8b8b82a;
     }
 }
-#SSCU *, #SSCU
+.SSCU *, .SSCU
 {
     box-sizing: border-box;
     margin: 0;
@@ -21,7 +21,7 @@
     font-family: 'Exo 2', sans-serif;
     font-size: 16px;
 }
-#SSCU
+.SSCU
 {
     position: relative;
     height: 100vh;
@@ -35,7 +35,7 @@
     border-radius: 28px;
     overflow: hidden;
 }
-#SSCU .SSCUsvg
+.SSCU .SSCUsvg
 {
     position: absolute;
     top: 0;
@@ -46,14 +46,14 @@
     justify-content: center;
     align-items: center;
 }
-#SSCU .SSCUsvg svg
+.SSCU .SSCUsvg svg
 {
     position: relative;
     height: 200px;
     display: block;
     fill: #66666630;
 }
-#SSCU .pagebutton-u
+.SSCU .pagebutton-u
 {
     position: absolute;
     top: 50%;
@@ -66,30 +66,30 @@
     cursor: pointer;
     transition: 0.2s;
 }
-#SSCU .pagebutton-u:last-of-type
+.SSCU .pagebutton-u:last-of-type
 {
     left: unset;
     right: 15px;
 }
-#SSCU .pagebutton-u svg
+.SSCU .pagebutton-u svg
 {
     display: block;
     fill: #f0f0f0;
     height: 15px;
 }
-#SSCU .pagebutton-u:active
+.SSCU .pagebutton-u:active
 {
     background-color: #4646465a;
     transition: 0s;
 }
-#SSCU .thumbs
+.SSCU .thumbs
 {
     position: absolute;
     display: flex;
     align-items: center;
     bottom: 15px;
 }
-#SSCU .thumbs .thumb-u
+.SSCU .thumbs .thumb-u
 {
     position: relative;
     border-radius: 100vmax;
@@ -101,15 +101,15 @@
     transition: 0.2s;
     cursor: pointer;
 }
-#SSCU .thumbs .thumb-u:first-of-type
+.SSCU .thumbs .thumb-u:first-of-type
 {
     margin: 0 0.4em 0 0;
 }
-#SSCU .thumbs .thumb-u:last-of-type
+.SSCU .thumbs .thumb-u:last-of-type
 {
     margin: 0 0 0 0.4em;
 }
-#SSCU .thumbs .thumb-u .progress-u
+.SSCU .thumbs .thumb-u .progress-u
 {
     position: absolute;
     left: 0;
@@ -120,12 +120,12 @@
     transform: scaleX(0);
     background-color: #f0f0f0;
 }
-#SSCU .thumbs .thumb-u.active
+.SSCU .thumbs .thumb-u.active
 {
     width: 30px;
     pointer-events: none;
 }
-#SSCU .banner-bg-u
+.SSCU .banner-bg-u
 {
     position: absolute;
     left: 0;
@@ -136,7 +136,7 @@
     align-items: center;
     justify-content: center;
 }
-#SSCU .banner-bg-u::after
+.SSCU .banner-bg-u::after
 {
     content: '';
     position: absolute;
@@ -147,7 +147,7 @@
     background-image: linear-gradient(to top, #000000e0, transparent);
     pointer-events: none;
 }
-#SSCU .banner-bg-u img
+.SSCU .banner-bg-u img
 {
     position: absolute;
     left: 0;
@@ -156,7 +156,7 @@
     width: 100%;
     object-fit: cover;
 }
-#SSCU .banner-bg-u .banner-button
+.SSCU .banner-bg-u .banner-button
 {
     position: absolute;
     display: block;
@@ -177,7 +177,7 @@
 }
 @media (orientation: portrait)
 {
-    #SSCU
+    .SSCU
     {
         height: 85vh;
     }

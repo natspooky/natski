@@ -4,17 +4,17 @@
     --SSCaccent: #0a0a0a;
 }
 @media (hover:hover){
-    #SSC .thumbs .thumb:hover
+    .SSC .thumbs .thumb:hover
     {
         transform: scale(1.1);
         border: 1px solid #0a0a0a;
     }
-    #SSC .pagebutton:hover svg
+    .SSC .pagebutton:hover svg
     {
         transform: scale(1.2);
     }
 }
-#SSC *, #SSC
+.SSC *, .SSC
 {
     box-sizing: border-box;
     margin: 0;
@@ -25,7 +25,7 @@
     font-family: 'Exo 2', sans-serif;
     font-size: 16px;
 }
-#SSC
+.SSC
 {
     position: relative;
     height: 100vh;
@@ -40,7 +40,7 @@
     background-color: var(--SSCcolor);
     overflow: hidden;
 }
-#SSC .pagebutton
+.SSC .pagebutton
 {
     position: absolute;
     bottom: 10px;
@@ -55,14 +55,14 @@
     justify-content: center;
     cursor: pointer;
 }
-#SSC .pagebutton:last-of-type
+.SSC .pagebutton:last-of-type
 {
     left: unset;
     border-right: unset;
     border-left: 1px solid #0a0a0a30;
     right: 10px;
 }
-#SSC .pagebutton svg
+.SSC .pagebutton svg
 {
     display: block;
     fill: var(--SSCaccent);
@@ -70,7 +70,7 @@
     transform: scale(1);
     transition: 0.2s;
 }
-#SSC .progress
+.SSC .progress
 {
     position: absolute;
     height: 4px;
@@ -79,7 +79,7 @@
     top: 0px;
     overflow: hidden;
 }
-#SSC .progress .progress-bar
+.SSC .progress .progress-bar
 {
     position: absolute;
     left: 0;
@@ -90,7 +90,7 @@
     width: 100%;
     transition: 0.3s;
 }
-#SSC .thumbs
+.SSC .thumbs
 {
     position: absolute;
     height: 40px;
@@ -103,7 +103,7 @@
     background-color: var(--SSCcolor);
     bottom: 10px;
 }
-#SSC .thumbs .thumb
+.SSC .thumbs .thumb
 {
     position: relative;
     border-radius: 100vmax;
@@ -116,20 +116,20 @@
     transition: 0.2s;
     cursor: pointer;
 }
-#SSC .thumbs .thumb:first-of-type
+.SSC .thumbs .thumb:first-of-type
 {
     margin: 0 0.8em 0 0;
 }
-#SSC .thumbs .thumb:last-of-type
+.SSC .thumbs .thumb:last-of-type
 {
     margin: 0 0 0 0.8em;
 }
-#SSC .thumbs .thumb.active
+.SSC .thumbs .thumb.active
 {
     background-color: var(--SSCaccent);
     border: 1px solid var(--SSCaccent);
 }
-#SSC .banner-bg
+.SSC .banner-bg
 {
     position: absolute;
     left: 0;
@@ -141,7 +141,7 @@
     justify-content: center;
     animation: fadeIn 1s;
 }
-#SSC .banner-bg img
+.SSC .banner-bg img
 {
     position: absolute;
     left: 0;
@@ -150,7 +150,7 @@
     width: 100%;
     object-fit: cover;
 }
-#SSC .banner-bg .banner-button
+.SSC .banner-bg .banner-button
 {
     position: absolute;
     display: block;
@@ -171,7 +171,7 @@
 }
 @media (orientation: portrait)
 {
-    #SSC
+    .SSC
     {
         height: 85vh;
     }

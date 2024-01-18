@@ -567,7 +567,7 @@
               </svg>
         </div>
 
-        <header class="slideshowcontainer" id="SSCU">
+        <header class="SSCU slideshowcontainer">
 
             <div class="banner-bg-u">
                 <img src="icon/img/1trans.png" draggable="false" alt="ssc" loading="eager">
@@ -818,7 +818,7 @@
 
             <div class="scrollContainer">
                 <div class="scrollHeader">
-                    <div id="SSC" class="SSC" style="opacity: 0; display: none;">
+                    <div class="SSC" style="opacity: 0; display: none;">
 
                         <div class="banner-bg" style="background-color: rgba(174, 0, 255, 0.15);">
                     
@@ -1122,7 +1122,7 @@
 
                     if(!deviceCheck() && preference!=='true'){
                         let x = document.getElementsByClassName('banner-bg-u'),
-                        sscu = document.getElementById('SSCU'),
+                        sscu = document.getElementsByClassName('SSCU')[0],
                         main = document.querySelector('main')
                         for(let i = 0; i < x.length; i++){
                             x[i].addEventListener("mousemove", function(e) {
@@ -1158,7 +1158,7 @@
 
                     }else{
                         let main = document.querySelector('main'),
-                        sscu = document.getElementById('SSCU'),
+                        sscu = document.getElementsByClassName('SSCU')[0],
                         panel = document.getElementsByClassName('slideshowcontainerBlock')[0]
                         panel.remove()
                         sscu.style.position = 'relative'
@@ -1237,7 +1237,7 @@
 
                 function unloadframe() {
                     removeLoader()
-                    document.getElementById("SSCU").classList.remove("active")
+                    document.getElementsByClassName("SSCU")[0].classList.remove("active")
                     menuClose()
                     document.getElementById("iframePanel").classList.remove("active")
                     document.body.style.position = 'unset'
@@ -1257,7 +1257,7 @@
                     }else{
                         reloadFrame(`${e}.html`)
                     }
-                    document.getElementById("SSCU").classList.add("active")
+                    document.getElementsByClassName("SSCU")[0].classList.add("active")
                     menuClose()
                     document.getElementById("iframePanel").classList.add("active")
                     document.body.style.position = 'fixed'

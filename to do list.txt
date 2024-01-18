@@ -176,9 +176,9 @@ change http request to fetch().then()
 
 make a webcomic library :D (CBR)
 
+URGENT -- redesign VPS to look like twitter video player
 
-
-
+make an element creation function standard across ENCORE
 
 
 

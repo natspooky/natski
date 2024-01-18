@@ -4,17 +4,17 @@
     --SSCUaccent: #0a0a0a;
 }
 @media (hover:hover){
-    #SSCU .thumbs .thumb-u:hover
+    .SSCU .thumbs .thumb-u:hover
     {
         transform: scale(1.1);
         border: 1px solid #0a0a0a;
     }
-    #SSCU .pagebutton-u:hover svg
+    .SSCU .pagebutton-u:hover svg
     {
         transform: scale(1.2);
     }
 }
-#SSCU *, #SSCU
+.SSCU *, .SSCU
 {
     box-sizing: border-box;
     margin: 0;
@@ -25,7 +25,7 @@
     font-family: 'Exo 2', sans-serif;
     font-size: 16px;
 }
-#SSCU
+.SSCU
 {
     position: relative;
     height: 100vh;
@@ -40,7 +40,7 @@
     background-color: var(--SSCUcolor);
     overflow: hidden;
 }
-#SSCU .SSCUsvg
+.SSCU .SSCUsvg
 {
     position: absolute;
     top: 0;
@@ -51,14 +51,14 @@
     justify-content: center;
     align-items: center;
 }
-#SSCU .SSCUsvg svg
+.SSCU .SSCUsvg svg
 {
     position: relative;
     height: 200px;
     display: block;
     fill: #66666630;
 }
-#SSCU .pagebutton-u
+.SSCU .pagebutton-u
 {
     position: absolute;
     bottom: 10px;
@@ -73,14 +73,14 @@
     justify-content: center;
     cursor: pointer;
 }
-#SSCU .pagebutton-u:last-of-type
+.SSCU .pagebutton-u:last-of-type
 {
     left: unset;
     border-right: unset;
     border-left: 1px solid #0a0a0a30;
     right: 10px;
 }
-#SSCU .pagebutton-u svg
+.SSCU .pagebutton-u svg
 {
     display: block;
     fill: var(--SSCUaccent);
@@ -88,7 +88,7 @@
     transform: scale(1);
     transition: 0.2s;
 }
-#SSCU .thumbs
+.SSCU .thumbs
 {
     position: absolute;
     height: 40px;
@@ -101,7 +101,7 @@
     border-radius: 5px;
     bottom: 10px;
 }
-#SSCU .thumbs .thumb-u
+.SSCU .thumbs .thumb-u
 {
     position: relative;
     border-radius: 100vmax;
@@ -115,21 +115,21 @@
     transition: 0.2s;
     cursor: pointer;
 }
-#SSCU .thumbs .thumb-u:first-of-type
+.SSCU .thumbs .thumb-u:first-of-type
 {
     margin: 0 0.8em 0 0;
 }
-#SSCU .thumbs .thumb-u:last-of-type
+.SSCU .thumbs .thumb-u:last-of-type
 {
     margin: 0 0 0 0.8em;
 }
-#SSCU .thumbs .thumb-u.active
+.SSCU .thumbs .thumb-u.active
 {
     border: 1px solid var(--SSCUaccent);
     width: 30px;
     pointer-events: none;
 }
-#SSCU .thumbs .thumb-u .progress-u
+.SSCU .thumbs .thumb-u .progress-u
 {
     position: absolute;
     left: 0;
@@ -140,7 +140,7 @@
     transform: scaleX(0);
     background-color: var(--SSCUaccent);
 }
-#SSCU .banner-bg-u
+.SSCU .banner-bg-u
 {
     position: absolute;
     left: 0;
@@ -151,7 +151,7 @@
     align-items: center;
     justify-content: center;
 }
-#SSCU .banner-bg-u img
+.SSCU .banner-bg-u img
 {
     position: absolute;
     left: 0;
@@ -160,7 +160,7 @@
     width: 100%;
     object-fit: cover;
 }
-#SSCU .banner-bg-u .banner-button
+.SSCU .banner-bg-u .banner-button
 {
     position: absolute;
     display: block;
@@ -176,7 +176,7 @@
 }
 @media (orientation: portrait)
 {
-    #SSCU
+    .SSCU
     {
         height: 85vh;
     }
