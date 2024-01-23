@@ -180,7 +180,7 @@ URGENT -- redesign VPS to look like twitter video player
 
 make an element creation function standard across ENCORE
 
-
+add a play / pause button to SSC and SSCU
 
 
 
