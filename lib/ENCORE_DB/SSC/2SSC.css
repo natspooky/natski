@@ -4,12 +4,12 @@
     --SSCaccent: #0a0a0a;
 }
 @media (hover:hover){
-    .SSC .thumbs .thumb:hover
+    .SSC .SSCthumbs .SSCthumb:hover
     {
         transform: scale(1.1);
         border: 1px solid #0a0a0a;
     }
-    .SSC .pagebutton:hover svg
+    .SSC .SSCpageButton:hover svg
     {
         transform: scale(1.2);
     }
@@ -40,7 +40,7 @@
     background-color: var(--SSCcolor);
     overflow: hidden;
 }
-.SSC .pagebutton
+.SSC .SSCpageButton
 {
     position: absolute;
     bottom: 10px;
@@ -55,14 +55,14 @@
     justify-content: center;
     cursor: pointer;
 }
-.SSC .pagebutton:last-of-type
+.SSC .SSCpageButton:last-of-type
 {
     left: unset;
     border-right: unset;
     border-left: 1px solid #0a0a0a30;
     right: 10px;
 }
-.SSC .pagebutton svg
+.SSC .SSCpageButton svg
 {
     display: block;
     fill: var(--SSCaccent);
@@ -70,7 +70,7 @@
     transform: scale(1);
     transition: 0.2s;
 }
-.SSC .progress
+.SSC .SSCprogress
 {
     position: absolute;
     height: 4px;
@@ -79,7 +79,7 @@
     top: 0px;
     overflow: hidden;
 }
-.SSC .progress .SSCprogressBar
+.SSC .SSCprogress .SSCprogressBar
 {
     position: absolute;
     left: 0;
@@ -90,7 +90,7 @@
     width: 100%;
     transition: 0.3s;
 }
-.SSC .thumbs
+.SSC .SSCthumbs
 {
     position: absolute;
     height: 40px;
@@ -103,7 +103,7 @@
     background-color: var(--SSCcolor);
     bottom: 10px;
 }
-.SSC .thumbs .thumb
+.SSC .SSCthumbs .SSCthumb
 {
     position: relative;
     border-radius: 100vmax;
@@ -116,15 +116,15 @@
     transition: 0.2s;
     cursor: pointer;
 }
-.SSC .thumbs .thumb:first-of-type
+.SSC .SSCthumbs .SSCthumb:first-of-type
 {
     margin: 0 0.8em 0 0;
 }
-.SSC .thumbs .thumb:last-of-type
+.SSC .SSCthumbs .SSCthumb:last-of-type
 {
     margin: 0 0 0 0.8em;
 }
-.SSC .thumbs .thumb.active
+.SSC .SSCthumbs .SSCthumb.active
 {
     background-color: var(--SSCaccent);
     border: 1px solid var(--SSCaccent);

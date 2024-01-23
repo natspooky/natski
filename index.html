@@ -632,7 +632,7 @@
                 border: 0px;
                 overflow: hidden;
             }
-            .SSC .pagebutton
+            .SSC .SSCpageButton
             {
                 position: absolute;
                 top: 50%;
@@ -647,27 +647,27 @@
                 opacity: 0;
                 transition: 0.2s;
             }
-            .SSC .pagebutton:last-of-type
+            .SSC .SSCpageButton:last-of-type
             {
                 left: unset;
                 right: 10px;
             }
-            .SSC .pagebutton svg
+            .SSC .SSCpageButton svg
             {
                 display: block;
                 fill: #f0f0f0;
                 height: 10px;
             }
-            .SSC .pagebutton:active
+            .SSC .SSCpageButton:active
             {
                 background-color: #ffffff30;
                 transition: 0s;
             }
-            .SSC:hover .pagebutton
+            .SSC:hover .SSCpageButton
             {
                 opacity: 1;
             }
-            .SSC .progress
+            .SSC .SSCprogress
             {
                 position: absolute;
                 height: 7px;
@@ -679,7 +679,7 @@
                 border-radius: 100vmax;
                 overflow: hidden;
             }
-            .SSC .progress .progress-bar
+            .SSC .SSCprogress .SSCprogressBar
             {
                 position: absolute;
                 left: 0;
@@ -689,7 +689,7 @@
                 transform-origin: left;
                 width: 100%;
             }
-            .SSC .thumbs
+            .SSC .SSCthumbs
             {
                 position: absolute;
                 display: flex;
@@ -700,7 +700,7 @@
                 right: 10px;
                 pointer-events: unset;
             }
-            .SSC .thumbs .thumb
+            .SSC .SSCthumbs .SSCthumb
             {
                 position: relative;
                 border-radius: 100vmax;
@@ -717,15 +717,15 @@
                 pointer-events: unset;
                 cursor: pointer;
             }
-            .SSC .thumbs .thumb:first-of-type
+            .SSC .SSCthumbs .SSCthumb:first-of-type
             {
                 margin: 0 5px 0 0;
             }
-            .SSC .thumbs .thumb:last-of-type
+            .SSC .SSCthumbs .SSCthumb:last-of-type
             {
                 margin: 0 0 0 5px;
             }
-            .SSC .thumbs .thumb::before
+            .SSC .SSCthumbs .SSCthumb::before
             {
                 content: '';
                 position: relative;
@@ -737,7 +737,7 @@
                 background-color: #f0f0f0;
                 transition: 0.2s;
             }
-            .SSC .thumbs .thumb.active::before
+            .SSC .SSCthumbs .SSCthumb.active::before
             {
                 opacity: 1;
                 transform: scale(1);
@@ -858,7 +858,7 @@
                             <button onclick="loadframe('ENCORE GIS')"></button>
                     
                         </div>
-                        <span>Featured</span>
+                        <span>ENCORE News</span>
                     </div>
                     <div class="scrollPanel">
                         <div class="panelInfo">
@@ -927,11 +927,67 @@
 
             <div class="scrollContainer">
                 <div class="scrollHeader">
-                    <div class="scrollPanel" style="flex-grow: 7; border: 0;">
+                    <div class="SSC" style="opacity: 0; display: none;">
 
-                       
+                        <div class="banner-bg" style="background-color: rgba(0, 119, 255, 0.15);">
                     
+                            <div class="SSCcontainer">
+                                <GIS-icon title="alert"></GIS-icon>
+                                <div class="SSCtextWrapper">
+                                    <h1>WIP</h1>
+                                    <p>This section is currently<br>under development</p>
+                                </div>
+                            </div>
+
+                            <button onclick="loadframe('Changelog')"></button>
+
+                            
+                    
+                        </div>
+                    
+                        <span>Portfolio News</span>
                     </div>
+                 
+                    <div class="scrollPanel">
+                        <div class="panelInfo">
+                            <p class="panelTitle">
+                                <GIS-icon title="alert"></GIS-icon>
+                                WIP
+                            </p>
+                            <p class="panelData">
+                                WIP
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="scrollBody">
+                    <h1 class="scrollTitle"><GIS-icon title="alert"></GIS-icon>WIP</h1>
+                </div>
+            </div>
+
+            <div class="scrollContainer">
+                <div class="scrollHeader">
+                    <div class="SSC" style="opacity: 0; display: none;">
+
+                        <div class="banner-bg" style="background-color: rgba(255, 81, 0, 0.15);">
+                    
+                            <div class="SSCcontainer">
+                                <GIS-icon title="alert"></GIS-icon>
+                                <div class="SSCtextWrapper">
+                                    <h1>WIP</h1>
+                                    <p>This section is currently<br>under development</p>
+                                </div>
+                            </div>
+
+                            <button onclick="loadframe('Changelog')"></button>
+
+                            
+                    
+                        </div>
+                    
+                        <span>The Cellar News</span>
+                    </div>
+                 
                     <div class="scrollPanel">
                         <div class="panelInfo">
                             <p class="panelTitle">

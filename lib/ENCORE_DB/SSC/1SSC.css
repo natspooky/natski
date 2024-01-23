@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @media (hover:hover){
-    .SSC .pagebutton:hover,.SSC .banner-bg .banner-button:hover,.SSC .thumbs .thumb:hover
+    .SSC .SSCpageButton:hover,.SSC .banner-bg .banner-button:hover,.SSC .SSCthumbs .SSCthumb:hover
     {
         background-color: #ffffff20;
         border: 2px solid #ffffff20;
     }
-    .SSC:hover .pagebutton
+    .SSC:hover .SSCpageButton
     {
         opacity: 1;
     }
@@ -36,7 +36,7 @@
     border-radius: 20px;
     overflow: hidden;
 }
-.SSC .pagebutton
+.SSC .SSCpageButton
 {
     position: absolute;
     top: 50%;
@@ -51,23 +51,23 @@
     opacity: 0;
     transition: 0.2s;
 }
-.SSC .pagebutton:last-of-type
+.SSC .SSCpageButton:last-of-type
 {
     left: unset;
     right: 15px;
 }
-.SSC .pagebutton svg
+.SSC .SSCpageButton svg
 {
     display: block;
     fill: #f0f0f0;
     height: 15px;
 }
-.SSC .pagebutton:active
+.SSC .SSCpageButton:active
 {
     background-color: #ffffff30;
     transition: 0s;
 }
-.SSC .progress
+.SSC .SSCprogress
 {
     position: relative;
     height: 7px;
@@ -78,7 +78,7 @@
     border-radius: 100vmax;
     overflow: hidden;
 }
-.SSC .progress .SSCprogressBar
+.SSC .SSCprogress .SSCprogressBar
 {
     position: absolute;
     left: 0;
@@ -88,14 +88,14 @@
     transform-origin: left;
     width: 100%;
 }
-.SSC .thumbs
+.SSC .SSCthumbs
 {
     position: absolute;
     display: flex;
     align-items: center;
     bottom: 37px;
 }
-.SSC .thumbs .thumb
+.SSC .SSCthumbs .SSCthumb
 {
     position: relative;
     border-radius: 100vmax;
@@ -111,15 +111,15 @@
     transition: 0.2s;
     cursor: pointer;
 }
-.SSC .thumbs .thumb:first-of-type
+.SSC .SSCthumbs .SSCthumb:first-of-type
 {
     margin: 0 0.4em 0 0;
 }
-.SSC .thumbs .thumb:last-of-type
+.SSC .SSCthumbs .SSCthumb:last-of-type
 {
     margin: 0 0 0 0.4em;
 }
-.SSC .thumbs .thumb::before
+.SSC .SSCthumbs .SSCthumb::before
 {
     content: '';
     position: relative;
@@ -131,7 +131,7 @@
     background-color: #f0f0f0;
     transition: 0.2s;
 }
-.SSC .thumbs .thumb.active::before
+.SSC .SSCthumbs .SSCthumb.active::before
 {
     opacity: 1;
     transform: scale(1);
