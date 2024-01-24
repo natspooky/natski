@@ -119,6 +119,15 @@
 {
     margin: 0 0 0 0.4em;
 }
+.SSC .SSCthumbs .SSCthumb.SSChidden
+{
+    width: 0;
+    height: 0;
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+    border: 0px solid transparent;
+}
 .SSC .SSCthumbs .SSCthumb::before
 {
     content: '';
@@ -131,7 +140,7 @@
     background-color: #f0f0f0;
     transition: 0.2s;
 }
-.SSC .SSCthumbs .SSCthumb.active::before
+.SSC .SSCthumbs .SSCthumb.SSCselected::before
 {
     opacity: 1;
     transform: scale(1);
@@ -152,11 +161,11 @@
     opacity: 0;
     transition: 0.2s;
 }
-.SSC .SSCpauseButton .SSCplay, .SSC .SSCpauseButton.paused .SSCpause
+.SSC .SSCpauseButton .SSCplay, .SSC .SSCpauseButton.SSCpaused .SSCpause
 {
     display: none;
 }
-.SSC .SSCpauseButton.paused .SSCplay, .SSC .SSCpauseButton .SSCpause
+.SSC .SSCpauseButton.SSCpaused .SSCplay, .SSC .SSCpauseButton .SSCpause
 {
     display: block;
 }
