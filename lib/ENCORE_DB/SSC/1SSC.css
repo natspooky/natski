@@ -148,14 +148,14 @@
     width: 40px;
     border: 2px solid transparent;
     background-color: #000000c0;
-    border-radius: 15px;
+    border-radius: 10px;
     transition: 0.2s;
 }
-.SSC .SSCpauseButton .play, .SSC .SSCpauseButton.paused .pause
+.SSC .SSCpauseButton .SSCplay, .SSC .SSCpauseButton.paused .SSCpause
 {
     display: none;
 }
-.SSC .SSCpauseButton.paused .play, .SSC .SSCpauseButton .pause
+.SSC .SSCpauseButton.paused .SSCplay, .SSC .SSCpauseButton .SSCpause
 {
     display: block;
 }
@@ -193,7 +193,7 @@
     padding: 0em 1.8em;
     height: 50px;
     line-height: 50px;
-    border-radius: 15px;
+    border-radius: 10px;
     color: #f0f0f0;
     text-decoration: none;
     border: 2px solid transparent;
