@@ -97,11 +97,11 @@
 <pre>
 <code>&lt;div class="SSC" style="opacity: 0; display: none;"&gt;
 
-    &lt;div class="banner-bg"&gt; &lt;!-- duplicate 'banner-bg' for the amount of pages you want --&gt;
+    &lt;div class="banner-bg"&gt; &lt;!-- duplicate the 'banner-bg' element to have multiple pages --&gt;
 
-        &lt;img src="path of background image" alt=""&gt;
+        &lt;img src="path of background image" alt=""&gt; &lt;!-- background images are optional but are pre-styled for the user --&gt;
 
-        &lt;a class="banner-button" href="insert link here"&gt;button text&lt;/a&gt;
+        &lt;a class="banner-button" href="insert link here"&gt;button text&lt;/a&gt; &lt;!-- buttons are optional but are pre-styled for the user --&gt;
 
         &lt;!-- place content in here --&gt;
 
@@ -128,8 +128,9 @@
         'thumbs':true,
         'progressBar':true,
         'sideButtons':true,
+        'pauseButton':true,
         'timer':10000,
-        'style':1
+        'style':'STANDARD'
     }
 &lt;/script&gt;
 </code></pre>
@@ -144,8 +145,9 @@
                             <span>thumbs</span>: creates a button for every slide. This is used to see what slide the user is currently on and also quickly switches to the designated slide when clicked<br><br>
                             <span>progressBar</span>: creates a progress bar that showcases the time until the next slide will be displayed in SSC<br><br>
                             <span>sideButtons</span>: creates a pair of buttons that are used to switch between the next and previous slides in SSC<br><br>
-                            <span>timer</span>: sets the time taken between transitioning to the next slide in SSC. This value is measured in milliseconds<br><br>
-                            <span>style</span>: chooses the current style that will be applied to SSC when it loads. This value can be either 1 or 2
+                            <span>pauseButton</span>: creates a button that can both play and pause the timer for the page changes in SSC<br><br>
+                            <span>timer</span>: sets the time taken between transitioning to the next slide in SSC. This value is measured in milliseconds (the minimum value for this is 5000)<br><br>
+                            <span>style</span>: chooses the current style that will be applied to SSC when it loads. This value can be 'STANDARD', 'COMPACT' or 'FULLSCREEN'
                         </div>
                     </div>
 
@@ -153,7 +155,7 @@
                     <div class="codecontainer">
                         <div class="codebox">
 <pre>
-<code>pauseSSC()
+<code>pauseSSC(index of specific SSC)
 </code></pre>
                         </div>
                         <div class="copybox">
@@ -169,7 +171,7 @@
                     <div class="codecontainer">
                         <div class="codebox">
 <pre>
-<code>playSSC()
+<code>playSSC(index of specific SSC)
 </code></pre>
                         </div>
                         <div class="copybox">
@@ -185,7 +187,7 @@
                     <div class="codecontainer">
                         <div class="codebox">
 <pre>
-<code>nextSlideSSC()
+<code>nextSlideSSC(index of specific SSC)
 </code></pre>
                         </div>
                         <div class="copybox">
@@ -201,7 +203,7 @@
                     <div class="codecontainer">
                         <div class="codebox">
 <pre>
-<code>previousSlideSSC()
+<code>previousSlideSSC(index of specific SSC)
 </code></pre>
                         </div>
                         <div class="copybox">
@@ -244,7 +246,7 @@
                         </button>
                     </div>
                     <div class="exampleMenu" id="SSCmenu" style="display: none; margin-top: 1em;">
-                        <button style="background-color: #09af0030;" onclick="SSC_settings={'thumbs':document.getElementById('sscthumb').hasAttribute('active'),'progressBar':document.getElementById('sscbar').hasAttribute('active'),'sideButtons':document.getElementById('sscbuttons').hasAttribute('active'),'timer':10000,'style':1}; reloadSSC(SSC_settings); ENCOREalert(this.parentNode.id,'settings')">
+                        <button style="background-color: #09af0030;" onclick="SSC_settings={'thumbs':document.getElementById('sscthumb').hasAttribute('active'),'progressBar':document.getElementById('sscbar').hasAttribute('active'),'sideButtons':document.getElementById('sscbuttons').hasAttribute('active'),'pauseButton':document.getElementById('sscpause').hasAttribute('active'),'timer':10000,'style':1}; reloadSSC(SSC_settings); ENCOREalert(this.parentNode.id,'settings')">
                             Save Changes
                         </button>
                         <button class="active" active id="sscthumb" onclick="changeValues(this)">
@@ -255,6 +257,9 @@
                         </button>
                         <button class="active" active id="sscbuttons" onclick="changeValues(this)">
                             Side Buttons
+                        </button>
+                        <button class="active" active id="sscpause" onclick="changeValues(this)">
+                            Pause Button
                         </button>
                     </div>
                 </div>
@@ -796,7 +801,7 @@
                             script.id = 'SSCscript'
                             script.src = 'https://natski.netlify.com/lib/js/ENCORE_SSC.js'
                             settings.id = 'SSCsettings'
-                            settings.innerHTML = "SSC_settings={'thumbs':true,'progressBar':true,'sideButtons':true,'timer':10000,'style':1}"
+                            settings.innerHTML = "SSC_settings={'thumbs':true,'progressBar':true,'sideButtons':true, 'pauseButton':true,'timer':10000,'style':1}"
                             document.body.appendChild(script)
                             document.body.appendChild(settings)
                             ssc.style.height = 'var(--height)'

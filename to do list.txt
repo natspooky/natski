@@ -184,9 +184,9 @@ add a play / pause button to SSC and SSCU
 
 add new functions to V1 SSC and correct functions provided. ALSO add the play and pause button
 
+change 1, 2, 3 to 'standard', 'compact' and 'fullscreen'
 
-
-
+fix reloadSSC
 
 
 
