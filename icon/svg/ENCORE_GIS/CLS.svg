@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.39 850.39">
-  <path fill="var(--bar)" d="M746.41,0H103.99C77.59,0,56.19,21.4,56.19,47.8V802.6c0,26.39,21.4,47.79,47.8,47.79H746.41c26.39,0,47.79-21.4,47.79-47.79V47.8C794.2,21.4,772.8,0,746.41,0Zm-36.6,749.3c0,9.22-7.48,16.7-16.71,16.7H157.29c-9.23,0-16.71-7.48-16.71-16.7V101.1c0-9.23,7.48-16.71,16.71-16.71H699.41c5.74,0,10.4,4.66,10.4,10.4V749.3Z"/>
-  <rect fill="var(--bar)" x="371.3" y="-59.51" width="107.79" height="483.41" rx="53.9" ry="53.9" transform="translate(607.4 -243) rotate(90)"/>
-  <rect fill="var(--bar)" x="397.5" y="186.14" width="55.4" height="323.31" rx="27.7" ry="27.7" transform="translate(772.99 -77.4) rotate(90)"/>
-  <rect fill="var(--bar)" x="397.5" y="229.39" width="55.4" height="443.21" rx="27.7" ry="27.7" transform="translate(876.19 25.8) rotate(90)"/>
-  <rect fill="var(--bar)" x="397.5" y="447.39" width="55.4" height="213.61" rx="27.7" ry="27.7" transform="translate(979.39 129) rotate(90)"/>
-  <rect fill="var(--bar)" x="397.5" y="486.99" width="55.4" height="340.81" rx="27.7" ry="27.7" transform="translate(1082.59 232.2) rotate(90)"/>
+<svg id="Layer_81" data-name="Layer 81" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.91 850.91">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #010101;
+        stroke-width: 0px;
+      }
+    </style>
+  </defs>
+  <path class="cls-1" d="M794.22,758.05V93.35c0-51.19-41.49-92.69-92.68-92.69H148.9c-51.19,0-92.69,41.5-92.69,92.69v664.7c0,51.19,41.5,92.68,92.69,92.68h552.64c51.19,0,92.68-41.49,92.68-92.68ZM179.9,767.1c-22.08,0-39.97-17.9-39.97-39.98V124.27c0-22.08,17.89-39.98,39.97-39.98h490.63c22.08,0,39.98,17.9,39.98,39.98v602.85c0,22.08-17.9,39.98-39.98,39.98H179.9Z"/>
+  <rect class="cls-1" x="383.36" y="-4.95" width="83.71" height="429.62" rx="41.85" ry="41.85" transform="translate(635.07 -215.36) rotate(90)"/>
+  <rect class="cls-1" x="394.17" y="214.24" width="62.09" height="273.51" rx="31.04" ry="31.04" transform="translate(776.21 -74.23) rotate(90)"/>
+  <rect class="cls-1" x="394.17" y="254.8" width="62.09" height="403.17" rx="31.04" ry="31.04" transform="translate(881.6 31.17) rotate(90)"/>
+  <rect class="cls-1" x="394.17" y="452.37" width="62.09" height="218.83" rx="31.04" ry="31.04" transform="translate(987 136.57) rotate(90)"/>
+  <rect class="cls-1" x="394.17" y="496.61" width="62.09" height="341.14" rx="31.04" ry="31.04" transform="translate(1092.4 241.97) rotate(90)"/>
 </svg>
