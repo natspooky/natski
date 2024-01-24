@@ -5,7 +5,7 @@
         background-color: #ffffff20;
         border: 2px solid #ffffff20;
     }
-    .SSC:hover .SSCpageButton
+    .SSC:hover .SSCpageButton, .SSC:hover .SSCpauseButton
     {
         opacity: 1;
     }
@@ -149,6 +149,7 @@
     border: 2px solid transparent;
     background-color: #000000c0;
     border-radius: 10px;
+    opacity: 0;
     transition: 0.2s;
 }
 .SSC .SSCpauseButton .SSCplay, .SSC .SSCpauseButton.paused .SSCpause
