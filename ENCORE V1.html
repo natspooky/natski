@@ -165,7 +165,7 @@
                               </svg>
                         </div>
                         <div class="codeInfo">
-                            This function can be called to pause the SSC timer until a user clicks on a thumb, side button or the playSSC() function is called in the page
+                            This function can be called to pause the SSC timer until a user clicks on a thumb, side button or the playSSC(index) function is called in the page
                         </div>
                     </div>
                     <div class="codecontainer">
@@ -181,7 +181,7 @@
                               </svg>
                         </div>
                         <div class="codeInfo">
-                            This function can be called to start the SSC timer after the pauseSSC() function has be called in the page
+                            This function can be called to start the SSC timer after the pauseSSC(index) function has be called in the page
                         </div>
                     </div>
                     <div class="codecontainer">
@@ -235,7 +235,7 @@
                 
                     <p>ENCORE SSC Example:</p>
 
-                    <div class="previewWindow" style="--height: 65vh; opacity: 0; margin: 1em 0;" class="SSC"></div>
+                    <div class="previewWindow SSC" style="--height: 65vh; opacity: 0; margin: 1em 0;"></div>
 
                     <div class="exampleMenu">
                         <button onclick="loadSystem('SSC')">
@@ -423,7 +423,7 @@
                 
                     <p>ENCORE SSCU Example:</p>
 
-                    <div class="previewWindow" style="--height: 65vh; opacity: 0; margin: 1em 0;" class="SSCU"></div>
+                    <div class="previewWindow SSCU" style="--height: 65vh; opacity: 0; margin: 1em 0;"></div>
 
                     <div class="exampleMenu">
                         <button onclick="loadSystem('SSCU')">
@@ -788,12 +788,12 @@
             function loadSystem(sys) {
                 switch(sys) {
                     case 'SSC':
-                        let ssc = document.getElementById('SSC');
+                        let ssc = document.getElementsByClassName('SSC')[0];
                         if(document.getElementById('SSCscript')) {
                             ssc.style.height = 'var(--height)'
                             ssc.style.opacity = '1'
                             document.getElementById('SSCmenu').style.display = 'flex'
-                            playSSC()
+                            playSSC(0)
                         }else{
                             let script = document.createElement('script'),
                             settings = document.createElement('script');
@@ -810,7 +810,7 @@
                         break;
 
                     case 'SSCU':
-                        let sscu = document.getElementById('SSCU');
+                        let sscu = document.getElementsByClassName('SSCU')[0];
                         if(document.getElementById('SSCUscript')) {
                             sscu.style.height = 'var(--height)'
                             sscu.style.opacity = '1'
@@ -900,14 +900,14 @@
                 let itemData;
                 switch(sys) {
                     case 'SSC':
-                        itemData = document.getElementById('SSC')
+                        itemData = document.getElementsByClassName('SSC')[0]
                         document.getElementById('SSCmenu').style.display = 'none'
-                        pauseSSC()
+                        pauseSSC(0)
                         break;
                     case 'SSCU':
-                        itemData = document.getElementById('SSCU')
+                        itemData = document.getElementsByClassName('SSCU')[0]
                         document.getElementById('SSCUmenu').style.display = 'none'
-                        pauseSSCU()
+                        pauseSSCU(0)
                         break;
                     case 'PDS':
                         itemData = document.getElementById('PDS');

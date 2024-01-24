@@ -180,14 +180,15 @@ URGENT -- redesign VPS to look like twitter video player
 
 make an element creation function standard across ENCORE
 
-add a play / pause button to SSC and SSCU
+add a play / pause button to SSCU
 
-add new functions to V1 SSC and correct functions provided. ALSO add the play and pause button
+add new functions to V1 SSC and correct functions provided.
 
 change 1, 2, 3 to 'standard', 'compact' and 'fullscreen'
 
-fix reloadSSC
+make ssc have hidden buttons when there are too many to fit
 
+make each V explain page have the info pop out and cover whole screen 
 
 
 
