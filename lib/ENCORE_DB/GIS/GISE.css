@@ -209,7 +209,7 @@
     position: absolute;
     padding: 10px 15px 10px 50px;
     min-width: 150px;
-    max-width: 90%;
+    max-width: 70%;
     opacity: 0;
     transform: translate(-50%, -50%) scale(0.8);
     width: fit-content;
