@@ -207,7 +207,7 @@
 .popOutInputOuter
 {
     position: absolute;
-    padding: 10px 15px 10px 47px;
+    padding: 10px 15px 10px 50px;
     min-width: 150px;
     max-width: 90%;
     opacity: 0;
@@ -233,6 +233,7 @@
 {
     position: relative;
     height: 30px;
+    line-height: 30px;
     min-width: 5px;
     white-space: nowrap;
     text-decoration: none;
@@ -247,7 +248,7 @@
     position: absolute;
     display: block;
     padding: 0;
-    left: 12px;
+    left: 15px;
     flex-shrink: 0;
     font-size: 20px;
     height: 25px;
