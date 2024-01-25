@@ -172,6 +172,7 @@
     justify-content: center;
     background-color: #66666620;
     border-radius: 10px;
+    margin-right: 10px;
     cursor: pointer;
 }
 .GIS-item div
@@ -188,6 +189,7 @@
 {
     position: relative;
     height: 40px;
+    line-height: 40px;
     width: 90px;
     display: none;
     padding: 0 10px;
@@ -197,6 +199,7 @@
     white-space: nowrap;
     text-overflow: ellipsis;
     background-color: #66666620;
+    margin-right: 10px;
     border-radius: 10px;
     cursor: pointer;
 }
@@ -215,6 +218,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    pointer-events: none;
     color: #f0f0f0;
     background-color: #1b0035;
     z-index: 999;
