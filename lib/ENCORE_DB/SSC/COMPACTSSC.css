@@ -23,17 +23,14 @@
 .SSC
 {
     position: relative;
-    height: 100vh;
-    width: 100%;
-    left: 0;
-    top: 0;
-    transform: scale(0.9);
+    min-width: 300px;
+    min-height: 100px;
     display: flex;
     justify-content: center;
     align-items: flex-end;
     background-color: transparent;
     border: 0px;
-    border-radius: 20px;
+    border-radius: 10px;
     overflow: hidden;
 }
 .SSC .SSCpageButton
@@ -44,7 +41,7 @@
     left: 15px;
     width: fit-content;
     transform: translateY(-50%);
-    padding: 25px 10px;
+    padding: 15px 5px;
     border-radius: 10px;
     border: 2px solid transparent;
     background-color: #000000c0;
