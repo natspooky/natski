@@ -218,6 +218,7 @@
     pointer-events: none;
     color: #f0f0f0;
     background-color: #1b0035;
+    z-index: 999;
     transition: transform 0.3s, opacity 0.3s;
 }
 .popOutInputOuter.active
