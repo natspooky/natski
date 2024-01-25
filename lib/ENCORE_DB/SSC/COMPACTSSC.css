@@ -23,8 +23,8 @@
 .SSC
 {
     position: relative;
-    min-width: 300px;
-    min-height: 100px;
+    min-width: 400px;
+    min-height: 230px;
     display: flex;
     justify-content: center;
     align-items: flex-end;
@@ -57,7 +57,7 @@
 {
     display: block;
     fill: #f0f0f0;
-    height: 15px;
+    height: 10px;
 }
 .SSC .SSCpageButton:active
 {
@@ -70,6 +70,7 @@
     height: 7px;
     width: 100px;
     bottom: 15px;
+    left: 15px;
     border: 2px solid transparent;
     background-color: #000000c0;
     border-radius: 100vmax;
@@ -90,7 +91,8 @@
     position: absolute;
     display: flex;
     align-items: center;
-    bottom: 37px;
+    bottom: 15px;
+    right: 15px;
 }
 .SSC .SSCthumbs .SSCthumb
 {
@@ -198,22 +200,15 @@
     position: absolute;
     display: block;
     padding: 0em 1.8em;
-    height: 50px;
-    line-height: 50px;
+    height: 30px;
+    line-height: 30px;
     border-radius: 10px;
     color: #f0f0f0;
     text-decoration: none;
     border: 2px solid transparent;
     background-color: #000000c0;
     cursor: pointer;
-    font-size: 16px;
-    bottom: 72px;
+    font-size: 14px;
+    bottom: 30px;
     transition: 0.2s;
-}
-@media (orientation: portrait)
-{
-    .SSC
-    {
-        height: 85vh;
-    }
 }
