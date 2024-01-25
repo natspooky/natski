@@ -190,7 +190,7 @@ make ssc have hidden buttons when there are too many to fit
 
 make each V explain page have the info pop out and cover whole screen 
 
-
+redesign the GIS_inbuilt icon selector popup
 
 
 
