@@ -203,7 +203,7 @@
 
 .popOutInputOuter
 {
-    position: relative;
+    position: absolute;
     padding: 10px 15px 10px 47px;
     min-width: 100px;
     max-width: 90%;
