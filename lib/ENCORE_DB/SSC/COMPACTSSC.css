@@ -23,17 +23,15 @@
 .SSC
 {
     position: relative;
-    height: 100vh;
-    width: 100%;
-    left: 0;
-    top: 0;
-    transform: scale(0.9);
+    min-width: 400px;
+    width: fit-content;
+    min-height: 180px;
     display: flex;
     justify-content: center;
     align-items: flex-end;
     background-color: transparent;
     border: 0px;
-    border-radius: 20px;
+    border-radius: 10px;
     overflow: hidden;
 }
 .SSC .SSCpageButton
@@ -41,10 +39,10 @@
     position: absolute;
     top: 50%;
     cursor: pointer;
-    left: 15px;
+    left: 10px;
     width: fit-content;
     transform: translateY(-50%);
-    padding: 25px 10px;
+    padding: 10px 5px;
     border-radius: 10px;
     border: 2px solid transparent;
     background-color: #000000c0;
@@ -54,13 +52,13 @@
 .SSC .SSCpageButton:last-of-type
 {
     left: unset;
-    right: 15px;
+    right: 10px;
 }
 .SSC .SSCpageButton svg
 {
     display: block;
     fill: #f0f0f0;
-    height: 15px;
+    height: 10px;
 }
 .SSC .SSCpageButton:active
 {
@@ -69,10 +67,11 @@
 }
 .SSC .SSCprogress
 {
-    position: relative;
+    position: absolute;
     height: 7px;
     width: 100px;
-    bottom: 15px;
+    bottom: 10px;
+    left: 10px;
     border: 2px solid transparent;
     background-color: #000000c0;
     border-radius: 100vmax;
@@ -93,7 +92,8 @@
     position: absolute;
     display: flex;
     align-items: center;
-    bottom: 37px;
+    bottom: 10px;
+    right: 10px;
 }
 .SSC .SSCthumbs .SSCthumb
 {
@@ -153,8 +153,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 40px;
-    width: 40px;
+    height: 30px;
+    width: 30px;
     border: 2px solid transparent;
     background-color: #000000c0;
     border-radius: 10px;
@@ -172,8 +172,8 @@
 .SSC .SSCpauseButton svg
 {
     position: relative;
-    height: 15px;
-    width: 15px;
+    height: 10px;
+    width: 10px;
     fill: #f0f0f0;
 }
 .SSC .banner-bg
@@ -200,23 +200,16 @@
 {
     position: absolute;
     display: block;
-    padding: 0em 1.8em;
-    height: 50px;
-    line-height: 50px;
+    padding: 0em 1.3em;
+    height: 30px;
+    line-height: 30px;
     border-radius: 10px;
     color: #f0f0f0;
     text-decoration: none;
     border: 2px solid transparent;
     background-color: #000000c0;
     cursor: pointer;
-    font-size: 16px;
-    bottom: 72px;
+    font-size: 14px;
+    bottom: 30px;
     transition: 0.2s;
-}
-@media (orientation: portrait)
-{
-    .SSC
-    {
-        height: 85vh;
-    }
 }
