@@ -285,10 +285,12 @@
                 display: block;
                 margin: 20px auto;
                 width: min(90%, 80vmax);
-                border-radius: 20px;
+                border-radius: 30px;
                 overflow: hidden;
+                border: 2px solid #f0f0f005;
+                background-color: #ffffff05;
             
-                background-image: linear-gradient(to bottom right, #729ef630, #4c77cc30);
+                /*background-image: linear-gradient(to bottom right, #729ef630, #4c77cc30);*/
             }
             main .scrollContainer .scrollHeader
             {
@@ -302,9 +304,12 @@
             {
                 position: relative;
                 flex-grow: 7;
-                height: 100%;
-                background-color: #66666610;
-                border-bottom: 2px solid #f0f0f005;
+                height: calc(100% - 20px);
+                margin: 10px;
+                background-color: var(--scrollCol);
+                border: 2px solid #f0f0f005;
+                border-radius: 20px;
+                overflow: hidden;
             }
             main .scrollContainer .scrollHeader .SSC span
             {
@@ -338,13 +343,14 @@
             {
                 position: relative;
                 flex-grow: 1;
-                height: 100%;
+                height: calc(100% - 20px);
                 display: flex;
                 flex-direction: column;
                 padding: 23px 15px 15px 15px;
-                background-color: #66666610;
-                border-left: 2px solid #f0f0f005;
-                border-bottom: 2px solid #f0f0f005;
+                margin: 10px;
+                background-color: var(--scrollCol);
+                border-radius: 20px;
+                border: 2px solid #f0f0f005;
             }
             main .scrollContainer .scrollHeader .scrollPanel .panelInfo
             {
@@ -404,9 +410,12 @@
                 position: relative;
                 display: block;
                 height: auto;
-                width: 100%;
+                width: calc(100% - 20px);
+                margin: 10px;
                 padding: 15px;
-                background-color: #66666610;
+                background-color: var(--scrollCol);
+                border-radius: 20px;
+                border: 2px solid #f0f0f005;
             }
             main .scrollContainer .scrollBody .scrollTitle
             {
@@ -822,20 +831,26 @@
                 {
                     flex-grow: 0;
                     width: 100%;
+                    margin: 0 0 15px 0;
                     height: 225px;
                 }
                 main .scrollContainer .scrollHeader .scrollPanel
                 {
                     flex-grow: 0;
                     width: 100%;
+                    margin: 0 0 15px 0;
                 }
-
+                main .scrollContainer .scrollBody
+                {
+                    margin: 0 0 15px 0;
+                    width: 100%;
+                }
             }
         </style>
 
         <main style="position: relative;">
 
-            <div class="scrollContainer">
+            <div class="scrollContainer" style="--scrollCol: #28306968;">
                 <div class="scrollHeader">
                     <div class="SSC" style="opacity: 0; display: none;">
 
