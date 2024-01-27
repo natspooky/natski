@@ -246,7 +246,7 @@
                         </button>
                     </div>
                     <div class="exampleMenu" id="SSCmenu" style="display: none; margin-top: 1em;">
-                        <button style="background-color: #09af0030;" onclick="SSC_settings={'thumbs':document.getElementById('sscthumb').hasAttribute('active'),'progressBar':document.getElementById('sscbar').hasAttribute('active'),'sideButtons':document.getElementById('sscbuttons').hasAttribute('active'),'pauseButton':document.getElementById('sscpause').hasAttribute('active'),'timer':10000,'style':1}; reloadSSC(SSC_settings); ENCOREalert(this.parentNode.id,'settings')">
+                        <button style="background-color: #09af0030;" onclick="SSC_settings={'thumbs':document.getElementById('sscthumb').hasAttribute('active'),'progressBar':document.getElementById('sscbar').hasAttribute('active'),'sideButtons':document.getElementById('sscbuttons').hasAttribute('active'),'pauseButton':document.getElementById('sscpause').hasAttribute('active'),'timer':10000,'style':'STANDARD'}; reloadSSC(SSC_settings); ENCOREalert(this.parentNode.id,'settings')">
                             Save Changes
                         </button>
                         <button class="active" active id="sscthumb" onclick="changeValues(this)">
@@ -801,7 +801,7 @@
                             script.id = 'SSCscript'
                             script.src = 'https://natski.netlify.com/lib/js/ENCORE_SSC.js'
                             settings.id = 'SSCsettings'
-                            settings.innerHTML = "SSC_settings={'thumbs':true,'progressBar':true,'sideButtons':true, 'pauseButton':true,'timer':10000,'style':1}"
+                            settings.innerHTML = "SSC_settings={'thumbs':true,'progressBar':true,'sideButtons':true, 'pauseButton':true,'timer':10000,'style':'STANDARD'}"
                             document.body.appendChild(script)
                             document.body.appendChild(settings)
                             ssc.style.height = 'var(--height)'

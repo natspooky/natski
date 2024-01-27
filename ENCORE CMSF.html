@@ -145,7 +145,7 @@
                 flex-grow: 0;
                 flex-shrink: 0;
             }
-            .item *::before, .toolbar button::before, .toolbar input::before
+            .item input:hover::before, .item button:hover::before, .toolbar button::before, .toolbar input::before
             {
                 content: attr(name);
                 position: absolute;
@@ -164,7 +164,7 @@
                 border-radius: 0.5em;
                 transition: 0.3s;
             }
-            .item *:hover::before, .toolbar button:hover::before,.toolbar input:hover::before
+            .item input:hover::before, .item button:hover::before, .toolbar button:hover::before,.toolbar input:hover::before
             {
                 opacity: 1;
                 visibility: visible;
@@ -293,6 +293,7 @@
             .item input[type="checkbox"]:checked ~ .function
             {
                 width: 0px;
+                min-width: 0px;
                 margin: 0;
                 padding: 0;
             }
@@ -396,10 +397,6 @@
             .selection .header::before, .selection::before, .selection div::before
             {
                 content: unset;
-            }
-            .GIS-item
-            {
-                margin-right: 10px;
             }
         </style>
         

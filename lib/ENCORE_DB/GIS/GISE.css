@@ -162,7 +162,7 @@
     background-color: #f0f0f0;
     pointer-events: none;
 }
-.GIS-link
+.GIS-item
 {
     position: relative;
     height: 40px;
@@ -172,9 +172,10 @@
     justify-content: center;
     background-color: #66666620;
     border-radius: 10px;
+    margin-right: 10px;
     cursor: pointer;
 }
-.GIS-link div
+.GIS-item div
 {
     position: relative;
     height: 40%;
@@ -183,4 +184,74 @@
     pointer-events: none;
     mask: url(https://natski.netlify.app/icon/svg/ENCORE_GIS/GIS.svg) no-repeat center;
     -webkit-mask: url(https://natski.netlify.app/icon/svg/ENCORE_GIS/GIS.svg) no-repeat center;
+}
+.GIS-text
+{
+    position: relative;
+    height: 40px;
+    line-height: 40px;
+    max-width: 150px;
+    min-width: 80px;
+    padding: 0 15px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    background-color: #66666620;
+    margin-right: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.popOutInputOuter
+{
+    position: absolute;
+    padding: 10px 15px 10px 50px;
+    min-width: 150px;
+    max-width: 70%;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.8);
+    width: fit-content;
+    height: 50px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+    color: #f0f0f0;
+    background-color: #1b0035;
+    z-index: 999;
+    transition: transform 0.3s, opacity 0.3s;
+}
+.popOutInputOuter.active
+{
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+}
+.popOutInputOuter .popOutInputInner
+{
+    position: relative;
+    height: 30px;
+    line-height: 30px;
+    min-width: 5px;
+    white-space: nowrap;
+    text-decoration: none;
+    overflow: hidden;
+}
+.popOutInputOuter .popOutInputInner:focus
+{
+    outline: none;
+}
+.popOutInputOuter GIS-icon
+{
+    position: absolute;
+    display: block;
+    padding: 0;
+    left: 15px;
+    flex-shrink: 0;
+    font-size: 20px;
+    height: 25px;
+    width: 25px;
+    background-color: #f0f0f0;
 }
