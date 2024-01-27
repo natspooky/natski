@@ -970,7 +970,7 @@
             </div>
 
 
-            <div class="scrollContainer">
+            <div class="scrollContainer" style="--scrollCol: #39286968;">
                 <div class="scrollHeader">
                     <div class="SSC" style="opacity: 0; display: none;">
 
@@ -986,8 +986,6 @@
 
                             <button onclick="loadframe('Changelog')"></button>
 
-                            
-                    
                         </div>
                     
                         <span>Portfolio News</span>
@@ -1006,7 +1004,24 @@
                     </div>
                 </div>
                 <div class="scrollBody">
-                    <h1 class="scrollTitle"><GIS-icon title="alert"></GIS-icon>WIP</h1>
+                    <h1 class="scrollTitle"><GIS-icon title="point"></GIS-icon>Quick Access</h1>
+                    <div class="scrollIcons">
+                        <button name="The Cellar" onclick="loadframe('The Cellar')">
+                            <GIS-icon title="cellar"></GIS-icon>
+                        </button>
+                        <button name="The Archive" onclick="loadframe('The Archive')">
+                            <GIS-icon title="bookshelf"></GIS-icon>
+                        </button>
+                        <button name="About" onclick="loadframe('About')">
+                            <GIS-icon title="avatar"></GIS-icon>
+                        </button>
+                        <button name="ChangeLog" onclick="loadframe('ChangeLog')">
+                            <GIS-icon title="terminal"></GIS-icon>
+                        </button>
+                        <button name="Settings" onclick="loadframe('Settings')">
+                            <GIS-icon title="gear"></GIS-icon>
+                        </button>
+                    </div>
                 </div>
             </div>
 
@@ -1037,14 +1052,16 @@
                                 <GIS-icon title="alert"></GIS-icon>
                                 WIP
                             </p>
-                            <p class="panelData">
-                                WIP
-                            </p>
                         </div>
                     </div>
                 </div>
                 <div class="scrollBody">
-                    <h1 class="scrollTitle"><GIS-icon title="alert"></GIS-icon>WIP</h1>
+                    <h1 class="scrollTitle"><GIS-icon title="alert"></GIS-icon>wip</h1>
+                    <div class="scrollIcons">
+                        <button name="WIP" onclick="loadframe('ENCORE SSC')">
+                            <GIS-icon title="alert"></GIS-icon>
+                        </button>
+                    </div>
                 </div>
             </div>
         </main>
