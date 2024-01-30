@@ -104,9 +104,9 @@
             {
                 position: relative;
                 width: 100%;
-                height: calc(80vh - 100px);
+                height: 80vh;
                 overflow: hidden;
-                margin: 50px auto;
+                margin: 50px auto 10px auto;
                 background-color: rgba(87, 0, 169, 0.05);
                 border-top: 2px solid rgba(87, 0, 169, 0.8);
                 border-bottom: 2px solid rgba(87, 0, 169, 0.8);
@@ -352,7 +352,7 @@
                 }
 
                 drawKuru() {
-                    context.drawImage(imgArray[this.currentFrame], this.startPos - this.newPos, 90, 400, 400)
+                    context.drawImage(imgArray[this.currentFrame], this.startPos - this.newPos, canvas.height - 400, 400, 400)
                     this.newPos += this.increment
                     //this.nextFrame()
                     //draw_anim(this.context, this.startPos - this.newPos, 0, img_obj)
@@ -405,6 +405,10 @@
             function animationLoop(){
 
                 context.clearRect(0, 0, canvas.width, canvas.height);
+
+                //put click thingy and particle system
+
+
                 for(let i = 0; i < kuruArray.length; i++) {
                     kuruArray[i].drawKuru()
                     if(kuruArray[i].checkProg()) {
@@ -418,7 +422,7 @@
                 window.requestAnimationFrame(function() {
                     animationLoop()
                 });
-            }, 10);
+            }, 0);
             }
 
 
