@@ -103,15 +103,21 @@
             #kuruContainer
             {
                 position: relative;
-                width: calc(100% - 100px);
+                width: 100%;
                 height: calc(80vh - 100px);
                 overflow: hidden;
                 margin: 50px auto;
-                border-radius: 1em;
                 background-color: rgba(87, 0, 169, 0.05);
-                outline: 2px dashed rgba(87, 0, 169, 0.8);
-                outline-offset: 15px;
-                border: 2px solid rgba(87, 0, 169, 0.8);
+                border-top: 2px solid rgba(87, 0, 169, 0.8);
+                border-bottom: 2px solid rgba(87, 0, 169, 0.8);
+            }
+            #kuruContainer canvas
+            {
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 100%;
+                width: 100%;
             }
             #kuruCounter,#kuruCombo
             {
@@ -180,6 +186,7 @@
         <main>
             <div id="kuruContainer">
                 <span id="kuruGradient"></span>
+                <canvas id="kuruCanvas"></canvas>
                 <p id="kuruCounter">
                     Kuru Combo: <span id="counter">0</span>
                 </p>
@@ -188,7 +195,7 @@
                 </p>
                 <div class="kuruButton" id="kuruButton">
                     <p>Click to kuru!</p>
-                    <img src="icon/img/kuru.gif">
+                    <img src="icon/img/kuru.gif" id="refImg">
                 </div>
             </div>
         </main>
@@ -215,13 +222,10 @@
             }
 
             function kuru(e) {
-                clickPointer(e)
                 kuruSound()
-                kuruImage()
-                if(!device){
-                    kuruCounter()
-                }
+                kuruCounter()
             }
+
 
             function kuruSound() {
                 let sound = document.createElement('audio');
@@ -236,10 +240,9 @@
                         sound.src = 'icon/audio/kuru.mp3'
                         break;
                 }
-                document.getElementById('kuruContainer').appendChild(sound)
                 sound.play();
             }
-
+/*
             function kuruImage() {
                 let image = document.createElement('img');
                 switch(Math.floor(Math.random() * 250)){
@@ -261,7 +264,7 @@
                 setTimeout(() => {
                     image.remove()
                 }, 1010)
-            }
+            }*/
 
             function kuruCounter() {
                 let gradient = document.getElementById('kuruGradient')
@@ -288,7 +291,7 @@
                     document.getElementById('kuruButton').classList.remove('active')
                 }, 2000);
             }
-
+/*
             function clickPointer(e) {
                 let x = document.getElementById('kuruContainer'),
                 pagX = e.pageX - x.offsetLeft,
@@ -319,10 +322,114 @@
                 }, timer * 1000)
                 return particle
             }
+*/
+            
 
-            document.getElementById('kuruButton').addEventListener('click', function(e){
+
+            /*
+            const c = document.getElementById("myCanvas");
+  const ctx = c.getContext("2d");
+  const img = document.getElementById("scream");
+  ctx.drawImage(img, 10, 10);
+  
+  
+  
+  document.getElementById('kuruButton').addEventListener('click', function(e){
                 kuru(e)
             })
+            */
+
+            class kuruClass {
+                constructor() {
+                    this.newPos = 0
+                    this.currentFrame = 0
+                    this.increment = (canvas.width / (498 / 10))
+                    this.startPos = canvas.width
+                    this.interval = setInterval(() => {
+                        this.nextFrame()
+                    }, 100)
+                }
+
+                drawKuru() {
+                    context.drawImage(imgArray[this.currentFrame], this.startPos - this.newPos, 90, 400, 400)
+                    this.newPos += this.increment
+                    //this.nextFrame()
+                    //draw_anim(this.context, this.startPos - this.newPos, 0, img_obj)
+                    
+                }
+
+                nextFrame() {
+                    if(this.currentFrame >= 5){
+                        this.currentFrame = 0
+                    }else{
+                        this.currentFrame += 1
+                    }
+                    
+                }
+
+                checkProg() {
+                    if(this.newPos > canvas.width + 1000) return true
+                    this.interval = undefined
+                    return false
+                }
+
+            }
+
+
+
+           
+
+
+            document.getElementById('kuruCanvas').height = document.getElementById('kuruCanvas').offsetHeight
+            document.getElementById('kuruCanvas').width = document.getElementById('kuruCanvas').offsetWidth
+            
+            let kuruArray = [],
+            imgArray = [],
+            canvas = document.getElementById('kuruCanvas'),
+            context = canvas.getContext('2d')
+
+            for(let i = 0; i < 6; i++) {
+                let img = new Image()
+                img.src = `icon/img/kuru/${i}.png`
+                imgArray.push(img)
+            }
+
+            animationLoop()
+
+            document.getElementById('kuruButton').addEventListener('click', function(e){
+                kuruArray.unshift(new kuruClass(imgArray, document.getElementById('kuruCanvas')))
+                kuru(e)
+            })
+
+            function animationLoop(){
+
+                context.clearRect(0, 0, canvas.width, canvas.height);
+                for(let i = 0; i < kuruArray.length; i++) {
+                    kuruArray[i].drawKuru()
+                    if(kuruArray[i].checkProg()) {
+                        kuruArray.pop(kuruArray.length)
+                    }
+
+                }
+        
+
+                setTimeout(() => {
+                window.requestAnimationFrame(function() {
+                    animationLoop()
+                });
+            }, 10);
+            }
+
+
+            window.addEventListener('resize', function(){
+                document.getElementById('kuruCanvas').height = document.getElementById('kuruCanvas').offsetHeight
+                document.getElementById('kuruCanvas').width = document.getElementById('kuruCanvas').offsetWidth
+            });
+                
+        
+
+
+
 
         </script>
 

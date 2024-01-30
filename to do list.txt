@@ -196,6 +196,9 @@ make each section in the encore scroller be a piece of its own (link how pds red
 
 remake encore sscu bg with new icon versions
 
+make suika
+
+make colour guessing game
 
 
 
