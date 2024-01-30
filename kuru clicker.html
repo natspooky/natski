@@ -150,19 +150,6 @@
                 background-image: linear-gradient(to top, #6600ff8e, transparent);
                 transition: 1s;
             }
-            .clickPoint
-            {
-                position: absolute;
-                height: 200px;
-                width: 200px;
-                border-radius: 100vmax;
-                pointer-events: none;
-                z-index: 999;
-                background-color:#6600ff8e;
-                transform-origin: top left;
-                transform: scale(0) translate(-50%,-50%);
-                animation: clicker 0.5s;
-            }
         </style>
 
 
@@ -395,7 +382,7 @@
                 imgArray.push(img)
             }
 
-            animationLoop()
+            //animationLoop()
 
             document.getElementById('kuruButton').addEventListener('click', function(e){
                 kuruArray.unshift(new kuruClass(imgArray, document.getElementById('kuruCanvas')))
@@ -417,13 +404,34 @@
 
                 }
         
-
+/*
                 setTimeout(() => {
                 window.requestAnimationFrame(function() {
                     animationLoop()
                 });
-            }, 0);
+            }, 0);*/
             }
+
+
+
+            (async function renderLoop() {
+                let then = performance.now();
+                const interval = 1000 / 60;
+                let delta = 0;
+                while (true) {
+                    let now = await new Promise(requestAnimationFrame);
+                    if (now - then < interval - delta) {
+                        continue;
+                    }
+                    delta = Math.min(interval, delta + now - then - interval);
+                    then = now;
+
+                    animationLoop()
+                }
+            })();
+
+
+
 
 
             window.addEventListener('resize', function(){
