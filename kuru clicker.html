@@ -199,7 +199,8 @@
                 </div>
             </div>
         </main>
-
+        <audio preload="auto" src="icon/audio/kuruine.mp3" id="kuruOne"></audio>
+        <audio preload="auto" src="icon/audio/kuru.mp3" id="kuruOne"></audio>
 
         <script>
 
@@ -228,17 +229,17 @@
 
 
             function kuruSound() {
-                let sound = document.createElement('audio');
-                sound.onended = function() {
-                    sound.remove();
-                }
+                let sound;
                 switch(Math.floor(Math.random() * 2)){
                     case 0:
-                        sound.src = 'icon/audio/kuruine.mp3'
+                        sound = document.getElementById('kuruOne').cloneNode(true)
                         break;
                     case 1:
-                        sound.src = 'icon/audio/kuru.mp3'
+                        sound = document.getElementById('kuruOne').cloneNode(true)
                         break;
+                }
+                sound.onended = function() {
+                    sound.remove();
                 }
                 sound.play();
             }
