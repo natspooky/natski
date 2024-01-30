@@ -119,7 +119,7 @@
                 height: 100%;
                 width: 100%;
             }
-            #kuruCounter,#kuruCombo
+            #kuruCounter,#kuruCombo,#CPS
             {
                 position: absolute;
                 top: 0;
@@ -138,6 +138,12 @@
                 right: 0;
                 left: unset;
                 border-radius: 0 0 0 0.5em;
+            }
+            #CPS
+            {
+                left: 50%;
+                transform: translateX(-50%);
+                border-radius: 0 0 0.5em 0.5em;
             }
             #kuruGradient
             {
@@ -177,6 +183,9 @@
                 <p id="kuruCounter">
                     Kuru Combo: <span id="counter">0</span>
                 </p>
+                <p id="CPS">
+                    Kurus Per Second: <span id="CPSmeter">0</span>
+                </p>
                 <p id="kuruCombo">
                     Kuru Max Combo: <span id="combo">0</span>
                 </p>
@@ -194,7 +203,8 @@
             let counter = 0,
             gradTimer,
             save = 0,
-            kuruInterval;
+            kuruInterval,
+            CPSmeter = document.getElementById('CPSmeter')
 
             function deviceCheck() {
             let check = false;
@@ -273,59 +283,17 @@
                     setTimeout(() => {
                         counter = 0
                         count.innerHTML = 0
+                        CPSmeter.innerHTML = 0
+                        clicks = 0
+                        CPSactive = false
                         count.style.opacity = '1'
+
                     },310)
                     gradient.style.opacity = 0
                     document.getElementById('kuruButton').classList.remove('active')
                 }, 2000);
             }
-/*
-            function clickPointer(e) {
-                let x = document.getElementById('kuruContainer'),
-                pagX = e.pageX - x.offsetLeft,
-                pagY = e.pageY - x.offsetTop,
-                clicker = document.createElement('span');
-                clicker.className = 'clickPoint'
-                clicker.style.top = pagY + 'px'
-                clicker.style.left = pagX + 'px'
-                setTimeout(() => {
-                    clicker.remove()
-                }, 510)
-                document.getElementById('kuruContainer').appendChild(clicker)
-            }
 
-            function kuruParticle(e) {
-                let particle = document.createElement('span'),
-                timer = Math.max(1,Math.min(5,(100 / e))),
-                size = Math.floor(Math.random() * 3)+1;
-                
-                particle.className = 'kuruParticle'
-                particle.style.animation = 'particle ' + timer + 's linear'
-                particle.style.left = Math.floor(Math.random() * 100) + '%'
-                particle.style.bottom = '-' + size*10 + 'px'
-                particle.style.height = size*10 + 'px'
-                particle.style.width = size*10 + 'px'
-                setTimeout(() => {
-                    particle.remove()
-                }, timer * 1000)
-                return particle
-            }
-*/
-            
-
-
-            /*
-            const c = document.getElementById("myCanvas");
-  const ctx = c.getContext("2d");
-  const img = document.getElementById("scream");
-  ctx.drawImage(img, 10, 10);
-  
-  
-  
-  document.getElementById('kuruButton').addEventListener('click', function(e){
-                kuru(e)
-            })
-            */
 
             class kuruClass {
                 constructor() {
@@ -335,7 +303,7 @@
                     this.startPos = canvas.width
                     this.interval = setInterval(() => {
                         this.nextFrame()
-                    }, 100)
+                    }, 80)
                 }
 
                 drawKuru() {
@@ -373,6 +341,7 @@
             
             let kuruArray = [],
             imgArray = [],
+            clicks = 0,
             canvas = document.getElementById('kuruCanvas'),
             context = canvas.getContext('2d')
 
@@ -387,6 +356,9 @@
             document.getElementById('kuruButton').addEventListener('click', function(e){
                 kuruArray.unshift(new kuruClass(imgArray, document.getElementById('kuruCanvas')))
                 kuru(e)
+                CPSactive = true
+                CPS()
+                clicks += 1
             })
 
             function animationLoop(){
@@ -414,22 +386,48 @@
 
 
 
+            async function CPS() {
+                if(clicks == 0){
+                    let then = performance.now(),
+                    interval = 1000 / 30,
+                    delta = 0,
+                    oldTime = Date.now()
+                    while (CPSactive) {
+                        let now = await new Promise(requestAnimationFrame);
+                        if (now - then < interval - delta) {
+                            continue;
+                        }
+
+                        delta = Math.min(interval, delta + now - then - interval);
+                        then = now;
+                        let uncertain = ((clicks / (Date.now() - oldTime)) * 1000),
+                        CPS = uncertain - (uncertain % 1)
+                        CPSmeter.innerHTML = CPS
+                    }
+            }
+            }
+
+
+            
+
+
+
+
             (async function renderLoop() {
-                let then = performance.now();
-                const interval = 1000 / 60;
-                let delta = 0;
+                let oldTimer = performance.now(),
+                interval = 1000 / 60,
+                delta = 0;
                 while (true) {
-                    let now = await new Promise(requestAnimationFrame);
-                    if (now - then < interval - delta) {
+                    let newTimer = await new Promise(requestAnimationFrame);
+                    if (newTimer - oldTimer < interval - delta) {
                         continue;
                     }
-                    delta = Math.min(interval, delta + now - then - interval);
-                    then = now;
+                    delta = Math.min(interval, delta + newTimer - oldTimer - interval);
+                    oldTimer = newTimer;
 
                     animationLoop()
                 }
             })();
-
 
 
 
