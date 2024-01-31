@@ -165,7 +165,6 @@ header h2
     .navbutton:hover::before
     {
         opacity: 1;
-        transform: translateY(0px);
         visibility: visible;
     }
     .navbutton:hover
@@ -179,7 +178,7 @@ header h2
     .navbutton:active::before
     {
         transform: scale(0.9);
-        top: 46.5px;
+        top: 41.5px;
         transition: 0s;
     }
     .watermark:hover
@@ -252,7 +251,7 @@ nav span
 {
     position: relative;
     height: 40px;
-    width: 40px;
+    width: 60px;
     margin: 0 5px;
     padding: 5px;
     float: right;
@@ -264,7 +263,7 @@ nav span
 }
 .navbutton svg
 {
-    height: 25px;
+    height: 20px;
 }
 
 .navbutton:first-child
@@ -279,16 +278,15 @@ nav span
 {
     content: attr(name);
     text-decoration: none;
-    background-color: var(--accentcol);
+    text-shadow: 0 0 5px #000;
     color: var(--textmain);
+    letter-spacing: 1px;
     font-weight: bold;
     padding: 8px 10px 10px 10px;
     position: absolute;
-    top: 50px;
+    top: 45px;
     pointer-events: none;
-    border-radius: 10px;
     opacity: 0;
-    transform: translateY(20px);
     visibility: hidden;
     z-index: 9999;
     transition: 0.2s;
@@ -456,7 +454,7 @@ nav span
     height: 35px;
     width: 35px;
     border-radius: 50%;
-    background-image: conic-gradient(from 78deg, transparent, var(--themecol));
+    background-image: conic-gradient(from 78deg, transparent, #f0f0f0);
     mask: url(https://natski.netlify.app/icon/svg/ENCORE_GIS/loader.svg) center center no-repeat;
     -webkit-mask: url(https://natski.netlify.app/icon/svg/ENCORE_GIS/loader.svg) center center no-repeat;
     animation: NATloader 1.2s infinite linear;
