@@ -282,7 +282,7 @@ nav span
 {
     content: attr(name);
     text-decoration: none;
-    text-shadow: 0 1.5px 5px var(--accentcol);
+    text-shadow: 1px 1px 8px var(--accentcol);
     color: var(--textmain);
     letter-spacing: 1px;
     font-weight: bold;
