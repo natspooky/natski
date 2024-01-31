@@ -278,7 +278,7 @@ nav span
 {
     content: attr(name);
     text-decoration: none;
-    text-shadow: 0 0 5px #000;
+    text-shadow: 0 0 5px var(--accentcol);
     color: var(--textmain);
     letter-spacing: 1px;
     font-weight: bold;
