@@ -222,6 +222,9 @@
             function kuru(e) {
                 kuruSound()
                 kuruCounter()
+                CPSactive = true
+                CPS()
+                clicks += 1
             }
 
 
@@ -356,9 +359,6 @@
             document.getElementById('kuruButton').addEventListener('click', function(e){
                 kuruArray.unshift(new kuruClass(imgArray, document.getElementById('kuruCanvas')))
                 kuru(e)
-                CPSactive = true
-                CPS()
-                clicks += 1
             })
 
             function animationLoop(){
