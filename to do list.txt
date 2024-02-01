@@ -200,7 +200,8 @@ make suika
 
 make colour guessing game
 
-
+add heart icon to GIS
+add crossed out heart to GIS
 
 
 
