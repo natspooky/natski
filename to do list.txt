@@ -203,7 +203,7 @@ make colour guessing game
 add heart icon to GIS
 add crossed out heart to GIS
 
-
+make toolbar on editors have a compact form so its easier to read
 
 
 
