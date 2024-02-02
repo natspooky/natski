@@ -793,7 +793,7 @@ main article ul li a
 .chapterselector a p 
 {
     position: relative;
-    padding: 0.8em;
+    padding: 0.4em 0.8em;
     background-color: #66666620;
     border-radius: 10px;
     color: var(--textmain);
