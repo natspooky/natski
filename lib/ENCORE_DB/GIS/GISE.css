@@ -149,6 +149,7 @@
     font-weight: bold;
     color: #f0f0f0;
     background-color: #101010;
+    z-index: 10;
     white-space: nowrap;
     visibility: hidden;
     pointer-events: none;
