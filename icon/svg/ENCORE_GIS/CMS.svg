@@ -10,9 +10,9 @@
   </defs>
   <path class="cls-1" d="M794.22,758.05V93.35c0-51.19-41.49-92.69-92.68-92.69H148.9c-51.19,0-92.69,41.5-92.69,92.69v664.7c0,51.19,41.5,92.68,92.69,92.68h552.64c51.19,0,92.68-41.49,92.68-92.68ZM179.9,767.1c-22.08,0-39.97-17.9-39.97-39.98V124.27c0-22.08,17.89-39.98,39.97-39.98h490.63c22.08,0,39.98,17.9,39.98,39.98v602.85c0,22.08-17.9,39.98-39.98,39.98H179.9Z"/>
   <g>
-    <rect class="cls-1" x="298.95" y="104.82" width="83.71" height="234.32" rx="41.85" ry="41.85" transform="translate(562.79 -118.83) rotate(90)"/>
-    <rect class="cls-1" x="375.4" y="164.18" width="83.71" height="387.22" rx="41.85" ry="41.85" transform="translate(775.05 -59.47) rotate(90)"/>
-    <rect class="cls-1" x="321.4" y="353.99" width="83.71" height="279.22" rx="41.85" ry="41.85" transform="translate(856.86 130.34) rotate(90)"/>
-    <rect class="cls-1" x="345.4" y="465.8" width="83.71" height="327.22" rx="41.85" ry="41.85" transform="translate(1016.67 242.15) rotate(90)"/>
+    <rect class="cls-1" x="298.95" y="104.82" width="83.71" height="234.32" rx="35.45" ry="35.45" transform="translate(562.79 -118.83) rotate(90)"/>
+    <rect class="cls-1" x="375.4" y="164.18" width="83.71" height="387.22" rx="35.45" ry="35.45" transform="translate(775.05 -59.47) rotate(90)"/>
+    <rect class="cls-1" x="321.4" y="353.99" width="83.71" height="279.22" rx="35.45" ry="35.45" transform="translate(856.86 130.34) rotate(90)"/>
+    <rect class="cls-1" x="345.4" y="465.8" width="83.71" height="327.22" rx="35.45" ry="35.45" transform="translate(1016.67 242.15) rotate(90)"/>
   </g>
 </svg>
