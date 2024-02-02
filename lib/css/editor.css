@@ -1,24 +1,28 @@
             .toolbar
             {
                 position: absolute;
-                left: 0;
-                bottom: 0;
-                width: 100%;
-                padding: 1em 0;
+                left: 50%;
+                bottom: 20px;
+                width: fit-content;
+                background-color: #f0f0f010;
+                border-radius: 100vmax;
+                padding: 10px 0;
+                transform: translateX(-50%);
                 display: flex;
                 justify-content: center;
             }
-            .toolbar button, .closeBut
+            .toolbar button, .closeBut, .toolbar input[type="color"]
             {
                 position: relative;
                 height: 40px;
                 width: 40px;
                 margin: 0 10px;
-                border-radius: 10px;
+                border-radius: 50%;
                 background-color: #66666640;
                 display: flex;
                 justify-content: center;
                 align-items: center;
+                cursor: pointer;
                 transition: 0.2s;
             }
             .toolbar button:hover, .closeBut:hover
@@ -51,21 +55,16 @@
             {
                 pointer-events: none;
             }
-            .toolbar input[type="color"]
-            {
-                position: relative;
-                appearance: none;
-                -moz-appearance: none;
+            .toolbar input[type="color"] {
                 -webkit-appearance: none;
-                background: none;
+                border: none;
+            }
+            .toolbar input[type="color"]::-webkit-color-swatch-wrapper {
                 padding: 0;
-                border: 0;
-                border-radius: 10px;
-                box-sizing: border-box;
-                height: 40px;
-                width: 60px;
-                cursor: pointer;
-                margin: 0 10px;
+            }
+            .toolbar input[type="color"]::-webkit-color-swatch {
+                border: none;
+                border-radius: 50%;
             }
             #containerWindow
             {
@@ -167,20 +166,19 @@
                 margin: 0;
                 width: fit-content;
             }
-            .toolbar button:hover::before
+            .toolbar button:hover::before, .toolbar input:hover::before
             {
                 opacity: 1;
                 visibility: visible;
-                transform: translate(-50%,0);
             }
-            .toolbar button::before
+            .toolbar button::before, .toolbar input::before
             {
                 content: attr(name);
                 position: absolute;
                 left: 50%;
-                bottom: calc(100% + 0.5em);
+                bottom: calc(100% + 15px);
                 font-size: 1rem;
-                transform: translate(-50%, 1em);
+                transform: translateX(-50%);
                 opacity: 0;
                 visibility: hidden;
                 pointer-events: none;
