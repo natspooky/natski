@@ -100,7 +100,6 @@
     margin: 0 0 40px 22px;
     border-radius: 10px;
     background-color: #66666620;
-    max-height: 85vh;
 }
 #CLS article div::after
 {
@@ -136,7 +135,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     height: min(90%, 250px);
-    fill: #66666620;
+    fill: #66666615;
 }
 #CLS article div img
 {
@@ -145,7 +144,7 @@
     height: 100%;
     max-height: 85vh;
     display: block;
-    object-fit: cover;
+    object-fit: contain;
     opacity: 0;
     border-radius: 10px;
     background-color: transparent;

@@ -205,7 +205,7 @@ add crossed out heart to GIS
 
 make toolbar on editors have a compact form so its easier to read
 
-
+make loadWheel default to PDS based on .then so it loads right
 
 
 
