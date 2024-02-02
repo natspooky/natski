@@ -146,6 +146,7 @@
     line-height: 40px;
     display: flex;
     justify-content: center;
+    align-items: center;
     font-weight: bold;
     color: #f0f0f0;
     background-color: #101010;
