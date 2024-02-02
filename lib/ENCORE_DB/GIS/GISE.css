@@ -125,6 +125,7 @@
     background-color: #101010e0;
     z-index: 999;
     border-radius: 100vmax;
+    overflow: hidden;
     -webkit-backdrop-filter: blur(5px);
     backdrop-filter: blur(5px);
     cursor: pointer;
@@ -135,15 +136,16 @@
 }
 #GIScontainer div::before
 {
-    content: 'GIS Setup';
+    content: 'Setup';
     position: absolute;
-    top: 50%;
-    right: 100%;
-    transform: translate(-20px,-50%);
+    top: 0;
+    left: 0;
     opacity: 0;
-    border-radius: 10px;
-    padding: 5px 10px;
-    height: fit-content;
+    height: 100%;
+    width: 100%;
+    line-height: 40px;
+    display: flex;
+    justify-content: center;
     font-weight: bold;
     color: #f0f0f0;
     background-color: #101010;
