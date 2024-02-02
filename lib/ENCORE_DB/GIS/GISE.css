@@ -153,7 +153,6 @@
     white-space: nowrap;
     visibility: hidden;
     pointer-events: none;
-    transition: 0.2s;
 }
 #GIScontainer div:hover::before
 {
@@ -163,8 +162,8 @@
 #GIScontainer div GIS-icon
 {
     position: relative;
-    width: 22px;
-    height: 22px;
+    width: 20px;
+    height: 20px;
     background-color: #f0f0f0;
     pointer-events: none;
 }
