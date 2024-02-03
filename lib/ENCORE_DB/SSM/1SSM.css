@@ -262,7 +262,7 @@
 {
     height: 5px;
     background: #66666660;
-    border-radius: 16px;
+    border-radius: 100vmax;
 }
 
 .SSMinput[type="range"]::-moz-range-track
@@ -276,10 +276,9 @@
 {
     -webkit-appearance: none;
     appearance: none;
-    top: 50%;
-    transform: translateY(-50%);
-    height: 15px;
-    width: 30px;
+    top: 10px;
+    height: 10px;
+    width: 35px;
     background-color: #f0f0f0;
     border-radius: 100vmax;
     border: 0;
