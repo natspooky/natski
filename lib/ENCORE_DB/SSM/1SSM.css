@@ -177,11 +177,6 @@
     margin-right: 10px;
     background-color: #f0f0f0;
 }
-#SSM #SSMbg
-{
-    opacity: 1;
-    transition: opacity 0.1s, height 0.1s, transform 0.15s cubic-bezier(.5,1.05,.41,1.18);
-}
 #SSMbg
 {
     position: absolute;
@@ -193,6 +188,11 @@
     opacity: 0;
     overflow: hidden;
     transition: opacity 0.35s, height 0.1s, transform 0.15s cubic-bezier(.5,1.05,.41,1.18);
+}
+#SSM:hover #SSMbg
+{
+    opacity: 1;
+    transition: opacity 0.1s, height 0.1s, transform 0.15s cubic-bezier(.5,1.05,.41,1.18);
 }
 .SSMinput[type="checkbox"]
 {
