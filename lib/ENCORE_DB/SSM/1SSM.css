@@ -261,14 +261,14 @@
 
 .SSMinput[type="range"]::-webkit-slider-runnable-track
 {
-    height: 12px;
+    height: 14px;
 }
 
 .SSMinput[type="range"]::-webkit-slider-thumb
 {
     -webkit-appearance: none;
     appearance: none;
-    height: 12px;
+    height: 14px;
     width: 50px;
     background-color: #f0f0f0;
     border-radius: 100vmax;
