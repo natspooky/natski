@@ -310,6 +310,7 @@
 .SSMinput[type="range"]:active::-webkit-slider-thumb
 {
     background-color: var(--SSMcolour);
+    transform: scale(1.1, 1.2);
 }
 
 
@@ -392,6 +393,10 @@
     outline: none;
     background-color: var(--SSMcolour);
     transform: scale(1);
+}
+.SSMinput[type="text"]::placeholder
+{
+    color: #f0f0f0;
 }
 
 #SSM .SSMcategory .SSMselection
