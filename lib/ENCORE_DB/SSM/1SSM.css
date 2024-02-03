@@ -254,14 +254,13 @@
     cursor: pointer;
     outline: none;
     background-color: transparent;
-    height: 5px;
-    overflow: hidden;
+    height: 30px;
     border-radius: 16px;
 }
 
 .SSMinput[type="range"]::-webkit-slider-runnable-track
 {
-    height: 30px;
+    height: 5px;
     background: #66666660;
     border-radius: 16px;
 }
@@ -277,12 +276,11 @@
 {
     -webkit-appearance: none;
     appearance: none; 
-    height: 30px;
+    height: 15px;
     width: 30px;
     background-color: #f0f0f0;
     border-radius: 50%;
-    border: 8px solid var(--SSMcolour);
-    box-shadow: -715px 0 0 700px var(--SSMcolour);
+    border: 0;
     transition: 0.2s ease-in-out;
 }
 
