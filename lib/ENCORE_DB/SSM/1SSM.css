@@ -2,6 +2,7 @@
 :root
 {
     --SSMcolour: #729ef6;
+    --SSMcolourPale: #91b0ee;
 }
 #SSM, #SSM *
 {
@@ -264,23 +265,32 @@
     background-color: #f0f0f010;
 }
 
-.SSMinput[type="range"]::-moz-range-track
-{
-    height: 30px;
-    background: #66666660;
-    border-radius: 16px;
-}
-
 .SSMinput[type="range"]::-webkit-slider-thumb
 {
     -webkit-appearance: none;
     appearance: none;
     height: 12px;
-    width: 40px;
+    width: 50px;
     background-color: #f0f0f0;
     border-radius: 100vmax;
     border: 0;
-    transition: 0.2s ease-in-out;
+    transition: 0.2s;
+}
+.SSMinput[type="range"]::-webkit-slider-thumb:hover
+{
+    background: var(--SSMcolourPale);
+}
+.SSMinput[type="range"]::-webkit-slider-thumb:active
+{
+    background-color: var(--SSMcolour);
+}
+
+
+.SSMinput[type="range"]::-moz-range-track
+{
+    height: 30px;
+    background: #66666660;
+    border-radius: 16px;
 }
 
 .SSMinput[type="range"]::-moz-range-thumb
@@ -477,10 +487,6 @@
     {
         -webkit-transform: scale(.7);
                 transform: scale(.7);
-    }
-    .SSMinput[type="range"]:hover::-webkit-slider-thumb
-    {
-        border: 5px solid var(--SSMcolour);
     }
     .SSMinput[type="range"]:hover::-moz-range-thumb
     {
