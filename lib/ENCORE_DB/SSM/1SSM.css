@@ -253,17 +253,15 @@
     width: 100%;
     cursor: pointer;
     outline: none;
-    background-color: transparent;
-    height: 10px;
-    background-color: #f0f0f010;
-    margin: 10px 0;
+    height: 5px;
+    background: #66666660;
+    border-radius: 100vmax;
 }
 
 .SSMinput[type="range"]::-webkit-slider-runnable-track
 {
-    height: 5px;
-    background: #66666660;
-    border-radius: 100vmax;
+    height: 12px;
+    background-color: #f0f0f010;
 }
 
 .SSMinput[type="range"]::-moz-range-track
@@ -277,7 +275,7 @@
 {
     -webkit-appearance: none;
     appearance: none;
-    height: 10px;
+    height: 12px;
     width: 40px;
     background-color: #f0f0f0;
     border-radius: 100vmax;
