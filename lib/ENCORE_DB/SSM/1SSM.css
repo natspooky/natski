@@ -38,6 +38,10 @@
         transform: scale(1);
         background-color: var(--SSMcolourPale);
     }
+    #SSM .SSMcategory .SSMselection:hover
+    {
+        transform: scale(1);
+    }
 }
 #SSM, #SSM *
 {
@@ -402,13 +406,15 @@
 #SSM .SSMcategory .SSMselection
 {
     position: relative;
-    height: 30px;
+    height: 35px;
     background-color: #66666660;
     width: 100%;
-    border-radius: 15px;     
+    border-radius: 17.5px;     
     overflow: hidden;
     cursor: pointer;
+    transform: scale(0.97);
     user-select: none;
+    transition: 0.2s cubic-bezier(.18,.28,.53,1.2), transform 0.2s cubic-bezier(.18,.28,.4,2.2);
 }
 #SSM .SSMcategory .SSMselection::after
 {
@@ -417,8 +423,8 @@
     right: 0px;
     top: 0;
     transform: rotate(90deg) scale(0.4);
-    height: 30px;
-    width: 30px;
+    height: 35px;
+    width: 35px;
     white-space: nowrap;
     background-color: #f0f0f0;
     mask: url(https://natski.netlify.app/icon/svg/ENCORE_GIS/line_arrow_down.svg) center center no-repeat;
