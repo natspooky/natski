@@ -32,10 +32,10 @@
     position: fixed;
     top: 0;
     left: 0;
-    width: min(100%, 400px);
+    width: min(100%, 450px);
     height: 100vh;
     overflow-y: scroll;
-    background-color: #000000b2;
+    background-color: #000000a0;
     transform: translateX(-20%);
     opacity: 0;
     visibility: hidden;
@@ -116,7 +116,7 @@
 #SSM .SSMcategory
 {
     position: relative;
-    padding: 1em;
+    padding: 25px 40px;
     display: block;
     width: 100%;
     height: auto;
@@ -183,7 +183,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    background-color: #00000060;
+    background-color: #00000085;
     height: 0px;
     opacity: 0;
     overflow: hidden;
