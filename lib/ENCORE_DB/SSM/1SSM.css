@@ -488,13 +488,13 @@
 #SSM .SSMcategory .SSMselection .header
 {
     position: relative;
-    height: 30px;
+    height: 35px;
     display: block;
     padding: 0 30px 0 15px;
     margin-bottom: 10px;
     overflow: hidden;
     text-overflow: ellipsis;
-    line-height: 30px;
+    line-height: 35px;
     width: 100%;
     color: #f0f0f0;
     font-weight: bold;
@@ -515,8 +515,9 @@
 }
 .SSMbutton:active
 {
-    transition: 0s;
+    transition: 0s, transform 0.2s cubic-bezier(.18,.28,.4,2.2);
     background-color: var(--SSMcolour);
+    transform: scale(1.05, 1);
 }
 #SSMinfo
 {
