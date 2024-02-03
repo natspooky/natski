@@ -4,6 +4,41 @@
     --SSMcolour: #729ef6;
     --SSMcolourPale: #a7beee;
 }
+@media (hover: hover) {
+    .SSMinput[type="checkbox"]:hover::after
+    {
+        -webkit-transform: scale(.7);
+                transform: scale(.7);
+    }
+    .SSMinput[type="range"]:hover::-moz-range-thumb
+    {
+        border: 0px solid var(--SSMcolour);
+    }
+    .SSMinput[type="radio"]:hover::after
+    {
+        -webkit-transform: scale(.7);
+                transform: scale(.7);
+    }
+    .SSMinput[type="range"]:hover::-webkit-slider-thumb
+    {
+        background: var(--SSMcolourPale);
+        transform: scale(1.1);
+    }
+    #SSM:hover #SSMbg
+    {
+        opacity: 1;
+        transition: opacity 0.1s, height 0.1s, transform 0.15s cubic-bezier(.5,1.05,.41,1.18);
+    }
+    #SSM::-webkit-scrollbar-thumb:hover
+    {
+        background-color: #f0f0f0;
+    }
+    .SSMbutton:hover
+    {
+        transform: scale(1);
+        background-color: var(--SSMcolourPale);
+    }
+}
 #SSM, #SSM *
 {
     box-sizing: border-box;
@@ -437,13 +472,15 @@
 {
     position: relative;
     width: 100%;
-    line-height: 30px;
+    line-height: 35px;
     background-color: #66666660;
     border: 0;
     border-radius: 100vmax;
     transition: 0.2s;
     color: #f0f0f0;
     font-weight: bold;
+    transform: scale(0.95);
+    transition: 0.2s cubic-bezier(.18,.28,.53,1.2), transform 0.2s cubic-bezier(.18,.28,.4,2.2);
 }
 .SSMbutton:active
 {
@@ -473,38 +510,4 @@
     position: relative;
     width: 100%;
     text-align: center;
-}
-@media (hover: hover) {
-    .SSMinput[type="checkbox"]:hover::after
-    {
-        -webkit-transform: scale(.7);
-                transform: scale(.7);
-    }
-    .SSMinput[type="range"]:hover::-moz-range-thumb
-    {
-        border: 0px solid var(--SSMcolour);
-    }
-    .SSMinput[type="radio"]:hover::after
-    {
-        -webkit-transform: scale(.7);
-                transform: scale(.7);
-    }
-    .SSMinput[type="range"]:hover::-webkit-slider-thumb
-    {
-        background: var(--SSMcolourPale);
-        transform: scale(1.1);
-    }
-    #SSM:hover #SSMbg
-    {
-        opacity: 1;
-        transition: opacity 0.1s, height 0.1s, transform 0.15s cubic-bezier(.5,1.05,.41,1.18);
-    }
-    #SSM::-webkit-scrollbar-thumb:hover
-    {
-        background-color: #f0f0f0;
-    }
-    .SSMbutton:hover
-    {
-        background-color: var(--SSMcolour);
-    }
 }
