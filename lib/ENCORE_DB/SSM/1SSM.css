@@ -35,7 +35,7 @@
     width: min(100%, 400px);
     height: 100vh;
     overflow-y: scroll;
-    background-color: #000000e0;
+    background-color: #000000c0;
     transform: translateX(-20%);
     opacity: 0;
     visibility: hidden;
@@ -177,16 +177,22 @@
     margin-right: 10px;
     background-color: #f0f0f0;
 }
+#SSM #SSMbg
+{
+    opacity: 1;
+    transition: opacity 0.1s, height 0.1s, transform 0.15s cubic-bezier(.5,1.05,.41,1.18);
+}
 #SSMbg
 {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    background-color: #ffffff20;
+    background-color: #00000030;
     height: 0px;
+    opacity: 0;
     overflow: hidden;
-    transition: opacity 0.35s,height 0.1s, transform 0.15s cubic-bezier(.5,1.05,.41,1.18);
+    transition: opacity 0.35s, height 0.1s, transform 0.15s cubic-bezier(.5,1.05,.41,1.18);
 }
 .SSMinput[type="checkbox"]
 {

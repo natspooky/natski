@@ -207,7 +207,9 @@ make toolbar on editors have a compact form so its easier to read
 
 make loadWheel default to PDS based on .then so it loads right
 
+make CMS fade out if moving mouse away from it.
 
+redesign sliders, buttons and toggles in SSM
 
 
 
