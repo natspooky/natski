@@ -283,7 +283,7 @@
 .SSMinput[type="range"]::-webkit-slider-thumb:active
 {
     background-color: var(--SSMcolour);
-    transform: scale(1.02);
+    transform: scale(1.1);
 }
 
 
