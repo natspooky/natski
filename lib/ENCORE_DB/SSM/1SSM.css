@@ -178,22 +178,17 @@
     margin-right: 10px;
     background-color: #f0f0f0;
 }
-#SSMbg
+#SSM #SSMbg
 {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    background-color: #000000b0;
+    background-color: #000000c0;
     height: 0px;
     opacity: 0;
     overflow: hidden;
     transition: opacity 0.35s, height 0.1s, transform 0.15s cubic-bezier(.5,1.05,.41,1.18);
-}
-#SSM:hover #SSMbg
-{
-    opacity: 1;
-    transition: opacity 0.1s, height 0.1s, transform 0.15s cubic-bezier(.5,1.05,.41,1.18);
 }
 .SSMinput[type="checkbox"]
 {
@@ -269,18 +264,15 @@
     -webkit-appearance: none;
     appearance: none;
     height: 17px;
-    width: 65px;
+    width: 55px;
     background-color: #f0f0f0;
     border-radius: 100vmax;
     transform: scale(1);
     border: 0;
+    box-shadow: -715px 0 0 700px var(--SSMcolour);
     transition: 0.2s cubic-bezier(.18,.28,.53,1.2), transform 0.2s cubic-bezier(.18,.28,.4,2.2);
 }
-.SSMinput[type="range"]:hover::-webkit-slider-thumb
-{
-    background: var(--SSMcolourPale);
-    transform: scale(1.1);
-}
+
 .SSMinput[type="range"]:active::-webkit-slider-thumb
 {
     background-color: var(--SSMcolour);
@@ -497,6 +489,16 @@
     {
         -webkit-transform: scale(.7);
                 transform: scale(.7);
+    }
+    .SSMinput[type="range"]:hover::-webkit-slider-thumb
+    {
+        background: var(--SSMcolourPale);
+        transform: scale(1.1);
+    }
+    #SSM:hover #SSMbg
+    {
+        opacity: 1;
+        transition: opacity 0.1s, height 0.1s, transform 0.15s cubic-bezier(.5,1.05,.41,1.18);
     }
     #SSM::-webkit-scrollbar-thumb:hover
     {
