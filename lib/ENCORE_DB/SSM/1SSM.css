@@ -517,7 +517,7 @@
 {
     transition: 0s, transform 0.2s cubic-bezier(.18,.28,.4,2.2);
     background-color: var(--SSMcolour);
-    transform: scale(1.05, 1);
+    transform: scale(1.015, 1);
 }
 #SSMinfo
 {
