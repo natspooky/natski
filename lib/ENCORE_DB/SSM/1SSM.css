@@ -255,7 +255,7 @@
     outline: none;
     background-color: transparent;
     height: 30px;
-    border-radius: 16px;
+    background-color: #f0f0f010;
 }
 
 .SSMinput[type="range"]::-webkit-slider-runnable-track
