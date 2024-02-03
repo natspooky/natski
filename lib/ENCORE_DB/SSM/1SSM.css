@@ -2,7 +2,7 @@
 :root
 {
     --SSMcolour: #729ef6;
-    --SSMcolourPale: #91b0ee;
+    --SSMcolourPale: #a7beee;
 }
 #SSM, #SSM *
 {
@@ -262,7 +262,6 @@
 .SSMinput[type="range"]::-webkit-slider-runnable-track
 {
     height: 12px;
-    background-color: #f0f0f010;
 }
 
 .SSMinput[type="range"]::-webkit-slider-thumb
@@ -273,8 +272,9 @@
     width: 50px;
     background-color: #f0f0f0;
     border-radius: 100vmax;
+    transform: scale(1);
     border: 0;
-    transition: 0.2s;
+    transition: 0.2s cubic-bezier(.18,.28,.53,1.2), transform 0.2s cubic-bezier(.18,.28,.4,1.69);
 }
 .SSMinput[type="range"]::-webkit-slider-thumb:hover
 {
@@ -283,6 +283,7 @@
 .SSMinput[type="range"]::-webkit-slider-thumb:active
 {
     background-color: var(--SSMcolour);
+    transform: scale(1.02);
 }
 
 
