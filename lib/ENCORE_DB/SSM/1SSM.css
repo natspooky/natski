@@ -8,7 +8,7 @@
     .SSMinput[type="checkbox"]:hover::after
 {
     background-color: var(--SSMcolourPale);
-    transform: scale(1.1) translateX(-50%);
+    transform: scale(1.15) translateX(-50%);
 }
     .SSMinput[type="range"]:hover::-moz-range-thumb
     {
@@ -238,7 +238,7 @@
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    width: 60px;
+    width: 45px;
     height: 17px;
     position: relative;
     cursor: pointer;
@@ -277,7 +277,7 @@
 .SSMinput[type="checkbox"]:active::after
 {
     background-color: var(--SSMcolour);
-    transform: scale(1.2, 1.1) translateX(-50%);
+    transform: scale(1.25, 1.15) translateX(-50%);
 }
 
 .SSMinput[type="range"]
