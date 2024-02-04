@@ -37,7 +37,7 @@
         opacity: 1;
         transform: translateY(-50%) scaleY(1);
     }
-    #SSM section:hover
+    #SSM section:hover, #SSM section.SSMsearch:hover
     {
         background-color: #111111;
         border-radius: 15px;
