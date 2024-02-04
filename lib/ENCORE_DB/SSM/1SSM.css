@@ -37,9 +37,15 @@
         opacity: 1;
         transform: translateY(-50%) scaleY(1);
     }
+    #SSM section:hover
+    {
+        background-color: #0e0e0e;
+        transition: 0.1s;
+    }
     #SSM .SSMcategory:hover
     {
         background-color: #1a1a1a;
+        transition: 0.1s;
     }
 }
 #SSM, #SSM *
@@ -92,6 +98,9 @@
     border-bottom: 2px solid #ffffff09;
     transition: 0.4s;
     animation: SSMfadeup 0.3s ease;
+    background-color: transparent;
+    border-radius: 10px;
+    transition: 0.2s;
 }
 #SSM section.SSMsearch
 {
