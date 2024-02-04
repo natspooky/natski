@@ -33,11 +33,11 @@
     {
         background-color: #f0f0f0;
     }
-    .SSMbutton:hover, .SSMinput[type="text"]:hover
+    #SSM .SSMcategory:hover .SSMbutton, #SSM .SSMcategory:hover .SSMinput[type="text"]
     {
         transform: scale(1);
     }
-    #SSM .SSMcategory .SSMselection:hover
+    #SSM .SSMcategory:hover .SSMselection
     {
         transform: scale(1);
     }
@@ -79,11 +79,9 @@
     width: min(100%, 400px);
     height: 100vh;
     overflow-y: scroll;
-    background-color: #000000aa;
+    background-color: #0a0a0a;
     transform: translateX(-20%);
     opacity: 0;
-    backdrop-filter: blur(2px);
-    -webkit-backdrop-filter: blur(2px);
     visibility: hidden;
     transition: 0.3s;
 }
@@ -99,6 +97,10 @@
     border-bottom: 2px solid #ffffff10;
     transition: 0.4s;
     animation: SSMfadeup 0.3s ease;
+}
+#SSM section.SSMsearch
+{
+    position: sticky;
 }
 @keyframes SSMfadeup{
     from{transform: translateY(30px); opacity: 0;}
@@ -247,7 +249,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    background-color: #000000c0;
+    background-color: #000000d0;
     height: 0px;
     opacity: 0;
     overflow: hidden;
