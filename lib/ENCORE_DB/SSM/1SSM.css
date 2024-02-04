@@ -37,10 +37,15 @@
         opacity: 1;
         transform: translateY(-50%) scaleY(1);
     }
-    #SSM section:hover, #SSM section.SSMsearch:hover, #SSM section:hover h1
+    #SSM section:hover, #SSM section.SSMsearch:hover
     {
         background-color: #111111;
         border-radius: 15px;
+        transition: 0.1s;
+    }
+    #SSM section:hover h1
+    {
+        background-color: #111111;
         transition: 0.1s;
     }
     #SSM:hover section
@@ -251,7 +256,7 @@
     top: 124px;
     z-index: 800;
     background-color: #0a0a0a;
-    border-radius: 15px;
+    border-radius: 15px 15px 10px 10px;
     padding: 0.5em 1em 0.5em 0.7em;
     display: flex;
     align-items: center;
