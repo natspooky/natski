@@ -76,7 +76,7 @@
 {
     width: 5px;
 	height: 0px;
-    background-color: transparent;
+    background-color: #f0f0f005;
 }
 #SSM
 {
@@ -85,7 +85,7 @@
     left: 0;
     width: min(100%, 400px);
     height: 100vh;
-    padding-left: 5px;
+    padding: 0 5px;
     overflow-y: scroll;
     background-color: #0a0a0a;
     transform: translateX(-20%);
