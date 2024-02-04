@@ -90,13 +90,14 @@
 #SSM section
 {
     position: relative;
-    border-bottom: 2px solid #ffffff10;
+    border-bottom: 2px solid #ffffff09;
     transition: 0.4s;
     animation: SSMfadeup 0.3s ease;
 }
 #SSM section.SSMsearch
 {
     position: sticky;
+    top: 0;
 }
 @keyframes SSMfadeup{
     from{transform: translateY(30px); opacity: 0;}
