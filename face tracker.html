@@ -263,19 +263,19 @@
             </section>
             <section>
                 <h1><GIS-icon title="PSS"></GIS-icon>Tracking</h1>
-                <span class="SSMcategory">
+                <span class="SSMcategory SSMcheckbox">
                     <p>Lock Movement to Center</p>
                     <input type="checkbox" class="SSMinput" ssminfo="locks the model to the center of the canvas" onclick="trackerSettings.LocationLock = toggleSwitch(this)">
                 </span>
-                <span class="SSMcategory">
+                <span class="SSMcategory SSMcheckbox">
                     <p>Lock Rotation to Center</p>
                     <input type="checkbox" class="SSMinput" ssminfo="locks rotation to the center of the model" onclick="trackerSettings.RotationLock = toggleSwitch(this)">
                 </span>
-                <span class="SSMcategory">
+                <span class="SSMcategory SSMcheckbox">
                     <p>Audio tracking</p>
                     <input type="checkbox" class="SSMinput" checked ssminfo="toggles the audio tracking used to move the mouth" onclick="trackerSettings.AudioTracking = toggleSwitch(this)">
                 </span>
-                <span class="SSMcategory">
+                <span class="SSMcategory SSMcheckbox">
                     <p>Video tracking</p>
                     <input type="checkbox" class="SSMinput" checked ssminfo="toggles the video tracking used to move the head" onclick="trackerSettings.VideoTracking = toggleSwitch(this)">
                 </span>
@@ -311,12 +311,12 @@
         
             <section>
                 <h1><GIS-icon title="SSC"></GIS-icon>Visuals</h1>
-                <span class="SSMcategory">
+                <span class="SSMcategory SSMcheckbox">
                     <p>Display Tracking Calculation</p>
                     <input type="checkbox" class="SSMinput" ssminfo="shows the output coordinates of each anchor point" onclick="trackerSettings.ShowCalculations = toggleSwitch(this); document.getElementById('canvas').classList.toggle('hidden')">
                 </span>
         
-                <span class="SSMcategory">
+                <span class="SSMcategory SSMcheckbox">
                     <p>Display Tracking Points</p>
                     <input type="checkbox" class="SSMinput" checked ssminfo="shows the tracking points on the users camera display" onclick="trackerSettings.ShowTrackingPoints = toggleSwitch(this)">
                 </span>
@@ -369,6 +369,6 @@
         </script>
         <script src="lib/js/ENCORE_APF.js"></script>
 
-        <script src="lib/js/Face_Tracker.js"></script>
+        <script src="lib/js/faceTracker/Face_Tracker.js"></script>
     </body>
 </html>

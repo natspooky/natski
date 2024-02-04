@@ -205,9 +205,9 @@
     fill: #f0f0f0;
 }
 
-#SSM .SSMcategory.SSMcheckbox
+#SSM .SSMcategory.SSMcheckbox p
 {
-
+    width: calc(100% - 60px);
 }
 
 #SSM h1
