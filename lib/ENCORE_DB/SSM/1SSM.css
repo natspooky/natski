@@ -8,7 +8,7 @@
     .SSMinput[type="checkbox"]:hover::after
 {
     background-color: var(--SSMcolourPale);
-    transform: scale(1.15) translateX(-50%);
+    transform: scale(1.15);
 }
     .SSMinput[type="range"]:hover::-moz-range-thumb
     {
@@ -265,19 +265,19 @@
     height: 17px;
     border-radius: 50%;
     background-color: #f0f0f0;
-    transform: scale(1) translateX(-50%);
+    transform: scale(1);
     left: 0;
     top: 0;
     transition: 0.2s cubic-bezier(.18,.28,.53,1.2), transform 0.2s cubic-bezier(.18,.28,.4,2.2);;
 }
 .SSMinput[type="checkbox"]:checked::after
 {
-    left: 100%;
+    left: calc(100% - 17px);
 }
 .SSMinput[type="checkbox"]:active::after
 {
     background-color: var(--SSMcolour);
-    transform: scale(1.25, 1.15) translateX(-50%);
+    transform: scale(1.25, 1.15);
 }
 
 .SSMinput[type="range"]
