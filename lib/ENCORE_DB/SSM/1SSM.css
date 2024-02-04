@@ -85,7 +85,7 @@
     left: 0;
     width: min(100%, 400px);
     height: 100vh;
-    padding: 5px 5px 0 5px;
+    padding: 0 5px;
     overflow-y: scroll;
     background-color: #0a0a0a;
     transform: translateX(-20%);
