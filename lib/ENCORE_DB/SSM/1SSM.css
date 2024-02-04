@@ -207,7 +207,12 @@
 
 #SSM .SSMcategory.SSMcheckbox p
 {
+    display: inline-block;
     width: calc(100% - 60px);
+}
+#SSM .SSMcategory.SSMcheckbox input
+{
+    display: inline-block;
 }
 
 #SSM h1
