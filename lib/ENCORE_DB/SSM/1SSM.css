@@ -561,25 +561,25 @@
 #SSMinfo
 {
     position: absolute;
-    min-height: 35px;
+    font-size: 12px;
+    min-height: 20px;
     height: auto;
     left: 0;
     top: 0;
     max-width: 250px;
-    border-radius: 17.7px;
+    border-radius: 7px;
     background-color: var(--SSMcolour);
-    line-height: 17.5px;
+    line-height: 20px;
     color: #f0f0f0;
     pointer-events: none;
     overflow: hidden;
     opacity: 0;
-    padding: 10px 20px;
+    padding: 5px 10px;
     transition: opacity 0.1s ease, width 0.15s, transform 0s;
 }
 #SSMinfo.SSMvisible
 {
     opacity: 1;
-    transition: opacity 0.1s ease, width 0.15s, transform 0s;
     transition: opacity 0.2s ease 0.3s, transform 0s;
 }
 #SSMinfo p
