@@ -204,6 +204,12 @@
     margin-bottom: 20px;
     fill: #f0f0f0;
 }
+
+#SSM .SSMcategory.SSMcheckbox
+{
+
+}
+
 #SSM h1
 {
     position: sticky;
@@ -241,6 +247,7 @@
     width: 45px;
     height: 17px;
     position: relative;
+    float: right;
     cursor: pointer;
     border: 0px;
     outline: none;
