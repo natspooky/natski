@@ -81,7 +81,6 @@
     left: 0;
     width: min(100%, 400px);
     height: 100vh;
-    padding-left: 5px;
     overflow-y: scroll;
     background-color: #0a0a0a;
     transform: translateX(-20%);
@@ -100,6 +99,7 @@
     position: relative;
     border-bottom: 2px solid #ffffff09;
     transition: 0.4s;
+    padding: 0 5px;
     animation: SSMfadeup 0.3s ease;
     background-color: transparent;
     border-radius: 0px;
