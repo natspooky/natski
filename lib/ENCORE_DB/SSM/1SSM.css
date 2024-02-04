@@ -20,11 +20,6 @@
         background: var(--SSMcolourPale);
         transform: scale(1.1);
     }
-    #SSM:hover #SSMbg
-    {
-        opacity: 1;
-        transition: opacity 0.1s, height 0.1s, transform 0.15s cubic-bezier(.5,1.05,.41,1.18);
-    }
     #SSM::-webkit-scrollbar-thumb:hover
     {
         background-color: #f0f0f0;
@@ -41,6 +36,10 @@
     {
         opacity: 1;
         transform: translateY(-50%) scaleY(1);
+    }
+    #SSM .SSMcategory:hover
+    {
+        background-color: #1a1a1a;
     }
 }
 #SSM, #SSM *
@@ -166,7 +165,10 @@
     padding: 15px 20px;
     display: block;
     width: 100%;
+    border-radius: 10px;
+    background-color: transparent;
     height: auto;
+    transition: 0.2s;
 }
 #SSM .SSMcategory
 {
