@@ -575,9 +575,9 @@
     position: absolute;
     min-height: 35px;
     height: auto;
-    left: 20px;
+    left: 0;
     top: 0;
-    width: calc(100% - 40px);
+    max-width: 250px;
     border-radius: 17.7px;
     background-color: var(--SSMcolour);
     line-height: 17.5px;
@@ -586,7 +586,7 @@
     overflow: hidden;
     opacity: 0;
     padding: 10px 20px;
-    transition: opacity 0.2s ease 0.3s, width 0.15s, transform 0.2s;
+    transition: opacity 0.2s ease 0.3s, width 0.15s, transform 0s;
 }
 #SSMinfo p
 {
