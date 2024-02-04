@@ -110,7 +110,7 @@
     border-bottom: 2px solid #ffffff09;
     transition: 0.4s;
     height: fit-content;
-    padding: 0 5px 5px 5px;
+    padding: 5px;
     animation: SSMfadeup 0.3s ease;
     background-color: transparent;
     border-radius: 0px;
@@ -256,7 +256,7 @@
     top: 124px;
     z-index: 800;
     background-color: #0a0a0a;
-    border-radius: 15px 15px 10px 10px;
+    border-radius: 10px 10px 0 0;
     padding: 0.5em 1em 0.5em 0.7em;
     display: flex;
     align-items: center;
