@@ -20,7 +20,7 @@
         background: var(--SSMcolourPale);
         transform: scale(1.1);
     }
-    #SSM::-webkit-scrollbar-thumb:hover
+    #SSM:hover::-webkit-scrollbar-thumb
     {
         background-color: #f0f0f040;
     }
@@ -68,7 +68,7 @@
 }
 #SSM::-webkit-scrollbar-thumb
 {
-    background-color: #f0f0f0;
+    background-color: #f0f0f010;
     border-radius: 100vmax;
     border: 0;
 }
@@ -104,6 +104,7 @@
     position: relative;
     border-bottom: 2px solid #ffffff09;
     transition: 0.4s;
+    height: fit-content;
     padding: 0 5px 5px 5px;
     animation: SSMfadeup 0.3s ease;
     background-color: transparent;
