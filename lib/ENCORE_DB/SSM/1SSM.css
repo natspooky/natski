@@ -5,21 +5,17 @@
     --SSMcolourPale: #a7beee;
 }
 @media (hover: hover) {
-    .SSMinput[type="checkbox"]:hover::after
-{
-    background-color: var(--SSMcolourPale);
-    transform: scale(1.2);
-}
-    .SSMinput[type="range"]:hover::-moz-range-thumb
+    #SSM .SSMcategory:hover .SSMinput[type="checkbox"]::after
     {
-        border: 0px solid var(--SSMcolour);
+        background-color: var(--SSMcolourPale);
+        transform: scale(1.2);
     }
-    .SSMinput[type="radio"]:hover::after
+    #SSM .SSMcategory:hover .SSMinput[type="radio"]::after
     {
         -webkit-transform: scale(.7);
                 transform: scale(.7);
     }
-    .SSMinput[type="range"]:hover::-webkit-slider-thumb
+    #SSM .SSMcategory:hover .SSMinput[type="range"]::-webkit-slider-thumb
     {
         background: var(--SSMcolourPale);
         transform: scale(1.1);
@@ -249,7 +245,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    background-color: #000000d0;
+    background-color: #f0f0f010;
     height: 0px;
     opacity: 0;
     overflow: hidden;
