@@ -316,7 +316,7 @@
 {
     left: calc(100% - 17px);
 }
-.SSMinput[type="checkbox"]:active::after
+#SSM .SSMcategory:hover .SSMinput[type="checkbox"]:active::after
 {
     background-color: var(--SSMcolour);
     transform: scale(1.4, 1.2);
@@ -352,7 +352,7 @@
     transition: 0.2s cubic-bezier(.18,.28,.53,1.2), transform 0.2s cubic-bezier(.18,.28,.4,2.2);
 }
 
-.SSMinput[type="range"]:active::-webkit-slider-thumb
+#SSM .SSMcategory:hover .SSMinput[type="range"]:active::-webkit-slider-thumb
 {
     background-color: var(--SSMcolour);
     transform: scale(1.2, 1.1);
@@ -550,7 +550,7 @@
     transform: scale(0.97);
     transition: 0.2s cubic-bezier(.18,.28,.53,1.2), transform 0.2s cubic-bezier(.18,.28,.4,2.2);
 }
-.SSMbutton:active
+#SSM .SSMcategory:hover .SSMbutton:active
 {
     transition: 0s, transform 0.2s cubic-bezier(.18,.28,.4,2.2);
     background-color: var(--SSMcolour);
