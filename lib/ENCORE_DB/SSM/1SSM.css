@@ -253,10 +253,10 @@
 #SSM section h1
 {
     position: sticky;
-    top: 124px;
+    top: 129px;
     z-index: 800;
     background-color: #0a0a0a;
-    border-radius: 10px 10px 0 0;
+    border-radius: 0 0 10px 10px;
     padding: 0.5em 1em 0.5em 0.7em;
     display: flex;
     align-items: center;
