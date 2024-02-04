@@ -248,7 +248,8 @@
 #SSM section h1
 {
     position: sticky;
-    top: 100px;
+    top: 150px;
+    z-index: 800;
     background-color: #0a0a0a;
     border-radius: 15px;
     padding: 0.9em 1em 0.5em 0.7em;
@@ -265,6 +266,11 @@
     font-size: 20px;
     margin-right: 10px;
     background-color: #f0f0f0;
+}
+#SSM section.SSMsearch h1
+{
+    position: relative;
+    top: unset;
 }
 #SSM #SSMbg
 {
