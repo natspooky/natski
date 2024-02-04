@@ -5,11 +5,11 @@
     --SSMcolourPale: #a7beee;
 }
 @media (hover: hover) {
-    .SSMinput[type="checkbox"]:hover::after
-    {
-        -webkit-transform: scale(.7);
-                transform: scale(.7);
-    }
+    .SSMinput[type="checkbox"]:active::after
+{
+    background-color: var(--SSMcolourPale);
+    transform: scale(1.1);
+}
     .SSMinput[type="range"]:hover::-moz-range-thumb
     {
         border: 0px solid var(--SSMcolour);
@@ -36,7 +36,6 @@
     .SSMbutton:hover, .SSMinput[type="text"]:hover
     {
         transform: scale(1);
-        background-color: var(--SSMcolourPale);
     }
     #SSM .SSMcategory .SSMselection:hover
     {
@@ -140,7 +139,7 @@
     content: '';
     height: 35px;
     width: 35px;
-    background-image: conic-gradient(from 85deg, transparent, var(--themecol)); 
+    background-image: conic-gradient(from 85deg, transparent, #f0f0f0); 
     mask: url(https://natski.netlify.app/icon/svg/ENCORE_GIS/loader.svg) center center no-repeat;
     -webkit-mask: url(https://natski.netlify.app/icon/svg/ENCORE_GIS/loader.svg) center center no-repeat;
 }
@@ -241,9 +240,9 @@
     -moz-appearance: none;
     appearance: none;
     width: 60px;
-    height: 30px;
+    height: 5px;
     background: #66666660;
-    border-radius: 15px;
+    border-radius: 100vmax;
     position: relative;
     cursor: pointer;
     border: 0px;
@@ -261,29 +260,22 @@
 {
     position: absolute;
     content: "";
-    width: 30px;
-    height: 30px;
+    width: 17px;
+    height: 17px;
     border-radius: 50%;
-    background: #777;
-    -webkit-transform: scale(.5);
-            transform: scale(.5);
+    background-color: #f0f0f0;
+    transform: scale(1) translate(-50%,-50%);
     left: 0;
-    -webkit-transition: all .2s ease-in-out;
-    transition: all .2s ease-in-out;
-}
-
-.SSMinput[type="checkbox"]:active::after
-{
-    width: 35px;
+    transition: 0.2s cubic-bezier(.18,.28,.53,1.2), transform 0.2s cubic-bezier(.18,.28,.4,2.2);;
 }
 .SSMinput[type="checkbox"]:checked::after
 {
-    left: calc(100% - 30px);
-    background: #f0f0f0;
+    left: 100%;
 }
-.SSMinput[type="checkbox"]:active:checked::after{
-    width: 35px;
-    left: calc(100% - 35px);
+.SSMinput[type="checkbox"]:active::after
+{
+    background-color: var(--SSMcolour);
+    transform: scale(1.15);
 }
 
 .SSMinput[type="range"]
@@ -518,7 +510,6 @@
 {
     transition: 0s, transform 0.2s cubic-bezier(.18,.28,.4,2.2);
     background-color: var(--SSMcolour);
-    transform: scale(1.015, 1);
 }
 #SSMinfo
 {
