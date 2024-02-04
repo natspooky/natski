@@ -37,7 +37,7 @@
         opacity: 1;
         transform: translateY(-50%) scaleY(1);
     }
-    #SSM section:hover, #SSM section.SSMsearch:hover
+    #SSM section:hover, #SSM section.SSMsearch:hover, #SSM section:hover h1
     {
         background-color: #111111;
         border-radius: 15px;
@@ -245,17 +245,21 @@
     display: inline-block;
 }
 
-#SSM h1
+#SSM section h1
 {
     position: sticky;
+    top: 100px;
+    background-color: #0a0a0a;
+    border-radius: 15px;
     padding: 0.9em 1em 0.5em 0.7em;
     display: flex;
     align-items: center;
     font-size: 24px;
     width: 100%;
     color: #f0f0f0;
+    transition: 0.2s;
 }
-#SSM h1 GIS-icon
+#SSM section h1 GIS-icon
 {
     position: relative;
     font-size: 20px;
