@@ -234,6 +234,7 @@
 {
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 #SSM .SSMcategory.SSMcheckbox p
 {
