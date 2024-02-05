@@ -209,11 +209,6 @@
     flex-shrink: 0;
     margin: 0 0 1em 0;
 }
-#SSM .SSMcategory p i
-{
-    opacity: 0.4;
-    font-size: 14px;
-}
 #SSM .SSMcategory.radioSetting
 {
     display: flex;
