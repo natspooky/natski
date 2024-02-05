@@ -254,7 +254,7 @@
 {
     position: sticky;
     top: 126px;
-    z-index: 800;
+    z-index: 300;
     background-color: #0a0a0a;
     border-radius: 0 0 10px 10px;
     padding: 0.5em 1em 0.5em 0.7em;
@@ -460,6 +460,11 @@
     user-select: none;
     transition: 0.2s cubic-bezier(.18,.28,.53,1.2), transform 0.2s cubic-bezier(.18,.28,.4,2.2);
 }
+#SSM .SSMcategory:hover .SSMselection:active
+{
+    background-color: var(--SSMcolour);
+    transition: 0s, transform 0.2s cubic-bezier(.18,.28,.4,2.2);
+}
 #SSM .SSMcategory .SSMselection::after
 {
     content: '';
@@ -482,7 +487,7 @@
 #SSM .SSMcategory .SSMselection.active
 {
     overflow: visible;
-    z-index: 3;
+    z-index: 600;
 }
 #SSM .SSMcategory .SSMselection .SSMitem
 {
@@ -534,17 +539,10 @@
     margin-bottom: 10px;
     overflow: hidden;
     text-overflow: ellipsis;
-    background-color: transparent;
     line-height: 35px;
     width: 100%;
     color: #f0f0f0;
     font-weight: bold;
-    transition: 0.2s;
-}
-#SSM .SSMcategory:hover .SSMselection .SSMheader:active
-{
-    background-color: var(--SSMcolour);
-    transition: 0s;
 }
 .SSMbutton
 {
