@@ -525,7 +525,7 @@
     border-radius: 15px;
     border: 0;
 }
-#SSM .SSMcategory .SSMselection .header
+#SSM .SSMcategory .SSMselection .SSMheader
 {
     position: relative;
     height: 35px;
@@ -534,10 +534,17 @@
     margin-bottom: 10px;
     overflow: hidden;
     text-overflow: ellipsis;
+    background-color: transparent;
     line-height: 35px;
     width: 100%;
     color: #f0f0f0;
     font-weight: bold;
+    transition: 0.2s;
+}
+#SSM .SSMcategory:hover .SSMselection .SSMheader:active
+{
+    background-color: var(--SSMcolour);
+    transition: 0s;
 }
 .SSMbutton
 {
