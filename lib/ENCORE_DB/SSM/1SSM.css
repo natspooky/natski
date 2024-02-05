@@ -12,8 +12,7 @@
     }
     #SSM .SSMcategory:hover .SSMinput[type="radio"]::after
     {
-        -webkit-transform: scale(.7);
-                transform: scale(.7);
+        transform: scale(.7);
     }
     #SSM .SSMcategory:hover .SSMinput[type="range"]::-webkit-slider-thumb
     {
@@ -384,10 +383,9 @@
     font-size: 30px;
     -webkit-appearance: none;
     -moz-appearance: none;
-            appearance: none;
+    appearance: none;
     width: 30px;
     height: 30px;
-    background: #66666660;
     border-radius: 100vmax;
     position: relative;
     cursor: pointer;
@@ -396,10 +394,6 @@
     -webkit-transition: all .2s ease-in-out;
     transition: all .2s ease-in-out;
 }
-.SSMinput[type="radio"]:checked
-{
-    background: var(--SSMcolour);
-}
 .SSMinput[type="radio"]::after
 {
     position: absolute;
@@ -407,17 +401,16 @@
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    background: #777;
-    -webkit-transform: scale(.5);
-            transform: scale(.5);
+    background: #f0f0f0;
+    transform: scale(0.5);
     left: 0;
     top: 0;
-    -webkit-transition: all .2s ease-in-out;
-    transition: all .2s ease-in-out;
+    transition: 0.2s cubic-bezier(.18,.28,.53,1.2), transform 0.2s cubic-bezier(.18,.28,.4,2.2);
 }
 .SSMinput[type="radio"]:checked::after
 {
-    background: #f0f0f0;
+    background: var(--SSMcolour);
+    transform: scale(0.8);
 }
 
 .SSMinput[type="text"]
