@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_99" data-name="Layer 99" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.91 850.91">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #231f20;
+        stroke-width: 0px;
+      }
+    </style>
+  </defs>
+  <rect class="cls-1" x="-246.03" y="383.8" width="850.39" height="83.79" rx="41.89" ry="41.89" transform="translate(-246.53 604.87) rotate(-90)"/>
+  <path class="cls-1" d="M693.94,372.61c25.62,30.76,25.62,75.42,0,106.18l-174.62,209.61-118.22,141.9c-34.07,40.9-100.63,16.8-100.63-36.43v-368.18s0-368.18,0-368.18c0-53.23,66.56-77.32,100.63-36.43l118.22,141.9,174.62,209.61Z"/>
+</svg>
