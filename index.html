@@ -279,6 +279,10 @@
                 background-image: linear-gradient(to top, #0a0a0a, transparent);
                 pointer-events: none;
             }
+            main.nonActive::before
+            {
+                background-image: unset;
+            }
             main .scrollContainer
             {
                 position: relative;
@@ -1019,7 +1023,7 @@
                         <button name="ChangeLog" onclick="loadframe('ChangeLog')">
                             <GIS-icon title="terminal"></GIS-icon>
                         </button>
-                        <button name="Settings" onclick="loadframe('Settings')">
+                        <button name="Settings" onclick="toggleSSM()">
                             <GIS-icon title="gear"></GIS-icon>
                         </button>
                     </div>
@@ -1139,7 +1143,7 @@
                
             </button>-->
             <span id="pageTitle">Home</span>
-            <button class="navbutton" name="settings" aria-label="settings" onclick="loadframe(this.name);backPage(-1000)">
+            <button class="navbutton" name="settings" aria-label="settings" onclick="toggleSSM();">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1032.47 1032.53">
                     <path d="M952.08,620.24l-57.1-32.97c-25.19-14.54-40.47-41.49-40.43-70.58,0-.16,0-.31,0-.47s0-.31,0-.47c-.04-29.09,15.24-56.04,40.43-70.58l57.1-32.97c41.44-23.93,55.64-76.92,31.72-118.36l-41.28-71.49c-23.92-41.44-76.92-55.64-118.36-31.72l-57.05,32.94c-25.23,14.57-56.25,14.28-81.44-.34-.28-.16-.56-.33-.85-.49-25.16-14.5-40.81-41.2-40.81-70.24V86.64c0-47.85-38.79-86.64-86.65-86.64h-82.54c-47.86,0-86.65,38.79-86.65,86.64v65.87c0,29.04-15.65,55.74-40.81,70.24-.28,.16-.57,.33-.85,.49-25.2,14.62-56.22,14.9-81.44,.34l-57.05-32.94c-41.44-23.92-94.44-9.72-118.37,31.72l-41.27,71.49c-23.93,41.44-9.73,94.43,31.72,118.36l57.1,32.97c25.19,14.54,40.47,41.49,40.43,70.58,0,.16,0,.31,0,.47s0,.31,0,.47c.04,29.09-15.24,56.04-40.43,70.58l-57.1,32.97c-41.45,23.93-55.65,76.92-31.72,118.36l41.27,71.49c23.93,41.44,76.93,55.64,118.37,31.72l57.05-32.94c25.23-14.57,56.25-14.28,81.44,.34,.28,.16,.56,.33,.85,.49,25.16,14.5,40.81,41.2,40.81,70.24v65.86c0,47.86,38.79,86.65,86.65,86.65h82.54c47.86,0,86.65-38.79,86.65-86.65v-65.86c0-29.04,15.65-55.74,40.81-70.24,.28-.16,.57-.33,.85-.49,25.2-14.62,56.22-14.9,81.44-.34l57.05,32.94c41.44,23.92,94.44,9.72,118.36-31.72l41.28-71.49c23.92-41.44,9.72-94.43-31.72-118.36Zm-401.72,63.49c-11.07,2.25-22.53,3.43-34.27,3.43s-23.2-1.18-34.27-3.43c-36.94-7.52-69.55-26.96-93.65-54.11-15.14-17.08-26.91-37.2-34.28-59.33-5.66-16.99-8.73-35.17-8.73-54.06s3.07-37.07,8.73-54.06c7.37-22.13,19.14-42.25,34.28-59.33,24.1-27.15,56.71-46.59,93.65-54.11,11.07-2.25,22.53-3.43,34.27-3.43s23.2,1.18,34.27,3.43c36.94,7.52,69.55,26.96,93.65,54.11,15.14,17.08,26.91,37.2,34.28,59.33,5.66,16.99,8.73,35.17,8.73,54.06s-3.07,37.07-8.73,54.06c-7.37,22.13-19.14,42.25-34.28,59.33-24.1,27.15-56.71,46.59-93.65,54.11Z"/>
                 </svg>
@@ -1228,7 +1232,7 @@
                     ENCORE
                 </button>
 
-                <button class="coverbutton" name="settings" onclick="loadframe(this.name);backPage(-1000)" style="--loadSpeed: 0.5s;">
+                <button class="coverbutton" name="settings" onclick="openSSM();menuClose()" style="--loadSpeed: 0.5s;">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1032.47 1032.53">
                         <path d="M952.08,620.24l-57.1-32.97c-25.19-14.54-40.47-41.49-40.43-70.58,0-.16,0-.31,0-.47s0-.31,0-.47c-.04-29.09,15.24-56.04,40.43-70.58l57.1-32.97c41.44-23.93,55.64-76.92,31.72-118.36l-41.28-71.49c-23.92-41.44-76.92-55.64-118.36-31.72l-57.05,32.94c-25.23,14.57-56.25,14.28-81.44-.34-.28-.16-.56-.33-.85-.49-25.16-14.5-40.81-41.2-40.81-70.24V86.64c0-47.85-38.79-86.64-86.65-86.64h-82.54c-47.86,0-86.65,38.79-86.65,86.64v65.87c0,29.04-15.65,55.74-40.81,70.24-.28,.16-.57,.33-.85,.49-25.2,14.62-56.22,14.9-81.44,.34l-57.05-32.94c-41.44-23.92-94.44-9.72-118.37,31.72l-41.27,71.49c-23.93,41.44-9.73,94.43,31.72,118.36l57.1,32.97c25.19,14.54,40.47,41.49,40.43,70.58,0,.16,0,.31,0,.47s0,.31,0,.47c.04,29.09-15.24,56.04-40.43,70.58l-57.1,32.97c-41.45,23.93-55.65,76.92-31.72,118.36l41.27,71.49c23.93,41.44,76.93,55.64,118.37,31.72l57.05-32.94c25.23-14.57,56.25-14.28,81.44,.34,.28,.16,.56,.33,.85,.49,25.16,14.5,40.81,41.2,40.81,70.24v65.86c0,47.86,38.79,86.65,86.65,86.65h82.54c47.86,0,86.65-38.79,86.65-86.65v-65.86c0-29.04,15.65-55.74,40.81-70.24,.28-.16,.57-.33,.85-.49,25.2-14.62,56.22-14.9,81.44-.34l57.05,32.94c41.44,23.92,94.44,9.72,118.36-31.72l41.28-71.49c23.92-41.44,9.72-94.43-31.72-118.36Zm-401.72,63.49c-11.07,2.25-22.53,3.43-34.27,3.43s-23.2-1.18-34.27-3.43c-36.94-7.52-69.55-26.96-93.65-54.11-15.14-17.08-26.91-37.2-34.28-59.33-5.66-16.99-8.73-35.17-8.73-54.06s3.07-37.07,8.73-54.06c7.37-22.13,19.14-42.25,34.28-59.33,24.1-27.15,56.71-46.59,93.65-54.11,11.07-2.25,22.53-3.43,34.27-3.43s23.2,1.18,34.27,3.43c36.94,7.52,69.55,26.96,93.65,54.11,15.14,17.08,26.91,37.2,34.28,59.33,5.66,16.99,8.73,35.17,8.73,54.06s-3.07,37.07-8.73,54.06c-7.37,22.13-19.14,42.25-34.28,59.33-24.1,27.15-56.71,46.59-93.65,54.11Z"/>
                     </svg>
@@ -1266,6 +1270,13 @@
                         }
 
                     }, 1000)
+
+
+                    if(localStorage.getItem("performance")==='true'){
+                        document.getElementById("performance").checked = true;
+                    }
+
+
 
 
                     if(!deviceCheck() && preference!=='true'){
@@ -1311,6 +1322,7 @@
                         panel.remove()
                         sscu.style.position = 'relative'
                         main.style.opacity = '1'
+                        main.classList.add('nonActive')
                     }
                 }
 
@@ -1375,6 +1387,7 @@
 
                 function menuOpen(){
                     document.getElementById('covermenu').classList.add('active')
+                    closeSSM()
                 }
 
 
@@ -1458,8 +1471,37 @@
                 }
 
 
+                function changeSettings(name, value){
+                        localStorage.setItem(name, value.checked)
+                }
+
+
         </script>
 
+<div id="SSM" style="display: none;">
+    <section>
+        <h1><GIS-icon title="config"></GIS-icon>NATSKI settings</h1>
+        <button onclick="closeSSM()">
+
+        </button>
+    </section>
+
+    <section class="SSMsearch">
+        <h1><GIS-icon title="magnify"></GIS-icon>Search</h1>
+        <span class="SSMcategory">
+            <input class="SSMinput" type="text" ssminfo="Lets you search for a specific setting" placeholder="Search">
+        </span>
+    </section>
+
+    <section>
+        <h1><GIS-icon title="sparkle"></GIS-icon>Visuals</h1>
+        <span class="SSMcategory SSMcheckbox">
+            <p>Performance Mode</p>
+            <input type="checkbox" class="SSMinput" id="performance" ssminfo="disables visual only funtions to increase page load and performance" onclick="changeSettings('performance', this)">
+        </span>
+    </section>
+
+</div>
 
 <div style="display: none; --CMScolour: #3c239580;" id="CMS"><div id="CMS4500b5" class="CMScontext"><button class="CMSclickable" onclick="CMSchangeMenu(`CMS101458`)"><GIS-icon title="ENCORE"></GIS-icon><span>ENCORE</span><svg class="CMSsubpage" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.35 850.35"><path d="M816.99,312.17l-351.98,351.98c-22.01,22.01-57.69,22.01-79.7,0L33.32,312.17c-32.59-32.58-32.59-85.42,0-118h0c32.59-32.59,85.42-32.59,118,0L425.16,468.01,698.99,194.17c32.58-32.59,85.42-32.59,118,0h0c32.59,32.59,32.59,85.42,0,118Z"></path></svg></button></div><div id="CMS101458" class="CMScontext"><button class="CMSclickable CMSback" onclick="CMSresetMenu()"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.9 850.9"><path d="M367.73,771.63c-12.6,12.6-33.02,12.6-45.62,0L35.42,484.95l-18.57-18.57c-22.46-22.47-22.46-58.89,0-81.35l18.57-18.57L322.1,79.76c12.6-12.6,33.03-12.6,45.62,0l13.63,13.63c12.6,12.6,12.6,33.03,0,45.62l-231.7,231.7c-4.83,4.83-1.41,13.09,5.42,13.09h663.05c17.82,0,32.26,14.45,32.26,32.26v19.27c0,17.82-14.44,32.26-32.26,32.26H155.07c-6.83,0-10.25,8.26-5.42,13.09l231.71,231.7c12.6,12.6,12.6,33.03,0,45.62l-13.63,13.63Z"/></svg><span>Back</span></button><button class="CMSclickable" onclick="CMSchangeMenu(`CMS843336`)"><GIS-icon title="ENCORE"></GIS-icon><span>V1</span><svg class="CMSsubpage" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.35 850.35"><path d="M816.99,312.17l-351.98,351.98c-22.01,22.01-57.69,22.01-79.7,0L33.32,312.17c-32.59-32.58-32.59-85.42,0-118h0c32.59-32.59,85.42-32.59,118,0L425.16,468.01,698.99,194.17c32.58-32.59,85.42-32.59,118,0h0c32.59,32.59,32.59,85.42,0,118Z"></path></svg></button><button class="CMSclickable" onclick="CMSchangeMenu(`CMS142676`)"><GIS-icon title="ENCORE"></GIS-icon><span>V2</span><svg class="CMSsubpage" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.35 850.35"><path d="M816.99,312.17l-351.98,351.98c-22.01,22.01-57.69,22.01-79.7,0L33.32,312.17c-32.59-32.58-32.59-85.42,0-118h0c32.59-32.59,85.42-32.59,118,0L425.16,468.01,698.99,194.17c32.58-32.59,85.42-32.59,118,0h0c32.59,32.59,32.59,85.42,0,118Z"></path></svg></button><button class="CMSclickable" onclick="CMSchangeMenu(`CMS109562`)"><GIS-icon title="ENCORE"></GIS-icon><span>V3</span><svg class="CMSsubpage" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.35 850.35"><path d="M816.99,312.17l-351.98,351.98c-22.01,22.01-57.69,22.01-79.7,0L33.32,312.17c-32.59-32.58-32.59-85.42,0-118h0c32.59-32.59,85.42-32.59,118,0L425.16,468.01,698.99,194.17c32.58-32.59,85.42-32.59,118,0h0c32.59,32.59,32.59,85.42,0,118Z"></path></svg></button></div><div id="CMS843336" class="CMScontext"><button class="CMSclickable CMSback" onclick="CMSchangeMenu(`CMS101458`)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.9 850.9"><path d="M367.73,771.63c-12.6,12.6-33.02,12.6-45.62,0L35.42,484.95l-18.57-18.57c-22.46-22.47-22.46-58.89,0-81.35l18.57-18.57L322.1,79.76c12.6-12.6,33.03-12.6,45.62,0l13.63,13.63c12.6,12.6,12.6,33.03,0,45.62l-231.7,231.7c-4.83,4.83-1.41,13.09,5.42,13.09h663.05c17.82,0,32.26,14.45,32.26,32.26v19.27c0,17.82-14.44,32.26-32.26,32.26H155.07c-6.83,0-10.25,8.26-5.42,13.09l231.71,231.7c12.6,12.6,12.6,33.03,0,45.62l-13.63,13.63Z"/></svg><span>Back</span></button><button onclick="loadframe('ENCORE V1');backPage(-1000)"><GIS-icon title="browser"></GIS-icon><span>Setup & Info</span></button><button onclick="loadframe('ENCORE SSC');backPage(-1000)"><GIS-icon title="SSC"></GIS-icon><span>SSC</span></button><button onclick="loadframe('ENCORE PDS');backPage(-1000)"><GIS-icon title="PDS"></GIS-icon><span>PDS</span></button><button onclick="loadframe('ENCORE CLS');backPage(-1000)"><GIS-icon title="CLS"></GIS-icon><span>CLS</span></button><button onclick="loadframe('ENCORE CLSF');backPage(-1000)"><GIS-icon title="CLSF"></GIS-icon><span>CLSF</span></button></div><div id="CMS142676" class="CMScontext"><button class="CMSclickable CMSback" onclick="CMSchangeMenu(`CMS101458`)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.9 850.9"><path d="M367.73,771.63c-12.6,12.6-33.02,12.6-45.62,0L35.42,484.95l-18.57-18.57c-22.46-22.47-22.46-58.89,0-81.35l18.57-18.57L322.1,79.76c12.6-12.6,33.03-12.6,45.62,0l13.63,13.63c12.6,12.6,12.6,33.03,0,45.62l-231.7,231.7c-4.83,4.83-1.41,13.09,5.42,13.09h663.05c17.82,0,32.26,14.45,32.26,32.26v19.27c0,17.82-14.44,32.26-32.26,32.26H155.07c-6.83,0-10.25,8.26-5.42,13.09l231.71,231.7c12.6,12.6,12.6,33.03,0,45.62l-13.63,13.63Z"/></svg><span>Back</span></button><button onclick="loadframe('ENCORE V2');backPage(-1000)"><GIS-icon title="browser"></GIS-icon><span>Setup & Info</span></button><button onclick="loadframe('ENCORE VPS');backPage(-1000)"><GIS-icon title="VPS"></GIS-icon><span>VPS</span></button><button onclick="loadframe('ENCORE CMS');backPage(-1000)"><GIS-icon title="CMS"></GIS-icon><span>CMS</span></button><button onclick="loadframe('ENCORE CMSF');backPage(-1000)"><GIS-icon title="CMSF"></GIS-icon><span>CMSF</span></button></div><div id="CMS109562" class="CMScontext"><button class="CMSclickable CMSback" onclick="CMSchangeMenu(`CMS101458`)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.9 850.9"><path d="M367.73,771.63c-12.6,12.6-33.02,12.6-45.62,0L35.42,484.95l-18.57-18.57c-22.46-22.47-22.46-58.89,0-81.35l18.57-18.57L322.1,79.76c12.6-12.6,33.03-12.6,45.62,0l13.63,13.63c12.6,12.6,12.6,33.03,0,45.62l-231.7,231.7c-4.83,4.83-1.41,13.09,5.42,13.09h663.05c17.82,0,32.26,14.45,32.26,32.26v19.27c0,17.82-14.44,32.26-32.26,32.26H155.07c-6.83,0-10.25,8.26-5.42,13.09l231.71,231.7c12.6,12.6,12.6,33.03,0,45.62l-13.63,13.63Z"/></svg><span>Back</span></button><button onclick="loadframe('ENCORE V3');backPage(-1000)"><GIS-icon title="browser"></GIS-icon><span>Setup & Info</span></button><button onclick="loadframe('ENCORE GIS');backPage(-1000)"><GIS-icon title="GIS"></GIS-icon><span>GIS</span></button></div></div>
 
@@ -1481,6 +1523,10 @@
         <script src="lib/js/ENCORE_CMS.js"></script>
         <script>
             CMS_settings = {'attachment':null,'style':1}
+        </script>
+        <script src="lib/js/ENCORE_SSM.js"></script>
+        <script>
+            SSM_settings = {'style':1}
         </script>
         <script src="lib/js/ENCORE_GIS.js"></script>
         <script>
