@@ -293,11 +293,12 @@
 {
     content: '';
     position: absolute;
-    top: -7px;
-    left: -7px;
+    top: 50%;
+    left: 50%;
     width: calc(100% + 10px);
     height: calc(100% + 10px);
     border: 3px solid #66666660;
+    transform: translate(-50%,-50%);
     border-radius: 100vmax;
 }
 .SSMinput[type="checkbox"]::after
