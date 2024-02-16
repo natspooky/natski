@@ -44,22 +44,18 @@
     {
         background-color: #111111;
         border-radius: 15px;
-        transition: 0.1s;
     }
     #SSM section:hover h1
     {
         background-color: #111111;
-        transition: 0.1s;
     }
     #SSM:hover section
     {
         border-bottom: 2px solid transparent;
-        transition: 0.1s;
     }
     #SSM .SSMcategory:hover
     {
         background-color: #1a1a1a;
-        transition: 0.1s;
     }
 }
 #SSM, #SSM *
@@ -111,13 +107,11 @@
 {
     position: relative;
     border-bottom: 2px solid #ffffff09;
-    transition: 0.4s;
     height: fit-content;
     padding: 5px;
     animation: SSMfadeup 0.3s ease;
     background-color: transparent;
     border-radius: 0px;
-    transition: 0.2s;
 }
 #SSM section.SSMsearch
 {
@@ -138,53 +132,6 @@
 {
     margin-bottom: 100px;
 }
-#SSM section.loading
-{
-    pointer-events: none;
-    background-color: #66666640;
-    opacity: 0.2;
-}
-#SSMloader
-{
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    border-radius: 15px;
-    width: 70px;
-    height: 70px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #191919;
-    opacity: 0;
-    pointer-events: none;
-    transition: 0s, top 0s;
-}
-#SSMloader::after
-{
-    position: relative;
-    content: '';
-    height: 35px;
-    width: 35px;
-    background-image: conic-gradient(from 85deg, transparent, #f0f0f0); 
-    mask: url(https://natski.netlify.app/icon/svg/ENCORE_GIS/loader.svg) center center no-repeat;
-    -webkit-mask: url(https://natski.netlify.app/icon/svg/ENCORE_GIS/loader.svg) center center no-repeat;
-}
-#SSMloader.loading
-{
-    opacity: 1;
-    transition: 0.4s, top 0s;
-}
-#SSMloader.loading::after
-{
-    animation: SSMloader 1.3s infinite linear;
-}
-@keyframes SSMloader
-{
-    from{transform: rotate(0);}
-    to{transform: rotate(360deg);}
-}
 #SSM .SSMcategory
 {
     position: relative;
@@ -194,7 +141,6 @@
     border-radius: 10px;
     background-color: transparent;
     height: auto;
-    transition: 0.2s;
 }
 #SSM .SSMcategory
 {
@@ -262,7 +208,6 @@
     font-size: 24px;
     width: 100%;
     color: #f0f0f0;
-    transition: 0.2s;
 }
 #SSM section h1 GIS-icon
 {
@@ -549,7 +494,6 @@
     background-color: #66666660;
     border: 0;
     border-radius: 100vmax;
-    transition: 0.2s;
     color: #f0f0f0;
     font-weight: bold;
     transform: scale(0.97);

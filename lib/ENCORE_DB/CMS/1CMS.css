@@ -88,6 +88,11 @@
     border-radius: 5px;
     overflow: hidden;
     padding: 13px 0px 13px 13px;
+    margin: 0 0 5px 0;
+}
+#CMS div button:last-of-type
+{
+    margin: 0;
 }
 #CMS div button span
 {
