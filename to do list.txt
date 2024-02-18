@@ -209,9 +209,7 @@ make loadWheel default to PDS based on .then so it loads right
 
 make CMS fade out if moving mouse away from it.
 
-redesign sliders, buttons and toggles in SSM
-
-change b
+make page icon (document paper)
 
 
 

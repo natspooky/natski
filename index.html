@@ -264,7 +264,8 @@
             main
             {
                 position: relative;
-                background-color: #0a0a0a;
+                background-color: var(--accentcol);
+                box-shadow: -3px 3px 5px #00000035;
                 padding: 30px 0 20px 0;
                 opacity: 0;
             }
@@ -276,7 +277,7 @@
                 left: 0;
                 top: -500px;
                 width: 100%;
-                background-image: linear-gradient(to top, #0a0a0a, transparent);
+                background-image: linear-gradient(to top, var(--accentcol), transparent);
                 pointer-events: none;
             }
             main.nonActive::before
@@ -292,6 +293,7 @@
                 border-radius: 30px;
                 overflow: hidden;
                 border: 2px solid #f0f0f005;
+                box-shadow: -3px 3px 5px #00000035;
                 background-color: #ffffff05;
             
                 /*background-image: linear-gradient(to bottom right, #729ef630, #4c77cc30);*/
@@ -312,6 +314,7 @@
                 margin: 10px;
                 background-color: var(--scrollCol);
                 border: 2px solid #f0f0f005;
+                box-shadow: -3px 3px 5px #00000035;
                 border-radius: 20px;
                 overflow: hidden;
             }
@@ -354,6 +357,7 @@
                 margin: 10px;
                 background-color: var(--scrollCol);
                 border-radius: 20px;
+                box-shadow: -3px 3px 5px #00000035;
                 border: 2px solid #f0f0f005;
             }
             main .scrollContainer .scrollHeader .scrollPanel .panelInfo
@@ -419,6 +423,7 @@
                 padding: 15px;
                 background-color: var(--scrollCol);
                 border-radius: 20px;
+                box-shadow: -3px 3px 5px #00000035;
                 border: 2px solid #f0f0f005;
             }
             main .scrollContainer .scrollBody .scrollTitle
@@ -979,7 +984,7 @@
                 <div class="scrollHeader">
                     <div class="SSC" style="opacity: 0; display: none;">
 
-                        <div class="banner-bg" style="background-color: rgba(0, 119, 255, 0.15);">
+                        <div class="banner-bg" style="background-color: rgba(255, 0, 0, 0.15);">
                     
                             <div class="SSCcontainer">
                                 <GIS-icon title="alert"></GIS-icon>
@@ -1030,11 +1035,11 @@
                 </div>
             </div>
 
-            <div class="scrollContainer" style="--scrollCol: #28693168;">
+            <div class="scrollContainer" style="--scrollCol: #28656968;">
                 <div class="scrollHeader">
                     <div class="SSC" style="opacity: 0; display: none;">
 
-                        <div class="banner-bg" style="background-color: rgba(255, 106, 0, 0.15);">
+                        <div class="banner-bg" style="background-color: rgba(0, 208, 255, 0.15);">
                     
                             <div class="SSCcontainer">
                                 <GIS-icon title="point"></GIS-icon>
@@ -1284,7 +1289,7 @@
                         let x = document.getElementsByClassName('banner-bg-u'),
                         sscu = document.getElementsByClassName('SSCU')[0],
                         main = document.querySelector('main')
-                        for(let i = 0; i < x.length; i++){
+                        /*for(let i = 0; i < x.length; i++){
                             x[i].addEventListener("mousemove", function(e) {
                             let pagY = (e.pageY - sscu.offsetTop - (sscu.offsetHeight / 2)) / 100,
                             pagX = (e.pageX - sscu.offsetLeft - (sscu.offsetWidth / 2)) / 100,
@@ -1309,7 +1314,7 @@
                                 }, { duration: 1500, fill: 'forwards', easing: "ease"})
                             })
               
-                        }
+                        }*/
            
                         document.addEventListener('scroll', function(e){
                             sscu.style.transform = `translateY(${-window.scrollY / 2}px)`

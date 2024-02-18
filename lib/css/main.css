@@ -706,6 +706,9 @@ main article ul li a
     user-select: none;
     gap: 1em;
     display: grid;
+    box-shadow: -3px 3px 5px #00000035;
+    border: 2px solid #f0f0f005;
+    border-radius: 35px;
     grid-template-columns: repeat(auto-fit,minmax(max(40%,280px),1fr));
 }
 .featurebanner
@@ -714,6 +717,8 @@ main article ul li a
     padding: 0.5em;
     border-radius: 18px;
     background-color: #00000025;
+    box-shadow: -3px 3px 5px #00000035;
+    border: 2px solid #f0f0f010;
     line-height: 1.5em;
     text-align: left;
     transition: 0.3s;
