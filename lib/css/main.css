@@ -990,10 +990,6 @@ main article ul li a
     border: 2px solid var(--NATcol);
     transition: 0.2s;
 }
-.portanchor .titlebutton
-{
-    box-shadow: unset;
-}
 .portanchor .titlebutton div
 {
     position: relative;
