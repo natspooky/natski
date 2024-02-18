@@ -213,7 +213,7 @@ make page icon (document paper)
 
 make slides icon (two rectangles placed horizontally on eachother)
 
-
+make an image processor using a pixel sorter, threshold map and video
 
 
 
