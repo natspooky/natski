@@ -29,7 +29,7 @@
     border-radius: 1.3em;
     scroll-margin: 10px;
     border: 2px solid #f0f0f020;
-    box-shadow: -3px 3px 5px #00000035;
+    box-shadow: -3px 3px 5px #00000020;
     contain: paint;
     background-color: var(--colour);
 }

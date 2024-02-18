@@ -56,6 +56,7 @@
                 pointer-events: none;
             }
             .toolbar input[type="color"] {
+                appearance: none;
                 -webkit-appearance: none;
                 border: none;
             }
