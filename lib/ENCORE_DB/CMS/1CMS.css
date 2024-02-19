@@ -71,11 +71,11 @@
 {
     transition: translateX(-100%);
 }
-.CMS .CMScontext.active, .CMS .CMS4500b5
+.CMS .CMScontext.active, .CMS #CMS4500b5
 {
     transform: translateX(0);
 }
-.CMS .CMS4500b5.active
+.CMS #CMS4500b5.active
 {
     transform: translateX(-100%);
 }
