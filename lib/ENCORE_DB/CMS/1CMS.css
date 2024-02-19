@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-#CMS *, #CMS
+.CMS *, .CMS
 {
     padding: 0;
     margin: 0;
@@ -8,23 +8,23 @@
     font-family: 'Exo 2', sans-serif;
     font-size: 16px;
 }
-#CMS *::-webkit-scrollbar
+.CMS *::-webkit-scrollbar
 {
     width: 5px;
     background-color: transparent;
     height: 0px;
 }
-#CMS *::-webkit-scrollbar-thumb
+.CMS *::-webkit-scrollbar-thumb
 {
     background-color: #ffffff40;
     border-radius: 100vmax;
     border: 0px;
 }
-#CMS *::-webkit-scrollbar-thumb:hover
+.CMS *::-webkit-scrollbar-thumb:hover
 {
     background-color: #ffffff60;
 }
-#CMS
+.CMS
 {
     position: fixed;
     top: 0;
@@ -45,14 +45,14 @@
     pointer-events: none;
     transition: transform 0.25s, opacity 0.25s, visibility 0.25s, height 0.25s;
 }
-#CMS.active
+.CMS.active
 {
     transform: scale(1);
     opacity: 1;
     visibility: visible;
     pointer-events: all;
 }
-#CMS .CMScontext
+.CMS .CMScontext
 {
     position: absolute;
     width: 100%;
@@ -67,19 +67,19 @@
     display: block;
     transition: 0.25s;
 }
-#CMS .CMScontext.sub
+.CMS .CMScontext.sub
 {
     transition: translateX(-100%);
 }
-#CMS .CMScontext.active, #CMS #CMS4500b5
+.CMS .CMScontext.active, .CMS .CMS4500b5
 {
     transform: translateX(0);
 }
-#CMS #CMS4500b5.active
+.CMS .CMS4500b5.active
 {
     transform: translateX(-100%);
 }
-#CMS div button
+.CMS div button
 {
     position: relative;
     display: flex;
@@ -90,11 +90,11 @@
     padding: 13px 0px 13px 13px;
     margin: 0 0 5px 0;
 }
-#CMS div button:last-of-type
+.CMS div button:last-of-type
 {
     margin: 0;
 }
-#CMS div button span
+.CMS div button span
 {
     position: relative;
     font-size: 1rem;
@@ -108,14 +108,14 @@
     color: #f0f0f0;
     text-overflow: ellipsis;
 }
-#CMS .CMScontext .CMSback
+.CMS .CMScontext .CMSback
 {
     position: sticky;
     top: 0;
     z-index: 999;
     background-color: var(--CMScolour);
 }
-#CMS .CMScontext .CMSback::before
+.CMS .CMScontext .CMSback::before
 {
     content: '';
     position: absolute;
@@ -126,11 +126,11 @@
     z-index: -1;
     background-color: #00000065;
 }
-#CMS .CMScontext .CMSback:hover::before
+.CMS .CMScontext .CMSback:hover::before
 {
     background-color: #00000080;
 }
-#CMS div button svg,#CMS div button img
+.CMS div button svg,.CMS div button img
 {
     position: relative;
     height: 20px;
@@ -144,7 +144,7 @@
     flex-grow: 0;
     transition: transform 0.1s;
 }
-#CMS div button GIS-icon
+.CMS div button GIS-icon
 {
     position: relative;
     width: 20px;
@@ -157,11 +157,11 @@
     flex-grow: 0;
     transition: transform 0.1s;
 }
-#CMS div button GIS-icon *
+.CMS div button GIS-icon *
 {
     display: none;
 }
-#CMS div button .CMSsubpage
+.CMS div button .CMSsubpage
 {
     transform: rotate(-90deg) scale(0.5) translateY(0);
     position: absolute;
@@ -170,16 +170,16 @@
     margin: 0;
     transition: 0.2s;
 }
-#CMS div button:hover .CMSsubpage
+.CMS div button:hover .CMSsubpage
 {
     transform: rotate(-90deg) scale(0.5) translateY(8px);
     opacity: 1;
 }
-#CMS div button:hover
+.CMS div button:hover
 {
     background-color: #ffffff10;
 }
-#CMS div button:hover GIS-icon,#CMS div button:hover svg,#CMS div button:hover img
+.CMS div button:hover GIS-icon,.CMS div button:hover svg,.CMS div button:hover img
 {
     transform: scale(1.125);
 }
