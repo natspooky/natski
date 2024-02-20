@@ -136,7 +136,7 @@
                     this.matchColour = [0,0,0]
                     this.colourSpace = 'HSV'
                     this.HSVtype = 'Value'
-                    this.outputChannel = [true,true,true]
+                    this.outputChannel = [false,false,false]
                     //this.imageType
                     this.image = []
                     this.outputImage = []
@@ -199,7 +199,7 @@
 
                         case 'GRAY':
                             console.log('starting RGB to Grayscale')
-                            this.processToGrayScale(image).then((grayMap) => {
+                            this.processToGrayScale(image).then((map) => {
                                 return this.createBitMask(map)
 
                             }).then((bitMask) => {
