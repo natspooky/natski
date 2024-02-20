@@ -311,9 +311,9 @@
                    
                     this.colourMask = []
                     for(let i = 0; i < this.image.length; i++) {
-                        if(!this.bitMask[i]) {
+                        if(this.bitMask[i]) {
                             this.colourMask.push(this.image[i])
-                        }
+                        }// for each row, push an array for every white until a black, then make a new array and push that so it looks like [[1,1,1,1,1,1], [0,0,0,0,0,0,0,0]] //then you sort every value that is a 1 indevidually before placing back using the map
                     }
 
                     //[[0,0,0,x],[0,0,0,x]]
@@ -324,7 +324,7 @@
                     console.log('applying bitmask')
 
                     for(let i = 0; i < this.image.length; i++) {
-                        if(!this.bitMask[i]) {
+                        if(this.bitMask[i]) {
                 
                             this.image[i] = tempImage[counter]
                             counter++
