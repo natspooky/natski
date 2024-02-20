@@ -60,8 +60,7 @@
     height: 100%;
     left: 0;
     top: 0;
-    background-image: url(https://natski.netlify.app/icon/img/grain2.png);
-    background-repeat: repeat;
+    background-image: linear-gradient(to right, #00000080, transparent);
 }
 .CMS .CMScontext
 {
