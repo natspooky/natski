@@ -60,12 +60,304 @@
         </header>
 
         <style>
-
+            .images {
+                position: relative;
+                width: 100%;
+                min-height: 70vh;
+                padding: 50px;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-evenly;
+                align-items: center;
+            }
+            .images canvas {
+                position: relative;
+                height: 50vh;
+                background-color: #f0f0f0;
+            }
+            .tools {
+                position: relative;
+                width: 100%;
+                height: auto;
+                padding: 20px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
         </style>
         
         <main>
-        
+            <div class="images">
+                <!-- image and canvas here-->
+                <canvas id="in"></canvas>
+                <canvas id="out"></canvas>
+            </div>
+            <div class="tools">
+                <!-- toolbar here -->
+                <input type="file" accept="image/*" id="inputImage" />
+                <button onclick="toggleSSM()">
+                    Open Settings
+                </button>
+            </div>
         </main>
+
+        <script>
+            let processor;
+            window.onload = function() {
+                processor = new PixelSorter(document.getElementById('out'),document.getElementById('in'))
+                document.getElementById('inputImage').addEventListener('change', function(event) {
+                    
+                    
+                    processor.createImageBuffer(this, event)
+                })
+            }
+
+            class PixelSorter {
+                constructor(canvas, imageCanvas) {
+                    this.lowBound = 0
+                    this.upBound = 1
+                    this.matchColour = [0,0,0]
+                    this.colourSpace = 'GREY'
+                    this.image = []
+                    this.outputImage = []
+                    this.colourMask = []
+                    this.bitMask = []
+                    this.imageCanvas = imageCanvas
+                    this.imageCTX = this.imageCanvas.getContext('2d')
+                    this.outputCanvas = canvas
+                    this.outputCTX = this.outputCanvas.getContext('2d')
+                }
+
+                readInput(file, element) {
+                    let reader = new FileReader()
+                    reader.onload = function() {
+                        let dataURL = reader.result
+                        console.log(dataURL)
+                        return Promise.resolve(dataURL)
+                    }
+                    reader.readAsDataURL(file.files[0]);
+                }
+
+                async createImageBuffer(file, element) {
+                    let e = new Image()
+                    e.onload = function() {
+                        let o, c;
+                        this.outputCanvas.height = e.naturalHeight || e.offsetHeight || e.height
+                        this.outputCanvas.width = e.naturalWidth || e.offsetWidth || e.width
+                        c = (this.imageCanvas.height) = e.naturalHeight || e.offsetHeight || e.height, 
+                        o = (this.imageCanvas.width) = e.naturalWidth || e.offsetWidth || e.width, 
+                        this.imageCTX.drawImage(e, 0, 0)
+                        console.log('working')
+                        return Promise.resolve(this.CTX.getImageData(0, 0, o, c))
+                    }
+                    e.onerror = function() {
+                        return Promise.resolve([])
+                    }
+                    e.src = await this.readInput(file, element)
+
+                    
+                }
+
+
+                previewImage(imgD) {
+    const reader = new FileReader();
+
+    // PREVIEW
+    reader.addEventListener("load", function () {
+        imagePreview.src = reader.result;
+    })
+
+    // CHECK IF THERE IS SELECTION 
+    if (imgD) {
+        // CHECK IF THE FILE IS AN IMAGE
+        if (imgD.type === "image/jpeg" || imgD.type == "image/jpg" || imgD.type == "image/gif" || imgD.type == "image/png") {
+            errorMessage.innerText = "";
+
+            // CONVERTS FILE TO BASE 64
+            reader.readAsDataURL(imgD);
+        } else {
+            errorMessage.innerText = "File type should be an image"
+            imagePreview.src = "";
+        }
+    }
+    // IF NO IMAGE
+    else {
+        imagePreview.src = ""
+        errorMessage.innerText = "Please select a picture";
+    }
+}
+
+
+                processColourSpace() {
+
+                    switch(this.colourSpace) {
+
+                        case 'GREY':
+                            this.processToGreyScale().then((greyMap) => {
+                                this.colourMask = greyMap
+                                let tempMask = []
+
+                                for(let i = 0; i < this.colourMask.length; i++) {
+
+                                    if(this.colourMask[i] <= this.lowBound || this.colourMask[i] >= this.upBound) {
+                                        tempMask.push(0)
+                                    }else {
+                                        tempMask.push(1)
+                                    }
+                                
+                                }
+                                Promise.resolve(tempMask)
+
+                            }).then((bitMask) => {
+                                this.bitMask = bitmask
+                                let tempImage = []
+                                tempImage = this.sortMerge(this.image)
+                                for(let i = 0; i < this.image.length; i++) {
+                                    if(this.bitMask[i]) {
+                                        tempImage[i] = this.image[i]
+                                    }
+                                    tempImage[i][3] = 255
+                                }
+                                return Promise.resolve(tempImage)
+                            }).then((output) => {
+                                this.outputImage = []
+                                for(let i = 0; i < this.image.length; i++) {
+                                    this.outputImage.push(...output[i])
+                                }
+                                this.outputCTX.putImageData(this.outputImage, 0, 0, 0, 0, this.outputCanvas.width, this.outputCanvas.height)
+                            })
+
+                            break;
+            
+                        case 'LAB':
+                            this.processToLAB()
+                            break;
+                    }
+
+                }
+
+                colourSpace(colourSpace) {
+                    this.colourSpace = colourSpace
+                }
+
+                upperBound(upperBound) {
+                    this.upBound = upperBound
+                }
+
+                lowerBound(lowerBound) {
+                    this.lowBound = lowerBound
+                }
+
+                matchColour(colour) {
+                    this.matchColour = colour
+                }
+
+                processToLAB() {
+                    //do later
+                    return
+                }
+
+
+                processToGreyScale(image) {
+                    let tempMask = []
+                    this.image = this.processToRGB(image)
+                    for(let i = 0; i < this.image.length; i++) {
+                        let r = this.image[i][0] * .3, // ------> Red is low
+                        g = this.image[i][1] * .59, // ---> Green is high
+                        b = this.image[i][2] * .11, // ----> Blue is very low
+
+                        gray = r + g + b
+
+
+                        this.image[i].push(gray)
+                        tempMask.push(gray)
+                    }
+
+                    return Promise.resolve(tempMask)
+                }
+
+                
+
+                processToRGB(image) {
+                    let data = image.data,     
+                    dataLength = data.length,
+                    tempImage = []
+                    console.log(data)
+                    //this.greyMask = []
+                    for(let i = 0; i < dataLength; i+=4) {
+                        let r = data[i],
+                        g = data[i+1],
+                        b = data[i+2];
+                        tempImage.push([r,g,b])
+                        //this.greyMask.push(this.processToGreyScale([r,g,b]))
+                    }
+                    return tempImage
+                }
+
+
+                sortMerge(array) {
+    
+                    if (array.length <= 1) return array
+
+                    let center = Math.floor(array.length / 2),
+                    front = this.sortMerge(array.slice(0, center)),
+                    back = this.sortMerge(array.slice(center))
+
+                    return this.merge(front, back)
+                }
+                merge(left, right) {
+                    let sortedArray = []
+                    while(left.length && right.length) {
+
+                        if(left[0][3] < right[0][3]) {
+                            sortedArray.push(left.shift())
+                        }else {
+                            sortedArray.push(right.shift())
+                        }
+                    }
+                    return [...sortedArray, ...left, ...right]
+                }
+
+
+                HSV(colour) {
+                    let rabs, gabs, babs, rr, gg, bb, h, s, v, diff, diffc, percentRoundFn;
+                    rabs = colour[0] / 255;
+                    gabs = colour[1] / 255; 
+                    babs = colour[2] / 255;
+                    v = Math.max(rabs, gabs, babs),
+                    diff = v - Math.min(rabs, gabs, babs);
+                    diffc = c => (v - c) / 6 / diff + 1 / 2;
+                    percentRoundFn = num => Math.round(num * 100) / 100;
+                    if (diff == 0) {
+                        h = s = 0;
+                    } else {
+                        s = diff / v;
+                        rr = diffc(rabs);
+                        gg = diffc(gabs);
+                        bb = diffc(babs);
+
+                        if (rabs === v) {
+                            h = bb - gg;
+                        } else if (gabs === v) {
+                            h = (1 / 3) + rr - bb;
+                        } else if (babs === v) {
+                            h = (2 / 3) + gg - rr;
+                        }
+                        if (h < 0) {
+                            h += 1;
+                        }else if (h > 1) {
+                            h -= 1;
+                        }
+                    }
+                    return [
+                        Math.round(h * 360),
+                        percentRoundFn(s * 100),
+                        percentRoundFn(v * 100)
+                    ]
+                }
+            }
+
+        </script>
 
         <footer>
             <div>
@@ -78,12 +370,74 @@
             <a onclick="parent.loadframe('Privacy Policy');parent.backPage(1)">Privacy Policy</a>
         </footer>
 
+        <div id="SSM" style="display: none;">
+            <section>
+                <h1><GIS-icon title="gear"></GIS-icon>Sort Settings</h1>
+            </section>
+        
+            <section class="SSMsearch">
+                <h1><GIS-icon title="magnify"></GIS-icon>Search</h1>
+                <span class="SSMcategory">
+                    <input class="SSMinput" type="text" ssminfo="Lets you search for a specific setting" placeholder="Search">
+                </span>
+            </section>
 
+            <section>
+                <h1><GIS-icon title="sparkle"></GIS-icon>Sorting</h1>
+                <span class="SSMcategory">
+                    <p>Sorting Type</p>
+                    <div class="SSMselection SSMinput" ssminfo="changes which method you want to use to sort the pixels">
+                        <div class="itemContainer">
+                            <span class="SSMheader">
+                                Lightness Threshold
+                            </span>
+                            <span class="SSMitem" value="GREY" onclick="processor.colourSpace('GREY')">
+                                Lightness Threshold
+                            </span>
+                            <span class="SSMitem" value="LAB" onclick="processor.colourSpace('LAB')">
+                                Colour Similarity
+                            </span>
+                            
+                        </div>
+                    </div>
+                </span>
+            </section>
+            
+        
+            <section>
+                <h1><GIS-icon title="config"></GIS-icon>Threshold</h1>
+                <span class="SSMcategory">
+                    <p>Lower Bound</p>
+                    <input type="range" class="SSMinput" min="0" max="255" value="0" step="1" ssminfo="changes the lower bound used to sort the pixels" onchange="processor.lowerBound(this.value)">
+                </span>
+                <span class="SSMcategory">
+                    <p>Upper Bound</p>
+                    <input type="range" class="SSMinput" min="0" max="255" value="255" step="1" ssminfo="changes the upper bound used to sort the pixels" onchange="processor.upperBound(this.value)">
+                </span>
+            </section>
+
+            <section>
+                <h1><GIS-icon title="config"></GIS-icon>Colour Match</h1>
+                <span class="SSMcategory">
+                    <p>Colour</p>
+                    <input type="color" class="SSMinput" ssminfo="changes the colour that will be matched to the pixels when sorting" onchange="changethresh(this, 0)">
+                </span>
+            </section>
+        </div>
 
         <noscript>
             <h1>javascript is disabled</h1>
             <p>ENCORE.js requires javascript in order to run, please enable javascript</p>
         </noscript>
         <script src="lib/js/ENCORE_NAT.js"></script>
+        <script src="lib/js/ENCORE_GIS.js"></script>
+        <script>
+            GIS_settings = {'style':1}
+        </script>
+        <script src="lib/js/ENCORE_SSM.js"></script>
+        <script>
+            SSM_settings = {'style':1}
+        </script>
+        <script src="lib/js/ENCORE_APF.js"></script>
     </body>
 </html>
