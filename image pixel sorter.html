@@ -72,9 +72,7 @@
             }
             .images canvas {
                 position: relative;
-                max-height: 65vh;
-                max-width: 40%;
-                flex-grow: 1;
+                width: 40%;
                 background-color: #f0f0f0;
                 opacity: 0;
                 transform: scale(0.7);
@@ -109,6 +107,7 @@
                 <button onclick="toggleSSM()">
                     Open Settings
                 </button>
+                <button onclick="downloadImage()">Download Output</button>
             </div>
             <div class="images">
                 <!-- image and canvas here-->
@@ -129,14 +128,33 @@
                 })
             }
 
+            function downloadImage() {
+
+                // Grab the canvas element
+                let canvas = document.getElementById("out");
+
+                /* Create a PNG image of the pixels drawn on the canvas using the toDataURL method. PNG is the preferred format since it is supported by all browsers
+                */
+                let dataURL = canvas.toDataURL("image/png");
+
+                // Create a dummy link text
+                let a = document.createElement('a');
+                // Set the link to the image so that when clicked, the image begins downloading
+                a.href = dataURL
+                // Specify the image filename
+                a.download = 'canvas-download.jpeg';
+                // Click on the link to set off download
+                a.click();
+            }
+
             class PixelSorter {
                 constructor(canvas, imageCanvas) {
                     this.lowBound = 0
                     this.upBound = 255
                     this.matchColour = [0,0,0]
-                    this.colourSpace = 'HSV'
+                    this.colourSpace = 'GRAY'
                     this.HSVtype = 'Value'
-                    this.outputChannel = [false,false,false]
+                    this.outputChannel = [false,false,false,true,true]
                     //this.imageType
                     this.image = []
                     this.outputImage = []
@@ -188,7 +206,6 @@
                 }
 
                 get OGimage() {
-                    // getter, the code executed when reading obj.prop
                     return this.OGimageData;
                 }
 
@@ -279,9 +296,9 @@
                     for(let i = 0; i < this.colourMask.length; i++) {
 
                         if(this.colourMask[i] <= this.lowBound || this.colourMask[i] >= this.upBound) {
-                            tempMask.push(0)
+                            tempMask.push((this.outputChannel[3]) ? 1 : 0)
                         }else {
-                            tempMask.push(1)
+                            tempMask.push((this.outputChannel[3]) ? 0 : 1)
                         }
                     
                     }
@@ -291,16 +308,30 @@
                 generateOutput(bitMask) {
                     console.log('starting pixel sort')
                     this.bitMask = bitMask
-                    //console.log(this.image.length)
-                    let tempImage = this.sortMerge(this.image)
-                    console.log('applying bitmap')
+                   
+                    this.colourMask = []
                     for(let i = 0; i < this.image.length; i++) {
-                        if(this.bitMask[i]) {
-                            tempImage[i] = this.image[i]
+                        if(!this.bitMask[i]) {
+                            this.colourMask.push(this.image[i])
                         }
-                        //tempImage[i][3] = 255
                     }
-                    return Promise.resolve(tempImage)
+
+                    //[[0,0,0,x],[0,0,0,x]]
+
+                    let tempImage = this.colourMask.sort( (a, b) => (this.outputChannel[4]) ? a[3] - b[3] : b[3] - a[3]),
+                    counter = 0
+                    //console.log(tempImage)
+                    console.log('applying bitmask')
+
+                    for(let i = 0; i < this.image.length; i++) {
+                        if(!this.bitMask[i]) {
+                
+                            this.image[i] = tempImage[counter]
+                            counter++
+                        }
+                    
+                    }
+                    return Promise.resolve(this.image)
                 }
 
                 drawOutput(output) {
@@ -505,7 +536,7 @@
             </section>
 
             <section>
-                <h1><GIS-icon title="bookshelf"></GIS-icon>Output Channels</h1>
+                <h1><GIS-icon title="bookshelf"></GIS-icon>Output</h1>
                 <span class="SSMcategory SSMcheckbox">
                     <p>Red Channel</p>
                     <input type="checkbox" checked class="SSMinput" ssminfo="toggles the red channel" onclick="processor.toggleValue(this.checked, 0)">
@@ -517,6 +548,16 @@
                 <span class="SSMcategory SSMcheckbox">
                     <p>Blue Channel</p>
                     <input type="checkbox" checked class="SSMinput" ssminfo="toggles the blue channel" onclick="processor.toggleValue(this.checked, 2)">
+                </span>
+
+                <span class="SSMcategory SSMcheckbox">
+                    <p>Inverse Mask</p>
+                    <input type="checkbox" class="SSMinput" ssminfo="toggles the red channel" onclick="processor.toggleValue(this.checked, 3)">
+                </span>
+
+                <span class="SSMcategory SSMcheckbox">
+                    <p>Reverse Sort</p>
+                    <input type="checkbox" class="SSMinput" ssminfo="toggles the red channel" onclick="processor.toggleValue(this.checked, 4)">
                 </span>
                 
             </section>
@@ -550,11 +591,11 @@
                 <h1><GIS-icon title="config"></GIS-icon>Threshold</h1>
                 <span class="SSMcategory">
                     <p>Lower Bound</p>
-                    <input type="range" class="SSMinput" min="0" max="255" value="0" step="1" ssminfo="changes the lower bound used to sort the pixels" onchange="processor.lowerBound(this.value)">
+                    <input type="range" class="SSMinput" min="0" max="255" value="20" step="1" ssminfo="changes the lower bound used to sort the pixels" onchange="processor.lowerBound(this.value)">
                 </span>
                 <span class="SSMcategory">
                     <p>Upper Bound</p>
-                    <input type="range" class="SSMinput" min="0" max="255" value="255" step="1" ssminfo="changes the upper bound used to sort the pixels" onchange="processor.upperBound(this.value)">
+                    <input type="range" class="SSMinput" min="0" max="255" value="150" step="1" ssminfo="changes the upper bound used to sort the pixels" onchange="processor.upperBound(this.value)">
                 </span>
                 <span class="SSMcategory">
                     <p>HSV Threshold Type</p>
