@@ -136,7 +136,7 @@
                     this.matchColour = [0,0,0]
                     this.colourSpace = 'HSV'
                     this.HSVtype = 'Value'
-                    this.outputChannel = 'ALL'
+                    this.outputChannel = [true,true,true]
                     //this.imageType
                     this.image = []
                     this.outputImage = []
@@ -259,8 +259,10 @@
                     this.matchColour = colour
                 }
 
-                channels(channel) {
-                    this.outputChannel = channel
+
+                toggleValue(check, index) {
+                    this.outputChannel[index] = !check
+                    console.log(this.outputChannel)
                 }
 
                 processToLAB() {
@@ -308,20 +310,8 @@
                     for(let y = 0; y < this.outputCanvas.height; y++) {
                         for(let x = 0; x < this.outputCanvas.width; x++) {
                            
-                            switch(this.outputChannel) {
-                                case 'ALL':
-                                    this.outputCTX.fillStyle = `rgb(${this.outputImage[this.outputCanvas.width * y + x][0]} ${this.outputImage[this.outputCanvas.width * y + x][1]} ${this.outputImage[this.outputCanvas.width * y + x][2]})`;
-                                    break;
-                                case 'RED':
-                                    this.outputCTX.fillStyle = `rgb(${this.outputImage[this.outputCanvas.width * y + x][0]} 0 0)`;
-                                    break;
-                                case 'GREEN':
-                                    this.outputCTX.fillStyle = `rgb(0 ${this.outputImage[this.outputCanvas.width * y + x][1]} 0)`;
-                                    break;
-                                case 'BLUE':
-                                    this.outputCTX.fillStyle = `rgb(0 0 ${this.outputImage[this.outputCanvas.width * y + x][2]})`;
-                                    break;
-                            }
+                      
+                            this.outputCTX.fillStyle = `rgb(${(this.outputChannel[0]) ? 0 : this.outputImage[this.outputCanvas.width * y + x][0]} ${(this.outputChannel[1]) ? 0 : this.outputImage[this.outputCanvas.width * y + x][1]} ${(this.outputChannel[2]) ? 0 : this.outputImage[this.outputCanvas.width * y + x][2]})`;
                             //this.outputCTX.fillStyle = `rgb(${this.outputImage[this.outputCanvas.width * y + x][0]} ${this.outputImage[this.outputCanvas.width * y + x][1]} ${this.outputImage[this.outputCanvas.width * y + x][2]})`;
                            
                             this.outputCTX.fillRect(x, y, 1, 1);
@@ -515,18 +505,18 @@
             </section>
 
             <section>
-                <h1><GIS-icon title="output"></GIS-icon>Output</h1>
+                <h1><GIS-icon title="bookshelf"></GIS-icon>Output Channels</h1>
                 <span class="SSMcategory SSMcheckbox">
-                    <p>Lock Movement to Center</p>
-                    <input type="checkbox" class="SSMinput" ssminfo="locks the model to the center of the canvas" onclick="trackerSettings.LocationLock = toggleSwitch(this)">
+                    <p>Red Channel</p>
+                    <input type="checkbox" checked class="SSMinput" ssminfo="toggles the red channel" onclick="processor.toggleValue(this.checked, 0)">
                 </span>
                 <span class="SSMcategory SSMcheckbox">
-                    <p>Lock Movement to Center</p>
-                    <input type="checkbox" class="SSMinput" ssminfo="locks the model to the center of the canvas" onclick="trackerSettings.LocationLock = toggleSwitch(this)">
+                    <p>Green Channel</p>
+                    <input type="checkbox" checked class="SSMinput" ssminfo="toggles the green channel" onclick="processor.toggleValue(this.checked, 1)">
                 </span>
                 <span class="SSMcategory SSMcheckbox">
-                    <p>Lock Movement to Center</p>
-                    <input type="checkbox" class="SSMinput" ssminfo="locks the model to the center of the canvas" onclick="trackerSettings.LocationLock = toggleSwitch(this)">
+                    <p>Blue Channel</p>
+                    <input type="checkbox" checked class="SSMinput" ssminfo="toggles the blue channel" onclick="processor.toggleValue(this.checked, 2)">
                 </span>
                 
             </section>
