@@ -506,7 +506,7 @@
 }
 #SSMinfo
 {
-    position: absolute;
+    position: fixed;
     font-size: 14px;
     min-height: 20px;
     height: auto;

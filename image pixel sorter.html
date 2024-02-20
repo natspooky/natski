@@ -63,7 +63,7 @@
             .images {
                 position: relative;
                 width: 100%;
-                min-height: 70vh;
+                height: auto;
                 padding: 50px;
                 display: flex;
                 flex-wrap: wrap;
@@ -72,8 +72,17 @@
             }
             .images canvas {
                 position: relative;
-                height: 50vh;
+                max-height: 50vh;
+                max-width: 40%;
+                flex-grow: 1;
                 background-color: #f0f0f0;
+                opacity: 0;
+                transform: scale(0.7);
+                transition: 0.4s;
+            }
+            .images canvas.active {
+                opacity: 1;
+                transform: scale(1);
             }
             .tools {
                 position: relative;
@@ -87,17 +96,18 @@
         </style>
         
         <main>
+            <div class="tools">
+                <!-- toolbar here -->
+                <input type="file" accept="image/*" id="inputImage" />
+                <button onclick="processor.processColourSpace(processor.OGimage)">process</button>
+                <button onclick="toggleSSM()">
+                    Open Settings
+                </button>
+            </div>
             <div class="images">
                 <!-- image and canvas here-->
                 <canvas id="in"></canvas>
                 <canvas id="out"></canvas>
-            </div>
-            <div class="tools">
-                <!-- toolbar here -->
-                <input type="file" accept="image/*" id="inputImage" />
-                <button onclick="toggleSSM()">
-                    Open Settings
-                </button>
             </div>
         </main>
 
@@ -105,26 +115,32 @@
             let processor;
             window.onload = function() {
                 processor = new PixelSorter(document.getElementById('out'),document.getElementById('in'))
+                console.log(document.getElementById('out'),document.getElementById('in'))
                 document.getElementById('inputImage').addEventListener('change', function(event) {
-                    
-                    
-                    processor.createImageBuffer(this, event)
+                        
+                        processor.createImageBuffer(this)
+
                 })
             }
 
             class PixelSorter {
                 constructor(canvas, imageCanvas) {
                     this.lowBound = 0
-                    this.upBound = 1
+                    this.upBound = 255
                     this.matchColour = [0,0,0]
-                    this.colourSpace = 'GREY'
+                    this.colourSpace = 'HSV'
+                    this.HSVtype = 'Value'
+                    this.outputChannel = 'ALL'
+                    //this.imageType
                     this.image = []
                     this.outputImage = []
                     this.colourMask = []
                     this.bitMask = []
+                    this.OGimageData = []
                     this.imageCanvas = imageCanvas
                     this.imageCTX = this.imageCanvas.getContext('2d')
                     this.outputCanvas = canvas
+                    //console.log(canvas, this.outputCanvas)
                     this.outputCTX = this.outputCanvas.getContext('2d')
                 }
 
@@ -132,72 +148,54 @@
                     let reader = new FileReader()
                     reader.onload = function() {
                         let dataURL = reader.result
-                        console.log(dataURL)
+                        //console.log(dataURL.slice(22, dataURL.length), 'image/png'.length)
+                        //console.log(atob(dataURL.slice(13 + this.imageType.length, dataURL.length)))
                         image.src = dataURL
                     }
+                    //this.imageType = file.files[0].type
                     reader.readAsDataURL(file.files[0]);
                 }
 
-                async createImageBuffer(file) {
+                createImageBuffer(file) {
+                    this.outputCanvas.classList.remove('active')
                     let e = new Image()
-                    e.onload = function() {
-                        document.getElementById('headerimage').src = e.src
-                        console.log(e.height)
+                    e.onload = () => {
+                        //document.getElementById('headerimage').src = e.src
+                        //console.log(e.height, this.outputCanvas)
                         let o, c;
-                        this.outputCanvas.height = e.naturalHeight || e.offsetHeight || e.height
-                        this.outputCanvas.width = e.naturalWidth || e.offsetWidth || e.width
+                        this.outputCanvas.height = (e.naturalHeight || e.offsetHeight || e.height)
+                        this.outputCanvas.width = (e.naturalWidth || e.offsetWidth || e.width)
                         c = (this.imageCanvas.height) = e.naturalHeight || e.offsetHeight || e.height, 
                         o = (this.imageCanvas.width) = e.naturalWidth || e.offsetWidth || e.width, 
                         this.imageCTX.drawImage(e, 0, 0)
-                        console.log('working')
-                        return Promise.resolve(this.CTX.getImageData(0, 0, o, c))
+                        this.imageCanvas.classList.add('active')
+                        //console.log('working')
+                        this.OGimageData = this.imageCTX.getImageData(0, 0, o, c)
                     }
                     e.onerror = function() {
-                        return Promise.resolve([])
+                        
                     }
-                    console.log(this.readInput(file))
+                    //console.log(this.readInput(file))
                     this.readInput(file, e)
 
                     
                 }
 
-
-                previewImage(imgD) {
-    const reader = new FileReader();
-
-    // PREVIEW
-    reader.addEventListener("load", function () {
-        imagePreview.src = reader.result;
-    })
-
-    // CHECK IF THERE IS SELECTION 
-    if (imgD) {
-        // CHECK IF THE FILE IS AN IMAGE
-        if (imgD.type === "image/jpeg" || imgD.type == "image/jpg" || imgD.type == "image/gif" || imgD.type == "image/png") {
-            errorMessage.innerText = "";
-
-            // CONVERTS FILE TO BASE 64
-            reader.readAsDataURL(imgD);
-        } else {
-            errorMessage.innerText = "File type should be an image"
-            imagePreview.src = "";
-        }
-    }
-    // IF NO IMAGE
-    else {
-        imagePreview.src = ""
-        errorMessage.innerText = "Please select a picture";
-    }
-}
+                get OGimage() {
+                    // getter, the code executed when reading obj.prop
+                    return this.OGimageData;
+                }
 
 
-                processColourSpace() {
+                processColourSpace(image) {
 
                     switch(this.colourSpace) {
 
-                        case 'GREY':
-                            this.processToGreyScale().then((greyMap) => {
-                                this.colourMask = greyMap
+                        case 'GRAY':
+                            console.log('starting RGB to Grayscale')
+                            this.processToGrayScale(image).then((grayMap) => {
+                                console.log('starting bitmask conversion')
+                                this.colourMask = grayMap
                                 let tempMask = []
 
                                 for(let i = 0; i < this.colourMask.length; i++) {
@@ -209,25 +207,38 @@
                                     }
                                 
                                 }
-                                Promise.resolve(tempMask)
+                                return Promise.resolve(tempMask)
 
                             }).then((bitMask) => {
-                                this.bitMask = bitmask
-                                let tempImage = []
-                                tempImage = this.sortMerge(this.image)
+                                console.log('starting pixel sort')
+                                this.bitMask = bitMask
+                                //console.log(this.image.length)
+                                let tempImage = this.sortMerge(this.image)
+                                console.log('applying bitmap')
                                 for(let i = 0; i < this.image.length; i++) {
                                     if(this.bitMask[i]) {
                                         tempImage[i] = this.image[i]
                                     }
-                                    tempImage[i][3] = 255
+                                    //tempImage[i][3] = 255
                                 }
                                 return Promise.resolve(tempImage)
                             }).then((output) => {
-                                this.outputImage = []
-                                for(let i = 0; i < this.image.length; i++) {
-                                    this.outputImage.push(...output[i])
+                                console.log('drawing image')
+                                this.outputImage = output
+                                
+                                for(let y = 0; y < this.outputCanvas.height; y++) {
+                                    for(let x = 0; x < this.outputCanvas.width; x++) {
+                                        //console.log(this.outputImage[this.outputCanvas.width * y + x][0])
+                                        this.outputCTX.fillStyle = `rgb(${this.outputImage[this.outputCanvas.width * y + x][0]} ${this.outputImage[this.outputCanvas.width * y + x][1]} ${this.outputImage[this.outputCanvas.width * y + x][2]})`;
+                                        //console.log(`rgb(${this.outputImage[this.outputCanvas.width * y + x][0]} ${this.outputImage[this.outputCanvas.width * y + x][1]} ${this.outputImage[this.outputCanvas.width * y + x][2]})`)
+                                        //if(x <4) this.outputCTX.fillStyle = 'green'//ctx.fillRect(20, 20, 150, 100);
+                                        this.outputCTX.fillRect(x, y, 1, 1);
+                                    }
                                 }
-                                this.outputCTX.putImageData(this.outputImage, 0, 0, 0, 0, this.outputCanvas.width, this.outputCanvas.height)
+                                console.log('finished')
+                                //this.outputCTX.fillStyle = `rbg(${45},${75},${230})`;
+                                //this.outputCTX.fillRect(0, 0, 1, 1);
+                                //this.outputCTX.putImageData(this.outputImage
                             })
 
                             break;
@@ -235,12 +246,35 @@
                         case 'LAB':
                             this.processToLAB()
                             break;
+
+                        case 'HSV':
+                        console.log('starting RGB to HSV')
+                            this.processToHSV(image).then((map) => {
+
+                                return this.createBitMask(map)
+
+                            }).then((bitMask) => {
+
+                                return this.generateOutput(bitMask)
+
+                            }).then((output) => {
+
+                                this.drawOutput(output)
+                            })
+                            
+                            break;
                     }
 
                 }
 
-                colourSpace(colourSpace) {
+                colorSpace(colourSpace) {
                     this.colourSpace = colourSpace
+                    console.log(this.colourSpace)
+                }
+
+                HSVfilter(HSV) {
+                    this.HSVtype = HSV
+                    //console.log(this.colourSpace)
                 }
 
                 upperBound(upperBound) {
@@ -261,7 +295,57 @@
                 }
 
 
-                processToGreyScale(image) {
+                createBitMask(map) {
+                    console.log('starting bitmask creation')
+                    this.colourMask = map
+                    let tempMask = []
+
+                    for(let i = 0; i < this.colourMask.length; i++) {
+
+                        if(this.colourMask[i] <= this.lowBound || this.colourMask[i] >= this.upBound) {
+                            tempMask.push(0)
+                        }else {
+                            tempMask.push(1)
+                        }
+                    
+                    }
+                    return Promise.resolve(tempMask)
+                }
+
+                generateOutput(bitMask) {
+                    console.log('starting pixel sort')
+                    this.bitMask = bitMask
+                    //console.log(this.image.length)
+                    let tempImage = this.sortMerge(this.image)
+                    console.log('applying bitmap')
+                    for(let i = 0; i < this.image.length; i++) {
+                        if(this.bitMask[i]) {
+                            tempImage[i] = this.image[i]
+                        }
+                        //tempImage[i][3] = 255
+                    }
+                    return Promise.resolve(tempImage)
+                }
+
+                drawOutput(output) {
+                    console.log('drawing image')
+                    this.outputImage = output
+                    
+                    for(let y = 0; y < this.outputCanvas.height; y++) {
+                        for(let x = 0; x < this.outputCanvas.width; x++) {
+                           
+                            this.outputCTX.fillStyle = `rgb(${this.outputImage[this.outputCanvas.width * y + x][0]} ${this.outputImage[this.outputCanvas.width * y + x][1]} ${this.outputImage[this.outputCanvas.width * y + x][2]})`;
+                           
+                            this.outputCTX.fillRect(x, y, 1, 1);
+                        }
+                    }
+                    console.log('finished')
+                    setTimeout(() => {
+                        this.outputCanvas.classList.add('active')
+                    }, 100);
+                }
+
+                processToGrayScale(image) {
                     let tempMask = []
                     this.image = this.processToRGB(image)
                     for(let i = 0; i < this.image.length; i++) {
@@ -285,7 +369,7 @@
                     let data = image.data,     
                     dataLength = data.length,
                     tempImage = []
-                    console.log(data)
+                    //console.log(data)
                     //this.greyMask = []
                     for(let i = 0; i < dataLength; i+=4) {
                         let r = data[i],
@@ -298,13 +382,11 @@
                 }
 
 
-                sortMerge(array) {
-    
-                    if (array.length <= 1) return array
-
+                sortMerge(array, value) {
+                    if (array.length <= 1) return array //|| value >= 40) return array
                     let center = Math.floor(array.length / 2),
-                    front = this.sortMerge(array.slice(0, center)),
-                    back = this.sortMerge(array.slice(center))
+                    front = this.sortMerge(array.slice(0, center), value + 1),
+                    back = this.sortMerge(array.slice(center), value + 1)
 
                     return this.merge(front, back)
                 }
@@ -321,44 +403,103 @@
                     return [...sortedArray, ...left, ...right]
                 }
 
-
-                HSV(colour) {
-                    let rabs, gabs, babs, rr, gg, bb, h, s, v, diff, diffc, percentRoundFn;
-                    rabs = colour[0] / 255;
-                    gabs = colour[1] / 255; 
-                    babs = colour[2] / 255;
-                    v = Math.max(rabs, gabs, babs),
-                    diff = v - Math.min(rabs, gabs, babs);
-                    diffc = c => (v - c) / 6 / diff + 1 / 2;
-                    percentRoundFn = num => Math.round(num * 100) / 100;
-                    if (diff == 0) {
-                        h = s = 0;
-                    } else {
-                        s = diff / v;
-                        rr = diffc(rabs);
-                        gg = diffc(gabs);
-                        bb = diffc(babs);
-
-                        if (rabs === v) {
-                            h = bb - gg;
-                        } else if (gabs === v) {
-                            h = (1 / 3) + rr - bb;
-                        } else if (babs === v) {
-                            h = (2 / 3) + gg - rr;
-                        }
-                        if (h < 0) {
-                            h += 1;
-                        }else if (h > 1) {
-                            h -= 1;
+                sortBubble(array){
+                    let len = array.length,
+                    sortedArray = array;
+                    for(let i = 0; i < len; i++) {
+                        for(let x = 0; x < len - 1; x++){
+                            if(sortedArray[x][3] > sortedArray[x + 1][3]) {
+                                let tempStorage = sortedArray[x];
+                                sortedArray[x] = sortedArray[x + 1]
+                                sortedArray[x + 1] = tempStorage
+                            }
                         }
                     }
-                    return [
-                        Math.round(h * 360),
-                        percentRoundFn(s * 100),
-                        percentRoundFn(v * 100)
-                    ]
+                    return sortedArray
                 }
-            }
+
+
+                quickSort(arr) {
+                    if (arr.length <= 1) {
+                        return arr;
+                    }
+
+                    let pivot = arr[0][3];
+                    let leftArr = [];
+                    let rightArr = [];
+
+                    for (let i = 1; i < arr.length; i++) {
+                        if (arr[i][3] < pivot) {
+                        leftArr.push(arr[i]);
+                        } else {
+                        rightArr.push(arr[i]);
+                        }
+                    }
+
+                    return [...this.quickSort(leftArr), arr[0], ...this.quickSort(rightArr)];
+                }
+
+
+                processToHSV(image) {
+                    let tempMask = []
+                    this.image = this.processToRGB(image)
+                    for(let i = 0; i < this.image.length; i++) {
+                        let rabs, gabs, babs, rr, gg, bb, h, s, v, diff, diffc, percentRoundFn;
+                        rabs = this.image[i][0] / 255;
+                        gabs = this.image[i][1] / 255; 
+                        babs = this.image[i][2] / 255;
+                        v = Math.max(rabs, gabs, babs),
+                        diff = v - Math.min(rabs, gabs, babs);
+                        diffc = c => (v - c) / 6 / diff + 1 / 2;
+                        percentRoundFn = num => Math.round(num * 100) / 100;
+                        if (diff == 0) {
+                            h = s = 0;
+                        } else {
+                            s = diff / v;
+                            rr = diffc(rabs);
+                            gg = diffc(gabs);
+                            bb = diffc(babs);
+
+                            if (rabs === v) {
+                                h = bb - gg;
+                            } else if (gabs === v) {
+                                h = (1 / 3) + rr - bb;
+                            } else if (babs === v) {
+                                h = (2 / 3) + gg - rr;
+                            }
+                            if (h < 0) {
+                                h += 1;
+                            }else if (h > 1) {
+                                h -= 1;
+                            }
+                        }
+                        switch(this.HSVtype) {
+                            case 'Hue':
+                                this.image[i].push((Math.round(h * 360) / 179) * 255)
+                                tempMask.push((Math.round(h * 360) / 179) * 255)
+                                break;
+                            case 'Saturation':
+                                this.image[i].push(percentRoundFn(s * 100))
+                                tempMask.push(percentRoundFn(s * 100))
+                                break;
+                            case 'Value':
+                                this.image[i].push(percentRoundFn(v * 100))
+                                tempMask.push(percentRoundFn(v * 100))
+                                break
+                        }
+                        
+                    }
+                    //console.log(percentRoundFn(v * 100))
+                    return Promise.resolve(tempMask)//[Math.round(h * 360),percentRoundFn(s * 100),percentRoundFn(v * 100)])
+
+
+
+                
+
+                     
+                    }
+                }
+            
 
         </script>
 
@@ -386,19 +527,22 @@
             </section>
 
             <section>
-                <h1><GIS-icon title="sparkle"></GIS-icon>Sorting</h1>
+                <h1><GIS-icon title="apps"></GIS-icon>Sorting</h1>
                 <span class="SSMcategory">
                     <p>Sorting Type</p>
                     <div class="SSMselection SSMinput" ssminfo="changes which method you want to use to sort the pixels">
                         <div class="itemContainer">
                             <span class="SSMheader">
-                                Lightness Threshold
+                                Grayscale Threshold
                             </span>
-                            <span class="SSMitem" value="GREY" onclick="processor.colourSpace('GREY')">
-                                Lightness Threshold
+                            <span class="SSMitem" value="GRAY" onclick="processor.colorSpace('GRAY')">
+                                Grayscale Threshold
                             </span>
-                            <span class="SSMitem" value="LAB" onclick="processor.colourSpace('LAB')">
-                                Colour Similarity
+                            <span class="SSMitem" value="GRAY" onclick="processor.colorSpace('HSV')">
+                                HSV Threshold
+                            </span>
+                            <span class="SSMitem" value="LAB" onclick="processor.colorSpace('LAB')">
+                                Colour Similarity Threshold
                             </span>
                             
                         </div>
@@ -417,13 +561,60 @@
                     <p>Upper Bound</p>
                     <input type="range" class="SSMinput" min="0" max="255" value="255" step="1" ssminfo="changes the upper bound used to sort the pixels" onchange="processor.upperBound(this.value)">
                 </span>
+                <span class="SSMcategory">
+                    <p>HSV Threshold Type</p>
+                    <div class="SSMselection SSMinput" ssminfo="changes which HSV property will be sorted when sorting by HSV">
+                        <div class="itemContainer">
+                            <span class="SSMheader">
+                                Value
+                            </span>
+                            <span class="SSMitem" value="Hue" onclick="processor.HSVfilter('Hue')">
+                                Hue
+                            </span>
+                            <span class="SSMitem" value="Saturation" onclick="processor.HSVfilter('Saturation')">
+                                Saturation
+                            </span>
+                            <span class="SSMitem" value="Value" onclick="processor.HSVfilter('Value')">
+                                Value
+                            </span>
+                            
+                        </div>
+                    </div>
+                </span>
+                <span class="SSMcategory">
+                    <p>LAB Colour Match</p>
+                    <input type="color" class="SSMinput" ssminfo="changes the colour that will be matched to the pixels when sorting" onchange="changethresh(this, 0)">
+                </span>
+                <span class="SSMcategory">
+                    <p>LAB Colour Threshold</p>
+                    <input type="range" class="SSMinput" min="0" max="100" value="100" step="1" ssminfo="changes the threshold used to sort the pixels when using a LAB sort" onchange="processor.upperBound(this.value)">
+                </span>
             </section>
 
             <section>
-                <h1><GIS-icon title="config"></GIS-icon>Colour Match</h1>
+                <h1><GIS-icon title="output"></GIS-icon>Output</h1>
                 <span class="SSMcategory">
-                    <p>Colour</p>
-                    <input type="color" class="SSMinput" ssminfo="changes the colour that will be matched to the pixels when sorting" onchange="changethresh(this, 0)">
+                    <p>Output Colour Channels</p>
+                    <div class="SSMselection SSMinput" ssminfo="changes which colour channels are visible">
+                        <div class="itemContainer">
+                            <span class="SSMheader">
+                                All
+                            </span>
+                            <span class="SSMitem" value="Hue" onclick="processor.channels('Hue')">
+                                All
+                            </span>
+                            <span class="SSMitem" value="Saturation" onclick="processor.channels('Saturation')">
+                                Red
+                            </span>
+                            <span class="SSMitem" value="Value" onclick="processor.channels('Value')">
+                                Green
+                            </span>
+                            <span class="SSMitem" value="Value" onclick="processor.channels('Value')">
+                                Blue
+                            </span>
+                            
+                        </div>
+                    </div>
                 </span>
             </section>
         </div>
