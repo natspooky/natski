@@ -72,7 +72,7 @@
             }
             .images canvas {
                 position: relative;
-                max-height: 50vh;
+                max-height: 65vh;
                 max-width: 40%;
                 flex-grow: 1;
                 background-color: #f0f0f0;
@@ -92,6 +92,12 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
+            }
+            .tools button{
+                padding: 10px;
+                border-radius: 5px;
+                background-color: #f0f0f010;
+                margin: 0 10px;
             }
         </style>
         
@@ -194,51 +200,15 @@
                         case 'GRAY':
                             console.log('starting RGB to Grayscale')
                             this.processToGrayScale(image).then((grayMap) => {
-                                console.log('starting bitmask conversion')
-                                this.colourMask = grayMap
-                                let tempMask = []
-
-                                for(let i = 0; i < this.colourMask.length; i++) {
-
-                                    if(this.colourMask[i] <= this.lowBound || this.colourMask[i] >= this.upBound) {
-                                        tempMask.push(0)
-                                    }else {
-                                        tempMask.push(1)
-                                    }
-                                
-                                }
-                                return Promise.resolve(tempMask)
+                                return this.createBitMask(map)
 
                             }).then((bitMask) => {
-                                console.log('starting pixel sort')
-                                this.bitMask = bitMask
-                                //console.log(this.image.length)
-                                let tempImage = this.sortMerge(this.image)
-                                console.log('applying bitmap')
-                                for(let i = 0; i < this.image.length; i++) {
-                                    if(this.bitMask[i]) {
-                                        tempImage[i] = this.image[i]
-                                    }
-                                    //tempImage[i][3] = 255
-                                }
-                                return Promise.resolve(tempImage)
+
+                                return this.generateOutput(bitMask)
+
                             }).then((output) => {
-                                console.log('drawing image')
-                                this.outputImage = output
-                                
-                                for(let y = 0; y < this.outputCanvas.height; y++) {
-                                    for(let x = 0; x < this.outputCanvas.width; x++) {
-                                        //console.log(this.outputImage[this.outputCanvas.width * y + x][0])
-                                        this.outputCTX.fillStyle = `rgb(${this.outputImage[this.outputCanvas.width * y + x][0]} ${this.outputImage[this.outputCanvas.width * y + x][1]} ${this.outputImage[this.outputCanvas.width * y + x][2]})`;
-                                        //console.log(`rgb(${this.outputImage[this.outputCanvas.width * y + x][0]} ${this.outputImage[this.outputCanvas.width * y + x][1]} ${this.outputImage[this.outputCanvas.width * y + x][2]})`)
-                                        //if(x <4) this.outputCTX.fillStyle = 'green'//ctx.fillRect(20, 20, 150, 100);
-                                        this.outputCTX.fillRect(x, y, 1, 1);
-                                    }
-                                }
-                                console.log('finished')
-                                //this.outputCTX.fillStyle = `rbg(${45},${75},${230})`;
-                                //this.outputCTX.fillRect(0, 0, 1, 1);
-                                //this.outputCTX.putImageData(this.outputImage
+
+                                this.drawOutput(output)
                             })
 
                             break;
@@ -289,6 +259,10 @@
                     this.matchColour = colour
                 }
 
+                channels(channel) {
+                    this.outputChannel = channel
+                }
+
                 processToLAB() {
                     //do later
                     return
@@ -334,7 +308,21 @@
                     for(let y = 0; y < this.outputCanvas.height; y++) {
                         for(let x = 0; x < this.outputCanvas.width; x++) {
                            
-                            this.outputCTX.fillStyle = `rgb(${this.outputImage[this.outputCanvas.width * y + x][0]} ${this.outputImage[this.outputCanvas.width * y + x][1]} ${this.outputImage[this.outputCanvas.width * y + x][2]})`;
+                            switch(this.outputChannel) {
+                                case 'ALL':
+                                    this.outputCTX.fillStyle = `rgb(${this.outputImage[this.outputCanvas.width * y + x][0]} ${this.outputImage[this.outputCanvas.width * y + x][1]} ${this.outputImage[this.outputCanvas.width * y + x][2]})`;
+                                    break;
+                                case 'RED':
+                                    this.outputCTX.fillStyle = `rgb(${this.outputImage[this.outputCanvas.width * y + x][0]} 0 0)`;
+                                    break;
+                                case 'GREEN':
+                                    this.outputCTX.fillStyle = `rgb(0 ${this.outputImage[this.outputCanvas.width * y + x][1]} 0)`;
+                                    break;
+                                case 'BLUE':
+                                    this.outputCTX.fillStyle = `rgb(0 0 ${this.outputImage[this.outputCanvas.width * y + x][2]})`;
+                                    break;
+                            }
+                            //this.outputCTX.fillStyle = `rgb(${this.outputImage[this.outputCanvas.width * y + x][0]} ${this.outputImage[this.outputCanvas.width * y + x][1]} ${this.outputImage[this.outputCanvas.width * y + x][2]})`;
                            
                             this.outputCTX.fillRect(x, y, 1, 1);
                         }
@@ -527,22 +515,39 @@
             </section>
 
             <section>
+                <h1><GIS-icon title="output"></GIS-icon>Output</h1>
+                <span class="SSMcategory SSMcheckbox">
+                    <p>Lock Movement to Center</p>
+                    <input type="checkbox" class="SSMinput" ssminfo="locks the model to the center of the canvas" onclick="trackerSettings.LocationLock = toggleSwitch(this)">
+                </span>
+                <span class="SSMcategory SSMcheckbox">
+                    <p>Lock Movement to Center</p>
+                    <input type="checkbox" class="SSMinput" ssminfo="locks the model to the center of the canvas" onclick="trackerSettings.LocationLock = toggleSwitch(this)">
+                </span>
+                <span class="SSMcategory SSMcheckbox">
+                    <p>Lock Movement to Center</p>
+                    <input type="checkbox" class="SSMinput" ssminfo="locks the model to the center of the canvas" onclick="trackerSettings.LocationLock = toggleSwitch(this)">
+                </span>
+                
+            </section>
+
+            <section>
                 <h1><GIS-icon title="apps"></GIS-icon>Sorting</h1>
                 <span class="SSMcategory">
                     <p>Sorting Type</p>
                     <div class="SSMselection SSMinput" ssminfo="changes which method you want to use to sort the pixels">
                         <div class="itemContainer">
                             <span class="SSMheader">
-                                Grayscale Threshold
+                                Grayscale Sorting
                             </span>
                             <span class="SSMitem" value="GRAY" onclick="processor.colorSpace('GRAY')">
-                                Grayscale Threshold
+                                Grayscale Sorting
                             </span>
                             <span class="SSMitem" value="GRAY" onclick="processor.colorSpace('HSV')">
-                                HSV Threshold
+                                HSV Sorting
                             </span>
                             <span class="SSMitem" value="LAB" onclick="processor.colorSpace('LAB')">
-                                Colour Similarity Threshold
+                                Colour Similarity Sorting
                             </span>
                             
                         </div>
@@ -588,33 +593,6 @@
                 <span class="SSMcategory">
                     <p>LAB Colour Threshold</p>
                     <input type="range" class="SSMinput" min="0" max="100" value="100" step="1" ssminfo="changes the threshold used to sort the pixels when using a LAB sort" onchange="processor.upperBound(this.value)">
-                </span>
-            </section>
-
-            <section>
-                <h1><GIS-icon title="output"></GIS-icon>Output</h1>
-                <span class="SSMcategory">
-                    <p>Output Colour Channels</p>
-                    <div class="SSMselection SSMinput" ssminfo="changes which colour channels are visible">
-                        <div class="itemContainer">
-                            <span class="SSMheader">
-                                All
-                            </span>
-                            <span class="SSMitem" value="Hue" onclick="processor.channels('Hue')">
-                                All
-                            </span>
-                            <span class="SSMitem" value="Saturation" onclick="processor.channels('Saturation')">
-                                Red
-                            </span>
-                            <span class="SSMitem" value="Value" onclick="processor.channels('Value')">
-                                Green
-                            </span>
-                            <span class="SSMitem" value="Value" onclick="processor.channels('Value')">
-                                Blue
-                            </span>
-                            
-                        </div>
-                    </div>
                 </span>
             </section>
         </div>
