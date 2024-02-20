@@ -245,6 +245,11 @@
     border: 4px solid #66666660;
     transform: translate(-50%,-50%);
     border-radius: 100vmax;
+    transition: 0.2s cubic-bezier(.18,.28,.53,1.2);
+}
+.SSMinput[type="checkbox"]:checked:before
+{
+    border: 4px solid #f0f0f0;
 }
 .SSMinput[type="checkbox"]::after
 {
