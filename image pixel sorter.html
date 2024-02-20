@@ -128,19 +128,21 @@
                     this.outputCTX = this.outputCanvas.getContext('2d')
                 }
 
-                readInput(file, element) {
+                readInput(file, image) {
                     let reader = new FileReader()
                     reader.onload = function() {
                         let dataURL = reader.result
                         console.log(dataURL)
-                        return Promise.resolve(dataURL)
+                        image.src = dataURL
                     }
                     reader.readAsDataURL(file.files[0]);
                 }
 
-                async createImageBuffer(file, element) {
+                async createImageBuffer(file) {
                     let e = new Image()
                     e.onload = function() {
+                        document.getElementById('headerimage').src = e.src
+                        console.log(e.height)
                         let o, c;
                         this.outputCanvas.height = e.naturalHeight || e.offsetHeight || e.height
                         this.outputCanvas.width = e.naturalWidth || e.offsetWidth || e.width
@@ -153,7 +155,8 @@
                     e.onerror = function() {
                         return Promise.resolve([])
                     }
-                    e.src = await this.readInput(file, element)
+                    console.log(this.readInput(file))
+                    this.readInput(file, e)
 
                     
                 }
