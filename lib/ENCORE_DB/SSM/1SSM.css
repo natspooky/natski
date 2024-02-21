@@ -176,13 +176,13 @@
     margin-bottom: 20px;
     fill: #f0f0f0;
 }
-#SSM .SSMcategory.SSMcheckbox
+#SSM .SSMcategory.SSMcheckbox, #SSM .SSMcategory.SSMcolour
 {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
-#SSM .SSMcategory.SSMcheckbox p
+#SSM .SSMcategory.SSMcheckbox p, #SSM .SSMcategory.SSMcolour p
 {
     display: inline-block;
     margin: 0;
@@ -190,7 +190,7 @@
     height: auto;
     width: calc(100% - 60px);
 }
-#SSM .SSMcategory.SSMcheckbox input
+#SSM .SSMcategory.SSMcheckbox input, #SSM .SSMcategory.SSMcolour input
 {
     display: inline-block;
 }
