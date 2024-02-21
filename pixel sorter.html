@@ -83,31 +83,66 @@
                 transform: scale(1);
             }
             .tools {
-                position: relative;
-                width: 100%;
+                position: fixed;
+                width: auto;
                 height: auto;
-                padding: 20px;
+                right: 15px;
+                transform: translateY(-50%);
+                top: 50%;
+                border-radius: 100vmax;
+                padding: 10px;
                 display: flex;
+                flex-direction: column;
                 align-items: center;
                 justify-content: center;
+                background-color: #33333360;
+                z-index: 100;
             }
             .tools button{
                 padding: 10px;
-                border-radius: 5px;
+                border-radius: 100vmax;
                 background-color: #f0f0f010;
-                margin: 0 10px;
+                margin: 5px 0;
+            }
+            .tools button GIS-icon
+            {
+                background-color: #f0f0f0;
+                font-size: 20px;
+            }
+            input[type="file"] {
+                display: none;
+            }
+            .upload {
+                display: block;
+                padding: 10px;
+                border-radius: 100vmax;
+                background-color: #f0f0f010;
+                margin: 5px 0;
+                cursor: pointer;
+            }
+            .upload GIS-icon
+            {
+                background-color: #f0f0f0;
+                font-size: 20px;
             }
         </style>
         
         <main>
             <div class="tools">
                 <!-- toolbar here -->
+                <label for="inputImage" class="upload">
+                    <GIS-icon title="add_new"></GIS-icon>
+                </label>
                 <input type="file" accept="image/*" id="inputImage" />
-                <button onclick="processor.processColourSpace(processor.OGimage)">process</button>
                 <button onclick="toggleSSM()">
-                    Open Settings
+                    <GIS-icon title="config"></GIS-icon>
                 </button>
-                <button onclick="downloadImage()">Download Output</button>
+                <button onclick="processor.processColourSpace(processor.OGimage)">
+                    <GIS-icon title="play"></GIS-icon>
+                </button>
+                <button onclick="downloadImage()">
+                    <GIS-icon title="download"></GIS-icon>
+                </button>
             </div>
             <div class="images">
                 <!-- image and canvas here-->
