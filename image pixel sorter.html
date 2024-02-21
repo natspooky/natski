@@ -294,50 +294,102 @@
                     let tempMask = []
 
                     for(let i = 0; i < this.colourMask.length; i++) {
+                        let bit = 0
 
                         if(this.colourMask[i] <= this.lowBound || this.colourMask[i] >= this.upBound) {
-                            tempMask.push((this.outputChannel[3]) ? 1 : 0)
+                            bit = ((this.outputChannel[3]) ? 1 : null)
                         }else {
-                            tempMask.push((this.outputChannel[3]) ? 0 : 1)
+                            bit = ((this.outputChannel[3]) ? null : 1)
                         }
-                    
+                        if(tempMask.length < 1 || tempMask[tempMask.length - 1][tempMask[tempMask.length - 1].length - 1] != bit) { 
+                            tempMask.push([bit]) 
+                        }else { 
+                            tempMask[tempMask.length - 1].push(bit) 
+                        }
+                        //console.log(tempMask)
                     }
+                    //console.log(tempMask)
                     return Promise.resolve(tempMask)
                 }
 
                 generateOutput(bitMask) {
                     console.log('starting pixel sort')
-                    this.bitMask = bitMask
-                   
-                    this.colourMask = []
-                    for(let i = 0; i < this.image.length; i++) {
-                        if(this.bitMask[i]) {
-                            this.colourMask.push(this.image[i])
-                        }// for each row, push an array for every white until a black, then make a new array and push that so it looks like [[1,1,1,1,1,1], [0,0,0,0,0,0,0,0]] //then you sort every value that is a 1 indevidually before placing back using the map
+                    this.colourMask = (this.bitMask = bitMask)
+
+                    //console.log(bitMask)
+                    
+                    let maskLen = 0
+                    for(let main = 0; main < this.bitMask.length; main++) {
+                        for(let sub = 0; sub < this.bitMask[main].length; sub++) {
+                            if(this.bitMask[main][sub]) {
+                                this.colourMask[main][sub] = this.image[sub + maskLen]
+                            }
+                        }
+                        maskLen += this.bitMask[main].length
+                    }
+
+                    let sortedImage = this.colourMask.map((bits) => {
+
+                        if(bits[0] == null) return bits
+                        return bits.sort( (a, b) => (this.outputChannel[4]) ? a[3] - b[3] : b[3] - a[3])
+
+                    })
+
+                    maskLen = 0
+                    for(let main = 0; main < this.bitMask.length; main++) {
+                        for(let sub = 0; sub < this.bitMask[main].length; sub++) {
+                            if(this.bitMask[main][sub]) {
+                                this.image[sub + maskLen] = sortedImage[main][sub]
+                            }
+                        }
+                        maskLen += this.bitMask[main].length
+                    }
+
+                    
+
+                   /*
+                    let counter = 0
+                    for(let y = 0; y < this.bitMask.length; y++) {
+                        counter += (this.bitMask[y].length - 1)
+                        for(let x = 0; x < this.bitMask[y].length; x++) {
+                            if(this.bitMask[y][x]) {
+                                this.colourMask[y][x] = (this.image[counter + x])
+                            }// for each row, push an array for every white until a black, then make a new array and push that so it looks like [[1,1,1,1,1,1], [0,0,0,0,0,0,0,0]] //then you sort every value that is a 1 indevidually before placing back using the map
+                        }
                     }
 
                     //[[0,0,0,x],[0,0,0,x]]
 
-                    let tempImage = this.colourMask.sort( (a, b) => (this.outputChannel[4]) ? a[3] - b[3] : b[3] - a[3]),
-                    counter = 0
+                    let tempImage = this.colourMask.map((element) => {
+                        //console.log(element)
+                        if(element[0] == null) return element
+                        return element.sort( (a, b) => (this.outputChannel[4]) ? a[3] - b[3] : b[3] - a[3])
+                    })
                     //console.log(tempImage)
                     console.log('applying bitmask')
 
-                    for(let i = 0; i < this.image.length; i++) {
-                        if(this.bitMask[i]) {
-                
-                            this.image[i] = tempImage[counter]
-                            counter++
+                    counter = 0
+                    for(let y = 0; y < this.bitMask.length; y++) {
+                        counter += (this.bitMask[y].length - 1)
+                        for(let x = 0; x < this.bitMask[y].length; x++) {
+                            if(this.bitMask[y][x]) {
+                                this.image[counter + x] = tempImage[y][x]
+                            }// for each row, push an array for every white until a black, then make a new array and push that so it looks like [[1,1,1,1,1,1], [0,0,0,0,0,0,0,0]] //then you sort every value that is a 1 indevidually before placing back using the map
                         }
-                    
                     }
+
+*/
+
+
+
+                    //console.log(this.image)
                     return Promise.resolve(this.image)
                 }
 
                 drawOutput(output) {
                     console.log('drawing image')
                     this.outputImage = output
-                    
+                    //console.log(output)
                     for(let y = 0; y < this.outputCanvas.height; y++) {
                         for(let x = 0; x < this.outputCanvas.width; x++) {
                            
