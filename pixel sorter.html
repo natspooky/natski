@@ -56,7 +56,7 @@
                   </svg>
                 <img src="icon/thumbnails/missing.png" alt="pixel sorter" id="headerimage" draggable="false">
             </div>
-            <h2>Image Pixel Sorter</h2>
+            <h2>Pixel Sorter</h2>
         </header>
 
         <style>
@@ -154,7 +154,7 @@
                     this.matchColour = [0,0,0]
                     this.colourSpace = 'GRAY'
                     this.HSVtype = 'Value'
-                    this.outputChannel = [false,false,false,true,true]
+                    this.outputChannel = [false,false,false,true,true,true]
                     //this.imageType
                     this.image = []
                     this.outputImage = []
@@ -387,16 +387,35 @@
                 }
 
                 drawOutput(output) {
+
                     console.log('drawing image')
-                    this.outputImage = output
-                    //console.log(output)
+
+                    switch(this.outputChannel[5]) {
+                        case false:
+                            this.outputImage = []
+                            for(let main = 0; main < this.bitMask.length; main++) {
+                                for(let sub = 0; sub < this.bitMask[main].length; sub++) {
+                                    if(this.bitMask[main][sub]) {
+                                        this.outputImage.push([0,0,0])
+                                    }else {
+                                        this.outputImage.push([255,255,255])
+                                    }
+                                }
+                            }
+                            break;
+                        case true:
+            
+                            this.outputImage = output
+                            //console.log(output)
+
+                            break;
+                    }
                     for(let y = 0; y < this.outputCanvas.height; y++) {
-                        for(let x = 0; x < this.outputCanvas.width; x++) {
-                           
-                      
+                        for(let x = 0; x < this.outputCanvas.width; x++) {  
+                    
                             this.outputCTX.fillStyle = `rgb(${(this.outputChannel[0]) ? 0 : this.outputImage[this.outputCanvas.width * y + x][0]} ${(this.outputChannel[1]) ? 0 : this.outputImage[this.outputCanvas.width * y + x][1]} ${(this.outputChannel[2]) ? 0 : this.outputImage[this.outputCanvas.width * y + x][2]})`;
                             //this.outputCTX.fillStyle = `rgb(${this.outputImage[this.outputCanvas.width * y + x][0]} ${this.outputImage[this.outputCanvas.width * y + x][1]} ${this.outputImage[this.outputCanvas.width * y + x][2]})`;
-                           
+                        
                             this.outputCTX.fillRect(x, y, 1, 1);
                         }
                     }
@@ -610,6 +629,11 @@
                 <span class="SSMcategory SSMcheckbox">
                     <p>Reverse Sort</p>
                     <input type="checkbox" class="SSMinput" ssminfo="toggles the red channel" onclick="processor.toggleValue(this.checked, 4)">
+                </span>
+
+                <span class="SSMcategory SSMcheckbox">
+                    <p>Display BitMap</p>
+                    <input type="checkbox" class="SSMinput" ssminfo="displayed the bitMap used to filter the image" onclick="processor.toggleValue(this.checked, 5)">
                 </span>
                 
             </section>
