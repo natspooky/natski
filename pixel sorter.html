@@ -54,7 +54,7 @@
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.89 850.9">
                     <path fill="var(--bar)" d="M757.63.5H92.77C41.58.5.08,41.99.08,93.18v665.02c0,51.19,41.5,92.69,92.69,92.69h664.86c51.19,0,92.68-41.5,92.68-92.69V93.18c0-51.19-41.49-92.68-92.68-92.68ZM383.3,727.2c0,22.08-17.9,39.97-39.98,39.97H123.69c-22.08,0-39.98-17.89-39.98-39.97v-65.37h89.03c17.62,0,31.9-14.29,31.9-31.9v-19.84c0-17.61-14.28-31.89-31.9-31.89h-89.03v-305h89.03c17.62,0,31.9-14.28,31.9-31.9v-19.83c0-17.62-14.28-31.9-31.9-31.9h-89.03v-65.38c0-22.08,17.9-39.98,39.98-39.98h219.63c22.08,0,39.98,17.9,39.98,39.97v603.02ZM766.68,189.56h-89.19c-17.62,0-31.9,14.29-31.9,31.9v19.83c0,17.62,14.28,31.9,31.9,31.9h89.19v305h-89.19c-17.62,0-31.9,14.28-31.9,31.9v19.83c0,17.62,14.28,31.9,31.9,31.9h89.19v65.38c0,22.08-17.9,39.97-39.98,39.97h-219.63c-22.08.01-39.98-17.88-39.98-39.96V124.19c0-22.08,17.9-39.98,39.98-39.98h219.63c22.08,0,39.98,17.9,39.98,39.98v65.37Z"/>
                   </svg>
-                <img src="icon/thumbnails/missing.png" alt="pixel sorter" id="headerimage" draggable="false">
+                <img src="icon/thumbnails/pixelsorter.png" alt="pixel sorter" id="headerimage" draggable="false">
             </div>
             <h2>Pixel Sorter</h2>
         </header>
@@ -152,6 +152,38 @@
         </main>
 
         <script>
+            /*
+                make faster by mergin the bitmask creation and image system
+
+                also, make it so that repeated lines dont exist [a boarder for hte bit mask where the width starts and ends]
+
+                compress images if they are over 1000 pixels in any dimention
+
+
+                (e.naturalHeight || e.offsetHeight || e.height)
+
+                img.onload = function () {
+
+    // set size proportional to image
+    canvas.height = canvas.width * (img.height / img.width);
+
+    // step 1 - resize to 50%
+    var oc = document.createElement('canvas'),
+        octx = oc.getContext('2d');
+
+    oc.width = img.width * 0.5;
+    oc.height = img.height * 0.5;
+    octx.drawImage(img, 0, 0, oc.width, oc.height);
+
+    // step 2
+    octx.drawImage(oc, 0, 0, oc.width * 0.5, oc.height * 0.5);
+
+    // step 3, resize to final size
+    ctx.drawImage(oc, 0, 0, oc.width * 0.5, oc.height * 0.5,
+    0, 0, canvas.width, canvas.height);
+}
+img.src = "//i.imgur.com/SHo6Fub.jpg";
+            */
             let processor;
             window.onload = function() {
                 processor = new PixelSorter(document.getElementById('out'),document.getElementById('in'))
@@ -219,26 +251,18 @@
                 createImageBuffer(file) {
                     this.outputCanvas.classList.remove('active')
                     let e = new Image()
+
                     e.onload = () => {
-                        //document.getElementById('headerimage').src = e.src
-                        //console.log(e.height, this.outputCanvas)
+    
                         let o, c;
-                        this.outputCanvas.height = (e.naturalHeight || e.offsetHeight || e.height)
-                        this.outputCanvas.width = (e.naturalWidth || e.offsetWidth || e.width)
-                        c = (this.imageCanvas.height) = e.naturalHeight || e.offsetHeight || e.height, 
-                        o = (this.imageCanvas.width) = e.naturalWidth || e.offsetWidth || e.width, 
+                        c = this.outputCanvas.height = this.imageCanvas.height = e.naturalHeight || e.offsetHeight || e.height, 
+                        o = this.imageCanvas.width = this.outputCanvas.width = e.naturalWidth || e.offsetWidth || e.width, 
                         this.imageCTX.drawImage(e, 0, 0)
                         this.imageCanvas.classList.add('active')
                         //console.log('working')
                         this.OGimageData = this.imageCTX.getImageData(0, 0, o, c)
                     }
-                    e.onerror = function() {
-                        
-                    }
-                    //console.log(this.readInput(file))
-                    this.readInput(file, e)
-
-                    
+                    this.readInput(file, e)                    
                 }
 
                 get OGimage() {
@@ -378,51 +402,60 @@
                     let deltaL = labOne[0] - labTwo[0],
                     deltaA = labOne[1] - labTwo[1],
                     deltaB = labOne[2] - labTwo[2],
+
                     c1 = Math.sqrt(labOne[1] * labOne[1] + labOne[2] * labOne[2]),
                     c2 = Math.sqrt(labTwo[1] * labTwo[1] + labTwo[2] * labTwo[2]),
+
                     deltaC = c1 - c2,
                     deltaH = deltaA * deltaA + deltaB * deltaB - deltaC * deltaC;
                     deltaH = deltaH < 0 ? 0 : Math.sqrt(deltaH);
+
                     let sc = 1.0 + 0.045 * c1,
                     sh = 1.0 + 0.015 * c1,
+
                     deltaLKlsl = deltaL / (1.0),
                     deltaCkcsc = deltaC / (sc),
                     deltaHkhsh = deltaH / (sh),
+
                     i = deltaLKlsl * deltaLKlsl + deltaCkcsc * deltaCkcsc + deltaHkhsh * deltaHkhsh;
+
                     return i < 0 ? 0 : Math.sqrt(i);
                 }
 
 
                 createBitMask(map) {
-                    console.log('starting bitmask creation')
                     this.colourMask = map
                     let tempMask = []
 
                     for(let i = 0; i < this.colourMask.length; i++) {
                         let bit = 0
+
                         if(this.colourSpace != 'LAB') {
+
                             if(this.colourMask[i] <= this.lowBound || this.colourMask[i] >= this.upBound) {
                                 bit = ((this.outputChannel[3]) ? 1 : null)
                             }else {
                                 bit = ((this.outputChannel[3]) ? null : 1)
                             }
+
                         }else {
-                            //console.log(this.colourMask[i] <= this.matchColourThresh, this.colourMask[i], this.matchColourThresh)
+
                             if(this.colourMask[i] >= this.matchColourThresh) {
                                 bit = ((this.outputChannel[3]) ? 1 : null)
                             }else {
                                 bit = ((this.outputChannel[3]) ? null : 1)
                             }
+
                         }
-            
+
                         if(tempMask.length < 1 || tempMask[tempMask.length - 1][tempMask[tempMask.length - 1].length - 1] != bit) { 
                             tempMask.push([bit]) 
                         }else { 
                             tempMask[tempMask.length - 1].push(bit) 
                         }
-                        //console.log(tempMask)
+
                     }
-                    //console.log(tempMask)
+
                     return Promise.resolve(tempMask)
                 }
 
@@ -459,40 +492,6 @@
                         maskLen += this.bitMask[main].length
                     }
 
-                    
-
-                   /*
-                    let counter = 0
-                    for(let y = 0; y < this.bitMask.length; y++) {
-                        counter += (this.bitMask[y].length - 1)
-                        for(let x = 0; x < this.bitMask[y].length; x++) {
-                            if(this.bitMask[y][x]) {
-                                this.colourMask[y][x] = (this.image[counter + x])
-                            }// for each row, push an array for every white until a black, then make a new array and push that so it looks like [[1,1,1,1,1,1], [0,0,0,0,0,0,0,0]] //then you sort every value that is a 1 indevidually before placing back using the map
-                        }
-                    }
-
-                    //[[0,0,0,x],[0,0,0,x]]
-
-                    let tempImage = this.colourMask.map((element) => {
-                        //console.log(element)
-                        if(element[0] == null) return element
-                        return element.sort( (a, b) => (this.outputChannel[4]) ? a[3] - b[3] : b[3] - a[3])
-                    })
-                    //console.log(tempImage)
-                    console.log('applying bitmask')
-
-                    counter = 0
-                    for(let y = 0; y < this.bitMask.length; y++) {
-                        counter += (this.bitMask[y].length - 1)
-                        for(let x = 0; x < this.bitMask[y].length; x++) {
-                            if(this.bitMask[y][x]) {
-                                this.image[counter + x] = tempImage[y][x]
-                            }// for each row, push an array for every white until a black, then make a new array and push that so it looks like [[1,1,1,1,1,1], [0,0,0,0,0,0,0,0]] //then you sort every value that is a 1 indevidually before placing back using the map
-                        }
-                    }
-
-*/
 
 
 
@@ -501,8 +500,6 @@
                 }
 
                 drawOutput(output) {
-
-                    console.log('drawing image')
 
                     switch(this.outputChannel[5]) {
                         case false:
@@ -518,22 +515,19 @@
                             }
                             break;
                         case true:
-            
                             this.outputImage = output
-                            //console.log(output)
-
                             break;
                     }
                     for(let y = 0; y < this.outputCanvas.height; y++) {
                         for(let x = 0; x < this.outputCanvas.width; x++) {  
                     
-                            this.outputCTX.fillStyle = `rgb(${(this.outputChannel[0]) ? 0 : this.outputImage[this.outputCanvas.width * y + x][0]} ${(this.outputChannel[1]) ? 0 : this.outputImage[this.outputCanvas.width * y + x][1]} ${(this.outputChannel[2]) ? 0 : this.outputImage[this.outputCanvas.width * y + x][2]})`;
-                            //this.outputCTX.fillStyle = `rgb(${this.outputImage[this.outputCanvas.width * y + x][0]} ${this.outputImage[this.outputCanvas.width * y + x][1]} ${this.outputImage[this.outputCanvas.width * y + x][2]})`;
-                        
+                            this.outputCTX.fillStyle = `rgb(${
+                                (this.outputChannel[0]) ? 0 : this.outputImage[this.outputCanvas.width * y + x][0]} ${
+                                    (this.outputChannel[1]) ? 0 : this.outputImage[this.outputCanvas.width * y + x][1]} ${
+                                        (this.outputChannel[2]) ? 0 : this.outputImage[this.outputCanvas.width * y + x][2]})`;
                             this.outputCTX.fillRect(x, y, 1, 1);
                         }
                     }
-                    console.log('finished')
                     setTimeout(() => {
                         this.outputCanvas.classList.add('active')
                     }, 100);
