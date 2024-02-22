@@ -60,7 +60,7 @@
     height: 100%;
     left: 0;
     top: 0;
-    background-image: linear-gradient(to right, #00000040, transparent);
+    background-image: url(https://natski.netlify.app/icon/img/ENCORE_grain.png);
 }
 .CMS .CMScontext
 {
