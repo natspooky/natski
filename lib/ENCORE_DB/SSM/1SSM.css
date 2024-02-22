@@ -25,7 +25,7 @@
     }
     #SSM .SSMcategory:hover .SSMinput[type="color"]
     {
-        border: 2px solid var(--SSMcolourPale);
+        border: 3px solid var(--SSMcolourPale);
         transform: scale(1.1);
     }
     #SSM:hover::-webkit-scrollbar-thumb
@@ -276,7 +276,7 @@
 .SSMinput[type="color"] {
     appearance: none;
     -webkit-appearance: none;
-    border: 2px solid #f0f0f0;
+    border: 3px solid #f0f0f0;
     background-color: transparent;
     position: relative;
     height: 27px;
@@ -289,8 +289,8 @@
 }
 #SSM .SSMcategory:hover .SSMinput[type="color"]:active
 {
-    border: 2px solid var(--SSMcolour);
-    transform: scale(1.1, 1.2);
+    border: 3px solid var(--SSMcolour);
+    transform: scale(1.2, 1.1);
 }
 .SSMinput[type="color"]::-webkit-color-swatch-wrapper {
     padding: 0;
