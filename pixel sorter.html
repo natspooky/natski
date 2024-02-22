@@ -537,8 +537,8 @@ img.src = "//i.imgur.com/SHo6Fub.jpg";
                     let tempMask = []
                     this.image = this.processToRGB(image)
                     for(let i = 0; i < this.image.length; i++) {
-                        let r = this.image[i][0] * .3, // ------> Red is low
-                        g = this.image[i][1] * .59, // ---> Green is high
+                        let r = this.image[i][0] * .3,
+                        g = this.image[i][1] * .59, 
                         b = this.image[i][2] * .11, // ----> Blue is very low
 
                         gray = r + g + b
