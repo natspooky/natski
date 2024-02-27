@@ -259,22 +259,24 @@ img.src = "//i.imgur.com/SHo6Fub.jpg";
                         //canvas.height = canvas.width * (img.height / img.width);
 
                         let o, c;
-
                         if((e.naturalHeight || e.offsetHeight || e.height) >= 700) {
 
                             c = this.outputCanvas.height = this.imageCanvas.height = 700
                             o = this.imageCanvas.width = this.outputCanvas.width = this.imageCanvas.height * ((e.naturalWidth || e.offsetWidth || e.width) / (e.naturalHeight || e.offsetHeight || e.height))
+                            console.log(this.outputCanvas.width, this.outputCanvas.height)
 
                         }else if((e.naturalWidth || e.offsetWidth || e.width) >= 700) {
 
                             o = this.imageCanvas.width = this.outputCanvas.width = 700
                             c = this.outputCanvas.height = this.imageCanvas.height = this.imageCanvas.width * ((e.naturalHeight || e.offsetHeight || e.height) / (e.naturalWidth || e.offsetWidth || e.width))
+                            console.log(this.outputCanvas.width, this.outputCanvas.height)
 
                         }else {
 
                             c = this.outputCanvas.height = this.imageCanvas.height = e.naturalHeight || e.offsetHeight || e.height
                             o = this.imageCanvas.width = this.outputCanvas.width = e.naturalWidth || e.offsetWidth || e.width
-
+                            console.log(this.outputCanvas.width, this.outputCanvas.height)
+                            
                         }
 
                         this.imageCTX.drawImage(e, 0, 0, e.width, e.height, 0, 0, this.imageCanvas.width, this.imageCanvas.height)
