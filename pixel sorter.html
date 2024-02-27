@@ -98,7 +98,7 @@
                 background-color: #33333360;
                 z-index: 100;
             }
-            .tools button{
+            .tools button {
                 padding: 10px;
                 border-radius: 100vmax;
                 background-color: #f0f0f010;
@@ -214,6 +214,8 @@ img.src = "//i.imgur.com/SHo6Fub.jpg";
                 a.click();
             }
 
+//use this to make compressor
+
             class PixelSorter {
                 constructor(canvas, imageCanvas) {
                     this.lowBound = 0
@@ -254,10 +256,28 @@ img.src = "//i.imgur.com/SHo6Fub.jpg";
 
                     e.onload = () => {
     
+                        //canvas.height = canvas.width * (img.height / img.width);
+
                         let o, c;
-                        c = this.outputCanvas.height = this.imageCanvas.height = e.naturalHeight || e.offsetHeight || e.height, 
-                        o = this.imageCanvas.width = this.outputCanvas.width = e.naturalWidth || e.offsetWidth || e.width, 
-                        this.imageCTX.drawImage(e, 0, 0)
+
+                        if((e.naturalHeight || e.offsetHeight || e.height) >= 700) {
+
+                            c = this.outputCanvas.height = this.imageCanvas.height = 700
+                            o = this.imageCanvas.width = this.outputCanvas.width = this.imageCanvas.height * ((e.naturalWidth || e.offsetWidth || e.width) / (e.naturalHeight || e.offsetHeight || e.height))
+
+                        }else if((e.naturalWidth || e.offsetWidth || e.width) >= 700) {
+
+                            o = this.imageCanvas.width = this.outputCanvas.width = 700
+                            c = this.outputCanvas.height = this.imageCanvas.height = this.imageCanvas.width * ((e.naturalHeight || e.offsetHeight || e.height) / (e.naturalWidth || e.offsetWidth || e.width))
+
+                        }else {
+
+                            c = this.outputCanvas.height = this.imageCanvas.height = e.naturalHeight || e.offsetHeight || e.height
+                            o = this.imageCanvas.width = this.outputCanvas.width = e.naturalWidth || e.offsetWidth || e.width
+
+                        }
+
+                        this.imageCTX.drawImage(e, 0, 0, e.width, e.height, 0, 0, this.imageCanvas.width, this.imageCanvas.height)
                         this.imageCanvas.classList.add('active')
                         //console.log('working')
                         this.OGimageData = this.imageCTX.getImageData(0, 0, o, c)
@@ -268,6 +288,8 @@ img.src = "//i.imgur.com/SHo6Fub.jpg";
                 get OGimage() {
                     return this.OGimageData;
                 }
+
+                
 
 
                 processColourSpace(image) {
