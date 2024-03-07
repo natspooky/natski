@@ -61,41 +61,56 @@
 
         <style>
          
+            main * {
+                position: relative;
+
+            }
+
+            main .modes {
+                display: block;
+                height: 80px;
+                width: 100%;
+                padding: 10px 15%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            main .modes button {
+                background-color: blue;
+                padding: 0 20px;
+                height: 100%;
+                border-radius: 10px;
+                border: 2px solid #f0f0f020;
+                background-color: #f0f0f010;
+                margin: 0 10px;
+                flex-grow: 1;
+
+            }
+
             
 
         </style>
         
         <main>
-            <div>
-                <div>
-                    <h1>Colour Mode</h1>
-                </div>
-                <div>
-                    <span id="menuBG"></span>
-                    <button>RGB</button>
-                    <button>HEX</button>
-                    <button>HSV</button>
-                </div>
+            <div class="modes">
+                <span id="buttonBg"></span>
+                <button>HEX</button>
+                <button>RGB</button>
+                <button>HSV</button>
             </div>
-            <div>
-                <div>
-                    <label for="red">red</label>
-                    <input type="range" id="red">
-                    <label for="green">green</label>
-                    <input type="range" id="green">
-                    <label for="blue">blue</label>
-                    <input type="range" id="blue">
+
+            <div class="gameCont">
+                <div class="">
+                    <div class="colourPicker">
+
+                    </div>
+                    <div class="toolBar">
+
+                    </div>
                 </div>
-                <span id="colourTile"></span>
-            </div>
-            <div>
-                <button>
-                    <GIS-icon title="redo"></GIS-icon>
-                    New Colour
-                </button>
-                <button>
-                    Check Colour
-                </button>
+                <div class="colour">
+                    imageblock
+                </div>
             </div>
         </main>
 
@@ -114,7 +129,9 @@
 
 
             function colourGen() {
-                colour = `#${Math.floor(Math.random() * 255 ** 3).toString(16)}`
+                let color = `${Math.floor(Math.random() * 255 ** 3).toString(16)}`
+                color = `#${Array(6 - colour.length).fill("0").join('') + colour}`
+                colour = color
             }
 
 
