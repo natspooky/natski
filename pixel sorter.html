@@ -212,6 +212,7 @@ img.src = "//i.imgur.com/SHo6Fub.jpg";
                 a.download = 'Sorted Image.jpeg';
                 // Click on the link to set off download
                 a.click();
+                return 'cool'
             }
 
 //use this to make compressor
@@ -348,7 +349,7 @@ img.src = "//i.imgur.com/SHo6Fub.jpg";
                             
                             break;
                     }
-
+                    return Promise.resolve(0)
                 }
 
                 colorSpace(colourSpace) {
@@ -369,12 +370,17 @@ img.src = "//i.imgur.com/SHo6Fub.jpg";
                     this.lowBound = lowerBound
                 }
 
+
                 matchCol(colour) {
                     this.matchColour = colour
                 }
 
                 matchThresh(thresh) {
                     this.matchColourThresh = thresh
+                }
+
+                getRange() {
+                    return this.matchColourThresh
                 }
 
 
@@ -554,6 +560,7 @@ img.src = "//i.imgur.com/SHo6Fub.jpg";
                     }
                     setTimeout(() => {
                         this.outputCanvas.classList.add('active')
+                        return Promise.resolve(this.outputCanvas)
                     }, 100);
                 }
 
@@ -591,64 +598,6 @@ img.src = "//i.imgur.com/SHo6Fub.jpg";
                         //this.greyMask.push(this.processToGreyScale([r,g,b]))
                     }
                     return tempImage
-                }
-
-
-                sortMerge(array, value) {
-                    if (array.length <= 1) return array //|| value >= 40) return array
-                    let center = Math.floor(array.length / 2),
-                    front = this.sortMerge(array.slice(0, center), value + 1),
-                    back = this.sortMerge(array.slice(center), value + 1)
-
-                    return this.merge(front, back)
-                }
-                merge(left, right) {
-                    let sortedArray = []
-                    while(left.length && right.length) {
-
-                        if(left[0][3] < right[0][3]) {
-                            sortedArray.push(left.shift())
-                        }else {
-                            sortedArray.push(right.shift())
-                        }
-                    }
-                    return [...sortedArray, ...left, ...right]
-                }
-
-                sortBubble(array){
-                    let len = array.length,
-                    sortedArray = array;
-                    for(let i = 0; i < len; i++) {
-                        for(let x = 0; x < len - 1; x++){
-                            if(sortedArray[x][3] > sortedArray[x + 1][3]) {
-                                let tempStorage = sortedArray[x];
-                                sortedArray[x] = sortedArray[x + 1]
-                                sortedArray[x + 1] = tempStorage
-                            }
-                        }
-                    }
-                    return sortedArray
-                }
-
-
-                quickSort(arr) {
-                    if (arr.length <= 1) {
-                        return arr;
-                    }
-
-                    let pivot = arr[0][3];
-                    let leftArr = [];
-                    let rightArr = [];
-
-                    for (let i = 1; i < arr.length; i++) {
-                        if (arr[i][3] < pivot) {
-                        leftArr.push(arr[i]);
-                        } else {
-                        rightArr.push(arr[i]);
-                        }
-                    }
-
-                    return [...this.quickSort(leftArr), arr[0], ...this.quickSort(rightArr)];
                 }
 
 
@@ -716,6 +665,20 @@ img.src = "//i.imgur.com/SHo6Fub.jpg";
                     }
                 }
             
+
+                // animated sorting
+
+                async function animate() {
+                    processor.matchThresh(0)
+
+                    while(processor.getRange() < 100) {
+                        processor.matchThresh(processor.getRange() + 1)
+                        let x = await processor.processColourSpace(processor.OGimage).then((canvas) => {
+                            return downloadImage()
+                        })
+                    }
+                }
+
 
         </script>
 

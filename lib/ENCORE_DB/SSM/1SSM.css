@@ -18,7 +18,7 @@
     {
         background-color: var(--SSMcolourPale);
     }
-    #SSM .SSMcategory:hover .SSMinput[type="range"]::-webkit-slider-thumb,#SSM .SSMcategory:hover .SSMinput[type="range"]::-moz-range-thumb
+    #SSM .SSMcategory:hover .SSMinput[type="range"]::-webkit-slider-thumb, #SSM .SSMcategory:hover .SSMinput[type="range"]::-moz-range-thumb
     {
         background: var(--SSMcolourPale);
         transform: scale(1.1);
