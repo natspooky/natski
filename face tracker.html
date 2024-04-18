@@ -178,6 +178,137 @@
         </footer>
 
         <div id="SSM" style="display: none;">
+            <!-- settings container -->
+            
+                <section>
+                    <h1><GIS-icon title="gear"></GIS-icon>Tracker Settings</h1>
+                </section>
+                <!-- settings title with icon attached -->
+            
+                <section class="SSMsearch">
+                <!-- settings section -->
+                
+                    <h1><GIS-icon title="magnify"></GIS-icon>Search</h1>
+                    <!-- settings section title with icon attached-->
+            
+                    <span class="SSMcategory">
+                    <!-- settings category-->
+            
+                        <input class="SSMinput" type="text" ssminfo="Lets you search for a specific setting" placeholder="Search">
+                        <!-- settings text input -->
+            
+                    </span>
+                </section>
+            
+                <section>
+                <!-- settings section -->
+                
+                    <h1><GIS-icon title="alert"></GIS-icon>section 1</h1>
+
+                    <span class="SSMcategory">
+                        <p>dropdown</p>
+            
+                        <div class="SSMselection SSMinput" ssminfo="dropdown information">
+                        <!-- dropdown container -->
+            
+                            <div class="itemContainer">
+                            <!-- hidden sections of the dropdown -->
+                            
+                                <span class="SSMheader">
+                                    default choice
+                                </span>
+                                <!-- initial choice of the dropdown when loading page -->
+            
+                                <span class="SSMitem" value="">
+                                    option 1
+                                </span>
+                                <!-- dropdown choice 1 -->
+            
+                                <span class="SSMitem" value="">
+                                    option 2
+                                </span>
+                                <!-- dropdown choice 2 -->
+            
+                            </div>
+                        </div>
+                        <!-- settings dropdown input -->
+
+                    </span>
+            
+                    <span class="SSMcategory SSMcheckbox">
+                        <p>test checkbox</p>
+
+                        <input type="checkbox" class="SSMinput" ssminfo="checkbox information">
+                        <!-- settings checkbox input -->
+
+                    </span>
+
+                    <span class="SSMcategory">
+                        <p>test slider</p>
+
+                        <input type="range" class="SSMinput" id="Threshold1" min="0" max="2" value="1" step="0.01" ssminfo="slider intformation">
+                        <!-- settings slider input -->
+
+                    </span>
+
+                    <span class="SSMcategory radioSetting">
+                        <p>test radio buttons</p>
+
+                        <div class="radio">
+                            <!-- settings radio and icon container -->
+
+                            <input type="radio" class="SSMinput" checked name="layout" ssminfo="radio information">
+                            <!-- settings radio input -->
+
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.41 850.41">
+                                <rect class="cls-1" x="446.01" y="28.27" width="376.13" height="793.89" rx="52.02" ry="52.02"/>
+                                <rect class="cls-1" x="28.25" y="28.27" width="376.12" height="793.89" rx="52.02" ry="52.02"/>
+                            </svg>
+                            <!-- settings radio icon -->
+
+                        </div>
+                        <div class="radio">
+                            <!-- settings radio and icon container -->
+
+                            <input type="radio" class="SSMinput" name="layout" ssminfo="radio information">
+                            <!-- settings radio input -->
+
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.41 850.41">
+                                <rect class="cls-1" x="28.25" y="28.27" width="793.89" height="376.13" rx="52.02" ry="52.02"/>
+                                <rect class="cls-1" x="28.25" y="446.04" width="793.89" height="376.12" rx="52.02" ry="52.02"/>
+                            </svg>
+                            <!-- settings radio icon -->
+
+                        </div>
+                    </span>
+
+                    <span class="SSMcategory">
+                        <p>test button</p>
+
+                        <button class="SSMbutton SSMinput" ssminfo="button information">button</button>
+                        <!-- settings button input -->
+
+                    </span>
+                </section>
+
+                <section>
+                    <!-- settings section -->
+
+                    <h1><GIS-icon title="alert"></GIS-icon>section 2</h1>
+                   
+                    <span class="SSMcategory SSMcheckbox">
+
+                        <p>test checkbox</p>
+
+                        <input type="checkbox" class="SSMinput" ssminfo="checkbox information">
+                        <!-- settings checkbox input -->
+
+                    </span>
+                </section>
+            
+            </div>
+
+        <!--<div id="SSM" style="display: none;">
             <section>
                 <h1><GIS-icon title="gear"></GIS-icon>Tracker Settings</h1>
             </section>
@@ -350,7 +481,7 @@
                     </div>
                 </span>
             </section>
-        </div>
+        </div>-->
 
         <button onclick="toggleSSM()" id="settingsOpen">
             <!-- button used to open the settings menu -->

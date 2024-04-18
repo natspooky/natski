@@ -310,12 +310,12 @@
     border-radius: 100vmax;
 }
 
-.SSMinput[type="range"]::-moz-range-track, .SSMinput[type="range"]::-webkit-slider-runnable-track
+.SSMinput[type="range"]::-webkit-slider-runnable-track
 {
     height: 17px;
 }
 
-.SSMinput[type="range"]::-moz-range-thumb, .SSMinput[type="range"]::-webkit-slider-thumb
+ .SSMinput[type="range"]::-webkit-slider-thumb
 {
     height: 17px;
     width: 55px;
