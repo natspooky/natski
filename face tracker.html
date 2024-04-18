@@ -42,7 +42,8 @@
     <body>
 
         <style>
-            #vol
+            /* styles the container for the displays */
+            #volumeContainer
             {
                 position: relative;
                 height: 40vh;
@@ -52,7 +53,7 @@
                 background-color: #66666640;
                 border-radius: 100vmax;
             }
-            #vol #volume
+            #volumeContainer #volume
             {
                 position: relative;
                 display: block;
@@ -62,7 +63,7 @@
                 background-color: #f0f0f0;
                 transition: background-color 0.2s;
             }
-            #vol #volume.large
+            #volumeContainer #volume.large
             {
                 background-color: red;
             }
@@ -75,7 +76,9 @@
                 align-items: center;
                 flex-wrap: wrap;
             }
-            #video, #canvas, #facecanvas
+
+            /* styles the displays */
+            #video, #canvas, #output
             {
                 position: relative;
                 background-color: #66666640;
@@ -85,10 +88,14 @@
                 width: auto;
                 transform: scaleX(-100%);
             }
+
+            /* used to hide elements when needed */
             .hidden
             {
                 display: none;
             }
+
+            /* changes the layout of the displays on the page */
             #container.row
             {
                 flex-direction: row;
@@ -101,6 +108,8 @@
             {
                 display: none;
             }
+
+            /* styles the settings button and icon */
             #settingsOpen
             {
                 position: fixed;
@@ -118,15 +127,6 @@
             #settingsOpen GIS-icon
             {
                 background-color: #f0f0f0;
-            }
-            .button
-            {
-                position: relative;
-                padding: 0.5em;
-                background-color: #66666640;
-                color: #fff;
-                font-weight: bold;
-                border-radius: 0.5em;
             }
         </style>
 
@@ -150,12 +150,18 @@
 
         <main>
             <div id="container" class="row">
-                <div id="vol">
+                <!-- container that has the current UI layout of 'row' -->
+
+                <div id="volumeContainer">
                     <div id="volume"></div>
                 </div>
+                <!-- element that will display the microphone feed -->
+
                 <canvas id="video" autoplay muted playsinline></canvas>
-                <canvas id="canvas" class="hidden"></canvas>
-                <canvas id="facecanvas"></canvas>
+                <!-- canvas that will display the camera feed -->
+
+                <canvas id="output"></canvas>
+                <!-- canvas that will display the output feed -->
             </div>
         </main>
 
@@ -346,9 +352,13 @@
             </section>
         </div>
 
-        <div onclick="toggleSSM()" id="settingsOpen">
+        <button onclick="toggleSSM()" id="settingsOpen">
+            <!-- button used to open the settings menu -->
+
             <GIS-icon title="config"></GIS-icon>
-        </div>
+            <!-- custom icon library made before the project -->
+
+        </button>
 
 
         <noscript>
@@ -360,12 +370,131 @@
         <script>
             GIS_settings = {'style':1}
         </script>
+        <!-- icon library -->
+
         <script src="lib/js/ENCORE_SSM.js"></script>
         <script>
             SSM_settings = {'style':1}
         </script>
+        <!-- what will become the settings menu (simple settings menu) -->
+
         <script src="lib/js/ENCORE_APF.js"></script>
+        <!-- what will become the useful functions library (all purpose functions) -->
 
         <script src="lib/js/faceTracker/Face_Tracker.js"></script>
+        <!-- the main tracking and calibration file -->
+
     </body>
 </html>
+
+
+
+<div id="SSM" style="display: none;">
+<!-- settings container -->
+
+    <section>
+        <h1><GIS-icon title="gear"></GIS-icon>Tracker Settings</h1>
+    </section>
+    <!-- settings title with icon attached -->
+
+    <section class="SSMsearch">
+    <!-- settings section -->
+    
+        <h1><GIS-icon title="magnify"></GIS-icon>Search</h1>
+        <!-- settings section title with icon attached-->
+
+        <span class="SSMcategory">
+        <!-- settings category-->
+
+            <input class="SSMinput" type="text" ssminfo="Lets you search for a specific setting" placeholder="Search">
+            <!-- settings text input -->
+
+        </span>
+    </section>
+
+    <section>
+    <!-- settings section -->
+    
+        <h1><GIS-icon title="alert"></GIS-icon>section 1</h1>
+        <span class="SSMcategory">
+            <p>dropdown</p>
+
+
+            <div class="SSMselection SSMinput" ssminfo="info">
+            <!-- dropdown container -->
+
+                <div class="itemContainer">
+                <!-- hidden sections of the dropdown -->
+                
+                    <span class="SSMheader">
+                        default choice
+                    </span>
+                    <!-- initial choice of the dropdown when loading page -->
+
+                    <span class="SSMitem" value="">
+                        option 1
+                    </span>
+                    <!-- dropdown choice 1 -->
+
+                    <span class="SSMitem" value="">
+                        option 2
+                    </span>
+                    <!-- dropdown choice 2 -->
+
+                </div>
+            </div>
+
+
+        </span>
+
+        <span class="SSMcategory SSMcheckbox">
+            <p>Lock Movement to Center</p>
+            <input type="checkbox" class="SSMinput" ssminfo="locks the model to the center of the canvas" onclick="trackerSettings.LocationLock = toggleSwitch(this)">
+        </span>
+        <span class="SSMcategory">
+            <p>Threshold Red</p>
+            <input type="range" class="SSMinput" id="Threshold1" min="0" max="2" value="1" step="0.01" ssminfo="changes how similar the RGB values have to be compared to the red value" onchange="changethresh(this, 0)">
+            <!-- settings slider input -->
+        </span>
+        <span class="SSMcategory radioSetting">
+            <p>Layout</p>
+            <div class="radio">
+                <input type="radio" class="SSMinput" checked name="layout" ssminfo="displays the camera and tracking screen in a column" classInfo="row" onclick="layoutChange(this)">
+                <!-- settings radio input -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.41 850.41">
+                    <rect class="cls-1" x="446.01" y="28.27" width="376.13" height="793.89" rx="52.02" ry="52.02"/>
+                    <rect class="cls-1" x="28.25" y="28.27" width="376.12" height="793.89" rx="52.02" ry="52.02"/>
+                  </svg>
+            </div>
+            <div class="radio">
+                <input type="radio" class="SSMinput" name="layout" ssminfo="displays the camera and tracking screen in a row" classInfo="column" onclick="layoutChange(this)">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.41 850.41">
+                    <rect class="cls-1" x="28.25" y="28.27" width="793.89" height="376.13" rx="52.02" ry="52.02"/>
+                    <rect class="cls-1" x="28.25" y="446.04" width="793.89" height="376.12" rx="52.02" ry="52.02"/>
+                  </svg>
+            </div>
+            <div class="radio">
+                <input type="radio" class="SSMinput" name="layout" ssminfo="only displays the tracking screen" classInfo="track" onclick="layoutChange(this)">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.41 850.41">
+                    <rect class="cls-1" x="28.25" y="28.27" width="793.89" height="793.89" rx="52.02" ry="52.02"/>
+                  </svg>
+            </div>
+        </span>
+        <span class="SSMcategory">
+            <p>Auto Calibration</p>
+            <button class="SSMbutton SSMinput" ssminfo="automatically calculates the best settings for the user" onclick="startCalibrate()">calibrate</button>
+        </span>
+    </section>
+    <section>
+        <h1><GIS-icon title="PSS"></GIS-icon>Tracking</h1>
+       
+        <span class="SSMcategory SSMcheckbox">
+            <p>Lock Rotation to Center</p>
+            <input type="checkbox" class="SSMinput" ssminfo="locks rotation to the center of the model" onclick="trackerSettings.RotationLock = toggleSwitch(this)">
+        </span>
+    </section>
+
+ 
+
+    
+</div>

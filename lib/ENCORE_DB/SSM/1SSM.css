@@ -321,8 +321,7 @@
 
 .SSMinput[type="range"]::-webkit-slider-thumb, .SSMinput[type="range"]::-moz-range-thumb
 {
-    -webkit-appearance: none;
-    appearance: none;
+    
     height: 17px;
     width: 55px;
     background-color: #f0f0f0;
