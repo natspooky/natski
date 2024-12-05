@@ -8,7 +8,7 @@ export function element(elementData) {
 	let element = document.createElement(elementData.type);
 
 	if (elementData.innerHTML) {
-		element.innerHTML = innerHTML;
+		element.innerHTML = elementData.innerHTML;
 	}
 
 	if (elementData.classes) {
