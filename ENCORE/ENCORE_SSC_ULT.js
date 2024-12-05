@@ -319,11 +319,11 @@ class SSCU {
 		}
 		if (this.settings.thumbs) {
 			(() => {
-				let thumbcont = ENCORE_SEC.element('div', 'SSCUthumbs');
+				let thumbcont = ENCORE_SEC.element('div', ['SSCUthumbs']);
 				for (let i = 0; i < this.pages.length; i++) {
 					let thumb = ENCORE_SEC.element(
 						'div',
-						'SSCUthumb',
+						['SSCUthumb'],
 						{
 							click: {
 								func: this.directPage.bind(this),
@@ -332,7 +332,7 @@ class SSCU {
 						},
 						null,
 						null,
-						ENCORE_SEC.element('div', 'SSCUprogress'),
+						ENCORE_SEC.element('div', ['SSCUprogress']),
 					);
 					thumbcont.appendChild(thumb);
 				}
@@ -349,7 +349,7 @@ class SSCU {
 				this.SSCU.appendChild(
 					ENCORE_SEC.element(
 						'button',
-						'SSCUpauseButton',
+						['SSCUpauseButton'],
 						{ click: { func: this.togglePlay.bind(this) } },
 						{ ariaLabel: 'Play / Pause' },
 						`${SSCUicons['pause']} ${SSCUicons['play']}`,
@@ -366,14 +366,14 @@ class SSCU {
 			ENCORE_SEC.appendChildren(this.SSCU, [
 				ENCORE_SEC.element(
 					'button',
-					'SSCUpageButton',
+					['SSCUpageButton'],
 					{ click: { func: this.changePage.bind(this), var: -1 } },
 					{ ariaLabel: 'Previous Page' },
 					SSCUicons['leftArrow'],
 				),
 				ENCORE_SEC.element(
 					'button',
-					'SSCUpageButton',
+					['SSCUpageButton'],
 					{ click: { func: this.changePage.bind(this), var: 1 } },
 					{ ariaLabel: 'Next Page' },
 					SSCUicons['rightArrow'],

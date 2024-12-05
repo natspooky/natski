@@ -4,22 +4,24 @@
  * MIT License
  */
 
-export function createElement(
+export function element(
 	elementType,
 	elementClass,
 	elementEvents,
 	elementAttributes,
 	innerHTML,
-	childElement,
+	childElements,
 ) {
 	let element = document.createElement(elementType);
 
-	if (elementClass) {
-		element.className = elementClass;
-	}
-
 	if (innerHTML) {
 		element.innerHTML = innerHTML;
+	}
+
+	if (elementClass) {
+		for (const value of elementClass) {
+			element.classList.add(value);
+		}
 	}
 
 	if (elementAttributes) {
@@ -37,14 +39,14 @@ export function createElement(
 		}
 	}
 
-	if (childElement) {
-		element.appendChild(childElement);
+	if (childElements) {
+		appendChildren(element, childElements);
 	}
 
 	return element;
 }
 
-export function editElement(
+export function changeElement(
 	element,
 	elementClass,
 	elementAttributes,
