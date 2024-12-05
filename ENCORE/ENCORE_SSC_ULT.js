@@ -319,27 +319,21 @@ class SSCU {
 		}
 		if (this.settings.thumbs) {
 			(() => {
-				let thumbcont = ENCORE_SEC.jsonElementify({
-					type: 'div',
-					classes: ['SSCUthumbs'],
-				});
+				let thumbcont = ENCORE_SEC.element('div', 'SSCUthumbs');
 				for (let i = 0; i < this.pages.length; i++) {
-					let thumb = ENCORE_SEC.jsonElementify({
-						type: 'div',
-						classes: ['SSCUthumb'],
-						events: {
+					let thumb = ENCORE_SEC.element(
+						'div',
+						'SSCUthumb',
+						{
 							click: {
 								func: this.directPage.bind(this),
 								var: i + 1,
 							},
 						},
-						children: [
-							{
-								type: 'div',
-								classes: ['SSCUprogress'],
-							},
-						],
-					});
+						null,
+						null,
+						ENCORE_SEC.element('div', 'SSCUprogress'),
+					);
 					thumbcont.appendChild(thumb);
 				}
 				this.SSCU.appendChild(thumbcont);
@@ -353,13 +347,13 @@ class SSCU {
 		if (this.settings.pauseButton) {
 			(() => {
 				this.SSCU.appendChild(
-					ENCORE_SEC.jsonElementify({
-						type: 'button',
-						classes: ['SSCUpauseButton'],
-						events: { click: { func: this.togglePlay.bind(this) } },
-						attributes: { ariaLabel: 'Play / Pause' },
-						innerHTML: `${SSCUicons['pause']} ${SSCUicons['play']}`,
-					}),
+					ENCORE_SEC.element(
+						'button',
+						'SSCUpauseButton',
+						{ click: { func: this.togglePlay.bind(this) } },
+						{ ariaLabel: 'Play / Pause' },
+						`${SSCUicons['pause']} ${SSCUicons['play']}`,
+					),
 				);
 				return Promise.resolve(
 					this.SSCU.getElementsByClassName('SSCUpauseButton')[0],
@@ -370,24 +364,20 @@ class SSCU {
 		}
 		if (this.settings.sideButtons && !this.device) {
 			ENCORE_SEC.appendChildren(this.SSCU, [
-				ENCORE_SEC.jsonElementify({
-					type: 'button',
-					classes: ['SSCUpageButton'],
-					events: {
-						click: { func: this.changePage.bind(this), var: -1 },
-					},
-					attributes: { ariaLabel: 'Previous Page' },
-					innerHTML: SSCUicons['leftArrow'],
-				}),
-				ENCORE_SEC.jsonElementify({
-					type: 'button',
-					classes: ['SSCUpageButton'],
-					events: {
-						click: { func: this.changePage.bind(this), var: 1 },
-					},
-					attributes: { ariaLabel: 'Next Page' },
-					innerHTML: SSCUicons['rightArrow'],
-				}),
+				ENCORE_SEC.element(
+					'button',
+					'SSCUpageButton',
+					{ click: { func: this.changePage.bind(this), var: -1 } },
+					{ ariaLabel: 'Previous Page' },
+					SSCUicons['leftArrow'],
+				),
+				ENCORE_SEC.element(
+					'button',
+					'SSCUpageButton',
+					{ click: { func: this.changePage.bind(this), var: 1 } },
+					{ ariaLabel: 'Next Page' },
+					SSCUicons['rightArrow'],
+				),
 			]);
 		}
 		return Promise.resolve(0);
