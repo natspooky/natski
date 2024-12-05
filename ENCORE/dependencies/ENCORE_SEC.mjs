@@ -4,34 +4,29 @@
  * MIT License
  */
 
-export function element(
-	elementType,
-	elementClass,
-	elementEvents,
-	elementAttributes,
-	innerHTML,
-	childElements,
-) {
-	let element = document.createElement(elementType);
+export function element(elementData) {
+	let element = document.createElement(elementData.type);
 
-	if (innerHTML) {
+	if (elementData.innerHTML) {
 		element.innerHTML = innerHTML;
 	}
 
-	if (elementClass) {
-		for (const value of elementClass) {
+	if (elementData.classes) {
+		for (const value of elementData.classes) {
 			element.classList.add(value);
 		}
 	}
 
-	if (elementAttributes) {
-		for (const [attribute, value] of Object.entries(elementAttributes)) {
+	if (elementData.attributes) {
+		for (const [attribute, value] of Object.entries(
+			elementData.attributes,
+		)) {
 			element.setAttribute(attribute, value);
 		}
 	}
 
-	if (elementEvents) {
-		for (const [eventType, event] of Object.entries(elementEvents)) {
+	if (elementData.events) {
+		for (const [eventType, event] of Object.entries(elementData.events)) {
 			element.addEventListener(
 				eventType,
 				event.var ? () => event.func(event.var) : () => event.func(),
@@ -39,16 +34,34 @@ export function element(
 		}
 	}
 
-	if (childElements) {
-		if (typeof childElements[Symbol.iterator] === 'function') {
-			appendChildren(element, childElements);
+	if (elementData.children) {
+		if (typeof elementData.children[Symbol.iterator] === 'function') {
+			appendChildren(element, elementData.children);
 		} else {
-			element.appendChild(childElements);
+			element.appendChild(elementData.children);
 		}
 	}
 
 	return element;
 }
+
+// structure
+/*
+{
+	type: 'div',
+	classes: [],
+	events: {
+		
+	},
+	attributes: {
+
+	},
+	innnerHTML: "",
+	children: []
+	
+	
+}
+*/
 
 export function editElement(
 	element,
