@@ -4,15 +4,18 @@
  * MIT License
  */
 
-var SSCobjs = [],
-	SSCicons = {
-		leftArrow:
-			'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 398.35 636.29"><path d="M16.05,354l302.18,269.96c30.98,27.68,80.12,5.69,80.12-35.86V48.18c0-41.55-49.14-63.54-80.12-35.86L16.05,282.28c-21.4,19.12-21.4,52.6,0,71.72Z"/></svg>',
-		rightArrow:
-			'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 398.35 636.29"><path d="M382.3,282.28L80.12,12.32C49.14-15.36,0,6.63,0,48.18V588.11c0,41.55,49.14,63.54,80.12,35.86L382.3,354c21.4-19.12,21.4-52.6,0-71.72Z"/></svg>',
-		play: '<svg class="SSCplay" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 756.99 850.4"><path d="M718.32,358.21c51.56,29.77,51.56,104.2,0,133.97l-301.15,173.87L116.02,839.92c-51.56,29.77-116.02-7.44-116.02-66.98V77.46C0,17.92,64.46-19.29,116.02,10.48L417.17,184.35l301.15,173.87h0Z"/></svg>',
-		pause: '<svg class="SSCpause" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.4 850.4"><rect x="46.77" y=".17" width="239.38" height="850.07" rx="90.18" ry="90.18"/><rect x="564.25" y=".17" width="239.38" height="850.07" rx="93.7" ry="93.7"/></svg>',
-	};
+import * as ENCORE_SEC from 'https://natski.netlify.app/ENCORE/dependencies/ENCORE_SEC.mjs';
+import * as ENCORE_DP from 'https://natski.netlify.app/ENCORE/dependencies/ENCORE_nav.mjs';
+
+var SSCobjs = [];
+const SSCicons = {
+	leftArrow:
+		'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 398.35 636.29"><path d="M16.05,354l302.18,269.96c30.98,27.68,80.12,5.69,80.12-35.86V48.18c0-41.55-49.14-63.54-80.12-35.86L16.05,282.28c-21.4,19.12-21.4,52.6,0,71.72Z"/></svg>',
+	rightArrow:
+		'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 398.35 636.29"><path d="M382.3,282.28L80.12,12.32C49.14-15.36,0,6.63,0,48.18V588.11c0,41.55,49.14,63.54,80.12,35.86L382.3,354c21.4-19.12,21.4-52.6,0-71.72Z"/></svg>',
+	play: '<svg class="SSCplay" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 756.99 850.4"><path d="M718.32,358.21c51.56,29.77,51.56,104.2,0,133.97l-301.15,173.87L116.02,839.92c-51.56,29.77-116.02-7.44-116.02-66.98V77.46C0,17.92,64.46-19.29,116.02,10.48L417.17,184.35l301.15,173.87h0Z"/></svg>',
+	pause: '<svg class="SSCpause" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.4 850.4"><rect x="46.77" y=".17" width="239.38" height="850.07" rx="90.18" ry="90.18"/><rect x="564.25" y=".17" width="239.38" height="850.07" rx="93.7" ry="93.7"/></svg>',
+};
 
 function SSCstyleCall(url, settings, load) {
 	let style = document.createElement('link');
@@ -100,27 +103,11 @@ class SSC {
 		this.index = 1;
 		this.barWidth = 0;
 		this.timer = Math.max(this.settings.timer, 5000);
-		this.device = this.detectDevice();
+		this.device = ENCORE_DP.userDevice();
 		this.paused = false;
 		this.hasVideos = false;
 		this.videos = [];
 		this.pauseMemory = false;
-	}
-
-	detectDevice() {
-		let check = false;
-		(function (a) {
-			if (
-				/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino|android|ipad|playbook|silk/i.test(
-					a,
-				) ||
-				/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(
-					a.substr(0, 4) && 'ontouchend' in document,
-				)
-			)
-				check = true;
-		})(navigator.userAgent || navigator.vendor || window.opera);
-		return check;
 	}
 
 	directPage(index) {
@@ -206,46 +193,25 @@ class SSC {
 		return this.pages.length <= 1;
 	}
 
-	elementCreator(
-		elementType,
-		elementClass,
-		ariaLabel,
-		eventType,
-		eventFunction,
-		functionVariable,
-	) {
-		let element = document.createElement(elementType);
-		if (elementClass) {
-			element.className = elementClass;
-		}
-		if (ariaLabel) {
-			element.ariaLabel = ariaLabel;
-		}
-		if (eventType) {
-			element.addEventListener(
-				eventType,
-				functionVariable
-					? () => eventFunction(functionVariable)
-					: () => eventFunction(),
-			);
-		}
-		return element;
-	}
-
 	createElements() {
 		if (this.settings.thumbs) {
 			(() => {
-				let thumbcont = this.elementCreator('div', 'SSCthumbs');
+				let thumbcont = ENCORE_SEC.jsonElementify({
+					type: 'div',
+					classes: ['SSCthumbs'],
+				});
 				for (let i = 0; i < this.pages.length; i++) {
 					thumbcont.appendChild(
-						this.elementCreator(
-							'div',
-							'SSCthumb',
-							null,
-							'click',
-							this.directPage.bind(this),
-							i + 1,
-						),
+						ENCORE_SEC.jsonElementify({
+							type: 'div',
+							classes: ['SSCthumb'],
+							events: {
+								click: {
+									func: this.directPage.bind(this),
+									var: i + 1,
+								},
+							},
+						}),
 					);
 				}
 				this.SSC.appendChild(thumbcont);
@@ -258,10 +224,18 @@ class SSC {
 		}
 		if (this.settings.progressBar) {
 			(() => {
-				let progcont = this.elementCreator('div', 'SSCprogress'),
-					prog = this.elementCreator('div', 'SSCprogressBar');
-				progcont.appendChild(prog);
-				this.SSC.appendChild(progcont);
+				this.SSC.appendChild(
+					ENCORE_SEC.jsonElementify({
+						type: 'div',
+						classes: ['SSCprogress'],
+						children: [
+							{
+								type: 'div',
+								classes: ['SSCprogressBar'],
+							},
+						],
+					}),
+				);
 				return Promise.resolve(
 					this.SSC.getElementsByClassName('SSCprogressBar')[0],
 				);
@@ -271,15 +245,19 @@ class SSC {
 		}
 		if (this.settings.pauseButton) {
 			(() => {
-				let play = this.elementCreator(
-					'button',
-					'SSCpauseButton',
-					'Play / Pause',
-					'click',
-					this.togglePlay.bind(this),
+				this.SSC.appendChild(
+					ENCORE_SEC.jsonElementify({
+						type: 'button',
+						classes: ['SSCpauseButton'],
+						events: {
+							click: {
+								func: this.togglePlay.bind(this),
+							},
+						},
+						attributes: { ariaLabel: 'Play / Pause' },
+						innerHTML: `${SSCicons['pause']} ${SSCicons['play']}`,
+					}),
 				);
-				play.innerHTML = `${SSCicons['pause']} ${SSCicons['play']}`;
-				this.SSC.appendChild(play);
 				return Promise.resolve(
 					this.SSC.getElementsByClassName('SSCpauseButton')[0],
 				);
@@ -288,26 +266,36 @@ class SSC {
 			});
 		}
 		if (this.settings.sideButtons && !this.device) {
-			let left = this.elementCreator(
-					'button',
-					'SSCpageButton',
-					'Previous Page',
-					'click',
-					this.changePage.bind(this),
-					-1,
-				),
-				right = this.elementCreator(
-					'button',
-					'SSCpageButton',
-					'Next Page',
-					'click',
-					this.changePage.bind(this),
-					1,
-				);
-			left.innerHTML = SSCicons['leftArrow'];
-			right.innerHTML = SSCicons['rightArrow'];
-			this.SSC.appendChild(left);
-			this.SSC.appendChild(right);
+			ENCORE_SEC.appendChildren(this.SSC, [
+				ENCORE_SEC.jsonElementify({
+					type: 'button',
+					classes: ['SSCpageButton'],
+					events: {
+						click: {
+							func: this.changePage.bind(this),
+							var: -1,
+						},
+					},
+					attributes: {
+						ariaLabel: 'Previous Page',
+					},
+					innerHTML: SSCicons['leftArrow'],
+				}),
+				ENCORE_SEC.jsonElementify({
+					type: 'button',
+					classes: ['SSCpageButton'],
+					events: {
+						click: {
+							func: this.changePage.bind(this),
+							var: 1,
+						},
+					},
+					attributes: {
+						ariaLabel: 'Next Page',
+					},
+					innerHTML: SSCicons['rightArrow'],
+				}),
+			]);
 		}
 		return Promise.resolve(0);
 	}

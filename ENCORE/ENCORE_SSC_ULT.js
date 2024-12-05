@@ -319,12 +319,12 @@ class SSCU {
 		}
 		if (this.settings.thumbs) {
 			(() => {
-				let thumbcont = ENCORE_SEC.element({
+				let thumbcont = ENCORE_SEC.jsonElementify({
 					type: 'div',
 					classes: ['SSCUthumbs'],
 				});
 				for (let i = 0; i < this.pages.length; i++) {
-					let thumb = ENCORE_SEC.element({
+					let thumb = ENCORE_SEC.jsonElementify({
 						type: 'div',
 						classes: ['SSCUthumb'],
 						events: {
@@ -333,10 +333,12 @@ class SSCU {
 								var: i + 1,
 							},
 						},
-						children: ENCORE_SEC.element({
-							type: 'div',
-							classes: ['SSCUprogress'],
-						}),
+						children: [
+							{
+								type: 'div',
+								classes: ['SSCUprogress'],
+							},
+						],
 					});
 					thumbcont.appendChild(thumb);
 				}
@@ -351,7 +353,7 @@ class SSCU {
 		if (this.settings.pauseButton) {
 			(() => {
 				this.SSCU.appendChild(
-					ENCORE_SEC.element({
+					ENCORE_SEC.jsonElementify({
 						type: 'button',
 						classes: ['SSCUpauseButton'],
 						events: { click: { func: this.togglePlay.bind(this) } },
@@ -368,7 +370,7 @@ class SSCU {
 		}
 		if (this.settings.sideButtons && !this.device) {
 			ENCORE_SEC.appendChildren(this.SSCU, [
-				ENCORE_SEC.element({
+				ENCORE_SEC.jsonElementify({
 					type: 'button',
 					classes: ['SSCUpageButton'],
 					events: {
@@ -377,7 +379,7 @@ class SSCU {
 					attributes: { ariaLabel: 'Previous Page' },
 					innerHTML: SSCUicons['leftArrow'],
 				}),
-				ENCORE_SEC.element({
+				ENCORE_SEC.jsonElementify({
 					type: 'button',
 					classes: ['SSCUpageButton'],
 					events: {
