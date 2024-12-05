@@ -40,13 +40,17 @@ export function element(
 	}
 
 	if (childElements) {
-		appendChildren(element, childElements);
+		if (typeof childElements[Symbol.iterator] === 'function') {
+			appendChildren(element, childElements);
+		} else {
+			element.appendChild(childElements);
+		}
 	}
 
 	return element;
 }
 
-export function changeElement(
+export function editElement(
 	element,
 	elementClass,
 	elementAttributes,
