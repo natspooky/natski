@@ -1,0 +1,359 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+:root
+{
+    --VPSprogressbar: #729ef6;
+}
+@keyframes VPSbuffer {
+    from{
+        transform: translate(-50%,-50%) rotate(0deg);
+    }
+    to{
+        transform: translate(-50%,-50%) rotate(360deg);
+    }
+}
+::-webkit-media-controls,.VPS::-webkit-media-controls,.VPS::-webkit-media-controls-enclosure,::-webkit-media-controls-start-playback-button,::-webkit-media-controls-play-button,::-webkit-media-controls-panel
+{
+    display: none;
+    appearance: none;
+    -webkit-appearance: none;
+}
+.VPScontainer *, .VPScontainer
+{
+    box-sizing: border-box;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    font-family: 'Exo 2', sans-serif;
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color:  rgba(255, 255, 255, 0);
+}
+.VPSrange
+{
+   -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    cursor: pointer;
+}
+.VPSrange:focus
+{
+  outline: none;
+}
+.VPSrange::-webkit-slider-thumb
+{
+  -webkit-appearance: none;
+   appearance: none;
+   height: 35px;
+   width: 15px;
+}
+.VPSrange::-moz-range-thumb
+{
+   border: none;
+   border-radius: 0;
+   height: 35px;
+   width: 15px;
+}
+svg rect
+{
+    transition: 0.3s;
+}
+.VPScontainer
+{
+    position: relative;
+    box-sizing: border-box;
+    width: fit-content;
+    height: fit-content;
+    overflow: hidden;
+    border-radius: 0.5em;
+    max-width: 100%;
+    min-width: 260px;
+    min-height: 170px;
+    background-color: #000000;
+    display: block;
+    box-shadow: 0 10px 10px #00000020;
+}
+.VPScontainer .VPS
+{
+    position: relative;
+    pointer-events: none;
+    display: block;
+    width: 100%;
+    min-width: 260px;
+    min-height: 170px;
+}
+.VPScontainer .VPS.full
+{
+    width: 100%;
+    height: 100%;
+}
+.VPScontainer .buffer
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    height: min(70px, 40%);
+    display: block;
+    fill: #e9e9e9;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0s;
+    pointer-events: none;
+}
+.VPScontainer .buffer.active
+{
+    animation: VPSbuffer 1.5s linear infinite;
+    opacity: 1;
+    visibility: visible;
+    transition: 0.3s;
+}
+.VPScontainer .controlBox
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 1;
+    transition: 0.3s;
+}
+.VPScontainer .controlBox .playField
+{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    display: none;
+}
+.VPScontainer .controlBox .controlBar
+{
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+}
+.VPScontainer .controlBox .controlBar button
+{
+    position: absolute;
+    border: 0;
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.VPScontainer .controlBox .controlBar button svg,.VPScontainer .controlBox .settingsPanel button svg
+{
+    position: relative;
+    display: block;
+    height: 100%;
+    fill: #e9e9e9;
+    transition: 0.4s;
+}
+.VPScontainer .controlBox .controlBar .VPSplay
+{
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    height: 55px;
+    width: 55px;
+    padding: 0;
+    transition: 0.2s;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+}
+.VPScontainer .controlBox .controlBar .VPSscreen
+{
+    bottom: 45px;
+    right: 25px;
+    height: 15px;
+    width: 15px;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+}
+.VPScontainer .controlBox .controlBar .VPSsettings
+{
+    top: 25px;
+    right: 25px;
+    height: 20px;
+    width: 20px;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+}
+.VPScontainer .controlBox .controlBar button.setting svg
+{
+    transform: rotate(60deg);
+}
+.VPScontainer .controlBox .controlBar button.active .play, .VPScontainer .controlBox .controlBar button .pause, .VPScontainer .controlBox .controlBar .VPSbar
+{
+    display: none;
+}
+.VPScontainer .controlBox .controlBar button.active .pause, .VPScontainer .controlBox .controlBar button .play
+{
+    display: block;
+}
+.VPScontainer .controlBox .controlBar .VPSbar
+{
+    position: absolute;
+    left: 25px;
+    right: 25px;
+    height: 5px;
+    box-sizing: initial;
+    background-color: #ffffff50;
+    bottom: 20px;
+    border-radius: 100vmax;
+    transition: 0.2s;
+}
+.VPScontainer .controlBox .controlBar .VPSbar .VPSinput
+{
+    position: absolute;
+    top: 50%;
+    transform: translate(0,-50%);
+    left: -5px;
+    width: calc(100% + 10px);
+    height: 35px;
+    opacity: 0;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+}
+.VPScontainer .controlBox .controlBar .VPSbar .VPSbarChange
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    border-radius: 100vmax;
+    background-color: var(--VPSprogressbar)
+}
+.VPScontainer .controlBox .controlBar .VPSbar .VPSbarChange::before
+{
+    content: '';
+    position: absolute;
+    height: 15px;
+    width: 15px;
+    right: -7.5px;
+    top: 50%;
+    transform: translate(0,-50%);
+    border-radius: 100vmax;
+    background-color: var(--VPSprogressbar);
+}
+.VPScontainer .controlBox .VPStitle
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+}
+.VPScontainer .controlBox .controlBar .VPStime
+{
+    position: absolute;
+    bottom: 45px;
+    left: 25px;
+    width: auto;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    color: #e9e9e9;
+    align-items: center;
+}
+.VPScontainer .controlBox .settingsPanel
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100px;
+    overflow: hidden;
+    box-sizing: border-box;
+    transform: translate(-50%,-50%) scale(0.8);
+    border-radius: 0.5em;
+    visibility: hidden;
+    display: block;
+    pointer-events: none;
+    background-color: #1e1e1e;
+    opacity: 0;
+    transition: 0.3s;
+}
+.VPScontainer .controlBox .settingsPanel.active
+{
+    visibility: visible;
+    transform: translate(-50%,-50%) scale(1);
+    pointer-events: unset;
+    opacity: 1;
+}
+.VPScontainer .controlBox .settingsPanel button
+{
+    position: relative;
+    display: block;
+    border: 0;
+    height: 40px;
+    width: 120px;
+    margin: 0;
+    background-color: transparent;
+    color: #e9e9e9;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    overflow: hidden;
+    transition: 0.4s;
+    transition-delay: 0.1s;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+}
+.VPScontainer .controlBox .settingsPanel button svg
+{
+    height: 50%;
+}
+.VPSplaybackMenu
+{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 0;
+    transform: translateX(100%);
+    height: fit-content;
+    width: fit-content;
+    transition: 0.3s;
+}
+.VPSplaybackMenu.active
+{
+    transform: translateX(0);
+}
+.VPSmainSettings
+{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 0;
+    transform: translateX(0);
+    height: fit-content;
+    width: fit-content;
+    transition: 0.3s;
+}
+.VPSmainSettings.active
+{
+    transform: translateX(-100%);
+}
+.VPScontainer .controlBox .settingsPanel button:hover
+{
+    transition: 0s;
+    transition-delay: 0s;
+    background-color: #81818130;
+}
+.VPScontainer .controlBox .settingsPanel button svg
+{
+    transition: 0s;
+}
+.VPScontainer .controlBox .settingsPanel button.loop
+{
+    background-color: #ffffff30;
+}
+.VPScontainer .controlBox .settingsPanel button.loop svg
+{
+    transition: 0.3s;
+    transform: rotate(-180deg);
+}

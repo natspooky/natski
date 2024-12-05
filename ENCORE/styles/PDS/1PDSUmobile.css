@@ -1,0 +1,198 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+:root
+{
+    --PDSUcolor: #505050b0;
+    --PDSUaccent: #464646;
+}
+#PDSUinspectPanel *, #PDSUinspectPanel
+{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color:  rgba(255, 255, 255, 0);
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    font-family: 'Exo 2', sans-serif;
+    font-size: 16px;
+}
+#PDSUinspectPanel
+{
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    z-index: 9999;
+    overflow: hidden;
+    background-color: #000000a0;
+    pointer-events: none;
+    visibility: hidden;
+    transition: 0.3s;
+}
+#PDSUinspectPanel.active
+{
+    visibility: visible;
+    opacity: 1;
+    pointer-events: unset;
+    transition: 0.2s;
+}
+#PDSUinspectPanel section
+{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+#PDSUinspectPanel #PDSUinspectImage
+{
+    position: fixed;
+    height: 70%;
+    opacity: 0;
+    display: block;
+    border-radius: 13px;
+    box-shadow: 0 0 40px #00000060;
+    background-color: #f0f0f015;
+    border: 4px solid transparent;
+    pointer-events: none;
+    transform-origin: top left;
+}
+#PDSUinspectPanel #PDSUinspectImage.active
+{
+    height: auto;
+    width: 80%;
+}
+#PDSUinspectPanel #PDSUcloser
+{
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    border-radius: 13px;
+    padding: 15px;
+    border: 0;
+    background-color: #000000c0;
+    transition: 0.2s;
+}
+#PDSUinspectPanel #PDSUcloser:active
+{
+    background-color: #ffffff30;
+    transition: 0s;
+}
+#PDSUinspectPanel #PDSUcloser svg
+{
+    position: relative;
+    fill: #f0f0f0;
+    display: block;
+    width: 20px;
+    height: 20px;
+}
+#PDSUinspectPanel div
+{
+    position: absolute;
+    left: 50%;
+    bottom: 15px;
+    background-color: #000000;
+    padding: 10px 5px;
+    border-radius: 13px;
+    display: flex;
+    justify-content: center;
+    width: fit-content;
+    flex-wrap: nowrap;
+    transform: translateY(100px) translateX(-50%);
+    transition: 0.45s
+}
+#PDSUinspectPanel.active div
+{
+    transform: translateY(0) translateX(-50%);
+}
+#PDSUinspectPanel div span
+{
+    position: relative;
+    line-height: 25px;
+    width: 65px;
+    display: flex;
+    justify-content: center;
+    color: #f0f0f0;
+    white-space: nowrap;
+    user-select: none;
+}
+#PDSUinspectPanel div button
+{
+    position: relative;
+    background-color: transparent;
+    border: 0;
+    height: 25px;
+    width: 25px;
+    margin: 0 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.2s;
+}
+#PDSUinspectPanel div button svg
+{
+    position: relative;
+    fill: #f0f0f0;
+    display: block;
+    width: 15px;
+    height: 15px;
+}
+#PDSUinspectPanel div button:active
+{
+    background-color: #ffffff30;
+    transition: 0s;
+}
+#PDSUinspectPanel .PDSUbuttons
+{
+    position: absolute;
+    top: 50%;
+    cursor: pointer;
+    left: 15px;
+    width: fit-content;
+    transform: translateY(-50%);
+    padding: 25px 10px;
+    border-radius: 10px;
+    border: 0;
+    background-color: #000000c0;
+    transition: 0.2s;
+}
+#PDSUinspectPanel .PDSUbuttons:last-of-type
+{
+    left: unset;
+    right: 15px;
+}
+#PDSUinspectPanel .PDSUbuttons:active
+{
+    background-color: #ffffff30;
+    transition: 0s;
+}
+#PDSUinspectPanel .PDSUbuttons svg
+{
+    position: relative;
+    display: block;
+    fill: #fff;
+    height: 15px;
+}
+#PDSUloader
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: none;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    pointer-events: none;
+    border-right: 5px solid #f0f0f0;
+    border-top: 5px solid #f0f0f025;
+    border-bottom: 5px solid #f0f0f025;
+    border-left: 5px solid #f0f0f025;
+    animation: PDSU 1s linear infinite;
+}
+@keyframes PDSU
+{
+    from{transform: translate(-50%, -50%) rotate(0);}
+    to{transform: translate(-50%, -50%) rotate(360deg);}
+}
