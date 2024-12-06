@@ -4,7 +4,7 @@
  * MIT License
  */
 
-import { iconNames as GISValues } from 'https://natski.netlify.app/ENCORE/ENCORE_GIS_DATASET.mjs';
+import { iconNames as GISValues } from 'https://natski.netlify.app/ENCORE/dependencies/ENCORE_GIS_DATASET.mjs';
 
 var GISobj;
 
