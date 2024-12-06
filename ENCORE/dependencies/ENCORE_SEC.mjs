@@ -36,18 +36,11 @@ export function jsonElementify(elementData) {
 
 	if (elementData.children) {
 		for (const child of elementData.children) {
-			console.log(child);
 			element.appendChild(jsonElementify(child));
 		}
 	}
 
 	return element;
-}
-
-export function appendChildren(element, children) {
-	for (const child of children) {
-		element.appendChild(child);
-	}
 }
 
 export function elementJsonify(element) {
@@ -76,4 +69,10 @@ export function elementJsonify(element) {
 	}
 
 	return json;
+}
+
+export function appendChildren(element, children) {
+	for (const child of children) {
+		element.appendChild(child);
+	}
 }
