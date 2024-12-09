@@ -30,10 +30,9 @@ export function jsonElementify(elementData) {
 			element.addEventListener(
 				eventType,
 				event.var
-					? () =>
-							event.var === 'self'
-								? event.func(element)
-								: event.func(event.var)
+					? event.var === 'self'
+						? () => event.func(element)
+						: () => event.func(event.var)
 					: () => event.func(),
 			);
 		}
