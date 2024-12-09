@@ -68,7 +68,7 @@ function GISstyleCall(url, load) {
 function checkLoadedGIS() {
 	return document.readyState === 'complete';
 }
-
+/*
 if (checkLoadedGIS()) {
 	GISstyleCall(
 		`https://natski.netlify.app/lib/ENCORE_DB/GIS/${GIS_settings.style}GIS.css`,
@@ -82,3 +82,5 @@ window.addEventListener('load', function () {
 		loadGIS,
 	);
 });
+*/
+loadGIS();
