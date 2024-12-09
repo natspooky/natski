@@ -20,14 +20,13 @@ class GIS {
 	}
 
 	applyMasks() {
-		for (let i = 0; i < this.icons.length; i++) {
-			let iconName = this.icons[i].getAttribute('name');
+		for (const icon of this.icons) {
+			//let i = 0; i < this.icons.length; i++) {
+			let iconName = icon.getAttribute('name');
 			if (!iconName || !GISValues.includes(iconName)) {
 				iconName = 'alert';
 			}
-			this.icons[
-				i
-			].style.mask = `url(https://natski.netlify.app/icon/svg/ENCORE_GIS/${iconName}.svg) no-repeat center`;
+			icon.style.mask = `url(https://natski.netlify.app/icon/svg/ENCORE_GIS/${iconName}.svg) no-repeat center`;
 		}
 	}
 
@@ -52,35 +51,19 @@ function loadGIS() {
 	GISobj.init();
 }
 
-function GISstyleCall(url, load) {
+function GISstyleCall(url) {
 	let style = document.createElement('link');
 	style.rel = 'stylesheet';
 	style.type = 'text/css';
 	style.href = url;
 	document.getElementsByTagName('head')[0].appendChild(style);
-	let linkloaded = document.createElement('img');
-	linkloaded.onerror = function () {
-		if (load) load();
-	};
-	linkloaded.src = url;
 }
 
-function checkLoadedGIS() {
-	return document.readyState === 'complete';
-}
-/*
-if (checkLoadedGIS()) {
-	GISstyleCall(
-		`https://natski.netlify.app/lib/ENCORE_DB/GIS/${GIS_settings.style}GIS.css`,
-		loadGIS,
-	);
-}
-
-window.addEventListener('load', function () {
-	GISstyleCall(
-		`https://natski.netlify.app/lib/ENCORE_DB/GIS/${GIS_settings.style}GIS.css`,
-		loadGIS,
-	);
+window.addEventListener('DOMContentLoaded', function () {
+	if (GIS_settings.style) {
+		GISstyleCall(
+			`https://natski.netlify.app/lib/ENCORE_DB/GIS/${GIS_settings.style}GIS.css`,
+		);
+	}
+	loadGIS();
 });
-*/
-loadGIS();

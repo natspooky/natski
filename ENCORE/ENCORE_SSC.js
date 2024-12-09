@@ -17,19 +17,6 @@ const SSCicons = {
 	pause: '<svg class="SSCpause" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.4 850.4"><rect x="46.77" y=".17" width="239.38" height="850.07" rx="90.18" ry="90.18"/><rect x="564.25" y=".17" width="239.38" height="850.07" rx="93.7" ry="93.7"/></svg>',
 };
 
-function SSCstyleCall(url, settings, load) {
-	let style = document.createElement('link');
-	style.rel = 'stylesheet';
-	style.type = 'text/css';
-	style.href = url;
-	document.getElementsByTagName('head')[0].appendChild(style);
-	let linkloaded = document.createElement('img');
-	linkloaded.onerror = function () {
-		if (load) load(settings);
-	};
-	linkloaded.src = url;
-}
-
 function reloadSSC(settings) {
 	let sscVersions = document.getElementsByTagName('ssc');
 	for (let i = 0; i < SSCobjs.length; i++) {
@@ -460,32 +447,34 @@ class SSC {
 	}
 }
 
-function loadSSC(settings) {
-	let count = document.getElementsByTagName('ssc');
-	for (let i = 0; i < count.length; i++) {
-		SSCobjs.push(new SSC(count[i], settings));
+function SSCstyleCall(url) {
+	let style = document.createElement('link');
+	style.rel = 'stylesheet';
+	style.type = 'text/css';
+	style.href = url;
+	document.getElementsByTagName('head')[0].appendChild(style);
+}
+
+function load() {
+	let elements = document.getElementsByTagName('ssc');
+	if (!SSC_settings) {
+		var SSC_settings = {
+			thumbs: true,
+			progressBar: true,
+			sideButtons: true,
+			pauseButton: true,
+			timer: 10000,
+			style: 'STANDARD',
+		};
 	}
-	for (let i = 0; i < count.length; i++) {
-		SSCobjs[i].init();
+	if (SSC_settings.style) {
+		SSCstyleCall(
+			`https://natski.netlify.app/lib/ENCORE_DB/SSC/${SSC_settings.style}.css`,
+		);
+	}
+	for (const element of elements) {
+		SSCobjs.push(new SSC(element, SSC_settings).init());
 	}
 }
 
-function checkLoadedSSC() {
-	return document.readyState === 'complete';
-}
-
-if (checkLoadedSSC()) {
-	SSCstyleCall(
-		`https://natski.netlify.app/lib/ENCORE_DB/SSC/${SSC_settings.style}SSC.css`,
-		SSC_settings,
-		loadSSC,
-	);
-}
-
-window.addEventListener('load', function () {
-	SSCstyleCall(
-		`https://natski.netlify.app/lib/ENCORE_DB/SSC/${SSC_settings.style}SSC.css`,
-		SSC_settings,
-		loadSSC,
-	);
-});
+window.addEventListener('DOMContentLoaded', load);

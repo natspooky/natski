@@ -29,7 +29,12 @@ export function jsonElementify(elementData) {
 		for (const [eventType, event] of Object.entries(elementData.events)) {
 			element.addEventListener(
 				eventType,
-				event.var ? () => event.func(event.var) : () => event.func(),
+				event.var
+					? () =>
+							event.var === 'self'
+								? event.func(element)
+								: event.func(event.var)
+					: () => event.func(),
 			);
 		}
 	}

@@ -47,18 +47,6 @@ function reloadSSCU(settings) {
 	loadSSCU(settings);
 }
 
-function SSCUstyleCall(url, settings, load) {
-	let style = document.createElement('link');
-	style.rel = 'stylesheet';
-	style.type = 'text/css';
-	style.href = url;
-	document.getElementsByTagName('head')[0].appendChild(style);
-	let linkloaded = document.createElement('img');
-	linkloaded.onerror = function () {
-		if (load) load(settings);
-	};
-	linkloaded.src = url;
-}
 class SSCU {
 	constructor(element, settings) {
 		this.SSCU = element;
@@ -497,16 +485,6 @@ class SSCU {
 	}
 }
 
-function loadSSCU(settings) {
-	let count = document.getElementsByTagName('sscu');
-	for (let i = 0; i < count.length; i++) {
-		SSCUobjs.push(new SSCU(count[i], settings));
-	}
-	for (let i = 0; i < count.length; i++) {
-		SSCUobjs[i].init();
-	}
-}
-
 function checkLoadedSSCU() {
 	return document.readyState === 'complete';
 }
@@ -543,18 +521,37 @@ function previousSlideSSCU(index) {
 	SSCUobjs[index].changePage(-1);
 }
 
-if (checkLoadedSSCU()) {
-	SSCUstyleCall(
-		`https://natski.netlify.app/lib/ENCORE_DB/SSC/${SSCU_settings.style}SSCU.css`,
-		SSCU_settings,
-		loadSSCU,
-	);
+function SSCUstyleCall(url) {
+	let style = document.createElement('link');
+	style.rel = 'stylesheet';
+	style.type = 'text/css';
+	style.href = url;
+	document.getElementsByTagName('head')[0].appendChild(style);
 }
 
-window.addEventListener('load', function () {
-	SSCUstyleCall(
-		`https://natski.netlify.app/lib/ENCORE_DB/SSC/${SSCU_settings.style}SSCU.css`,
-		SSCU_settings,
-		loadSSCU,
-	);
-});
+function load() {
+	let elements = document.getElementsByTagName('sscu');
+	if (!SSCU_settings) {
+		var SSCU_settings = {
+			thumbs: true,
+			sideButtons: true,
+			pauseButton: true,
+			timer: 10000,
+			slideSpeed: 500,
+			style: 'STANDARD',
+		};
+	}
+	if (SSCU_settings.style) {
+		SSCUstyleCall(
+			`https://natski.netlify.app/lib/ENCORE_DB/SSCU/${SSCU_settings.style}.css`,
+		);
+	}
+	for (const element of elements) {
+		SSCUobjs.push(new SSCU(element, SSCU_settings).init());
+	}
+}
+
+window.addEventListener('DOMContentLoaded', load);
+
+window.pauseAllSSCU = pauseAllSSCU;
+window.playAllSSCU = playAllSSCU;
