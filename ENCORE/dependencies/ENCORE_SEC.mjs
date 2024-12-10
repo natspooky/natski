@@ -4,7 +4,7 @@
  * MIT License
  */
 
-export function jsonElementify(elements) {
+export function jsonElementify(elementData) {
 	let element = document.createElement(elementData.type);
 
 	if (elementData.innerHTML) {
