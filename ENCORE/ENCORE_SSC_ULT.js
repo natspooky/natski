@@ -328,7 +328,7 @@ class SSCU {
 		if (this.settings.sideButtons && !this.device) {
 			ENCORE_SEC.appendChildren(
 				this.SSCU,
-				ENCORE_SEC.jsonMultiElementify(
+				ENCORE_SEC.jsonMultiElementify([
 					{
 						type: 'button',
 						classes: ['SSCUpageButton'],
@@ -350,7 +350,7 @@ class SSCU {
 						attributes: { ariaLabel: 'Next Page' },
 						innerHTML: SSCUicons['rightArrow'],
 					},
-				),
+				]),
 			);
 		}
 		return Promise.resolve(0);

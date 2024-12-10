@@ -188,36 +188,39 @@ class SSC {
 			});
 		}
 		if (this.settings.sideButtons && !this.device) {
-			ENCORE_SEC.appendChildren(this.SSC, [
-				ENCORE_SEC.jsonElementify({
-					type: 'button',
-					classes: ['SSCpageButton'],
-					events: {
-						click: {
-							func: this.changePage.bind(this),
-							var: -1,
+			ENCORE_SEC.appendChildren(
+				this.SSC,
+				ENCORE_SEC.jsonMultiElementify([
+					{
+						type: 'button',
+						classes: ['SSCpageButton'],
+						events: {
+							click: {
+								func: this.changePage.bind(this),
+								var: -1,
+							},
 						},
-					},
-					attributes: {
-						ariaLabel: 'Previous Page',
-					},
-					innerHTML: SSCicons['leftArrow'],
-				}),
-				ENCORE_SEC.jsonElementify({
-					type: 'button',
-					classes: ['SSCpageButton'],
-					events: {
-						click: {
-							func: this.changePage.bind(this),
-							var: 1,
+						attributes: {
+							ariaLabel: 'Previous Page',
 						},
+						innerHTML: SSCicons['leftArrow'],
 					},
-					attributes: {
-						ariaLabel: 'Next Page',
+					{
+						type: 'button',
+						classes: ['SSCpageButton'],
+						events: {
+							click: {
+								func: this.changePage.bind(this),
+								var: 1,
+							},
+						},
+						attributes: {
+							ariaLabel: 'Next Page',
+						},
+						innerHTML: SSCicons['rightArrow'],
 					},
-					innerHTML: SSCicons['rightArrow'],
-				}),
-			]);
+				]),
+			);
 		}
 		return Promise.resolve(0);
 	}

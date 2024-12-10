@@ -82,7 +82,6 @@ export function appendChildren(element, children) {
 
 export function jsonMultiElementify(elements) {
 	let arr = [];
-	for (const [element] of Object.entries(elements))
-		arr.push(jsonElementify(element));
+	for (const element of elements) arr.push(jsonElementify(element));
 	return arr;
 }
