@@ -4,7 +4,7 @@
  * MIT License
  */
 
-export function jsonElementify(elementData) {
+export function jsonElementify(elements) {
 	let element = document.createElement(elementData.type);
 
 	if (elementData.innerHTML) {
@@ -71,7 +71,6 @@ export function elementJsonify(element) {
 	} else {
 		json.innerHTML = element.innerHTML;
 	}
-
 	return json;
 }
 
@@ -79,4 +78,11 @@ export function appendChildren(element, children) {
 	for (const child of children) {
 		element.appendChild(child);
 	}
+}
+
+export function jsonMultiElementify(elements) {
+	let arr = [];
+	for (const [element] of Object.entries(elements))
+		arr.push(jsonElementify(element));
+	return arr;
 }

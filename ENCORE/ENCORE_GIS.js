@@ -21,12 +21,16 @@ class GIS {
 
 	applyMasks() {
 		for (const icon of this.icons) {
-			//let i = 0; i < this.icons.length; i++) {
-			let iconName = icon.getAttribute('name');
-			if (!iconName || !GISValues.includes(iconName)) {
-				iconName = 'alert';
+			if (
+				icon.hasAttribute('name') &&
+				GISValues.includes(icon.getAttribute('name'))
+			) {
+				icon.style.mask = `url(https://natski.netlify.app/icon/svg/ENCORE_GIS/${icon.getAttribute(
+					'name',
+				)}.svg) no-repeat center`;
+			} else {
+				icon.style.mask = `url(https://natski.netlify.app/icon/svg/ENCORE_GIS/alert.svg) no-repeat center`;
 			}
-			icon.style.mask = `url(https://natski.netlify.app/icon/svg/ENCORE_GIS/${iconName}.svg) no-repeat center`;
 		}
 	}
 
@@ -47,8 +51,7 @@ class GIS {
 }
 
 function loadGIS() {
-	GISobj = new GIS();
-	GISobj.init();
+	GISobj = new GIS().init();
 }
 
 function GISstyleCall(url) {

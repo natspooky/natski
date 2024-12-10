@@ -17,36 +17,6 @@ const SSCUicons = {
 	pause: '<svg class="SSCUpause" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.4 850.4"><rect x="46.77" y=".17" width="239.38" height="850.07" rx="90.18" ry="90.18"/><rect x="564.25" y=".17" width="239.38" height="850.07" rx="93.7" ry="93.7"/></svg>',
 };
 
-function reloadSSCU(settings) {
-	let sscuVersions = document.getElementsByTagName('sscu');
-	for (let i = 0; i < SSCUobjs.length; i++) {
-		SSCUobjs[i].pause();
-	}
-	SSCUobjs = [];
-	for (let i = 0; i < sscuVersions.length; i++) {
-		if (sscuVersions[i].getElementsByClassName('banner-bg-u').length > 1) {
-			if (sscuVersions[i].getElementsByClassName('SSCUthumbs')[0]) {
-				sscuVersions[i]
-					.getElementsByClassName('SSCUthumbs')[0]
-					.remove();
-			}
-			if (sscuVersions[i].getElementsByClassName('SSCUpauseButton')[0]) {
-				sscuVersions[i]
-					.getElementsByClassName('SSCUpauseButton')[0]
-					.remove();
-			}
-			if (sscuVersions[i].getElementsByClassName('SSCUpageButton')[0]) {
-				for (let y = 0; y < 2; y++) {
-					sscuVersions[i]
-						.getElementsByClassName('SSCUpageButton')
-						[1 - y].remove();
-				}
-			}
-		}
-	}
-	loadSSCU(settings);
-}
-
 class SSCU {
 	constructor(element, settings) {
 		this.SSCU = element;
@@ -65,6 +35,7 @@ class SSCU {
 		this.videos = [];
 		this.paused = false;
 		this.pauseMemory = false;
+		this.observer;
 	}
 
 	directPage(index) {
@@ -87,9 +58,9 @@ class SSCU {
 
 	togglePlay() {
 		if (this.paused) {
-			this.play();
+			this.SSCU.setAttribute('paused', false);
 		} else {
-			this.pause();
+			this.SSCU.setAttribute('paused', true);
 		}
 	}
 
@@ -161,8 +132,8 @@ class SSCU {
 				),
 				5,
 			);
-			for (let i = 0; i < this.thumbs.length; i++) {
-				this.thumbs[i].classList.add('SSCUhidden');
+			for (const thumb of this.thumbs) {
+				thumb.classList.add('SSCUhidden');
 			}
 			for (
 				let i = Math.min(
@@ -217,8 +188,8 @@ class SSCU {
 		}
 		if (this.settings.thumbs) {
 			this.thumbMinifier();
-			for (let i = 0; i < this.thumbs.length; i++) {
-				this.thumbs[i].classList.remove('SSCUselected');
+			for (const thumb of this.thumbs) {
+				thumb.classList.remove('SSCUselected');
 			}
 			this.thumbs[this.index - 1].classList.add('SSCUselected');
 		}
@@ -299,11 +270,9 @@ class SSCU {
 	//make this use extra classes E.G. .prior.looping
 
 	createElements() {
-		for (let i = 0; i < this.pages.length; i++) {
-			this.pages[
-				i
-			].style.transition = `transform ${this.swapTimer}ms ease-in-out, visibility ${this.swapTimer}ms ease-in-out, opacity ${this.swapTimer}ms`;
-			this.pages[i].classList.add('SSCUloaded');
+		for (const page of this.pages) {
+			page.style.transition = `transform ${this.swapTimer}ms ease-in-out, visibility ${this.swapTimer}ms ease-in-out, opacity ${this.swapTimer}ms`;
+			page.classList.add('SSCUloaded');
 		}
 		if (this.settings.thumbs) {
 			(() => {
@@ -357,33 +326,39 @@ class SSCU {
 			});
 		}
 		if (this.settings.sideButtons && !this.device) {
-			ENCORE_SEC.appendChildren(this.SSCU, [
-				ENCORE_SEC.jsonElementify({
-					type: 'button',
-					classes: ['SSCUpageButton'],
-					events: {
-						click: { func: this.changePage.bind(this), var: -1 },
+			ENCORE_SEC.appendChildren(
+				this.SSCU,
+				ENCORE_SEC.jsonMultiElementify(
+					{
+						type: 'button',
+						classes: ['SSCUpageButton'],
+						events: {
+							click: {
+								func: this.changePage.bind(this),
+								var: -1,
+							},
+						},
+						attributes: { ariaLabel: 'Previous Page' },
+						innerHTML: SSCUicons['leftArrow'],
 					},
-					attributes: { ariaLabel: 'Previous Page' },
-					innerHTML: SSCUicons['leftArrow'],
-				}),
-				ENCORE_SEC.jsonElementify({
-					type: 'button',
-					classes: ['SSCUpageButton'],
-					events: {
-						click: { func: this.changePage.bind(this), var: 1 },
+					{
+						type: 'button',
+						classes: ['SSCUpageButton'],
+						events: {
+							click: { func: this.changePage.bind(this), var: 1 },
+						},
+						attributes: { ariaLabel: 'Next Page' },
+						innerHTML: SSCUicons['rightArrow'],
 					},
-					attributes: { ariaLabel: 'Next Page' },
-					innerHTML: SSCUicons['rightArrow'],
-				}),
-			]);
+				),
+			);
 		}
 		return Promise.resolve(0);
 	}
 
 	checkMedia() {
-		for (let i = 0; i < this.pages.length; i++) {
-			let videos = this.pages[i].getElementsByTagName('video');
+		for (const page of this.pages) {
+			let videos = page.getElementsByTagName('video');
 			if (videos) {
 				this.hasVideos = true;
 				let videoArr = Array.prototype.slice
@@ -401,7 +376,7 @@ class SSCU {
 				this.videos.push(0);
 			}
 			Array.prototype.slice
-				.call(this.pages[i].getElementsByTagName('img'))
+				.call(page.getElementsByTagName('img'))
 				.forEach((image) => {
 					image.loading = 'eager';
 					image.draggable = false;
@@ -446,11 +421,35 @@ class SSCU {
 						this.changePage(1);
 					}
 				}
-				for (let i = 0; i < this.pages.length; i++) {
-					this.pages[i].style.opacity = '1';
+				for (const page of this.pages) {
+					page.style.opacity = '1';
 				}
 			});
 		}
+	}
+
+	mutationObserver() {
+		this.observer = new MutationObserver((mutations) => {
+			mutations.forEach((mutation) => {
+				if (
+					mutation.type === 'attributes' &&
+					mutation.target.hasAttribute('paused')
+				) {
+					if (mutation.target.getAttribute('paused') === 'true') {
+						this.pause();
+					} else {
+						this.play();
+					}
+				}
+			});
+		});
+		this.observer.observe(this.SSCU, {
+			attributes: true,
+			subtree: false,
+			childList: false,
+			characterData: false,
+			attributeFilter: ['paused'],
+		});
 	}
 
 	pageFocus() {
@@ -458,7 +457,7 @@ class SSCU {
 			if (this.pauseMemory) {
 				this.pauseMemory = false;
 			} else {
-				this.play();
+				this.SSCU.setAttribute('paused', false);
 			}
 		});
 		window.addEventListener('blur', () => {
@@ -466,7 +465,7 @@ class SSCU {
 				this.pauseMemory = true;
 			} else {
 				this.pauseMemory = false;
-				this.pause();
+				this.SSCU.setAttribute('paused', true);
 			}
 		});
 	}
@@ -476,6 +475,7 @@ class SSCU {
 			this.checkMedia();
 			this.swipeSystem();
 			this.pageFocus();
+			this.mutationObserver();
 			this.createElements().then(() => {
 				this.directPage(1);
 			});
@@ -483,42 +483,6 @@ class SSCU {
 			this.pages[0].classList.add('SSCUloaded');
 		}
 	}
-}
-
-function checkLoadedSSCU() {
-	return document.readyState === 'complete';
-}
-
-function pauseSSCU(index) {
-	if (SSCUobjs[index].checkPages()) return;
-	SSCUobjs[index].pause();
-}
-
-function playSSCU(index) {
-	if (SSCUobjs[index].checkPages()) return;
-	SSCUobjs[index].play();
-}
-
-function pauseAllSSCU() {
-	for (let i = 0; i < SSCUobjs.length; i++) {
-		pauseSSCU(i);
-	}
-}
-
-function playAllSSCU() {
-	for (let i = 0; i < SSCUobjs.length; i++) {
-		playSSCU(i);
-	}
-}
-
-function nextSlideSSCU(index) {
-	if (SSCUobjs[index].checkPages()) return;
-	SSCUobjs[index].changePage(1);
-}
-
-function previousSlideSSCU(index) {
-	if (SSCUobjs[index].checkPages()) return;
-	SSCUobjs[index].changePage(-1);
 }
 
 function SSCUstyleCall(url) {
@@ -531,7 +495,9 @@ function SSCUstyleCall(url) {
 
 function load() {
 	let elements = document.getElementsByTagName('sscu');
-	if (!SSCU_settings) {
+	/*if (!SSCU_settings) {
+		console.log(SSCU_settings, !SSCU_settings);
+		console.log('no SSCU settings found, reverting to default');
 		var SSCU_settings = {
 			thumbs: true,
 			sideButtons: true,
@@ -540,10 +506,10 @@ function load() {
 			slideSpeed: 500,
 			style: 'STANDARD',
 		};
-	}
+	}*/
 	if (SSCU_settings.style) {
 		SSCUstyleCall(
-			`https://natski.netlify.app/lib/ENCORE_DB/SSCU/${SSCU_settings.style}.css`,
+			`https://natski.netlify.app/ENCORE/styles/SSCU/${SSCU_settings.style}.css`,
 		);
 	}
 	for (const element of elements) {
@@ -552,6 +518,3 @@ function load() {
 }
 
 window.addEventListener('DOMContentLoaded', load);
-
-window.pauseAllSSCU = pauseAllSSCU;
-window.playAllSSCU = playAllSSCU;

@@ -17,71 +17,6 @@ const SSCicons = {
 	pause: '<svg class="SSCpause" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.4 850.4"><rect x="46.77" y=".17" width="239.38" height="850.07" rx="90.18" ry="90.18"/><rect x="564.25" y=".17" width="239.38" height="850.07" rx="93.7" ry="93.7"/></svg>',
 };
 
-function reloadSSC(settings) {
-	let sscVersions = document.getElementsByTagName('ssc');
-	for (let i = 0; i < SSCobjs.length; i++) {
-		SSCobjs[i].pause();
-	}
-	SSCobjs = [];
-	for (let i = 0; i < sscVersions.length; i++) {
-		if (sscVersions[i].getElementsByClassName('banner-bg').length > 1) {
-			if (sscVersions[i].getElementsByClassName('SSCthumbs')[0]) {
-				sscVersions[i].getElementsByClassName('SSCthumbs')[0].remove();
-			}
-			if (sscVersions[i].getElementsByClassName('SSCprogress')[0]) {
-				sscVersions[i]
-					.getElementsByClassName('SSCprogress')[0]
-					.remove();
-			}
-			if (sscVersions[i].getElementsByClassName('SSCpauseButton')[0]) {
-				sscVersions[i]
-					.getElementsByClassName('SSCpauseButton')[0]
-					.remove();
-			}
-			if (sscVersions[i].getElementsByClassName('SSCpageButton')[0]) {
-				for (let y = 0; y < 2; y++) {
-					sscVersions[i]
-						.getElementsByClassName('SSCpageButton')
-						[1 - y].remove();
-				}
-			}
-		}
-	}
-	loadSSC(settings);
-}
-
-function pauseSSC(index) {
-	if (SSCobjs[index].checkPages()) return;
-	SSCobjs[index].pause();
-}
-
-function playSSC(index) {
-	if (SSCobjs[index].checkPages()) return;
-	SSCobjs[index].play();
-}
-
-function pauseAllSSC() {
-	for (let i = 0; i < SSCobjs.length; i++) {
-		pauseSSC(i);
-	}
-}
-
-function playAllSSC() {
-	for (let i = 0; i < SSCobjs.length; i++) {
-		playSSC(i);
-	}
-}
-
-function nextSlideSSC(index) {
-	if (SSCobjs[index].checkPages()) return;
-	SSCobjs[index].changePage(1);
-}
-
-function previousSlideSSC(index) {
-	if (SSCobjs[index].checkPages()) return;
-	SSCobjs[index].changePage(-1);
-}
-
 class SSC {
 	constructor(element, settings) {
 		this.SSC = element;
@@ -150,9 +85,9 @@ class SSC {
 
 	togglePlay() {
 		if (this.paused) {
-			this.play();
+			this.SSC.setAttribute('paused', false);
 		} else {
-			this.pause();
+			this.SSC.setAttribute('paused', false);
 		}
 	}
 
@@ -414,13 +349,37 @@ class SSC {
 		}
 	}
 
+	mutationObserver() {
+		this.observer = new MutationObserver((mutations) => {
+			mutations.forEach((mutation) => {
+				if (
+					mutation.type === 'attributes' &&
+					mutation.target.hasAttribute('paused')
+				) {
+					if (mutation.target.getAttribute('paused') === 'true') {
+						this.pause();
+					} else {
+						this.play();
+					}
+				}
+			});
+		});
+		this.observer.observe(this.SSC, {
+			attributes: true,
+			subtree: false,
+			childList: false,
+			characterData: false,
+			attributeFilter: ['paused'],
+		});
+	}
+
 	pageFocus() {
 		window.addEventListener('focus', () => {
 			//if(this.paused == false)
 			if (this.pauseMemory) {
 				this.pauseMemory = false;
 			} else {
-				this.play();
+				this.SSC.setAttribute('paused', false);
 			}
 		});
 		window.addEventListener('blur', () => {
@@ -428,7 +387,7 @@ class SSC {
 				this.pauseMemory = true;
 			} else {
 				this.pauseMemory = false;
-				this.pause();
+				this.SSC.setAttribute('paused', true);
 			}
 		});
 	}
@@ -438,6 +397,7 @@ class SSC {
 			this.checkMedia();
 			this.swipeSystem();
 			this.pageFocus();
+			this.mutationObserver();
 			this.createElements().then(() => {
 				this.directPage(1);
 			});
@@ -457,7 +417,7 @@ function SSCstyleCall(url) {
 
 function load() {
 	let elements = document.getElementsByTagName('ssc');
-	if (!SSC_settings) {
+	/*if (!SSC_settings) {
 		var SSC_settings = {
 			thumbs: true,
 			progressBar: true,
@@ -466,7 +426,7 @@ function load() {
 			timer: 10000,
 			style: 'STANDARD',
 		};
-	}
+	}*/
 	if (SSC_settings.style) {
 		SSCstyleCall(
 			`https://natski.netlify.app/lib/ENCORE_DB/SSC/${SSC_settings.style}.css`,

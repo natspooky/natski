@@ -21,8 +21,10 @@ function loadCMS(settings) {
 	})(navigator.userAgent || navigator.vendor || window.opera);
 	if (!check && document.getElementsByClassName('CMS')[0] != undefined) {
 		document.getElementsByClassName('CMS')[0].style.display = 'block';
-		CMSobj = new CMS(document.getElementsByClassName('CMS')[0], settings);
-		CMSobj.init();
+		CMSobj = new CMS(
+			document.getElementsByClassName('CMS')[0],
+			settings,
+		).init();
 	}
 }
 
