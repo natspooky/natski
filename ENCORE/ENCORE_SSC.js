@@ -5,7 +5,7 @@
  */
 
 import * as ENCORE_SEC from 'https://natski.netlify.app/ENCORE/dependencies/ENCORE_SEC.mjs';
-import * as ENCORE_DP from 'https://natski.netlify.app/ENCORE/dependencies/ENCORE_nav.mjs';
+import * as ENCORE_DP from 'https://natski.netlify.app/ENCORE/dependencies/ENCORE_DP.mjs';
 
 var SSCobjs = [];
 const SSCicons = {
@@ -119,13 +119,13 @@ class SSC {
 		if (this.settings.thumbs) {
 			(() => {
 				let thumbcont = ENCORE_SEC.jsonElementify({
-					type: 'div',
+					tag: 'div',
 					classes: ['SSCthumbs'],
 				});
 				for (let i = 0; i < this.pages.length; i++) {
 					thumbcont.appendChild(
 						ENCORE_SEC.jsonElementify({
-							type: 'div',
+							tag: 'div',
 							classes: ['SSCthumb'],
 							events: {
 								click: {
@@ -148,11 +148,11 @@ class SSC {
 			(() => {
 				this.SSC.appendChild(
 					ENCORE_SEC.jsonElementify({
-						type: 'div',
+						tag: 'div',
 						classes: ['SSCprogress'],
 						children: [
 							{
-								type: 'div',
+								tag: 'div',
 								classes: ['SSCprogressBar'],
 							},
 						],
@@ -169,7 +169,7 @@ class SSC {
 			(() => {
 				this.SSC.appendChild(
 					ENCORE_SEC.jsonElementify({
-						type: 'button',
+						tag: 'button',
 						classes: ['SSCpauseButton'],
 						events: {
 							click: {
@@ -192,7 +192,7 @@ class SSC {
 				this.SSC,
 				ENCORE_SEC.jsonMultiElementify([
 					{
-						type: 'button',
+						tag: 'button',
 						classes: ['SSCpageButton'],
 						events: {
 							click: {
@@ -206,7 +206,7 @@ class SSC {
 						innerHTML: SSCicons['leftArrow'],
 					},
 					{
-						type: 'button',
+						tag: 'button',
 						classes: ['SSCpageButton'],
 						events: {
 							click: {

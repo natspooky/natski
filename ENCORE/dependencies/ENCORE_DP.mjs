@@ -1,5 +1,5 @@
 /*!
- * ENCORE DEPENDENCIES
+ * ENCORE DP
  * Author: NATSKI
  * MIT License
  */
@@ -15,4 +15,98 @@ export function userDevice() {
 			agent.substr(0, 4) && 'ontouchend' in document,
 		)
 	);
+}
+
+export function getMIME(file) {
+	switch (getExtention(file)) {
+		case '.html':
+		case '.htm':
+			return 'text/html';
+		case '.css':
+			return 'text/css';
+		case '.js':
+		case '.mjs':
+			return 'text/javascript';
+		case '.csv':
+			return 'text/csv';
+		case '.txt':
+			return 'text/plain';
+		case '.json':
+			return 'application/json';
+		case '.xhtml':
+			return 'application/xhtml+xml';
+		case '.xml':
+			return 'application/xml';
+		case '.ogx':
+			return 'application/ogg';
+		case '.ico':
+			return 'image/vnd.microsoft.icon';
+		case '.jpg':
+		case '.jpeg':
+			return 'image/jpeg';
+		case '.png':
+			return 'image/png';
+		case '.gif':
+			return 'image/gif';
+		case '.webp':
+			return 'image/webp';
+		case '.svg':
+			return 'image/svg+xml';
+		case '.apng':
+			return 'image/apng';
+		case '.avif':
+			return 'image/avif';
+		case '.bmp':
+			return 'image/bmp';
+		case '.tiff':
+		case '.tif':
+			return 'image/tiff';
+		case '.mp4':
+			return 'video/mp4';
+		case '.ts':
+			return 'video/mp2t';
+		case '.avi':
+			return 'video/x-msvideo';
+		case '.webm':
+			return 'video/webm';
+		case '.mpeg':
+			return 'video/mpeg';
+		case '.ogv':
+			return 'video/ogg';
+		case '.aac':
+			return 'audio/aac';
+		case '.mp3':
+			return 'audio/mpeg';
+		case '.wav':
+			return 'audio/wav';
+		case '.weba':
+			return 'audio/webm';
+		case '.oga':
+		case '.opus':
+			return 'audio/ogg';
+		case '.ttf':
+			return 'font/ttf';
+		case '.otf':
+			return 'font/otf';
+		case '.woff':
+			return 'font/woff';
+		case '.woff2':
+			return 'font/woff2';
+		default:
+			return 'application/octet-stream';
+	}
+}
+
+function getExtention(file) {
+	if (file.indexOf('.') != -1) {
+		return file.substring(file.lastIndexOf('.'));
+	}
+	return 'unknown';
+}
+
+function getName(file) {
+	if (file.indexOf('.') != -1 && file.indexOf('/') != -1) {
+		return file.substring(file.lastIndexOf('/'), file.indexOf('.'));
+	}
+	return 'unknown';
 }

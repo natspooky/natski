@@ -176,11 +176,11 @@ class CMS {
 
 	fadeOut(event) {
 		let distance = Math.sqrt(
-			(this.CMS.offsetLeft + this.CMS.offsetWidth / 2 - event.clientX) **
+			(event.clientX - this.CMS.offsetLeft - this.CMS.offsetWidth / 2) **
 				2 +
-				(this.CMS.offsetTop +
-					this.CMS.offsetHeight / 2 -
-					event.clientY) **
+				(event.clientY -
+					this.CMS.offsetTop -
+					this.CMS.offsetHeight / 2) **
 					2,
 		);
 		if (distance >= 200) {

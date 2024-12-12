@@ -5,7 +5,7 @@
  */
 
 export function jsonElementify(elementData) {
-	let element = document.createElement(elementData.type);
+	let element = document.createElement(elementData.tag);
 
 	if (elementData.innerHTML) {
 		element.innerHTML = elementData.innerHTML;
@@ -50,7 +50,7 @@ export function jsonElementify(elementData) {
 export function elementJsonify(element) {
 	let json = {};
 
-	json.type = element.tagName;
+	json.tag = element.tagName;
 
 	if (element.attributes) {
 		json.attributes = {};

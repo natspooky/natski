@@ -1,3 +1,9 @@
+/*!
+ * ENCORE GIS DATA
+ * Author: NATSKI
+ * MIT License
+ */
+
 export const iconNames = [
 	'home',
 	'terminal',

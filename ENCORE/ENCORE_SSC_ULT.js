@@ -5,7 +5,7 @@
  */
 
 import * as ENCORE_SEC from 'https://natski.netlify.app/ENCORE/dependencies/ENCORE_SEC.mjs';
-import * as ENCORE_DP from 'https://natski.netlify.app/ENCORE/dependencies/ENCORE_nav.mjs';
+import * as ENCORE_DP from 'https://natski.netlify.app/ENCORE/dependencies/ENCORE_DP.mjs';
 
 var SSCUobjs = [];
 const SSCUicons = {
@@ -277,12 +277,12 @@ class SSCU {
 		if (this.settings.thumbs) {
 			(() => {
 				let thumbcont = ENCORE_SEC.jsonElementify({
-					type: 'div',
+					tag: 'div',
 					classes: ['SSCUthumbs'],
 				});
 				for (let i = 0; i < this.pages.length; i++) {
 					let thumb = ENCORE_SEC.jsonElementify({
-						type: 'div',
+						tag: 'div',
 						classes: ['SSCUthumb'],
 						events: {
 							click: {
@@ -292,7 +292,7 @@ class SSCU {
 						},
 						children: [
 							{
-								type: 'div',
+								tag: 'div',
 								classes: ['SSCUprogress'],
 							},
 						],
@@ -311,7 +311,7 @@ class SSCU {
 			(() => {
 				this.SSCU.appendChild(
 					ENCORE_SEC.jsonElementify({
-						type: 'button',
+						tag: 'button',
 						classes: ['SSCUpauseButton'],
 						events: { click: { func: this.togglePlay.bind(this) } },
 						attributes: { ariaLabel: 'Play / Pause' },
@@ -330,7 +330,7 @@ class SSCU {
 				this.SSCU,
 				ENCORE_SEC.jsonMultiElementify([
 					{
-						type: 'button',
+						tag: 'button',
 						classes: ['SSCUpageButton'],
 						events: {
 							click: {
@@ -342,7 +342,7 @@ class SSCU {
 						innerHTML: SSCUicons['leftArrow'],
 					},
 					{
-						type: 'button',
+						tag: 'button',
 						classes: ['SSCUpageButton'],
 						events: {
 							click: { func: this.changePage.bind(this), var: 1 },
