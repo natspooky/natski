@@ -9,41 +9,45 @@ import * as ENCORE_SEC from 'https://natski.netlify.app/ENCORE/dependencies/ENCO
 export class PAS {
 	constructor() {
 		this.alerts = [];
-		this.timer = false;
+		this.timer = true;
 	}
 
 	add(data) {
-		this.alerts.push(() => {
-			new Promise((resolve) => {
-				console.log('prerun');
-				document.body.appendChild(resolve(this.createElements(data)));
-				console.log('run');
-			}).then((element) => {
-				console.log('postrun');
-				element.classList.add('open');
-				if (!data.pmt) {
-					this.createTimer(data.dur, element);
-				}
+		if (!this.alerts.length > 0)
+			this.alerts.push(() => {
+				new Promise((resolve) => {
+					console.log('prerun');
+					let y = this.createElements(data);
+					document.body.appendChild(y);
+					resolve(y);
+					console.log('run');
+				}).then((element) => {
+					console.log('postrun');
+					element.classList.add('open');
+					if (!data.pmt) {
+						this.createTimer(data.dur, element);
+					}
+				});
 			});
-		});
 		this.loadAlert();
 	}
 
 	createTimer(duration, element) {
-		this.timer = true;
+		this.timer = false;
 		setTimeout(() => {
 			element.classList.remove('open');
 			setTimeout(() => {
 				element.remove();
-				this.timer = false;
+				this.timer = true;
 				this.loadAlert();
 			}, 501);
 		}, duration);
 	}
 
 	loadAlert() {
-		if (this.alerts.length > 0 && !this.timer) {
+		if (this.alerts.length > 0 && this.timer) {
 			let x = this.alerts.shift();
+			console.log(x);
 			x();
 		}
 	}
