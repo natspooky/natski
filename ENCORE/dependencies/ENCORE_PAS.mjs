@@ -17,9 +17,9 @@ export class PAS {
 			new Promise((resolve) => {
 				console.log('prerun');
 				let y = this.createElements(data);
-
+				document.body.appendChild(y);
 				setTimeout(() => {
-					document.body.appendChild(resolve(y));
+					resolve(y);
 				}, 10);
 				console.log('run');
 			}).then((element) => {
