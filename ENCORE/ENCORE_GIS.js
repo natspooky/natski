@@ -4,7 +4,7 @@
  * MIT License
  */
 
-import { iconNames as GISValues } from 'https://natski.netlify.app/ENCORE/dependencies/ENCORE_GIS_DATASET.mjs';
+import * as GIS_data from 'https://natski.netlify.app/ENCORE/dependencies/ENCORE_GIS_DATASET.mjs';
 
 var GISobj;
 
@@ -23,13 +23,13 @@ class GIS {
 		for (const icon of this.icons) {
 			if (
 				icon.hasAttribute('name') &&
-				GISValues.includes(icon.getAttribute('name'))
+				GIS_data.values.includes(icon.getAttribute('name'))
 			) {
-				icon.style.mask = `url(https://natski.netlify.app/icon/svg/ENCORE_GIS/${icon.getAttribute(
+				icon.style.mask = `url(https://natski.netlify.app/ENCORE/dependencies/GIS_icons/${icon.getAttribute(
 					'name',
 				)}.svg) no-repeat center`;
 			} else {
-				icon.style.mask = `url(https://natski.netlify.app/icon/svg/ENCORE_GIS/alert.svg) no-repeat center`;
+				icon.style.mask = `url(https://natski.netlify.app/ENCORE/dependencies/GIS_icons/alert.svg) no-repeat center`;
 			}
 		}
 	}
@@ -54,19 +54,4 @@ function loadGIS() {
 	GISobj = new GIS().init();
 }
 
-function GISstyleCall(url) {
-	let style = document.createElement('link');
-	style.rel = 'stylesheet';
-	style.type = 'text/css';
-	style.href = url;
-	document.getElementsByTagName('head')[0].appendChild(style);
-}
-
-window.addEventListener('DOMContentLoaded', function () {
-	if (GIS_settings.style) {
-		GISstyleCall(
-			`https://natski.netlify.app/lib/ENCORE_DB/GIS/${GIS_settings.style}GIS.css`,
-		);
-	}
-	loadGIS();
-});
+window.addEventListener('DOMContentLoaded', loadGIS);

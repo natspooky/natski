@@ -4,7 +4,7 @@
  * MIT License
  */
 
-export const iconNames = [
+export const values = [
 	'home',
 	'terminal',
 	'avatar',
