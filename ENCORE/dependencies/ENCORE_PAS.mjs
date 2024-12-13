@@ -13,22 +13,23 @@ export class PAS {
 	}
 
 	add(data) {
-		if (!this.alerts.length > 0)
-			this.alerts.push(() => {
-				new Promise((resolve) => {
-					console.log('prerun');
-					let y = this.createElements(data);
-					document.body.appendChild(y);
-					resolve(y);
-					console.log('run');
-				}).then((element) => {
-					console.log('postrun');
-					element.classList.add('open');
-					if (!data.pmt) {
-						this.createTimer(data.dur, element);
-					}
-				});
+		const alert = () => {
+			new Promise((resolve) => {
+				console.log('prerun');
+				let y = this.createElements(data);
+				document.body.appendChild(y);
+				resolve(y);
+				console.log('run');
+			}).then((element) => {
+				console.log('postrun');
+				element.classList.add('open');
+				if (!data.pmt) {
+					this.createTimer(data.dur, element);
+				}
 			});
+		};
+
+		this.alerts.push(alert);
 		this.loadAlert();
 	}
 
