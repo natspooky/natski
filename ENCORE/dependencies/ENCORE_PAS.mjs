@@ -17,8 +17,10 @@ export class PAS {
 			new Promise((resolve) => {
 				console.log('prerun');
 				let y = this.createElements(data);
-				document.body.appendChild(y);
-				resolve(y);
+
+				setTimeout(() => {
+					document.body.appendChild(resolve(y));
+				}, 10);
 				console.log('run');
 			}).then((element) => {
 				console.log('postrun');
