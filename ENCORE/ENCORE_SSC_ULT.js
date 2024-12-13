@@ -472,7 +472,8 @@ class SSCU {
 	}
 
 	init() {
-		new PAS().add({
+		let x = new PAS();
+		x.add({
 			dur: 2000,
 			txt: 'hello',
 			icn: 'alert',

@@ -46,38 +46,38 @@ export class PAS {
 
 	generateAlert(data) {
 		return ENCORE_SEC.jsonElementify({
-			type: 'div',
+			tag: 'div',
 			classes: ['PAS-popup'],
 			attributes: {
 				style: data.col ? `background-color: ${data.col}` : null,
 			},
 			children: [
 				{
-					type: 'div',
+					tag: 'div',
 					children: [
 						{
-							type: 'GIS',
+							tag: 'GIS',
 							attributes: { name: data.icn },
 						},
 						{
-							type: 'span',
+							tag: 'span',
 						},
 						{
-							type: 'p',
+							tag: 'p',
 							innerHTML: data.txt,
 						},
 					],
 				},
 				data.pmt
 					? {
-							type: 'div',
+							tag: 'div',
 							children: [
 								{
-									type: data.pmt,
+									tag: data.pmt,
 									events: {},
 								},
 								{
-									type: 'button',
+									tag: 'button',
 									events: {
 										click: {
 											func: this.saveValue.bind(this),
