@@ -23,7 +23,7 @@ export class PAS {
 			}).then((element) => {
 				element.classList.add('open');
 				if (!data.pmt) {
-					this.timer = this.createTimer(data.dur, element);
+					this.createTimer(data.dur, element);
 				}
 			});
 		};
@@ -38,7 +38,6 @@ export class PAS {
 		setTimeout(() => {
 			element.classList.remove('open');
 			setTimeout(() => {
-				this.timer = undefined;
 				element.remove();
 				this.loadAlert();
 			}, 501);
