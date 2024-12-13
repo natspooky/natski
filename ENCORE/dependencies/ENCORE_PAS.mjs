@@ -12,7 +12,7 @@ export class PAS {
 		this.timer = false;
 	}
 
-	addalert(data) {
+	add(data) {
 		this.alerts.push(() =>
 			new Promise((resolve) => {
 				document.body.appendChild(resolve(this.generateAlert(data)));
