@@ -29,11 +29,13 @@ export class PAS {
 		};
 
 		this.alerts.push(alert);
-		this.loadAlert();
+		if (!this.alerts.length > 1) {
+			this.loadAlert();
+		}
 	}
 
 	createTimer(duration, element) {
-		return setTimeout(() => {
+		setTimeout(() => {
 			element.classList.remove('open');
 			setTimeout(() => {
 				this.timer = undefined;
@@ -44,7 +46,7 @@ export class PAS {
 	}
 
 	loadAlert() {
-		if (this.alerts.length > 0 && !this.timer) {
+		if (this.alerts.length > 0) {
 			let x = this.alerts.shift();
 			console.log(x);
 			x();
