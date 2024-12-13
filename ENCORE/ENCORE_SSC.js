@@ -222,7 +222,7 @@ class SSC {
 				]),
 			);
 		}
-		return Promise.resolve(0);
+		return 'ready';
 	}
 
 	checkMedia() {
@@ -401,7 +401,7 @@ class SSC {
 			this.swipeSystem();
 			this.pageFocus();
 			this.mutationObserver();
-			this.createElements().then(() => {
+			Promise.resolve(this.createElements()).then(() => {
 				this.directPage(1);
 			});
 		} else {

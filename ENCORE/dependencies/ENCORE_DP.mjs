@@ -97,16 +97,16 @@ export function getMIME(file) {
 	}
 }
 
-function getExtention(file) {
+export function getExtention(file) {
 	if (file.indexOf('.') != -1) {
 		return file.substring(file.lastIndexOf('.'));
 	}
-	return 'unknown';
+	return 'unknown extention';
 }
 
-function getName(file) {
-	if (file.indexOf('.') != -1 && file.indexOf('/') != -1) {
+export function getName(file) {
+	if (file.indexOf('.') != -1) {
 		return file.substring(file.lastIndexOf('/'), file.indexOf('.'));
 	}
-	return 'unknown';
+	return 'unknown name';
 }

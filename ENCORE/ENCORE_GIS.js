@@ -10,7 +10,7 @@ var GISobj;
 
 class GIS {
 	constructor() {
-		this.icons = document.getElementsByTagName('GIS-icon');
+		this.icons = document.getElementsByTagName('GIS');
 		this.observer;
 	}
 
@@ -45,7 +45,7 @@ class GIS {
 	}
 
 	mutations() {
-		this.icons = document.getElementsByTagName('GIS-icon');
+		this.icons = document.getElementsByTagName('GIS');
 		this.applyMasks();
 	}
 }
