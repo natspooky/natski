@@ -68,26 +68,6 @@ export class PAS {
 						},
 					],
 				},
-				data.pmt
-					? {
-							tag: 'div',
-							children: [
-								{
-									tag: data.pmt,
-									events: {},
-								},
-								{
-									tag: 'button',
-									events: {
-										click: {
-											func: this.saveValue.bind(this),
-											var: 'self',
-										},
-									},
-								},
-							],
-					  }
-					: null,
 			],
 		});
 	}
