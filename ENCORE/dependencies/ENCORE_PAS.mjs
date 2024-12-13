@@ -15,7 +15,9 @@ export class PAS {
 	add(data) {
 		this.alerts.push(() =>
 			new Promise((resolve) => {
-				document.body.appendChild(resolve(this.generateAlert(data)));
+				console.log('prerun');
+				document.body.appendChild(resolve(this.createElements(data)));
+				console.log('run');
 			}).then((element) => {
 				element.classList.add('open');
 				if (!data.pmt) {
@@ -40,11 +42,12 @@ export class PAS {
 
 	loadAlert() {
 		if (this.alerts.length > 0 && !this.timer) {
-			this.alerts.shift()();
+			let x = this.alerts.shift();
+			x();
 		}
 	}
 
-	generateAlert(data) {
+	createElements(data) {
 		return ENCORE_SEC.jsonElementify({
 			tag: 'div',
 			classes: ['PAS-popup'],
