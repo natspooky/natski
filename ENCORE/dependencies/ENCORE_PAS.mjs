@@ -9,24 +9,21 @@ import * as ENCORE_SEC from 'https://natski.netlify.app/ENCORE/dependencies/ENCO
 export class PAS {
 	constructor() {
 		this.alerts = [];
-		this.timer = true;
+		this.timer;
 	}
 
 	add(data) {
 		const alert = () => {
 			new Promise((resolve) => {
-				console.log('prerun');
 				let y = this.createElements(data);
 				document.body.appendChild(y);
 				setTimeout(() => {
 					resolve(y);
 				}, 10);
-				console.log('run');
 			}).then((element) => {
-				console.log('postrun');
 				element.classList.add('open');
 				if (!data.pmt) {
-					this.createTimer(data.dur, element);
+					this.timer = this.createTimer(data.dur, element);
 				}
 			});
 		};
@@ -36,19 +33,18 @@ export class PAS {
 	}
 
 	createTimer(duration, element) {
-		this.timer = false;
-		setTimeout(() => {
+		return setTimeout(() => {
 			element.classList.remove('open');
 			setTimeout(() => {
+				this.timer = undefined;
 				element.remove();
-				this.timer = true;
 				this.loadAlert();
 			}, 501);
 		}, duration);
 	}
 
 	loadAlert() {
-		if (this.alerts.length > 0 && this.timer) {
+		if (this.alerts.length > 0 && !this.timer) {
 			let x = this.alerts.shift();
 			console.log(x);
 			x();

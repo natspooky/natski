@@ -478,20 +478,18 @@ class SSCU {
 			txt: 'hello',
 			icn: 'alert',
 		});
-		setTimeout(() => {
-			x.add({
-				dur: 2000,
-				txt: 'hello',
-				icn: 'alert',
-			});
-		}, 100);
-		setTimeout(() => {
-			x.add({
-				dur: 2000,
-				txt: 'hello',
-				icn: 'alert',
-			});
-		}, 200);
+
+		x.add({
+			dur: 5000,
+			txt: 'helo',
+			icn: 'aler',
+		});
+
+		x.add({
+			dur: 5000,
+			txt: 'sello',
+			icn: 'aert',
+		});
 
 		if (!this.checkPages()) {
 			this.checkMedia();
