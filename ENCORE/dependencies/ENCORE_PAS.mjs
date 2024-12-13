@@ -13,18 +13,19 @@ export class PAS {
 	}
 
 	add(data) {
-		this.alerts.push(() =>
+		this.alerts.push(() => {
 			new Promise((resolve) => {
 				console.log('prerun');
 				document.body.appendChild(resolve(this.createElements(data)));
 				console.log('run');
 			}).then((element) => {
+				console.log('postrun');
 				element.classList.add('open');
 				if (!data.pmt) {
 					this.createTimer(data.dur, element);
 				}
-			}),
-		);
+			});
+		});
 		this.loadAlert();
 	}
 
