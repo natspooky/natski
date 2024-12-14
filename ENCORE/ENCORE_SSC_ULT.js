@@ -473,23 +473,12 @@ class SSCU {
 
 	init() {
 		let x = new ENCORE_PAS.PAS();
-		x.add({
-			dur: 4000,
-			txt: 'hello!',
-			icn: 'alert',
-		});
 
 		x.add({
 			dur: 2000,
 			txt: 'please input something',
 			icn: 'text',
 			pmt: 'text',
-		});
-
-		x.add({
-			dur: 2000,
-			txt: 'sello',
-			icn: 'aert',
 		});
 
 		if (!this.checkPages()) {

@@ -33,10 +33,22 @@ export class PAS {
 		}
 	}
 
-	input(self) {
-		this.alerts.splice(0, 1);
-		this.loadAlert();
+	enter(self) {
+		let element = self.parentNode.parentNode;
+		element.classList.remove('open');
+		setTimeout(() => {
+			element.remove();
+			this.alerts.splice(0, 1);
+			this.loadAlert();
+		}, 501);
 		console.log(self.parentNode.children[0].value);
+	}
+
+	keyPress(self) {
+		if (self.key == 'Enter') {
+			self.preventDefault();
+			this.enter(self);
+		}
 	}
 
 	createTimer(duration, element) {
@@ -88,20 +100,38 @@ export class PAS {
 									tag: 'input',
 									attributes: {
 										type: data.pmt,
+										placeholder: 'enter text',
+									},
+									events: {
+										keydown: {
+											func: this.keyPress.bind(this),
+											var: 'event',
+										},
 									},
 								},
 								{
 									tag: 'button',
 									events: {
 										click: {
-											func: this.input.bind(this),
+											func: this.enter.bind(this),
 											var: 'self',
 										},
 									},
+									children: [
+										{
+											tag: 'GIS',
+											attributes: { name: 'input' },
+										},
+									],
 								},
 							],
 					  }
-					: {},
+					: {
+							tag: 'empty',
+							attributes: {
+								style: 'display: none',
+							},
+					  },
 			],
 		};
 		console.log(x);
