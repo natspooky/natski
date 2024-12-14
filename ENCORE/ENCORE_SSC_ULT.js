@@ -481,6 +481,13 @@ class SSCU {
 			pmt: 'text',
 		});
 
+		x.add({
+			dur: 2000,
+			txt: 'balls',
+			icn: 'point',
+			pmt: 'text',
+		});
+
 		if (!this.checkPages()) {
 			this.checkMedia();
 			this.swipeSystem();

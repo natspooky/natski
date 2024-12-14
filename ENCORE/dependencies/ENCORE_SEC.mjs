@@ -33,7 +33,7 @@ export function jsonElementify(elementData) {
 					? event.var === 'self'
 						? () => event.func(element)
 						: event.var === 'event'
-						? (event) => event.func(event)
+						? (ev) => event.func(ev)
 						: () => event.func(event.var)
 					: () => event.func(),
 			);

@@ -44,10 +44,11 @@ export class PAS {
 		console.log(self.parentNode.children[0].value);
 	}
 
-	keyPress(self) {
-		if (self.key == 'Enter') {
-			self.preventDefault();
-			this.enter(self);
+	keyPress(event) {
+		console.log(event);
+		if (event.key == 'Enter') {
+			event.preventDefault();
+			this.enter(event.target);
 		}
 	}
 
