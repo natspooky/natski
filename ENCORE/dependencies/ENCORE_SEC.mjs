@@ -5,46 +5,50 @@
  */
 
 export function jsonElementify(elementData) {
-	let element = document.createElement(elementData.tag);
+	if (elementData.tag) {
+		let element = document.createElement(elementData.tag);
 
-	if (elementData.innerHTML) {
-		element.innerHTML = elementData.innerHTML;
-	}
-
-	if (elementData.classes) {
-		for (const value of elementData.classes) {
-			element.classList.add(value);
+		if (elementData.innerHTML) {
+			element.innerHTML = elementData.innerHTML;
 		}
-	}
 
-	if (elementData.attributes) {
-		for (const [attribute, value] of Object.entries(
-			elementData.attributes,
-		)) {
-			element.setAttribute(attribute, value);
+		if (elementData.classes) {
+			for (const value of elementData.classes) {
+				element.classList.add(value);
+			}
 		}
-	}
 
-	if (elementData.events) {
-		for (const [eventType, event] of Object.entries(elementData.events)) {
-			element.addEventListener(
-				eventType,
-				event.var
-					? event.var === 'self'
-						? () => event.func(element)
-						: () => event.func(event.var)
-					: () => event.func(),
-			);
+		if (elementData.attributes) {
+			for (const [attribute, value] of Object.entries(
+				elementData.attributes,
+			)) {
+				element.setAttribute(attribute, value);
+			}
 		}
-	}
 
-	if (elementData.children) {
-		for (const child of elementData.children) {
-			element.appendChild(jsonElementify(child));
+		if (elementData.events) {
+			for (const [eventType, event] of Object.entries(
+				elementData.events,
+			)) {
+				element.addEventListener(
+					eventType,
+					event.var
+						? event.var === 'self'
+							? () => event.func(element)
+							: () => event.func(event.var)
+						: () => event.func(),
+				);
+			}
 		}
-	}
 
-	return element;
+		if (elementData.children) {
+			for (const child of elementData.children) {
+				element.appendChild(jsonElementify(child));
+			}
+		}
+
+		return element;
+	}
 }
 
 export function elementJsonify(element) {

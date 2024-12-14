@@ -6,7 +6,7 @@
 
 import * as ENCORE_SEC from 'https://natski.netlify.app/ENCORE/dependencies/ENCORE_SEC.mjs';
 import * as ENCORE_DP from 'https://natski.netlify.app/ENCORE/dependencies/ENCORE_DP.mjs';
-import * as ENCORE_PAS from 'https://natski.netlify.app/ENCORE/dependencies/ENCORE_PAS.mjs';
+import * as ENCORE_PAS from 'https://wcotest.netlify.app/ENCORE/dependencies/ENCORE_PAS.mjs';
 
 var SSCUobjs = [];
 const SSCUicons = {
@@ -474,19 +474,20 @@ class SSCU {
 	init() {
 		let x = new ENCORE_PAS.PAS();
 		x.add({
-			dur: 2000,
-			txt: 'hello',
+			dur: 4000,
+			txt: 'hello!',
 			icn: 'alert',
 		});
 
 		x.add({
-			dur: 5000,
-			txt: 'helo',
-			icn: 'aler',
+			dur: 2000,
+			txt: 'please input something',
+			icn: 'text',
+			pmt: 'text',
 		});
 
 		x.add({
-			dur: 5000,
+			dur: 2000,
 			txt: 'sello',
 			icn: 'aert',
 		});

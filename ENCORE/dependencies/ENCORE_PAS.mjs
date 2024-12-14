@@ -9,7 +9,6 @@ import * as ENCORE_SEC from 'https://natski.netlify.app/ENCORE/dependencies/ENCO
 export class PAS {
 	constructor() {
 		this.alerts = [];
-		this.timer;
 	}
 
 	add(data) {
@@ -29,9 +28,15 @@ export class PAS {
 		};
 
 		this.alerts.push(alert);
-		if (!this.alerts.length > 1) {
+		if (this.alerts.length <= 1) {
 			this.loadAlert();
 		}
+	}
+
+	input(self) {
+		this.alerts.splice(0, 1);
+		this.loadAlert();
+		console.log(self.parentNode.children[0].value);
 	}
 
 	createTimer(duration, element) {
@@ -39,6 +44,7 @@ export class PAS {
 			element.classList.remove('open');
 			setTimeout(() => {
 				element.remove();
+				this.alerts.splice(0, 1);
 				this.loadAlert();
 			}, 501);
 		}, duration);
@@ -46,14 +52,12 @@ export class PAS {
 
 	loadAlert() {
 		if (this.alerts.length > 0) {
-			let x = this.alerts.shift();
-			console.log(x);
-			x();
+			this.alerts[0]();
 		}
 	}
 
 	createElements(data) {
-		return ENCORE_SEC.jsonElementify({
+		let x = {
 			tag: 'div',
 			classes: ['PAS-popup'],
 			attributes: {
@@ -76,7 +80,31 @@ export class PAS {
 						},
 					],
 				},
+				data.pmt
+					? {
+							tag: 'div',
+							children: [
+								{
+									tag: 'input',
+									attributes: {
+										type: data.pmt,
+									},
+								},
+								{
+									tag: 'button',
+									events: {
+										click: {
+											func: this.input.bind(this),
+											var: 'self',
+										},
+									},
+								},
+							],
+					  }
+					: {},
 			],
-		});
+		};
+		console.log(x);
+		return ENCORE_SEC.jsonElementify(x);
 	}
 }
