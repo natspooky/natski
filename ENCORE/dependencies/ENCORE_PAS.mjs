@@ -12,12 +12,12 @@ export class PAS {
 	}
 
 	add(data) {
-		const alert = () => {
+		this.alerts.push(() => {
 			new Promise((resolve) => {
-				let y = this.createElements(data);
-				document.body.appendChild(y);
+				let element = this.createElements(data);
+				document.body.appendChild(element);
 				setTimeout(() => {
-					resolve(y);
+					resolve(element);
 				}, 10);
 			}).then((element) => {
 				element.classList.add('open');
@@ -25,9 +25,7 @@ export class PAS {
 					this.createTimer(data.dur, element);
 				}
 			});
-		};
-
-		this.alerts.push(alert);
+		});
 		if (this.alerts.length <= 1) {
 			this.loadAlert();
 		}
@@ -45,11 +43,31 @@ export class PAS {
 	}
 
 	keyPress(event) {
-		console.log(event);
 		if (event.key == 'Enter') {
 			event.preventDefault();
 			this.enter(event.target);
 		}
+	}
+
+	drop(event) {
+		event.preventDefault();
+		event.target.classList.remove('dropper');
+		event.target.parentNode.children[1].files = [
+			...event.dataTransfer.files,
+		];
+		event.target.parentNode.children[1].value = [
+			...event.dataTransfer.files,
+		];
+		event.target.children[0].innerHTML = [...event.dataTransfer.files];
+	}
+
+	dragOver(event) {
+		event.preventDefault();
+		event.target.classList.add('dropper');
+	}
+	dragLeave(event) {
+		event.preventDefault();
+		event.target.classList.remove('dropper');
 	}
 
 	createTimer(duration, element) {
@@ -69,8 +87,97 @@ export class PAS {
 		}
 	}
 
+	getPrompt(prompt) {
+		let button = [
+			{
+				tag: 'button',
+				events: {
+					click: {
+						func: this.enter.bind(this),
+						var: 'self',
+					},
+				},
+				children: [
+					{
+						tag: 'GIS',
+						attributes: { name: 'input' },
+					},
+				],
+			},
+		];
+
+		switch (prompt) {
+			case 'text':
+				return [
+					{
+						tag: 'input',
+						attributes: {
+							type: prompt,
+							placeholder: 'enter text',
+						},
+						events: {
+							keydown: {
+								func: this.keyPress.bind(this),
+								var: 'event',
+							},
+						},
+					},
+				].concat(button);
+			case 'file':
+				return [
+					{
+						tag: 'label',
+						attributes: {
+							for: 'PASfile',
+						},
+
+						events: {
+							drop: { func: this.drop.bind(this), var: 'event' },
+							dragover: {
+								func: this.dragOver.bind(this),
+								var: 'event',
+							},
+							dragleave: {
+								func: this.dragLeave.bind(this),
+								var: 'event',
+							},
+						},
+						children: [
+							{
+								tag: 'p',
+								innerHTML: 'Select File',
+							},
+							{
+								tag: 'GIS',
+								attributes: { name: 'upload' },
+							},
+						],
+					},
+					{
+						tag: 'input',
+						attributes: {
+							type: prompt,
+							id: 'PASfile',
+						},
+					},
+				].concat(button);
+			case 'range':
+				return [
+					{
+						tag: 'input',
+						attributes: {
+							type: prompt,
+							min: 0,
+							max: 100,
+							step: 1,
+						},
+					},
+				].concat(button);
+		}
+	}
+
 	createElements(data) {
-		let x = {
+		return ENCORE_SEC.jsonElementify({
 			tag: 'div',
 			classes: ['PAS-popup'],
 			attributes: {
@@ -96,36 +203,7 @@ export class PAS {
 				data.pmt
 					? {
 							tag: 'div',
-							children: [
-								{
-									tag: 'input',
-									attributes: {
-										type: data.pmt,
-										placeholder: 'enter text',
-									},
-									events: {
-										keydown: {
-											func: this.keyPress.bind(this),
-											var: 'event',
-										},
-									},
-								},
-								{
-									tag: 'button',
-									events: {
-										click: {
-											func: this.enter.bind(this),
-											var: 'self',
-										},
-									},
-									children: [
-										{
-											tag: 'GIS',
-											attributes: { name: 'input' },
-										},
-									],
-								},
-							],
+							children: this.getPrompt(data.pmt),
 					  }
 					: {
 							tag: 'empty',
@@ -134,8 +212,6 @@ export class PAS {
 							},
 					  },
 			],
-		};
-		console.log(x);
-		return ENCORE_SEC.jsonElementify(x);
+		});
 	}
 }
