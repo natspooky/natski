@@ -7,6 +7,8 @@
 import * as ENCORE_SEC from 'https://natski.netlify.app/ENCORE/dependencies/ENCORE_SEC.mjs';
 import * as ENCORE_DP from 'https://natski.netlify.app/ENCORE/dependencies/ENCORE_DP.mjs';
 
+import { PAS } from 'https://wcotest.netlify.app/ENCORE/dependencies/ENCORE_PAS.mjs';
+
 var SSCUobjs = [];
 const SSCUicons = {
 	leftArrow:
@@ -471,6 +473,13 @@ class SSCU {
 	}
 
 	init() {
+		new PAS().add({
+			message: 'john',
+			duration: 2000,
+			icon: 'information',
+			input: 'text',
+			callback: functio,
+		});
 		if (!this.checkPages()) {
 			this.checkMedia();
 			this.swipeSystem();

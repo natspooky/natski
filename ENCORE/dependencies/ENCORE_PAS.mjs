@@ -21,8 +21,8 @@ export class PAS {
 				}, 10);
 			}).then((element) => {
 				element.classList.add('open');
-				if (!data.pmt) {
-					this.createTimer(data.dur, element);
+				if (!data.input) {
+					this.createTimer(data.duration, element);
 				}
 			});
 		});
@@ -189,28 +189,23 @@ export class PAS {
 					children: [
 						{
 							tag: 'GIS',
-							attributes: { name: data.icn },
+							attributes: { name: data.icon },
 						},
 						{
 							tag: 'span',
 						},
 						{
 							tag: 'p',
-							innerHTML: data.txt,
+							innerHTML: data.message,
 						},
 					],
 				},
-				data.pmt
+				data.input
 					? {
 							tag: 'div',
-							children: this.getPrompt(data.pmt),
+							children: this.getPrompt(data.input),
 					  }
-					: {
-							tag: 'empty',
-							attributes: {
-								style: 'display: none',
-							},
-					  },
+					: {},
 			],
 		});
 	}

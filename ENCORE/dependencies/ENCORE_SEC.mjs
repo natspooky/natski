@@ -42,7 +42,14 @@ export function jsonElementify(elementData) {
 
 	if (elementData.children) {
 		for (const child of elementData.children) {
-			element.appendChild(jsonElementify(child));
+			if (
+				!(
+					Object.keys(child).length === 0 &&
+					child.constructor === Object
+				)
+			) {
+				element.appendChild(jsonElementify(child));
+			}
 		}
 	}
 

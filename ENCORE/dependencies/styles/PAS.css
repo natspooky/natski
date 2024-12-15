@@ -71,6 +71,9 @@
 	cursor: pointer;
 	color: var(--bgColor-default);
 }
+input[type='text'] {
+	cursor: text;
+}
 .PAS-popup div input:focus {
 	outline: none;
 }
