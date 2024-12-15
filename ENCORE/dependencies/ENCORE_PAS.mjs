@@ -22,7 +22,10 @@ export class PAS {
 			}).then((element) => {
 				element.classList.add('open');
 				if (!data.input) {
-					this.createTimer(data.duration, element);
+					this.createTimer(
+						data.duration ? data.duration : 2000,
+						element,
+					);
 				}
 			});
 		});
@@ -106,14 +109,16 @@ export class PAS {
 			},
 		];
 
-		switch (prompt) {
+		switch (prompt.type) {
 			case 'text':
 				return [
 					{
 						tag: 'input',
 						attributes: {
-							type: prompt,
-							placeholder: 'enter text',
+							type: prompt.type,
+							placeholder: prompt.placeholder
+								? prompt.placeholder
+								: 'enter text',
 						},
 						events: {
 							keydown: {
@@ -156,7 +161,8 @@ export class PAS {
 					{
 						tag: 'input',
 						attributes: {
-							type: prompt,
+							type: prompt.type,
+							accepts: prompt.accepts ? prompt.accepts : null,
 							id: 'PASfile',
 						},
 					},
@@ -181,7 +187,7 @@ export class PAS {
 			tag: 'div',
 			classes: ['PAS-popup'],
 			attributes: {
-				style: data.col ? `background-color: ${data.col}` : null,
+				style: data.color ? `background-color: ${data.color}` : null,
 			},
 			children: [
 				{
@@ -191,14 +197,19 @@ export class PAS {
 							tag: 'GIS',
 							attributes: { name: data.icon },
 						},
-						{
-							tag: 'span',
-						},
-						{
-							tag: 'p',
-							innerHTML: data.message,
-						},
-					],
+					].concat(
+						data.message
+							? [
+									{
+										tag: 'span',
+									},
+									{
+										tag: 'p',
+										innerHTML: data.message,
+									},
+							  ]
+							: {},
+					),
 				},
 				data.input
 					? {

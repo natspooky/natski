@@ -21,7 +21,7 @@ export function jsonElementify(elementData) {
 		for (const [attribute, value] of Object.entries(
 			elementData.attributes,
 		)) {
-			element.setAttribute(attribute, value);
+			if (value) element.setAttribute(attribute, value);
 		}
 	}
 
@@ -64,6 +64,7 @@ export function elementJsonify(element) {
 	if (element.attributes) {
 		json.attributes = {};
 		for (const attribute of element.attributes) {
+			if (attribute.nodeName === 'class') continue;
 			json.attributes[attribute.nodeName] = attribute.nodeValue;
 		}
 	}
@@ -91,6 +92,15 @@ export function appendChildren(element, children) {
 
 export function jsonMultiElementify(elements) {
 	let arr = [];
-	for (const element of elements) arr.push(jsonElementify(element));
+	for (const element of elements) {
+		if (
+			!(
+				Object.keys(element).length === 0 &&
+				element.constructor === Object
+			)
+		) {
+			arr.push(jsonElementify(element));
+		}
+	}
 	return arr;
 }

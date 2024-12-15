@@ -474,11 +474,11 @@ class SSCU {
 
 	init() {
 		new PAS().add({
-			message: 'john',
-			duration: 2000,
+			duration: 200000000,
 			icon: 'information',
-			input: 'text',
-			callback: functio,
+			input: { type: 'range' },
+
+			callback: '',
 		});
 		if (!this.checkPages()) {
 			this.checkMedia();
