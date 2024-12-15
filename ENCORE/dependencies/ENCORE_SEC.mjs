@@ -56,6 +56,11 @@ export function jsonElementify(elementData) {
 	return element;
 }
 
+export function setFallback(data, fallback) {
+	if (data) return data;
+	return fallback;
+}
+
 export function elementJsonify(element) {
 	let json = {};
 

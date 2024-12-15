@@ -116,9 +116,10 @@ export class PAS {
 						tag: 'input',
 						attributes: {
 							type: prompt.type,
-							placeholder: prompt.placeholder
-								? prompt.placeholder
-								: 'enter text',
+							placeholder: ENCORE_SEC.setFallback(
+								prompt.placeholder,
+								'enter text',
+							),
 						},
 						events: {
 							keydown: {
@@ -162,7 +163,14 @@ export class PAS {
 						tag: 'input',
 						attributes: {
 							type: prompt.type,
-							accepts: prompt.accepts ? prompt.accepts : null,
+							accepts: ENCORE_SEC.setFallback(
+								prompt.accepts,
+								null,
+							),
+							multiple: ENCORE_SEC.setFallback(
+								prompt.multiple,
+								null,
+							),
 							id: 'PASfile',
 						},
 					},
@@ -172,10 +180,10 @@ export class PAS {
 					{
 						tag: 'input',
 						attributes: {
-							type: prompt,
-							min: 0,
-							max: 100,
-							step: 1,
+							type: prompt.type,
+							min: ENCORE_SEC.setFallback(prompt.min, 0),
+							max: ENCORE_SEC.setFallback(prompt.max, 100),
+							step: ENCORE_SEC.setFallback(prompt.step, 1),
 						},
 					},
 				].concat(button);
