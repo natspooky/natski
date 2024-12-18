@@ -17,7 +17,12 @@ export class PAS {
 		if (
 			SEC.setFallback(data.noRepeat, false) &&
 			key !==
-				SEC.setFallback(this.alerts[this.alerts.length - 1][1], null)
+				SEC.setFallback(
+					SEC.checkExists(this.alerts[this.alerts.length - 1])
+						? this.alerts[this.alerts.length - 1][1]
+						: false,
+					null,
+				)
 		) {
 			this.alerts.push([
 				() => {
