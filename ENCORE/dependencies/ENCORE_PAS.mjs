@@ -6,44 +6,57 @@
 
 import * as ENCORE_SEC from 'https://natski.netlify.app/ENCORE/dependencies/ENCORE_SEC.mjs';
 
-//add cancell functionality
 export class PAS {
 	constructor() {
 		this.alerts = [];
+		this.element;
 	}
 
 	add(data) {
-		this.alerts.push(() => {
-			new Promise((resolve) => {
-				let element = this.createElements(data);
-				document.body.appendChild(element);
-				setTimeout(() => {
-					resolve(element);
-				}, 10);
-			}).then((element) => {
-				element.classList.add('open');
-				if (!data.input) {
-					this.createTimer(
-						data.duration ? data.duration : 2000,
-						element,
-					);
-				}
-			});
-		});
+		this.alerts.push([
+			() => {
+				new Promise((resolve) => {
+					let element = this.createElements(data);
+					document.body.appendChild(element);
+					setTimeout(() => {
+						resolve(element);
+					}, 10);
+				}).then((element) => {
+					this.element = element;
+					this.element.classList.add('open');
+					if (!data.input) {
+						this.createTimer(data.duration ? data.duration : 1400);
+					}
+				});
+			},
+			data.cancellable ? data.cancellable : false,
+		]);
 		if (this.alerts.length <= 1) {
 			this.loadAlert();
 		}
+		if (this.alerts[this.alerts.length - 1][1] === true) {
+			this.cancelAlert();
+		}
+	}
+
+	cancelAlert() {
+		Promise.resolve(clearTimeout(this.timer)).then(() => {
+			this.closeAlert();
+		});
 	}
 
 	enter(self) {
-		let element = self.parentNode.parentNode;
-		element.classList.remove('open');
+		this.closeAlert();
+		console.log(self.parentNode.children[0].value);
+	}
+
+	closeAlert() {
+		this.element.classList.remove('open');
 		setTimeout(() => {
-			element.remove();
+			this.element.remove();
 			this.alerts.splice(0, 1);
 			this.loadAlert();
 		}, 501);
-		console.log(self.parentNode.children[0].value);
 	}
 
 	keyPress(event) {
@@ -74,20 +87,22 @@ export class PAS {
 		event.target.classList.remove('dropper');
 	}
 
-	createTimer(duration, element) {
-		setTimeout(() => {
-			element.classList.remove('open');
+	createTimer(duration) {
+		this.timer = setTimeout(() => {
+			this.element.classList.remove('open');
 			setTimeout(() => {
-				element.remove();
+				this.element.remove();
 				this.alerts.splice(0, 1);
-				this.loadAlert();
+				Promise.resolve(clearTimeout(this.timer)).then(() => {
+					this.loadAlert();
+				});
 			}, 501);
 		}, duration);
 	}
 
 	loadAlert() {
 		if (this.alerts.length > 0) {
-			this.alerts[0]();
+			this.alerts[0][0]();
 		}
 	}
 
@@ -98,7 +113,10 @@ export class PAS {
 				events: {
 					click: {
 						func: this.enter.bind(this),
-						var: 'self',
+						var: ENCORE_SEC.setFallback(
+							prompt.callback ? ['self', prompt.callback] : false,
+							'self',
+						),
 					},
 				},
 				children: [
@@ -129,7 +147,12 @@ export class PAS {
 						events: {
 							keydown: {
 								func: this.keyPress.bind(this),
-								var: 'event',
+								var: ENCORE_SEC.setFallback(
+									prompt.callback
+										? ['event', prompt.callback]
+										: false,
+									'event',
+								),
 							},
 						},
 					},
@@ -143,7 +166,15 @@ export class PAS {
 						},
 
 						events: {
-							drop: { func: this.drop.bind(this), var: 'event' },
+							drop: {
+								func: this.drop.bind(this),
+								var: ENCORE_SEC.setFallback(
+									prompt.callback
+										? ['event', prompt.callback]
+										: false,
+									'event',
+								),
+							},
 							dragover: {
 								func: this.dragOver.bind(this),
 								var: 'event',

@@ -65,8 +65,6 @@ function functionType(event, element) {
 			if (Array.isArray(event.var)) event.var = event.var[0];
 			if (event.var === 'self') {
 				return () => event.func(element);
-			} else if (event.var === 'parent') {
-				return () => event.func(element.parentNode);
 			} else if (event.var === 'event') {
 				return (ev) => event.func(ev);
 			} else {
