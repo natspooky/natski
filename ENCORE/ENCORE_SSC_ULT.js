@@ -4,7 +4,7 @@
  * MIT License
  */
 
-import * as ENCORE_SEC from 'https://natski.netlify.app/ENCORE/dependencies/ENCORE_SEC.mjs';
+import * as SEC from 'https://natski.netlify.app/ENCORE/dependencies/ENCORE_SEC.mjs';
 import * as ENCORE_DP from 'https://natski.netlify.app/ENCORE/dependencies/ENCORE_DP.mjs';
 
 var SSCUobjs = [];
@@ -276,12 +276,12 @@ class SSCU {
 		}
 		if (this.settings.thumbs) {
 			(() => {
-				let thumbcont = ENCORE_SEC.jsonElementify({
+				let thumbcont = SEC.jsonElementify({
 					tag: 'div',
 					classes: ['SSCUthumbs'],
 				});
 				for (let i = 0; i < this.pages.length; i++) {
-					let thumb = ENCORE_SEC.jsonElementify({
+					let thumb = SEC.jsonElementify({
 						tag: 'div',
 						classes: ['SSCUthumb'],
 						events: {
@@ -310,7 +310,7 @@ class SSCU {
 		if (this.settings.pauseButton) {
 			(() => {
 				this.SSCU.appendChild(
-					ENCORE_SEC.jsonElementify({
+					SEC.jsonElementify({
 						tag: 'button',
 						classes: ['SSCUpauseButton'],
 						events: { click: { func: this.togglePlay.bind(this) } },
@@ -326,9 +326,9 @@ class SSCU {
 			});
 		}
 		if (this.settings.sideButtons && !this.device) {
-			ENCORE_SEC.appendChildren(
+			SEC.appendChildren(
 				this.SSCU,
-				ENCORE_SEC.jsonMultiElementify([
+				SEC.jsonMultiElementify([
 					{
 						tag: 'button',
 						classes: ['SSCUpageButton'],

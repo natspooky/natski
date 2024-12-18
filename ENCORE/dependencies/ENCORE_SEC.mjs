@@ -52,7 +52,7 @@ export function jsonElementify(elementData) {
 }
 
 function functionType(event, element) {
-	if (event.var) {
+	if (checkExists(event.var)) {
 		if (Array.isArray(event.var) && event.var.length > 1) {
 			if (event.var[0] === 'self') {
 				return () => event.func(element, ...event.var.slice(1));
@@ -82,8 +82,12 @@ export function appendChildren(element, children) {
 	}
 }
 
+export function checkExists(data) {
+	return data !== null && data !== undefined;
+}
+
 export function setFallback(data, fallback) {
-	if (data) return data;
+	if (checkExists(data)) return data;
 	return fallback;
 }
 

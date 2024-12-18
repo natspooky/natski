@@ -4,7 +4,7 @@
  * MIT License
  */
 
-import * as ENCORE_SEC from 'https://natski.netlify.app/ENCORE/dependencies/ENCORE_SEC.mjs';
+import * as SEC from 'https://natski.netlify.app/ENCORE/dependencies/ENCORE_SEC.mjs';
 import * as ENCORE_DP from 'https://natski.netlify.app/ENCORE/dependencies/ENCORE_DP.mjs';
 
 var SSCobjs = [];
@@ -118,13 +118,13 @@ class SSC {
 	createElements() {
 		if (this.settings.thumbs) {
 			(() => {
-				let thumbcont = ENCORE_SEC.jsonElementify({
+				let thumbcont = SEC.jsonElementify({
 					tag: 'div',
 					classes: ['SSCthumbs'],
 				});
 				for (let i = 0; i < this.pages.length; i++) {
 					thumbcont.appendChild(
-						ENCORE_SEC.jsonElementify({
+						SEC.jsonElementify({
 							tag: 'div',
 							classes: ['SSCthumb'],
 							events: {
@@ -147,7 +147,7 @@ class SSC {
 		if (this.settings.progressBar) {
 			(() => {
 				this.SSC.appendChild(
-					ENCORE_SEC.jsonElementify({
+					SEC.jsonElementify({
 						tag: 'div',
 						classes: ['SSCprogress'],
 						children: [
@@ -168,7 +168,7 @@ class SSC {
 		if (this.settings.pauseButton) {
 			(() => {
 				this.SSC.appendChild(
-					ENCORE_SEC.jsonElementify({
+					SEC.jsonElementify({
 						tag: 'button',
 						classes: ['SSCpauseButton'],
 						events: {
@@ -188,9 +188,9 @@ class SSC {
 			});
 		}
 		if (this.settings.sideButtons && !this.device) {
-			ENCORE_SEC.appendChildren(
+			SEC.appendChildren(
 				this.SSC,
-				ENCORE_SEC.jsonMultiElementify([
+				SEC.jsonMultiElementify([
 					{
 						tag: 'button',
 						classes: ['SSCpageButton'],
