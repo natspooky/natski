@@ -6,6 +6,7 @@
 
 import * as ENCORE_SEC from 'https://natski.netlify.app/ENCORE/dependencies/ENCORE_SEC.mjs';
 
+//add cancell functionality
 export class PAS {
 	constructor() {
 		this.alerts = [];
@@ -120,6 +121,10 @@ export class PAS {
 								prompt.placeholder,
 								'enter text',
 							),
+							spellcheck: ENCORE_SEC.setFallback(
+								prompt.spellcheck,
+								false,
+							),
 						},
 						events: {
 							keydown: {
@@ -183,6 +188,7 @@ export class PAS {
 							type: prompt.type,
 							min: ENCORE_SEC.setFallback(prompt.min, 0),
 							max: ENCORE_SEC.setFallback(prompt.max, 100),
+							value: ENCORE_SEC.setFallback(prompt.value, 50),
 							step: ENCORE_SEC.setFallback(prompt.step, 1),
 						},
 					},

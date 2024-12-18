@@ -12,8 +12,12 @@ export function jsonElementify(elementData) {
 	}
 
 	if (elementData.classes) {
-		for (const value of elementData.classes) {
-			element.classList.add(value);
+		if (Array.isArray(elementData.classes)) {
+			for (const value of elementData.classes) {
+				element.classList.add(value);
+			}
+		} else {
+			element.classList.add(elementData.classes);
 		}
 	}
 
@@ -27,16 +31,7 @@ export function jsonElementify(elementData) {
 
 	if (elementData.events) {
 		for (const [eventType, event] of Object.entries(elementData.events)) {
-			element.addEventListener(
-				eventType,
-				event.var
-					? event.var === 'self'
-						? () => event.func(element)
-						: event.var === 'event'
-						? (ev) => event.func(ev)
-						: () => event.func(event.var)
-					: () => event.func(),
-			);
+			element.addEventListener(eventType, functionType(event, element));
 		}
 	}
 
@@ -56,9 +51,57 @@ export function jsonElementify(elementData) {
 	return element;
 }
 
+function functionType(event, element) {
+	if (event.var) {
+		if (Array.isArray(event.var) && event.var.length > 1) {
+			if (event.var[0] === 'self') {
+				return () => event.func(element, ...event.var.slice(1));
+			} else if (event.var[0] === 'event') {
+				return (ev) => event.func(ev, ...event.var.slice(1));
+			} else {
+				return () => event.func(...event.var);
+			}
+		} else {
+			if (Array.isArray(event.var)) event.var = event.var[0];
+			if (event.var === 'self') {
+				return () => event.func(element);
+			} else if (event.var === 'parent') {
+				return () => event.func(element.parentNode);
+			} else if (event.var === 'event') {
+				return (ev) => event.func(ev);
+			} else {
+				return () => event.func(event.var);
+			}
+		}
+	} else {
+		return () => event.func();
+	}
+}
+
+export function appendChildren(element, children) {
+	for (const child of children) {
+		element.appendChild(child);
+	}
+}
+
 export function setFallback(data, fallback) {
 	if (data) return data;
 	return fallback;
+}
+
+export function jsonMultiElementify(elements) {
+	let arr = [];
+	for (const element of elements) {
+		if (
+			!(
+				Object.keys(element).length === 0 &&
+				element.constructor === Object
+			)
+		) {
+			arr.push(jsonElementify(element));
+		}
+	}
+	return arr;
 }
 
 export function elementJsonify(element) {
@@ -69,8 +112,9 @@ export function elementJsonify(element) {
 	if (element.attributes) {
 		json.attributes = {};
 		for (const attribute of element.attributes) {
-			if (attribute.nodeName === 'class') continue;
-			json.attributes[attribute.nodeName] = attribute.nodeValue;
+			if (attribute.nodeName !== 'class') {
+				json.attributes[attribute.nodeName] = attribute.nodeValue;
+			}
 		}
 	}
 
@@ -87,25 +131,4 @@ export function elementJsonify(element) {
 		json.innerHTML = element.innerHTML;
 	}
 	return json;
-}
-
-export function appendChildren(element, children) {
-	for (const child of children) {
-		element.appendChild(child);
-	}
-}
-
-export function jsonMultiElementify(elements) {
-	let arr = [];
-	for (const element of elements) {
-		if (
-			!(
-				Object.keys(element).length === 0 &&
-				element.constructor === Object
-			)
-		) {
-			arr.push(jsonElementify(element));
-		}
-	}
-	return arr;
 }
