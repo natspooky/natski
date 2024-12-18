@@ -219,8 +219,12 @@ export class PAS {
 		}
 	}
 
-	generateKey() {
-		return btoa();
+	generateKey(data) {
+		return (
+			SEC.setFallback(data.message, 'blank') +
+			SEC.setFallback(data.icon, 'blank') +
+			SEC.setFallback(data.input, 'blank')
+		);
 	}
 
 	createElements(data) {
