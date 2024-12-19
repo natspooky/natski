@@ -220,7 +220,10 @@ export class PAS {
 					: null,
 			},
 			events:
-				SEC.setFallback(data.prompt.type, null) === 'file'
+				SEC.setFallback(
+					SEC.checkExists(data.input) ? data.input.type : null,
+					null,
+				) === 'file'
 					? {
 							drop: {
 								func: this.drop.bind(this),
