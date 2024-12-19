@@ -147,6 +147,10 @@ export class PAS {
 								prompt.spellcheck,
 								false,
 							),
+							autocomplete: SEC.setFallback(
+								prompt.autocomplete,
+								'off',
+							),
 						},
 						events: {
 							keydown: {
