@@ -87,7 +87,7 @@ export function appendChildren(element, children) {
 }
 
 export function checkExists(data) {
-	return data !== null && data !== undefined;
+	return data !== undefined && data !== null;
 }
 
 export function setFallback(data, fallback) {
