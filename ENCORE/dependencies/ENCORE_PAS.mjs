@@ -120,7 +120,7 @@ export class PAS {
 						var: SEC.setFallback(
 							SEC.checkExists(prompt.callback)
 								? ['self', prompt.callback]
-								: false,
+								: null,
 							'self',
 						),
 					},
@@ -160,7 +160,7 @@ export class PAS {
 								var: SEC.setFallback(
 									SEC.checkExists(prompt.callback)
 										? ['event', prompt.callback]
-										: false,
+										: null,
 									'event',
 								),
 							},
@@ -232,7 +232,7 @@ export class PAS {
 								var: SEC.setFallback(
 									SEC.checkExists(prompt.callback)
 										? ['event', prompt.callback]
-										: false,
+										: null,
 									'event',
 								),
 							},
