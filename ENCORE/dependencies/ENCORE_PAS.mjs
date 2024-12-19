@@ -58,7 +58,6 @@ export class PAS {
 		let element = ev.target.parentNode.parentNode,
 			input = ev.target.parentNode.children[0];
 		if (SEC.checkExists(callback)) {
-			console.log(input.type);
 			switch (input.type) {
 				case 'file':
 					callback(input.files);
@@ -72,7 +71,7 @@ export class PAS {
 			element.remove();
 			this.alerts.splice(0, 1);
 			this.loadAlert();
-		}, 501);
+		}, 301);
 	}
 
 	keyPress(ev, callback) {
@@ -110,7 +109,7 @@ export class PAS {
 				element.remove();
 				this.alerts.splice(0, 1);
 				this.loadAlert();
-			}, 501);
+			}, 301);
 		}, duration);
 	}
 
