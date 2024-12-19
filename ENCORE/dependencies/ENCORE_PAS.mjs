@@ -180,6 +180,15 @@ export class PAS {
 			case 'file':
 				return [
 					{
+						tag: 'input',
+						attributes: {
+							type: prompt.type,
+							accepts: SEC.setFallback(prompt.accepts, null),
+							multiple: SEC.setFallback(prompt.multiple, null),
+							id: 'PASfile',
+						},
+					},
+					{
 						tag: 'label',
 						attributes: {
 							for: 'PASfile',
@@ -190,15 +199,6 @@ export class PAS {
 								innerHTML: 'Select File',
 							},
 						],
-					},
-					{
-						tag: 'input',
-						attributes: {
-							type: prompt.type,
-							accepts: SEC.setFallback(prompt.accepts, null),
-							multiple: SEC.setFallback(prompt.multiple, null),
-							id: 'PASfile',
-						},
 					},
 				].concat(button);
 			case 'range':
