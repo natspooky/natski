@@ -5,12 +5,12 @@
  */
 
 import * as SEC from 'https://natski.netlify.app/ENCORE/dependencies/ENCORE_SEC.mjs';
-import * as ENCORE_DP from 'https://natski.netlify.app/ENCORE/dependencies/ENCORE_DP.mjs';
-import * as GIS from 'https://natski.netlify.app/ENCORE/ENCORE_GIS.js';
+import * as DP from 'https://natski.netlify.app/ENCORE/dependencies/ENCORE_DP.mjs';
+import { GIS } from 'https://natski.netlify.app/ENCORE/ENCORE_GIS.js';
 
 var SSCUobjs = [];
 
-class SSCU {
+export class SSCU {
 	constructor(element, settings) {
 		this.SSCU = element;
 		this.pages = this.SSCU.getElementsByClassName('banner-bg-u');
@@ -18,12 +18,9 @@ class SSCU {
 		this.index = 1;
 		this.prevIndex = 0;
 		this.barWidth = 0;
-		this.timer = Math.max(this.settings.timer, 5000);
-		this.swapTimer = Math.min(
-			Math.max(this.settings.slideSpeed, 300),
-			1000,
-		);
-		this.device = ENCORE_DP.userDevice();
+		this.timer = SEC.setFallback(settings.timer, 5000);
+		this.swapTimer = SEC.setFallback(settings.slideSpeed, 500);
+		this.device = DP.userDevice();
 		this.hasVideos = false;
 		this.videos = [];
 		this.paused = false;
@@ -143,7 +140,6 @@ class SSCU {
 				);
 				i++
 			) {
-				//console.log( i, this.thumbs.length)
 				this.thumbs[i].classList.remove('SSCUhidden');
 			}
 		} else if (this.thumbOffset) {
@@ -491,7 +487,7 @@ class SSCU {
 			this.pageFocus();
 			this.mutationObserver();
 			Promise.resolve(this.createElements()).then(() => {
-				new GIS.GIS().applyMasks(this.SSCU.getElementsByTagName('GIS'));
+				new GIS().applyMasks(this.SSCU.getElementsByTagName('GIS'));
 				this.directPage(1);
 			});
 		} else {
