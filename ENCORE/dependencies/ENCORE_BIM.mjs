@@ -52,9 +52,12 @@ export class BIM {
 	mouseLeave(ev) {
 		clearTimeout(this.timeout);
 		if (this.element) {
-			this.element.classList.remove('visible');
-			this.element.remove();
+			let x = this.element;
 			this.element = null;
+			x.classList.remove('visible');
+			setTimeout(() => {
+				x.remove();
+			}, 201);
 		}
 	}
 
