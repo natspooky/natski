@@ -25,13 +25,17 @@ export function jsonElementify(elementData) {
 		for (const [attribute, value] of Object.entries(
 			elementData.attributes,
 		)) {
-			if (value) element.setAttribute(attribute, value);
+			if (checkExists(value)) element.setAttribute(attribute, value);
 		}
 	}
 
 	if (elementData.events) {
 		for (const [eventType, event] of Object.entries(elementData.events)) {
-			element.addEventListener(eventType, functionType(event, element));
+			if (event)
+				element.addEventListener(
+					eventType,
+					functionType(event, element),
+				);
 		}
 	}
 

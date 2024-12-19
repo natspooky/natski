@@ -172,34 +172,10 @@ export class PAS {
 						attributes: {
 							for: 'PASfile',
 						},
-
-						events: {
-							drop: {
-								func: this.drop.bind(this),
-								var: SEC.setFallback(
-									SEC.checkExists(prompt.callback)
-										? ['event', prompt.callback]
-										: false,
-									'event',
-								),
-							},
-							dragover: {
-								func: this.dragOver.bind(this),
-								var: 'event',
-							},
-							dragleave: {
-								func: this.dragLeave.bind(this),
-								var: 'event',
-							},
-						},
 						children: [
 							{
 								tag: 'p',
 								innerHTML: 'Select File',
-							},
-							{
-								tag: 'GIS',
-								attributes: { name: 'upload' },
 							},
 						],
 					},
@@ -246,6 +222,28 @@ export class PAS {
 					? `background-color: ${data.color}`
 					: null,
 			},
+			events:
+				data.prompt === 'file'
+					? {
+							drop: {
+								func: this.drop.bind(this),
+								var: SEC.setFallback(
+									SEC.checkExists(prompt.callback)
+										? ['event', prompt.callback]
+										: false,
+									'event',
+								),
+							},
+							dragover: {
+								func: this.dragOver.bind(this),
+								var: 'event',
+							},
+							dragleave: {
+								func: this.dragLeave.bind(this),
+								var: 'event',
+							},
+					  }
+					: null,
 			children: [
 				{
 					tag: 'div',

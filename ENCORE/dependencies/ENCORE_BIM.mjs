@@ -11,6 +11,7 @@ export class BIM {
 	constructor() {
 		this.buttons = document.getElementsByClassName('BIM');
 		this.isMobileTouch = DP.userDevice();
+		this.eventTemps = [];
 	}
 
 	init() {
@@ -20,7 +21,6 @@ export class BIM {
 					'mouseenter',
 					this.mouseEnter.bind(this),
 				);
-				button.addEventListener('mousemove', this.mouseMove.bind(this));
 				button.addEventListener(
 					'mouseleave',
 					this.mouseLeave.bind(this),
@@ -44,6 +44,13 @@ export class BIM {
 		}).then((element) => {
 			this.element = element;
 			this.element.classList.add('visible');
+			ev.target.addEventListener('mousemove', this.mouseMove.bind(this));
+			this.eventTemps.push(() =>
+				ev.target.removeEventListener(
+					'mousemove',
+					this.mouseMove.bind(this),
+				),
+			);
 		});
 	}
 
@@ -60,13 +67,16 @@ export class BIM {
 
 	mouseLeave(ev) {
 		this.element.classList.remove('visible');
+		if (this.eventTemps.length > 0) {
+			this.eventTemps.pop()();
+		}
 		setTimeout(() => {
 			this.element.remove();
 		}, 210);
 	}
 
 	createElements(data) {
-		SEC.jsonElementify({
+		return SEC.jsonElementify({
 			tag: 'div',
 			classes: ['BIM-container'],
 			children: [

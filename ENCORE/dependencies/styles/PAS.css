@@ -135,25 +135,27 @@ input[type='text'] {
 	opacity: 1;
 	transition: 0.2s;
 }
-.PAS-popup div label GIS {
-	position: absolute;
-	display: block;
-	width: 20px;
-	height: 20px;
-	background-color: var(--bgColor-default);
-	opacity: 0;
-	transition: 0.2s;
-}
-.PAS-popup div label.dropper GIS,
 .PAS-popup div label p {
 	opacity: 1;
 }
-.PAS-popup div label GIS,
 .PAS-popup div label.dropper p {
 	opacity: 0;
 }
 .PAS-popup div label * {
 	pointer-events: none;
+}
+.PAS-popup::after {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: red;
+	opacity: 0;
+	content: '';
+}
+.PAS-popup.dropper::after {
+	opacity: 1;
 }
 
 .PAS-popup div button {
