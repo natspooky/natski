@@ -211,7 +211,7 @@ export class PAS {
 		return (
 			SEC.setFallback(data.message, 'blank') +
 			SEC.setFallback(data.icon, 'blank') +
-			SEC.setFallback(data.input, 'blank')
+			SEC.setFallback(data.input.type, 'blank')
 		);
 	}
 

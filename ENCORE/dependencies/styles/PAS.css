@@ -152,12 +152,15 @@ input[type='text'] {
 	left: 0;
 	width: 100%;
 	height: 100%;
-	background-color: red;
+	background-color: var(--themecol);
 	opacity: 0;
-	content: '';
+	pointer-events: none;
+	color: var(--fgColor-default);
+	content: 'drop files';
 }
 .PAS-popup.dropper::after {
 	opacity: 1;
+	pointer-events: unset;
 }
 
 .PAS-popup div button {
