@@ -311,10 +311,12 @@ class SSCU {
 						children: [
 							{
 								tag: 'GIS',
+								classes: ['SSCUpause'],
 								attributes: { name: 'pause' },
 							},
 							{
 								tag: 'GIS',
+								classes: ['SSCUplay'],
 								attributes: { name: 'play' },
 							},
 						],

@@ -1,0 +1,236 @@
+@media (hover: hover) {
+	sscu:hover .SSCUpageButton {
+		opacity: 1;
+	}
+	sscu .SSCUthumbs .SSCUthumb:hover {
+		background-color: var(--themecol);
+	}
+	SSCU .SSCUpageButton:hover GIS {
+		background-color: var(--themecol);
+		transform: scale(1.3);
+	}
+	SSCU .SSCUpageButton:hover:active GIS,
+	SSCU .SSCUpageButton:active GIS {
+		transform: scale(1.2);
+		transition: 0s;
+	}
+	SSCU .SSCUpauseButton:hover {
+		background-color: var(--themecol);
+	}
+}
+sscu *,
+sscu {
+	font-size: 16px;
+}
+sscu {
+	position: relative;
+	margin: 10px auto 20px auto;
+	height: min(75vh, 600px);
+	width: min(1000px, calc(100% - 40px));
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	background-color: var(--bgColor-default);
+	background-image: linear-gradient(45deg, #6829ba53, transparent);
+	box-shadow: 0px 5px 20px #00000060;
+	border: 0px;
+	border-radius: 40px;
+	overflow: hidden;
+}
+sscu .SSCUpageButton {
+	position: absolute;
+	top: 50%;
+	cursor: pointer;
+	left: 20px;
+	padding: 25px 10px;
+	transform: translateY(-50%);
+	opacity: 0.3;
+	background-color: transparent;
+	border: 0;
+	transition: 0.2s;
+}
+SSCU .SSCUpageButton:last-of-type {
+	left: unset;
+	right: 20px;
+}
+SSCU .SSCUpageButton GIS {
+	display: block;
+	background-color: var(--fgColor-default);
+	height: 20px;
+	width: 20px;
+	transform: scale(1);
+	transition: 0.2s;
+}
+
+SSCU .SSCUthumbs {
+	position: absolute;
+	display: flex;
+	align-items: center;
+	bottom: 30px;
+	right: 30px;
+}
+SSCU .SSCUthumbs .SSCUthumb {
+	position: relative;
+	height: 7px;
+	width: 20px;
+	border: 0;
+	background-color: #ffffff20;
+	background-image: linear-gradient(45deg, #00000020, transparent);
+	box-shadow: 0 0 5px #00000020;
+	margin: 0 6px;
+	border-radius: 100vmax;
+	overflow: hidden;
+	transition: 0.2s;
+	cursor: pointer;
+}
+SSCU .SSCUthumbs .SSCUthumb:first-of-type {
+	margin: 0 6px 0 0;
+}
+SSCU .SSCUthumbs .SSCUthumb:last-of-type {
+	margin: 0 0 0 6px;
+}
+SSCU .SSCUthumbs .SSCUthumb.SSCUhidden {
+	width: 0;
+	margin: 0;
+	opacity: 0;
+	box-shadow: 0 0 5px transparent;
+}
+SSCU .SSCUthumbs .SSCUthumb .SSCUprogress {
+	position: absolute;
+	left: 0;
+	top: 0;
+	transform-origin: left;
+	width: 100%;
+	height: 100%;
+	transform: scaleX(0);
+	background-color: var(--fgColor-default);
+}
+SSCU .SSCUthumbs .SSCUthumb.SSCUselected {
+	width: 40px;
+	pointer-events: none;
+}
+SSCU .banner-bg-u {
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transform: translateX(100%);
+	overflow: hidden;
+	visibility: hidden;
+}
+SSCU .banner-bg-u div {
+	position: relative;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	justify-content: center;
+}
+SSCU .banner-bg-u div img {
+	position: relative;
+	height: 200px;
+	width: 200px;
+	background-color: #ffffff20;
+	border-radius: 40px;
+}
+SSCU .banner-bg-u div p {
+	position: relative;
+	margin-top: 10px;
+}
+SSCU .banner-bg-u span {
+	position: absolute;
+	top: 0;
+	left: 0;
+	padding: 25px 30px 30px 30px;
+}
+SSCU .banner-bg-u span h1 {
+	position: relative;
+	font-size: min(40px, 10vw);
+	line-height: 40px;
+}
+SSCU .banner-bg-u span p {
+	position: relative;
+	margin-left: 2px;
+}
+SSCU .banner-bg-u.SSCUfollowing .GIS-slide,
+SSCU .banner-bg-u.SSCUprior .GIS-slide {
+	opacity: 0;
+	transform: translateY(-50%) rotate(20deg) translateX(30vw);
+	transition: opacity 0.7s, transform 1s;
+	transition-delay: 0s, 0s;
+}
+SSCU .banner-bg-u .GIS-slide {
+	position: absolute;
+	top: 50%;
+	right: max(-20vw, -20vh);
+	width: max(70vw, 70vh);
+	height: max(70vw, 70vh);
+	transform: translateY(-50%) rotate(20deg) translateX(0);
+	opacity: 0.25;
+	background-color: var(--fgColor-default);
+	transition: opacity 7s cubic-bezier(0.04, 0.84, 0.5, 1),
+		transform 7s cubic-bezier(0.04, 0.84, 0.5, 1);
+	transition-delay: 0.3s, 0.3s;
+}
+SSCU .banner-bg-u.SSCUloaded {
+	transform: translateX(0);
+	visibility: visible;
+}
+sscu .banner-bg-u.SSCUprior {
+	transform: translateX(-100%);
+	visibility: hidden;
+}
+sscu .banner-bg-u.SSCUfollowing {
+	transform: translateX(100%);
+	visibility: hidden;
+}
+SSCU .banner-bg-u .banner-button {
+	display: flex;
+	position: absolute;
+	bottom: 55px;
+	width: 120px;
+	height: 45px;
+}
+SSCU .SSCUpauseButton {
+	position: absolute;
+	top: 30px;
+	right: 30px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 40px;
+	width: 40px;
+	border-radius: 10px;
+	background-color: #ffffff20;
+	background-image: linear-gradient(45deg, #00000020, transparent);
+	box-shadow: 0 0 5px #00000020;
+	border: 0;
+	cursor: pointer;
+	transition: 0.2s;
+}
+SSCU .SSCUpauseButton .SSCUplay,
+SSCU .SSCUpauseButton.SSCUpaused .SSCUpause {
+	display: none;
+}
+SSCU .SSCUpauseButton.SSCUpaused .SSCUplay,
+SSCU .SSCUpauseButton .SSCUpause {
+	display: block;
+}
+SSCU .SSCUpauseButton GIS {
+	position: relative;
+	height: 17px;
+	width: 17px;
+	background-color: var(--fgColor-default);
+	transition: 0.2s;
+}
+@media (orientation: portrait) {
+	SSCU {
+		height: 80vh;
+	}
+	SSCU .SSCUthumbs {
+		right: unset;
+	}
+}
