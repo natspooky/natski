@@ -65,7 +65,6 @@ export class PAS {
 			this.alerts.splice(0, 1);
 			this.loadAlert();
 		}, 501);
-		console.log(ev.target.parentNode.children[0].value);
 	}
 
 	keyPress(ev, callback) {

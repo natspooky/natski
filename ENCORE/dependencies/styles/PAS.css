@@ -126,7 +126,7 @@ input[type='text'] {
 }
 .PAS-popup div label {
 	position: relative;
-	min-width: 100px;
+	min-width: 200px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -139,9 +139,6 @@ input[type='text'] {
 }
 .PAS-popup div label p {
 	opacity: 1;
-}
-.PAS-popup div label.dropper p {
-	opacity: 0;
 }
 .PAS-popup div label * {
 	pointer-events: none;
@@ -160,7 +157,9 @@ input[type='text'] {
 }
 .PAS-popup.dropper::after {
 	opacity: 1;
-	pointer-events: unset;
+}
+.PAS-popup.dropper * {
+	pointer-events: none;
 }
 
 .PAS-popup div button {
@@ -184,6 +183,10 @@ input[type='text'] {
 	height: 20px;
 	display: block;
 	background-color: var(--bgColor-default);
+}
+.PAS-popup div button * {
+	pointer-events: none;
+	user-select: none;
 }
 @media screen and (max-width: 700px) {
 	.PAS-popup {
