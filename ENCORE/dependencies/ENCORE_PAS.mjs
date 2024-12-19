@@ -14,18 +14,7 @@ export class PAS {
 	add(data) {
 		let key = this.generateKey(data);
 
-		if (
-			!(
-				SEC.setFallback(data.noRepeat, false) &&
-				key !==
-					SEC.setFallback(
-						SEC.checkExists(this.alerts[this.alerts.length - 1])
-							? this.alerts[this.alerts.length - 1][1] // make this work for all of the alerts in array
-							: false,
-						null,
-					)
-			)
-		) {
+		if (!(data.noRepeat && this.checkKey(key))) {
 			this.alerts.push([
 				() => {
 					new Promise((resolve) => {
@@ -52,6 +41,13 @@ export class PAS {
 				this.loadAlert();
 			}
 		}
+	}
+
+	checkKey(key) {
+		for (const value of this.alerts) {
+			if (value[1] == key) return true;
+		}
+		return false;
 	}
 
 	enter(ev, callback) {
