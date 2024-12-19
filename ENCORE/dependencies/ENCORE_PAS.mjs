@@ -75,16 +75,17 @@ export class PAS {
 		}
 	}
 
+	fileInput(event) {
+		event.target.parentNode.children[1].innerHTML = 'Files Added';
+	}
+
 	drop(event) {
 		event.preventDefault();
 		event.target.classList.remove('dropper');
-		event.target.parentNode.children[1].files = [
+		event.target.children[1].children[0].files = [
 			...event.dataTransfer.files,
 		];
-		event.target.parentNode.children[1].value = [
-			...event.dataTransfer.files,
-		];
-		event.target.children[0].innerHTML = [...event.dataTransfer.files];
+		event.target.children[1].children[1].innerHTML = 'Files Added';
 	}
 
 	dragOver(event) {
@@ -174,6 +175,12 @@ export class PAS {
 				return [
 					{
 						tag: 'input',
+						events: {
+							input: {
+								func: this.fileInput.bind(this),
+								var: 'event',
+							},
+						},
 						attributes: {
 							type: prompt.type,
 							accepts: SEC.setFallback(prompt.accepts, null),
