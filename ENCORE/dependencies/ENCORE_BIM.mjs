@@ -11,7 +11,7 @@ export class BIM {
 	constructor() {
 		this.buttons = document.getElementsByClassName('BIM');
 		this.isMobileTouch = DP.userDevice();
-		this.eventTemps = [];
+		this.timeout;
 	}
 
 	init() {
@@ -30,49 +30,36 @@ export class BIM {
 	}
 
 	mouseEnter(ev) {
-		new Promise((resolve) => {
-			let data = ev.target;
-			let element = this.createElements({
-				icon: data.getAttribute('BIM-icon'),
-				title: data.getAttribute('BIM-title'),
-				info: data.getAttribute('BIM-info'),
-			});
-			document.body.appendChild(element);
-			setTimeout(() => {
-				resolve(element);
-			}, 10);
-		}).then((element) => {
-			this.element = element;
-			this.element.classList.add('visible');
-			ev.target.addEventListener('mousemove', this.mouseMove.bind(this));
-			this.eventTemps.push(() =>
-				ev.target.removeEventListener(
+		this.timeout = setTimeout(() => {
+			new Promise((resolve) => {
+				let data = ev.target;
+				let element = this.createElements({
+					icon: data.getAttribute('BIM-icon'),
+					title: data.getAttribute('BIM-title'),
+					info: data.getAttribute('BIM-info'),
+				});
+				document.body.appendChild(element);
+				setTimeout(() => {
+					resolve(element);
+				}, 10);
+			}).then((element) => {
+				this.element = element;
+				this.element.classList.add('visible');
+				ev.target.addEventListener(
 					'mousemove',
 					this.mouseMove.bind(this),
-				),
-			);
-		});
-	}
-
-	mouseMove(ev) {
-		this.element.style.left = `${Math.min(
-			this.element.offsetWidth + 10,
-			ev.clientX,
-		)}px`;
-		this.element.style.top = `${Math.min(
-			this.element.offsetHeight + 10,
-			ev.clientY,
-		)}px`;
+				);
+			});
+		}, 200);
 	}
 
 	mouseLeave(ev) {
-		this.element.classList.remove('visible');
-		if (this.eventTemps.length > 0) {
-			this.eventTemps.pop()();
-		}
-		setTimeout(() => {
+		clearTimeout(this.timeout);
+		if (this.element) {
+			this.element.classList.remove('visible');
 			this.element.remove();
-		}, 210);
+			this.element = null;
+		}
 	}
 
 	createElements(data) {

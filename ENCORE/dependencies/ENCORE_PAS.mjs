@@ -82,9 +82,10 @@ export class PAS {
 	drop(event) {
 		event.preventDefault();
 		event.target.classList.remove('dropper');
+		/*
 		event.target.children[1].children[0].fileList = [
 			...event.dataTransfer.files,
-		];
+		];*/
 		event.target.children[1].children[1].innerHTML = 'Files Added';
 	}
 
