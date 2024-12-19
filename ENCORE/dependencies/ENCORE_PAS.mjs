@@ -57,6 +57,14 @@ export class PAS {
 	enter(ev, callback) {
 		let element = ev.target.parentNode.parentNode;
 		if (SEC.checkExists(callback)) {
+			console.log(ev.target.type);
+			switch (ev.target.type) {
+				case 'file':
+					callback(ev.target.parentNode.children[0].files);
+				default:
+					callback(ev.target.parentNode.children[0].value);
+					break;
+			}
 			callback(ev.target.parentNode.children[0].value);
 		}
 		element.classList.remove('open');
