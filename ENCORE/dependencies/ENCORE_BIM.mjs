@@ -32,7 +32,13 @@ export class BIM {
 	mouseEnter(ev) {
 		this.timeout = setTimeout(() => {
 			new Promise((resolve) => {
-				let data = ev.target;
+				let data = ev.target,
+					x = document.getElementsByClassName('BIM-popup');
+				if (x.length > 0) {
+					for (const element of x) {
+						element.remove();
+					}
+				}
 				let element = this.createElements({
 					icon: data.getAttribute('BIM-icon'),
 					title: data.getAttribute('BIM-title'),
@@ -46,7 +52,7 @@ export class BIM {
 				this.element = element;
 				this.element.classList.add('visible');
 			});
-		}, 200);
+		}, 300);
 	}
 
 	mouseLeave(ev) {

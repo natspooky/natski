@@ -6,16 +6,9 @@
 
 import * as SEC from 'https://natski.netlify.app/ENCORE/dependencies/ENCORE_SEC.mjs';
 import * as ENCORE_DP from 'https://natski.netlify.app/ENCORE/dependencies/ENCORE_DP.mjs';
+import * as GIS from 'https://natski.netlify.app/ENCORE/ENCORE_GIS.js';
 
 var SSCUobjs = [];
-const SSCUicons = {
-	leftArrow:
-		'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 398.35 636.29"><path d="M16.05,354l302.18,269.96c30.98,27.68,80.12,5.69,80.12-35.86V48.18c0-41.55-49.14-63.54-80.12-35.86L16.05,282.28c-21.4,19.12-21.4,52.6,0,71.72Z"/></svg>',
-	rightArrow:
-		'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 398.35 636.29"><path d="M382.3,282.28L80.12,12.32C49.14-15.36,0,6.63,0,48.18V588.11c0,41.55,49.14,63.54,80.12,35.86L382.3,354c21.4-19.12,21.4-52.6,0-71.72Z"/></svg>',
-	play: '<svg class="SSCUplay" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 756.99 850.4"><path d="M718.32,358.21c51.56,29.77,51.56,104.2,0,133.97l-301.15,173.87L116.02,839.92c-51.56,29.77-116.02-7.44-116.02-66.98V77.46C0,17.92,64.46-19.29,116.02,10.48L417.17,184.35l301.15,173.87h0Z"/></svg>',
-	pause: '<svg class="SSCUpause" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850.4 850.4"><rect x="46.77" y=".17" width="239.38" height="850.07" rx="90.18" ry="90.18"/><rect x="564.25" y=".17" width="239.38" height="850.07" rx="93.7" ry="93.7"/></svg>',
-};
 
 class SSCU {
 	constructor(element, settings) {
@@ -315,7 +308,16 @@ class SSCU {
 						classes: ['SSCUpauseButton'],
 						events: { click: { func: this.togglePlay.bind(this) } },
 						attributes: { ariaLabel: 'Play / Pause' },
-						innerHTML: `${SSCUicons['pause']} ${SSCUicons['play']}`,
+						children: [
+							{
+								tag: 'GIS',
+								attributes: { name: 'pause' },
+							},
+							{
+								tag: 'GIS',
+								attributes: { name: 'play' },
+							},
+						],
 					}),
 				);
 				return Promise.resolve(
@@ -339,7 +341,12 @@ class SSCU {
 							},
 						},
 						attributes: { ariaLabel: 'Previous Page' },
-						innerHTML: SSCUicons['leftArrow'],
+						children: [
+							{
+								tag: 'GIS',
+								attributes: { name: 'mini_arrow_left' },
+							},
+						],
 					},
 					{
 						tag: 'button',
@@ -348,7 +355,12 @@ class SSCU {
 							click: { func: this.changePage.bind(this), var: 1 },
 						},
 						attributes: { ariaLabel: 'Next Page' },
-						innerHTML: SSCUicons['rightArrow'],
+						children: [
+							{
+								tag: 'GIS',
+								attributes: { name: 'mini_arrow_right' },
+							},
+						],
 					},
 				]),
 			);
@@ -477,20 +489,13 @@ class SSCU {
 			this.pageFocus();
 			this.mutationObserver();
 			Promise.resolve(this.createElements()).then(() => {
+				new GIS.GIS().applyMasks(this.SSCU.getElementsByTagName('GIS'));
 				this.directPage(1);
 			});
 		} else {
 			this.pages[0].classList.add('SSCUloaded');
 		}
 	}
-}
-
-function SSCUstyleCall(url) {
-	let style = document.createElement('link');
-	style.rel = 'stylesheet';
-	style.type = 'text/css';
-	style.href = url;
-	document.getElementsByTagName('head')[0].appendChild(style);
 }
 
 function load() {
@@ -507,11 +512,7 @@ function load() {
 			style: 'STANDARD',
 		};
 	}*/
-	if (SSCU_settings.style) {
-		SSCUstyleCall(
-			`https://natski.netlify.app/ENCORE/styles/SSCU/${SSCU_settings.style}.css`,
-		);
-	}
+
 	for (const element of elements) {
 		SSCUobjs.push(new SSCU(element, SSCU_settings).init());
 	}

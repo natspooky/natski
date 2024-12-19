@@ -9,19 +9,16 @@ import * as DP from 'https://natski.netlify.app/ENCORE/dependencies/ENCORE_DP.mj
 
 var GISobj;
 
-class GIS {
-	constructor() {
-		this.icons = document.getElementsByTagName('GIS');
-		this.observer;
-	}
+export class GIS {
+	constructor() {}
 
 	init() {
-		this.applyMasks();
+		this.applyMasks(document.getElementsByTagName('GIS'));
 		this.createObserver();
 	}
 
-	applyMasks() {
-		for (const icon of this.icons) {
+	applyMasks(icons) {
+		for (const icon of icons) {
 			if (
 				icon.hasAttribute('name') &&
 				values.includes(icon.getAttribute('name'))
@@ -67,8 +64,7 @@ class GIS {
 	}
 
 	mutations() {
-		this.icons = document.getElementsByTagName('GIS');
-		this.applyMasks();
+		this.applyMasks(document.getElementsByTagName('GIS'));
 	}
 }
 

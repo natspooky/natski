@@ -410,14 +410,6 @@ class SSC {
 	}
 }
 
-function SSCstyleCall(url) {
-	let style = document.createElement('link');
-	style.rel = 'stylesheet';
-	style.type = 'text/css';
-	style.href = url;
-	document.getElementsByTagName('head')[0].appendChild(style);
-}
-
 function load() {
 	let elements = document.getElementsByTagName('ssc');
 	/*if (!SSC_settings) {
@@ -430,11 +422,7 @@ function load() {
 			style: 'STANDARD',
 		};
 	}*/
-	if (SSC_settings.style) {
-		SSCstyleCall(
-			`https://natski.netlify.app/lib/ENCORE_DB/SSC/${SSC_settings.style}.css`,
-		);
-	}
+
 	for (const element of elements) {
 		SSCobjs.push(new SSC(element, SSC_settings).init());
 	}

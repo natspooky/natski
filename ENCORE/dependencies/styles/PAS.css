@@ -1,3 +1,12 @@
+:root {
+	--themecol: #4c64ba;
+	--bgColor-default: #010409;
+	--bgColor-muted: #161b22;
+	--bgColor-inset: #0d1117;
+	--fgColor-default: #e6edf3;
+	--fgColor-muted: #848d97;
+	--fgColor-onEmphasis: #ffffff;
+}
 .PAS-popup {
 	position: fixed;
 	top: 20px;
