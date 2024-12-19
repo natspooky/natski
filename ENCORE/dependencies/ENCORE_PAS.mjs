@@ -54,21 +54,24 @@ export class PAS {
 		}
 	}
 
-	enter(self) {
-		let element = self.parentNode.parentNode;
+	enter(ev, callback) {
+		let element = ev.target.parentNode.parentNode;
+		if (SEC.checkExists(callback)) {
+			callback(ev.target.parentNode.children[0].value);
+		}
 		element.classList.remove('open');
 		setTimeout(() => {
 			element.remove();
 			this.alerts.splice(0, 1);
 			this.loadAlert();
 		}, 501);
-		console.log(self.parentNode.children[0].value);
+		console.log(ev.target.parentNode.children[0].value);
 	}
 
-	keyPress(event) {
-		if (event.key == 'Enter') {
-			event.preventDefault();
-			this.enter(event.target);
+	keyPress(ev, callback) {
+		if (ev.key == 'Enter') {
+			ev.preventDefault();
+			this.enter(ev, callback);
 		}
 	}
 
@@ -119,9 +122,9 @@ export class PAS {
 						func: this.enter.bind(this),
 						var: SEC.setFallback(
 							SEC.checkExists(prompt.callback)
-								? ['self', prompt.callback]
+								? ['event', prompt.callback]
 								: null,
-							'self',
+							'event',
 						),
 					},
 				},
@@ -208,11 +211,7 @@ export class PAS {
 	}
 
 	generateKey(data) {
-		return (
-			SEC.setFallback(data.message, 'blank') +
-			SEC.setFallback(data.icon, 'blank') +
-			SEC.setFallback(data.input.type, 'blank')
-		);
+		return JSON.stringify(data);
 	}
 
 	createElements(data) {
