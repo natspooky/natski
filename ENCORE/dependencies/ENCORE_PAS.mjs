@@ -12,7 +12,7 @@ export class PAS {
 	}
 
 	add(data) {
-		let key = this.generateKey(data);
+		let key = JSON.stringify(data);
 
 		if (!(data.noRepeat && this.checkKey(key))) {
 			this.alerts.push([
@@ -27,9 +27,7 @@ export class PAS {
 						element.classList.add('open');
 						if (!data.input) {
 							this.createTimer(
-								SEC.checkExists(data.duration)
-									? data.duration
-									: 2000,
+								data.duration ? data.duration : 2000,
 								element,
 							);
 						}
@@ -212,10 +210,6 @@ export class PAS {
 		}
 	}
 
-	generateKey(data) {
-		return JSON.stringify(data);
-	}
-
 	createElements(data) {
 		return SEC.jsonElementify({
 			tag: 'div',
@@ -226,7 +220,8 @@ export class PAS {
 					: null,
 			},
 			events:
-				data.prompt === 'file'
+				SEC.setFallback(SEC.checkExists(data.prompt.type), null) ===
+				'file'
 					? {
 							drop: {
 								func: this.drop.bind(this),
