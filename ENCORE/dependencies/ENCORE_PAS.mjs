@@ -82,7 +82,7 @@ export class PAS {
 	drop(event) {
 		event.preventDefault();
 		event.target.classList.remove('dropper');
-		event.target.children[1].children[0].files = [
+		event.target.children[1].children[0].fileList = [
 			...event.dataTransfer.files,
 		];
 		event.target.children[1].children[1].innerHTML = 'Files Added';
@@ -223,7 +223,7 @@ export class PAS {
 			classes: ['PAS-popup'],
 			attributes: {
 				style: SEC.checkExists(data.color)
-					? `background-color: ${data.color}`
+					? `--themecol: ${data.color}`
 					: null,
 			},
 			events:
