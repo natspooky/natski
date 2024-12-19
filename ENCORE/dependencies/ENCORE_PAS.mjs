@@ -19,7 +19,7 @@ export class PAS {
 			key !==
 				SEC.setFallback(
 					SEC.checkExists(this.alerts[this.alerts.length - 1])
-						? this.alerts[this.alerts.length - 1][1]
+						? this.alerts[this.alerts.length - 1][1] // make this work for all of the alerts in array
 						: false,
 					null,
 				)

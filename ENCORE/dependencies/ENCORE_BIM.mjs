@@ -78,7 +78,7 @@ export class BIM {
 	createElements(data) {
 		return SEC.jsonElementify({
 			tag: 'div',
-			classes: ['BIM-container'],
+			classes: ['BIM-popup'],
 			children: [
 				{
 					tag: 'div',
