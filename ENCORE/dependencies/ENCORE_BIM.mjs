@@ -45,10 +45,6 @@ export class BIM {
 			}).then((element) => {
 				this.element = element;
 				this.element.classList.add('visible');
-				ev.target.addEventListener(
-					'mousemove',
-					this.mouseMove.bind(this),
-				);
 			});
 		}, 200);
 	}
