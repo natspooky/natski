@@ -15,14 +15,16 @@ export class PAS {
 		let key = this.generateKey(data);
 
 		if (
-			SEC.setFallback(data.noRepeat, false) &&
-			key !==
-				SEC.setFallback(
-					SEC.checkExists(this.alerts[this.alerts.length - 1])
-						? this.alerts[this.alerts.length - 1][1] // make this work for all of the alerts in array
-						: false,
-					null,
-				)
+			!(
+				SEC.setFallback(data.noRepeat, false) &&
+				key !==
+					SEC.setFallback(
+						SEC.checkExists(this.alerts[this.alerts.length - 1])
+							? this.alerts[this.alerts.length - 1][1] // make this work for all of the alerts in array
+							: false,
+						null,
+					)
+			)
 		) {
 			this.alerts.push([
 				() => {
