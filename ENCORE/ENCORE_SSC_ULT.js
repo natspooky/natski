@@ -32,14 +32,14 @@ export class SSCU {
 		if (this.swapTimerFunc) return;
 		this.prevIndex = this.index;
 		this.index = index;
-		this.displayPage();
+		this.#displayPage();
 	}
 
 	changePage(index) {
 		if (index == 0 || this.swapTimerFunc) return;
 		this.prevIndex = this.index;
 		this.index += index;
-		this.displayPage();
+		this.#displayPage();
 	}
 
 	#checkPages() {

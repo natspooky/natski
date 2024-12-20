@@ -14,11 +14,11 @@ export class PAS {
 	add(data) {
 		let key = JSON.stringify(data);
 
-		if (!(data.noRepeat && this.checkKey(key))) {
+		if (!(data.noRepeat && this.#checkKey(key))) {
 			this.alerts.push([
 				() => {
 					new Promise((resolve) => {
-						let element = this.createElements(data);
+						let element = this.#createElements(data);
 						document.body.appendChild(element);
 						setTimeout(() => {
 							resolve(element);
@@ -26,7 +26,7 @@ export class PAS {
 					}).then((element) => {
 						element.classList.add('open');
 						if (!data.input) {
-							this.createTimer(
+							this.#createTimer(
 								data.duration ? data.duration : 2000,
 								element,
 							);
@@ -36,12 +36,12 @@ export class PAS {
 				key,
 			]);
 			if (this.alerts.length <= 1) {
-				this.loadAlert();
+				this.#loadAlert();
 			}
 		}
 	}
 
-	checkKey(key) {
+	#checkKey(key) {
 		for (const value of this.alerts) {
 			if (value[1] == key) return true;
 		}
@@ -64,7 +64,7 @@ export class PAS {
 		setTimeout(() => {
 			element.remove();
 			this.alerts.splice(0, 1);
-			this.loadAlert();
+			this.#loadAlert();
 		}, 301);
 	}
 
@@ -98,18 +98,18 @@ export class PAS {
 		event.target.classList.remove('dropper');
 	}
 
-	createTimer(duration, element) {
+	#createTimer(duration, element) {
 		setTimeout(() => {
 			element.classList.remove('open');
 			setTimeout(() => {
 				element.remove();
 				this.alerts.splice(0, 1);
-				this.loadAlert();
+				this.#loadAlert();
 			}, 301);
 		}, duration);
 	}
 
-	loadAlert() {
+	#loadAlert() {
 		if (this.alerts.length > 0) {
 			this.alerts[0][0]();
 		}
@@ -218,7 +218,7 @@ export class PAS {
 		}
 	}
 
-	createElements(data) {
+	#createElements(data) {
 		return SEC.jsonElementify({
 			tag: 'div',
 			classes: ['PAS-popup'],
