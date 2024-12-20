@@ -180,7 +180,7 @@ export default class PAS {
 								func: this.#keyPress.bind(this),
 								var: SEC.setFallback(
 									SEC.checkExists(prompt.callback)
-										? ['event', [prompt.callback]]
+										? ['event', prompt.callback]
 										: null,
 									'event',
 								),
