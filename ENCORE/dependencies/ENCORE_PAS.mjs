@@ -53,15 +53,21 @@ export default class PAS {
 		return false;
 	}
 
-	enter(ev, callback) {
+	#enter(ev, callback) {
 		let element = ev.target.parentNode.parentNode,
 			input = ev.target.parentNode.children[0];
 		if (SEC.checkExists(callback)) {
 			switch (input.type) {
 				case 'file':
-					callback(input.files);
+					callback.func(
+						input.files,
+						SEC.setFallback(callback.var, null),
+					);
 				default:
-					callback(input.value);
+					callback.func(
+						input.value,
+						SEC.setFallback(callback.var, null),
+					);
 					break;
 			}
 		}
@@ -73,18 +79,18 @@ export default class PAS {
 		}, 301);
 	}
 
-	keyPress(ev, callback) {
+	#keyPress(ev, callback) {
 		if (ev.key == 'Enter') {
 			ev.preventDefault();
-			this.enter(ev, callback);
+			this.#enter(ev, callback);
 		}
 	}
 
-	fileInput(event) {
+	#fileInput(event) {
 		event.target.parentNode.children[1].innerHTML = 'Files Added';
 	}
 
-	drop(event) {
+	#drop(event) {
 		event.preventDefault();
 		event.target.classList.remove('dropper');
 		/*
@@ -94,11 +100,11 @@ export default class PAS {
 		event.target.children[1].children[1].innerHTML = 'Files Added';
 	}
 
-	dragOver(event) {
+	#dragOver(event) {
 		event.preventDefault();
 		event.target.classList.add('dropper');
 	}
-	dragLeave(event) {
+	#dragLeave(event) {
 		event.preventDefault();
 		event.target.classList.remove('dropper');
 	}
@@ -126,7 +132,7 @@ export default class PAS {
 				tag: 'button',
 				events: {
 					click: {
-						func: this.enter.bind(this),
+						func: this.#enter.bind(this),
 						var: SEC.setFallback(
 							SEC.checkExists(prompt.callback)
 								? ['event', prompt.callback]
@@ -171,10 +177,10 @@ export default class PAS {
 						},
 						events: {
 							keydown: {
-								func: this.keyPress.bind(this),
+								func: this.#keyPress.bind(this),
 								var: SEC.setFallback(
 									SEC.checkExists(prompt.callback)
-										? ['event', prompt.callback]
+										? ['event', [prompt.callback]]
 										: null,
 									'event',
 								),
@@ -193,7 +199,7 @@ export default class PAS {
 						tag: 'input',
 						events: {
 							input: {
-								func: this.fileInput.bind(this),
+								func: this.#fileInput.bind(this),
 								var: 'event',
 								options: {
 									once: false,
@@ -254,7 +260,7 @@ export default class PAS {
 				) === 'file'
 					? {
 							drop: {
-								func: this.drop.bind(this),
+								func: this.#drop.bind(this),
 								var: SEC.setFallback(
 									SEC.checkExists(prompt.callback)
 										? ['event', prompt.callback]
@@ -268,7 +274,7 @@ export default class PAS {
 								},
 							},
 							dragover: {
-								func: this.dragOver.bind(this),
+								func: this.#dragOver.bind(this),
 								var: 'event',
 								options: {
 									once: false,
@@ -277,7 +283,7 @@ export default class PAS {
 								},
 							},
 							dragleave: {
-								func: this.dragLeave.bind(this),
+								func: this.#dragLeave.bind(this),
 								var: 'event',
 								options: {
 									once: false,
