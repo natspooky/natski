@@ -8,6 +8,7 @@ export function jsonElementify(elementData) {
 	if (Array.isArray(elementData)) {
 		return jsonMultiElementify(elementData);
 	}
+
 	let element = document.createElement(elementData.tag);
 
 	if (elementData.innerHTML) {
@@ -15,10 +16,7 @@ export function jsonElementify(elementData) {
 	}
 
 	if (elementData.classes) {
-		if (
-			Array.isArray(elementData.classes) &&
-			elementData.classes.length !== 0
-		) {
+		if (Array.isArray(elementData.classes)) {
 			for (const value of elementData.classes) {
 				element.classList.add(value);
 			}
@@ -49,24 +47,20 @@ export function jsonElementify(elementData) {
 		}
 	}
 
-	if (elementData.children && elementData.children.length !== 0) {
+	if (elementData.children) {
 		appendChildren(element, jsonElementify(elementData.children));
 	}
-	console.log(element);
+
 	return element;
 }
 
 export function appendChildren(element, children) {
 	if (Array.isArray(children)) {
 		for (const child of children) {
-			if (checkForKeys(child)) {
-				element.appendChild(child);
-			}
+			element.appendChild(child);
 		}
 	} else {
-		if (checkForKeys(children)) {
-			element.appendChild(children);
-		}
+		element.appendChild(children);
 	}
 }
 
