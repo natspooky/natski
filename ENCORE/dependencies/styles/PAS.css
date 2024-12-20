@@ -95,6 +95,7 @@
 .PAS-popup div input[type='checkbox'] {
 	outline: none;
 	min-width: 60px;
+	border-radius: 20px;
 }
 
 .PAS-popup div input[type='checkbox']::after {
@@ -103,13 +104,18 @@
 	width: 20px;
 	height: 20px;
 	border-radius: 10px;
-	background-color: var(--themecol-PAS);
+	background-color: var(--bgColor-PAS-default);
 	left: 10px;
+	transform: scale(1);
 	top: 10px;
 	transition: 0.2s;
 }
+.PAS-popup div input[type='checkbox']:hover::after {
+	transform: scale(1.1);
+}
 .PAS-popup div input[type='checkbox']:checked::after {
 	left: calc(100% - 30px);
+	background-color: var(--themecol-PAS);
 }
 
 .PAS-popup div input:focus {

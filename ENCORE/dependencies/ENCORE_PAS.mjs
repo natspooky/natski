@@ -63,6 +63,13 @@ export default class PAS {
 						input.files,
 						SEC.setFallback(callback.var, null),
 					);
+					break;
+				case 'checkbox':
+					callback.func(
+						input.checked,
+						SEC.setFallback(callback.var, null),
+					);
+					break;
 				default:
 					callback.func(
 						input.value,
