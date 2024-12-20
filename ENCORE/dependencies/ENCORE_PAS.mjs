@@ -5,7 +5,7 @@
  */
 
 import * as SEC from 'https://natski.netlify.app/ENCORE/dependencies/ENCORE_SEC.mjs';
-import GIS from 'https://natski.netlify.app/ENCORE/ENCORE_GIS.mjs';
+import GIS from 'https://natski.netlify.app/ENCORE/ENCORE_GIS.js';
 
 export default class PAS {
 	constructor() {
