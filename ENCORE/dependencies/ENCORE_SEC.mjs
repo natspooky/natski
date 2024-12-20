@@ -15,7 +15,10 @@ export function jsonElementify(elementData) {
 	}
 
 	if (elementData.classes) {
-		if (Array.isArray(elementData.classes)) {
+		if (
+			Array.isArray(elementData.classes) &&
+			elementData.classes.length !== 0
+		) {
 			for (const value of elementData.classes) {
 				element.classList.add(value);
 			}
@@ -49,7 +52,7 @@ export function jsonElementify(elementData) {
 	if (elementData.children && elementData.children.length !== 0) {
 		appendChildren(element, jsonElementify(elementData.children));
 	}
-
+	console.log(element);
 	return element;
 }
 
