@@ -27,7 +27,7 @@ export default class PAS {
 						);
 						setTimeout(() => {
 							resolve(element);
-						}, 10);
+						}, 100);
 					}).then((element) => {
 						element.classList.add('open');
 						if (!data.input) {
@@ -76,7 +76,7 @@ export default class PAS {
 			element.remove();
 			this.alerts.splice(0, 1);
 			this.#loadAlert();
-		}, 301);
+		}, 400);
 	}
 
 	#keyPress(ev, callback) {
