@@ -306,16 +306,19 @@ export default class PAS {
 								: {},
 						)
 						.concat(
+							SEC.checkExists(data.message) &&
+								SEC.checkExists(data.icon)
+								? {
+										tag: 'span',
+								  }
+								: {},
+						)
+						.concat(
 							SEC.checkExists(data.message)
-								? [
-										{
-											tag: 'span',
-										},
-										{
-											tag: 'p',
-											innerHTML: data.message,
-										},
-								  ]
+								? {
+										tag: 'p',
+										innerHTML: data.message,
+								  }
 								: {},
 						),
 				},
