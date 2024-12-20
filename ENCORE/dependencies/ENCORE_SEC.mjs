@@ -64,6 +64,18 @@ export function appendChildren(element, children) {
 	}
 }
 
+function jsonMultiElementify(elements) {
+	let arr = [];
+
+	for (const element of elements) {
+		if (checkForKeys(element)) {
+			arr.push(jsonElementify(element));
+		}
+	}
+
+	return arr;
+}
+
 function checkForKeys(obj) {
 	return Object.keys(obj).length !== 0 && obj.constructor === Object;
 }
@@ -100,18 +112,6 @@ export function checkExists(data) {
 export function setFallback(data, fallback) {
 	if (checkExists(data)) return data;
 	return fallback;
-}
-
-function jsonMultiElementify(elements) {
-	let arr = [];
-
-	for (const element of elements) {
-		if (checkForKeys(element)) {
-			arr.push(jsonElementify(element));
-		}
-	}
-
-	return arr;
 }
 
 export function elementJsonify(element) {

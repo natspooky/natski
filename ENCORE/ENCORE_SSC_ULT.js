@@ -7,7 +7,15 @@
 import * as SEC from 'https://natski.netlify.app/ENCORE/dependencies/ENCORE_SEC.mjs';
 import * as DP from 'https://natski.netlify.app/ENCORE/dependencies/ENCORE_DP.mjs';
 import GIS from 'https://natski.netlify.app/ENCORE/ENCORE_GIS.js';
+import PAS from 'https://natski.netlify.app/ENCORE/dependencies/ENCORE_PAS.mjs';
 
+new PAS().add({
+	message: 'hello!',
+	icon: 'alert',
+	input: {
+		type: 'text',
+	},
+});
 var SSCUobjs = [];
 
 export default class SSCU {
