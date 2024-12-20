@@ -80,6 +80,7 @@
 	appearance: none;
 	position: relative;
 	width: auto;
+	min-width: 190px;
 	flex-grow: 4;
 	height: 40px;
 	border: 0;
@@ -91,9 +92,26 @@
 	cursor: pointer;
 	color: var(--bgColor-PAS-default);
 }
-input[type='text'] {
-	cursor: text;
+.PAS-popup div input[type='checkbox'] {
+	outline: none;
+	min-width: 60px;
 }
+
+.PAS-popup div input[type='checkbox']::after {
+	position: absolute;
+	content: '';
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	background-color: var(--themecol-PAS);
+	left: 10px;
+	top: 10px;
+	transition: 0.2s;
+}
+.SSMinput[type='checkbox']:checked::after {
+	left: calc(100% - 30px);
+}
+
 .PAS-popup div input:focus {
 	outline: none;
 }
@@ -144,9 +162,12 @@ input[type='text'] {
 .PAS-popup div input[type='file'] {
 	display: none;
 }
+.PAS-popup div input[type='text'] {
+	cursor: text;
+}
 .PAS-popup div label {
 	position: relative;
-	min-width: 200px;
+	min-width: 190px;
 	display: flex;
 	justify-content: center;
 	align-items: center;

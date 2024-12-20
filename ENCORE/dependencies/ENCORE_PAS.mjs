@@ -241,6 +241,16 @@ export default class PAS {
 						},
 					},
 				].concat(button);
+			case 'checkbox':
+				return [
+					{
+						tag: 'input',
+						attributes: {
+							type: prompt.type,
+							checked: SEC.setFallback(prompt.checked, null),
+						},
+					},
+				].concat(button);
 		}
 	}
 
