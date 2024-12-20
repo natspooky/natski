@@ -46,14 +46,14 @@ export function getMIME(file) {
 			return 'image/jpeg';
 		case '.png':
 			return 'image/png';
+		case '.apng':
+			return 'image/apng';
 		case '.gif':
 			return 'image/gif';
 		case '.webp':
 			return 'image/webp';
 		case '.svg':
 			return 'image/svg+xml';
-		case '.apng':
-			return 'image/apng';
 		case '.avif':
 			return 'image/avif';
 		case '.bmp':
@@ -84,6 +84,9 @@ export function getMIME(file) {
 		case '.oga':
 		case '.opus':
 			return 'audio/ogg';
+		case '.mid':
+		case '.midi':
+			return 'audio/midi';
 		case '.ttf':
 			return 'font/ttf';
 		case '.otf':
@@ -94,6 +97,24 @@ export function getMIME(file) {
 			return 'font/woff2';
 		default:
 			return 'application/octet-stream';
+	}
+}
+
+export function checkMediaType(file, type) {
+	let ext = getExtention(file).substring(1);
+	switch (type) {
+		case 'video':
+			return /m(p4|eg)|ts|avi|webm|ogv/i.test(ext);
+		case 'audio':
+			return /(web|og)a|opus|mp3|wav|aac|mi(di|d)/i.test(ext);
+		case 'image':
+			return /ico|jp(g|eg)|(pn|apn|sv)g|(gi|avi|tif|ti)f|(web|bm)p/i.test(
+				ext,
+			);
+		case 'font':
+			return /(o|t)tf|wof(f2|f)/i.test(ext);
+		default:
+			return undefined;
 	}
 }
 

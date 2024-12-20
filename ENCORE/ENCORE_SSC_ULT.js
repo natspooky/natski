@@ -42,7 +42,7 @@ export class SSCU {
 		this.displayPage();
 	}
 
-	checkPages() {
+	#checkPages() {
 		return this.pages.length <= 1;
 	}
 
@@ -74,7 +74,7 @@ export class SSCU {
 
 	play() {
 		this.paused = false;
-		this.startTimers();
+		this.#startTimers();
 		if (this.settings.pauseButton) {
 			this.pauseButton.classList.remove('SSCUpaused');
 		}
@@ -86,7 +86,7 @@ export class SSCU {
 		}
 	}
 
-	startTimers() {
+	#startTimers() {
 		if (!this.paused) {
 			Promise.resolve(clearInterval(this.timerFunc)).then(() => {
 				this.timerFunc = setInterval(() => {
@@ -108,7 +108,7 @@ export class SSCU {
 		}
 	}
 
-	thumbMinifier() {
+	#thumbMinifier() {
 		if (
 			this.thumbs[this.index - 1].parentNode.offsetWidth >
 				this.SSCU.offsetWidth / 2 &&
@@ -166,9 +166,9 @@ export class SSCU {
 		}
 	}
 
-	displayPage() {
+	#displayPage() {
 		if (!this.paused) {
-			this.startTimers();
+			this.#startTimers();
 		}
 		if (this.index < 1) {
 			this.index = this.pages.length;
@@ -176,7 +176,7 @@ export class SSCU {
 			this.index = 1;
 		}
 		if (this.settings.thumbs) {
-			this.thumbMinifier();
+			this.#thumbMinifier();
 			for (const thumb of this.thumbs) {
 				thumb.classList.remove('SSCUselected');
 			}
@@ -196,7 +196,7 @@ export class SSCU {
 			}
 		}
 
-		this.setPositions();
+		this.#setPositions();
 		/*
         for(let i = 0; i < pageLen; i++) {
             if(!this.pages[i].classList.contains('SSCUprior') && !this.pages[i].classList.contains('SSCUfollowing')) {
@@ -238,7 +238,7 @@ export class SSCU {
         this.pages[this.index-1].style.display = 'flex'*/
 	}
 
-	setPositions() {
+	#setPositions() {
 		for (let i = 0; i < this.pages.length; i++) {
 			if (i < this.index - 1) {
 				this.pages[i].classList.add('SSCUprior');
@@ -258,7 +258,7 @@ export class SSCU {
 
 	//make this use extra classes E.G. .prior.looping
 
-	createElements() {
+	#createElements() {
 		for (const page of this.pages) {
 			page.style.transition = `transform ${this.swapTimer}ms ease-in-out, visibility ${this.swapTimer}ms ease-in-out, opacity ${this.swapTimer}ms`;
 			page.classList.add('SSCUloaded');
@@ -366,7 +366,7 @@ export class SSCU {
 		return 'ready';
 	}
 
-	checkMedia() {
+	#checkMedia() {
 		for (const page of this.pages) {
 			let videos = page.getElementsByTagName('video');
 			if (videos) {
@@ -394,7 +394,7 @@ export class SSCU {
 		}
 	}
 
-	swipeSystem() {
+	#swipeSystem() {
 		if (this.device) {
 			this.SSCU.addEventListener('touchstart', (event) => {
 				this.pages[
@@ -438,7 +438,7 @@ export class SSCU {
 		}
 	}
 
-	mutationObserver() {
+	#mutationObserver() {
 		this.observer = new MutationObserver((mutations) => {
 			mutations.forEach((mutation) => {
 				if (
@@ -462,7 +462,7 @@ export class SSCU {
 		});
 	}
 
-	pageFocus() {
+	#pageFocus() {
 		window.addEventListener('focus', () => {
 			if (this.pauseMemory) {
 				this.pauseMemory = false;
@@ -481,12 +481,12 @@ export class SSCU {
 	}
 
 	init() {
-		if (!this.checkPages()) {
-			this.checkMedia();
-			this.swipeSystem();
-			this.pageFocus();
-			this.mutationObserver();
-			Promise.resolve(this.createElements()).then(() => {
+		if (!this.#checkPages()) {
+			this.#checkMedia();
+			this.#swipeSystem();
+			this.#pageFocus();
+			this.#mutationObserver();
+			Promise.resolve(this.#createElements()).then(() => {
 				new GIS().applyMasks(this.SSCU.getElementsByTagName('GIS'));
 				this.directPage(1);
 			});
@@ -494,23 +494,16 @@ export class SSCU {
 			this.pages[0].classList.add('SSCUloaded');
 		}
 	}
+
+	end() {
+		this.pause();
+		this.SSCU.remove();
+		this.SSCU = null;
+	}
 }
 
 function load() {
 	let elements = document.getElementsByTagName('sscu');
-	/*if (!SSCU_settings) {
-		console.log(SSCU_settings, !SSCU_settings);
-		console.log('no SSCU settings found, reverting to default');
-		var SSCU_settings = {
-			thumbs: true,
-			sideButtons: true,
-			pauseButton: true,
-			timer: 10000,
-			slideSpeed: 500,
-			style: 'STANDARD',
-		};
-	}*/
-
 	for (const element of elements) {
 		SSCUobjs.push(new SSCU(element, SSCU_settings).init());
 	}
