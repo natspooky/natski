@@ -250,7 +250,7 @@ export default class PAS {
 			classes: ['PAS-popup'],
 			attributes: {
 				style: SEC.checkExists(data.color)
-					? `--themecol: ${data.color}`
+					? `--themecol-PAS: ${data.color}`
 					: null,
 			},
 			events:

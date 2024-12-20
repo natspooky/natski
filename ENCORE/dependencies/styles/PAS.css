@@ -1,12 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap');
 @import url('https://natski.netlify.app/ENCORE/styles/GIS/GIS.css');
+.PAS-popup,
+.PAS-popup * {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Source Code Pro', monospace;
+	-webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+	-webkit-text-size-adjust: 100%;
+}
 :root {
-	--themecol: #4c64ba;
-	--bgColor-default: #010409;
-	--bgColor-muted: #161b22;
-	--bgColor-inset: #0d1117;
-	--fgColor-default: #e6edf3;
-	--fgColor-muted: #848d97;
-	--fgColor-onEmphasis: #ffffff;
+	--themecol-PAS: #4c64ba;
+	--bgColor-PAS-default: #010409;
+	--bgColor-PAS-muted: #161b22;
+	--bgColor-PAS-inset: #0d1117;
+	--fgColor-PAS-default: #e6edf3;
+	--fgColor-PAS-muted: #848d97;
+	--fgColor-PAS-onEmphasis: #ffffff;
 }
 .PAS-popup {
 	position: fixed;
@@ -18,9 +28,9 @@
 	flex-direction: column;
 	border-radius: 20px;
 	box-shadow: 0 0 5px #00000020;
-	background-color: var(--themecol);
+	background-color: var(--themecol-PAS);
 	background-image: linear-gradient(45deg, #00000045, transparent);
-	transform: translate(-50%, calc(-25px - 100%));
+	transform: translate(-50%, 0 /*calc(-25px - 100%)*/);
 	opacity: 0;
 	z-index: 99999;
 	transition: opacity 0.3s, transform 0.3s;
@@ -43,7 +53,7 @@
 	height: 25px;
 	flex-shrink: 0;
 	flex-grow: 0;
-	background-color: var(--fgColor-default);
+	background-color: var(--fgColor-PAS-default);
 }
 .PAS-popup div span {
 	position: relative;
@@ -58,7 +68,7 @@
 .PAS-popup div p {
 	width: auto;
 	position: relative;
-	color: var(--fgColor-default);
+	color: var(--fgColor-PAS-default);
 	font-size: 16px;
 	margin: 0 15px;
 }
@@ -74,12 +84,12 @@
 	height: 40px;
 	border: 0;
 	border-radius: 10px;
-	background-color: var(--fgColor-default);
+	background-color: var(--fgColor-PAS-default);
 	background-image: linear-gradient(45deg, #00000020, transparent);
 	padding: 0 10px;
 	margin-right: 5px;
 	cursor: pointer;
-	color: var(--bgColor-default);
+	color: var(--bgColor-PAS-default);
 }
 input[type='text'] {
 	cursor: text;
@@ -94,7 +104,7 @@ input[type='text'] {
 	appearance: none;
 	width: 100%;
 	height: 5px;
-	background-color: var(--bgColor-default);
+	background-color: var(--bgColor-PAS-default);
 	border-radius: 100vmax;
 }
 
@@ -104,7 +114,7 @@ input[type='text'] {
 	appearance: none;
 	width: 100%;
 	height: 5px;
-	background-color: var(--bgColor-default);
+	background-color: var(--bgColor-PAS-default);
 	border-radius: 100vmax;
 }
 
@@ -113,7 +123,7 @@ input[type='text'] {
 	-moz-appearance: none;
 	appearance: none;
 	border: none;
-	background-color: var(--bgColor-default);
+	background-color: var(--bgColor-PAS-default);
 	height: 30px;
 	margin-top: -12px;
 	border-radius: 100vmax;
@@ -125,7 +135,7 @@ input[type='text'] {
 	-moz-appearance: none;
 	appearance: none;
 	border: none;
-	background-color: var(--themecol);
+	background-color: var(--themecol-PAS);
 	height: 30px;
 	border-radius: 100vmax;
 	width: 10px;
@@ -143,7 +153,7 @@ input[type='text'] {
 }
 .PAS-popup div label p {
 	position: absolute;
-	color: var(--bgColor-default);
+	color: var(--bgColor-PAS-default);
 	opacity: 1;
 	transition: 0.2s;
 }
@@ -159,8 +169,8 @@ input[type='text'] {
 	left: 0;
 	width: calc(100% - 4px);
 	height: calc(100% - 4px);
-	background-color: var(--themecol);
-	border: 2px dashed var(--fgColor-default);
+	background-color: var(--themecol-PAS);
+	border: 2px dashed var(--fgColor-PAS-default);
 	border-radius: 20px;
 	opacity: 0;
 	background-image: linear-gradient(45deg, #00000020, transparent);
@@ -168,7 +178,7 @@ input[type='text'] {
 	align-items: center;
 	justify-content: center;
 	pointer-events: none;
-	color: var(--fgColor-default);
+	color: var(--fgColor-PAS-default);
 	content: 'Drop Files';
 	transition: opacity 0.2s;
 }
@@ -187,7 +197,7 @@ input[type='text'] {
 	align-items: center;
 	min-width: 50px;
 	cursor: pointer;
-	background-color: var(--fgColor-default);
+	background-color: var(--fgColor-PAS-default);
 	background-image: linear-gradient(45deg, #00000020, transparent);
 	border: 0;
 	border-radius: 10px;
@@ -199,7 +209,7 @@ input[type='text'] {
 	width: 20px;
 	height: 20px;
 	display: block;
-	background-color: var(--bgColor-default);
+	background-color: var(--bgColor-PAS-default);
 }
 .PAS-popup div button * {
 	pointer-events: none;
