@@ -95,6 +95,7 @@
 .PAS-popup div input[type='checkbox'] {
 	outline: none;
 	min-width: 60px;
+	max-width: 70px;
 	border-radius: 20px;
 }
 
@@ -111,7 +112,7 @@
 	transition: 0.2s;
 }
 .PAS-popup div input[type='checkbox']:hover::after {
-	transform: scale(1.1);
+	transform: scale(1.2);
 }
 .PAS-popup div input[type='checkbox']:checked::after {
 	left: calc(100% - 30px);
