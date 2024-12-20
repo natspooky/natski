@@ -5,6 +5,9 @@
  */
 
 export function jsonElementify(elementData) {
+	if (Array.isArray(elementData)) {
+		return jsonMultiElementify(elementData);
+	}
 	let element = document.createElement(elementData.tag);
 
 	if (elementData.innerHTML) {
@@ -25,34 +28,47 @@ export function jsonElementify(elementData) {
 		for (const [attribute, value] of Object.entries(
 			elementData.attributes,
 		)) {
-			if (checkExists(value)) element.setAttribute(attribute, value);
+			if (checkExists(value)) {
+				element.setAttribute(attribute, value);
+			}
 		}
 	}
 
 	if (elementData.events) {
 		for (const [eventType, event] of Object.entries(elementData.events)) {
-			if (event)
+			if (event) {
 				element.addEventListener(
 					eventType,
 					functionType(event, element),
+					event.options,
 				);
-		}
-	}
-
-	if (elementData.children) {
-		for (const child of elementData.children) {
-			if (
-				!(
-					Object.keys(child).length === 0 &&
-					child.constructor === Object
-				)
-			) {
-				element.appendChild(jsonElementify(child));
 			}
 		}
 	}
 
+	if (elementData.children && elementData.children.length !== 0) {
+		appendChildren(element, jsonElementify(elementData.children));
+	}
+
 	return element;
+}
+
+export function appendChildren(element, children) {
+	if (Array.isArray(children)) {
+		for (const child of children) {
+			if (checkForKeys(child)) {
+				element.appendChild(child);
+			}
+		}
+	} else {
+		if (checkForKeys(children)) {
+			element.appendChild(children);
+		}
+	}
+}
+
+function checkForKeys(obj) {
+	return Object.keys(obj).length !== 0 && obj.constructor === Object;
 }
 
 function functionType(event, element) {
@@ -80,12 +96,6 @@ function functionType(event, element) {
 	}
 }
 
-export function appendChildren(element, children) {
-	for (const child of children) {
-		element.appendChild(child);
-	}
-}
-
 export function checkExists(data) {
 	return undefined !== data && data !== null;
 }
@@ -95,18 +105,15 @@ export function setFallback(data, fallback) {
 	return fallback;
 }
 
-export function jsonMultiElementify(elements) {
+function jsonMultiElementify(elements) {
 	let arr = [];
+
 	for (const element of elements) {
-		if (
-			!(
-				Object.keys(element).length === 0 &&
-				element.constructor === Object
-			)
-		) {
+		if (checkForKeys(element)) {
 			arr.push(jsonElementify(element));
 		}
 	}
+
 	return arr;
 }
 

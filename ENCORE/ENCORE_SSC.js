@@ -6,11 +6,11 @@
 
 import * as SEC from 'https://natski.netlify.app/ENCORE/dependencies/ENCORE_SEC.mjs';
 import * as DP from 'https://natski.netlify.app/ENCORE/dependencies/ENCORE_DP.mjs';
-import { GIS } from 'https://natski.netlify.app/ENCORE/ENCORE_GIS.js';
+import GIS from 'https://natski.netlify.app/ENCORE/ENCORE_GIS.js';
 
 var SSCobjs = [];
 
-export class SSC {
+export default class SSC {
 	constructor(element, settings) {
 		this.SSC = element;
 		this.pages = this.SSC.getElementsByClassName('banner-bg');
@@ -124,6 +124,11 @@ export class SSC {
 								click: {
 									func: this.directPage.bind(this),
 									var: i + 1,
+									options: {
+										once: false,
+										passive: true,
+										capture: false,
+									},
 								},
 							},
 						}),
@@ -167,6 +172,11 @@ export class SSC {
 						events: {
 							click: {
 								func: this.togglePlay.bind(this),
+								options: {
+									once: false,
+									passive: true,
+									capture: false,
+								},
 							},
 						},
 						attributes: { ariaLabel: 'Play / Pause' },
@@ -194,7 +204,7 @@ export class SSC {
 		if (this.settings.sideButtons && !this.device) {
 			SEC.appendChildren(
 				this.SSC,
-				SEC.jsonMultiElementify([
+				SEC.jsonElementify([
 					{
 						tag: 'button',
 						classes: ['SSCpageButton'],
@@ -202,6 +212,11 @@ export class SSC {
 							click: {
 								func: this.changePage.bind(this),
 								var: -1,
+								options: {
+									once: false,
+									passive: true,
+									capture: false,
+								},
 							},
 						},
 						attributes: {
@@ -221,6 +236,11 @@ export class SSC {
 							click: {
 								func: this.changePage.bind(this),
 								var: 1,
+								options: {
+									once: false,
+									passive: true,
+									capture: false,
+								},
 							},
 						},
 						attributes: {

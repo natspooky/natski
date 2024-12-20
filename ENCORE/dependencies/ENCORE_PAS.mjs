@@ -5,10 +5,12 @@
  */
 
 import * as SEC from 'https://natski.netlify.app/ENCORE/dependencies/ENCORE_SEC.mjs';
+import GIS from 'https://natski.netlify.app/ENCORE/dependencies/ENCORE_GIS.mjs';
 
-export class PAS {
+export default class PAS {
 	constructor() {
 		this.alerts = [];
+		this.GIS = new GIS();
 	}
 
 	add(data) {
@@ -20,6 +22,9 @@ export class PAS {
 					new Promise((resolve) => {
 						let element = this.#createElements(data);
 						document.body.appendChild(element);
+						this.GIS.applyMasks(
+							element.getElementsByTagName('GIS'),
+						);
 						setTimeout(() => {
 							resolve(element);
 						}, 10);
@@ -128,6 +133,11 @@ export class PAS {
 								: null,
 							'event',
 						),
+						options: {
+							once: true,
+							passive: true,
+							capture: false,
+						},
 					},
 				},
 				children: [
@@ -168,6 +178,11 @@ export class PAS {
 										: null,
 									'event',
 								),
+								options: {
+									once: false,
+									passive: false,
+									capture: false,
+								},
 							},
 						},
 					},
@@ -180,6 +195,11 @@ export class PAS {
 							input: {
 								func: this.fileInput.bind(this),
 								var: 'event',
+								options: {
+									once: false,
+									passive: true,
+									capture: false,
+								},
 							},
 						},
 						attributes: {
@@ -241,14 +261,29 @@ export class PAS {
 										: null,
 									'event',
 								),
+								options: {
+									once: false,
+									passive: false,
+									capture: false,
+								},
 							},
 							dragover: {
 								func: this.dragOver.bind(this),
 								var: 'event',
+								options: {
+									once: false,
+									passive: false,
+									capture: false,
+								},
 							},
 							dragleave: {
 								func: this.dragLeave.bind(this),
 								var: 'event',
+								options: {
+									once: false,
+									passive: false,
+									capture: false,
+								},
 							},
 					  }
 					: null,

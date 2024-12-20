@@ -9,12 +9,12 @@ import * as DP from 'https://natski.netlify.app/ENCORE/dependencies/ENCORE_DP.mj
 
 var GISobj;
 
-export class GIS {
+export default class GIS {
 	constructor() {}
 
 	init() {
 		this.applyMasks(document.getElementsByTagName('GIS'));
-		this.createObserver();
+		this.#createObserver();
 	}
 
 	applyMasks(icons) {
@@ -53,8 +53,8 @@ export class GIS {
 		}
 	}
 
-	createObserver() {
-		this.observer = new MutationObserver(this.mutations.bind(this));
+	#createObserver() {
+		this.observer = new MutationObserver(this.#mutations.bind(this));
 		this.observer.observe(document, {
 			attributes: false,
 			childList: true,
@@ -63,7 +63,7 @@ export class GIS {
 		});
 	}
 
-	mutations() {
+	#mutations() {
 		this.applyMasks(document.getElementsByTagName('GIS'));
 	}
 }

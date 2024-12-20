@@ -6,11 +6,11 @@
 
 import * as SEC from 'https://natski.netlify.app/ENCORE/dependencies/ENCORE_SEC.mjs';
 import * as DP from 'https://natski.netlify.app/ENCORE/dependencies/ENCORE_DP.mjs';
-import { GIS } from 'https://natski.netlify.app/ENCORE/ENCORE_GIS.js';
+import GIS from 'https://natski.netlify.app/ENCORE/ENCORE_GIS.js';
 
 var SSCUobjs = [];
 
-export class SSCU {
+export default class SSCU {
 	constructor(element, settings) {
 		this.SSCU = element;
 		this.pages = this.SSCU.getElementsByClassName('banner-bg-u');
@@ -197,45 +197,6 @@ export class SSCU {
 		}
 
 		this.#setPositions();
-		/*
-        for(let i = 0; i < pageLen; i++) {
-            if(!this.pages[i].classList.contains('SSCUprior') && !this.pages[i].classList.contains('SSCUfollowing')) {
-                indexStorage = i
-                break;
-            }
-        }*/
-		/*
-        (() => {
-            this.pages[indexStorage].style.transform = 'translateX(0%)'
-
-            if(this.index > this.prevIndex){
-                this.pages[this.index-1].classList = `translateX(${reversed ? '-' : ''}100%)`
-            }else {
-                this.pages[this.index-1].style.transform = `translateX(${reversed ? '' : '-'}100%)`
-            }
-
-            this.pages[this.index-1].style.display = 'flex'
-
-            return Promise.resolve(0)
-
-        })().then(() => {
-            setTimeout(() => {
-                
-                this.pages[this.index-1].style.transform = 'translateX(0%)'
-                if(this.index > this.prevIndex) {
-                    this.pages[indexStorage].style.transform = `translateX(${reversed ? '' : '-'}100%)`
-                }else {
-                    this.pages[indexStorage].style.transform = `translateX(${reversed ? '-' : ''}100%)`
-                }
-                this.swapTimerFunc = setTimeout(() => {
-                    this.pages[indexStorage].style.display = 'none'
-                    this.swapTimerFunc = undefined
-                }, this.swapTimer)
-            },20);
-        })
-
-
-        this.pages[this.index-1].style.display = 'flex'*/
 	}
 
 	#setPositions() {
@@ -277,6 +238,11 @@ export class SSCU {
 							click: {
 								func: this.directPage.bind(this),
 								var: i + 1,
+								options: {
+									once: false,
+									passive: true,
+									capture: false,
+								},
 							},
 						},
 						children: [
@@ -302,7 +268,16 @@ export class SSCU {
 					SEC.jsonElementify({
 						tag: 'button',
 						classes: ['SSCUpauseButton'],
-						events: { click: { func: this.togglePlay.bind(this) } },
+						events: {
+							click: {
+								func: this.togglePlay.bind(this),
+								options: {
+									once: false,
+									passive: true,
+									capture: false,
+								},
+							},
+						},
 						attributes: { ariaLabel: 'Play / Pause' },
 						children: [
 							{
@@ -328,7 +303,7 @@ export class SSCU {
 		if (this.settings.sideButtons && !this.device) {
 			SEC.appendChildren(
 				this.SSCU,
-				SEC.jsonMultiElementify([
+				SEC.jsonElementify([
 					{
 						tag: 'button',
 						classes: ['SSCUpageButton'],
@@ -336,6 +311,11 @@ export class SSCU {
 							click: {
 								func: this.changePage.bind(this),
 								var: -1,
+								options: {
+									once: false,
+									passive: true,
+									capture: false,
+								},
 							},
 						},
 						attributes: { ariaLabel: 'Previous Page' },
@@ -350,7 +330,15 @@ export class SSCU {
 						tag: 'button',
 						classes: ['SSCUpageButton'],
 						events: {
-							click: { func: this.changePage.bind(this), var: 1 },
+							click: {
+								func: this.changePage.bind(this),
+								var: 1,
+								options: {
+									once: false,
+									passive: true,
+									capture: false,
+								},
+							},
 						},
 						attributes: { ariaLabel: 'Next Page' },
 						children: [
