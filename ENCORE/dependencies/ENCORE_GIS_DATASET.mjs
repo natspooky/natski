@@ -99,7 +99,7 @@ export const values = [
 	'GIS',
 	'SSM',
 	'SSMF',
-	'colour_picker',
+	'ARC',
 	'bezier',
 	'NATSKI',
 ];
