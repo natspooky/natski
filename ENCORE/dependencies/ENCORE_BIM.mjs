@@ -10,7 +10,7 @@ import * as DP from 'https://natski.netlify.app/ENCORE/dependencies/ENCORE_DP.mj
 export default class BIM {
 	constructor(className) {
 		this.isMobileTouch = DP.userDevice();
-		this.BIM = createElements();
+		this.BIM = this.createElements();
 		document.body.appendChild(this.BIM);
 
 		for (const button of document.getElementsByClassName(className)) {
