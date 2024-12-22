@@ -27,17 +27,23 @@ export default class BIM {
 			text: ev.target.getAttribute('BIM-text'),
 		};
 
-		this.BIM.children[0].children[0].setAttribute('name', data.icon);
-		this.BIM.children[0].children[2].innerHTML = data.title;
-		this.BIM.children[1].children[0].innerHTML = data.text;
 		setTimeout(() => {
+			this.BIM.children[0].children[0].setAttribute('name', data.icon);
+			this.BIM.children[0].children[2].innerHTML = data.title;
+			this.BIM.children[1].children[0].innerHTML = data.text;
 			this.BIM.classList.add('visible');
-		}, 200);
+		}, 400);
 	}
 
 	mouseMove(ev) {
-		this.BIM.style.top = `${ev.clientY}px`;
-		this.BIM.style.left = `${ev.clientX}px`;
+		this.BIM.style.top = `${Math.min(
+			ev.clientY,
+			20 + this.BIM.offsetHeight / 2,
+		)}px`;
+		this.BIM.style.left = `${Math.min(
+			ev.clientX,
+			20 + this.BIM.offsetWidth / 2,
+		)}px`;
 	}
 
 	mouseLeave(ev) {
