@@ -15,59 +15,35 @@ export class BIM {
 	}
 
 	init() {
-		if (!this.isMobileTouch) {
-			for (const button of this.buttons) {
-				button.addEventListener(
-					'mouseenter',
-					this.mouseEnter.bind(this),
-				);
-				button.addEventListener(
-					'mouseleave',
-					this.mouseLeave.bind(this),
-				);
-			}
-		}
+		this.BIM = createElements();
+		document.body.appendChild(this.BIM);
 	}
 
 	mouseEnter(ev) {
-		this.timeout = setTimeout(() => {
-			new Promise((resolve) => {
-				let data = ev.target,
-					x = document.getElementsByClassName('BIM-popup');
-				if (x.length > 0) {
-					for (const element of x) {
-						element.remove();
-					}
-				}
-				let element = this.createElements({
-					icon: data.getAttribute('BIM-icon'),
-					title: data.getAttribute('BIM-title'),
-					info: data.getAttribute('BIM-info'),
-				});
-				document.body.appendChild(element);
-				setTimeout(() => {
-					resolve(element);
-				}, 10);
-			}).then((element) => {
-				this.element = element;
-				this.element.classList.add('visible');
-			});
-		}, 300);
+		let data = {
+			icon: ev.target.getAttribute('BIM-icon'),
+			title: ev.target.getAttribute('BIM-title'),
+			text: ev.target.getAttribute('BIM-text'),
+		};
+
+		this.BIM.children[0].children[0].setAttribute('name', data.icon);
+		this.BIM.children[0].children[2].innerHTML = data.title;
+		this.BIM.children[1].children[0].innerHTML = data.text;
+		setTimeout(() => {
+			this.BIM.classList.add('visible');
+		}, 200);
+	}
+
+	mouseMove(ev) {
+		this.BIM.style.top = `${ev.clientY}px`;
+		this.BIM.style.left = `${ev.clientX}px`;
 	}
 
 	mouseLeave(ev) {
-		clearTimeout(this.timeout);
-		if (this.element) {
-			let x = this.element;
-			this.element = null;
-			x.classList.remove('visible');
-			setTimeout(() => {
-				x.remove();
-			}, 201);
-		}
+		this.BIM.classList.remove('visible');
 	}
 
-	createElements(data) {
+	createElements() {
 		return SEC.jsonElementify({
 			tag: 'div',
 			classes: ['BIM-popup'],
@@ -79,7 +55,7 @@ export class BIM {
 						{
 							tag: 'GIS',
 							attributes: {
-								name: data.icon,
+								name: 'point',
 							},
 						},
 						{
@@ -87,7 +63,6 @@ export class BIM {
 						},
 						{
 							tag: 'h1',
-							innerHTML: data.title,
 						},
 					],
 				},
@@ -97,7 +72,6 @@ export class BIM {
 					children: [
 						{
 							tag: 'p',
-							innerHTML: data.info,
 						},
 					],
 				},

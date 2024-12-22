@@ -25,16 +25,6 @@ export function jsonElementify(elementData) {
 		}
 	}
 
-	if (elementData.attributes) {
-		for (const [attribute, value] of Object.entries(
-			elementData.attributes,
-		)) {
-			if (checkExists(value)) {
-				element.setAttribute(attribute, value);
-			}
-		}
-	}
-
 	if (elementData.events) {
 		for (const [eventType, event] of Object.entries(elementData.events)) {
 			if (event) {
@@ -43,6 +33,16 @@ export function jsonElementify(elementData) {
 					functionType(event, element),
 					event.options,
 				);
+			}
+		}
+	}
+
+	if (elementData.attributes) {
+		for (const [attribute, value] of Object.entries(
+			elementData.attributes,
+		)) {
+			if (checkExists(value)) {
+				element.setAttribute(attribute, value);
 			}
 		}
 	}

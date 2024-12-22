@@ -46,7 +46,7 @@ export default class SSCU {
 		return this.pages.length <= 1;
 	}
 
-	togglePlay() {
+	#togglePlay() {
 		if (this.paused) {
 			this.SSCU.setAttribute('paused', false);
 		} else {
@@ -54,7 +54,7 @@ export default class SSCU {
 		}
 	}
 
-	pause() {
+	#pause() {
 		this.paused = true;
 		clearInterval(this.timerFunc);
 		if (this.settings.thumbs) {
@@ -72,7 +72,7 @@ export default class SSCU {
 		}
 	}
 
-	play() {
+	#play() {
 		this.paused = false;
 		this.#startTimers();
 		if (this.settings.pauseButton) {
@@ -270,7 +270,7 @@ export default class SSCU {
 						classes: ['SSCUpauseButton'],
 						events: {
 							click: {
-								func: this.togglePlay.bind(this),
+								func: this.#togglePlay.bind(this),
 								options: {
 									once: false,
 									passive: true,
@@ -434,9 +434,9 @@ export default class SSCU {
 					mutation.target.hasAttribute('paused')
 				) {
 					if (mutation.target.getAttribute('paused') === 'true') {
-						this.pause();
+						this.#pause();
 					} else {
-						this.play();
+						this.#play();
 					}
 				}
 			});

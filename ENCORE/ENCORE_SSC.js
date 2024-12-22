@@ -27,18 +27,18 @@ export default class SSC {
 
 	directPage(index) {
 		this.index = index;
-		this.displayPage();
+		this.#displayPage();
 	}
 
 	changePage(index) {
 		this.index += index;
-		this.displayPage();
+		this.#displayPage();
 	}
 
-	displayPage() {
+	#displayPage() {
 		let pageLen = this.pages.length;
 		if (!this.paused) {
-			this.startTimers();
+			this.#startTimers();
 		}
 		if (this.index < 1) {
 			this.index = pageLen;
@@ -49,7 +49,7 @@ export default class SSC {
 			this.pages[i].classList.remove('currentSSC');
 		}
 		if (this.settings.thumbs) {
-			this.thumbMinifier();
+			this.#thumbMinifier();
 			for (let i = 0; i < this.thumbs.length; i++) {
 				this.thumbs[i].classList.remove('SSCselected');
 			}
@@ -58,7 +58,7 @@ export default class SSC {
 		this.pages[this.index - 1].classList.add('currentSSC');
 	}
 
-	startTimers() {
+	#startTimers() {
 		if (!this.paused) {
 			Promise.resolve(clearInterval(this.timerFunc)).then(() => {
 				this.timerFunc = setInterval(() => {
@@ -76,7 +76,7 @@ export default class SSC {
 		}
 	}
 
-	togglePlay() {
+	#togglePlay() {
 		if (this.paused) {
 			this.SSC.setAttribute('paused', false);
 		} else {
@@ -84,7 +84,7 @@ export default class SSC {
 		}
 	}
 
-	pause() {
+	#pause() {
 		this.paused = true;
 		clearInterval(this.timerFunc);
 		if (this.settings.progressBar) {
@@ -96,19 +96,19 @@ export default class SSC {
 		}
 	}
 
-	play() {
+	#play() {
 		this.paused = false;
-		this.startTimers();
+		this.#startTimers();
 		if (this.settings.pauseButton) {
 			this.pauseButton.classList.remove('SSCpaused');
 		}
 	}
 
-	checkPages() {
+	#checkPages() {
 		return this.pages.length <= 1;
 	}
 
-	createElements() {
+	#createElements() {
 		if (this.settings.thumbs) {
 			(() => {
 				let thumbcont = SEC.jsonElementify({
@@ -171,7 +171,7 @@ export default class SSC {
 						classes: ['SSCpauseButton'],
 						events: {
 							click: {
-								func: this.togglePlay.bind(this),
+								func: this.#togglePlay.bind(this),
 								options: {
 									once: false,
 									passive: true,
@@ -259,7 +259,7 @@ export default class SSC {
 		return 'ready';
 	}
 
-	checkMedia() {
+	#checkMedia() {
 		for (let i = 0; i < this.pages.length; i++) {
 			let videos = this.pages[i].getElementsByTagName('video');
 			if (videos) {
@@ -289,7 +289,7 @@ export default class SSC {
 	//check bg for videos and images through any part of SSC
 
 	//improve this
-	thumbMinifier() {
+	#thumbMinifier() {
 		if (
 			this.thumbs[this.index - 1].parentNode.offsetWidth >
 				this.SSC.offsetWidth / 2 &&
@@ -347,7 +347,7 @@ export default class SSC {
 		}
 	}
 
-	swipeSystem() {
+	#swipeSystem() {
 		if (this.device) {
 			this.SSC.addEventListener('touchstart', (event) => {
 				this.touch = event.touches[0].clientX;
@@ -386,7 +386,7 @@ export default class SSC {
 		}
 	}
 
-	mutationObserver() {
+	#mutationObserver() {
 		this.observer = new MutationObserver((mutations) => {
 			mutations.forEach((mutation) => {
 				if (
@@ -394,9 +394,9 @@ export default class SSC {
 					mutation.target.hasAttribute('paused')
 				) {
 					if (mutation.target.getAttribute('paused') === 'true') {
-						this.pause();
+						this.#pause();
 					} else {
-						this.play();
+						this.#play();
 					}
 				}
 			});
@@ -410,7 +410,7 @@ export default class SSC {
 		});
 	}
 
-	pageFocus() {
+	#pageFocus() {
 		window.addEventListener('focus', () => {
 			//if(this.paused == false)
 			if (this.pauseMemory) {
@@ -430,12 +430,12 @@ export default class SSC {
 	}
 
 	init() {
-		if (!this.checkPages()) {
-			this.checkMedia();
-			this.swipeSystem();
-			this.pageFocus();
-			this.mutationObserver();
-			Promise.resolve(this.createElements()).then(() => {
+		if (!this.#checkPages()) {
+			this.#checkMedia();
+			this.#swipeSystem();
+			this.#pageFocus();
+			this.#mutationObserver();
+			Promise.resolve(this.#createElements()).then(() => {
 				new GIS().applyMasks(this.SSC.getElementsByTagName('GIS'));
 				this.directPage(1);
 			});
@@ -444,6 +444,25 @@ export default class SSC {
 		}
 	}
 }
+/*
+class SSCcore {
+	constructor(element, settings) {
+		this.SSC = element;
+		this.settings = settings;
+	}
+}
+
+class SSC extends SSCcore {
+	constructor(element, settings) {
+		super(element, settings);
+	}
+}
+
+class SSCU extends SSCcore {
+	constructor(element, settings) {
+		super(element, settings);
+	}
+}*/
 
 function load() {
 	let elements = document.getElementsByTagName('ssc');
