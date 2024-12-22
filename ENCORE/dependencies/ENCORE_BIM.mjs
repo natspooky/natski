@@ -33,12 +33,19 @@ export default class BIM {
 			this.BIM.children[1].children[0].innerHTML = data.text;
 			this.BIM.classList.add('visible');
 			this.moveable = true;
-			this.mouseMove(ev, true);
+			this.BIM.style.top = `${Math.max(
+				ev.clientY,
+				60 + this.BIM.offsetHeight,
+			)}px`;
+			this.BIM.style.left = `${Math.min(
+				Math.max(ev.clientX, 20 + this.BIM.offsetWidth / 2),
+				window.innerWidth - this.BIM.offsetWidth / 2 - 20,
+			)}px`;
 		}, 400);
 	}
 
 	mouseMove(ev, ovr) {
-		if (this.moveable || ovr) {
+		if (this.moveable) {
 			this.BIM.style.top = `${Math.max(
 				ev.clientY,
 				60 + this.BIM.offsetHeight,
