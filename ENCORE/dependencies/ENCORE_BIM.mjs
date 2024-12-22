@@ -7,16 +7,17 @@
 import * as SEC from 'https://natski.netlify.app/ENCORE/dependencies/ENCORE_SEC.mjs';
 import * as DP from 'https://natski.netlify.app/ENCORE/dependencies/ENCORE_DP.mjs';
 
-export class BIM {
-	constructor() {
-		this.buttons = document.getElementsByClassName('BIM');
+export default class BIM {
+	constructor(className) {
 		this.isMobileTouch = DP.userDevice();
-		this.timeout;
-	}
-
-	init() {
 		this.BIM = createElements();
 		document.body.appendChild(this.BIM);
+
+		for (const button of document.getElementsByClassName(className)) {
+			button.addEventListener('mouseenter', this.mouseEnter.bind(this));
+			button.addEventListener('mousemove', this.mouseMove.bind(this));
+			button.addEventListener('mouseleave', this.mouseLeave.bind(this));
+		}
 	}
 
 	mouseEnter(ev) {
