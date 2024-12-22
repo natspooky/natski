@@ -32,22 +32,26 @@ export default class BIM {
 			this.BIM.children[0].children[2].innerHTML = data.title;
 			this.BIM.children[1].children[0].innerHTML = data.text;
 			this.BIM.classList.add('visible');
+			this.moveable = true;
 		}, 400);
 	}
 
 	mouseMove(ev) {
-		this.BIM.style.top = `${Math.max(
-			ev.clientY,
-			60 + this.BIM.offsetHeight,
-		)}px`;
-		this.BIM.style.left = `${Math.min(
-			Math.max(ev.clientX, 20 + this.BIM.offsetWidth / 2),
-			window.innerWidth - this.BIM.offsetWidth / 2 - 20,
-		)}px`;
+		if (this.moveable) {
+			this.BIM.style.top = `${Math.max(
+				ev.clientY,
+				60 + this.BIM.offsetHeight,
+			)}px`;
+			this.BIM.style.left = `${Math.min(
+				Math.max(ev.clientX, 20 + this.BIM.offsetWidth / 2),
+				window.innerWidth - this.BIM.offsetWidth / 2 - 20,
+			)}px`;
+		}
 	}
 
 	mouseLeave(ev) {
 		clearTimeout(this.timer);
+		this.moveable = false;
 		this.BIM.classList.remove('visible');
 	}
 
