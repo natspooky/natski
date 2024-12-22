@@ -40,9 +40,9 @@ export default class BIM {
 			ev.clientY,
 			60 + this.BIM.offsetHeight,
 		)}px`;
-		this.BIM.style.left = `${Math.max(
-			ev.clientX,
-			20 + this.BIM.offsetWidth / 2,
+		this.BIM.style.left = `${Math.min(
+			Math.max(ev.clientX, 20 + this.BIM.offsetWidth / 2),
+			window.innerWidth - this.BIM.offsetWidth / 2 - 20,
 		)}px`;
 	}
 
