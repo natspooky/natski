@@ -47,6 +47,22 @@ export function jsonElementify(elementData) {
 		}
 	}
 
+	if (elementData.dataset) {
+		for (const [dataName, value] of Object.entries(elementData.dataset)) {
+			if (checkExists(value)) {
+				elementData.dataset[
+					dataName
+						.split('-')
+						.map((element, index) => {
+							if (!index) return element;
+							return element[0].toUpperCase() + element.slice(1);
+						})
+						.join('')
+				] = value;
+			}
+		}
+	}
+
 	if (elementData.children) {
 		appendChildren(element, jsonElementify(elementData.children));
 	}
@@ -129,7 +145,7 @@ export function elementJsonify(element) {
 	}
 
 	if (element.className) {
-		json.classes = [...element.className.split(' ')];
+		json.classes = element.className.split(' ');
 	}
 
 	if (element.children.length > 0) {
