@@ -27,7 +27,7 @@ export default class BIM {
 			text: ev.target.getAttribute('BIM-text'),
 		};
 
-		setTimeout(() => {
+		this.timer = setTimeout(() => {
 			this.BIM.children[0].children[0].setAttribute('name', data.icon);
 			this.BIM.children[0].children[2].innerHTML = data.title;
 			this.BIM.children[1].children[0].innerHTML = data.text;
@@ -47,6 +47,7 @@ export default class BIM {
 	}
 
 	mouseLeave(ev) {
+		clearTimeout(this.timer);
 		this.BIM.classList.remove('visible');
 	}
 
