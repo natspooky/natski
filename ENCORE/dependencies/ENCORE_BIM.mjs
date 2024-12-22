@@ -36,11 +36,11 @@ export default class BIM {
 	}
 
 	mouseMove(ev) {
-		this.BIM.style.top = `${Math.min(
+		this.BIM.style.top = `${Math.max(
 			ev.clientY,
-			20 + this.BIM.offsetHeight / 2,
+			60 + this.BIM.offsetHeight,
 		)}px`;
-		this.BIM.style.left = `${Math.min(
+		this.BIM.style.left = `${Math.max(
 			ev.clientX,
 			20 + this.BIM.offsetWidth / 2,
 		)}px`;
