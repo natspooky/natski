@@ -56,9 +56,7 @@ export default class GIS {
 	#createObserver() {
 		this.observer = new MutationObserver(this.#mutations.bind(this));
 		this.observer.observe(document, {
-			attributes: false,
 			childList: true,
-			characterData: false,
 			subtree: true,
 		});
 	}

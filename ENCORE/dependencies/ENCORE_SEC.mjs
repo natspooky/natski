@@ -4,6 +4,10 @@
  * MIT License
  */
 
+//
+// element functions
+//
+
 export function jsonElementify(elementData) {
 	if (Array.isArray(elementData)) {
 		return jsonMultiElementify(elementData);
@@ -157,4 +161,62 @@ export function elementJsonify(element) {
 		json.innerHTML = element.innerHTML;
 	}
 	return json;
+}
+
+function itterator(items, operaton) {
+	switch (w) {
+	}
+
+	if (Array.isArray(elements)) {
+		for (const element of elements) {
+			operaton(element);
+		}
+	} else {
+		operaton(element);
+	}
+	// function to detect iterator type and generate fallbacks depending on if the values arent iterable
+}
+
+//
+// component functions
+//
+
+export function component(data) {
+	// {data, component}
+	return SEC.jsonElementify(data.component(data.data));
+}
+
+export function setComponentFromValue(data) {
+	setComponent();
+}
+
+export function setComponent(data) {
+	// {component, data: [{}]}
+
+	if (
+		!(
+			SEC.checkExists(data.component) &&
+			typeof data.component === 'function'
+		)
+	) {
+		return;
+	}
+
+	let elements = document.querySelectorAll(data.component.name);
+
+	if (Array.isArray(elements)) {
+		for (let i = 0; i < elements.length; i++) {
+			if (Array.isArray(data.data)) {
+				elements[i].replaceWith(component(data.data[i]));
+			} else {
+				elements[i].replaceWith(component(data.data));
+			}
+		}
+	} else {
+		if (Array.isArray(data.data)) {
+			elements.replaceWith(component(data));
+		} else {
+			elements.replaceWith(component(data[0]));
+		}
+	}
 }
