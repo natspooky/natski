@@ -7,17 +7,17 @@
 import { values } from 'https://natski.netlify.app/ENCORE/dependencies/ENCORE_GIS_DATASET.mjs';
 import * as DP from 'https://natski.netlify.app/ENCORE/dependencies/ENCORE_DP.mjs';
 
-var GISobj;
-
 export default class GIS {
-	constructor() {}
-
-	init() {
-		this.applyMasks(document.getElementsByTagName('GIS'));
-		this.#createObserver();
+	constructor() {
+		//add
 	}
 
-	applyMasks(icons) {
+	observe(element) {
+		this.applyMasks(document.getElementsByTagName('GIS'));
+		this.#createObserver(element);
+	}
+
+	setIcons(icons) {
 		for (const icon of icons) {
 			if (
 				icon.hasAttribute('name') &&
@@ -53,21 +53,15 @@ export default class GIS {
 		}
 	}
 
-	#createObserver() {
+	#createObserver(element) {
 		this.observer = new MutationObserver(this.#mutations.bind(this));
-		this.observer.observe(document, {
+		this.observer.observe(element, {
 			childList: true,
 			subtree: true,
 		});
 	}
 
 	#mutations() {
-		this.applyMasks(document.getElementsByTagName('GIS'));
+		this.setIcons(document.getElementsByTagName('GIS'));
 	}
 }
-
-function loadGIS() {
-	GISobj = new GIS().init();
-}
-
-window.addEventListener('DOMContentLoaded', loadGIS);
