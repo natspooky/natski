@@ -8,13 +8,21 @@ import { values } from 'https://natski.netlify.app/ENCORE/dependencies/ENCORE_GI
 import * as DP from 'https://natski.netlify.app/ENCORE/dependencies/ENCORE_DP.mjs';
 
 export default class GIS {
+	#observer;
 	constructor() {
-		//add
+		this.#observer = new MutationObserver(this.#mutations.bind(this));
+		this.setIcons(document.getElementsByTagName('GIS'));
 	}
 
 	observe(element) {
-		this.applyMasks(document.getElementsByTagName('GIS'));
-		this.#createObserver(element);
+		this.#observer.observe(element, {
+			childList: true,
+			subtree: true,
+		});
+	}
+
+	unObserve(element) {
+		this.#observer.unObserve(element);
 	}
 
 	setIcons(icons) {
@@ -51,14 +59,6 @@ export default class GIS {
 			}
 			icon.style.visibility = 'visible';
 		}
-	}
-
-	#createObserver(element) {
-		this.observer = new MutationObserver(this.#mutations.bind(this));
-		this.observer.observe(element, {
-			childList: true,
-			subtree: true,
-		});
 	}
 
 	#mutations() {
