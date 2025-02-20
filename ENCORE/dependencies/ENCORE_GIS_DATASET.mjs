@@ -26,6 +26,8 @@ export const values = [
 	'albums',
 	'sort',
 	'sort_reverse',
+	'upper',
+	'lower',
 	'document',
 	'scanner',
 	'maximise',
