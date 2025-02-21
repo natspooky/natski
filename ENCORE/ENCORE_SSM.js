@@ -9,7 +9,20 @@ import * as DP from 'https://natski.netlify.app/ENCORE/dependencies/ENCORE_DP.mj
 import GIS from 'https://natski.netlify.app/ENCORE/ENCORE_GIS.js';
 
 class SSM {
-	#SSM;
+	#SSM = {
+		body: null,
+		sliders: [],
+		range: [],
+		number: [],
+		text: [],
+		checkbox: [],
+		dropdown: [],
+		button: [],
+		multibutton: [],
+		canvas: [],
+		panels: [],
+		scrollButtons: [],
+	};
 	#GIS;
 	#observers = {};
 	#data = {
@@ -18,7 +31,7 @@ class SSM {
 		observerHeight: 0,
 	};
 	constructor(element, settings) {
-		this.#SSM = SEC.jsonElementify(element);
+		this.#SSM = element; //SEC.jsonElementify(element);
 		this.#GIS = new GIS.observe(this.#SSM);
 
 		this.#observers.intersect = new IntersectionObserver(this.#intersect, {
@@ -26,6 +39,7 @@ class SSM {
 			rootMargin: '0px',
 			threshold: this.#thresholdList(),
 		});
+
 		for (const element of this.#SSM.getElementsByClassName('SSM-panel')) {
 			this.#observers.intersect.observe(element);
 		}
@@ -49,19 +63,21 @@ class SSM {
 		return thresholds;
 	}
 
-	#resize() {
+	resize() {
 		for (const slider of this.#SSM.getElementsByClassName('SSM-slider')) {
-			this.#sliderBars(slider);
+			this.sliderBars(slider);
 		}
 	}
 
-	#dropdownToggle() {}
+	dropdownToggle() {}
 
-	#dropdownClose() {}
+	dropdownClose() {}
 
-	#dropdownSelect() {}
+	dropdownSelect() {}
 
-	#sliderBars(event) {
+	populateDropdown() {}
+
+	sliderBars(event) {
 		const element = event.target ? event.target : event;
 		const min = parseInt(element.min);
 		const max = parseInt(element.max);
@@ -69,10 +85,7 @@ class SSM {
 
 		element.style.setProperty(
 			'--value',
-			`${
-				((value + Math.abs(min)) / Math.abs(max - min)) *
-				element.offsetWidth
-			}px`,
+			`${((value + Math.abs(min)) / Math.abs(max - min)) * 100}%`,
 		);
 	}
 

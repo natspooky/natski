@@ -1,6 +1,7 @@
 import * as SEC from 'https://natski.netlify.app/ENCORE/dependencies/ENCORE_SEC.mjs';
 import * as DP from 'https://natski.netlify.app/ENCORE/dependencies/ENCORE_DP.mjs';
 import SSM from 'https://natski.netlify.app/ENCORE/ENCORE_SSM.js';
+import * as ENCORE from 'https://natski.netlify.app/ENCORE/editors/ENCORE_editor.js';
 
 const components = {
 	SSM: (data) => {
@@ -14,11 +15,31 @@ const components = {
 				{
 					tag: 'div',
 					classes: ['SSM-category-container'],
+					children: data.categoryChildren,
 				},
 				{
 					tag: 'div',
 					classes: ['SSM-item-container'],
-					children: data.children,
+					children: data.itemChildren,
+				},
+			],
+		};
+	},
+	categoryButton: (data) => {
+		return {
+			tag: 'button',
+			classes: ['SSM-category-button'],
+			events: data.events,
+			children: [
+				{
+					tag: 'GIS',
+					attributes: {
+						name: data.icon,
+					},
+				},
+				{
+					tag: 'p',
+					innerHTML: data.title,
 				},
 			],
 		};
@@ -102,7 +123,7 @@ const components = {
 					},
 					events: {
 						...data.events,
-						input: this.#sliderBars.bind(this),
+						input: this.sliderBars.bind(this),
 					},
 				},
 			],

@@ -28,6 +28,8 @@ export const values = [
 	'sort_reverse',
 	'upper',
 	'lower',
+	'center',
+	'limits',
 	'document',
 	'scanner',
 	'maximise',
