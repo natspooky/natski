@@ -5,7 +5,7 @@
 /* How to use? : Check the GitHub README or visit https://natski.net/api/encore/icon-system
 /* ----------------------------------------------- */
 
-import { default as IS_DATA } from 'https://natski.netlify.app/api/encore/icon-system/dependencies/IS_DATA.js';
+import IS_DATA from 'https://natski.netlify.app/api/encore/icon-system/dependencies/IS_DATA.js';
 import * as DP from 'https://natski.netlify.app/api/encore/dependencies/dp.js';
 
 export default class IconSystem {
