@@ -6,7 +6,7 @@
 /* ----------------------------------------------- */
 
 import { IS_DATA } from 'https://natski.netlify.app/api/encore/icon-system/dependencies/IS_DATA.js';
-import * as DP from 'https://natski.netlify.app/api/encore/dependencies/dp.js';
+import * as DP from 'https://natski.netlify.app/api/encore/dependencies/dp.min.js';
 
 export default class IconSystem {
 	#observer;

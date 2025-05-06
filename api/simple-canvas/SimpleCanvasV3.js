@@ -5,8 +5,6 @@
 /* How to use? : Check the GitHub README or visit https://natski.net/SimpleCanvas
 /* ----------------------------------------------- */
 
-'use strict';
-
 export default class stacker {
 	#settings = {
 		drawState: {

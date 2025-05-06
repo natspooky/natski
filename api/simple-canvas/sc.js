@@ -17,7 +17,7 @@ export default class SimpleCanvas {
 		},
 		observer: {
 			resize: true,
-			intersection: true,
+			intersection: false,
 		},
 		canvas: {
 			clear: false,
@@ -345,7 +345,7 @@ export default class SimpleCanvas {
 			settings.detectIntersection,
 		)
 			? settings.detectIntersection
-			: true;
+			: false;
 
 		//sizing
 		if (check(settings.size)) {
