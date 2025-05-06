@@ -18,6 +18,7 @@ export const IS_DATA = [
 	'next',
 	'heart',
 	'browser',
+	'burger',
 	'chain',
 	'bookshelf',
 	'cellar',
