@@ -6,7 +6,7 @@
 /* ----------------------------------------------- */
 
 import { IS_DATA } from 'https://natski.netlify.app/api/encore/icon-system/dependencies/IS_DATA.js';
-import * as DP from 'https://natski.netlify.app/api/encore/dependencies/dp.min.js';
+import { fileExtention } from 'https://natski.netlify.app/api/dependencies/file-utils/fu.min.js';
 
 export default class IconSystem {
 	#observer;
@@ -38,7 +38,7 @@ export default class IconSystem {
 			} else if (icon.hasAttribute('src')) {
 				let buffer = new Image();
 				buffer.onload = function () {
-					if (DP.getExtention(icon.getAttribute('src')) === '.svg') {
+					if (fileExtention(icon.getAttribute('src')) === '.svg') {
 						icon.style.mask = `url(${icon.getAttribute(
 							'src',
 						)}) no-repeat center`;
