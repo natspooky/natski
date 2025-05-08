@@ -5,7 +5,7 @@
 /* How to use? : Check the GitHub README or visit https://natski.net/api/encore/dependencies
 /* ----------------------------------------------- */
 
-export function userDevice() {
+export function isMobile() {
 	let agent = navigator.userAgent || navigator.vendor || window.opera;
 
 	return (
@@ -18,8 +18,8 @@ export function userDevice() {
 	);
 }
 
-export function getMIME(file) {
-	switch (getExtention(file)) {
+export function MIME(file) {
+	switch (fileExtention(file)) {
 		case '.html':
 		case '.htm':
 			return 'text/html';
@@ -102,7 +102,7 @@ export function getMIME(file) {
 }
 
 export function checkMediaType(file, type) {
-	let ext = getExtention(file).substring(1);
+	let ext = fileExtention(file).substring(1);
 	switch (type) {
 		case 'video':
 			return /m(p4|eg)|ts|avi|webm|ogv/i.test(ext);
@@ -119,14 +119,14 @@ export function checkMediaType(file, type) {
 	}
 }
 
-export function getExtention(file) {
+export function fileExtention(file) {
 	if (file.indexOf('.') != -1) {
 		return file.substring(file.lastIndexOf('.'));
 	}
 	return 'unknown extention';
 }
 
-export function getName(file) {
+export function fileName(file) {
 	if (file.indexOf('.') != -1) {
 		return file.substring(file.lastIndexOf('/'), file.indexOf('.'));
 	}
