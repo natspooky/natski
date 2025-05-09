@@ -289,7 +289,7 @@ export default class SimpleCanvas {
 		//clear
 		this.#settings.canvas.clear = check(settings.autoClear)
 			? settings.autoClear
-			: true;
+			: false;
 
 		//events
 		this.#settings.events.mouse = check(settings.useCursor)
