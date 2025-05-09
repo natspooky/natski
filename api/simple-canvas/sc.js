@@ -16,7 +16,7 @@ export default class SimpleCanvas {
 			},
 		},
 		observer: {
-			resize: true,
+			resize: false,
 			intersection: false,
 		},
 		canvas: {
@@ -31,7 +31,7 @@ export default class SimpleCanvas {
 			touch: false,
 			wheel: false,
 			keyboard: false,
-			focus: true,
+			focus: false,
 		},
 		eventSupport: {
 			touch:
@@ -46,7 +46,8 @@ export default class SimpleCanvas {
 			fpsData: false,
 			cursorData: false,
 			keyboardData: false,
-			transformData: false,
+			touchData: false,
+			wheelData: false,
 			overlayData: false,
 			data: {
 				currentFPS: 0,
@@ -277,7 +278,7 @@ export default class SimpleCanvas {
 	#setSettings(settings) {
 		const check = (value) => {
 			if (value === undefined || value === null) return false;
-			return value;
+			return true;
 		};
 
 		//fps
@@ -306,7 +307,7 @@ export default class SimpleCanvas {
 			: false;
 		this.#settings.events.focus = check(settings.detectWindowFocus)
 			? settings.detectWindowFocus
-			: true;
+			: false;
 
 		//diagnostic
 		this.#settings.diagnostic.positionLayerData = check(
@@ -325,13 +326,11 @@ export default class SimpleCanvas {
 		)
 			? settings.calculateKeyboard
 			: false;
-		this.#settings.diagnostic.cursorData = check(settings.calculateCursor)
-			? settings.calculateCursor
+		this.#settings.diagnostic.wheelData = check(settings.calculateWheel)
+			? settings.calculateWheel
 			: false;
-		this.#settings.diagnostic.transformData = check(
-			settings.calculateTransform,
-		)
-			? settings.calculateTransform
+		this.#settings.diagnostic.touchData = check(settings.calculateTouch)
+			? settings.calculateTouch
 			: false;
 		this.#settings.diagnostic.overlayData = check(settings.calculateOverlay)
 			? settings.calculateOverlay
