@@ -113,8 +113,9 @@ export function fileExtention(file) {
 }
 
 export function fileName(file) {
-	if (file.indexOf('.') != -1) {
-		return file.substring(file.lastIndexOf('/'), file.indexOf('.'));
-	}
-	return 'unknown name';
+	if (file.indexOf('.') === -1) return undefined;
+
+	let start = file.lastIndexOf('/');
+
+	return file.substring(start !== -1 ? start + 1 : 0, file.indexOf('.'));
 }
