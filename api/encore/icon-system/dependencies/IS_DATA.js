@@ -16,6 +16,7 @@ export const IS_DATA = [
 	'pause',
 	'play',
 	'prev',
+	'phone',
 	'next',
 	'heart',
 	'browser',
