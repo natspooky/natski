@@ -9,6 +9,7 @@ export const IS_DATA = [
 	'home',
 	'terminal',
 	'avatar',
+	'folder',
 	'marker',
 	'gear',
 	'puzzle',

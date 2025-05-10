@@ -119,3 +119,19 @@ export function fileName(file) {
 
 	return file.substring(start !== -1 ? start + 1 : 0, file.indexOf('.'));
 }
+/*
+export function fileDomain(file) {
+	// make it only get domain
+	if (file.indexOf('.') != -1) {
+		return file.substring(file.lastIndexOf('.'));
+	}
+	return 'unknown extention';
+}
+
+export function filePath(file) {
+	// make it remove domain but keep directory
+	if (file.indexOf('.') != -1) {
+		return file.substring(file.lastIndexOf('.'));
+	}
+	return 'unknown extention';
+}*/
