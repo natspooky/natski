@@ -512,43 +512,33 @@ function connectPDSU(settings) {
 	}
 }
 
-function PDSUstyleCall(url, settings, load) {
-	let style = document.createElement('link');
-	style.rel = 'stylesheet';
-	style.type = 'text/css';
-	style.href = url;
-	document.getElementsByTagName('head')[0].appendChild(style);
-	let linkloaded = document.createElement('img');
-	linkloaded.onerror = function () {
-		if (load) load(settings);
+class PDS {
+	#settings = {
+		controls: {
+			translate: false,
+			scale: false,
+			rotate: false,
+			download: false,
+		},
+		animations: {},
 	};
-	linkloaded.src = url;
-}
 
-function checkLoadedPDSU() {
-	return document.readyState === 'complete';
-}
+	#image = {
+		imgArrays: [],
+		index: 0,
+		size: {
+			x: 0,
+			y: 0,
+		},
+	};
 
-function PDSUcssLoader() {
-	if (PDSUdevice) {
-		PDSUstyleCall(
-			`https://natski.netlify.app/lib/ENCORE_DB/PDS/${PDSU_settings.style}PDSUmobile.css`,
-			PDSU_settings,
-			loadPDSU,
-		);
-	} else {
-		PDSUstyleCall(
-			`https://natski.netlify.app/lib/ENCORE_DB/PDS/${PDSU_settings.style}PDSU.css`,
-			PDSU_settings,
-			loadPDSU,
-		);
+	constructor(settings) {}
+
+	#createContainer() {
+		SEC.jsonElementify({});
+	}
+
+	#createControls() {
+		SEC.jsonElementify({});
 	}
 }
-
-if (checkLoadedPDSU() == true) {
-	PDSUcssLoader();
-}
-
-window.addEventListener('load', function () {
-	PDSUcssLoader();
-});

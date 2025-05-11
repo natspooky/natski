@@ -1,65 +1,12 @@
-@media (orientation: portrait)
-{
-    .slidecontainer,.chapterselector
-    {
-        display: none;
-    }
-    .portanchor
-    {
-        margin: 0;
-    }
-    .portanchor .titlebutton
-    {
-        background-color: transparent;
-        text-align: center;
-        padding: 0.5em 0.5em 0.7em 0.5em;
-        margin: 0.3em 0;
-        border-radius: 15px;
-        box-shadow: unset;
-    }
-    .sidescrollbar
-    {
-        padding: 0.5em 0;
-        flex-wrap: nowrap;
-    }
-    .portanchor .titlebutton div
-    {
-        width: 150px;
-        height: 150px;
-    }
-    .portanchor .titlebutton span,.portanchor .titlebutton p
-    {
-        display: block;
-    }
-    .sidescrollbar::-webkit-scrollbar
-    {
-        height: 5px;
-    }
-    .sidescrollbar::-webkit-scrollbar-thumb
-    {
-        background-color: var(--maincol);
-        border: 0;
-    }
-    main .title
-    {
-        padding: 0em 0.5em;
-    }
-    main article
-    {
-        text-align: left;
-    }
-    main article img
-    {
-        height: unset;
-        width: 100%;
-        margin: 0.7em 0;
-    }
-    .webcontainer
-    {
-        height: calc(100vmax - 50px);
-    }
-    main article .exampleframe
-    {
-        display: none;
-    }
+@media (orientation: portrait) {
+	nav button {
+		display: none;
+	}
+	nav button:first-of-type,
+	nav button:last-of-type {
+		display: inline-flex;
+	}
+	.nav-menu {
+		display: block;
+	}
 }

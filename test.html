@@ -1,0 +1,1706 @@
+<html lang="en">
+	<head class="natski-dark">
+		<title>Natski</title>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+		/>
+		<meta name="theme-color" content="#010409" />
+		<meta
+			name="description"
+			content="A site for displaying coding projects and artwork"
+		/>
+		<meta name="keywords" content="portfolio, natspooky, natski" />
+		<meta name="author" content="NATSKI" />
+		<meta name="copyright" content="NATSKI" />
+		<meta name="color-scheme" content="normal" />
+		<link
+			rel="mask-icon"
+			href="icon/system_icons/favicon/favicon.svg"
+			color="#3c4ed2"
+		/>
+		<link
+			rel="icon"
+			type="image/svg+xml"
+			href="icon/system_icons/favicon/favicon.svg"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			href="icon/system_icons/favicon/16.png"
+			sizes="16x16"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			href="icon/system_icons/favicon/32.png"
+			sizes="32x32"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			href="icon/system_icons/favicon/96.png"
+			sizes="96x96"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			href="icon/system_icons/favicon/128.png"
+			sizes="128x128"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			href="icon/system_icons/favicon/196.png"
+			sizes="196x196"
+		/>
+		<link rel="apple-touch-icon" sizes="57x57" href="icon/mobile/57.png" />
+		<link rel="apple-touch-icon" sizes="60x60" href="icon/mobile/60.png" />
+		<link rel="apple-touch-icon" sizes="72x72" href="icon/mobile/72.png" />
+		<link rel="apple-touch-icon" sizes="76x76" href="icon/mobile/76.png" />
+		<link
+			rel="apple-touch-icon"
+			sizes="114x114"
+			href="icon/mobile/114.png"
+		/>
+		<link
+			rel="apple-touch-icon"
+			sizes="120x120"
+			href="icon/mobile/120.png"
+		/>
+		<link
+			rel="apple-touch-icon"
+			sizes="144x144"
+			href="icon/mobile/144.png"
+		/>
+		<link
+			rel="apple-touch-icon"
+			sizes="152x152"
+			href="icon/mobile/152.png"
+		/>
+		<link rel="manifest" href="lib/json/manifest.json" />
+		<meta property="og:title" content="Natspooky" />
+		<meta
+			property="og:description"
+			content="A site for displaying coding projects and artwork"
+		/>
+		<meta
+			property="og:image"
+			content="https://natski.netlify.app/icon/system_icons/embed/400.png"
+		/>
+		<meta property="og:image:width" content="400" />
+		<meta property="og:image:height" content="400" />
+		<meta property="og:url" content="https://natski.netlify.app" />
+		<meta property="og:locale" content="en_US" />
+		<meta property="og:type" content="website" />
+		<meta property="og:site_name" content="NATSKI" />
+		<meta name="twitter:title" content="Natspooky" />
+		<meta
+			name="twitter:description"
+			content="A site for displaying coding projects and artwork"
+		/>
+		<meta
+			name="twitter:image"
+			content="https://natski.netlify.app/icon/system_icons/embed/400.png"
+		/>
+		<meta name="twitter:site" content="@natspooky_" />
+		<meta name="twitter:creator" content="@natspooky_" />
+		<meta name="twitter:card" content="summary" />
+		<link rel="stylesheet" type="text/css" href="lib/css/main.css" />
+		<link
+			rel="stylesheet"
+			type="text/css"
+			media="screen and (orientation: portrait)"
+			href="lib/css/scale.css"
+		/>
+	</head>
+	<body>
+		<section id="load"></section>
+		<input
+			type="color"
+			id="color"
+			style="position: fixed; top: 20px; right: 20px"
+		/>
+		<SSM
+			class="SSM-no-sideba SSM-min SSM-visible"
+			style="
+				--SSM-theme-accent: oklch(
+					from var(--SSM-theme) calc(l + 0.03) calc(c + 0.01) h
+				);
+
+				--SSM-text-standard: var(--text-primary);
+
+				--SSM-text-muted: oklch(
+					from var(--SSM-text-standard) l c h / 50%
+				);
+				--SSM-text-theme-muted: oklch(
+					from var(--SSM-theme) calc(l * 2) calc(c / 3) h / 60%
+				);
+				--SSM-theme: #4e4d8f;
+
+				--SSM-theme-muted: oklch(from var(--SSM-theme) l c h / 70%);
+
+				--SSM-theme-accent-muted: oklch(
+					from var(--SSM-theme-accent) l c h / 30%
+				);
+				--SSM-background: oklch(
+					from var(--SSM-theme) calc(l / 1.8)
+						max(calc(c / 100), calc(c - 0.5)) h
+				);
+				--SSM-background-muted: oklch(
+					from var(--SSM-background) calc(l * 1.2) calc(c * 1.2) h
+				);
+			"
+		>
+			<div class="SSM-category-container">
+				<button
+					class="SSM-category-button SSM-flash"
+					data-button-number="1"
+					onclick='document.getElementsByClassName("SSM-panel")[0].scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });this.classList.add("SSM-active")'
+				>
+					<IS name="download"></IS>
+					<p>Download</p>
+				</button>
+				<button
+					class="SSM-category-button SSM-flash"
+					data-button-number="2"
+					onclick='document.getElementsByClassName("SSM-panel")[1].scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });this.classList.add("SSM-active")'
+				>
+					<IS name="upload"></IS>
+					<p>Upload</p>
+				</button>
+				<button
+					class="SSM-category-button SSM-flash"
+					data-button-number="3"
+					onclick='document.getElementsByClassName("SSM-panel")[2].scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });this.classList.add("SSM-active")'
+				>
+					<IS name="copy"></IS>
+					<p>Something</p>
+				</button>
+				<button
+					class="SSM-category-button SSM-flash"
+					data-button-number="4"
+					onclick='document.getElementsByClassName("SSM-panel")[3].scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });this.classList.add("SSM-active")'
+				>
+					<IS name="screen"></IS>
+					<p>Display</p>
+				</button>
+				<button
+					class="SSM-category-button SSM-flash"
+					data-button-number="5"
+					onclick='document.getElementsByClassName("SSM-panel")[4].scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });this.classList.add("SSM-active")'
+				>
+					<IS name="sparkle"></IS>
+					<p>Graphics</p>
+				</button>
+			</div>
+			<div class="SSM-item-container">
+				<!--
+				<div class="SSM-search-panel">
+					<div class="SSM-sub-panel">
+						<input
+							type="text"
+							placeholder="Search"
+							class="SSM-input SSM-text"
+						/>
+					</div>
+				</div>-->
+				<div class="SSM-panel">
+					<div class="SSM-panel-header">
+						<h1>Downloads</h1>
+					</div>
+					<div class="SSM-sub-panel SSM-slider-panel SSM-range-panel">
+						<p>Ranges</p>
+						<div class="SSM-input SSM-range">
+							<input
+								class="SSM-input SSM-number"
+								type="number"
+								placeholder="Lower"
+							/>
+							<input
+								class="SSM-input SSM-number"
+								type="number"
+								placeholder="Upper"
+							/>
+						</div>
+						<div
+							class="SSM-input SSM-range"
+							style="
+								--SSM-slider-width: 30px;
+								--SSM-slider-left: 10px;
+								--SSM-range-left: 20;
+								--SSM-range-right: 50;
+							"
+						>
+							<input
+								class="SSM-input SSM-slider"
+								type="range"
+								value="-40"
+								min="-100"
+								max="0"
+								oninput="rangeChange(this, 'LEFT')"
+								onchange="rangeChange(this, 'LEFT')"
+							/>
+							<input
+								class="SSM-input SSM-slider"
+								type="range"
+								value="0"
+								min="-100"
+								max="0"
+								oninput="rangeChange(this, 'RIGHT')"
+								onchange="rangeChange(this, 'RIGHT')"
+							/>
+						</div>
+					</div>
+
+					<div class="SSM-sub-panel SSM-radio-panel">
+						<p>radio</p>
+						<div class="SSM-input">
+							<label>
+								<input
+									class="SSM-input SSM-radio"
+									type="radio"
+									name="this-input"
+								/>
+								burger
+							</label>
+
+							<label>
+								<input
+									class="SSM-input SSM-radio"
+									type="radio"
+									name="this-input"
+								/>
+								burger
+							</label>
+
+							<label>
+								<input
+									class="SSM-input SSM-radio"
+									type="radio"
+									name="this-input"
+								/>
+								burger
+							</label>
+						</div>
+					</div>
+					<div class="SSM-sub-panel SSM-multi-button-panel">
+						<p>multi button</p>
+						<div class="SSM-input">
+							<button
+								class="SSM-input SSM-multi-button SSM-flash"
+							>
+								<IS name="undo"></IS>
+							</button>
+							<button
+								class="SSM-input SSM-multi-button SSM-flash"
+							>
+								<IS name="redo"></IS>
+							</button>
+							<button
+								class="SSM-input SSM-multi-button SSM-flash"
+							>
+								<IS name="center"></IS>
+							</button>
+							<button
+								class="SSM-input SSM-multi-button SSM-flash"
+							>
+								<IS name="limits"></IS>
+							</button>
+						</div>
+					</div>
+					<div class="SSM-sub-panel">
+						<p>Ranges</p>
+						<canvas
+							class="SSM-input SSM-canvas"
+							id="gamer"
+						></canvas>
+					</div>
+					<div class="SSM-sub-panel">
+						<p>burger</p>
+						<button class="SSM-input SSM-button SSM-flash">
+							<IS name="upload"></IS>
+							<p>Upload</p>
+						</button>
+					</div>
+					<div class="SSM-sub-panel">
+						<p>dropdown</p>
+						<div
+							class="SSM-input SSM-dropdown"
+							onclick="this.classList.toggle('SSM-dropdown-open')"
+							onmouseleave="this.classList.remove('SSM-dropdown-open')"
+						>
+							<span class="SSM-flash">
+								<IS name="line_arrow_left"></IS>
+								<p>sadasd</p>
+							</span>
+							<div>
+								<section>
+									<button class="SSM-flash">select 1</button>
+									<button class="SSM-flash">select 2</button>
+									<button class="SSM-flash">select 3</button>
+								</section>
+							</div>
+						</div>
+					</div>
+					<div class="SSM-sub-panel">
+						<p>dropdown</p>
+						<div
+							class="SSM-input SSM-dropdown"
+							onclick="this.classList.toggle('SSM-dropdown-open')"
+							onmouseleave="this.classList.remove('SSM-dropdown-open')"
+						>
+							<span class="SSM-flash">
+								initial
+								<IS name="line_arrow_left"></IS>
+							</span>
+							<div>
+								<section>
+									<button class="SSM-flash">select 3</button>
+									<button class="SSM-flash">select 3</button>
+									<button class="SSM-flash">select 3</button>
+									<button class="SSM-flash">select 3</button>
+									<button class="SSM-flash">select 3</button>
+									<button class="SSM-flash">select 3</button>
+								</section>
+							</div>
+						</div>
+					</div>
+					<div class="SSM-sub-panel SSM-checkbox-panel">
+						<p>burger</p>
+						<input class="SSM-input SSM-checkbox" type="checkbox" />
+					</div>
+					<div class="SSM-sub-panel SSM-slider-panel">
+						<div>
+							<p>burger</p>
+							<input
+								placeholder="50"
+								type="number"
+								class="SSM-input SSM-number"
+								oninput="this.parentNode.parentNode.children[1].value = this.value;change(this.parentNode.parentNode.children[1])"
+							/>
+						</div>
+
+						<input
+							class="SSM-input SSM-slider"
+							type="range"
+							style="--value: 50px"
+							min="-3000"
+							value="-1500"
+							max="0"
+							oninput="change(this); this.parentNode.children[0].children[1].value = this.value"
+							onchange="change(this)"
+						/>
+					</div>
+					<div class="SSM-sub-panel SSM-checkbox-panel">
+						<p>burger</p>
+						<input class="SSM-input SSM-checkbox" type="checkbox" />
+					</div>
+				</div>
+
+				<div class="SSM-panel">
+					<div class="SSM-panel-header">
+						<h1>Uploads</h1>
+					</div>
+					<div class="SSM-sub-panel SSM-checkbox-panel">
+						<p>burger</p>
+						<input class="SSM-input SSM-checkbox" type="checkbox" />
+					</div>
+
+					<div class="SSM-sub-panel">
+						<p>burger</p>
+						<input
+							class="SSM-input SSM-slider"
+							type="range"
+							style="--value: 50px"
+							oninput="change(this)"
+						/>
+					</div>
+					<div class="SSM-sub-panel">
+						<p>burger</p>
+						<input
+							class="SSM-input SSM-text"
+							placeholder="type something"
+							type="text"
+						/>
+					</div>
+				</div>
+				<div class="SSM-panel">
+					<div class="SSM-panel-header">
+						<h1>uhhh</h1>
+					</div>
+					<div class="SSM-sub-panel SSM-checkbox-panel">
+						<p>burger</p>
+						<input class="SSM-input SSM-checkbox" type="checkbox" />
+					</div>
+				</div>
+				<div class="SSM-panel">
+					<div class="SSM-panel-header">
+						<h1>Display</h1>
+					</div>
+					<div class="SSM-sub-panel SSM-checkbox-panel">
+						<p>burger</p>
+						<input class="SSM-input SSM-checkbox" type="checkbox" />
+					</div>
+
+					<div class="SSM-sub-panel">
+						<p>burger</p>
+						<input
+							class="SSM-input SSM-slider"
+							type="range"
+							style="--value: 50px"
+							oninput="change(this)"
+						/>
+					</div>
+					<div class="SSM-sub-panel">
+						<p>burger</p>
+						<input
+							class="SSM-input SSM-text"
+							placeholder="type something"
+							type="text"
+						/>
+					</div>
+				</div>
+
+				<div class="SSM-panel">
+					<div class="SSM-panel-header">
+						<h1>Graphics</h1>
+					</div>
+					<div class="SSM-sub-panel SSM-checkbox-panel">
+						<p>burger</p>
+						<input class="SSM-input SSM-checkbox" type="checkbox" />
+					</div>
+					<div class="SSM-sub-panel SSM-checkbox-panel">
+						<p>burger</p>
+						<input class="SSM-input SSM-checkbox" type="checkbox" />
+					</div>
+					<div class="SSM-sub-panel">
+						<p>Slider accuracy helper lmaooo</p>
+						<input
+							class="SSM-input SSM-slider"
+							type="range"
+							style="--value: 50px"
+							oninput="change(this)"
+						/>
+					</div>
+					<div class="SSM-sub-panel SSM-checkbox-panel">
+						<p>Toggle headers</p>
+						<input class="SSM-input SSM-checkbox" type="checkbox" />
+					</div>
+				</div>
+			</div>
+		</SSM>
+		<SSM-popup>
+			<p>burger</p>
+		</SSM-popup>
+
+		<script>
+			function thresh() {
+				let thresholds = [],
+					numSteps = 10;
+				for (let i = 1.0; i <= numSteps; i++) {
+					let ratio = i / numSteps;
+					thresholds.push(ratio);
+				}
+				thresholds.push(0);
+				return thresholds;
+			}
+
+			function mouseleave() {
+				event.target.classList.remove('SSM-dropdown-open');
+			}
+
+			window.addEventListener('DOMContentLoaded', () => {
+				for (const element of document.getElementsByClassName(
+					'SSM-slider',
+				)) {
+					change(element);
+				}
+				const options = {
+					root: document.querySelector('.SSM-item-container'),
+					rootMargin: '0px',
+					threshold: thresh(),
+				};
+
+				const height = document.querySelector('SSM').offsetHeight / 4;
+
+				const callback = (entries, observer) => {
+					entries.forEach((entry) => {
+						if (entry.isIntersecting) {
+							//console.log(entry.intersectionRect);
+							if (entry.target.offsetHeight <= height) {
+								if (
+									entry.intersectionRect.height >=
+									entry.target.offsetHeight - 20
+								) {
+									entry.target.classList.add('SSM-visible');
+								} else {
+									entry.target.classList.remove(
+										'SSM-visible',
+									);
+								}
+							} else if (
+								entry.intersectionRect.height >= height
+							) {
+								entry.target.classList.add('SSM-visible');
+							} else {
+								entry.target.classList.remove('SSM-visible');
+							}
+						}
+					});
+				};
+
+				document
+					.getElementById('color')
+					.addEventListener('input', function (event) {
+						let x = document
+							.querySelector('SSM')
+							.style.setProperty('--SSM-theme', this.value);
+					});
+
+				const observer = new IntersectionObserver(callback, options);
+
+				for (const element of document.getElementsByClassName(
+					'SSM-panel',
+				)) {
+					observer.observe(element);
+				}
+			});
+
+			function change(event) {
+				const max = event.max ? parseInt(event.max) : 100;
+				const min = event.min ? parseInt(event.min) : 0;
+				const value = event.value ? parseInt(event.value) : 50;
+
+				const pixel = (value + Math.abs(min)) / Math.abs(max - min);
+
+				event.style.setProperty('--value', `${pixel * 100}%`);
+			}
+
+			function rangeChange(element, type) {
+				const max = element.max ? parseInt(element.max) : 100;
+				const min = element.min ? parseInt(element.min) : 0;
+				let value = element.value ? parseInt(element.value) : 50;
+
+				const positon = window.getComputedStyle(element.parentNode);
+				const left = parseInt(
+					positon.getPropertyValue('--SSM-range-left'),
+				);
+				const right = parseInt(
+					positon.getPropertyValue('--SSM-range-right'),
+				);
+
+				let width = 0;
+
+				let leftTrans = 0;
+
+				console.log(value);
+
+				switch (type) {
+					case 'LEFT':
+						if (value > right) {
+							element.value = right;
+							value = right;
+						}
+						leftTrans = ((value - min) / Math.abs(max - min)) * 100;
+						width = Math.abs(right - value) / Math.abs(max - min);
+						element.parentNode.style.setProperty(
+							'--SSM-range-left',
+							`${value}`,
+						);
+						break;
+					case 'RIGHT':
+						if (value < left) {
+							element.value = left;
+							value = left;
+						}
+						leftTrans = ((left - min) / Math.abs(max - min)) * 100;
+						width = Math.abs(value - left) / Math.abs(max - min);
+						element.parentNode.style.setProperty(
+							'--SSM-range-right',
+							`${value}`,
+						);
+						break;
+				}
+
+				element.parentNode.style.setProperty(
+					'--SSM-slider-left',
+					`${leftTrans}%`,
+				);
+
+				element.parentNode.style.setProperty(
+					'--SSM-slider-width',
+					`${width}`,
+				);
+			}
+
+			let x = new ResizeObserver(() => {
+				for (const element of document.getElementsByClassName(
+					'SSM-slider',
+				)) {
+					change(element);
+				}
+			});
+
+			function range(event) {
+				const max = event.max ? parseInt(event.max) : 100;
+				const min = event.min ? parseInt(event.min) : 0;
+				const value = event.value ? parseInt(event.value) : 50;
+
+				const width = window
+					.getComputedStyle(event.target)
+					.getPropertyValue('--SSM-slider-left');
+			}
+
+			//make event listeners that make dropdowns close if anything else is clicked
+		</script>
+
+		<style>
+			:root {
+				--SSM-border-radius-1: 0;
+				--SSM-border-radius-2: 7px;
+				--SSM-border-radius-3: 10px;
+				--SSM-button-transition: transform 0.6s
+						cubic-bezier(0.05, 2.1, 0.48, 0.58),
+					background-color 0.2s;
+				--SSM-button-hover: background-color 0.2s
+						cubic-bezier(0, 1, 0.56, 1),
+					transform 0.6s cubic-bezier(0.05, 2.1, 0.48, 0.58);
+				--SSM-button-active: background-color 0.1s
+						cubic-bezier(0.18, 3, 0.69, 0.99),
+					transform 1.7s cubic-bezier(0.01, 0.94, 0.74, 0.99);
+				--SSM-button-active-transform: scale(0.82);
+
+				--SSM-height: 100%;
+				--SSM-width: 500px;
+			}
+
+			SSM-popup {
+				position: fixed;
+				top: 20px;
+				left: 20px;
+				padding: 5px 8px;
+				border-radius: 10px;
+				background-color: #000;
+				overflow: hidden;
+				display: none;
+			}
+			SSM-popup p {
+				position: relative;
+			}
+			SSM-popup::before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background-color: var(--SSM-background);
+			}
+
+			SSM,
+			SSM * {
+				position: relative;
+				padding: 0;
+				margin: 0;
+				box-sizing: border-box;
+				-ms-touch-action: manipulation;
+				touch-action: manipulation;
+				-webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+				scrollbar-color: transparent;
+				scrollbar-width: none;
+			}
+
+			SSM {
+				position: fixed;
+				top: 0px;
+				left: 0px;
+				width: min(var(--SSM-width), calc(100% - 0px));
+				height: calc(var(--SSM-height) - 0px);
+				border-radius: 0px;
+				display: flex;
+				overflow: hidden;
+				background-color: var(--SSM-background);
+				opacity: 0;
+				filter: blur(10px);
+				visibility: hidden;
+				transition: filter 0.5s, opacity 0.5s, visibility 0.5s;
+			}
+			SSM.SSM-visible {
+				opacity: 1;
+				filter: blur(0);
+				visibility: visible;
+			}
+			SSM.SSM-mini {
+				height: fit-content;
+				border-radius: 10px;
+			}
+
+			SSM.SSM-no-sidebar,
+			SSM.SSM-mini {
+				width: min(calc(var(--SSM-width) - 220px), 100%);
+			}
+			SSM::-webkit-scrollbar {
+				width: 0;
+				height: 0;
+				background-color: transparent;
+			}
+			.SSM-category-container {
+				width: auto;
+				height: 100%;
+				display: flex;
+				flex-direction: column;
+				flex-shrink: 0;
+				overflow: scroll;
+			}
+
+			SSM.SSM-no-sidebar .SSM-category-container,
+			SSM.SSM-mini .SSM-category-container {
+				display: none;
+			}
+			.SSM-category-button {
+				width: auto;
+				height: 40px;
+				margin: 5px 10px;
+				padding: 0 25px 0 10px;
+				display: flex;
+				flex-grow: 0;
+				border-radius: var(--SSM-border-radius-2);
+				align-items: center;
+				justify-content: flex-start;
+				background-color: transparent;
+				border: 0;
+				cursor: pointer;
+				overflow: hidden;
+				transition: var(--SSM-button-transition);
+			}
+
+			.SSM-flash::after {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background-color: transparent;
+				animation: flash 0.5s ease;
+			}
+
+			.SSM-flash:active::after {
+				animation: none;
+			}
+
+			@keyframes flash {
+				from {
+					background-color: #ffffff50;
+				}
+				to {
+					background-color: transparent;
+				}
+			}
+
+			@keyframes flash-no-suedo {
+				from {
+					background-color: #ffffff30;
+				}
+				to {
+					background-color: var(--SSM-background);
+				}
+			}
+
+			.SSM-category-button:first-of-type {
+				margin: 10px 10px 5px 10px;
+			}
+
+			.SSM-category-button p {
+				color: var(--SSM-text-theme-muted);
+				overflow: hidden;
+				flex-shrink: 0;
+				width: fit-content;
+				max-width: 140px;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+				margin-left: 5px;
+			}
+
+			.SSM-category-button.SSM-active p {
+				color: var(--SSM-text-standard);
+			}
+			.SSM-category-button:hover {
+				background-color: var(--SSM-background-muted);
+				transition: var(--SSM-button-hover);
+			}
+
+			.SSM-category-button IS {
+				height: 15px;
+				width: 15px;
+				margin: 10px;
+				flex-shrink: 0;
+				background-color: var(--SSM-text-theme-muted);
+				transition: transform 0.2s;
+			}
+			.SSM-category-button.SSM-active IS {
+				background-color: var(--SSM-text-standard);
+			}
+			.SSM-category-button:active {
+				transform: var(--SSM-button-active-transform);
+				transition: var(--SSM-button-active);
+			}
+			.SSM-item-container {
+				width: auto;
+				height: 100%;
+				flex-grow: 1;
+				overflow: scroll;
+			}
+			SSM.SSM-mini .SSM-item-container {
+				overflow: hidden;
+				height: fit-content;
+			}
+			.SSM-panel {
+				width: 100%;
+				background-color: var(--SSM-background-muted);
+				margin: 0 0 3px 0;
+				padding: 0 0 4px 0;
+				opacity: 0.3;
+				display: grid;
+				grid-template-rows: 0fr;
+				scroll-margin-top: 50px;
+				transition: opacity 0.2s;
+			}
+
+			.SSM-panel:last-of-type {
+				margin: 0 0 calc(var(--SSM-height) / 2) 0;
+			}
+
+			SSM.SSM-mini .SSM-panel:first-of-type {
+				margin: 0 0 3px 0;
+				border-radius: 0 0 0 0;
+			}
+
+			SSM.SSM-mini .SSM-panel:last-of-type {
+				margin: 0;
+				border-radius: 0 0 0 0;
+			}
+
+			.SSM-panel.SSM-visible {
+				opacity: 1;
+				transition: opacity 0.5s;
+			}
+			.SSM-panel-header {
+				width: 100%;
+				padding: 15px 5% 3px 15px;
+				display: flex;
+				align-items: center;
+				margin: 0px;
+				border: 0px;
+			}
+			.SSM-panel-header h1 {
+				font-size: 20px;
+			}
+
+			.SSM-sub-panel {
+				width: auto;
+				padding: 5px 5% 5px 5%;
+				border-radius: 10px;
+				margin: 4px 7px;
+				overflow: hidden;
+			}
+
+			.SSM-search-panel {
+				position: sticky;
+				top: 0;
+				width: 100%;
+				background-color: var(--SSM-background-muted);
+				margin-bottom: 3px;
+				z-index: 999;
+			}
+
+			.SSM-search-panel .SSM-sub-panel {
+				background-color: var(--SSM-background-muted);
+				padding: 15px 5% 10px 5%;
+
+				margin: 0;
+			}
+			.SSM-sub-panel p {
+				font-size: 14px;
+				padding: 0 0 5px 0;
+			}
+
+			.SSM-sub-panel.SSM-checkbox-panel {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+			}
+			.SSM-input,
+			.SSM-input * {
+				position: relative;
+				-webkit-appearance: none;
+				-moz-appearance: none;
+				appearance: none;
+				border: 0;
+				background-color: transparent;
+				outline: 0;
+				border-radius: 0;
+				padding: 0;
+				margin: 0;
+				box-sizing: border-box;
+				-ms-touch-action: manipulation;
+				touch-action: manipulation;
+				-webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+			}
+			.SSM-input:focus {
+				outline: none;
+			}
+			.SSM-input::placeholder {
+				color: transparent;
+			}
+			.SSM-input::selection {
+				background-color: var(--SSM-theme-accent-muted);
+				color: var(--SSM-text-standard);
+			}
+			.SSM-checkbox {
+				width: 50px;
+				height: 25px;
+				display: flex;
+				flex-shrink: 0;
+				justify-content: center;
+				align-items: center;
+				cursor: pointer;
+			}
+			.SSM-checkbox::before {
+				content: '';
+				position: relative;
+				width: 33px;
+				height: 12px;
+				background-color: transparent;
+				border-radius: 100vmax;
+				border: 2px solid var(--SSM-theme);
+				pointer-events: none;
+				box-shadow: 0 0px 0px 0px var(--SSM-theme);
+				transition: height 0.2s cubic-bezier(0.39, 0.54, 0.14, 1.45),
+					width 0.2s cubic-bezier(0.39, 0.54, 0.14, 1.45),
+					transform 0.2s cubic-bezier(0.39, 0.54, 0.14, 1.45),
+					background-color 0.2s ease, box-shadow 0.2s;
+			}
+			.SSM-checkbox:checked::before {
+				width: 40px;
+				height: 12px;
+				background-color: var(--SSM-theme);
+			}
+
+			.SSM-checkbox:hover::before {
+				transform: scale(1.1);
+				box-shadow: 0 2px 20px -4px var(--SSM-theme);
+			}
+			.SSM-checkbox:active::before {
+				transform: scale(1.1, 0.9);
+			}
+			.SSM-sub-panel.SSM-slider-panel div {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+			}
+			.SSM-sub-panel.SSM-slider-panel div .SSM-number {
+				height: 30px;
+				width: 65px;
+				margin: 0;
+				padding: 0 7px;
+				align-self: flex-end;
+			}
+			.SSM-sub-panel.SSM-slider-panel div p {
+				align-self: flex-end;
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+			}
+			.SSM-slider {
+				width: 100%;
+				display: block;
+				margin: auto;
+				cursor: pointer;
+				height: 25px;
+			}
+			.SSM-slider::before {
+				content: '';
+				position: absolute;
+				top: 50%;
+				transform: translateY(-50%);
+				border-radius: 100vmax 0 0 100vmax;
+				left: 0;
+				background-color: var(--SSM-theme);
+				width: var(--value);
+				max-width: 100%;
+				height: 5px;
+			}
+			.SSM-slider::-webkit-slider-runnable-track {
+				appearance: none;
+				-webkit-appearance: none;
+				height: 5px;
+				background-color: var(--SSM-background);
+				border-radius: 100vmax;
+			}
+
+			.SSM-slider::-webkit-slider-thumb {
+				appearance: none;
+				-webkit-appearance: none;
+				width: 40px;
+				height: 12px;
+				border-radius: 100vmax;
+				margin-top: -3.5px;
+				background-color: var(--SSM-theme);
+				box-shadow: 0 0px 0px 0px var(--SSM-theme);
+				transition: transform 0.2s cubic-bezier(0.39, 0.54, 0.14, 1.45),
+					box-shadow 0.2s;
+			}
+			.SSM-slider:hover::-webkit-slider-thumb {
+				transform: scale(1.1);
+				box-shadow: 0 2px 20px -4px var(--SSM-theme);
+			}
+			.SSM-slider:active::-webkit-slider-thumb {
+				transform: scale(1.2, 1.05);
+			}
+			.SSM-slider::-moz-range-track {
+				appearance: none;
+				-moz-appearance: none;
+				height: 5px;
+				background-color: var(--SSM-background);
+				border-radius: 100vmax;
+			}
+
+			.SSM-slider::-moz-range-thumb {
+				appearance: none;
+				-moz-appearance: none;
+				width: 40px;
+				height: 12px;
+				border-radius: 100vmax;
+				margin-top: -3.5px;
+				border: 0;
+				background-color: var(--SSM-theme);
+				box-shadow: 0 0px 0px 0px var(--SSM-theme);
+				transition: transform 0.2s cubic-bezier(0.39, 0.54, 0.14, 1.45),
+					box-shadow 0.2s;
+			}
+			.SSM-slider:hover::-moz-range-thumb {
+				transform: scale(1.1);
+				box-shadow: 0 2px 20px -4px var(--SSM-theme);
+			}
+			.SSM-slider:active::-moz-range-thumb {
+				transform: scale(1.2, 1.05);
+			}
+			.SSM-range-panel p {
+				padding: 0 0 13px 0;
+			}
+			.SSM-range-panel .SSM-range {
+				display: flex;
+				align-items: center;
+				height: 25px;
+			}
+			.SSM-range-panel .SSM-range:first-of-type {
+				height: fit-content;
+			}
+			.SSM-range:last-of-type::after {
+				content: '';
+				position: absolute;
+				left: 0;
+				transform-origin: left;
+				transform: translateX(var(--SSM-slider-left))
+					scaleX(var(--SSM-slider-width));
+				width: 100%;
+				height: 5px;
+				pointer-events: none;
+				background-color: var(--SSM-theme);
+				max-width: 100%;
+			}
+
+			.SSM-range .SSM-slider {
+				position: absolute;
+				width: 100%;
+				pointer-events: none;
+			}
+			.SSM-range .SSM-slider:last-of-type::-webkit-slider-runnable-track {
+				background-color: transparent;
+			}
+			.SSM-range .SSM-slider::-webkit-slider-thumb {
+				pointer-events: all;
+			}
+			.SSM-range .SSM-slider::before {
+				display: none;
+			}
+
+			.SSM-text,
+			.SSM-number {
+				width: 100%;
+				height: 40px;
+				border-radius: var(--SSM-border-radius-2);
+				padding: 0 10px;
+				margin: 10px 0;
+				border: 2px solid transparent;
+				transform: scale(1);
+				color: var(--SSM-text-standard);
+				background-color: var(--SSM-background);
+				animation: flash-no-suedo 0.5s ease;
+				transition: var(--SSM-button-transition), border 0.2s;
+			}
+			.SSM-text:hover,
+			.SSM-number:hover {
+				border: 2px solid var(--SSM-theme-accent-muted);
+				transition: var(--SSM-button-hover), border 0s;
+			}
+			.SSM-text:active,
+			.SSM-number:active {
+				transform: var(--SSM-button-active-transform);
+				transition: var(--SSM-button-active), border 0.2s;
+				animation: none;
+			}
+			.SSM-text:focus,
+			.SSM-number:focus {
+				border: 2px solid var(--SSM-theme);
+			}
+			.SSM-text::placeholder,
+			.SSM-number::placeholder {
+				color: var(--SSM-text-muted);
+			}
+
+			.SSM-number {
+				-moz-appearance: textfield;
+				appearance: textfield;
+			}
+
+			.SSM-number::-webkit-inner-spin-button,
+			.SSM-number::-webkit-outer-spin-button {
+				-webkit-appearance: none;
+				appearance: none;
+				margin: 0;
+			}
+
+			.SSM-canvas {
+				width: 100%;
+				height: 100px;
+				border-radius: var(--SSM-border-radius-2);
+				margin: 10px 0;
+				border: 2px solid transparent;
+				background-color: var(--SSM-theme);
+			}
+			.SSM-radio-panel div {
+				width: 100%;
+			}
+			.SSM-radio-panel div label {
+				width: 100%;
+				display: flex;
+				margin: 5px 0;
+				align-items: center;
+				font-size: 14px;
+				cursor: pointer;
+				color: var(--SSM-text-muted);
+			}
+
+			.SSM-radio-panel div label:has(> .SSM-radio:checked) {
+				color: var(--SSM-text-standard);
+			}
+
+			.SSM-radio {
+				height: 25px;
+				width: 25px;
+				background-color: var(--SSM-background);
+				border-radius: 50%;
+				overflow: hidden;
+				cursor: pointer;
+				margin-right: 10px;
+			}
+			.SSM-radio::before {
+				content: '';
+				width: 100%;
+				height: 100%;
+				display: block;
+				border-radius: 50%;
+				background-color: var(--SSM-background-muted);
+				transform: scale(0.2);
+				transition: var(--SSM-button-transition);
+			}
+			.SSM-radio:hover::before {
+				transform: scale(0.4);
+				transition: var(--SSM-button-hover);
+			}
+			.SSM-radio:checked::before {
+				transform: scale(0.7);
+				background-color: var(--SSM-theme);
+			}
+
+			.SSM-radio:active::before {
+				transform: scale(0.5);
+				background-color: var(--SSM-theme);
+				transition: var(--SSM-button-active), background-color 0.2s;
+			}
+
+			.SSM-radio::after {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				display: block;
+				animation: flash 0.5s ease;
+			}
+			.SSM-radio:active::after {
+				animation: none;
+			}
+
+			.SSM-dropdown {
+				width: 100%;
+				height: auto;
+				margin: 10px 0;
+				border-radius: var(--SSM-border-radius-2);
+			}
+			.SSM-dropdown.SSM-dropdown-open {
+				height: auto;
+			}
+			.SSM-dropdown span {
+				width: 100%;
+				height: 40px;
+				display: block;
+				cursor: pointer;
+				margin: 0;
+				font-size: 14px;
+				padding: 0 30px 0 10px;
+				overflow: hidden;
+				display: flex;
+				align-items: center;
+				transform: scale(1);
+				background-color: var(--SSM-background);
+				border-radius: var(--SSM-border-radius-2);
+				transition: var(--SSM-button-transition), margin 0.2s;
+			}
+			.SSM-dropdown span p {
+				width: 100%;
+				text-align: left;
+				padding: 0;
+			}
+			.SSM-dropdown:hover span {
+				background-color: var(--SSM-theme);
+				transition: var(--SSM-button-hover), margin 0.2s;
+			}
+			.SSM-dropdown span:active {
+				transform: var(--SSM-button-active-transform);
+				transition: var(--SSM-button-active), margin 0.2s;
+			}
+			.SSM-dropdown.SSM-dropdown-open span {
+				margin: 0 0 7px 0;
+			}
+			.SSM-dropdown span IS {
+				position: absolute;
+				top: 50%;
+				right: 12px;
+				width: 15px;
+				height: 15px;
+				transform: translateY(-50%) rotate(0);
+				background-color: var(--SSM-text-standard);
+				transition: transform 0.2s;
+			}
+			.SSM-dropdown.SSM-dropdown-open span IS {
+				transform: translateY(-50%) rotate(-90deg);
+			}
+			.SSM-dropdown div {
+				width: 100%;
+				border-radius: var(--SSM-border-radius-2);
+				background-color: var(--SSM-background);
+				height: auto;
+				display: grid;
+				grid-template-rows: 0fr;
+				overflow: hidden;
+				padding: 0 6px;
+				opacity: 0;
+				transition: grid-template-rows 0.2s, opacity 0.2s, padding 0.2s;
+			}
+			.SSM-dropdown.SSM-dropdown-open div {
+				grid-template-rows: 1fr;
+				padding: 6px;
+				opacity: 1;
+			}
+			.SSM-dropdown div section {
+				width: 100%;
+				overflow: hidden;
+			}
+			.SSM-dropdown div button {
+				width: 100%;
+				height: 30px;
+				padding: 0 10px;
+				cursor: pointer;
+				border-radius: 5px;
+				display: block;
+				overflow: hidden;
+				text-align: left;
+				color: var(--SSM-text-standard);
+				transition: var(--SSM-button-transition);
+			}
+
+			.SSM-dropdown div button:hover {
+				background-color: var(--SSM-background-muted);
+				transition: var(--SSM-button-hover);
+			}
+
+			.SSM-dropdown div button:active {
+				transform: var(--SSM-button-active-transform);
+				transition: var(--SSM-button-active);
+			}
+
+			.SSM-multi-button-panel div {
+				overflow: hidden;
+				display: flex;
+				flex-wrap: wrap;
+				margin: 5px 0;
+				min-height: 40px;
+			}
+
+			.SSM-multi-button {
+				width: auto;
+				flex-grow: 1;
+				margin: 5px;
+				min-width: 40px;
+				height: 40px;
+				border-radius: var(--SSM-border-radius-2);
+				cursor: pointer;
+				overflow: hidden;
+				transform: scale(1);
+				background-color: var(--SSM-theme);
+				transition: var(--SSM-button-transition);
+			}
+
+			.SSM-multi-button:hover {
+				background-color: var(--SSM-theme-accent);
+				transition: var(--SSM-button-hover);
+			}
+
+			.SSM-multi-button:active {
+				transform: var(--SSM-button-active-transform);
+				transition: var(--SSM-button-active);
+			}
+			.SSM-multi-button IS {
+				width: 15px;
+				height: 15px;
+				display: block;
+				margin: auto;
+				background-color: var(--SSM-text-standard);
+			}
+
+			.SSM-button {
+				width: 100%;
+				height: 40px;
+				border-radius: var(--SSM-border-radius-2);
+				margin: 10px 0;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				overflow: hidden;
+				border: 0px;
+				color: var(--SSM-text-standard);
+				transform: scale(1);
+				cursor: pointer;
+				background-color: var(--SSM-theme);
+				transition: var(--SSM-button-transition);
+			}
+			.SSM-button:hover {
+				background-color: var(--SSM-theme-accent);
+				transition: var(--SSM-button-hover);
+			}
+			.SSM-button:active {
+				transform: var(--SSM-button-active-transform);
+				transition: var(--SSM-button-active);
+			}
+
+			.SSM-button p {
+				font-size: 14px;
+				padding: 0;
+			}
+			.SSM-button IS {
+				height: 15px;
+				width: 15px;
+				background-color: var(--SSM-text-standard);
+				margin-right: 10px;
+			}
+			/*
+
+
+
+
+
+
+
+
+
+			*/
+
+			CMS,
+			CMS * {
+				position: relative;
+				padding: 0;
+				margin: 0;
+				box-sizing: border-box;
+				-ms-touch-action: manipulation;
+				touch-action: manipulation;
+				-webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+				scrollbar-color: transparent;
+				scrollbar-width: none;
+			}
+
+			CMS {
+				position: fixed;
+				top: 200px;
+				left: 900px;
+				width: auto;
+				height: auto;
+				border-radius: 5px;
+				display: grid;
+				overflow: hidden;
+				grid-template-rows: 0fr;
+				background-color: var(--CMS-background-muted);
+				opacity: 0;
+
+				visibility: hidden;
+				transition: opacity 0.2s, visibility 0.2s,
+					grid-template-rows 0.2s;
+			}
+			body:hover CMS {
+				grid-template-rows: 1fr;
+				opacity: 1;
+				visibility: visible;
+				transition: opacity 0s, visibility 0s, grid-template-rows 0.15s;
+			}
+
+			CMS.CMS-visible {
+				opacity: 1;
+				filter: blur(0);
+				visibility: visible;
+			}
+
+			CMS::-webkit-scrollbar {
+				width: 0;
+				height: 0;
+				background-color: transparent;
+			}
+
+			CMS div {
+				overflow: hidden;
+				height: auto;
+				width: auto;
+				display: flex;
+				flex-direction: column;
+			}
+			CMS div button {
+				width: auto;
+				height: auto;
+				appearance: none;
+				-webkit-appearance: none;
+				-moz-appearance: none;
+				display: flex;
+				align-items: center;
+				border: 0;
+				padding: 5px 40px 5px 35px;
+				flex-grow: 1;
+				background-color: transparent;
+			}
+			CMS div button:hover {
+				background-color: var(--CMS-background);
+			}
+			CMS div button IS {
+				position: absolute;
+				left: 12px;
+				width: 12px;
+				height: 12px;
+				flex-shrink: 0;
+				opacity: 1;
+				background-color: var(--CMS-text-muted);
+			}
+			CMS div button p {
+				white-space: nowrap;
+				width: min-content;
+				flex-shrink: 0;
+				color: var(--CMS-text-standard);
+			}
+		</style>
+
+		<CMS
+			style="
+				--CMS-theme-accent: oklch(
+					from var(--CMS-theme) calc(l + 0.03) calc(c + 0.01) h
+				);
+
+				--CMS-text-standard: var(--text-primary);
+
+				--CMS-text-muted: oklch(
+					from var(--CMS-text-standard) l c h / 50%
+				);
+				--CMS-text-theme-muted: oklch(
+					from var(--CMS-theme) calc(l * 2) calc(c / 3) h / 60%
+				);
+				--CMS-theme: #4e4d8f;
+
+				--CMS-theme-muted: oklch(from var(--CMS-theme) l c h / 70%);
+
+				--CMS-theme-accent-muted: oklch(
+					from var(--CMS-theme-accent) l c h / 30%
+				);
+				--CMS-background: oklch(
+					from var(--CMS-theme) calc(l / 1.8)
+						max(calc(c / 100), calc(c - 0.5)) h
+				);
+				--CMS-background-muted: oklch(
+					from var(--CMS-background) calc(l * 1.2) calc(c * 1.2) h
+				);
+
+				--CMS-border-radius-1: 0;
+				--CMS-border-radius-2: 7px;
+				--CMS-border-radius-3: 10px;
+				--CMS-button-transition: transform 0.6s
+						cubic-bezier(0.05, 2.1, 0.48, 0.58),
+					background-color 0.2s;
+				--CMS-button-hover: background-color 0.2s
+						cubic-bezier(0, 1.72, 0.56, 1.01),
+					transform 0.6s cubic-bezier(0.05, 2.1, 0.48, 0.58);
+				--CMS-button-active: background-color 0.1s
+						cubic-bezier(0.18, 3, 0.69, 0.99),
+					transform 1.7s cubic-bezier(0.01, 0.94, 0.74, 0.99);
+				--CMS-button-active-transform: scale(0.82);
+
+				--CMS-height: 100%;
+				--CMS-width: 50%;
+			"
+		>
+			<div>
+				<button>
+					<IS name="NATSKI"></IS>
+					<p>gamer</p>
+				</button>
+				<button>
+					<IS name="checkmark"></IS>
+					<p>gamerrn</p>
+				</button>
+				<button>
+					<IS name="NATSKI"></IS>
+					<p>gamer zone rnFSD FSDFSDF</p>
+				</button>
+				<button>
+					<IS name="NATSKI"></IS>
+					<p>gamer zone rn</p>
+				</button>
+				<button>
+					<IS name="NATSKI"></IS>
+					<p>gamer zone rn</p>
+				</button>
+			</div>
+		</CMS>
+		<canvas id="phi"></canvas>
+		<style>
+			#phi,
+			#upsilon {
+				position: fixed;
+				left: 500px;
+				width: calc(100% - 500px);
+				height: 50vh;
+			}
+			#phi {
+				top: 0;
+			}
+			#upsilon {
+				top: 50vh;
+				height: 300px;
+				width: 300px;
+			}
+		</style>
+
+		<script type="module" src="lib/js/embedded_page_scripts.js"></script>
+
+		<script type="module">
+			import { default as SimpleCanvas } from './simple_canvas/SimpleCanvas.js';
+
+			let phi = SimpleCanvas.create('#phi', {
+				fps: 120,
+				autoClear: true,
+				calculateFPS: false,
+				showLayerPosition: false,
+				calculateOverlay: false,
+				useCursor: true,
+				useKeyboard: true,
+				useScroll: true,
+				useTouch: true,
+				detectWindowFocus: true,
+			});
+
+			let upsilon = SimpleCanvas.create('#upsilon', {
+				fps: 120,
+				autoClear: true,
+				calculateFPS: false,
+				showLayerPosition: false,
+				calculateOverlay: false,
+				useCursor: true,
+				useKeyboard: true,
+				useScroll: true,
+				useTouch: true,
+				detectWindowFocus: true,
+				size: {
+					x: 600,
+					y: 600,
+				},
+			});
+
+			document.body.appendChild(phi.element);
+			document.body.appendChild(upsilon.element);
+
+			phi.setup(() => {
+				phi.translate(0.5, 0.5);
+				phi.scale(phi.canvasSize.x, phi.canvasSize.y);
+
+				setTimeout(() => {}, 400);
+			});
+
+			phi.draw(() => {
+				phi.context.fillStyle = '#fff';
+
+				phi.paint('black');
+
+				phi.context.fillRect(0, 0, 40, 40);
+
+				phi.context.fillRect(
+					phi.cursorPosition.x,
+					phi.cursorPosition.y,
+					10,
+					10,
+				);
+			});
+
+			upsilon.draw(() => {
+				upsilon.context.fillStyle = '#fff';
+
+				upsilon.paint('black');
+
+				upsilon.context.fillRect(
+					upsilon.cursorPosition.x - 5,
+					upsilon.cursorPosition.y - 5,
+					10,
+					10,
+				);
+			});
+		</script>
+		<script
+			type="module"
+			src="ENCORE/dependencies/component_manager.mjs"
+		></script>
+		<script type="module">
+			/*
+			import * as CMPM from '../ENCORE/dependencies/component_manager.mjs';
+			import { default as header } from '../lib/components/header.mjs';
+
+			document.body.appendChild(
+				...CMPM.component({
+					element: header,
+					data: {
+						icon: 'ENCORE',
+						title: 'ENCORE',
+						titles: ['burger', 'king'],
+					},
+				}),
+			);*/
+		</script>
+	</body>
+</html>

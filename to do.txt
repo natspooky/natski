@@ -1,0 +1,25 @@
+
+
+list to follow. pls
+
+make PDS file paths and image counts attributes to a PDS element to allow for multiple gallaries
+
+make each styling for ENCORE have named transition properties to prevent weird visual errors
+
+make each ENCORE style be in worded form. eg: standard, compact, etc...
+
+fix SSCU page sliding to allow for infinite scrolling
+
+make it so SSC and SSCU pause when not in frame
+
+make CLS have a tag based loader to allow for multiple in one page
+
+color picker page should include: hex, rgb, vec3, hsl, cmyk, hsv, contrast detection tool, importable and exportable library of colours, suggested colours
+
+also allow colour picker to have a gradient interface
+
+NEW ENCORE SHOULD BE AN AUDIO WIDGET
+
+add unmute button for SSC and SSCU
+
+make the thumb minifier more optimised by making a constant that changes when the screen is resized

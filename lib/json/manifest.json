@@ -1,0 +1,10 @@
+{
+	"name": "NATSKI",
+	"short_name": "NATSKI",
+	"start_url": "/index.html#",
+	"id": "/index.html#",
+	"display": "standalone",
+	"background_color": "#010409",
+	"theme_color": "#010409",
+	"description": "A site for displaying coding projects and artwork"
+}
