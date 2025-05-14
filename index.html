@@ -119,6 +119,7 @@
 	</head>
 
 	<body>
+		<!--
 		<div
 			style="
 				position: fixed;
@@ -146,6 +147,7 @@
 				name="heart"
 			></IS>
 		</div>
+		-->
 		<section id="load"></section>
 
 		<nav
@@ -201,21 +203,50 @@
 		<main class="window-container">
 			<div class="window-row">
 				<div class="window-column right">
-					<div class="window">
-						<is class="window-icon" name="ENCORE"></is>
-						<button class="window-info icon-button">
-							<is name="information"></is>
-						</button>
-						<button
-							class="window-open icon-button linker"
-							name="api/encore"
+					<div class="window-row">
+						<div
+							class="window"
+							style="
+								--bg: linear-gradient(45deg, #350371, #40198e);
+							"
 						>
-							<is name="circle_arrow_leave"></is>
-						</button>
-						<p class="window-name">encore</p>
-						<p class="window-status ongoing">ongoing</p>
+							<is class="window-icon" name="ENCORE"></is>
+							<button class="window-info icon-button">
+								<is name="information"></is>
+							</button>
+							<button
+								class="window-open icon-button linker"
+								name="api/encore"
+							>
+								<is name="circle_arrow_leave"></is>
+							</button>
+							<p class="window-name">encore</p>
+							<p class="window-status ongoing">ongoing</p>
+						</div>
+						<div
+							class="window"
+							style="
+								--bg: linear-gradient(45deg, #5d237f, #9439cd);
+							"
+						>
+							<is class="window-icon" name="GIS"></is>
+							<button class="window-info icon-button">
+								<is name="information"></is>
+							</button>
+							<button
+								class="window-open icon-button linker"
+								name="api/encore/icon-system"
+							>
+								<is name="circle_arrow_leave"></is>
+							</button>
+							<p class="window-name">Icon System</p>
+							<p class="window-status completed">V3</p>
+						</div>
 					</div>
-					<div class="window">
+					<div
+						class="window"
+						style="--bg: linear-gradient(45deg, #23257f, #394bcd)"
+					>
 						<is class="window-icon" name="terminal"></is>
 						<button class="window-info icon-button">
 							<is name="information"></is>
@@ -241,9 +272,12 @@
 							<is name="circle_arrow_leave"></is>
 						</button>
 						<p class="window-name">The Cellar</p>
-						<p class="window-status ongoing">ongoing</p>
+						<p class="window-status completed">2 Games</p>
 					</div>
-					<div class="window">
+					<div
+						class="window"
+						style="--bg: linear-gradient(45deg, #237f60, #39cd99)"
+					>
 						<is class="window-icon" name="simple_canvas"></is>
 						<button class="window-info icon-button">
 							<is name="information"></is>
@@ -255,7 +289,7 @@
 							<is name="circle_arrow_leave"></is>
 						</button>
 						<p class="window-name">Simple Canvas</p>
-						<p class="window-status ongoing">ongoing</p>
+						<p class="window-status ongoing">V0.01</p>
 					</div>
 				</div>
 			</div>
@@ -401,81 +435,6 @@
 				);
 			}
 		</style>
-
-		<script type="module">
-			import Particle from './lib/js/classes/particle.js';
-			import SimpleCanvas from './api/simple-canvas/sc.min.js';
-
-			let canvas,
-				context,
-				particles = [];
-
-			function setup() {
-				context = canvas.context;
-
-				for (let i = 0; i < 30; i++) {
-					particles.push(new Particle(canvas.canvasSize));
-				}
-			}
-
-			function resize() {
-				particles.forEach((particle) => {
-					particle.resize(canvas.canvasSize);
-				});
-			}
-
-			function draw() {
-				context.fillStyle = '#ffffff05';
-
-				particles.forEach((particle) => {
-					particle.step(canvas.renderTime * 100);
-
-					context.beginPath();
-					context.arc(
-						particle.position.x - particle.size / 2,
-						particle.position.y - particle.size / 2,
-						particle.size,
-						0,
-						2 * Math.PI,
-					);
-					context.fill();
-
-					if (
-						particle.position.y / 2 > canvas.canvasSize.y + 40 ||
-						particle.position.y / 2 < -40
-					) {
-						particle.regenerateData();
-					}
-					if (
-						particle.position.x > canvas.canvasSize.x + 40 ||
-						particle.position.x < -40
-					) {
-						particle.regenerateData();
-					}
-				});
-			}
-
-			canvas = new SimpleCanvas('particles', {
-				fps: 120,
-				autoClear: true,
-				calculateFPS: true,
-				calculateCursor: false,
-				calculateKeyboard: false,
-				showLayerPosition: false,
-				calculateOverlay: true,
-				useCursor: false,
-				useKeyboard: false,
-				useScroll: false,
-				useTouch: false,
-				detectResize: true,
-				detectWindowFocus: true,
-				detectIntersection: false,
-			});
-
-			canvas.setup(setup);
-			canvas.resize(resize);
-			canvas.draw(draw);
-		</script>
 
 		<script type="module" src="lib/js/embedded_window_system.js"></script>
 	</body>
