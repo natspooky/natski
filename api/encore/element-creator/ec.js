@@ -91,10 +91,10 @@ export function appendChildren(element, children) {
 export function insertChildrenBefore(element, children, insertBefore) {
 	if (Array.isArray(children)) {
 		for (const child of children) {
-			element.insertBefore(insertBefore, child);
+			element.insertBefore(child, insertBefore);
 		}
 	} else {
-		element.insertBefore(insertBefore, child);
+		element.insertBefore(child, insertBefore);
 	}
 }
 
