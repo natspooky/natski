@@ -91,7 +91,7 @@ export function checkMediaType(file, type) {
 	let ext = fileExtention(file).substring(1);
 	switch (type) {
 		case 'video':
-			return /m(p4|eg)|ts|avi|webm|ogv/i.test(ext);
+			return /mp(4|eg)|ts|avi|webm|ogv/i.test(ext);
 		case 'audio':
 			return /(web|og)a|opus|mp3|wav|aac|mi(di|d)/i.test(ext);
 		case 'image':

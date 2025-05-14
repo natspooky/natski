@@ -18,11 +18,11 @@ const httpServer = createServer((req, res) => {
 	let contentType = MIME(pathname);
 	let filePath = join(__dirname, pathname);
 
-	console.log(
+	/*console.log(
 		`file ${existsSync(filePath) ? 'exists' : 'does not exist'}`,
 		filePath,
 		i++,
-	);
+	);*/
 	_stat('val', (err, stat) => {
 		stat;
 	});
@@ -33,6 +33,7 @@ const httpServer = createServer((req, res) => {
 	} else if (!existsSync(filePath) || _extname(filePath) === '') {
 		filePath = __dirname + '\\404.html';
 		contentType = MIME(filePath);
+		return;
 	}
 
 	readFile(filePath, contentType, res);

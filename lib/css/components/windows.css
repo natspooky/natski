@@ -35,7 +35,7 @@
 .window-container .window-row {
 	position: relative;
 	display: flex;
-	height: 65vh;
+	height: 55vh;
 	flex-grow: 1;
 	padding: 10px;
 }
