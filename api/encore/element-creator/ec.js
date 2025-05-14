@@ -88,6 +88,16 @@ export function appendChildren(element, children) {
 	}
 }
 
+export function insertChildrenBefore(element, children, insertBefore) {
+	if (Array.isArray(children)) {
+		for (const child of children) {
+			element.insertBefore(insertBefore, child);
+		}
+	} else {
+		element.insertBefore(insertBefore, child);
+	}
+}
+
 function jsonMultiElementify(elements) {
 	let arr = [];
 
