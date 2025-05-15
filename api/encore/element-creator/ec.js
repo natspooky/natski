@@ -88,13 +88,13 @@ export function appendChildren(element, children) {
 	}
 }
 
-export function insertChildrenBefore(element, children, insertBefore) {
+export function insertChildrenBefore(element, children, beforeElement) {
 	if (Array.isArray(children)) {
 		for (const child of children) {
-			element.insertBefore(child, insertBefore);
+			element.insertBefore(child, beforeElement);
 		}
 	} else {
-		element.insertBefore(child, insertBefore);
+		element.insertBefore(child, beforeElement);
 	}
 }
 
