@@ -35,3 +35,7 @@ header span h1 {
 	display: inline-block;
 	vertical-align: top;
 }
+
+header span h1 sub {
+	font-size: 12px;
+}
