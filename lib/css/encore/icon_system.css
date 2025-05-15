@@ -1,0 +1,44 @@
+.icon-grid {
+	position: relative;
+	width: min(90%, 700px);
+	margin: auto;
+}
+
+.icon-grid span {
+	position: relative;
+	width: 100%;
+}
+
+.icon-grid section {
+	position: relative;
+	display: flex;
+	flex-wrap: wrap;
+	width: 100%;
+}
+
+.icon-grid section button {
+	position: relative;
+	background-color: transparent;
+	border-radius: 12px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 10px;
+	margin: 5px;
+	flex-grow: 1;
+	border: 0;
+}
+
+.icon-grid section button IS {
+	position: relative;
+	width: 25px;
+	height: 25px;
+	display: block;
+	background-color: var(--text-secondary);
+}
+
+@media (hover: hover) {
+	.icon-grid section button:hover {
+		background-color: var(--border-color);
+	}
+}
