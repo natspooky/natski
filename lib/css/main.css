@@ -346,7 +346,7 @@ body {
 	margin: auto;
 	width: fit-content;
 	padding: 15px 0;
-	margin: 20px 0;
+	margin: 20px auto;
 	display: flex;
 	align-items: center;
 	justify-content: center;
