@@ -14,7 +14,7 @@
 	background-color: var(--card-background);
 	border-radius: 7px;
 	cursor: text;
-	transition: border 0.2s;
+	transition: border 0.1s;
 }
 .icon-grid span:has(input:focus) {
 	border: 1px solid var(--accent);
