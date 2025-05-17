@@ -10,7 +10,7 @@
 	margin: auto auto 10px auto;
 	display: flex;
 	align-items: center;
-	border: 1px solid transparent;
+	border: 1px solid var(--border-color);
 	background-color: var(--card-background);
 	border-radius: 7px;
 	cursor: text;

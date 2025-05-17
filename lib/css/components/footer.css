@@ -11,7 +11,6 @@ footer button {
 	background-color: transparent;
 	border: 0;
 	display: flex;
-	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 }
@@ -27,6 +26,6 @@ footer button IS {
 	width: 20px;
 	height: 20px;
 	display: block;
-	margin-bottom: 10px;
+	margin-right: 10px;
 	background-color: var(--text-tertiary);
 }
