@@ -12,22 +12,28 @@ export function jsonElementify(elementData) {
 
 	let element = document.createElement(elementData.tag);
 
+	if (!element) {
+		throw new Error('an invalid TAG has been applied');
+	}
+
 	if (elementData.innerHTML) {
 		element.innerHTML = elementData.innerHTML;
 	}
 
 	if (elementData.classes) {
 		if (Array.isArray(elementData.classes)) {
-			for (const value of elementData.classes) {
-				element.classList.add(value);
-			}
+			elementData.classes.forEach((className) => {
+				element.classList.add(className);
+			});
 		} else {
-			element.classList.add(elementData.classes);
+			elementData.classes.split(' ').forEach((className) => {
+				element.classList.add(className);
+			});
 		}
 	}
 
 	if (elementData.events) {
-		for (const [eventType, event] of Object.entries(elementData.events)) {
+		Object.entries(elementData.events).forEach(([eventType, event]) => {
 			if (event) {
 				element.addEventListener(
 					eventType,
@@ -35,40 +41,35 @@ export function jsonElementify(elementData) {
 					event.options,
 				);
 			}
-		}
+		});
 	}
 
 	if (elementData.attributes) {
-		for (const [attribute, value] of Object.entries(
-			elementData.attributes,
-		)) {
+		Object.entries(elementData.attributes).forEach(([attribute, value]) => {
 			if (checkExists(value)) {
 				element.setAttribute(attribute, value);
 			}
-		}
+		});
 	}
 
 	if (elementData.dataset) {
-		for (const [dataName, value] of Object.entries(elementData.dataset)) {
+		Object.entries(elementData.dataset).forEach(([dataName, value]) => {
 			if (checkExists(value)) {
-				if (/\p{Lu}/u.test(dataName)) {
-					console.log(dataName.split(/\p{Lu}/u));
-				} else {
-					element.dataset[
-						dataName
-							.split('-')
-							.map((element, index) => {
-								if (!index) return element;
-								return (
-									element.slice(0, 1).toUpperCase() +
-									element.slice(1)
-								);
-							})
-							.join('')
-					] = value;
-				}
+				//////////////////////change this
+				element.dataset[
+					dataName
+						.split('-')
+						.map((element, index) => {
+							if (!index) return element;
+							return (
+								element.slice(0, 1).toUpperCase() +
+								element.slice(1)
+							);
+						})
+						.join('')
+				] = value;
 			}
-		}
+		});
 	}
 
 	if (elementData.children) {
@@ -101,11 +102,11 @@ export function insertChildrenBefore(element, children, beforeElement) {
 function jsonMultiElementify(elements) {
 	let arr = [];
 
-	for (const element of elements) {
+	elements.forEach((element) => {
 		if (checkForKeys(element)) {
 			arr.push(jsonElementify(element));
 		}
-	}
+	});
 
 	return arr;
 }
