@@ -18,11 +18,7 @@ const httpServer = createServer((req, res) => {
 	let contentType = MIME(pathname);
 	let filePath = join(__dirname, pathname);
 
-	/*console.log(
-		`file ${existsSync(filePath) ? 'exists' : 'does not exist'}`,
-		filePath,
-		i++,
-	);*/
+	console.log(`${existsSync(filePath) ? 'fetched' : 'ERROR'}`, filePath, i++);
 	_stat('val', (err, stat) => {
 		stat;
 	});
