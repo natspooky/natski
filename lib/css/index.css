@@ -76,6 +76,11 @@ nav span.center {
 		left 0.4s var(--dynamic-bezier);
 }
 
+nav.center span.center {
+	width: calc(100% + 160px - 4px);
+	left: calc(0px - 80px + 2px);
+}
+
 nav.center span.left,
 nav.center span.right {
 	opacity: 0;
@@ -144,6 +149,11 @@ nav::before {
 	border-radius: 23px 0 0 23px;
 	border-right: 0px solid transparent;
 	width: var(--left);
+}
+
+nav.center::before,
+nav.center::after {
+	width: 80px;
 }
 
 nav.border {
