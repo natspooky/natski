@@ -21,13 +21,16 @@
 	background-color: var(--text-secondary);
 }
 
+.widget-progress {
+	width: 40px;
+}
 .widget-progress .progbar {
 	position: relative;
-	height: 5px;
+	height: 4px;
 	width: 100%;
 	border-radius: 100vmax;
 	overflow: hidden;
-	background-color: var(--text-secondary);
+	background-color: var(--border-color);
 }
 
 .widget-progress .progbar section {
@@ -37,10 +40,13 @@
 	width: 50%;
 	height: 100%;
 	border-radius: 100vmax;
-	background-color: var(--accent);
+	background-color: var(--text-secondary);
 }
 
 .widget-dropper {
+	position: absolute;
+	top: 0;
+	left: 0;
 	width: 100%;
 	height: 100%;
 	background-color: var(--background);
@@ -53,6 +59,71 @@
 	height: 20px;
 	display: block;
 	background-color: var(--accent);
+}
+
+.widget-icon-system {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	min-height: 100px;
+	padding: 10px;
+	background-color: #000;
+	border-radius: 23px;
+	align-items: baseline;
+	display: flex;
+	flex-direction: column;
+	border: 1px solid var(--border-color);
+}
+
+.widget-icon-system section {
+	position: relative;
+	width: 100%;
+	height: 40px;
+	background-color: var(--border-color);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 13px;
+}
+
+.widget-icon-system section IS {
+	position: relative;
+	width: 20px;
+	height: 20px;
+	display: block;
+	background-color: var(--text-secondary);
+}
+
+.widget-icon-system button {
+	width: 100%;
+	display: block;
+	height: 50%;
+	border: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	overflow: hidden;
+	background-color: transparent;
+}
+.widget-icon-system button IS {
+	position: relative;
+	width: 15px;
+	height: 15px;
+	background-color: var(--text-secondary);
+	display: block;
+	margin-right: 5px;
+}
+.widget-icon-system button p {
+	color: var(--text-secondary);
+}
+
+.widget-icon-system button:hover IS {
+	background-color: var(--accent);
+}
+.widget-icon-system button:hover p {
+	color: var(--accent);
 }
 
 .widget-loader {

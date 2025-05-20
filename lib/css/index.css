@@ -57,6 +57,9 @@ nav div .title {
 	font-size: var(--font-size-3);
 	font-weight: bolder;
 }
+nav.center div .title {
+	opacity: 0;
+}
 
 nav span {
 	position: absolute;
@@ -70,6 +73,9 @@ nav span {
 }
 
 nav span.center {
+	overflow: hidden;
+	top: -1px;
+	height: calc(100% + 1px);
 	width: calc(100% + var(--left) + var(--right) - 4px);
 	left: calc(0px - var(--left) + 2px);
 	transition: width 0.4s var(--dynamic-bezier),
