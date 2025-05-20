@@ -4,10 +4,10 @@ nav {
 	top: 10px;
 	left: 50%;
 	transform: translateX(-50%) scale(0.95);
-	transform-origin: center;
+	transform-origin: top center;
 	width: 0;
 	pointer-events: none;
-	max-width: 50%;
+	max-width: calc(98% - var(--left) - var(--right));
 	height: 40px;
 	z-index: 9999;
 	background-color: #000000;
@@ -45,7 +45,6 @@ nav div {
 nav div .title {
 	position: relative;
 	width: fit-content;
-	max-width: 80vw;
 	font-weight: bold;
 	text-overflow: ellipsis;
 	display: flex;
@@ -55,6 +54,37 @@ nav div .title {
 	color: var(--text-tertiary);
 	font-size: var(--font-size-3);
 	font-weight: bolder;
+}
+
+nav span {
+	position: absolute;
+	top: 0;
+	padding: 5px;
+	width: fit-content;
+	height: 100%;
+	background-color: #ffffff20;
+	transition: width 0.4s var(--dynamic-bezier), opacity 0.4s;
+}
+
+nav span.center {
+	width: calc(100% + var(--left) + var(--right) - 4px);
+	left: calc(0px - var(--left) + 2px);
+	transition: width 0.4s var(--dynamic-bezier),
+		left 0.4s var(--dynamic-bezier);
+}
+
+nav.center span.left,
+nav.center span.right {
+	opacity: 0;
+	pointer-events: none;
+}
+
+nav span.left {
+	left: calc(-38px + 10px);
+}
+
+nav span.right {
+	right: calc(-38px + 10px);
 }
 
 .fadeout {
@@ -94,13 +124,12 @@ nav::after {
 	min-width: 10px;
 	background-color: inherit;
 	border: 1px solid transparent;
-	transition: width 0.4s var(--dynamic-bezier),
-		transform 0.4s var(--dynamic-bezier), border 0.4s, border-radius 0.4s;
+	transition: width 0.4s var(--dynamic-bezier), border 0.4s;
 }
 
 nav::after {
 	left: calc(100% - 2px);
-	border-radius: 0 100vmax 100vmax 0;
+	border-radius: 0 23px 23px 0;
 	border-left: 0px solid transparent;
 	width: var(--right);
 	z-index: -1;
@@ -108,64 +137,9 @@ nav::after {
 
 nav::before {
 	right: calc(100% - 2px);
-	border-radius: 100vmax 0 0 100vmax;
+	border-radius: 23px 0 0 23px;
 	border-right: 0px solid transparent;
 	width: var(--left);
-}
-
-nav.split-left {
-	border-top-left-radius: 100vmax;
-	border-bottom-left-radius: 100vmax;
-}
-
-nav.split-right {
-	border-top-right-radius: 100vmax;
-	border-bottom-right-radius: 100vmax;
-}
-
-nav.split-right,
-nav.split-left {
-	transition: 0.4s var(--dynamic-bezier), filter 0.3s, opacity 0.3s,
-		border 0.2s, border-radius 0.2s;
-}
-
-nav.split-left::before {
-	transform: translate(-15px);
-}
-
-nav.split-right::after {
-	transform: translate(15px);
-}
-
-nav.border.split-right {
-	border-right: 1px solid var(--border);
-}
-
-nav.border.split-left {
-	border-left: 1px solid var(--border);
-}
-
-nav.border.split-right::after {
-	border-left: 1px solid var(--border);
-}
-
-nav.border.split-left::before {
-	border-right: 1px solid var(--border);
-}
-
-nav.split-right::after,
-nav.split-left::before {
-	border-radius: 100vmax;
-	transition: width 0.4s var(--dynamic-bezier),
-		transform 0.4s var(--dynamic-bezier), border 0.2s, border-radius 0.2s;
-}
-
-nav.split-left div .title {
-	padding-left: 30px;
-}
-
-nav.split-right div .title {
-	padding-right: 30px;
 }
 
 nav.border {
