@@ -1,0 +1,48 @@
+.widget {
+	position: relative;
+	height: 20px;
+	width: 20px;
+	justify-content: center;
+	align-items: center;
+	display: flex;
+}
+
+.widget-button {
+	background-color: transparent;
+	border: 0;
+	cursor: pointer;
+}
+.widget-button IS {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	display: block;
+	background-color: var(--text-secondary);
+}
+
+.widget-progress .progbar {
+	position: relative;
+	height: 5px;
+	width: 100%;
+	border-radius: 100vmax;
+	overflow: hidden;
+	background-color: var(--text-secondary);
+}
+
+.widget-progress .progbar section {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 50%;
+	height: 100%;
+	border-radius: 100vmax;
+	background-color: var(--accent);
+}
+
+.widget-loader {
+	border: 2px solid transparent;
+	border-radius: 50%;
+	border-top: 2px solid var(--text-secondary);
+	border-left: 2px solid var(--text-secondary);
+	animation: rotate 0.3s linear infinite;
+}

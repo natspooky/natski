@@ -1,3 +1,5 @@
+@import url('./components/widgets.css');
+
 nav {
 	position: fixed;
 	display: block;
@@ -59,10 +61,11 @@ nav div .title {
 nav span {
 	position: absolute;
 	top: 0;
-	padding: 5px;
 	width: fit-content;
 	height: 100%;
-	background-color: #ffffff20;
+	display: flex;
+	align-items: center;
+
 	transition: width 0.4s var(--dynamic-bezier), opacity 0.4s;
 }
 
@@ -80,11 +83,12 @@ nav.center span.right {
 }
 
 nav span.left {
-	left: calc(-38px + 10px);
+	flex-direction: row-reverse;
+	right: calc(100% + 20px);
 }
 
 nav span.right {
-	right: calc(-38px + 10px);
+	left: calc(100% + 20px);
 }
 
 .fadeout {
@@ -157,52 +161,6 @@ nav.border::after {
 	border-top: 1px solid var(--border);
 	border-right: 1px solid var(--border);
 	border-bottom: 1px solid var(--border);
-}
-
-.widget {
-	position: absolute;
-	height: 20px;
-	width: fit-content;
-	justify-content: center;
-	align-items: center;
-	display: flex;
-}
-
-.loader {
-	position: relative;
-	width: 20px;
-	height: 20px;
-	border: 2px solid transparent;
-	border-radius: 50%;
-	border-top: 2px solid var(--text-secondary);
-	border-left: 2px solid var(--text-secondary);
-	animation: rotate 0.3s linear infinite;
-}
-
-.pageButtons {
-	position: relative;
-	width: 25px;
-	height: 25px;
-	border-radius: 50%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	border: 0;
-	background-color: transparent;
-	cursor: pointer;
-}
-
-.pageButtons IS {
-	position: relative;
-	height: 20px;
-	width: 20px;
-	background-color: var(--text-secondary);
-	transition: 0.2s;
-}
-
-.pageButtons:hover IS {
-	background-color: var(--input-active);
-	transition: 0s;
 }
 
 .embedded-frame {
