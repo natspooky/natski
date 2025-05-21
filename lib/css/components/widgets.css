@@ -6,6 +6,9 @@
 	align-items: center;
 	display: flex;
 }
+.widget + .widget {
+	margin: 0 10px 0 0;
+}
 
 .widget-button {
 	background-color: transparent;
@@ -106,6 +109,7 @@
 	justify-content: center;
 	overflow: hidden;
 	background-color: transparent;
+	cursor: pointer;
 }
 .widget-icon-system button IS {
 	position: relative;
