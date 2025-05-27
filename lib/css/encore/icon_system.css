@@ -60,7 +60,7 @@
 	opacity: 1;
 	visibility: visible;
 	cursor: pointer;
-	transition: opacity 0.2s;
+	transition: display 0.2s;
 }
 .icon-grid section button::before {
 	content: '';
@@ -76,9 +76,7 @@
 	transition: border 0.2s;
 }
 .icon-grid section button.hidden {
-	visibility: hidden;
-	opacity: 0;
-	pointer-events: none;
+	display: none;
 }
 .icon-grid section button IS {
 	position: relative;

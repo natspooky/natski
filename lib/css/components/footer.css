@@ -29,3 +29,12 @@ footer button IS {
 	margin-right: 10px;
 	background-color: var(--text-tertiary);
 }
+
+@media (hover: hover) {
+	footer button:hover IS {
+		background-color: var(--text-secondary);
+	}
+	footer button:hover p {
+		color: var(--text-secondary);
+	}
+}

@@ -161,15 +161,6 @@
 	height: 100%;
 }
 
-.window-container .window svg {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	fill: var(--text-secondary);
-	width: min(80%, 300px);
-	height: 100%;
-}
 .window-container .window .window-icon {
 	position: absolute;
 	top: 50%;

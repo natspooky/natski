@@ -1,4 +1,5 @@
 @import url('./components/widgets.css');
+@import url('./components/windows.css');
 
 nav {
 	position: fixed;
