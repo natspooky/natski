@@ -141,4 +141,5 @@ export function page() {}
 export function URLHash(URL) {}
 export function URLParameters(URL) {}
 */
-http://localhost:8080/index.html#api/encore/icon-system#burhger?embed=false
+/*
+http://localhost:8080/index.html#api/encore/icon-system#burhger?embed=false*/
