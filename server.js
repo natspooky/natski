@@ -18,7 +18,12 @@ const httpServer = createServer((req, res) => {
 	let contentType = MIME(pathname);
 	let filePath = join(__dirname, pathname);
 
-	console.log(`${existsSync(filePath) ? 'fetched' : 'ERROR'}`, filePath, i++);
+	console.log(
+		`${existsSync(filePath) ? 'GET' : 'ERROR'}`,
+		filePath.split('\\')[filePath.split('\\').length - 1],
+		i++,
+	);
+
 	_stat('val', (err, stat) => {
 		stat;
 	});
@@ -27,8 +32,6 @@ const httpServer = createServer((req, res) => {
 		filePath += 'index.html';
 		contentType = 'text/html';
 	} else if (!existsSync(filePath) || _extname(filePath) === '') {
-		filePath = __dirname + '\\404.html';
-		contentType = MIME(filePath);
 		return;
 	}
 
@@ -40,6 +43,7 @@ function readFile(file_path, contentType, res) {
 		res.writeHead(StatusCodes.OK, {
 			'Content-Type': contentType,
 		});
+
 		_readFile(file_path, (error, data) => {
 			if (error) {
 				handleError(res);

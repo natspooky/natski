@@ -7,12 +7,12 @@ nav {
 	left: 50%;
 	transform: translateX(-50%) scale(0.95);
 	transform-origin: top center;
-	width: 0;
+	width: var(--width);
 	pointer-events: none;
 	max-width: calc(98% - var(--left) - var(--right));
 	height: 40px;
 	z-index: 9999;
-	background-color: #000000;
+	background-color: #000;
 	border-top: 1px solid transparent;
 	border-bottom: 1px solid transparent;
 	border-left: 0px solid transparent;

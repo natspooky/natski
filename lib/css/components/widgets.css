@@ -21,6 +21,10 @@
 	width: 100%;
 	height: 100%;
 	display: block;
+	background-color: var(--text-tertiary);
+}
+
+.widget-button:hover IS {
 	background-color: var(--text-secondary);
 }
 
@@ -43,7 +47,7 @@
 	width: 50%;
 	height: 100%;
 	border-radius: 100vmax;
-	background-color: var(--text-secondary);
+	background-color: var(--text-tertiary);
 }
 
 .widget-dropper {
@@ -66,24 +70,22 @@
 
 .widget-icon-system {
 	position: absolute;
-	top: 0;
-	left: 0;
+	top: 0px;
+	left: 0px;
 	width: 100%;
 	height: 100%;
 	min-height: 100px;
 	padding: 10px;
-	background-color: #000;
-	border-radius: 23px;
 	align-items: baseline;
 	display: flex;
 	flex-direction: column;
-	border: 1px solid var(--border-color);
 }
 
 .widget-icon-system section {
 	position: relative;
 	width: 100%;
 	height: 40px;
+	justify-self: baseline;
 	background-color: var(--border-color);
 	display: flex;
 	align-items: center;
@@ -96,7 +98,7 @@
 	width: 20px;
 	height: 20px;
 	display: block;
-	background-color: var(--text-secondary);
+	background-color: var(--text-tertiary);
 }
 
 .widget-icon-system button {
@@ -115,12 +117,12 @@
 	position: relative;
 	width: 15px;
 	height: 15px;
-	background-color: var(--text-secondary);
+	background-color: var(--text-tertiary);
 	display: block;
 	margin-right: 5px;
 }
 .widget-icon-system button p {
-	color: var(--text-secondary);
+	color: var(--text-tertiary);
 }
 
 .widget-icon-system button:hover IS {
@@ -133,7 +135,7 @@
 .widget-loader {
 	border: 2px solid transparent;
 	border-radius: 50%;
-	border-top: 2px solid var(--text-secondary);
-	border-left: 2px solid var(--text-secondary);
+	border-top: 2px solid var(--text-tertiary);
+	border-left: 2px solid var(--text-tertiary);
 	animation: rotate 0.3s linear infinite;
 }
