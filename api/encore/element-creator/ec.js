@@ -95,7 +95,7 @@ export function insertChildrenBefore(element, children, beforeElement) {
 			element.insertBefore(child, beforeElement);
 		}
 	} else {
-		element.insertBefore(child, beforeElement);
+		element.insertBefore(children, beforeElement);
 	}
 }
 

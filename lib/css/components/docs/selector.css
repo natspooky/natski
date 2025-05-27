@@ -1,3 +1,48 @@
+:root {
+	--SSM-border-radius-1: 0;
+	--SSM-border-radius-2: 7px;
+	--SSM-border-radius-3: 10px;
+	--SSM-button-transition: transform 0.6s cubic-bezier(0.05, 2.1, 0.48, 0.58),
+		background-color 0.2s;
+	--SSM-button-hover: background-color 0.2s cubic-bezier(0, 1, 0.56, 1),
+		transform 0.6s cubic-bezier(0.05, 2.1, 0.48, 0.58);
+	--SSM-button-active: background-color 0.1s cubic-bezier(0.18, 3, 0.69, 0.99),
+		transform 1.7s cubic-bezier(0.01, 0.94, 0.74, 0.99);
+	--SSM-button-active-transform: scale(0.82);
+
+	--SSM-height: 100%;
+	--SSM-width: 500px;
+	--SSM-theme-accent: oklch(
+		from var(--SSM-theme) calc(l + 0.03) calc(c + 0.01) h
+	);
+
+	--SSM-text-standard: var(--text-primary);
+
+	--SSM-text-muted: oklch(from var(--SSM-text-standard) l c h / 50%);
+	--SSM-text-theme-muted: oklch(
+		from var(--SSM-theme) calc(l * 2) calc(c / 3) h / 60%
+	);
+	--SSM-theme: #4e4d8f;
+
+	--SSM-theme-muted: oklch(from var(--SSM-theme) l c h / 70%);
+
+	--SSM-theme-accent-muted: oklch(from var(--SSM-theme-accent) l c h / 30%);
+	--SSM-background: oklch(
+		from var(--SSM-theme) calc(l / 1.8) max(calc(c / 100), calc(c - 0.5)) h
+	);
+	--SSM-background-muted: oklch(
+		from var(--SSM-background) calc(l * 1.2) calc(c * 1.2) h
+	);
+}
+
+.docs-selector {
+	position: relative;
+	width: 200px;
+	height: 100vh;
+	padding: 10px;
+	overflow: scroll;
+}
+
 .docs-selector-dropdown {
 	width: 100%;
 	height: auto;
@@ -7,6 +52,15 @@
 .docs-selector-dropdown.open {
 	height: auto;
 }
+
+.docs-selector-dropdown button {
+	border: 0;
+	background-color: transparent;
+}
+.docs-selector-dropdown button.active p {
+	color: var(--token-symbol);
+}
+
 .docs-selector-dropdown .docs-dropdown-button {
 	width: 100%;
 	height: 40px;
@@ -27,6 +81,7 @@
 	width: 100%;
 	text-align: left;
 	padding: 0;
+	color: var(--text-secondary);
 }
 .docs-selector-dropdown:hover .docs-dropdown-button {
 	background-color: var(--SSM-theme);
@@ -37,7 +92,7 @@
 	transition: var(--SSM-button-active), margin 0.2s;
 }
 .docs-selector-dropdown.open .docs-dropdown-button {
-	margin: 0 0 7px 0;
+	margin: 0 0 5px 0;
 }
 .docs-selector-dropdown .docs-dropdown-button IS {
 	position: absolute;
@@ -45,12 +100,9 @@
 	right: 12px;
 	width: 15px;
 	height: 15px;
-	transform: translateY(-50%) rotate(0);
-	background-color: var(--SSM-text-standard);
-	transition: transform 0.2s;
-}
-.docs-selector-dropdown.open .docs-dropdown-button IS {
-	transform: translateY(-50%) rotate(-90deg);
+	transform: translateY(-50%);
+	display: block;
+	background-color: var(--text-secondary);
 }
 .docs-selector-dropdown div {
 	width: 100%;
@@ -79,11 +131,22 @@
 	padding: 0 10px;
 	cursor: pointer;
 	border-radius: 5px;
-	display: block;
+	display: flex;
+	justify-content: space-between;
+	flex-direction: row-reverse;
+	align-items: center;
 	overflow: hidden;
 	text-align: left;
 	color: var(--SSM-text-standard);
 	transition: var(--SSM-button-transition);
+}
+
+.docs-selector-dropdown div button IS {
+	position: relative;
+	width: 15px;
+	height: 15px;
+	display: block;
+	background-color: var(--text-secondary);
 }
 
 .docs-selector-dropdown div button:hover {
