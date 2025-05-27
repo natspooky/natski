@@ -6,7 +6,7 @@ nav {
 	top: 10px;
 	left: 50%;
 	transform: translateX(-50%) scale(0.95);
-	transform-origin: top center;
+	transform-origin: center;
 	width: var(--width);
 	pointer-events: none;
 	max-width: calc(98% - var(--left) - var(--right));

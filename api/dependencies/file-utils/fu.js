@@ -134,4 +134,10 @@ export function filePath(file) {
 		return file.substring(file.lastIndexOf('.'));
 	}
 	return 'unknown extention';
-}*/
+}
+
+export function page() {}
+
+export function URLHash(URL) {}
+export function URLParameters(URL) {}
+*/
