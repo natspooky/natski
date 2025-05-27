@@ -1,0 +1,97 @@
+.docs-selector-dropdown {
+	width: 100%;
+	height: auto;
+	margin: 10px 0;
+	border-radius: var(--border-radius-2);
+}
+.docs-selector-dropdown.open {
+	height: auto;
+}
+.docs-selector-dropdown .docs-dropdown-button {
+	width: 100%;
+	height: 40px;
+	display: block;
+	cursor: pointer;
+	margin: 0;
+	font-size: 14px;
+	padding: 0 30px 0 10px;
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+	transform: scale(1);
+	background-color: var(--SSM-background);
+	border-radius: var(--SSM-border-radius-2);
+	transition: var(--SSM-button-transition), margin 0.2s;
+}
+.docs-selector-dropdown .docs-dropdown-button p {
+	width: 100%;
+	text-align: left;
+	padding: 0;
+}
+.docs-selector-dropdown:hover .docs-dropdown-button {
+	background-color: var(--SSM-theme);
+	transition: var(--SSM-button-hover), margin 0.2s;
+}
+.docs-selector-dropdown .docs-dropdown-button:active {
+	transform: var(--SSM-button-active-transform);
+	transition: var(--SSM-button-active), margin 0.2s;
+}
+.docs-selector-dropdown.open .docs-dropdown-button {
+	margin: 0 0 7px 0;
+}
+.docs-selector-dropdown .docs-dropdown-button IS {
+	position: absolute;
+	top: 50%;
+	right: 12px;
+	width: 15px;
+	height: 15px;
+	transform: translateY(-50%) rotate(0);
+	background-color: var(--SSM-text-standard);
+	transition: transform 0.2s;
+}
+.docs-selector-dropdown.open .docs-dropdown-button IS {
+	transform: translateY(-50%) rotate(-90deg);
+}
+.docs-selector-dropdown div {
+	width: 100%;
+	border-radius: var(--SSM-border-radius-2);
+	background-color: var(--SSM-background);
+	height: auto;
+	display: grid;
+	grid-template-rows: 0fr;
+	overflow: hidden;
+	padding: 0 6px;
+	opacity: 0;
+	transition: grid-template-rows 0.2s, opacity 0.2s, padding 0.2s;
+}
+.docs-selector-dropdown.open div {
+	grid-template-rows: 1fr;
+	padding: 6px;
+	opacity: 1;
+}
+.docs-selector-dropdown div section {
+	width: 100%;
+	overflow: hidden;
+}
+.docs-selector-dropdown div button {
+	width: 100%;
+	height: 30px;
+	padding: 0 10px;
+	cursor: pointer;
+	border-radius: 5px;
+	display: block;
+	overflow: hidden;
+	text-align: left;
+	color: var(--SSM-text-standard);
+	transition: var(--SSM-button-transition);
+}
+
+.docs-selector-dropdown div button:hover {
+	background-color: var(--SSM-background-muted);
+	transition: var(--SSM-button-hover);
+}
+
+.docs-selector-dropdown div button:active {
+	transform: var(--SSM-button-active-transform);
+	transition: var(--SSM-button-active);
+}

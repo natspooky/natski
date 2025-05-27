@@ -70,10 +70,10 @@
 	width: 100%;
 	height: 100%;
 	background-color: transparent;
-	transform: scale(1);
+	transform: scale(0.9);
 	border-radius: 12px;
 	border: 1px solid transparent;
-	transition: border 0.2s;
+	transition: border 0.2s, transform 0.2s;
 }
 .icon-grid section button.hidden {
 	display: none;
@@ -104,6 +104,7 @@
 @media (hover: hover) {
 	.icon-grid section button:hover::before {
 		border: 1px solid var(--border-color);
+		transform: scale(1);
 	}
 	.icon-grid section button:active::before {
 		border: 1px solid var(--text-tertiary);
