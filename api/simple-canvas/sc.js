@@ -86,21 +86,15 @@ export default class SimpleCanvas {
 	};
 
 	#key = {
-		keys: {},
+		keys: {
+			current: null,
+			previous: null,
+			active: {},
+			pressCount: 0,
+		},
 		events: {
 			pressed: false,
 			repeating: false,
-		},
-		e: {
-			key: 'c',
-
-			code: 'KeyC',
-			location: 0,
-			altKey: false,
-			ctrlKey: true,
-			metaKey: false,
-			shiftKey: false,
-			repeat: false,
 		},
 	};
 
@@ -418,6 +412,22 @@ export default class SimpleCanvas {
 		return this.#key;
 	}
 
+	get currentKey() {
+		return this.#key.keys.current;
+	}
+
+	get previousKey() {
+		return this.#key.keys.previous;
+	}
+
+	get activeKeys() {
+		return this.#key.keys.active;
+	}
+
+	get keyboardEvents() {
+		return this.#key.events;
+	}
+
 	/* transform getter functions */
 
 	get canvasScale() {
@@ -643,7 +653,6 @@ export default class SimpleCanvas {
 
 	#touchMove(event) {
 		event.preventDefault();
-
 		if (this.#functions.user.touchMove) this.#functions.user.touchMove();
 	}
 
@@ -658,11 +667,25 @@ export default class SimpleCanvas {
 	/* SC keyboard event functions */
 
 	#keyUp(event) {
+		this.#key.keys.pressCount--;
+		if (this.#key.keys.pressCount < 1) {
+			this.#key.events.pressed = false;
+			this.#key.events.repeating;
+		}
+
+		this.#key.keys.active[event.key] = null;
+
 		if (this.#functions.user.keyUp) this.#functions.user.keyUp();
 	}
 
 	#keyDown(event) {
-		this.#key.current = event.key;
+		this.#key.keys.previous = this.#key.keys.current;
+		this.#key.keys.current = event.key;
+
+		this.#key.events.pressed = true;
+		this.#key.events.repeating = event.repeat;
+		this.#key.keys.pressCount++;
+		this.#key.keys.active[event.key] = true;
 
 		if (this.#functions.user.keyDown) this.#functions.user.keyDown();
 	}
