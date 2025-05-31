@@ -548,17 +548,17 @@ export default class SimpleCanvas {
 			this.#cursor.position.current = this.#dynamicSize(event);
 		}
 
-		//console.log(this.#cursor.position.current);
-
 		clearTimeout(this.#timers.mouseMove);
 		this.#cursor.events.moving = true;
 
 		this.#timers.mouseMove = setTimeout(() => {
 			this.#cursor.events.moving = false;
-			/////add flag for 0 speed
 		}, 10);
 
 		if (this.#functions.user.mouseMove) this.#functions.user.mouseMove();
+
+		if (this.#settings.renderMode.click.move && this.#functions.user.draw)
+			this.#functions.user.draw();
 	}
 
 	#dynamicSize(event) {
@@ -608,13 +608,23 @@ export default class SimpleCanvas {
 	#mouseDown(event) {
 		this.#cursor.events.pressed = true;
 
+		this.#cursor.position.click.start = this.#cursor.position.current;
+
 		if (this.#functions.user.mouseDown) this.#functions.user.mouseDown();
+
+		if (this.#settings.renderMode.click.down && this.#functions.user.draw)
+			this.#functions.user.draw();
 	}
 
 	#mouseUp(event) {
 		this.#cursor.events.pressed = false;
 
+		this.#cursor.position.click.end = this.#cursor.position.current;
+
 		if (this.#functions.user.mouseUp) this.#functions.user.mouseUp();
+
+		if (this.#settings.renderMode.click.up && this.#functions.user.draw)
+			this.#functions.user.draw();
 	}
 
 	#click(event) {
@@ -649,19 +659,31 @@ export default class SimpleCanvas {
 		}, 10);
 
 		if (this.#functions.user.wheel) this.#functions.user.wheel();
+
+		if (this.#settings.renderMode.wheel && this.#functions.user.draw)
+			this.#functions.user.draw();
 	}
 
 	#touchMove(event) {
 		event.preventDefault();
 		if (this.#functions.user.touchMove) this.#functions.user.touchMove();
+
+		if (this.#settings.renderMode.touch.move && this.#functions.user.draw)
+			this.#functions.user.draw();
 	}
 
 	#touchStart(event) {
 		if (this.#functions.user.touchStart) this.#functions.user.touchStart();
+
+		if (this.#settings.renderMode.touch.down && this.#functions.user.draw)
+			this.#functions.user.draw();
 	}
 
 	#touchEnd(event) {
 		if (this.#functions.user.touchMove) this.#functions.user.touchStart();
+
+		if (this.#settings.renderMode.touch.up && this.#functions.user.draw)
+			this.#functions.user.draw();
 	}
 
 	/* SC keyboard event functions */
@@ -676,6 +698,9 @@ export default class SimpleCanvas {
 		this.#key.keys.active[event.key] = null;
 
 		if (this.#functions.user.keyUp) this.#functions.user.keyUp();
+
+		if (this.#settings.renderMode.keyboard.up && this.#functions.user.draw)
+			this.#functions.user.draw();
 	}
 
 	#keyDown(event) {
@@ -688,6 +713,12 @@ export default class SimpleCanvas {
 		this.#key.keys.active[event.key] = true;
 
 		if (this.#functions.user.keyDown) this.#functions.user.keyDown();
+
+		if (
+			this.#settings.renderMode.keyboard.down &&
+			this.#functions.user.draw
+		)
+			this.#functions.user.draw();
 	}
 
 	/* SC misc event functions */
@@ -859,7 +890,10 @@ export default class SimpleCanvas {
 
 		if (this.#functions.user.setup) this.#functions.user.setup();
 
-		if (!this.#settings.drawState.drawing) {
+		if (
+			!this.#settings.drawState.drawing &&
+			this.#settings.renderMode.frameRate
+		) {
 			this.#settings.drawState.drawing = true;
 			this.#frame();
 		}
