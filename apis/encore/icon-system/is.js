@@ -37,7 +37,7 @@ export default class IconSystem {
 				)}.svg) no-repeat center`;
 			} else if (icon.hasAttribute('src')) {
 				let buffer = new Image();
-				buffer.onload = function () {
+				buffer.onload = () => {
 					if (fileExtention(icon.getAttribute('src')) === '.svg') {
 						icon.style.mask = `url(${icon.getAttribute(
 							'src',
@@ -51,7 +51,7 @@ export default class IconSystem {
 						'src',
 					)}) no-repeat center`;
 				};
-				buffer.onerror = function () {
+				buffer.onerror = () => {
 					icon.style.mask = `url(https://natski.vercel.app/apis/encore/icon-system/dependencies/svg/alert.svg) no-repeat center`;
 				};
 				buffer.src = icon.getAttribute('src');
