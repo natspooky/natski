@@ -1,6 +1,7 @@
 {
 	"type": "module",
 	"dependencies": {
+		"@vercel/speed-insights": "^1.2.0",
 		"fs": "^0.0.1-security",
 		"http": "^0.0.1-security",
 		"http-status-codes": "^2.3.0",
