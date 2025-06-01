@@ -2,11 +2,11 @@
 /* Author : NATSKI - natski.net
 /* MIT license : https://opensource.org/license/MIT
 /* GitHub : https://github.com/natspooky/encore
-/* How to use? : Check the GitHub README or visit https://natski.net/api/encore/icon-system
+/* How to use? : Check the GitHub README or visit https://natski.net/apis/encore/icon-system
 /* ----------------------------------------------- */
 
-import { IS_DATA } from 'https://natski.netlify.app/api/encore/icon-system/dependencies/IS_DATA.js';
-import { fileExtention } from 'https://natski.netlify.app/api/dependencies/file-utils/fu.min.js';
+import { IS_DATA } from './dependencies/IS_DATA.js';
+import { fileExtention } from '../../dependencies/file-utils/fu.min.js';
 
 export default class IconSystem {
 	#observer;
@@ -32,7 +32,7 @@ export default class IconSystem {
 				icon.hasAttribute('name') &&
 				IS_DATA.includes(icon.getAttribute('name'))
 			) {
-				icon.style.mask = `url(https://natski.netlify.app/api/encore/icon-system/dependencies/svg/${icon.getAttribute(
+				icon.style.mask = `url(https://natski.vercel.app/apis/encore/icon-system/dependencies/svg/${icon.getAttribute(
 					'name',
 				)}.svg) no-repeat center`;
 			} else if (icon.hasAttribute('src')) {
@@ -52,11 +52,11 @@ export default class IconSystem {
 					)}) no-repeat center`;
 				};
 				buffer.onerror = function () {
-					icon.style.mask = `url(https://natski.netlify.app/api/encore/icon-system/dependencies/svg/alert.svg) no-repeat center`;
+					icon.style.mask = `url(https://natski.vercel.app/apis/encore/icon-system/dependencies/svg/alert.svg) no-repeat center`;
 				};
 				buffer.src = icon.getAttribute('src');
 			} else {
-				icon.style.mask = `url(https://natski.netlify.app/api/encore/icon-system/dependencies/svg/alert.svg) no-repeat center`;
+				icon.style.mask = `url(https://natski.vercel.app/apis/encore/icon-system/dependencies/svg/alert.svg) no-repeat center`;
 			}
 			icon.style.visibility = 'visible';
 		}

@@ -1,4 +1,4 @@
-import { MIME } from './api/dependencies/file-utils/fu.min.js';
+import { MIME } from './apis/dependencies/file-utils/fu.min.js';
 import { createServer } from 'http';
 import { StatusCodes } from 'http-status-codes';
 import { existsSync, stat as _stat, readFile as _readFile } from 'fs';

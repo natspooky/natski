@@ -1,8 +1,8 @@
 {
 	"name": "NATSKI",
 	"short_name": "NATSKI",
-	"start_url": "/index.html#",
-	"id": "/index.html#",
+	"start_url": "/",
+	"id": "/",
 	"display": "standalone",
 	"background_color": "#010409",
 	"theme_color": "#010409",
