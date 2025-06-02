@@ -1,12 +1,2 @@
 @media (orientation: portrait) {
-	nav button {
-		display: none;
-	}
-	nav button:first-of-type,
-	nav button:last-of-type {
-		display: inline-flex;
-	}
-	.nav-menu {
-		display: block;
-	}
 }

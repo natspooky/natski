@@ -231,9 +231,6 @@ body {
 	-ms-touch-action: manipulation;
 	touch-action: manipulation;
 	scrollbar-width: none;
-}
-
-body {
 	position: relative;
 	padding-top: 60px;
 }

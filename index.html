@@ -354,5 +354,26 @@
 
 		<script type="module" src="lib/js/FrameManager.js"></script>
 		<script type="module" src="lib/js/index.js"></script>
+
+		<script type="module">
+			import {
+				className,
+				jsonElementify,
+			} from './apis/encore/element-creator/ec.js';
+			import ImageCollage from './lib/components/image_components/imageCollage.js';
+			import Button from './lib/components/button_components/button.js';
+
+			console.log(jsonElementify(ImageCollage({ URLs: ['image.png'] })));
+			console.log(
+				jsonElementify(
+					Button({
+						classes: 'buts',
+						children: ImageCollage({
+							URLs: ['image.png'],
+						}),
+					}),
+				),
+			);
+		</script>
 	</body>
 </html>

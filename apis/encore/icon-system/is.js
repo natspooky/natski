@@ -38,7 +38,7 @@ export default class IconSystem {
 			} else if (icon.hasAttribute('src')) {
 				let buffer = new Image();
 				buffer.onload = () => {
-					if (fileExtention(icon.getAttribute('src')) === '.svg') {
+					if (fileExtention(icon.getAttribute('src')) === 'svg') {
 						icon.style.mask = `url(${icon.getAttribute(
 							'src',
 						)}) no-repeat center`;

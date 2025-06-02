@@ -23,7 +23,13 @@ export function jsonElementify(elementData) {
 	if (elementData.classes) {
 		if (Array.isArray(elementData.classes)) {
 			elementData.classes.forEach((className) => {
-				element.classList.add(className);
+				if (className.includes(' ')) {
+					elementData.classes.split(' ').forEach((className) => {
+						element.classList.add(className);
+					});
+				} else {
+					element.classList.add(className);
+				}
 			});
 		} else {
 			elementData.classes.split(' ').forEach((className) => {
@@ -35,11 +41,21 @@ export function jsonElementify(elementData) {
 	if (elementData.events) {
 		Object.entries(elementData.events).forEach(([eventType, event]) => {
 			if (event) {
-				element.addEventListener(
-					eventType,
-					functionType(event, element),
-					event.options,
-				);
+				if (Array.isArray(event)) {
+					event.forEach((eventData) => {
+						element.addEventListener(
+							eventType,
+							functionType(eventData, element),
+							eventData.options,
+						);
+					});
+				} else {
+					element.addEventListener(
+						eventType,
+						functionType(event, element),
+						event.options,
+					);
+				}
 			}
 		});
 	}
@@ -77,26 +93,6 @@ export function jsonElementify(elementData) {
 	}
 
 	return element;
-}
-
-export function appendChildren(element, children) {
-	if (Array.isArray(children)) {
-		for (const child of children) {
-			element.appendChild(child);
-		}
-	} else {
-		element.appendChild(children);
-	}
-}
-
-export function insertChildrenBefore(element, children, beforeElement) {
-	if (Array.isArray(children)) {
-		for (const child of children) {
-			element.insertBefore(child, beforeElement);
-		}
-	} else {
-		element.insertBefore(children, beforeElement);
-	}
 }
 
 function jsonMultiElementify(elements) {
@@ -147,31 +143,33 @@ export function setFallback(data, fallback) {
 	return fallback;
 }
 
-export function elementJsonify(element) {
-	let json = {};
-
-	json.tag = element.tagName;
-
-	if (element.attributes) {
-		json.attributes = {};
-		for (const attribute of element.attributes) {
-			if (attribute.nodeName !== 'class') {
-				json.attributes[attribute.nodeName] = attribute.nodeValue;
-			}
-		}
-	}
-
-	if (element.className) {
-		json.classes = element.className.split(' ');
-	}
-
-	if (element.children.length > 0) {
-		json.children = [];
-		for (const child of element.children) {
-			json.children.push(elementJsonify(child));
+export function appendChildren(element, children) {
+	if (Array.isArray(children)) {
+		for (const child of children) {
+			element.appendChild(child);
 		}
 	} else {
-		json.innerHTML = element.innerHTML;
+		element.appendChild(children);
 	}
-	return json;
+}
+
+export function insertChildrenBefore(element, children, beforeElement) {
+	if (Array.isArray(children)) {
+		for (const child of children) {
+			element.insertBefore(child, beforeElement);
+		}
+	} else {
+		element.insertBefore(children, beforeElement);
+	}
+}
+
+export function className(classes, ...extraClasses) {
+	if (![...extraClasses][0]) return classes;
+	if (!Array.isArray(classes)) classes = classes.split(' ');
+	[...extraClasses].forEach((classData) => {
+		if (!Array.isArray(classData)) classData = classData.split(' ');
+		classes.push(...classData);
+	});
+
+	return classes;
 }

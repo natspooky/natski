@@ -6,81 +6,81 @@
 
 export function MIME(file) {
 	switch (fileExtention(file)) {
-		case '.html':
-		case '.htm':
+		case 'html':
+		case 'htm':
 			return 'text/html';
-		case '.css':
+		case 'css':
 			return 'text/css';
-		case '.js':
-		case '.mjs':
+		case 'js':
+		case 'mjs':
 			return 'text/javascript';
-		case '.csv':
+		case 'csv':
 			return 'text/csv';
-		case '.txt':
+		case 'txt':
 			return 'text/plain';
-		case '.json':
+		case 'json':
 			return 'application/json';
-		case '.xhtml':
+		case 'xhtml':
 			return 'application/xhtml+xml';
-		case '.xml':
+		case 'xml':
 			return 'application/xml';
-		case '.ogx':
+		case 'ogx':
 			return 'application/ogg';
-		case '.ico':
+		case 'ico':
 			return 'image/vnd.microsoft.icon';
-		case '.jpg':
-		case '.jpeg':
+		case 'jpg':
+		case 'jpeg':
 			return 'image/jpeg';
-		case '.png':
+		case 'png':
 			return 'image/png';
-		case '.apng':
+		case 'apng':
 			return 'image/apng';
-		case '.gif':
+		case 'gif':
 			return 'image/gif';
-		case '.webp':
+		case 'webp':
 			return 'image/webp';
-		case '.svg':
+		case 'svg':
 			return 'image/svg+xml';
-		case '.avif':
+		case 'avif':
 			return 'image/avif';
-		case '.bmp':
+		case 'bmp':
 			return 'image/bmp';
-		case '.tiff':
-		case '.tif':
+		case 'tiff':
+		case 'tif':
 			return 'image/tiff';
-		case '.mp4':
+		case 'mp4':
 			return 'video/mp4';
-		case '.ts':
+		case 'ts':
 			return 'video/mp2t';
-		case '.avi':
+		case 'avi':
 			return 'video/x-msvideo';
-		case '.webm':
+		case 'webm':
 			return 'video/webm';
-		case '.mpeg':
+		case 'mpeg':
 			return 'video/mpeg';
-		case '.ogv':
+		case 'ogv':
 			return 'video/ogg';
-		case '.aac':
+		case 'aac':
 			return 'audio/aac';
-		case '.mp3':
+		case 'mp3':
 			return 'audio/mpeg';
-		case '.wav':
+		case 'wav':
 			return 'audio/wav';
-		case '.weba':
+		case 'weba':
 			return 'audio/webm';
-		case '.oga':
-		case '.opus':
+		case 'oga':
+		case 'opus':
 			return 'audio/ogg';
-		case '.mid':
-		case '.midi':
+		case 'mid':
+		case 'midi':
 			return 'audio/midi';
-		case '.ttf':
+		case 'ttf':
 			return 'font/ttf';
-		case '.otf':
+		case 'otf':
 			return 'font/otf';
-		case '.woff':
+		case 'woff':
 			return 'font/woff';
-		case '.woff2':
+		case 'woff2':
 			return 'font/woff2';
 		default:
 			return 'application/octet-stream';
@@ -88,7 +88,7 @@ export function MIME(file) {
 }
 
 export function checkMediaType(file, type) {
-	let ext = fileExtention(file).substring(1);
+	let ext = fileExtention(file);
 	switch (type) {
 		case 'video':
 			return /mp(4|eg)|ts|avi|webm|ogv/i.test(ext);
@@ -101,39 +101,23 @@ export function checkMediaType(file, type) {
 		case 'font':
 			return /(o|t)tf|wof(f2|f)/i.test(ext);
 		default:
-			return undefined;
+			throw new Error('media type not recognised');
 	}
 }
 
 export function fileExtention(file) {
-	if (file.indexOf('.') != -1) {
-		return file.substring(file.lastIndexOf('.'));
-	}
-	return 'unknown extention';
+	const index = file.lastIndexOf('.');
+
+	if (index !== -1) return file.slice(index + 1);
+
+	return 'unknown';
 }
 
 export function fileName(file) {
-	if (file.indexOf('.') === -1) return undefined;
+	const start = file.lastIndexOf('/');
+	const end = file.indexOf('.');
 
-	let start = file.lastIndexOf('/');
+	if (end === -1) return 'unknown';
 
-	return file.substring(start !== -1 ? start + 1 : 0, file.indexOf('.'));
+	return file.slice(start !== -1 ? start + 1 : 0, end);
 }
-/*
-export function fileDomain(file) {
-	// make it only get domain
-	if (file.indexOf('.') != -1) {
-		return file.substring(file.lastIndexOf('.'));
-	}
-	return 'unknown extention';
-}
-
-export function filePath(file) {
-	// make it remove domain but keep directory
-	if (file.indexOf('.') != -1) {
-		return file.substring(file.lastIndexOf('.'));
-	}
-	return 'unknown extention';
-}
-
-*/
