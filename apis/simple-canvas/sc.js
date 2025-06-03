@@ -555,10 +555,9 @@ export default class SimpleCanvas {
 			this.#cursor.events.moving = false;
 		}, 10);
 
-		if (this.#functions.user.mouseMove) this.#functions.user.mouseMove();
+		this.#functions.user.mouseMove?.();
 
-		if (this.#settings.renderMode.click.move && this.#functions.user.draw)
-			this.#functions.user.draw();
+		if (this.#settings.renderMode.click.move) this.#functions.user.draw?.();
 	}
 
 	#dynamicSize(event) {
@@ -596,13 +595,13 @@ export default class SimpleCanvas {
 	#mouseEnter(event) {
 		this.#cursor.events.hover = true;
 
-		if (this.#functions.user.mouseEnter) this.#functions.user.mouseEnter();
+		this.#functions.user.mouseEnter?.();
 	}
 
 	#mouseLeave(event) {
 		this.#cursor.events.hover = false;
 
-		if (this.#functions.user.mouseLeave) this.#functions.user.mouseLeave();
+		this.#functions.user.mouseLeave?.();
 	}
 
 	#mouseDown(event) {
@@ -610,10 +609,9 @@ export default class SimpleCanvas {
 
 		this.#cursor.position.click.start = this.#cursor.position.current;
 
-		if (this.#functions.user.mouseDown) this.#functions.user.mouseDown();
+		this.#functions.user.mouseDown?.();
 
-		if (this.#settings.renderMode.click.down && this.#functions.user.draw)
-			this.#functions.user.draw();
+		if (this.#settings.renderMode.click.down) this.#functions.user.draw?.();
 	}
 
 	#mouseUp(event) {
@@ -621,25 +619,21 @@ export default class SimpleCanvas {
 
 		this.#cursor.position.click.end = this.#cursor.position.current;
 
-		if (this.#functions.user.mouseUp) this.#functions.user.mouseUp();
+		this.#functions.user.mouseUp?.();
 
-		if (this.#settings.renderMode.click.up && this.#functions.user.draw)
-			this.#functions.user.draw();
+		if (this.#settings.renderMode.click.up) this.#functions.user.draw?.();
 	}
 
 	#click(event) {
 		switch (event.button) {
 			case 0:
-				if (this.#functions.user.leftClick)
-					this.#functions.user.leftClick();
+				this.#functions.user.leftClick?.();
 				break;
 			case 1:
-				if (this.#functions.user.rightClick)
-					this.#functions.user.rightClick();
+				this.#functions.user.rightClick?.();
 				break;
 			case 2:
-				if (this.#functions.user.middleClick)
-					this.#functions.user.middleClick();
+				this.#functions.user.middleClick?.();
 				break;
 		}
 	}
@@ -658,32 +652,29 @@ export default class SimpleCanvas {
 			this.#scroll.events.scrolling = false;
 		}, 10);
 
-		if (this.#functions.user.wheel) this.#functions.user.wheel();
+		this.#functions.user.wheel?.();
 
-		if (this.#settings.renderMode.wheel && this.#functions.user.draw)
-			this.#functions.user.draw();
+		if (this.#settings.renderMode.wheel) this.#functions.user.draw?.();
 	}
 
 	#touchMove(event) {
 		event.preventDefault();
-		if (this.#functions.user.touchMove) this.#functions.user.touchMove();
 
-		if (this.#settings.renderMode.touch.move && this.#functions.user.draw)
-			this.#functions.user.draw();
+		this.#functions.user.touchMove?.();
+
+		if (this.#settings.renderMode.touch.move) this.#functions.user.draw?.();
 	}
 
 	#touchStart(event) {
-		if (this.#functions.user.touchStart) this.#functions.user.touchStart();
+		this.#functions.user.touchStart?.();
 
-		if (this.#settings.renderMode.touch.down && this.#functions.user.draw)
-			this.#functions.user.draw();
+		if (this.#settings.renderMode.touch.down) this.#functions.user.draw?.();
 	}
 
 	#touchEnd(event) {
-		if (this.#functions.user.touchMove) this.#functions.user.touchStart();
+		this.#functions.user.touchStart?.();
 
-		if (this.#settings.renderMode.touch.up && this.#functions.user.draw)
-			this.#functions.user.draw();
+		if (this.#settings.renderMode.touch.up) this.#functions.user.draw?.();
 	}
 
 	/* SC keyboard event functions */
@@ -697,10 +688,10 @@ export default class SimpleCanvas {
 
 		this.#key.keys.active[event.key] = null;
 
-		if (this.#functions.user.keyUp) this.#functions.user.keyUp();
+		this.#functions.user.keyUp?.();
 
-		if (this.#settings.renderMode.keyboard.up && this.#functions.user.draw)
-			this.#functions.user.draw();
+		if (this.#settings.renderMode.keyboard.up)
+			this.#functions.user.draw?.();
 	}
 
 	#keyDown(event) {
@@ -712,13 +703,10 @@ export default class SimpleCanvas {
 		this.#key.keys.pressCount++;
 		this.#key.keys.active[event.key] = true;
 
-		if (this.#functions.user.keyDown) this.#functions.user.keyDown();
+		this.#functions.user.keyDown?.();
 
-		if (
-			this.#settings.renderMode.keyboard.down &&
-			this.#functions.user.draw
-		)
-			this.#functions.user.draw();
+		if (this.#settings.renderMode.keyboard.down)
+			this.#functions.user.draw?.();
 	}
 
 	/* SC misc event functions */
@@ -732,9 +720,9 @@ export default class SimpleCanvas {
 
 		this.#applyTransforms();
 
-		if (this.#functions.user.resize) this.#functions.user.resize();
+		this.#functions.user.resize?.();
 
-		if (this.#functions.user.draw) this.#functions.user.draw();
+		this.#functions.user.draw?.();
 
 		if (this.#settings.diagnostic.overlayData) this.#diagnostics();
 	}
@@ -888,7 +876,7 @@ export default class SimpleCanvas {
 
 		this.#updateCanvasData();
 
-		if (this.#functions.user.setup) this.#functions.user.setup();
+		this.#functions.user.setup?.();
 
 		if (
 			!this.#settings.drawState.drawing &&

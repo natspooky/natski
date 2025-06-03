@@ -1,11 +1,13 @@
 footer {
 	position: relative;
 	width: 100%;
-	padding: 20px 0;
-	display: flex;
-	align-items: center;
-	justify-content: center;
+	margin: 20px 0 0 0;
+	padding: 0 20px 20px 20px;
+	background-color: var(--card-background);
+
+	border-top: 1px solid var(--border-color);
 }
+
 footer button {
 	cursor: pointer;
 	background-color: transparent;
@@ -15,7 +17,7 @@ footer button {
 	justify-content: center;
 }
 
-footer button p {
+footer p {
 	position: relative;
 	margin: 0;
 	color: var(--text-tertiary);
@@ -23,11 +25,61 @@ footer button p {
 
 footer button IS {
 	position: relative;
-	width: 20px;
-	height: 20px;
+	width: 15px;
+	height: 15px;
 	display: block;
-	margin-right: 10px;
+	margin-right: 7px;
 	background-color: var(--text-tertiary);
+}
+
+footer section {
+	position: relative;
+	width: 100%;
+	padding: 20px 0;
+	display: flex;
+	align-items: baseline;
+	justify-content: center;
+	border-top: 1px solid var(--border-color);
+}
+footer section:first-of-type {
+	padding: 20px 20px;
+	border-top: 0px;
+}
+
+footer section span {
+	position: relative;
+	width: auto;
+	flex-grow: 1;
+}
+footer section span:first-of-type {
+	flex-grow: 2;
+}
+
+footer section span button {
+	margin: 7px 0 0 0;
+}
+
+footer section span {
+	display: block;
+}
+
+footer h1 {
+	position: relative;
+	margin: 0 0 8px 0;
+	font-size: 1.1em;
+	color: var(--text-secondary);
+}
+
+@media screen and (max-width: 768px) {
+	footer section:first-of-type {
+		flex-direction: column;
+	}
+	footer section span {
+		margin-bottom: 30px;
+	}
+	footer section span:last-of-type {
+		margin-bottom: 0;
+	}
 }
 
 @media (hover: hover) {

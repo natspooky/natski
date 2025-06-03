@@ -1,6 +1,7 @@
 .icon-grid {
 	position: relative;
 	width: min(90%, 700px);
+	min-height: 80vh;
 	margin: auto;
 }
 .icon-grid span {
