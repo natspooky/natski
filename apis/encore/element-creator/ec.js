@@ -10,7 +10,9 @@ export function jsonElementify(elementData) {
 		return jsonMultiElementify(elementData);
 	}
 
-	let element = document.createElement(elementData.tag);
+	let element = elementData.namespace
+		? document.createElementNS(elementData.namespace, elementData.tag)
+		: document.createElement(elementData.tag);
 
 	if (!element) {
 		throw new Error('an invalid TAG has been applied');

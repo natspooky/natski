@@ -106,7 +106,7 @@ export function checkMediaType(file, type) {
 }
 
 export function fileExtention(file) {
-	const index = file.lastIndexOf('.');
+	const index = file.indexOf('.');
 
 	if (index !== -1) return file.slice(index + 1);
 
