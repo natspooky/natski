@@ -92,6 +92,7 @@ const handleError = (res) => {
 
 httpServer.listen(portNumber, () => {
 	let link = terminalLink(portNumber, `http://localhost:${portNumber}`);
+	console.clear();
 	console.log('Starting ENCORE server dependencies...');
 
 	console.log(`Server is running on port ${link}`);
