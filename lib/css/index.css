@@ -6,7 +6,7 @@ nav {
 	display: block;
 	top: 10px;
 	left: 50%;
-	transform: translateX(-50%) scale(0.95);
+	transform: translateX(-50%) scale(0.5);
 	transform-origin: center;
 	width: var(--width);
 	pointer-events: none;
@@ -14,21 +14,16 @@ nav {
 	height: 40px;
 	z-index: 9999;
 	background-color: #000;
-	border-top: 1px solid transparent;
-	border-bottom: 1px solid transparent;
-	border-left: 0px solid transparent;
-	border-right: 0px solid transparent;
+	border: 0;
 	border-radius: 0;
 	display: flex;
 	align-items: center;
-	filter: blur(10px);
+	filter: drop-shadow(0px 0px 1px var(--border-color));
 	opacity: 0;
-	transition: 0.4s var(--dynamic-bezier), filter 0.3s, opacity 0.3s,
-		border 0.4s, border-radius 0.4s;
+	transition: 0.4s var(--dynamic-bezier), opacity 0.3s;
 }
 
 nav.open {
-	filter: blur(0);
 	transform: translateX(-50%) scale(1);
 	opacity: 1;
 	pointer-events: unset;
@@ -75,17 +70,17 @@ nav span {
 
 nav span.center {
 	overflow: hidden;
-	top: -1px;
-	height: calc(100% + 1px);
-	width: calc(100% + var(--left) + var(--right) - 4px);
-	left: calc(0px - var(--left) + 2px);
+	top: 0px;
+	height: 100%;
+	width: calc(100% + var(--left) + var(--right));
+	left: calc(0px - var(--left));
 	transition: width 0.4s var(--dynamic-bezier),
 		left 0.4s var(--dynamic-bezier);
 }
 
 nav.center span.center {
-	width: calc(100% + 160px - 4px);
-	left: calc(0px - 80px + 2px);
+	width: calc(100% + 160px);
+	left: -80px;
 }
 
 nav.center span.left,
@@ -135,18 +130,17 @@ nav::after {
 	content: '';
 	position: absolute;
 	display: block;
-	height: calc(100% + 2px);
-	top: -1px;
+	height: 100%;
+	top: 0;
 	min-width: 10px;
 	background-color: inherit;
-	border: 1px solid transparent;
-	transition: width 0.4s var(--dynamic-bezier), border 0.4s;
+	border: 0;
+	transition: width 0.4s var(--dynamic-bezier);
 }
 
 nav::after {
 	left: calc(100% - 2px);
 	border-radius: 0 23px 23px 0;
-	border-left: 0px solid transparent;
 	width: var(--right);
 	z-index: -1;
 }
@@ -154,30 +148,12 @@ nav::after {
 nav::before {
 	right: calc(100% - 2px);
 	border-radius: 23px 0 0 23px;
-	border-right: 0px solid transparent;
 	width: var(--left);
 }
 
 nav.center::before,
 nav.center::after {
 	width: 80px;
-}
-
-nav.border {
-	border-top: 1px solid var(--border);
-	border-bottom: 1px solid var(--border);
-}
-
-nav.border::before {
-	border-top: 1px solid var(--border);
-	border-left: 1px solid var(--border);
-	border-bottom: 1px solid var(--border);
-}
-
-nav.border::after {
-	border-top: 1px solid var(--border);
-	border-right: 1px solid var(--border);
-	border-bottom: 1px solid var(--border);
 }
 
 .embedded-frame {

@@ -173,7 +173,7 @@
 	--token-function: var(--pink-400);
 	--token-punctuation: var(--blue-600);
 
-	--dynamic-bezier: cubic-bezier(0.23, 0.24, 0.11, 1.47);
+	--dynamic-bezier: ease; /*cubic-bezier(0.23, 0.24, 0.11, 1.47);
 	/*cubic-bezier(0.29, 0.05, 0, 1.66);*/
 }
 
