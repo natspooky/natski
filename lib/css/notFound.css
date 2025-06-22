@@ -7,3 +7,8 @@
 	flex-direction: column;
 	padding: 20px 0;
 }
+
+.suggested-container h1 {
+	padding-bottom: 12px;
+	color: var(--text-tertiary);
+}
