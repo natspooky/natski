@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-US">
-	<head class="natski-dark">
+	<head>
 		<title>Home</title>
 		<meta charset="UTF-8" />
 		<meta
@@ -10,7 +10,7 @@
 		<meta name="theme-color" content="#010409" />
 		<meta
 			name="description"
-			content="A site for displaying coding projects and artwork"
+			content="The home of NATSKI web tools and games"
 		/>
 		<meta name="keywords" content="portfolio, natspooky, natski" />
 		<meta name="author" content="NATSKI" />
@@ -90,10 +90,10 @@
 			rel="manifest"
 			href="https://natski.vercel.app/lib/json/manifest.json"
 		/>
-		<meta property="og:title" content="Natspooky" />
+		<meta property="og:title" content="Home" />
 		<meta
 			property="og:description"
-			content="A site for displaying coding projects and artwork"
+			content="The home of NATSKI web tools and games"
 		/>
 		<meta
 			property="og:image"
@@ -105,10 +105,10 @@
 		<meta property="og:locale" content="en_US" />
 		<meta property="og:type" content="website" />
 		<meta property="og:site_name" content="NATSKI" />
-		<meta name="twitter:title" content="Natspooky" />
+		<meta name="twitter:title" content="Home" />
 		<meta
 			name="twitter:description"
-			content="A site for displaying coding projects and artwork"
+			content="The home of NATSKI web tools and games"
 		/>
 		<meta
 			name="twitter:image"
@@ -183,34 +183,6 @@
 			</span>
 		</header>
 
-		<main class="card-container">
-			<div class="card-outline">
-				<div class="cards">
-					<p>Epsilon</p>
-					<button class="icon-button">
-						<is name="circle_arrow_leave"></is>
-					</button>
-				</div>
-			</div>
-			<div class="card-outline">
-				<div class="cards">
-					<canvas id="particles"></canvas>
-					<p>Delta</p>
-					<button class="icon-button">
-						<is name="circle_arrow_leave"></is>
-					</button>
-				</div>
-			</div>
-			<div class="card-outline">
-				<div class="cards">
-					<p>Phi</p>
-					<button class="icon-button">
-						<is name="circle_arrow_leave"></is>
-					</button>
-				</div>
-			</div>
-		</main>
-
 		<section class="text-title">
 			<div class="grid-bg"></div>
 			<h1>Recent work</h1>
@@ -223,138 +195,6 @@
 		<div class="embedded-frame" id="embedded-frame">
 			<iframe id="iframe"></iframe>
 		</div>
-
-		<style>
-			.card-container {
-				position: relative;
-				width: min(600px, 80%);
-				max-width: 100%;
-				overflow: hidden;
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				margin: 0 auto;
-				padding: 20px 0;
-				transform: scale(0.9);
-				transition: 0.4s cubic-bezier(0.32, 0.32, 0.24, 1.29);
-			}
-			.cards {
-				position: absolute;
-				border: 1px solid var(--border-color);
-				border-radius: 15px;
-				padding: 10px;
-				height: 100%;
-				width: 100%;
-				overflow: hidden;
-				background-color: var(--card-background);
-				box-shadow: 0px 0px 20px var(--background);
-				transition: 0.4s cubic-bezier(0.32, 0.32, 0.24, 1.29),
-					border 0.3s;
-			}
-
-			.card-outline {
-				position: relative;
-				flex-shrink: 0;
-				height: 350px;
-				width: 240px;
-				transition: 0.4s;
-			}
-
-			.cards button {
-				position: absolute;
-				top: 10px;
-				right: 10px;
-				border: 0;
-				height: 40px;
-				width: 40px;
-				border-radius: 100vmax;
-				border: 0;
-				background-color: transparent;
-				display: flex;
-				align-items: center;
-				justify-content: center;
-			}
-
-			.cards button::after {
-				content: 'open';
-				position: absolute;
-				top: 50%;
-				color: var(--text-secondary);
-				background-color: var(--input-background);
-				border-radius: var(--border-radius-2);
-				pointer-events: none;
-				padding: 2px 6px;
-				padding-inline: 6px;
-				line-height: 1.45rem;
-				border: 1px solid var(--border-color);
-				transform: translate(calc(-100% - 10px), -50%);
-				visibility: hidden;
-				opacity: 0;
-				transition: 0.2s;
-			}
-
-			.cards button:hover::after {
-				opacity: 1;
-				visibility: visible;
-				transform: translate(-100%, -50%);
-			}
-
-			.card-outline:first-of-type {
-				transform: rotate(-5deg) translate(100px, 20px) scale(0.8);
-			}
-
-			.card-outline:last-of-type {
-				transform: rotate(5deg) translate(-100px, 20px) scale(0.8);
-				z-index: -1;
-			}
-
-			.cards p {
-				position: absolute;
-				bottom: 20px;
-				left: 20px;
-				color: var(--text-secondary);
-			}
-
-			.cards canvas {
-				position: absolute;
-				top: 0;
-				left: 0;
-				width: 100%;
-				height: 100%;
-			}
-
-			.card-container:hover {
-				transform: scale(1);
-			}
-
-			.card-container:hover .card-outline:first-of-type {
-				transform: rotate(0deg) translate(-30px, 0px) scale(1);
-			}
-			.card-container:hover .card-outline:last-of-type {
-				transform: rotate(0deg) translate(30px, 0px) scale(1);
-			}
-
-			.card-container:hover .card-outline:hover .cards {
-				border: 1px solid var(--input-focus);
-				transform: scale(1.03);
-			}
-
-			.cards::before {
-				position: absolute;
-				content: '';
-				top: 0;
-				left: 0;
-				width: 100%;
-				height: 100%;
-				display: block;
-				opacity: 1;
-				background-image: radial-gradient(
-					circle at top left,
-					var(--gray-100),
-					var(--card-background)
-				);
-			}
-		</style>
 
 		<script type="module" src="lib/js/IFrameManager.js"></script>
 		<script type="module" src="lib/js/index.js"></script>
