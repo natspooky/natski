@@ -24,7 +24,7 @@
 	border-radius: 12px;
 }
 .suggested-container .redirect:active::before {
-	transform: scale(0.85);
+	transform: scale(0.95);
 }
 .suggested-container .redirect p {
 	position: relative;
