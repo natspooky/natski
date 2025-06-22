@@ -12,9 +12,14 @@
 	padding-bottom: 12px;
 	color: var(--text-tertiary);
 }
+.suggested-container section {
+	position: relative;
+	display: block;
+}
 .suggested-container .redirect {
-	padding: 0 13px 0 13px;
-	margin-bottom: 8px;
+	padding: 6px 13px 6px 13px;
+	display: block;
+	margin: 0 auto 8px auto;
 }
 .suggested-container .redirect p {
 	position: relative;
