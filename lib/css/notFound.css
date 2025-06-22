@@ -12,3 +12,11 @@
 	padding-bottom: 12px;
 	color: var(--text-tertiary);
 }
+.suggested-container .redirect {
+	padding: 0 10px;
+	margin-bottom: 8px;
+}
+.suggested-container .redirect p {
+	padding-left: 10px;
+	color: var(--text-secondary);
+}
