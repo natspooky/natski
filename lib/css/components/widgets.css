@@ -7,12 +7,17 @@
 	display: flex;
 }
 
-.right .widget + .widget {
+span.right .widget + .widget {
 	margin: 0 0 0 10px;
 }
 
-.left .widget + .widget {
+span.left .widget + .widget {
 	margin: 0 10px 0 0;
+}
+
+.widget-image-tools {
+	position: relative;
+	width: auto;
 }
 
 .widget-button {
