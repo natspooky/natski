@@ -18,6 +18,10 @@ span.left .widget + .widget {
 .widget-image-tools {
 	position: relative;
 	width: auto;
+	padding: 0 10px;
+}
+.widget-image-tools .widget-button {
+	margin: 0 5px;
 }
 
 .widget-button {

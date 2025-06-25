@@ -160,6 +160,14 @@
 	width: 100%;
 	height: 100%;
 }
+.window-container .window .window-bg {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	opacity: 0.9;
+}
 
 .window-container .window .window-icon {
 	position: absolute;
@@ -168,7 +176,7 @@
 	transform: translate(-50%, -50%);
 	height: 50%;
 	width: 50%;
-	background-color: var(--text-secondary);
+	background-color: var(--text-tertiary);
 }
 
 @media screen and (max-width: 950px) {

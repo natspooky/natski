@@ -1,5 +1,5 @@
 @import url('./components/widgets.css');
-@import url('./components/windows.css');
+@import url('./components/carousel.css');
 
 nav {
 	position: fixed;
@@ -12,7 +12,7 @@ nav {
 	pointer-events: none;
 	max-width: calc(98% - var(--left) - var(--right));
 	height: 40px;
-	z-index: 9999;
+	z-index: 99999;
 	background-color: #000000;
 	border: 0;
 	border-radius: 23px;
@@ -61,7 +61,6 @@ nav span {
 	height: 100%;
 	display: flex;
 	align-items: center;
-
 	transition: width 0.4s var(--dynamic-bezier), opacity 0.4s;
 }
 
@@ -80,9 +79,9 @@ nav span.center {
 }
 
 nav.center span.center {
-	transform: translate(-50%, 50px);
-	height: 40px;
-	width: 40px;
+	transform: translate(-50%, 52px);
+	width: min(90vw, 400px);
+	height: 100px;
 }
 
 nav span.left {
@@ -199,4 +198,78 @@ nav.right:not(.left)::before {
 
 .embedded-frame iframe.closed {
 	opacity: 0;
+}
+
+.header-full {
+	position: relative;
+	width: 100%;
+	min-height: 100vh;
+	padding-top: 60px;
+}
+.header-half {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 50vh;
+}
+.article-container {
+	position: relative;
+	width: 90%;
+	display: flex;
+	margin: 50px auto;
+	gap: 50px;
+	justify-content: space-evenly;
+}
+.article {
+	position: relative;
+	display: block;
+
+	flex-grow: 1;
+
+	border-radius: 13px;
+	border: 1px solid var(--border-color);
+	background-color: var(--card-background);
+	overflow: hidden;
+}
+.article .icon-container {
+	position: relative;
+	width: 100%;
+	background-color: var(--background);
+	height: 100px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-bottom: 1px solid var(--border-color);
+}
+.article .icon-container IS {
+	position: relative;
+	width: 50px;
+	height: 50px;
+	margin: 0 15px;
+	display: block;
+	background-color: var(--text-tertiary);
+}
+.article .text-container {
+	position: relative;
+	width: 100%;
+	display: block;
+	height: fit-content;
+	padding: 10px 7px 15px 7px;
+}
+.article .text-container h1 {
+	position: relative;
+	color: var(--text-secondary);
+}
+.article .text-container p {
+	position: relative;
+	color: var(--text-tertiary);
+}
+.article .button-container {
+	position: relative;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	padding: 5px 7px 10px 7px;
 }

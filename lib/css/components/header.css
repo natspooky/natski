@@ -1,4 +1,4 @@
-header {
+.header {
 	position: relative;
 	width: 100%;
 	display: flex;
@@ -9,7 +9,7 @@ header {
 	margin: 0 0 10px 0;
 }
 
-header div {
+.header div {
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -17,11 +17,11 @@ header div {
 	width: 100%;
 }
 
-header span {
+.header span {
 	position: relative;
 }
 
-header span IS {
+.header span IS {
 	position: relative;
 	width: 40px;
 	height: 40px;
@@ -30,12 +30,12 @@ header span IS {
 	background-color: var(--text-secondary);
 }
 
-header span h1 {
+.header span h1 {
 	position: relative;
 	display: inline-block;
 	vertical-align: top;
 }
 
-header span h1 sub {
+.header span h1 sub {
 	font-size: 12px;
 }

@@ -40,6 +40,38 @@ export function jsonElementify(elementData) {
 		}
 	}
 
+	if (elementData.attributes) {
+		Object.entries(elementData.attributes).forEach(([attribute, value]) => {
+			if (checkExists(value)) {
+				element.setAttribute(attribute, value);
+			}
+		});
+	}
+	/*
+	if (elementData.dataset) {
+		Object.entries(elementData.dataset).forEach(([dataName, value]) => {
+			if (checkExists(value)) {
+				//////////////////////change this
+				element.dataset[
+					dataName
+						.split('-')
+						.map((element, index) => {
+							if (!index) return element;
+							return (
+								element.slice(0, 1).toUpperCase() +
+								element.slice(1)
+							);
+						})
+						.join('')
+				] = value;
+			}
+		});
+	}
+*/
+	if (elementData.children) {
+		appendChildren(element, jsonElementify(elementData.children));
+	}
+
 	if (elementData.events) {
 		Object.entries(elementData.events).forEach(([eventType, event]) => {
 			if (event) {
@@ -62,36 +94,8 @@ export function jsonElementify(elementData) {
 		});
 	}
 
-	if (elementData.attributes) {
-		Object.entries(elementData.attributes).forEach(([attribute, value]) => {
-			if (checkExists(value)) {
-				element.setAttribute(attribute, value);
-			}
-		});
-	}
-
-	if (elementData.dataset) {
-		Object.entries(elementData.dataset).forEach(([dataName, value]) => {
-			if (checkExists(value)) {
-				//////////////////////change this
-				element.dataset[
-					dataName
-						.split('-')
-						.map((element, index) => {
-							if (!index) return element;
-							return (
-								element.slice(0, 1).toUpperCase() +
-								element.slice(1)
-							);
-						})
-						.join('')
-				] = value;
-			}
-		});
-	}
-
-	if (elementData.children) {
-		appendChildren(element, jsonElementify(elementData.children));
+	if (elementData.load) {
+		onceAppendedSync(element, elementData.load);
 	}
 
 	return element;
@@ -107,6 +111,54 @@ function jsonMultiElementify(elements) {
 	});
 
 	return arr;
+}
+
+function useDeprecatedMethod(element, callback) {
+	let listener;
+	return element.addEventListener(
+		`DOMNodeInserted`,
+		(listener = (ev) => {
+			if (
+				ev.path.length > 1 &&
+				ev.path[ev.length - 2] instanceof Document
+			) {
+				element.removeEventListener(`DOMNodeInserted`, listener);
+				callback(element);
+			}
+		}),
+		false,
+	);
+}
+
+function isAppended(element) {
+	while (element.parentNode) element = element.parentNode;
+	return element instanceof Document;
+}
+
+function onceAppendedSync(element, callback) {
+	if (isAppended(element)) {
+		callback(element);
+		return;
+	}
+
+	if (!MutationObserver) return useDeprecatedMethod(element, callback);
+
+	const observer = new MutationObserver((mutations) => {
+		if (mutations[0].addedNodes.length === 0) return;
+		if (
+			Array.from(mutations[0].addedNodes).filter((node) =>
+				node.contains(element),
+			).length === 0
+		)
+			return;
+		observer.disconnect();
+		callback(element);
+	});
+
+	observer.observe(document.body, {
+		childList: true,
+		subtree: true,
+	});
 }
 
 function checkForKeys(obj) {
@@ -174,4 +226,114 @@ export function className(classes, ...extraClasses) {
 	});
 
 	return classes;
+}
+
+export class ComponentManager {
+	#componentTable = {};
+	#managerName;
+
+	constructor(name) {
+		this.#managerName = name;
+	}
+
+	get name() {
+		return this.#managerName;
+	}
+
+	setComponent(ID, element) {
+		if (this.getComponent(ID))
+			throw new Error(
+				'Component ID is already in use. Use "replaceComponent" for reassigning components',
+			);
+
+		if (element && element.nodeType === Node.ELEMENT_NODE) {
+			this.#componentTable[ID] = element;
+			return;
+		}
+
+		this.#componentTable[ID] = jsonElementify(jsonString);
+	}
+
+	getComponent(ID) {
+		return this.#componentTable?.[ID];
+	}
+
+	getComponents(...IDs) {
+		return [...IDs].map((ID) => this.getComponent(ID));
+	}
+
+	getAllComponents() {
+		return Object.entries(this.#componentTable).map(([_, element]) => {
+			return element;
+		});
+	}
+
+	removeComponent(ID) {
+		const component = this.getComponent(ID);
+		if (!component) return;
+
+		if (document.body.contains(component)) component.remove();
+
+		delete this.#componentTable[ID];
+	}
+
+	removeComponents(...IDs) {
+		[...IDs].forEach((ID) => this.removeComponent(ID));
+	}
+
+	removeAllComponents() {
+		Object.entries(this.#componentTable).forEach(([ID, _]) =>
+			this.removeComponent(ID),
+		);
+	}
+
+	changeComponentID(oldID, newID) {
+		const oldComponent = this.getComponent(oldID),
+			newComponent = this.getComponent(newID);
+
+		if (!oldComponent)
+			throw new Error(
+				"Component ID doesn't match any existing components",
+			);
+
+		if (newComponent)
+			throw new Error(
+				'New component ID is already assigned to a component',
+			);
+
+		this.setComponent(newID, oldComponent);
+		delete this.#componentTable[oldID];
+	}
+
+	replaceComponent(ID, jsonString) {
+		const oldComponent = this.getComponent(ID),
+			newComponent = jsonElementify(jsonString);
+		if (!oldComponent) {
+			this.setComponent(ID, jsonString);
+			return;
+		}
+
+		this.#componentTable[ID] = newComponent;
+
+		if (document.body.contains(oldComponent)) {
+			insertChildrenBefore(
+				oldComponent.parentNode,
+				newComponent,
+				oldComponent,
+			);
+			oldComponent.remove();
+		}
+	}
+
+	appendComponent(element, ID) {
+		appendChildren(element, this.getComponent(ID));
+	}
+
+	insertComponent(element, ID, beforeElement) {
+		insertChildrenBefore(element, this.getComponent(ID), beforeElement);
+	}
+
+	get componentCount() {
+		return this.#componentTable.length;
+	}
 }
