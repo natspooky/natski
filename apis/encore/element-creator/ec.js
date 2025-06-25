@@ -313,10 +313,14 @@ export class ComponentManager {
 		//fix .contains to work with arr
 		if (document.body.contains(oldComponent.element)) {
 			console.log(oldComponent.element);
-			oldComponent.element.replaceWith(newComponent);
-			/*[...oldComponent.element].forEach((element) => {
-				element.replace(...newComponent);
-			});*/
+
+			if (Array.isArray(oldComponent.element)) {
+				[...oldComponent.element].forEach((element) => {
+					element.replace(...newComponent);
+				});
+			} else {
+				oldComponent.element.replaceWith(newComponent);
+			}
 		}
 
 		this.#components[ID] = {
