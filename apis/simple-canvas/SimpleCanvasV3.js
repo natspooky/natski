@@ -1,8 +1,8 @@
 /* -----------------------------------------------
-/* Author : NATSKI - natski.net
+/* Author : NATSKI - natski.dev
 /* MIT license : https://opensource.org/license/MIT
 /* GitHub : https://github.com/natspooky/simple-canvas
-/* How to use? : Check the GitHub README or visit https://natski.net/SimpleCanvas
+/* How to use? : Check the GitHub README or visit https://natski.dev/SimpleCanvas
 /* ----------------------------------------------- */
 
 export default class stacker {

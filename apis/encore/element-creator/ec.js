@@ -2,7 +2,7 @@
 /* Author : NATSKI - natski.net
 /* MIT license : https://opensource.org/license/MIT
 /* GitHub : https://github.com/natspooky/encore
-/* How to use? : Check the GitHub README or visit https://natski.net/api/encore/element-creator
+/* How to use? : Check the GitHub README or visit https://natski.net/apis/encore/element-creator
 /* ----------------------------------------------- */
 
 export function jsonElementify(elementData) {
@@ -229,33 +229,33 @@ export function className(classes, ...extraClasses) {
 }
 
 export class ComponentManager {
-	#componentTable = {};
-	#managerName;
+	#components;
 
-	constructor(name) {
-		this.#managerName = name;
+	constructor() {
+		this.#components = {};
 	}
 
-	get name() {
-		return this.#managerName;
-	}
-
-	setComponent(ID, element) {
+	setComponent(ID, jsonString) {
 		if (this.getComponent(ID))
-			throw new Error(
-				'Component ID is already in use. Use "replaceComponent" for reassigning components',
-			);
+			throw new Error(`Component ID "${ID}" is already assigned`);
 
-		if (element && element.nodeType === Node.ELEMENT_NODE) {
-			this.#componentTable[ID] = element;
-			return;
-		}
+		const component = jsonElementify(jsonString);
 
-		this.#componentTable[ID] = jsonElementify(jsonString);
+		this.#components[ID] = {
+			json: jsonString,
+			element: component,
+			type: Array.isArray(component) ? 'Element Array' : 'Element',
+		};
+	}
+
+	setComponents(IDs, jsonStrings) {
+		IDs.forEach((ID, index) => {
+			this.setComponent(ID, jsonStrings[index]);
+		});
 	}
 
 	getComponent(ID) {
-		return this.#componentTable?.[ID];
+		return this.#components?.[ID];
 	}
 
 	getComponents(...IDs) {
@@ -263,18 +263,18 @@ export class ComponentManager {
 	}
 
 	getAllComponents() {
-		return Object.entries(this.#componentTable).map(([_, element]) => {
+		return Object.entries(this.#components).map(([_, element]) => {
 			return element;
 		});
 	}
 
 	removeComponent(ID) {
-		const component = this.getComponent(ID);
-		if (!component) return;
-
+		const component = this.getComponent(ID).element;
+		if (!component) throw new Error(`Component ID "${ID}" does not exist`);
+		//fix .contains to work with arr
 		if (document.body.contains(component)) component.remove();
 
-		delete this.#componentTable[ID];
+		delete this.#components[ID];
 	}
 
 	removeComponents(...IDs) {
@@ -282,27 +282,25 @@ export class ComponentManager {
 	}
 
 	removeAllComponents() {
-		Object.entries(this.#componentTable).forEach(([ID, _]) =>
+		Object.entries(this.#components).forEach(([ID, _]) =>
 			this.removeComponent(ID),
 		);
 	}
 
 	changeComponentID(oldID, newID) {
+		if (oldID === newID) return;
+
 		const oldComponent = this.getComponent(oldID),
 			newComponent = this.getComponent(newID);
 
 		if (!oldComponent)
-			throw new Error(
-				"Component ID doesn't match any existing components",
-			);
+			throw new Error(`Component ID "${oldID}" does not exist`);
 
 		if (newComponent)
-			throw new Error(
-				'New component ID is already assigned to a component',
-			);
+			throw new Error(`Component ID "${newID}" is already assigned`);
 
-		this.setComponent(newID, oldComponent);
-		delete this.#componentTable[oldID];
+		this.setComponent(newID, oldComponent.json);
+		delete this.#components[oldID];
 	}
 
 	replaceComponent(ID, jsonString) {
@@ -312,28 +310,59 @@ export class ComponentManager {
 			this.setComponent(ID, jsonString);
 			return;
 		}
-
-		this.#componentTable[ID] = newComponent;
-
-		if (document.body.contains(oldComponent)) {
-			insertChildrenBefore(
-				oldComponent.parentNode,
-				newComponent,
-				oldComponent,
-			);
-			oldComponent.remove();
+		//fix .contains to work with arr
+		if (document.body.contains(oldComponent.element)) {
+			console.log(oldComponent.element);
+			oldComponent.element.replaceWith(newComponent);
+			/*[...oldComponent.element].forEach((element) => {
+				element.replace(...newComponent);
+			});*/
 		}
+
+		this.#components[ID] = {
+			json: jsonString,
+			element: newComponent,
+			type: Array.isArray(newComponent) ? 'Element Array' : 'Element',
+		};
 	}
 
 	appendComponent(element, ID) {
-		appendChildren(element, this.getComponent(ID));
+		const component = this.getComponent(ID).element;
+		if (!component) throw new Error(`Component ID "${ID}" does not exist`);
+		appendChildren(element, component);
 	}
 
-	insertComponent(element, ID, beforeElement) {
-		insertChildrenBefore(element, this.getComponent(ID), beforeElement);
+	insertComponentBefore(element, ID, beforeElement) {
+		const component = this.getComponent(ID).element;
+		if (!component) throw new Error(`Component ID "${ID}" does not exist`);
+		insertChildrenBefore(element, component, beforeElement);
 	}
 
 	get componentCount() {
-		return this.#componentTable.length;
+		return this.#components.length;
+	}
+
+	get componentIDsByType() {
+		let el = [],
+			elarr = [];
+
+		Object.entries(this.#components).forEach(([ID, data]) => {
+			if (data.type === 'Element') {
+				el.push(ID);
+			} else {
+				elarr.push(ID);
+			}
+		});
+
+		return {
+			Element: el,
+			'Element Array': elarr,
+		};
+	}
+
+	get componentIDs() {
+		return Object.entries(this.#components).map(([ID, _]) => {
+			return ID;
+		});
 	}
 }

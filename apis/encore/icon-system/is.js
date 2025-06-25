@@ -1,8 +1,8 @@
 /* -----------------------------------------------
-/* Author : NATSKI - natski.net
+/* Author : NATSKI - natski.dev
 /* MIT license : https://opensource.org/license/MIT
 /* GitHub : https://github.com/natspooky/encore
-/* How to use? : Check the GitHub README or visit https://natski.net/apis/encore/icon-system
+/* How to use? : Check the GitHub README or visit https://natski.dev/apis/encore/icon-system
 /* ----------------------------------------------- */
 
 import { IS_DATA } from './dependencies/IS_DATA.js';

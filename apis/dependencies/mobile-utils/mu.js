@@ -1,7 +1,7 @@
 /* -----------------------------------------------
-/* Author : NATSKI - natski.net
+/* Author : NATSKI - natski.dev
 /* MIT license : https://opensource.org/license/MIT
-/* How to use? : Visit https://natski.net/dependencies/mobile-utils
+/* How to use? : Visit https://natski.dev/dependencies/mobile-utils
 /* ----------------------------------------------- */
 
 export function isMobile() {

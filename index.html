@@ -151,21 +151,18 @@
 			<iframe id="iframe"></iframe>
 		</div>
 
-		<script type="module" src="lib/js/IFrameManager.js"></script>
-		<script type="module" src="lib/js/index.js"></script>
-
 		<script type="module">
 			import {
-				className,
-				jsonElementify,
-				appendChildren,
-			} from './apis/encore/element-creator/ec.js';
-			import Footer from './lib/components/footer.js';
-			/*
-			document.body.insertBefore(
-				jsonElementify(Footer()),
-				document.body.lastChild,
-			);*/
+				testEquals,
+				testErrorThrow,
+				testType,
+			} from './apis/test/test.js';
+
+			testOutput(234245, 'balsl');
+			testErrorThrow();
 		</script>
+
+		<script type="module" src="lib/js/IFrameManager.js"></script>
+		<script type="module" src="lib/js/index.js"></script>
 	</body>
 </html>

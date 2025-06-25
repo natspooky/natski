@@ -1,7 +1,7 @@
 /* -----------------------------------------------
-/* Author : NATSKI - natski.net
+/* Author : NATSKI - natski.dev
 /* MIT license : https://opensource.org/license/MIT
-/* How to use? : Visit https://natski.net/dependencies/file-utils
+/* How to use? : Visit https://natski.dev/dependencies/file-utils
 /* ----------------------------------------------- */
 
 export function MIME(file) {
