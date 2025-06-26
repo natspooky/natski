@@ -8,12 +8,12 @@ export default class Test {
 		this.#module = Module;
 	}
 
-	if() {
+	if(name, condition, callback) {
 		this.#type = 'IF';
 		return this;
 	}
 
-	only() {
+	only(name, callback) {
 		this.#type = 'ONLY';
 		return this;
 	}
