@@ -10,12 +10,17 @@ export function jsonElementify(elementData) {
 		return jsonMultiElementify(elementData);
 	}
 
-	let element = elementData.namespace
-		? document.createElementNS(elementData.namespace, elementData.tag)
-		: document.createElement(elementData.tag);
+	let element;
 
-	if (!element) {
-		throw new Error('an invalid TAG has been applied');
+	if (elementData.tag) {
+		if (!elementData.namespace) {
+			element = document.createElement(elementData.tag);
+		} else {
+			element = document.createElementNS(
+				elementData.namespace,
+				elementData.tag,
+			);
+		}
 	}
 
 	if (elementData.innerHTML) {
@@ -248,12 +253,6 @@ export class ComponentManager {
 		};
 	}
 
-	setComponents(IDs, jsonStrings) {
-		IDs.forEach((ID, index) => {
-			this.setComponent(ID, jsonStrings[index]);
-		});
-	}
-
 	getComponent(ID) {
 		return this.#components?.[ID];
 	}
@@ -271,8 +270,14 @@ export class ComponentManager {
 	removeComponent(ID) {
 		const component = this.getComponent(ID).element;
 		if (!component) throw new Error(`Component ID "${ID}" does not exist`);
-		//fix .contains to work with arr
-		if (document.body.contains(component)) component.remove();
+
+		if (!Array.isArray(component) && document.body.contains(component)) {
+			component.remove();
+		} else {
+			component.forEach((element) => {
+				if (document.body.contains(element)) element.remove();
+			});
+		}
 
 		delete this.#components[ID];
 	}
@@ -303,6 +308,7 @@ export class ComponentManager {
 		delete this.#components[oldID];
 	}
 
+	//FIX -- wont work. consider a diff approach
 	replaceComponent(ID, jsonString) {
 		const oldComponent = this.getComponent(ID),
 			newComponent = jsonElementify(jsonString);
@@ -343,9 +349,10 @@ export class ComponentManager {
 	}
 
 	get componentCount() {
-		return this.#components.length;
+		return Object.entries(this.#components).length;
 	}
 
+	// kinda useless? maybe get rid of
 	get componentIDsByType() {
 		let el = [],
 			elarr = [];
@@ -364,6 +371,7 @@ export class ComponentManager {
 		};
 	}
 
+	// VERY useless 100% remove unless i can find a usecase
 	get componentIDs() {
 		return Object.entries(this.#components).map(([ID, _]) => {
 			return ID;
