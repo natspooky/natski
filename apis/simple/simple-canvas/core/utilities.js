@@ -1,9 +1,7 @@
-/* -----------------------------------------------
-/* Author : NATSKI - natski.net
-/* MIT license : https://opensource.org/license/MIT
-/* GitHub : https://github.com/natspooky/encore
-/* How to use? : Check the GitHub README or visit https://natski.net/apis/encore/element-creator
-/* ----------------------------------------------- */
+function setFallback(data, fallback) {
+	if (undefined !== data && data !== null) return data;
+	return fallback;
+}
 
 function jsonElementify(elementData) {
 	if (Array.isArray(elementData)) {
@@ -200,11 +198,6 @@ function checkExists(data) {
 	return undefined !== data && data !== null;
 }
 
-function setFallback(data, fallback) {
-	if (checkExists(data)) return data;
-	return fallback;
-}
-
 function appendChildren(element, children) {
 	if (Array.isArray(children)) {
 		for (const child of children) {
@@ -236,159 +229,4 @@ function className(classes, ...extraClasses) {
 	return classes;
 }
 
-class ComponentManager {
-	#components;
-
-	constructor() {
-		this.#components = {};
-	}
-
-	setComponent(ID, jsonString) {
-		if (this.getComponent(ID))
-			throw new Error(`Component ID "${ID}" is already assigned`);
-
-		const component = jsonElementify(jsonString);
-
-		this.#components[ID] = {
-			json: jsonString,
-			element: component,
-			type: Array.isArray(component) ? 'Element Array' : 'Element',
-		};
-	}
-
-	getComponent(ID) {
-		return this.#components?.[ID];
-	}
-
-	getComponents(...IDs) {
-		return [...IDs].map((ID) => this.getComponent(ID));
-	}
-
-	getAllComponents() {
-		return Object.entries(this.#components).map(([_, element]) => {
-			return element;
-		});
-	}
-
-	removeComponent(ID) {
-		const component = this.getComponent(ID).element;
-		if (!component) throw new Error(`Component ID "${ID}" does not exist`);
-
-		if (!Array.isArray(component) && document.body.contains(component)) {
-			component.remove();
-		} else {
-			component.forEach((element) => {
-				if (document.body.contains(element)) element.remove();
-			});
-		}
-
-		delete this.#components[ID];
-	}
-
-	removeComponents(...IDs) {
-		[...IDs].forEach((ID) => this.removeComponent(ID));
-	}
-
-	removeAllComponents() {
-		Object.entries(this.#components).forEach(([ID, _]) =>
-			this.removeComponent(ID),
-		);
-	}
-
-	changeComponentID(oldID, newID) {
-		if (oldID === newID) return;
-
-		const oldComponent = this.getComponent(oldID),
-			newComponent = this.getComponent(newID);
-
-		if (!oldComponent)
-			throw new Error(`Component ID "${oldID}" does not exist`);
-
-		if (newComponent)
-			throw new Error(`Component ID "${newID}" is already assigned`);
-
-		this.setComponent(newID, oldComponent.json);
-		delete this.#components[oldID];
-	}
-
-	//FIX -- wont work. consider a diff approach
-	replaceComponent(ID, jsonString) {
-		const oldComponent = this.getComponent(ID),
-			newComponent = jsonElementify(jsonString);
-		if (!oldComponent) {
-			this.setComponent(ID, jsonString);
-			return;
-		}
-		//fix .contains to work with arr
-		if (document.body.contains(oldComponent.element)) {
-			console.log(oldComponent.element);
-
-			if (Array.isArray(oldComponent.element)) {
-				[...oldComponent.element].forEach((element) => {
-					element.replace(...newComponent);
-				});
-			} else {
-				oldComponent.element.replaceWith(newComponent);
-			}
-		}
-
-		this.#components[ID] = {
-			json: jsonString,
-			element: newComponent,
-			type: Array.isArray(newComponent) ? 'Element Array' : 'Element',
-		};
-	}
-
-	appendComponent(element, ID) {
-		const component = this.getComponent(ID).element;
-		if (!component) throw new Error(`Component ID "${ID}" does not exist`);
-		appendChildren(element, component);
-	}
-
-	insertComponentBefore(element, ID, beforeElement) {
-		const component = this.getComponent(ID).element;
-		if (!component) throw new Error(`Component ID "${ID}" does not exist`);
-		insertChildrenBefore(element, component, beforeElement);
-	}
-
-	get componentCount() {
-		return Object.entries(this.#components).length;
-	}
-
-	// kinda useless? maybe get rid of
-	get componentIDsByType() {
-		let el = [],
-			elarr = [];
-
-		Object.entries(this.#components).forEach(([ID, data]) => {
-			if (data.type === 'Element') {
-				el.push(ID);
-			} else {
-				elarr.push(ID);
-			}
-		});
-
-		return {
-			Element: el,
-			'Element Array': elarr,
-		};
-	}
-
-	// VERY useless 100% remove unless i can find a usecase
-	get componentIDs() {
-		return Object.entries(this.#components).map(([ID, _]) => {
-			return ID;
-		});
-	}
-}
-
-export {
-	jsonElementify,
-	checkExists,
-	setFallback,
-	appendChildren,
-	insertChildrenBefore,
-	className,
-	elementAppended,
-	ComponentManager,
-};
+export { jsonElementify, setFallback };

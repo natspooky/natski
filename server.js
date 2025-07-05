@@ -1,3 +1,4 @@
+import SimpleTest from './apis/simple/simple-test/core/simpleTest.js';
 import { MIME } from './apis/dependencies/file-utils/fu.min.js';
 import { createServer } from 'http';
 import { StatusCodes } from 'http-status-codes';
@@ -11,6 +12,28 @@ import terminalLink from 'terminal-link';
 import { join, extname as _extname } from 'path';
 import path from 'path';
 import { parse, fileURLToPath } from 'url';
+
+const tester = new SimpleTest();
+
+tester.collection('Dependencies', (collection) => {
+	collection.collection('Mobile Util', (test) => {
+		test.test('thing', (assert) => {});
+	});
+	collection.collection('File Util', (test) => {});
+});
+
+tester.collection('Simple APIs', (collection) => {
+	collection.collection('Simple Test', (test) => {});
+	collection.collection('Simple Canvas', (test) => {});
+	collection.collection('Simple Audio', (test) => {});
+});
+
+tester.collection('ENCORE', (collection) => {
+	collection.collection('Icon System', (test) => {});
+	collection.collection('File Util', (test) => {});
+});
+
+tester.start();
 
 const red = '\x1b[31m';
 const green = '\x1b[32m';
