@@ -4,18 +4,17 @@ export default class Layer {
 	#top;
 	#width;
 	#height;
-
 	#embeddedLayers;
 
-	constructor(name, left, top, width, height, ...layers) {
+	constructor(name, left, top, width, height, ...innerLayers) {
 		this.#name = name;
 		this.#left = left;
 		this.#top = top;
 		this.#width = width;
 		this.#height = height;
 
-		if ([...layers].length > 0) {
-			this.#embeddedLayers = [...layers];
+		if ([...innerLayers].length > 0) {
+			this.#embeddedLayers = [...innerLayers];
 		}
 	}
 
@@ -82,5 +81,9 @@ export default class Layer {
 
 	set height(height) {
 		this.#height = height;
+	}
+
+	cascade() {
+		//update the embed layers
 	}
 }

@@ -3,7 +3,6 @@ import { setFallback } from './utilities.js';
 export default class Config {
 	#canvas;
 	#events;
-	#supportedEvents;
 	#observers;
 	#render;
 	#debug;
@@ -16,20 +15,15 @@ export default class Config {
 		this.#events = {};
 		this.#debug = {};
 		this.#render = {};
-
-		this.#supportedEvents = {
-			touch:
-				'ontouchstart' in window ||
-				navigator.maxTouchPoints > 0 ||
-				navigator.msMaxTouchPoints > 0,
-			wheel: 'onwheel' in document,
-			hover: window.matchMedia('(hover: hover)').matches,
-		};
+		this.#system = {};
 
 		this.#setFallbacks(config);
 	}
 
 	#setFallbacks(config) {
+		//system
+		this.system = this.#systemConfig;
+
 		//canvas
 		this.autoClear = setFallback(config.autoClear, true);
 		this.autoPaint = setFallback(config.autoPaint, false);
@@ -41,19 +35,63 @@ export default class Config {
 		this.scrollEvents = setFallback(config.scrollEvents, false);
 
 		//debug
-		this.layerBorders = setFallback(config.scrollEvents, false);
+		this.layerBorders = setFallback(config.layerBorders, false);
 
 		//render
 		this.frameRate;
 		this.eventRender = {
-			touch: false,
-			mouse: false,
-			key: false,
-			scroll: false,
+			touch: setFallback(config.touchRender, false),
+			mouse: setFallback(config.mouseRender, false),
+			key: setFallback(config.keyRender, false),
+			scroll: setFallback(config.scrollRender, false),
+			frameRate: setFallback(config.frameRateRender, false),
 		};
 		this.touchRender;
 		this.keyRender;
 		this.scrollRender;
+	}
+
+	get #systemConfig() {
+		const event_exists = (eventName) => {
+			if (typeof eventName != 'string' || eventName.length == 0)
+				return false;
+			const TAGNAMES = {
+				select: 'input',
+				change: 'input',
+				submit: 'form',
+				reset: 'form',
+				error: 'img',
+				load: 'img',
+				abort: 'img',
+			};
+			let element = document.createElement(TAGNAMES[eventName] || 'div');
+			eventName = 'on' + eventName;
+			let isSupported = eventName in element;
+			if (!isSupported) {
+				element.setAttribute(eventName, 'return;');
+				isSupported = typeof element[eventName] == 'function';
+			}
+			element = null;
+			return isSupported;
+		};
+
+		return {
+			supported: {
+				touch:
+					'ontouchstart' in window ||
+					navigator.maxTouchPoints > 0 ||
+					navigator.msMaxTouchPoints > 0,
+				wheel: 'onwheel' in document && event_exists('wheel'),
+				mouse:
+					matchMedia('(pointer:fine)').matches &&
+					event_exists('mousemove'),
+				hover:
+					window.matchMedia('(hover: hover)').matches &&
+					event_exists('mouseover'),
+				key: event_exists('keydown'),
+			},
+			retina: window.devicePixelRatio > 1 ? window.devicePixelRatio : 1,
+		};
 	}
 
 	default() {
@@ -114,5 +152,15 @@ export default class Config {
 
 	get layerBorders() {
 		return this.#debug.layerBorders;
+	}
+
+	// system
+
+	get retina() {
+		return this.#system.retina;
+	}
+
+	get supported() {
+		return this.#system.supported;
 	}
 }

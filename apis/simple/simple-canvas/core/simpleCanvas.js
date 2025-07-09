@@ -1,6 +1,7 @@
 import Config from './config.js';
 import Render from './render.js';
-import EventManager from './events/eventManager.js';
+import Event from './event.js';
+import LayerManager from './layerManager.js';
 import { jsonElementify } from './utilities.js';
 
 export default class SimpleCanvas {
@@ -8,25 +9,34 @@ export default class SimpleCanvas {
 	#config;
 	#event;
 	#render;
+	#layers;
 
 	constructor(element, initialConfig) {
 		this.#config = new Config(initialConfig);
 
 		this.#canvas = {};
 
-		if (element && element.nodeType === Node.ELEMENT_NODE) {
+		if (
+			element &&
+			element.nodeType === Node.ELEMENT_NODE &&
+			element.tagName === 'canvas'
+		) {
 			this.#canvas.element = element;
 		} else if (typeof element === 'string') {
 			this.#canvas.element = document.getElementById(element);
 
 			if (!this.#canvas.element)
 				throw new Error('Element ID has no corresponding HTMLElement');
+		} else {
+			throw new TypeErorr(
+				"Element provided is not of type 'string' or 'ELEMENT_NODE'",
+			);
 		}
 
 		this.#canvas.context = this.#canvas.element.getContext('2d');
-
-		this.#event = new EventManager(this.#config);
-		this.#render = new Render(this.#config);
+		this.#layers = new LayerManager(this.#config);
+		this.#event = new Event(this.#config, this.#canvas.element);
+		this.#render = new Render(this.#config, this.#layers);
 	}
 
 	get config() {
@@ -37,8 +47,8 @@ export default class SimpleCanvas {
 		return this.#event;
 	}
 
-	get render() {
-		return this.#render;
+	get layers() {
+		return this.#layers;
 	}
 
 	get canvas() {
@@ -49,20 +59,26 @@ export default class SimpleCanvas {
 		return this.#canvas.context;
 	}
 
-	play() {}
+	play() {
+		this.render.play();
+	}
 
-	pause() {}
+	pause() {
+		this.render.pause();
+	}
 
 	static create(identifiers, initialConfig) {
+		// check for type to ensure that we can process the input
 		if (typeof identifiers !== 'string') {
-			throw new TypeError('cannot asign ID or class to canvas element');
+			throw new TypeError(
+				"ID and Class identifiers must be of type 'string'",
+			);
 		}
 
-		const tokenizer = (identifiers) => {
-			const tokens = identifiers.split(' ');
-
-			let classes = [],
-				id;
+		const { id, classes } = ((identifiers) => {
+			const tokens = identifiers.split(' '),
+				classes = [];
+			let id;
 
 			for (const token of tokens) {
 				switch (token.slice(0, 1)) {
@@ -77,19 +93,24 @@ export default class SimpleCanvas {
 				}
 			}
 			return { id, classes };
-		};
+		})(identifiers); // call function immediately
 
-		const { id, classes } = tokenizer(identifiers);
-
-		let element = {
+		const element = jsonElementify({
 			tag: 'canvas',
 			attributes: {
 				id: id,
 			},
 			classes: classes,
-			load: (self) => {},
-		};
+		}); // generate element and populate ID and Classes using ENCORE EC.js
 
-		return new SimpleCanvas(jsonElementify(element), initialConfig);
+		const canvas = new SimpleCanvas(element, initialConfig);
+
+		jsonElementAppend(element, {
+			onAppend: (self) => {
+				canvas.calc();
+			},
+		}); // add an event that will calculate initial canvas data when first added onto the page
+
+		return canvas;
 	}
 }

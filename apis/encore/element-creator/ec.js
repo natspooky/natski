@@ -7,19 +7,34 @@
 
 function jsonElementify(elementData) {
 	if (Array.isArray(elementData)) {
-		return jsonMultiElementify(elementData);
+		const arr = [];
+
+		elementData.forEach((element) => {
+			if (checkForKeys(element)) {
+				arr.push(jsonElementify(element));
+			}
+		});
+
+		return arr;
 	}
 
 	let element;
 
 	if (elementData.tag) {
-		if (!elementData.namespace) {
-			element = document.createElement(elementData.tag);
-		} else {
-			element = document.createElementNS(
-				elementData.namespace,
-				elementData.tag,
-			);
+		switch (elementData.tag) {
+			case 'text':
+				return document.createTextNode(
+					elementData.text ? elementData.text : '',
+				);
+			default:
+				if (!elementData.namespace) {
+					element = document.createElement(elementData.tag);
+				} else {
+					element = document.createElementNS(
+						elementData.namespace,
+						elementData.tag,
+					);
+				}
 		}
 	}
 
@@ -52,27 +67,7 @@ function jsonElementify(elementData) {
 			}
 		});
 	}
-	/*
-	if (elementData.dataset) {
-		Object.entries(elementData.dataset).forEach(([dataName, value]) => {
-			if (checkExists(value)) {
-				//////////////////////change this
-				element.dataset[
-					dataName
-						.split('-')
-						.map((element, index) => {
-							if (!index) return element;
-							return (
-								element.slice(0, 1).toUpperCase() +
-								element.slice(1)
-							);
-						})
-						.join('')
-				] = value;
-			}
-		});
-	}
-*/
+
 	if (elementData.children) {
 		appendChildren(element, jsonElementify(elementData.children));
 	}
@@ -109,16 +104,75 @@ function jsonElementify(elementData) {
 	return element;
 }
 
-function jsonMultiElementify(elements) {
-	let arr = [];
+function jsonElementAppend(element, elementData) {
+	if (element && element.nodeType === Node.ELEMENT_NODE) {
+		throw new TypeError('Element provided is not a HTML Node');
+	}
 
-	elements.forEach((element) => {
-		if (checkForKeys(element)) {
-			arr.push(jsonElementify(element));
+	if (elementData.innerHTML) {
+		element.innerHTML = elementData.innerHTML;
+	}
+
+	if (elementData.classes) {
+		if (Array.isArray(elementData.classes)) {
+			elementData.classes.forEach((className) => {
+				if (className.includes(' ')) {
+					elementData.classes.split(' ').forEach((className) => {
+						element.classList.add(className);
+					});
+				} else {
+					element.classList.add(className);
+				}
+			});
+		} else {
+			elementData.classes.split(' ').forEach((className) => {
+				element.classList.add(className);
+			});
 		}
-	});
+	}
 
-	return arr;
+	if (elementData.attributes) {
+		Object.entries(elementData.attributes).forEach(([attribute, value]) => {
+			if (checkExists(value)) {
+				element.setAttribute(attribute, value);
+			}
+		});
+	}
+
+	if (elementData.children) {
+		appendChildren(element, jsonElementify(elementData.children));
+	}
+
+	if (elementData.events) {
+		Object.entries(elementData.events).forEach(([eventType, event]) => {
+			if (!event) {
+				return;
+			}
+
+			if (Array.isArray(event)) {
+				event.forEach((eventData) => {
+					element.addEventListener(
+						eventType,
+						functionType(eventData, element),
+						eventData.options,
+					);
+				});
+			} else {
+				element.addEventListener(
+					eventType,
+					functionType(event, element),
+					event.options,
+				);
+			}
+		});
+	}
+
+	if (elementData.onAppend) {
+		// figure out a good name for this or find a way to join it into the event list
+		elementAppended(element, elementData.onAppend);
+	}
+
+	return element;
 }
 
 function useDeprecatedMethod(element, callback) {
@@ -384,6 +438,7 @@ class ComponentManager {
 
 export {
 	jsonElementify,
+	jsonElementAppend,
 	checkExists,
 	setFallback,
 	appendChildren,

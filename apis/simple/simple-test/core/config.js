@@ -3,10 +3,11 @@ export default class Config {
 
 	constructor() {}
 
-	/**
-	 * @param {boolean} startValue
-	 */
-	set changeTitle(startValue) {
-		this.#changeTitle = bool;
+	set changeTitle(changeTitle) {
+		this.#changeTitle = changeTitle;
+	}
+
+	get changeTitle() {
+		return this.#changeTitle;
 	}
 }

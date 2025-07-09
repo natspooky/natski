@@ -112,7 +112,7 @@ export const IS_DATA = [
 	'GIS',
 	'SSM',
 	'SSMF',
-	'simple_canvas',
+	'simple',
 	'bezier',
 	'NATSKI',
 ];

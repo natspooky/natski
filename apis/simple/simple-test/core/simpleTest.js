@@ -4,9 +4,9 @@ import Config from './config.js';
 export default class SimpleTest {
 	#collections;
 	#config;
-	constructor() {
+	constructor(initialConfig) {
 		this.#collections = [];
-		this.#config = new Config();
+		this.#config = new Config(initialConfig);
 	}
 
 	collection(name, callback) {

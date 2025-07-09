@@ -1,23 +1,40 @@
-function setFallback(data, fallback) {
-	if (undefined !== data && data !== null) return data;
-	return fallback;
-}
+/* -----------------------------------------------
+/* Author : NATSKI - natski.net
+/* MIT license : https://opensource.org/license/MIT
+/* GitHub : https://github.com/natspooky/encore
+/* How to use? : Check the GitHub README or visit https://natski.net/apis/encore/element-creator
+/* ----------------------------------------------- */
 
 function jsonElementify(elementData) {
 	if (Array.isArray(elementData)) {
-		return jsonMultiElementify(elementData);
+		const arr = [];
+
+		elementData.forEach((element) => {
+			if (checkForKeys(element)) {
+				arr.push(jsonElementify(element));
+			}
+		});
+
+		return arr;
 	}
 
 	let element;
 
 	if (elementData.tag) {
-		if (!elementData.namespace) {
-			element = document.createElement(elementData.tag);
-		} else {
-			element = document.createElementNS(
-				elementData.namespace,
-				elementData.tag,
-			);
+		switch (elementData.tag) {
+			case 'text':
+				return document.createTextNode(
+					elementData.text ? elementData.text : '',
+				);
+			default:
+				if (!elementData.namespace) {
+					element = document.createElement(elementData.tag);
+				} else {
+					element = document.createElementNS(
+						elementData.namespace,
+						elementData.tag,
+					);
+				}
 		}
 	}
 
@@ -50,27 +67,7 @@ function jsonElementify(elementData) {
 			}
 		});
 	}
-	/*
-	if (elementData.dataset) {
-		Object.entries(elementData.dataset).forEach(([dataName, value]) => {
-			if (checkExists(value)) {
-				//////////////////////change this
-				element.dataset[
-					dataName
-						.split('-')
-						.map((element, index) => {
-							if (!index) return element;
-							return (
-								element.slice(0, 1).toUpperCase() +
-								element.slice(1)
-							);
-						})
-						.join('')
-				] = value;
-			}
-		});
-	}
-*/
+
 	if (elementData.children) {
 		appendChildren(element, jsonElementify(elementData.children));
 	}
@@ -107,16 +104,75 @@ function jsonElementify(elementData) {
 	return element;
 }
 
-function jsonMultiElementify(elements) {
-	let arr = [];
+function jsonElementAppend(element, elementData) {
+	if (element && element.nodeType === Node.ELEMENT_NODE) {
+		throw new TypeError('Element provided is not a HTML Node');
+	}
 
-	elements.forEach((element) => {
-		if (checkForKeys(element)) {
-			arr.push(jsonElementify(element));
+	if (elementData.innerHTML) {
+		element.innerHTML = elementData.innerHTML;
+	}
+
+	if (elementData.classes) {
+		if (Array.isArray(elementData.classes)) {
+			elementData.classes.forEach((className) => {
+				if (className.includes(' ')) {
+					elementData.classes.split(' ').forEach((className) => {
+						element.classList.add(className);
+					});
+				} else {
+					element.classList.add(className);
+				}
+			});
+		} else {
+			elementData.classes.split(' ').forEach((className) => {
+				element.classList.add(className);
+			});
 		}
-	});
+	}
 
-	return arr;
+	if (elementData.attributes) {
+		Object.entries(elementData.attributes).forEach(([attribute, value]) => {
+			if (checkExists(value)) {
+				element.setAttribute(attribute, value);
+			}
+		});
+	}
+
+	if (elementData.children) {
+		appendChildren(element, jsonElementify(elementData.children));
+	}
+
+	if (elementData.events) {
+		Object.entries(elementData.events).forEach(([eventType, event]) => {
+			if (!event) {
+				return;
+			}
+
+			if (Array.isArray(event)) {
+				event.forEach((eventData) => {
+					element.addEventListener(
+						eventType,
+						functionType(eventData, element),
+						eventData.options,
+					);
+				});
+			} else {
+				element.addEventListener(
+					eventType,
+					functionType(event, element),
+					event.options,
+				);
+			}
+		});
+	}
+
+	if (elementData.onAppend) {
+		// figure out a good name for this or find a way to join it into the event list
+		elementAppended(element, elementData.onAppend);
+	}
+
+	return element;
 }
 
 function useDeprecatedMethod(element, callback) {
@@ -198,6 +254,11 @@ function checkExists(data) {
 	return undefined !== data && data !== null;
 }
 
+function setFallback(data, fallback) {
+	if (checkExists(data)) return data;
+	return fallback;
+}
+
 function appendChildren(element, children) {
 	if (Array.isArray(children)) {
 		for (const child of children) {
@@ -229,4 +290,160 @@ function className(classes, ...extraClasses) {
 	return classes;
 }
 
-export { jsonElementify, setFallback };
+class ComponentManager {
+	#components;
+
+	constructor() {
+		this.#components = {};
+	}
+
+	setComponent(ID, jsonString) {
+		if (this.getComponent(ID))
+			throw new Error(`Component ID "${ID}" is already assigned`);
+
+		const component = jsonElementify(jsonString);
+
+		this.#components[ID] = {
+			json: jsonString,
+			element: component,
+			type: Array.isArray(component) ? 'Element Array' : 'Element',
+		};
+	}
+
+	getComponent(ID) {
+		return this.#components?.[ID];
+	}
+
+	getComponents(...IDs) {
+		return [...IDs].map((ID) => this.getComponent(ID));
+	}
+
+	getAllComponents() {
+		return Object.entries(this.#components).map(([_, element]) => {
+			return element;
+		});
+	}
+
+	removeComponent(ID) {
+		const component = this.getComponent(ID).element;
+		if (!component) throw new Error(`Component ID "${ID}" does not exist`);
+
+		if (!Array.isArray(component) && document.body.contains(component)) {
+			component.remove();
+		} else {
+			component.forEach((element) => {
+				if (document.body.contains(element)) element.remove();
+			});
+		}
+
+		delete this.#components[ID];
+	}
+
+	removeComponents(...IDs) {
+		[...IDs].forEach((ID) => this.removeComponent(ID));
+	}
+
+	removeAllComponents() {
+		Object.entries(this.#components).forEach(([ID, _]) =>
+			this.removeComponent(ID),
+		);
+	}
+
+	changeComponentID(oldID, newID) {
+		if (oldID === newID) return;
+
+		const oldComponent = this.getComponent(oldID),
+			newComponent = this.getComponent(newID);
+
+		if (!oldComponent)
+			throw new Error(`Component ID "${oldID}" does not exist`);
+
+		if (newComponent)
+			throw new Error(`Component ID "${newID}" is already assigned`);
+
+		this.setComponent(newID, oldComponent.json);
+		delete this.#components[oldID];
+	}
+
+	//FIX -- wont work. consider a diff approach
+	replaceComponent(ID, jsonString) {
+		const oldComponent = this.getComponent(ID),
+			newComponent = jsonElementify(jsonString);
+		if (!oldComponent) {
+			this.setComponent(ID, jsonString);
+			return;
+		}
+		//fix .contains to work with arr
+		if (document.body.contains(oldComponent.element)) {
+			console.log(oldComponent.element);
+
+			if (Array.isArray(oldComponent.element)) {
+				[...oldComponent.element].forEach((element) => {
+					element.replace(...newComponent);
+				});
+			} else {
+				oldComponent.element.replaceWith(newComponent);
+			}
+		}
+
+		this.#components[ID] = {
+			json: jsonString,
+			element: newComponent,
+			type: Array.isArray(newComponent) ? 'Element Array' : 'Element',
+		};
+	}
+
+	appendComponent(element, ID) {
+		const component = this.getComponent(ID).element;
+		if (!component) throw new Error(`Component ID "${ID}" does not exist`);
+		appendChildren(element, component);
+	}
+
+	insertComponentBefore(element, ID, beforeElement) {
+		const component = this.getComponent(ID).element;
+		if (!component) throw new Error(`Component ID "${ID}" does not exist`);
+		insertChildrenBefore(element, component, beforeElement);
+	}
+
+	get componentCount() {
+		return Object.entries(this.#components).length;
+	}
+
+	// kinda useless? maybe get rid of
+	get componentIDsByType() {
+		let el = [],
+			elarr = [];
+
+		Object.entries(this.#components).forEach(([ID, data]) => {
+			if (data.type === 'Element') {
+				el.push(ID);
+			} else {
+				elarr.push(ID);
+			}
+		});
+
+		return {
+			Element: el,
+			'Element Array': elarr,
+		};
+	}
+
+	// VERY useless 100% remove unless i can find a usecase
+	get componentIDs() {
+		return Object.entries(this.#components).map(([ID, _]) => {
+			return ID;
+		});
+	}
+}
+
+export {
+	jsonElementify,
+	jsonElementAppend,
+	checkExists,
+	setFallback,
+	appendChildren,
+	insertChildrenBefore,
+	className,
+	elementAppended,
+	ComponentManager,
+};
