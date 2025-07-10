@@ -16,8 +16,7 @@
 	display: block;
 }
 .suggested-container .redirect {
-	padding: 6px 13px 6px 13px;
-	display: flex;
+	display: block;
 	margin: 0 auto 8px auto;
 }
 .suggested-container .redirect::before {
@@ -25,6 +24,12 @@
 }
 .suggested-container .redirect:active::before {
 	transform: scale(0.95);
+}
+.suggested-container .redirect a {
+	position: relative;
+	display: flex;
+	padding: 6px 13px 6px 13px;
+	text-decoration: none;
 }
 .suggested-container .redirect p {
 	position: relative;
