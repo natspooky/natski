@@ -15,14 +15,13 @@ export default class Config {
 		this.#events = {};
 		this.#debug = {};
 		this.#render = {};
-		this.#system = {};
 
 		this.#setFallbacks(config);
 	}
 
 	#setFallbacks(config) {
 		//system
-		this.system = this.#systemConfig;
+		this.system = this.#systemCheck;
 
 		//canvas
 		this.autoClear = setFallback(config.autoClear, true);
@@ -39,20 +38,14 @@ export default class Config {
 
 		//render
 		this.frameRate;
-		this.eventRender = {
-			touch: setFallback(config.touchRender, false),
-			mouse: setFallback(config.mouseRender, false),
-			key: setFallback(config.keyRender, false),
-			scroll: setFallback(config.scrollRender, false),
-			frameRate: setFallback(config.frameRateRender, false),
-		};
-		this.touchRender;
-		this.keyRender;
-		this.scrollRender;
+
+		//sizing
+		this.size = setFallback(config.size, false);
+		this.aspectRatio = setFallback(config.aspectRatio, false);
 	}
 
-	get #systemConfig() {
-		const event_exists = (eventName) => {
+	get #systemCheck() {
+		const checkEvent = (eventName) => {
 			if (typeof eventName != 'string' || eventName.length == 0)
 				return false;
 			const TAGNAMES = {
@@ -81,14 +74,14 @@ export default class Config {
 					'ontouchstart' in window ||
 					navigator.maxTouchPoints > 0 ||
 					navigator.msMaxTouchPoints > 0,
-				wheel: 'onwheel' in document && event_exists('wheel'),
+				wheel: 'onwheel' in document && checkEvent('wheel'),
 				mouse:
 					matchMedia('(pointer:fine)').matches &&
-					event_exists('mousemove'),
+					checkEvent('mousemove'),
 				hover:
 					window.matchMedia('(hover: hover)').matches &&
-					event_exists('mouseover'),
-				key: event_exists('keydown'),
+					checkEvent('mouseover'),
+				key: checkEvent('keydown'),
 			},
 			retina: window.devicePixelRatio > 1 ? window.devicePixelRatio : 1,
 		};
@@ -163,4 +156,8 @@ export default class Config {
 	get supported() {
 		return this.#system.supported;
 	}
+
+	// sizing
+
+	set;
 }

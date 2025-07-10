@@ -43,13 +43,11 @@ export default class Collection {
 
 	start() {
 		this.#collections.forEach((collection) => {
-			if (this.#hooks.before) {
-			}
+			this.#hooks.before?.();
 
 			collection.start();
 
-			if (this.#hooks.after) {
-			}
+			this.#hooks.after?.();
 		});
 		this.#tests.forEach((test) => {
 			test.callback(test.assert);

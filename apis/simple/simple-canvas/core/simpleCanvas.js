@@ -34,37 +34,10 @@ export default class SimpleCanvas {
 		}
 
 		this.#canvas.context = this.#canvas.element.getContext('2d');
-		this.#layers = new LayerManager(this.#config);
-		this.#event = new Event(this.#config, this.#canvas.element);
-		this.#render = new Render(this.#config, this.#layers);
-	}
 
-	get config() {
-		return this.#config;
-	}
-
-	get event() {
-		return this.#event;
-	}
-
-	get layers() {
-		return this.#layers;
-	}
-
-	get canvas() {
-		return this.#canvas.element;
-	}
-
-	get context() {
-		return this.#canvas.context;
-	}
-
-	play() {
-		this.render.play();
-	}
-
-	pause() {
-		this.render.pause();
+		//this.#layers = new LayerManager(this.#config);
+		//this.#event = new Event(this.#config);
+		//this.#render = new Render(this.#config);
 	}
 
 	static create(identifiers, initialConfig) {
@@ -107,10 +80,38 @@ export default class SimpleCanvas {
 
 		jsonElementAppend(element, {
 			onAppend: (self) => {
-				canvas.calc();
+				console.log(canvas.config);
 			},
 		}); // add an event that will calculate initial canvas data when first added onto the page
 
 		return canvas;
+	}
+
+	play() {
+		this.#render.play();
+	}
+
+	pause() {
+		this.#render.pause();
+	}
+
+	get config() {
+		return this.#config;
+	}
+
+	get event() {
+		return this.#event;
+	}
+
+	get layers() {
+		return this.#layers;
+	}
+
+	get canvas() {
+		return this.#canvas.element;
+	}
+
+	get context() {
+		return this.#canvas.context;
 	}
 }

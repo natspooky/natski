@@ -1,13 +1,12 @@
 export default class Event {
 	#listenerData;
-	#canvasEl;
+
 	#config;
 
-	constructor(config, canvas) {
+	constructor(config) {
 		this.#listenerData = {};
 
 		this.#config = config;
-		this.#canvasEl = canvas;
 
 		//prepare events
 
@@ -40,7 +39,13 @@ export default class Event {
 					callback.bind(this),
 				);
 			},
-			eventData: { eventName, targetElement, callback, options, system },
+			eventData: {
+				eventName,
+				targetElement,
+				callback,
+				options,
+				system,
+			},
 			suspended: false,
 		});
 	}

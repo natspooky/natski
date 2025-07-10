@@ -3,9 +3,8 @@ export default class Render {
 	#config;
 	#layers;
 
-	constructor(config, layers) {
+	constructor(config) {
 		this.#config = config;
-		this.#layers = layers;
 		this.#drawFunctions = {};
 	}
 

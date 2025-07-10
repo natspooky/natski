@@ -5,7 +5,8 @@ export default class LayerManager {
 	#layers;
 	constructor(config) {
 		this.#config = config;
-		this.#layers = {}; // contains the reference sheet for the other layers
+		this.#layers = {}; // contains the reference sheet for the other layers#
+		this.create('transform');
 	}
 
 	create(ID, left, top, x, y) {
