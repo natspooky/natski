@@ -72,6 +72,7 @@ export const IS_DATA = [
 	'circle_circle',
 	'circle_triangle',
 	'circle',
+	'test',
 	'point',
 	'minus',
 	'plus',
