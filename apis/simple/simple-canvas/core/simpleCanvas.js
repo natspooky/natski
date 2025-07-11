@@ -33,6 +33,14 @@ export default class SimpleCanvas {
 			);
 		}
 
+		if (!document.body.contains(this.#canvas.element)) {
+			jsonElementAppend(this.#canvas.element, {
+				onAppend: (self) => {
+					console.log(canvas.config);
+				},
+			});
+		}
+
 		this.#canvas.context = this.#canvas.element.getContext('2d');
 
 		//this.#layers = new LayerManager(this.#config);

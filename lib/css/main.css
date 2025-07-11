@@ -194,11 +194,12 @@
 }
 
 ::-webkit-scrollbar-thumb {
-	background-color: var(--displaycolour);
+	background-color: var(--text-tertiary);
+	border: 3px solid var(--background);
 	border-radius: 100vmax;
 }
 ::-webkit-scrollbar-thumb:hover {
-	border: 2px solid var(--displaycolour);
+	border: 2px solid var(--background);
 }
 ::-webkit-scrollbar {
 	width: 0px;
@@ -333,7 +334,7 @@ main {
 }
 .dotted-bg {
 	background: radial-gradient(
-			oklch(from var(--gray-1200) l c h / 10%) 1.5px,
+			oklch(from var(--gray-1200) l c h / 30%) 1.5px,
 			transparent 1.5px 30px
 		) -4px 0 / 30px 30px;
 }
@@ -392,6 +393,7 @@ main {
 	align-items: center;
 	justify-content: center;
 }
+
 .docs-link p {
 	position: relative;
 	margin-right: 10px;
