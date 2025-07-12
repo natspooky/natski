@@ -248,7 +248,6 @@ nav.right:not(.left)::before {
 	height: 50px;
 	margin: 0 15px;
 	display: block;
-
 	background-color: var(--text-tertiary);
 }
 .article .text-container {

@@ -15,6 +15,13 @@ span.left .widget + .widget {
 	margin: 0 10px 0 0;
 }
 
+.widget-image {
+	position: relative;
+	object-fit: contain;
+	border-radius: 5px;
+	background-color: var(--gray-700);
+}
+
 .widget-image-tools {
 	position: relative;
 	width: auto;
