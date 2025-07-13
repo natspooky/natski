@@ -236,7 +236,7 @@ export default class SSCU {
 						classes: ['SSCUthumb'],
 						events: {
 							click: {
-								func: this.directPage.bind(this),
+								callback: this.directPage.bind(this),
 								var: i + 1,
 								options: {
 									once: false,
@@ -270,7 +270,7 @@ export default class SSCU {
 						classes: ['SSCUpauseButton'],
 						events: {
 							click: {
-								func: this.#togglePlay.bind(this),
+								callback: this.#togglePlay.bind(this),
 								options: {
 									once: false,
 									passive: true,
@@ -309,7 +309,7 @@ export default class SSCU {
 						classes: ['SSCUpageButton'],
 						events: {
 							click: {
-								func: this.changePage.bind(this),
+								callback: this.changePage.bind(this),
 								var: -1,
 								options: {
 									once: false,
@@ -331,7 +331,7 @@ export default class SSCU {
 						classes: ['SSCUpageButton'],
 						events: {
 							click: {
-								func: this.changePage.bind(this),
+								callback: this.changePage.bind(this),
 								var: 1,
 								options: {
 									once: false,

@@ -78,6 +78,11 @@ function jsonElementify(elementData) {
 				return;
 			}
 
+			if (!checkEvent(eventType)) {
+				console.warn(`Event '${eventType}' is not supported`);
+				return;
+			}
+
 			if (Array.isArray(event)) {
 				event.forEach((eventData) => {
 					element.addEventListener(
@@ -103,6 +108,44 @@ function jsonElementify(elementData) {
 
 	return element;
 }
+
+function checkEvent(eventName) {
+	if (typeof eventName != 'string' || eventName.length == 0) return false;
+	const TAGNAMES = {
+		select: 'input',
+		change: 'input',
+		submit: 'form',
+		reset: 'form',
+		error: 'img',
+		load: 'img',
+		abort: 'img',
+	};
+	let element = document.createElement(TAGNAMES[eventName] || 'div');
+	eventName = 'on' + eventName;
+	let isSupported = eventName in element;
+	if (!isSupported) {
+		element.setAttribute(eventName, 'return;');
+		isSupported = typeof element[eventName] == 'function';
+	}
+	element = null;
+	return isSupported;
+}
+
+/*
+function state(constructor) {
+	const data = {
+		value: constructor,
+	};
+	const variable = () => {
+		return data.value;
+	};
+
+	const setter = (value) => {
+		data.value = value;
+	};
+
+	return [variable, setter];
+}*/
 
 function jsonElementAppend(element, elementData) {
 	if (element && element.nodeType === Node.ELEMENT_NODE) {
@@ -228,24 +271,24 @@ function checkForKeys(obj) {
 }
 
 function functionType(event, element) {
-	if (!checkExists(event.var)) return () => event.func();
+	if (!checkExists(event.var)) return () => event.callback();
 
 	if (Array.isArray(event.var) && event.var.length > 1) {
 		if (event.var[0] === 'self') {
-			return () => event.func(element, ...event.var.slice(1));
+			return () => event.callback(element, ...event.var.slice(1));
 		} else if (event.var[0] === 'event') {
-			return (ev) => event.func(ev, ...event.var.slice(1));
+			return (ev) => event.callback(ev, ...event.var.slice(1));
 		} else {
-			return () => event.func(...event.var);
+			return () => event.callback(...event.var);
 		}
 	} else {
 		if (Array.isArray(event.var)) event.var = event.var[0];
 		if (event.var === 'self') {
-			return () => event.func(element);
+			return () => event.callback(element);
 		} else if (event.var === 'event') {
-			return (ev) => event.func(ev);
+			return (ev) => event.callback(ev);
 		} else {
-			return () => event.func(event.var);
+			return () => event.callback(event.var);
 		}
 	}
 }
@@ -446,4 +489,6 @@ export {
 	className,
 	elementAppended,
 	ComponentManager,
+	checkEvent,
+	//state,
 };

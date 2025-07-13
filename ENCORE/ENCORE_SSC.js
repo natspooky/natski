@@ -122,7 +122,7 @@ export default class SSC {
 							classes: ['SSCthumb'],
 							events: {
 								click: {
-									func: this.directPage.bind(this),
+									callback: this.directPage.bind(this),
 									var: i + 1,
 									options: {
 										once: false,
@@ -171,7 +171,7 @@ export default class SSC {
 						classes: ['SSCpauseButton'],
 						events: {
 							click: {
-								func: this.#togglePlay.bind(this),
+								callback: this.#togglePlay.bind(this),
 								options: {
 									once: false,
 									passive: true,
@@ -210,7 +210,7 @@ export default class SSC {
 						classes: ['SSCpageButton'],
 						events: {
 							click: {
-								func: this.changePage.bind(this),
+								callback: this.changePage.bind(this),
 								var: -1,
 								options: {
 									once: false,
@@ -234,7 +234,7 @@ export default class SSC {
 						classes: ['SSCpageButton'],
 						events: {
 							click: {
-								func: this.changePage.bind(this),
+								callback: this.changePage.bind(this),
 								var: 1,
 								options: {
 									once: false,
