@@ -79,7 +79,10 @@ function jsonElementify(elementData) {
 			}
 
 			if (!checkEvent(eventType)) {
-				console.warn(`Event '${eventType}' is not supported`);
+				console.warn(
+					`Event '${eventType}' is not supported on:`,
+					element,
+				);
 				return;
 			}
 
@@ -271,24 +274,24 @@ function checkForKeys(obj) {
 }
 
 function functionType(event, element) {
-	if (!checkExists(event.var)) return () => event.callback();
+	if (!checkExists(event.param)) return () => event.callback();
 
-	if (Array.isArray(event.var) && event.var.length > 1) {
-		if (event.var[0] === 'self') {
-			return () => event.callback(element, ...event.var.slice(1));
-		} else if (event.var[0] === 'event') {
-			return (ev) => event.callback(ev, ...event.var.slice(1));
+	if (Array.isArray(event.param) && event.param.length > 1) {
+		if (event.param[0] === 'self') {
+			return () => event.callback(element, ...event.param.slice(1));
+		} else if (event.param[0] === 'event') {
+			return (ev) => event.callback(ev, ...event.param.slice(1));
 		} else {
-			return () => event.callback(...event.var);
+			return () => event.callback(...event.param);
 		}
 	} else {
-		if (Array.isArray(event.var)) event.var = event.var[0];
-		if (event.var === 'self') {
+		if (Array.isArray(event.param)) event.param = event.param[0];
+		if (event.param === 'self') {
 			return () => event.callback(element);
-		} else if (event.var === 'event') {
+		} else if (event.param === 'event') {
 			return (ev) => event.callback(ev);
 		} else {
-			return () => event.callback(event.var);
+			return () => event.callback(event.param);
 		}
 	}
 }

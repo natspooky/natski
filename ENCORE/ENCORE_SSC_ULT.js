@@ -237,7 +237,7 @@ export default class SSCU {
 						events: {
 							click: {
 								callback: this.directPage.bind(this),
-								var: i + 1,
+								param: i + 1,
 								options: {
 									once: false,
 									passive: true,
@@ -310,7 +310,7 @@ export default class SSCU {
 						events: {
 							click: {
 								callback: this.changePage.bind(this),
-								var: -1,
+								param: -1,
 								options: {
 									once: false,
 									passive: true,
@@ -332,7 +332,7 @@ export default class SSCU {
 						events: {
 							click: {
 								callback: this.changePage.bind(this),
-								var: 1,
+								param: 1,
 								options: {
 									once: false,
 									passive: true,

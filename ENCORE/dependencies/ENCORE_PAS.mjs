@@ -140,7 +140,7 @@ export default class PAS {
 				events: {
 					click: {
 						callback: this.#enter.bind(this),
-						var: SEC.setFallback(
+						param: SEC.setFallback(
 							SEC.checkExists(prompt.callback)
 								? ['event', prompt.callback]
 								: null,
@@ -185,7 +185,7 @@ export default class PAS {
 						events: {
 							keydown: {
 								callback: this.#keyPress.bind(this),
-								var: SEC.setFallback(
+								param: SEC.setFallback(
 									SEC.checkExists(prompt.callback)
 										? ['event', prompt.callback]
 										: null,
@@ -207,7 +207,7 @@ export default class PAS {
 						events: {
 							input: {
 								callback: this.#fileInput.bind(this),
-								var: 'event',
+								param: 'event',
 								options: {
 									once: false,
 									passive: true,
@@ -278,7 +278,7 @@ export default class PAS {
 					? {
 							drop: {
 								callback: this.#drop.bind(this),
-								var: SEC.setFallback(
+								param: SEC.setFallback(
 									SEC.checkExists(prompt.callback)
 										? ['event', prompt.callback]
 										: null,
@@ -292,7 +292,7 @@ export default class PAS {
 							},
 							dragover: {
 								callback: this.#dragOver.bind(this),
-								var: 'event',
+								param: 'event',
 								options: {
 									once: false,
 									passive: false,
@@ -301,7 +301,7 @@ export default class PAS {
 							},
 							dragleave: {
 								callback: this.#dragLeave.bind(this),
-								var: 'event',
+								param: 'event',
 								options: {
 									once: false,
 									passive: false,
