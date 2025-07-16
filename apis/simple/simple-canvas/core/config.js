@@ -1,6 +1,6 @@
 import { setFallback } from './utilities.js';
 
-export default class Config {
+class Config {
 	#canvas;
 	#events;
 	#observers;
@@ -158,6 +158,6 @@ export default class Config {
 	}
 
 	// sizing
-
-	set;
 }
+
+export default new Config();

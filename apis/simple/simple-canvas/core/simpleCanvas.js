@@ -12,7 +12,7 @@ export default class SimpleCanvas {
 	#layers;
 
 	constructor(element, initialConfig) {
-		this.#config = new Config(initialConfig);
+		this.#config = Config.setFallback(initialConfig);
 
 		this.#canvas = {};
 

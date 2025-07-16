@@ -109,6 +109,8 @@ function jsonElementify(elementData) {
 		elementAppended(element, elementData.onAppend);
 	}
 
+	elementData.onCreation?.(element);
+
 	return element;
 }
 

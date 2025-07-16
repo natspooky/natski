@@ -12,3 +12,48 @@
 	width: 100%;
 	height: 100%;
 }
+.page-container .carousel-page {
+}
+
+.control-container {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+.control-container .thumb-container {
+	position: absolute;
+	left: 0;
+	width: 100%;
+	height: 50px;
+	bottom: 0;
+	background-image: linear-gradient(to bottom, transparent, #00000050);
+}
+.thumb-container .thumb {
+	position: relative;
+	margin: 0 5px;
+	height: 20px;
+	width: 20px;
+	border-radius: 50%;
+	border: 0;
+}
+.thumb-container .thumb.active {
+	filter: invert(1);
+}
+.thumb-container .thumb a {
+	position: relative;
+	width: 100%;
+	height: 100%;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.thumb-container .thumb IS {
+	position: relative;
+	width: 15px;
+	height: 15px;
+	display: block;
+	background-color: black;
+}
