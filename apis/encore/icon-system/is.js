@@ -22,8 +22,8 @@ class IS extends HTMLElement {
 
 		//	this.attachShadow({ mode: 'closed' });
 
-		this.style.display = 'none';
-		this.style.visibility = 'hidden';
+		this.#self.style.display = 'none';
+		this.#self.style.visibility = 'hidden';
 	}
 
 	#createMask(icon, custom) {
@@ -36,8 +36,8 @@ class IS extends HTMLElement {
 	}
 
 	#showIcon() {
-		this.style.display = null;
-		this.style.visibility = null;
+		this.#self.style.display = null;
+		this.#self.style.visibility = null;
 	}
 
 	connectedCallback() {
@@ -45,13 +45,13 @@ class IS extends HTMLElement {
 		const source = this.getAttribute('src');
 
 		if (!(name && source)) {
-			this.style.mask = this.#createMask('alert');
+			this.#self.style.mask = this.#createMask('alert');
 			this.#showIcon();
 			return;
 		}
 
 		if (name) {
-			this.style.mask = this.#createMask(name);
+			this.#self.style.mask = this.#createMask(name);
 			this.#showIcon();
 		}
 
@@ -60,15 +60,18 @@ class IS extends HTMLElement {
 
 			buffer.onload = () => {
 				if (fileExtention(source) === 'svg') {
-					this.style.mask = this.#createMask(source, true);
+					this.#self.style.mask = this.#createMask(source, true);
 				} else {
-					this.style.backgroundImage = this.#createMask(source, true);
+					this.#self.style.backgroundImage = this.#createMask(
+						source,
+						true,
+					);
 				}
 				this.#showIcon();
 			};
 
 			buffer.onerror = () => {
-				this.style.mask = this.#createMask('alert');
+				this.#self.style.mask = this.#createMask('alert');
 				this.#showIcon();
 			};
 
@@ -77,11 +80,11 @@ class IS extends HTMLElement {
 	}
 
 	disconnectedCallback() {
-		this.style.visibility = 'hidden';
+		this.#self.style.visibility = 'hidden';
 	}
 
 	connectedMoveCallback() {
-		this.style.visibility = 'visible';
+		this.#self.style.visibility = 'visible';
 	}
 
 	attributeChangedCallback(name, oldValue, newValue) {

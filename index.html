@@ -153,5 +153,31 @@
 
 		<script type="module" src="lib/js/IFrameManager.js"></script>
 		<script type="module" src="lib/js/index.js"></script>
+
+		<script type="module">
+			import {
+				jsonElementify,
+				jsonElementAppend,
+			} from './apis/encore/element-creator/ec.js';
+
+			let element = jsonElementify({
+				tag: 'div',
+				//onCreation: () => console.log('created'),
+			});
+
+			console.log(element);
+
+			element = jsonElementAppend(
+				element,
+				{
+					tag: 'span',
+				},
+				(json) => {
+					console.log(json);
+				},
+			);
+
+			console.log(element);
+		</script>
 	</body>
 </html>

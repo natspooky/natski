@@ -5,7 +5,7 @@ import Hooks from './hooks.js';
 
 export default class Collection {
 	#hooks;
-	#name;
+	#names;
 	#config;
 	#tests;
 	#collections;
@@ -13,8 +13,8 @@ export default class Collection {
 	#passed;
 	#failed;
 
-	constructor(name, config) {
-		this.#name = name;
+	constructor(config, ...names) {
+		this.#names = [...names];
 		this.#config = config;
 		this.#hooks = new Hooks();
 		this.#collections = [];
@@ -25,9 +25,9 @@ export default class Collection {
 	}
 
 	collection(name, callback) {
-		const collection = new Collection(name);
+		const collection = new Collection(config, ...[...this.#names, name]);
 		this.#collections.push(collection);
-		callback(collection); // , hooks
+		callback(collection);
 	}
 
 	get hooks() {

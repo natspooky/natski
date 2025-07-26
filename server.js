@@ -12,14 +12,16 @@ import terminalLink from 'terminal-link';
 import { join, extname as _extname } from 'path';
 import path from 'path';
 import { parse, fileURLToPath } from 'url';
-
+/*
 const tester = new SimpleTest();
 
-tester.collection('Dependencies', (collection) => {
-	collection.collection('Mobile Util', (test) => {
-		test.test('thing', (assert) => {});
+tester.collection('Dependencies', (test) => {
+	test.collection('Mobile Util', (test) => {
+		test.test('thing', (assert) => {
+			assert.true(true);
+		});
 	});
-	collection.collection('File Util', (test) => {});
+	test.collection('File Util', (test) => {});
 });
 
 tester.collection('Simple APIs', (collection) => {
@@ -33,7 +35,7 @@ tester.collection('ENCORE', (collection) => {
 	collection.collection('File Util', (test) => {});
 });
 
-tester.start();
+tester.start();*/
 
 const red = '\x1b[31m';
 const green = '\x1b[32m';

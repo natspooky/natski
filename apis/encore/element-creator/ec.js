@@ -152,10 +152,33 @@ function state(constructor) {
 	return [variable, setter];
 }*/
 
-function jsonElementAppend(element, elementData) {
-	if (element && element.nodeType === Node.ELEMENT_NODE) {
+function reportIn(e) {
+	var a = this.listenerInfo;
+	console.log(a);
+}
+
+HTMLElement.prototype.realAddEventListener =
+	HTMLElement.prototype.addEventListener;
+
+HTMLElement.prototype.addEventListener = (a, b, c) => {
+	this.realAddEventListener(a, reportIn, c);
+	this.realAddEventListener(a, b, c);
+	if (!this.listenerInfo) {
+		this.listenerInfo = new Array();
+	}
+	this.listenerInfo.push({
+		a: a,
+		b: b,
+		c: c,
+	});
+};
+
+function jsonElementAppend(element, elementData, callback) {
+	if (!(element.nodeType && element.nodeType === Node.ELEMENT_NODE)) {
 		throw new TypeError('Element provided is not a HTML Node');
 	}
+
+	return callback?.(destructureElementToJson(element));
 
 	if (elementData.innerHTML) {
 		element.innerHTML = elementData.innerHTML;
@@ -221,6 +244,54 @@ function jsonElementAppend(element, elementData) {
 	}
 
 	return element;
+}
+
+function destructureElementToJson(element) {
+	let json = {};
+
+	return console.log(listAllEventListeners());
+
+	const ev = window.getEventListeners(element);
+	if (Object.keys(ev).length !== 0) {
+		console.log(e, ev);
+	}
+
+	if (element.classList.length > 0) {
+	}
+}
+
+function listAllEventListeners() {
+	const allElements = Array.prototype.slice.call(
+		document.querySelectorAll('*'),
+	);
+	allElements.push(document);
+	allElements.push(window);
+
+	const types = [];
+
+	for (let ev in window) {
+		if (/^on/.test(ev)) types[types.length] = ev;
+	}
+
+	console.log(types);
+
+	let elements = [];
+	for (let i = 0; i < allElements.length; i++) {
+		const currentElement = allElements[i];
+		for (let j = 0; j < types.length; j++) {
+			if (typeof currentElement[types[j]] === 'function') {
+				elements.push({
+					node: currentElement,
+					type: types[j],
+					func: currentElement[types[j]].toString(),
+				});
+			}
+		}
+	}
+
+	return elements.sort(function (a, b) {
+		return a.type.localeCompare(b.type);
+	});
 }
 
 function useDeprecatedMethod(element, callback) {

@@ -10,7 +10,7 @@ export default class SimpleTest {
 	}
 
 	collection(name, callback) {
-		const collection = new Collection(name, this.#config);
+		const collection = new Collection(this.#config, name);
 		this.#collections.push(collection);
 		callback(collection);
 	}
