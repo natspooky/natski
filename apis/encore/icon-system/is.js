@@ -12,14 +12,15 @@ class IS extends HTMLElement {
 	static observedAttributes = ['name', 'src', 'width', 'height'];
 
 	#iconPath;
+	#self;
 
 	constructor() {
-		super();
+		this.#self = super();
 
 		this.#iconPath =
 			'https://natski.vercel.app/apis/encore/icon-system/dependencies/svg/?.svg';
 
-		this.attachShadow({ mode: 'closed' });
+		//	this.attachShadow({ mode: 'closed' });
 
 		this.style.display = 'none';
 		this.style.visibility = 'hidden';
