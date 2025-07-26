@@ -173,6 +173,44 @@ HTMLElement.prototype.addEventListener = (a, b, c) => {
 	});
 };*/
 
+function render(root, callback, settings) {
+	HTMLElement.prototype.realAddEventListener =
+		HTMLElement.prototype.addEventListener;
+
+	HTMLElement.prototype.addEventListener = (a, b, c) => {
+		this.realAddEventListener(a, reportIn, c);
+		this.realAddEventListener(a, b, c);
+		if (!this.listenerInfo) {
+			this.listenerInfo = new Array();
+		}
+		this.listenerInfo.push({
+			a: a,
+			b: b,
+			c: c,
+		});
+	};
+
+	if (settings?.useIcons) new IconSystem();
+
+	const rootType = typeof root;
+
+	let rootElement;
+
+	if (!(rootType === 'string' || rootType === 'Object'))
+		throw new TypeError('error');
+
+	if (true) {
+	}
+
+	rootElement = document.getElementById('root');
+
+	window.addEventListener('DOMContentLoaded', () => {
+		appendChildren(rootElement, callback());
+	});
+
+	//callback();
+}
+
 function jsonElementAppend(element, elementData, callback) {
 	if (!(element.nodeType && element.nodeType === Node.ELEMENT_NODE)) {
 		throw new TypeError('Element provided is not a HTML Node');
@@ -566,5 +604,6 @@ export {
 	elementAppended,
 	ComponentManager,
 	checkEvent,
+	render,
 	//state,
 };
