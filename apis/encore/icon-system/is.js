@@ -19,10 +19,10 @@ class IS extends HTMLElement {
 		this.#iconPath =
 			'https://natski.vercel.app/apis/encore/icon-system/dependencies/svg/?.svg';
 
-		this.attachShadow({ mode: 'open' });
+		this.attachShadow({ mode: 'closed' });
 
-		this.shadowRoot.style.display = 'none';
-		this.shadowRoot.style.visibility = 'hidden';
+		this.style.display = 'none';
+		this.style.visibility = 'hidden';
 	}
 
 	#createMask(icon, custom) {
@@ -35,8 +35,8 @@ class IS extends HTMLElement {
 	}
 
 	#showIcon() {
-		this.shadowRoot.style.display = null;
-		this.shadowRoot.style.visibility = null;
+		this.style.display = null;
+		this.style.visibility = null;
 	}
 
 	connectedCallback() {
@@ -44,13 +44,13 @@ class IS extends HTMLElement {
 		const source = this.getAttribute('src');
 
 		if (!(name && source)) {
-			this.shadowRoot.style.mask = this.#createMask('alert');
+			this.style.mask = this.#createMask('alert');
 			this.#showIcon();
 			return;
 		}
 
 		if (name) {
-			this.shadowRoot.style.mask = this.#createMask(name);
+			this.style.mask = this.#createMask(name);
 			this.#showIcon();
 		}
 
@@ -59,15 +59,15 @@ class IS extends HTMLElement {
 
 			buffer.onload = () => {
 				if (fileExtention(source) === 'svg') {
-					icon.style.mask = this.#createMask(source, true);
+					this.style.mask = this.#createMask(source, true);
 				} else {
-					icon.style.backgroundImage = this.#createMask(source, true);
+					this.style.backgroundImage = this.#createMask(source, true);
 				}
 				this.#showIcon();
 			};
 
 			buffer.onerror = () => {
-				icon.style.mask = this.#createMask('alert');
+				this.style.mask = this.#createMask('alert');
 				this.#showIcon();
 			};
 
@@ -76,11 +76,11 @@ class IS extends HTMLElement {
 	}
 
 	disconnectedCallback() {
-		this.shadowRoot.style.visibility = 'hidden';
+		this.style.visibility = 'hidden';
 	}
 
 	connectedMoveCallback() {
-		this.shadowRoot.style.visibility = 'visible';
+		this.style.visibility = 'visible';
 	}
 
 	attributeChangedCallback(name, oldValue, newValue) {
