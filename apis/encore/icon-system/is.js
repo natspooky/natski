@@ -8,61 +8,109 @@
 import { IS_DATA } from './dependencies/IS_DATA.js';
 import { fileExtention } from '../../dependencies/file-utils/fu.min.js';
 
-export default class IconSystem {
-	#observer;
+class IS extends HTMLElement {
+	static observedAttributes = ['name', 'src', 'width', 'height'];
+
+	#iconPath;
+
 	constructor() {
-		this.#observer = new MutationObserver(this.#mutations.bind(this));
-		this.setIcons(document.getElementsByTagName('IS'));
+		super();
+
+		this.#iconPath =
+			'https://natski.vercel.app/apis/encore/icon-system/dependencies/svg/?.svg';
+
+		this.attachShadow({ mode: 'open' });
+
+		this.shadowRoot.style.display = 'none';
+		this.shadowRoot.style.visibility = 'hidden';
 	}
 
-	observe(element) {
-		this.#observer.observe(element, {
-			childList: true,
-			subtree: true,
-		});
+	#createMask(icon, custom) {
+		if (!IS_DATA.includes(icon)) {
+			icon = 'alert';
+		}
+		return `url(${
+			custom ? icon : this.#iconPath.replace('?', icon)
+		}) no-repeat center`;
 	}
 
-	unObserve(element) {
-		this.#observer.unObserve(element);
+	#showIcon() {
+		this.shadowRoot.style.display = null;
+		this.shadowRoot.style.visibility = null;
 	}
 
-	setIcons(icons) {
-		for (const icon of icons) {
-			if (
-				icon.hasAttribute('name') &&
-				IS_DATA.includes(icon.getAttribute('name'))
-			) {
-				icon.style.mask = `url(https://natski.vercel.app/apis/encore/icon-system/dependencies/svg/${icon.getAttribute(
-					'name',
-				)}.svg) no-repeat center`;
-			} else if (icon.hasAttribute('src')) {
-				let buffer = new Image();
-				buffer.onload = () => {
-					if (fileExtention(icon.getAttribute('src')) === 'svg') {
-						icon.style.mask = `url(${icon.getAttribute(
-							'src',
-						)}) no-repeat center`;
-					} else {
-						icon.style.backgroundImage = `url(${icon.getAttribute(
-							'src',
-						)}) no-repeat center`;
-					}
-					icon.style.mask = `url(${icon.getAttribute(
-						'src',
-					)}) no-repeat center`;
-				};
-				buffer.onerror = () => {
-					icon.style.mask = `url(https://natski.vercel.app/apis/encore/icon-system/dependencies/svg/alert.svg) no-repeat center`;
-				};
-				buffer.src = icon.getAttribute('src');
-			} else {
-				icon.style.mask = `url(https://natski.vercel.app/apis/encore/icon-system/dependencies/svg/alert.svg) no-repeat center`;
-			}
-			icon.style.visibility = 'visible';
+	connectedCallback() {
+		const name = this.getAttribute('name');
+		const source = this.getAttribute('src');
+
+		if (!(name && source)) {
+			this.shadowRoot.style.mask = this.#createMask('alert');
+			this.#showIcon();
+			return;
+		}
+
+		if (name) {
+			this.shadowRoot.style.mask = this.#createMask(name);
+			this.#showIcon();
+		}
+
+		if (source) {
+			const buffer = new Image();
+
+			buffer.onload = () => {
+				if (fileExtention(source) === 'svg') {
+					icon.style.mask = this.#createMask(source, true);
+				} else {
+					icon.style.backgroundImage = this.#createMask(source, true);
+				}
+				this.#showIcon();
+			};
+
+			buffer.onerror = () => {
+				icon.style.mask = this.#createMask('alert');
+				this.#showIcon();
+			};
+
+			buffer.src = source;
 		}
 	}
 
-	#mutations() {
-		this.setIcons(document.getElementsByTagName('IS'));
+	disconnectedCallback() {
+		this.shadowRoot.style.visibility = 'hidden';
+	}
+
+	connectedMoveCallback() {
+		this.shadowRoot.style.visibility = 'visible';
+	}
+
+	attributeChangedCallback(name, oldValue, newValue) {
+		switch (name) {
+			case 'src':
+				break;
+			case 'name':
+				break;
+			case 'width':
+				break;
+			case 'height':
+				break;
+			default:
+				throw new Error('yeah idk how this happened');
+		}
+	}
+}
+
+export default class IconSystem {
+	#observer;
+
+	constructor() {
+		if (window.IconSystem) {
+			throw new Error(
+				'An instance of ENCORE Icon System is already running',
+			);
+		}
+
+		customElements.define('icon-system', IS);
+
+		window.IconSystem = this;
 	}
 }
