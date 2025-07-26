@@ -23,9 +23,10 @@ class IS extends HTMLElement {
 	}
 
 	#createMask(icon, custom) {
-		console.log(icon);
 		if (!IS_DATA.includes(icon) && !custom) {
-			console.log(icon);
+			console.warn(
+				`Icon ${icon} doesnt exist in the ENCORE Icon System database`,
+			);
 			icon = 'alert';
 		}
 		return `url(${
@@ -45,7 +46,7 @@ class IS extends HTMLElement {
 
 	connectedCallback() {
 		this.#hideIcon();
-		console.log('connected');
+
 		const name = this.getAttribute('name');
 		const source = this.getAttribute('src');
 
@@ -65,7 +66,6 @@ class IS extends HTMLElement {
 			const buffer = new Image();
 
 			buffer.onload = () => {
-				console.log('loaded');
 				if (fileExtention(source) === 'svg') {
 					this.#self.style.mask = this.#createMask(source, true);
 				} else {
@@ -78,7 +78,7 @@ class IS extends HTMLElement {
 			};
 
 			buffer.onerror = () => {
-				console.log('errored');
+				console.warn(`404: ${source} not found`);
 				this.#self.style.mask = this.#createMask('alert');
 				this.#showIcon();
 			};
@@ -122,8 +122,6 @@ export default class IconSystem {
 		}
 
 		customElements.define('icon-system', IS);
-
-		console.log('started');
 
 		window.IconSystem = this;
 	}
