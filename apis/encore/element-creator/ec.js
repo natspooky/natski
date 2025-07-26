@@ -5,6 +5,8 @@
 /* How to use? : Check the GitHub README or visit https://natski.net/apis/encore/element-creator
 /* ----------------------------------------------- */
 
+import IconSystem from '../icon-system/is.js';
+
 function jsonElementify(elementData) {
 	if (Array.isArray(elementData)) {
 		const arr = [];
@@ -157,23 +159,11 @@ function reportIn(e) {
 	console.log(a);
 }
 
-HTMLElement.prototype.realAddEventListener =
-	HTMLElement.prototype.addEventListener;
-
-HTMLElement.prototype.addEventListener = (a, b, c) => {
-	this.realAddEventListener(a, reportIn, c);
-	this.realAddEventListener(a, b, c);
-	if (!this.listenerInfo) {
-		this.listenerInfo = new Array();
-	}
-	this.listenerInfo.push({
-		a: a,
-		b: b,
-		c: c,
-	});
-};*/
+*/
 
 function render(root, callback, settings) {
+	let bootTimer;
+	/*
 	HTMLElement.prototype.realAddEventListener =
 		HTMLElement.prototype.addEventListener;
 
@@ -188,7 +178,7 @@ function render(root, callback, settings) {
 			b: b,
 			c: c,
 		});
-	};
+	};*/
 
 	if (settings?.useIcons) new IconSystem();
 
@@ -196,19 +186,39 @@ function render(root, callback, settings) {
 
 	let rootElement;
 
-	if (!(rootType === 'string' || rootType === 'Object'))
-		throw new TypeError('error');
+	if (!(rootType === 'string' || rootType === 'object'))
+		throw new TypeError(
+			'Provided root element is not an element ID or a HTMLElement',
+		);
 
-	if (true) {
+	if (rootType === 'string') {
+		rootElement = document.getElementById(root);
+		if (!rootElement) {
+			throw new Error(
+				'Provided root element does not exist in the document',
+			);
+		}
 	}
 
-	rootElement = document.getElementById('root');
+	if (rootType === 'object') rootElement = root;
 
 	window.addEventListener('DOMContentLoaded', () => {
-		appendChildren(rootElement, callback());
+		let time = performance.now();
+		appendChildren(rootElement, jsonElementify(callback()));
+		encoreConsole(
+			`render complete in ${((performance.now() - time) * 100).toFixed(
+				0,
+			)}ms`,
+		);
 	});
+}
 
-	//callback();
+function encoreConsole(message) {
+	console.log(
+		`%cENCORE%c ${message}`,
+		'font-weight: bold; color: #8564ffff; background-color: black; padding: 0 5px; border-radius: 7px',
+		'font-weight: normal;',
+	);
 }
 
 function jsonElementAppend(element, elementData, callback) {
@@ -287,7 +297,7 @@ function jsonElementAppend(element, elementData, callback) {
 function destructureElementToJson(element) {
 	let json = {};
 
-	return console.log(listAllEventListeners());
+	return; //console.log(listAllEventListeners());
 
 	const ev = window.getEventListeners(element);
 	if (Object.keys(ev).length !== 0) {

@@ -35,16 +35,14 @@ class IS extends HTMLElement {
 	}
 
 	#showIcon() {
-		this.#self.style.display = null;
-		this.#self.style.visibility = null;
+		this.#self.removeAttribute('hidden');
 	}
 
 	#hideIcon() {
-		this.#self.style.display = 'none';
-		this.#self.style.visibility = 'hidden';
+		this.#self.setAttribute('hidden', '');
 	}
 
-	connectedCallback() {
+	#scanIcon() {
 		this.#hideIcon();
 
 		const name = this.getAttribute('name');
@@ -87,42 +85,39 @@ class IS extends HTMLElement {
 		}
 	}
 
+	connectedCallback() {
+		this.#scanIcon();
+	}
+
 	disconnectedCallback() {
-		this.#self.style.visibility = 'hidden';
+		this.#hideIcon();
 	}
 
 	connectedMoveCallback() {
-		this.#self.style.visibility = 'visible';
+		this.#showIcon();
 	}
 
 	attributeChangedCallback(name, oldValue, newValue) {
 		switch (name) {
 			case 'src':
-				break;
 			case 'name':
+				this.#scanIcon();
 				break;
 			case 'width':
 				break;
 			case 'height':
 				break;
 			default:
-				throw new Error('yeah idk how this happened');
+				throw new Error('FATAL ERROR');
 		}
 	}
 }
 
 export default class IconSystem {
-	#observer;
-
 	constructor() {
-		if (window.IconSystem) {
-			throw new Error(
-				'An instance of ENCORE Icon System is already running',
-			);
+		if (!window.IconSystem) {
+			customElements.define('icon-system', IS);
+			window.IconSystem = this;
 		}
-
-		customElements.define('icon-system', IS);
-
-		window.IconSystem = this;
 	}
 }
