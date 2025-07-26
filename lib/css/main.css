@@ -257,7 +257,7 @@ main {
 	transition: 0.2s;
 }
 
-.icon-button IS {
+.icon-button icon-system {
 	position: relative;
 	width: 18px;
 	height: 18px;
@@ -285,7 +285,7 @@ main {
 	box-shadow: 0 2px 40px -4px var(--input-focus);
 }
 
-.icon-button:hover IS {
+.icon-button:hover icon-system {
 	background-color: var(--input-active);
 }
 

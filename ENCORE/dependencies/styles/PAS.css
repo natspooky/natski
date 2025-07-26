@@ -46,7 +46,7 @@
 	margin-bottom: 10px;
 	align-items: center;
 }
-.PAS-popup div GIS {
+.PAS-popup div Gicon-system {
 	position: relative;
 	display: block;
 	width: 25px;
@@ -231,7 +231,7 @@
 	margin-left: 5px;
 	height: 40px;
 }
-.PAS-popup div button GIS {
+.PAS-popup div button Gicon-system {
 	position: relative;
 	width: 20px;
 	height: 20px;

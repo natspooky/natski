@@ -45,7 +45,7 @@ span.left .widget + .widget {
 	text-decoration: none;
 }
 
-.widget-button IS {
+.widget-button icon-system {
 	position: relative;
 	width: 100%;
 	height: 100%;
@@ -55,11 +55,11 @@ span.left .widget + .widget {
 	transition: transform 0.1s;
 }
 
-.widget-button:hover IS {
+.widget-button:hover icon-system {
 	background-color: var(--text-secondary);
 }
 
-.widget-button:active IS {
+.widget-button:active icon-system {
 	transform: scale(0.9);
 	transition: transform 0s;
 }
@@ -96,7 +96,7 @@ span.left .widget + .widget {
 	border-radius: 23px;
 	border: 1px dashed var(--accent);
 }
-.widget-dropper IS {
+.widget-dropper icon-system {
 	position: relative;
 	width: 20px;
 	height: 20px;
@@ -129,7 +129,7 @@ span.left .widget + .widget {
 	border-radius: 13px;
 }
 
-.widget-icon-system section IS {
+.widget-icon-system section icon-system {
 	position: relative;
 	width: 20px;
 	height: 20px;
@@ -149,7 +149,7 @@ span.left .widget + .widget {
 	background-color: transparent;
 	cursor: pointer;
 }
-.widget-icon-system button IS {
+.widget-icon-system button icon-system {
 	position: relative;
 	width: 15px;
 	height: 15px;
@@ -161,7 +161,7 @@ span.left .widget + .widget {
 	color: var(--text-tertiary);
 }
 
-.widget-icon-system button:hover IS {
+.widget-icon-system button:hover icon-system {
 	background-color: var(--accent);
 }
 .widget-icon-system button:hover p {

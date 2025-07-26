@@ -7,7 +7,7 @@
 import { values } from 'https://natski.netlify.app/ENCORE/dependencies/ENCORE_GIS_DATASET.mjs';
 import * as DP from 'https://natski.netlify.app/ENCORE/dependencies/ENCORE_DP.mjs';
 
-export default class GIS {
+export default class Gicon-system {
 	#observer;
 	constructor() {
 		this.#observer = new MutationObserver(this.#mutations.bind(this));

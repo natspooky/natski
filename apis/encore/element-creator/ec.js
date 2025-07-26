@@ -150,7 +150,7 @@ function state(constructor) {
 	};
 
 	return [variable, setter];
-}*/
+}
 
 function reportIn(e) {
 	var a = this.listenerInfo;
@@ -171,7 +171,7 @@ HTMLElement.prototype.addEventListener = (a, b, c) => {
 		b: b,
 		c: c,
 	});
-};
+};*/
 
 function jsonElementAppend(element, elementData, callback) {
 	if (!(element.nodeType && element.nodeType === Node.ELEMENT_NODE)) {

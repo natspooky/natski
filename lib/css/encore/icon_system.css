@@ -34,7 +34,7 @@
 .icon-grid span input::placeholder {
 	color: var(--text-tertiary);
 }
-.icon-grid span IS {
+.icon-grid span icon-system {
 	position: relative;
 	flex-shrink: 0;
 	height: 15px;
@@ -79,7 +79,7 @@
 .icon-grid section button.hidden {
 	display: none;
 }
-.icon-grid section button IS {
+.icon-grid section button icon-system {
 	position: relative;
 	width: 25px;
 	height: 25px;

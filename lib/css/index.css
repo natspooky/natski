@@ -113,7 +113,7 @@ nav .IS-container {
 	margin: 0 11px 0 11px;
 }
 
-nav .IS-container IS {
+nav .IS-container icon-system {
 	position: absolute;
 	width: inherit;
 	height: inherit;
@@ -289,7 +289,7 @@ nav.right:not(.left)::before {
 	transition: transform 0.2s, opacity 0.2s;
 }
 
-.article .icon-container IS {
+.article .icon-container icon-system {
 	position: relative;
 	width: 50px;
 	height: 50px;
@@ -349,7 +349,7 @@ nav.right:not(.left)::before {
 	position: relative;
 	color: var(--text-tertiary);
 }
-.article .button-container button IS {
+.article .button-container button icon-system {
 	position: relative;
 	display: block;
 	height: 13px;
@@ -358,7 +358,7 @@ nav.right:not(.left)::before {
 	background-color: var(--text-tertiary);
 }
 
-.article .button-container button:first-of-type IS {
+.article .button-container button:first-of-type icon-system {
 	margin-left: 0;
 	margin-right: 7px;
 }
@@ -405,7 +405,7 @@ nav.right:not(.left)::before {
 		opacity: 0.5;
 		transition: transform 0.7s, opacity 0.7s;
 	}
-	.article:hover .icon-container IS {
+	.article:hover .icon-container icon-system {
 		transform: scale(1.2);
 		background-color: var(--accent);
 		transition: transform 0.7s, background-color 0.7s;

@@ -15,19 +15,17 @@ class IS extends HTMLElement {
 	#self;
 
 	constructor() {
-		this.#self = super();
+		let self = super();
 
+		this.#self = self;
 		this.#iconPath =
 			'https://natski.vercel.app/apis/encore/icon-system/dependencies/svg/?.svg';
-
-		//	this.attachShadow({ mode: 'closed' });
-
-		this.#self.style.display = 'none';
-		this.#self.style.visibility = 'hidden';
 	}
 
 	#createMask(icon, custom) {
-		if (!IS_DATA.includes(icon)) {
+		console.log(icon);
+		if (!IS_DATA.includes(icon) && !custom) {
+			console.log(icon);
 			icon = 'alert';
 		}
 		return `url(${
@@ -40,11 +38,18 @@ class IS extends HTMLElement {
 		this.#self.style.visibility = null;
 	}
 
+	#hideIcon() {
+		this.#self.style.display = 'none';
+		this.#self.style.visibility = 'hidden';
+	}
+
 	connectedCallback() {
+		this.#hideIcon();
+		console.log('connected');
 		const name = this.getAttribute('name');
 		const source = this.getAttribute('src');
 
-		if (!(name && source)) {
+		if (!name && !source) {
 			this.#self.style.mask = this.#createMask('alert');
 			this.#showIcon();
 			return;
@@ -53,12 +58,14 @@ class IS extends HTMLElement {
 		if (name) {
 			this.#self.style.mask = this.#createMask(name);
 			this.#showIcon();
+			return;
 		}
 
 		if (source) {
 			const buffer = new Image();
 
 			buffer.onload = () => {
+				console.log('loaded');
 				if (fileExtention(source) === 'svg') {
 					this.#self.style.mask = this.#createMask(source, true);
 				} else {
@@ -71,6 +78,7 @@ class IS extends HTMLElement {
 			};
 
 			buffer.onerror = () => {
+				console.log('errored');
 				this.#self.style.mask = this.#createMask('alert');
 				this.#showIcon();
 			};
@@ -114,6 +122,8 @@ export default class IconSystem {
 		}
 
 		customElements.define('icon-system', IS);
+
+		console.log('started');
 
 		window.IconSystem = this;
 	}

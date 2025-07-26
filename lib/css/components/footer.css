@@ -21,7 +21,7 @@ footer p {
 	color: var(--text-tertiary);
 }
 
-footer button IS {
+footer button icon-system {
 	position: relative;
 	width: 15px;
 	height: 15px;
@@ -89,7 +89,7 @@ footer h1 {
 }
 
 @media (hover: hover) {
-	footer button:hover IS {
+	footer button:hover icon-system {
 		background-color: var(--text-secondary);
 	}
 	footer button:hover p {
