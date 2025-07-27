@@ -271,6 +271,8 @@ nav.right:not(.left)::before {
 	transition: transform 0.2s, box-shadow 0.2s;
 }
 .article a {
+	height: 100%;
+	width: 100%;
 	text-decoration: none;
 }
 .article .icon-container {

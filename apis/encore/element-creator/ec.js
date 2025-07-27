@@ -177,12 +177,19 @@ function render(root, callback, settings) {
 
 	if (rootType === 'object') rootElement = root;
 
-	let time = performance.now();
-	appendChildren(rootElement, jsonElementify(callback()));
+	const buildElements = () => {
+		let time = performance.now();
+		//if()
+		appendChildren(rootElement, jsonElementify(callback()));
 
-	encoreConsole([
-		`Render complete in ${((performance.now() - time) * 100).toFixed(0)}ms`,
-	]);
+		encoreConsole([
+			`Render complete in ${((performance.now() - time) * 100).toFixed(
+				0,
+			)}ms`,
+		]);
+	};
+
+	window.addEventListener('DOMContentLoaded', buildElements);
 }
 
 function encoreConsole(message) {

@@ -1,13 +1,9 @@
-import SimpleTest from './apis/simple/simple-test/core/simpleTest.js';
+//import SimpleTest from './apis/simple/simple-test/core/simpleTest.js';
 import { MIME } from './apis/dependencies/file-utils/fu.min.js';
+import { index } from './lib/js/data/page_index.js';
 import { createServer } from 'http';
 import { StatusCodes } from 'http-status-codes';
-import {
-	existsSync,
-	stat as _stat,
-	readFile as _readFile,
-	readdir as _readdir,
-} from 'fs';
+import { existsSync, stat as _stat, readFile as _readFile } from 'fs';
 import terminalLink from 'terminal-link';
 import { join, extname as _extname } from 'path';
 import path from 'path';
@@ -111,7 +107,7 @@ function message(state, time, file_path) {
 	);
 }
 
-const handleError = (res) => {
+const handleError = () => {
 	console.log('errored');
 };
 
@@ -122,3 +118,25 @@ httpServer.listen(portNumber, () => {
 
 	console.log(`Server is running on port ${link}`);
 });
+
+function HTMLHead({ title, description, keywords }) {
+	const meta = [];
+
+	return `<head>${meta.join('')}</head>`;
+}
+
+function HTMLBody() {
+	const content = [];
+
+	const root = `<main id="root"></main>`;
+
+	return `<body>${content.join('')}</body>`;
+}
+
+function generateHTML() {
+	`<!DOCTYPE html>
+	'<html>
+	${HTMLHead({})}
+	${HTMLBody({})}
+	</html>`;
+}
