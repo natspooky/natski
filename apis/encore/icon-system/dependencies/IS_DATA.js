@@ -123,3 +123,5 @@ export const IS_DATA = [
 	'NATSKI',
 	'ARC',
 ];
+
+export default IS_DATA;

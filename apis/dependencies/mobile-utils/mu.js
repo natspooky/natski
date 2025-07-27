@@ -4,6 +4,8 @@
 /* How to use? : Visit https://natski.dev/dependencies/mobile-utils
 /* ----------------------------------------------- */
 
+/* eslint-disable no-useless-escape */
+
 export function isMobile() {
 	let agent = navigator.userAgent || navigator.vendor || window.opera;
 	return (

@@ -7,6 +7,22 @@
 
 import IconSystem from '../icon-system/is.js';
 
+HTMLElement.prototype.linkEvent = function (name, callback, options) {
+	this.addEventListener(name, callback, options);
+	if (!this.listenerInfo) {
+		this.listenerInfo = new Array();
+	}
+	this.listenerInfo.push({
+		name,
+		callback,
+		options,
+	});
+};
+
+HTMLElement.prototype.getEventListeners = function () {
+	return this.listenerInfo;
+};
+
 function jsonElementify(elementData) {
 	if (Array.isArray(elementData)) {
 		const arr = [];
@@ -90,14 +106,14 @@ function jsonElementify(elementData) {
 
 			if (Array.isArray(event)) {
 				event.forEach((eventData) => {
-					element.addEventListener(
+					element.linkEvent(
 						eventType,
 						functionType(eventData, element),
 						eventData.options,
 					);
 				});
 			} else {
-				element.addEventListener(
+				element.linkEvent(
 					eventType,
 					functionType(event, element),
 					event.options,
@@ -138,49 +154,16 @@ function checkEvent(eventName) {
 	return isSupported;
 }
 
-/*
-function state(constructor) {
-	const data = {
-		value: constructor,
-	};
-	const variable = () => {
-		return data.value;
-	};
-
-	const setter = (value) => {
-		data.value = value;
-	};
-
-	return [variable, setter];
-}
-
-function reportIn(e) {
-	var a = this.listenerInfo;
-	console.log(a);
-}
-
-*/
-
 function render(root, callback, settings) {
-	let bootTimer;
-	/*
-	HTMLElement.prototype.realAddEventListener =
-		HTMLElement.prototype.addEventListener;
-
-	HTMLElement.prototype.addEventListener = (a, b, c) => {
-		this.realAddEventListener(a, reportIn, c);
-		this.realAddEventListener(a, b, c);
-		if (!this.listenerInfo) {
-			this.listenerInfo = new Array();
-		}
-		this.listenerInfo.push({
-			a: a,
-			b: b,
-			c: c,
-		});
-	};*/
-
 	if (settings?.useIcons) new IconSystem();
+
+	const pageAccessedByReload =
+		(window.performance.navigation &&
+			window.performance.navigation.type === 1) ||
+		window.performance
+			.getEntriesByType('navigation')
+			.map((nav) => nav.type)
+			.includes('reload');
 
 	const rootType = typeof root;
 
@@ -202,23 +185,28 @@ function render(root, callback, settings) {
 
 	if (rootType === 'object') rootElement = root;
 
-	window.addEventListener('DOMContentLoaded', () => {
-		let time = performance.now();
-		appendChildren(rootElement, jsonElementify(callback()));
-		encoreConsole(
-			`render complete in ${((performance.now() - time) * 100).toFixed(
-				0,
-			)}ms`,
-		);
-	});
+	let time = performance.now();
+	appendChildren(rootElement, jsonElementify(callback()));
+
+	encoreConsole([
+		pageAccessedByReload ? 'Rerendering' : null,
+		`Render complete in ${((performance.now() - time) * 100).toFixed(0)}ms`,
+	]);
 }
 
 function encoreConsole(message) {
-	console.log(
-		`%cENCORE%c ${message}`,
-		'font-weight: bold; color: #8564ffff; background-color: black; padding: 0 5px; border-radius: 7px',
-		'font-weight: normal;',
-	);
+	if (!Array.isArray(message)) {
+		message = [message];
+	}
+
+	message.forEach((single) => {
+		if (!single) return;
+		console.log(
+			`%cENCORE%c ${single}`,
+			'font-weight: bold; color: #8564ff; background-color: black; padding: 0 5px; border-radius: 7px; border: 1px solid #8564ff',
+			'font-weight: normal;',
+		);
+	});
 }
 
 function jsonElementAppend(element, elementData, callback) {
@@ -226,7 +214,7 @@ function jsonElementAppend(element, elementData, callback) {
 		throw new TypeError('Element provided is not a HTML Node');
 	}
 
-	return callback?.(destructureElementToJson(element));
+	callback?.(destructureElementToJson(element));
 
 	if (elementData.innerHTML) {
 		element.innerHTML = elementData.innerHTML;
@@ -297,49 +285,11 @@ function jsonElementAppend(element, elementData, callback) {
 function destructureElementToJson(element) {
 	let json = {};
 
-	return; //console.log(listAllEventListeners());
+	json.tag = element.tagName;
 
-	const ev = window.getEventListeners(element);
-	if (Object.keys(ev).length !== 0) {
-		console.log(e, ev);
-	}
+	if (element.classList.length > 0) json.classes = element.classList;
 
-	if (element.classList.length > 0) {
-	}
-}
-
-function listAllEventListeners() {
-	const allElements = Array.prototype.slice.call(
-		document.querySelectorAll('*'),
-	);
-	allElements.push(document);
-	allElements.push(window);
-
-	const types = [];
-
-	for (let ev in window) {
-		if (/^on/.test(ev)) types[types.length] = ev;
-	}
-
-	console.log(types);
-
-	let elements = [];
-	for (let i = 0; i < allElements.length; i++) {
-		const currentElement = allElements[i];
-		for (let j = 0; j < types.length; j++) {
-			if (typeof currentElement[types[j]] === 'function') {
-				elements.push({
-					node: currentElement,
-					type: types[j],
-					func: currentElement[types[j]].toString(),
-				});
-			}
-		}
-	}
-
-	return elements.sort(function (a, b) {
-		return a.type.localeCompare(b.type);
-	});
+	return json;
 }
 
 function useDeprecatedMethod(element, callback) {
@@ -486,7 +436,7 @@ class ComponentManager {
 	}
 
 	getAllComponents() {
-		return Object.entries(this.#components).map(([_, element]) => {
+		return Object.entries(this.#components).map(([, element]) => {
 			return element;
 		});
 	}
@@ -511,7 +461,7 @@ class ComponentManager {
 	}
 
 	removeAllComponents() {
-		Object.entries(this.#components).forEach(([ID, _]) =>
+		Object.entries(this.#components).forEach(([ID]) =>
 			this.removeComponent(ID),
 		);
 	}
@@ -597,7 +547,7 @@ class ComponentManager {
 
 	// VERY useless 100% remove unless i can find a usecase
 	get componentIDs() {
-		return Object.entries(this.#components).map(([ID, _]) => {
+		return Object.entries(this.#components).map(([ID]) => {
 			return ID;
 		});
 	}

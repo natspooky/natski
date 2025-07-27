@@ -35,11 +35,11 @@ class IS extends HTMLElement {
 	}
 
 	#showIcon() {
-		this.#self.removeAttribute('hidden');
+		this.#self.style.display = null;
 	}
 
 	#hideIcon() {
-		this.#self.setAttribute('hidden', '');
+		this.#self.style.display = 'none';
 	}
 
 	#scanIcon() {
@@ -98,6 +98,7 @@ class IS extends HTMLElement {
 	}
 
 	attributeChangedCallback(name, oldValue, newValue) {
+		oldValue = newValue;
 		switch (name) {
 			case 'src':
 			case 'name':

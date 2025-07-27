@@ -145,7 +145,7 @@
 			<h1>Recent work</h1>
 		</section>
 -->
-		<main></main>
+		<main id="root"></main>
 
 		<div class="embedded-frame" id="embedded-frame">
 			<iframe id="iframe"></iframe>
@@ -153,31 +153,5 @@
 
 		<script type="module" src="lib/js/IFrameManager.js"></script>
 		<script type="module" src="lib/js/index.js"></script>
-
-		<script type="module">
-			import {
-				jsonElementify,
-				jsonElementAppend,
-			} from './apis/encore/element-creator/ec.js';
-
-			let element = jsonElementify({
-				tag: 'div',
-				//onCreation: () => console.log('created'),
-			});
-
-			console.log(element);
-
-			element = jsonElementAppend(
-				element,
-				{
-					tag: 'span',
-				},
-				(json) => {
-					console.log(json);
-				},
-			);
-
-			console.log(element);
-		</script>
 	</body>
 </html>
