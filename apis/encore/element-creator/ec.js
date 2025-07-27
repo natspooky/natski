@@ -7,22 +7,6 @@
 
 import IconSystem from '../icon-system/is.js';
 
-HTMLElement.prototype.linkEvent = function (name, callback, options) {
-	this.addEventListener(name, callback, options);
-	if (!this.listenerInfo) {
-		this.listenerInfo = new Array();
-	}
-	this.listenerInfo.push({
-		name,
-		callback,
-		options,
-	});
-};
-
-HTMLElement.prototype.getEventListeners = function () {
-	return this.listenerInfo;
-};
-
 function jsonElementify(elementData) {
 	if (Array.isArray(elementData)) {
 		const arr = [];
@@ -155,15 +139,23 @@ function checkEvent(eventName) {
 }
 
 function render(root, callback, settings) {
-	if (settings?.useIcons) new IconSystem();
+	HTMLElement.prototype.linkEvent = function (name, callback, options) {
+		this.addEventListener(name, callback, options);
+		if (!this.listenerInfo) {
+			this.listenerInfo = new Array();
+		}
+		this.listenerInfo.push({
+			name,
+			callback,
+			options,
+		});
+	};
 
-	const pageAccessedByReload =
-		(window.performance.navigation &&
-			window.performance.navigation.type === 1) ||
-		window.performance
-			.getEntriesByType('navigation')
-			.map((nav) => nav.type)
-			.includes('reload');
+	HTMLElement.prototype.getEventListeners = function () {
+		return this.listenerInfo;
+	};
+
+	if (settings?.useIcons) new IconSystem();
 
 	const rootType = typeof root;
 
@@ -189,7 +181,6 @@ function render(root, callback, settings) {
 	appendChildren(rootElement, jsonElementify(callback()));
 
 	encoreConsole([
-		pageAccessedByReload ? 'Rerendering' : null,
 		`Render complete in ${((performance.now() - time) * 100).toFixed(0)}ms`,
 	]);
 }
@@ -210,9 +201,8 @@ function encoreConsole(message) {
 }
 
 function jsonElementAppend(element, elementData, callback) {
-	if (!(element.nodeType && element.nodeType === Node.ELEMENT_NODE)) {
+	if (!(element.nodeType && element.nodeType === Node.ELEMENT_NODE))
 		throw new TypeError('Element provided is not a HTML Node');
-	}
 
 	callback?.(destructureElementToJson(element));
 
