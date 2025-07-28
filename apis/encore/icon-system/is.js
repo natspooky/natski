@@ -7,6 +7,7 @@
 
 import { IS_DATA } from './dependencies/IS_DATA.js';
 import { fileExtention } from '../../dependencies/file-utils/fu.min.js';
+import encoreConsole from '../dependencies/encoreConsole.js';
 
 class IS extends HTMLElement {
 	static observedAttributes = ['name', 'src', 'width', 'height'];
@@ -24,9 +25,13 @@ class IS extends HTMLElement {
 
 	#createMask(icon, custom) {
 		if (!IS_DATA.includes(icon) && !custom) {
-			console.warn(
-				`Icon ${icon} doesnt exist in the ENCORE Icon System database`,
+			encoreConsole(
+				[
+					`WARNING:\n\n%cIcon '${icon}' doesn't exist in the Icon System database%c`,
+				],
+				'warn',
 			);
+
 			icon = 'alert';
 		}
 		return `url(${
@@ -76,7 +81,10 @@ class IS extends HTMLElement {
 			};
 
 			buffer.onerror = () => {
-				console.warn(`404: ${source} not found`);
+				encoreConsole(
+					[`WARNING:\n\n%c404: '${source}' not found%c`],
+					'warn',
+				);
 				this.#self.style.mask = this.#createMask('alert');
 				this.#showIcon();
 			};
