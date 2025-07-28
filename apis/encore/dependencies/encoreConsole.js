@@ -7,12 +7,12 @@ export default function encoreConsole(message, type) {
 		switch (type) {
 			case 'error':
 				return [
-					'background-color: black; padding: 3px 5px; border-radius: 7px; border: 1px solid red',
+					'background-color: #ff000049; padding: 3px 5px; border-radius: 7px;',
 					'font-weight: normal;',
 				];
 			case 'warn':
 				return [
-					'background-color: black; padding: 3px 5px; border-radius: 7px; border: 1px solid yellow',
+					'background-color: #e5ff003a; padding: 3px 5px; border-radius: 7px;',
 					'font-weight: normal;',
 				];
 			default:
