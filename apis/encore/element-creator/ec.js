@@ -15,7 +15,8 @@ function jsonElementify(elementData) {
 		const arr = [];
 
 		elementData.forEach((element) => {
-			arr.push(jsonElementify(element));
+			if (checkForKeys(element) || element.nodeType)
+				arr.push(jsonElementify(element));
 		});
 
 		return arr;
@@ -391,6 +392,10 @@ function className(classes, ...extraClasses) {
 	});
 
 	return classes;
+}
+
+function checkForKeys(obj) {
+	return Object.keys(obj).length !== 0 && obj.constructor === Object;
 }
 
 class ComponentManager {
