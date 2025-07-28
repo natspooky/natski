@@ -184,14 +184,14 @@ function render(root, callback, settings) {
 
 		try {
 			appendChildren(rootElement, jsonElementify(callback()));
-			encoreConsole([
-				`Render complete in ${(
+			encoreConsole({
+				message: `Render complete in ${(
 					(performance.now() - time) *
 					100
 				).toFixed(0)}ms`,
-			]);
+			});
 		} catch (err) {
-			encoreConsole(`Render failed:\n\n%c${err}%c`, 'error');
+			encoreConsole({ message: 'Render failed:', error: err });
 		}
 	};
 

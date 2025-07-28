@@ -25,12 +25,10 @@ class IS extends HTMLElement {
 
 	#createMask(icon, custom) {
 		if (!IS_DATA.includes(icon) && !custom) {
-			encoreConsole(
-				[
-					`WARNING:\n\n%cIcon '${icon}' doesn't exist in the Icon System database%c`,
-				],
-				'warn',
-			);
+			encoreConsole({
+				error: `Icon System icon '${icon}' doesn't exist`,
+				message: `Icon load error:`,
+			});
 
 			icon = 'alert';
 		}
@@ -81,10 +79,10 @@ class IS extends HTMLElement {
 			};
 
 			buffer.onerror = () => {
-				encoreConsole(
-					[`WARNING:\n\n%c404: '${source}' not found%c`],
-					'warn',
-				);
+				encoreConsole({
+					message: 'Icon load error:',
+					error: `Custom icon '${source}' doesn't exist`,
+				});
 				this.#self.style.mask = this.#createMask('alert');
 				this.#showIcon();
 			};
