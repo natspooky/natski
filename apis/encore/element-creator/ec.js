@@ -15,9 +15,7 @@ function jsonElementify(elementData) {
 		const arr = [];
 
 		elementData.forEach((element) => {
-			if (checkForKeys(element)) {
-				arr.push(jsonElementify(element));
-			}
+			arr.push(jsonElementify(element));
 		});
 
 		return arr;
@@ -329,10 +327,6 @@ function elementAppended(element, callback) {
 		childList: true,
 		subtree: true,
 	});
-}
-
-function checkForKeys(obj) {
-	return Object.keys(obj).length !== 0 && obj.constructor === Object;
 }
 
 function functionType(event, element) {
