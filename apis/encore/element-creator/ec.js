@@ -320,15 +320,17 @@ function elementAppended(element, callback) {
 	if (!MutationObserver) return useDeprecatedMethod(element, callback);
 
 	const observer = new MutationObserver((mutations) => {
-		if (mutations[0].addedNodes.length === 0) return;
-		if (
-			Array.from(mutations[0].addedNodes).filter((node) =>
-				node.contains(element),
-			).length === 0
-		)
-			return;
-		observer.disconnect();
-		callback(element);
+		mutations.forEach((mutation) => {
+			if (mutation.addedNodes.length === 0) return;
+			if (
+				Array.from(mutation.addedNodes).filter((node) =>
+					node.contains(element),
+				).length === 0
+			)
+				return;
+			observer.disconnect();
+			callback(element);
+		});
 	});
 
 	observer.observe(document.body, {
