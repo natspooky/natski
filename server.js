@@ -1,6 +1,6 @@
 //import SimpleTest from './apis/simple/simple-test/core/simpleTest.js';
 import { MIME } from './apis/dependencies/file-utils/fu.min.js';
-import { index } from './lib/js/data/page_index.js';
+
 import { createServer } from 'http';
 import { StatusCodes } from 'http-status-codes';
 import { existsSync, stat as _stat, readFile as _readFile } from 'fs';
@@ -114,29 +114,7 @@ const handleError = () => {
 httpServer.listen(portNumber, () => {
 	let link = terminalLink(portNumber, `http://localhost:${portNumber}`);
 	console.clear();
-	console.log('Starting ENCORE server dependencies...');
+	console.log('Starting ENCORE dependencies...');
 
 	console.log(`Server is running on port ${link}`);
 });
-
-function HTMLHead({ title, description, keywords }) {
-	const meta = [];
-
-	return `<head>${meta.join('')}</head>`;
-}
-
-function HTMLBody() {
-	const content = [];
-
-	const root = `<main id="root"></main>`;
-
-	return `<body>${content.join('')}</body>`;
-}
-
-function generateHTML() {
-	`<!DOCTYPE html>
-	'<html>
-	${HTMLHead({})}
-	${HTMLBody({})}
-	</html>`;
-}

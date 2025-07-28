@@ -35,11 +35,11 @@ class IS extends HTMLElement {
 	}
 
 	#showIcon() {
-		this.#self.style.display = null;
+		this.#self.style.visibility = null;
 	}
 
 	#hideIcon() {
-		this.#self.style.display = 'none';
+		this.#self.style.visibility = 'hidden';
 	}
 
 	#scanIcon() {
@@ -119,6 +119,9 @@ export default class IconSystem {
 		if (!window.IconSystem) {
 			customElements.define('icon-system', IS);
 			window.IconSystem = this;
+			return;
 		}
+
+		// throw new Error('An instance of Icon System is already active');
 	}
 }

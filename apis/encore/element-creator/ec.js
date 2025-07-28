@@ -5,7 +5,7 @@
 /* How to use? : Check the GitHub README or visit https://natski.net/apis/encore/element-creator
 /* ----------------------------------------------- */
 
-import IconSystem from '../icon-system/is.js';
+import IconSystem from '../icon-system/is.min.js';
 
 function jsonElementify(elementData) {
 	if (Array.isArray(elementData)) {
@@ -179,23 +179,44 @@ function render(root, callback, settings) {
 
 	const buildElements = () => {
 		let time = performance.now();
-		//if()
-		appendChildren(rootElement, jsonElementify(callback()));
 
-		encoreConsole([
-			`Render complete in ${((performance.now() - time) * 100).toFixed(
-				0,
-			)}ms`,
-		]);
+		try {
+			appendChildren(rootElement, jsonElementify(callback()));
+			encoreConsole([
+				`Render complete in ${(
+					(performance.now() - time) *
+					100
+				).toFixed(0)}ms`,
+			]);
+		} catch (err) {
+			encoreConsole(`Render failed:\n\n%c${err}%c`, 'error');
+		}
 	};
 
 	window.addEventListener('DOMContentLoaded', buildElements);
 }
 
-function encoreConsole(message) {
+function encoreConsole(message, type) {
 	if (!Array.isArray(message)) {
 		message = [message];
 	}
+
+	const checkType = () => {
+		switch (type) {
+			case 'error':
+				return [
+					'background-color: black; padding: 3px 5px; border-radius: 7px; border: 1px solid red',
+					'font-weight: normal;',
+				];
+			case 'warn':
+				return [
+					'background-color: black; padding: 3px 5px; border-radius: 7px; border: 1px solid yellow',
+					'font-weight: normal;',
+				];
+			default:
+				return [''];
+		}
+	};
 
 	message.forEach((single) => {
 		if (!single) return;
@@ -203,6 +224,7 @@ function encoreConsole(message) {
 			`%cENCORE%c ${single}`,
 			'font-weight: bold; color: #8564ff; background-color: black; padding: 0 5px; border-radius: 7px; border: 1px solid #8564ff',
 			'font-weight: normal;',
+			...checkType(),
 		);
 	});
 }
@@ -376,6 +398,7 @@ function setFallback(data, fallback) {
 }
 
 function appendChildren(element, children) {
+	if (!children) return;
 	if (Array.isArray(children)) {
 		for (const child of children) {
 			element.appendChild(child);
