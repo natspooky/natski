@@ -9,7 +9,7 @@ export default function encoreConsole(message) {
 				'background-color: #ff000049; padding: 3px 5px; border-radius: 7px;',
 				'font-weight: normal;',
 			];
-		return [''];
+		return ['✅'];
 	};
 
 	message.forEach((single) => {
