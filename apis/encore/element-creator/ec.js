@@ -9,8 +9,7 @@ import IconSystem from '../icon-system/is.min.js';
 import encoreConsole from '../dependencies/encoreConsole.js';
 
 function jsonElementify(elementData) {
-	if (elementData.nodeType && element.nodeType === Node.ELEMENT_NODE)
-		return elementData;
+	if (elementData && elementData.nodeType) return elementData;
 
 	if (Array.isArray(elementData)) {
 		const arr = [];
