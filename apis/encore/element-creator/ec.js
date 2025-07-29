@@ -311,17 +311,18 @@ function elementAppended(element, callback) {
 	if (!MutationObserver) return useDeprecatedMethod(element, callback);
 
 	const observer = new MutationObserver((mutations) => {
-		mutations.forEach((mutation) => {
-			if (mutation.addedNodes.length === 0) return;
+		for (const mutation of mutations) {
+			if (mutation.addedNodes.length === 0) continue;
 			if (
 				Array.from(mutation.addedNodes).filter((node) =>
 					node.contains(element),
 				).length === 0
 			)
-				return;
+				continue;
 			observer.disconnect();
 			callback(element);
-		});
+			break;
+		}
 	});
 
 	observer.observe(document.body, {
