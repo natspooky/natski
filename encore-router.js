@@ -98,15 +98,13 @@ function message(state, time, file_path) {
 			state ? consoleColor.red : consoleColor.green
 		}[ ${state ? 'ERR' : 'GET'} ] ${consoleColor.reset}${
 			file_path.split('\\')[file_path.split('\\').length - 1]
-		} in ${consoleColor.magenta}${(
-			(performance.now() - time) *
-			100
-		).toFixed(0)}ms ${consoleColor.reset}${
-			state ? 'attempeted ' : ''
-		}from ${consoleColor.yellow}${file_path.slice(
-			0,
-			file_path.lastIndexOf('\\') + 1,
-		)}${consoleColor.reset}`,
+		} in ${consoleColor.magenta}${Math.round(performance.now() - time)}ms ${
+			consoleColor.reset
+		}${state ? 'attempeted ' : ''}from ${
+			consoleColor.yellow
+		}${file_path.slice(0, file_path.lastIndexOf('\\') + 1)}${
+			consoleColor.reset
+		}`,
 	);
 }
 

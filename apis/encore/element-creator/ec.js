@@ -141,73 +141,106 @@ function checkEvent(eventName) {
 }
 
 function render(root, callback, settings) {
-	HTMLElement.prototype.linkEvent = function (name, callback, options) {
-		this.addEventListener(name, callback, options);
-		if (!this.listenerInfo) {
-			this.listenerInfo = new Array();
-		}
-		this.listenerInfo.push({
-			name,
-			callback,
-			options,
+	if (window.EncoreRender) {
+		encoreConsole({
+			message: 'Hydration Cancelled:',
+			error: new Error('Only one render call can be made per page'),
 		});
-	};
+		return;
+	}
 
-	HTMLElement.prototype.getEventListeners = function () {
-		return this.listenerInfo;
-	};
+	encoreConsole({
+		message: 'Hydrating',
+	});
+
+	window.EncoreRender = true;
 
 	if (settings?.useIcons && !window.IconSystem) new IconSystem();
 
+	const manager = new ComponentManager();
 	const rootType = typeof root;
 
 	let rootElement;
 
-	if (rootType !== 'string' && rootType !== 'object')
-		throw new TypeError(
-			'Provided root element is not an element ID or a HTMLElement',
-		);
+	if (rootType !== 'string' && rootType !== 'object') {
+		encoreConsole({
+			message: 'Hydration Cancelled:',
+			error: new TypeError(
+				'Provided root element is not an element ID or a HTMLElement',
+			),
+		});
+		return;
+	}
 
 	if (rootType === 'string') {
 		rootElement = document.getElementById(root);
 		if (!rootElement) {
-			throw new Error(
-				'Provided root element does not exist in the document',
-			);
+			encoreConsole({
+				message: 'Hydration cancelled:',
+				error: new Error(
+					'Provided root element does not exist in the document',
+				),
+			});
+			return;
 		}
 	}
 
 	if (rootType === 'object') rootElement = root;
 
-	const buildElements = () => {
-		let time = performance.now();
-
+	const hydrate = async (components) => {
 		try {
-			appendChildren(rootElement, jsonElementify(callback()));
+			const time = performance.now();
+			const renderComponent = await callback(components);
+
+			components.setComponent('render', renderComponent);
+
+			const layout = components.getLayout();
+
+			appendChildren(
+				rootElement,
+				layout
+					? jsonElementify(
+							layout({
+								children:
+									components.getComponent('render').element,
+							}),
+					  )
+					: components.getComponent('render').element,
+			);
+
+			const finalTime = Math.round(performance.now() - time);
+
 			encoreConsole({
-				message: `Render complete in ${(
-					(performance.now() - time) *
-					100
-				).toFixed(0)}ms`,
+				message: `Render complete in ${
+					finalTime > 0 ? finalTime : '< 1'
+				}ms`,
 			});
-		} catch (err) {
-			encoreConsole({ message: 'Render failed:', error: err });
+
+			if (finalTime > 500) {
+				encoreConsole({
+					message: 'Warning:',
+					error: 'Render time high :(',
+				});
+			}
+		} catch (error) {
+			encoreConsole({ message: 'Hydration failed:' });
+			console.error(error);
 		}
 	};
 
-	if (document.readyState !== 'interactive') {
-		window.addEventListener('DOMContentLoaded', buildElements);
+	if (document.readyState === 'loading') {
+		window.addEventListener('DOMContentLoaded', () => {
+			hydrate(manager);
+		});
 		return;
 	}
 
-	buildElements();
+	hydrate(manager);
 }
 
-function jsonElementAppend(element, elementData, callback) {
+function jsonElementAppend(element, elementData) {
 	if (!(element.nodeType && element.nodeType === Node.ELEMENT_NODE))
 		throw new TypeError('Element provided is not a HTML Node');
-
-	callback?.(destructureElementToJson(element));
 
 	if (elementData.innerHTML) {
 		element.innerHTML = elementData.innerHTML;
@@ -273,16 +306,6 @@ function jsonElementAppend(element, elementData, callback) {
 	}
 
 	return element;
-}
-
-function destructureElementToJson(element) {
-	let json = {};
-
-	json.tag = element.tagName;
-
-	if (element.classList.length > 0) json.classes = element.classList;
-
-	return json;
 }
 
 function useDeprecatedMethod(element, callback) {
@@ -377,6 +400,8 @@ function appendChildren(element, children) {
 	} else {
 		element.appendChild(children);
 	}
+
+	return element;
 }
 
 function insertChildrenBefore(element, children, beforeElement) {
@@ -400,18 +425,21 @@ function className(classes, ...extraClasses) {
 	return classes;
 }
 
-function checkForKeys(obj) {
-	return Object.keys(obj).length !== 0 && obj.constructor === Object;
+function checkForKeys(component) {
+	return (
+		Object.keys(component).length !== 0 && component.constructor === Object
+	);
 }
 
 class ComponentManager {
 	#components;
+	#layout;
 
 	constructor() {
 		this.#components = {};
 	}
 
-	setComponent(ID, jsonString) {
+	setComponent(ID, jsonString, settings) {
 		if (this.getComponent(ID))
 			throw new Error(`Component ID "${ID}" is already assigned`);
 
@@ -421,6 +449,7 @@ class ComponentManager {
 			json: jsonString,
 			element: component,
 			type: Array.isArray(component) ? 'Element Array' : 'Element',
+			settings: settings,
 		};
 	}
 
@@ -436,6 +465,14 @@ class ComponentManager {
 		return Object.entries(this.#components).map(([, element]) => {
 			return element;
 		});
+	}
+
+	setLayout(callback) {
+		this.#layout = callback;
+	}
+
+	getLayout() {
+		return this.#layout;
 	}
 
 	removeComponent(ID) {
