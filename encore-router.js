@@ -33,11 +33,13 @@ tester.collection('ENCORE', (collection) => {
 
 tester.start();*/
 
-const red = '\x1b[31m';
-const green = '\x1b[32m';
-const reset = '\x1b[0m';
-const yellow = '\x1b[33m';
-const magenta = '\x1b[35m';
+const consoleColor = {
+	reset: '\x1b[0m',
+	red: '\x1b[31m',
+	green: '\x1b[32m',
+	yellow: '\x1b[33m',
+	magenta: '\x1b[35m',
+};
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -92,18 +94,19 @@ function readFile(file_path, contentType, res) {
 
 function message(state, time, file_path) {
 	console.log(
-		`${state ? '❌' : '✅'} ${state ? red : green}[ ${
-			state ? 'ERR' : 'GET'
-		} ] ${reset}${
+		`${state ? '❌' : '✅'} ${
+			state ? consoleColor.red : consoleColor.green
+		}[ ${state ? 'ERR' : 'GET'} ] ${consoleColor.reset}${
 			file_path.split('\\')[file_path.split('\\').length - 1]
-		} in ${magenta}${((performance.now() - time) * 100).toFixed(
-			0,
-		)}ms ${reset}${
+		} in ${consoleColor.magenta}${(
+			(performance.now() - time) *
+			100
+		).toFixed(0)}ms ${consoleColor.reset}${
 			state ? 'attempeted ' : ''
-		}from ${yellow}${file_path.slice(
+		}from ${consoleColor.yellow}${file_path.slice(
 			0,
 			file_path.lastIndexOf('\\') + 1,
-		)}${reset}`,
+		)}${consoleColor.reset}`,
 	);
 }
 
@@ -114,7 +117,32 @@ const handleError = () => {
 httpServer.listen(portNumber, () => {
 	let link = terminalLink(portNumber, `http://localhost:${portNumber}`);
 	console.clear();
-	console.log('Starting ENCORE dependencies...');
+	console.log(
+		`${consoleColor.magenta}
+    _/_/_/_/  _/      _/    _/_/_/    _/_/    _/_/_/    _/_/_/_/   
+   _/        _/_/    _/  _/        _/    _/  _/    _/  _/          
+  _/_/_/    _/  _/  _/  _/        _/    _/  _/_/_/    _/_/_/       
+ _/        _/    _/_/  _/        _/    _/  _/    _/  _/            
+_/_/_/_/  _/      _/    _/_/_/    _/_/    _/    _/  _/_/_/_/       
+${consoleColor.reset}`,
+	);
 
-	console.log(`Server is running on port ${link}`);
+	console.log(`Local Server: ${link}`);
 });
+/*
+let fs = require('fs');
+let dir = './test_folder'; //name of the directory/folder
+
+if (!fs.existsSync(dir)) {
+	//check if folder already exists
+	fs.mkdirSync(dir); //creating folder
+}
+
+fs.writeFile('./test_folder/test.txt', 'HI', function (err) {
+	//creating file test.txt inside test_folder with HI written on it
+	if (err) {
+		return console.log(err);
+	}
+	console.log('The file is saved!');
+});
+*/

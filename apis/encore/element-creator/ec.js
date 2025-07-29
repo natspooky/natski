@@ -92,14 +92,14 @@ function jsonElementify(elementData) {
 
 			if (Array.isArray(event)) {
 				event.forEach((eventData) => {
-					element.linkEvent(
+					element.addEventListener(
 						eventType,
 						functionType(eventData, element),
 						eventData.options,
 					);
 				});
 			} else {
-				element.linkEvent(
+				element.addEventListener(
 					eventType,
 					functionType(event, element),
 					event.options,
@@ -157,13 +157,13 @@ function render(root, callback, settings) {
 		return this.listenerInfo;
 	};
 
-	if (settings?.useIcons) new IconSystem();
+	if (settings?.useIcons && !window.IconSystem) new IconSystem();
 
 	const rootType = typeof root;
 
 	let rootElement;
 
-	if (!(rootType === 'string' || rootType === 'object'))
+	if (rootType !== 'string' && rootType !== 'object')
 		throw new TypeError(
 			'Provided root element is not an element ID or a HTMLElement',
 		);
@@ -195,7 +195,12 @@ function render(root, callback, settings) {
 		}
 	};
 
-	window.addEventListener('DOMContentLoaded', buildElements);
+	if (document.readyState !== 'interactive') {
+		window.addEventListener('DOMContentLoaded', buildElements);
+		return;
+	}
+
+	buildElements();
 }
 
 function jsonElementAppend(element, elementData, callback) {
