@@ -144,13 +144,13 @@ function render(root, callback, settings) {
 	if (window.EncoreRender) {
 		encoreConsole({
 			message: 'Hydration Cancelled:',
-			error: new Error('Only one render call can be made per page'),
+			error: 'Only one render call can be made per page',
 		});
 		return;
 	}
 
 	encoreConsole({
-		message: 'Hydrating',
+		message: 'Hydrating page',
 	});
 
 	window.EncoreRender = true;
@@ -177,9 +177,7 @@ function render(root, callback, settings) {
 		if (!rootElement) {
 			encoreConsole({
 				message: 'Hydration cancelled:',
-				error: new Error(
-					'Provided root element does not exist in the document',
-				),
+				error: 'Provided root element does not exist in the document',
 			});
 			return;
 		}
@@ -218,7 +216,7 @@ function render(root, callback, settings) {
 
 			if (finalTime > 500) {
 				encoreConsole({
-					message: 'Warning:',
+					message: 'Performance warning:',
 					error: 'Render time high :(',
 				});
 			}
@@ -236,6 +234,13 @@ function render(root, callback, settings) {
 	}
 
 	hydrate(manager);
+
+	if (document.readyState === 'complete') {
+		encoreConsole({
+			message: 'Performance warning:',
+			error: 'Starting a render at the end of the page load is not advised',
+		});
+	}
 }
 
 function jsonElementAppend(element, elementData) {
