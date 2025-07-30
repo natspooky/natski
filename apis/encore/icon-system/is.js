@@ -26,7 +26,7 @@ class IS extends HTMLElement {
 	#createMask(icon, custom) {
 		if (!IS_DATA.includes(icon) && !custom) {
 			encoreConsole({
-				error: `Icon System icon '${icon}' doesn't exist`,
+				error: `The icon System icon '${icon}' doesn't exist`,
 				message: `Icon load error:`,
 			});
 
@@ -81,7 +81,7 @@ class IS extends HTMLElement {
 			buffer.onerror = () => {
 				encoreConsole({
 					message: 'Icon load error:',
-					error: `Custom icon '${source}' doesn't exist`,
+					error: `The custom icon '${source}' doesn't exist`,
 				});
 				this.#self.style.mask = this.#createMask('alert');
 				this.#showIcon();

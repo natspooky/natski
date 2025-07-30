@@ -1,9 +1,11 @@
 /* -----------------------------------------------
-/* Author : NATSKI - natski.net
+/* Author : NATSKI - natski.dev
 /* MIT license : https://opensource.org/license/MIT
 /* GitHub : https://github.com/natspooky/encore
-/* How to use? : Check the GitHub README or visit https://natski.net/apis/encore/element-creator
+/* How to use? : Check the GitHub README or visit https://natski.dev/apis/encore/element-creator
 /* ----------------------------------------------- */
+
+//const ecWorker = new Worker(new URL("ecWorker.js", import.meta.url));
 
 import IconSystem from '../icon-system/is.min.js';
 import encoreConsole from '../dependencies/encoreConsole.js';
@@ -150,17 +152,16 @@ function render(root, callback, settings) {
 		return;
 	}
 
+	window.EncoreRender = true;
+
 	encoreConsole({
 		message: 'Hydrating page',
 	});
-
-	window.EncoreRender = true;
 
 	if (settings?.useIcons && !window.IconSystem) new IconSystem();
 
 	const manager = new ComponentManager();
 	const rootType = typeof root;
-
 	let rootElement;
 
 	if (rootType !== 'string' && rootType !== 'object') {
@@ -182,31 +183,44 @@ function render(root, callback, settings) {
 		}
 	}
 
-	if (rootType === 'object') rootElement = root;
+	if (rootType === 'object') {
+		rootElement = root;
+		if (
+			!(
+				rootElement.nodeType &&
+				rootElement.nodeType === Node.ELEMENT_NODE
+			)
+		) {
+			encoreConsole({
+				message: 'Hydration error:',
+				error: `The root element '${rootElement}' does not exist in the document`,
+			});
+			return;
+		}
+	}
 
 	const hydrate = async (components) => {
 		try {
 			const time = performance.now();
 			const renderComponent = await callback(components);
-
-			//	components.setComponent('init', renderComponent);
-
-			components.setComponent('render', renderComponent);
-
+			const componentName = 'holy fuck idk what to call this';
 			const layout = components.layout;
+
+			components.setComponent(componentName, renderComponent);
 
 			if (layout) {
 				components.setComponent(
 					'layout',
 					layout({
-						children: components.getComponent('render').element,
+						children:
+							components.getComponent(componentName).element,
 					}),
 				);
 			}
 
 			components.appendComponent(
 				rootElement,
-				layout ? 'layout' : 'render',
+				layout ? 'layout' : componentName,
 			);
 
 			const finalTime = Math.round(performance.now() - time);
@@ -504,14 +518,6 @@ class ComponentManager {
 		});
 	}
 
-	setLayout(callback) {
-		this.#layout = callback;
-	}
-
-	get layout() {
-		return this.#layout;
-	}
-
 	removeComponent(ID) {
 		const component = this.getComponent(ID).element;
 		if (!component) {
@@ -644,6 +650,14 @@ class ComponentManager {
 		return Object.entries(this.#components).map(([ID]) => {
 			return ID;
 		});
+	}
+
+	set layout(callback) {
+		this.#layout = callback;
+	}
+
+	get layout() {
+		return this.#layout;
 	}
 }
 

@@ -76,33 +76,8 @@
 			media="screen and (orientation: portrait)"
 			href="lib/css/scale.css"
 		/>
+		<script async type="module" src="lib/pages/home.js"></script>
 	</head>
 
-	<body style="padding-top: 0">
-		<section id="load"></section>
-
-		<nav id="navigator" style="--left: 30px; --right: 30px">
-			<div>
-				<section class="title fadeout fadein">Home</section>
-			</div>
-			<span class="center"></span>
-			<span class="left"></span>
-			<span class="right"></span>
-		</nav>
-
-		<!--
-		<section class="text-title">
-			<div class="grid-bg"></div>
-			<h1>Recent work</h1>
-		</section>
--->
-		<main id="root"></main>
-
-		<div class="embedded-frame" id="embedded-frame">
-			<iframe id="iframe"></iframe>
-		</div>
-
-		<script type="module" src="lib/js/IFrameManager.js"></script>
-		<script type="module" src="lib/js/index.js"></script>
-	</body>
+	<body style="padding-top: 0" id="root"></body>
 </html>

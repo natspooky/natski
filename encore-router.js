@@ -146,3 +146,7 @@ fs.writeFile('./test_folder/test.txt', 'HI', function (err) {
 	console.log('The file is saved!');
 });
 */
+
+//make this generate meta
+
+function Meta({ title, description, author, keywords }) {}
