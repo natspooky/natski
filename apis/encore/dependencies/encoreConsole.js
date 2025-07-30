@@ -9,6 +9,11 @@ export default function encoreConsole(message) {
 				'background-color: #ff000049; padding: 3px 5px; border-radius: 7px;',
 				'font-weight: normal;',
 			];
+		if (single.warn)
+			return [
+				'background-color: #ffff0049; padding: 3px 5px; border-radius: 7px;',
+				'font-weight: normal;',
+			];
 		return [];
 	};
 
@@ -17,7 +22,9 @@ export default function encoreConsole(message) {
 
 		console.log(
 			`%cENCORE%c ${single.message}${
-				single.error ? '\n%c' + single.error + '%c' : ''
+				single.error || single.warn
+					? '\n%c' + (single.error || single.warn) + '%c'
+					: ''
 			}`,
 			'font-weight: bold; color: #8564ff; background-color: black; padding: 0 5px; border-radius: 7px; border: 1px solid #8564ff',
 			'font-weight: normal;',

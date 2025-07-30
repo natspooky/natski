@@ -93,12 +93,14 @@ function readFile(file_path, contentType, res) {
 }
 
 function message(state, time, file_path) {
+	const finalTime = Math.round(performance.now() - time);
+
 	console.log(
 		`${state ? '❌' : '✅'} ${
 			state ? consoleColor.red : consoleColor.green
 		}[ ${state ? 'ERR' : 'GET'} ] ${consoleColor.reset}${
 			file_path.split('\\')[file_path.split('\\').length - 1]
-		} in ${consoleColor.magenta}${Math.round(performance.now() - time)}ms ${
+		} in ${consoleColor.magenta}${finalTime > 0 ? finalTime : '< 1'}ms ${
 			consoleColor.reset
 		}${state ? 'attempeted ' : ''}from ${
 			consoleColor.yellow

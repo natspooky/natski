@@ -8,7 +8,7 @@
 import IconSystem from '../icon-system/is.min.js';
 import encoreConsole from '../dependencies/encoreConsole.js';
 
-function jsonElementify(elementData) {
+function buildComponent(elementData) {
 	if (elementData && elementData.nodeType) return elementData;
 
 	if (Array.isArray(elementData)) {
@@ -16,7 +16,7 @@ function jsonElementify(elementData) {
 
 		elementData.forEach((element) => {
 			if (checkForKeys(element) || element.nodeType)
-				arr.push(jsonElementify(element));
+				arr.push(buildComponent(element));
 		});
 
 		return arr;
@@ -73,7 +73,7 @@ function jsonElementify(elementData) {
 	}
 
 	if (elementData.children) {
-		appendChildren(element, jsonElementify(elementData.children));
+		appendChildren(element, buildComponent(elementData.children));
 	}
 
 	if (elementData.events) {
@@ -83,10 +83,11 @@ function jsonElementify(elementData) {
 			}
 
 			if (!checkEvent(eventType)) {
-				console.warn(
-					`Event '${eventType}' is not supported on:`,
-					element,
-				);
+				encoreConsole({
+					message: 'Support warning:',
+					warn: `Event '${eventType}' is not supported in current Document`,
+				});
+
 				return;
 			}
 
@@ -143,7 +144,7 @@ function checkEvent(eventName) {
 function render(root, callback, settings) {
 	if (window.EncoreRender) {
 		encoreConsole({
-			message: 'Hydration Cancelled:',
+			message: 'Hydration error:',
 			error: 'Only one render call can be made per page',
 		});
 		return;
@@ -164,10 +165,8 @@ function render(root, callback, settings) {
 
 	if (rootType !== 'string' && rootType !== 'object') {
 		encoreConsole({
-			message: 'Hydration Cancelled:',
-			error: new TypeError(
-				'Provided root element is not an element ID or a HTMLElement',
-			),
+			message: 'Hydration error:',
+			error: `The root element '${root}' is not an ID or a HTMLElement`,
 		});
 		return;
 	}
@@ -176,8 +175,8 @@ function render(root, callback, settings) {
 		rootElement = document.getElementById(root);
 		if (!rootElement) {
 			encoreConsole({
-				message: 'Hydration cancelled:',
-				error: 'Provided root element does not exist in the document',
+				message: 'Hydration error:',
+				error: `The root element '${root}' does not exist in the document`,
 			});
 			return;
 		}
@@ -190,20 +189,24 @@ function render(root, callback, settings) {
 			const time = performance.now();
 			const renderComponent = await callback(components);
 
+			//	components.setComponent('init', renderComponent);
+
 			components.setComponent('render', renderComponent);
 
-			const layout = components.getLayout();
+			const layout = components.layout;
 
-			appendChildren(
+			if (layout) {
+				components.setComponent(
+					'layout',
+					layout({
+						children: components.getComponent('render').element,
+					}),
+				);
+			}
+
+			components.appendComponent(
 				rootElement,
-				layout
-					? jsonElementify(
-							layout({
-								children:
-									components.getComponent('render').element,
-							}),
-					  )
-					: components.getComponent('render').element,
+				layout ? 'layout' : 'render',
 			);
 
 			const finalTime = Math.round(performance.now() - time);
@@ -217,11 +220,13 @@ function render(root, callback, settings) {
 			if (finalTime > 500) {
 				encoreConsole({
 					message: 'Performance warning:',
-					error: 'Render time high :(',
+					warn: `${finalTime}ms. bloody massive load time`,
 				});
 			}
 		} catch (error) {
-			encoreConsole({ message: 'Hydration failed:' });
+			encoreConsole({
+				message: 'Hydration failed:',
+			});
 			console.error(error);
 		}
 	};
@@ -235,17 +240,21 @@ function render(root, callback, settings) {
 
 	hydrate(manager);
 
-	if (document.readyState === 'complete') {
+	if (document.readyState === 'complete')
 		encoreConsole({
 			message: 'Performance warning:',
-			error: 'Starting a render at the end of the page load is not advised',
+			warn: 'Rendering after document load is unadvised for performance',
 		});
-	}
 }
 
 function jsonElementAppend(element, elementData) {
-	if (!(element.nodeType && element.nodeType === Node.ELEMENT_NODE))
-		throw new TypeError('Element provided is not a HTML Node');
+	if (!(element.nodeType && element.nodeType === Node.ELEMENT_NODE)) {
+		encoreConsole({
+			message: 'Type error:',
+			error: 'Element provided is not a HTML Node',
+		});
+		return;
+	}
 
 	if (elementData.innerHTML) {
 		element.innerHTML = elementData.innerHTML;
@@ -278,7 +287,7 @@ function jsonElementAppend(element, elementData) {
 	}
 
 	if (elementData.children) {
-		appendChildren(element, jsonElementify(elementData.children));
+		appendChildren(element, buildComponent(elementData.children));
 	}
 
 	if (elementData.events) {
@@ -444,16 +453,39 @@ class ComponentManager {
 		this.#components = {};
 	}
 
-	setComponent(ID, jsonString, settings) {
-		if (this.getComponent(ID))
-			throw new Error(`Component ID "${ID}" is already assigned`);
+	#createComponent(jsonString) {
+		let fragment,
+			component = buildComponent(jsonString);
 
-		const component = jsonElementify(jsonString);
+		if (Array.isArray(component)) {
+			fragment = document.createDocumentFragment();
+
+			component.forEach((element) => {
+				fragment.appendChild(element);
+			});
+		}
+
+		return { fragment, component };
+	}
+
+	setComponent(ID, jsonString, settings) {
+		if (this.getComponent(ID)) {
+			encoreConsole({
+				message: 'Assignment Error:',
+				error: `The component '${ID}' is already assigned`,
+			});
+			return;
+		}
+
+		const { fragment, component } = this.#createComponent(
+			jsonString,
+			settings,
+		);
 
 		this.#components[ID] = {
 			json: jsonString,
 			element: component,
-			type: Array.isArray(component) ? 'Element Array' : 'Element',
+			fragment: fragment,
 			settings: settings,
 		};
 	}
@@ -476,13 +508,19 @@ class ComponentManager {
 		this.#layout = callback;
 	}
 
-	getLayout() {
+	get layout() {
 		return this.#layout;
 	}
 
 	removeComponent(ID) {
 		const component = this.getComponent(ID).element;
-		if (!component) throw new Error(`Component ID "${ID}" does not exist`);
+		if (!component) {
+			encoreConsole({
+				message: 'Error:',
+				error: `The component '${ID}' does not exist`,
+			});
+			return;
+		}
 
 		if (!Array.isArray(component) && document.body.contains(component)) {
 			component.remove();
@@ -511,80 +549,97 @@ class ComponentManager {
 		const oldComponent = this.getComponent(oldID),
 			newComponent = this.getComponent(newID);
 
-		if (!oldComponent)
-			throw new Error(`Component ID "${oldID}" does not exist`);
+		if (!oldComponent) {
+			encoreConsole({
+				message: 'Error:',
+				error: `The component '${oldID}' does not exist`,
+			});
+			return;
+		}
 
-		if (newComponent)
-			throw new Error(`Component ID "${newID}" is already assigned`);
+		if (newComponent) {
+			encoreConsole({
+				message: 'Assignment error:',
+				error: `The component '${newID}' is already assigned`,
+			});
+			return;
+		}
 
 		this.setComponent(newID, oldComponent.json);
 		delete this.#components[oldID];
 	}
 
-	//FIX -- wont work. consider a diff approach
-	replaceComponent(ID, jsonString) {
+	replaceComponent(ID, jsonString, settings) {
 		const oldComponent = this.getComponent(ID),
-			newComponent = jsonElementify(jsonString);
+			{ fragment, component } = this.#createComponent(
+				jsonString,
+				settings,
+			);
+
 		if (!oldComponent) {
 			this.setComponent(ID, jsonString);
 			return;
 		}
-		//fix .contains to work with arr
-		if (document.body.contains(oldComponent.element)) {
-			console.log(oldComponent.element);
 
-			if (Array.isArray(oldComponent.element)) {
-				[...oldComponent.element].forEach((element) => {
-					element.replace(...newComponent);
+		if (Array.isArray(oldComponent.element)) {
+			if (document.body.contains(oldComponent.element[0])) {
+				oldComponent.element.forEach((element) => {
+					element.replaceWith(fragment ? fragment : component);
 				});
-			} else {
-				oldComponent.element.replaceWith(newComponent);
+			}
+		} else {
+			if (document.body.contains(oldComponent.element)) {
+				oldComponent.element.replaceWith(
+					fragment ? fragment : component,
+				);
 			}
 		}
 
 		this.#components[ID] = {
 			json: jsonString,
-			element: newComponent,
-			type: Array.isArray(newComponent) ? 'Element Array' : 'Element',
+			element: component,
+			fragment: fragment,
+			settings: settings,
 		};
 	}
 
 	appendComponent(element, ID) {
-		const component = this.getComponent(ID).element;
-		if (!component) throw new Error(`Component ID "${ID}" does not exist`);
-		appendChildren(element, component);
+		const component = this.getComponent(ID);
+		if (!component) {
+			encoreConsole({
+				message: 'Error:',
+				error: `The component '${ID}' does not exist`,
+			});
+			return;
+		}
+
+		appendChildren(
+			element,
+			component.fragment ? component.fragment : component.element,
+		);
 	}
 
 	insertComponentBefore(element, ID, beforeElement) {
-		const component = this.getComponent(ID).element;
-		if (!component) throw new Error(`Component ID "${ID}" does not exist`);
-		insertChildrenBefore(element, component, beforeElement);
+		const component = this.getComponent(ID);
+		if (!component) {
+			encoreConsole({
+				message: 'Error:',
+				error: `The component '${ID}' does not exist`,
+			});
+			return;
+		}
+
+		insertChildrenBefore(
+			element,
+			component.fragment ? component.fragment : component.element,
+			beforeElement,
+		);
 	}
 
 	get componentCount() {
 		return Object.entries(this.#components).length;
 	}
 
-	// kinda useless? maybe get rid of
-	get componentIDsByType() {
-		let el = [],
-			elarr = [];
-
-		Object.entries(this.#components).forEach(([ID, data]) => {
-			if (data.type === 'Element') {
-				el.push(ID);
-			} else {
-				elarr.push(ID);
-			}
-		});
-
-		return {
-			Element: el,
-			'Element Array': elarr,
-		};
-	}
-
-	// VERY useless 100% remove unless i can find a usecase
 	get componentIDs() {
 		return Object.entries(this.#components).map(([ID]) => {
 			return ID;
@@ -593,7 +648,7 @@ class ComponentManager {
 }
 
 export {
-	jsonElementify,
+	buildComponent as jsonElementify,
 	jsonElementAppend,
 	checkExists,
 	setFallback,
@@ -604,5 +659,4 @@ export {
 	ComponentManager,
 	checkEvent,
 	render,
-	//state,
 };
