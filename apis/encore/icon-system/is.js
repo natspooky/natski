@@ -64,19 +64,17 @@ class IS extends HTMLElement {
 		}
 
 		if (source) {
-			const buffer = new Image();
+			if (fileExtention(source) === 'svg') {
+				this.#self.style.mask = this.#createMask(source, true);
+			} else {
+				this.#self.style.backgroundImage = this.#createMask(
+					source,
+					true,
+				);
+			}
+			this.#showIcon();
 
-			buffer.onload = () => {
-				if (fileExtention(source) === 'svg') {
-					this.#self.style.mask = this.#createMask(source, true);
-				} else {
-					this.#self.style.backgroundImage = this.#createMask(
-						source,
-						true,
-					);
-				}
-				this.#showIcon();
-			};
+			const buffer = new Image();
 
 			buffer.onerror = () => {
 				encoreConsole({
@@ -84,7 +82,6 @@ class IS extends HTMLElement {
 					error: `The custom icon '${source}' doesn't exist`,
 				});
 				this.#self.style.mask = this.#createMask('alert');
-				this.#showIcon();
 			};
 
 			buffer.src = source;

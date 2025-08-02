@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>About</title>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+		/>
+		<meta name="theme-color" content="#010409" />
+		<meta
+			name="description"
+			content="The home of NATSKI web tools and games"
+		/>
+		<meta name="keywords" content="portfolio, natspooky, natski" />
+		<meta name="author" content="NATSKI" />
+		<meta name="copyright" content="NATSKI" />
+		<meta name="color-scheme" content="normal" />
+
+		<link
+			rel="icon"
+			type="image/png"
+			href="https://natski.vercel.app/icon/system_icons/favicon/favicon-96x96.png"
+			sizes="96x96"
+		/>
+		<link
+			rel="icon"
+			type="image/svg+xml"
+			href="https://natski.vercel.app/icon/system_icons/favicon/favicon.svg"
+		/>
+		<link
+			rel="shortcut icon"
+			href="https://natski.vercel.app/icon/system_icons/favicon/favicon.ico"
+		/>
+		<link
+			rel="apple-touch-icon"
+			sizes="180x180"
+			href="https://natski.vercel.app/icon/system_icons/favicon/apple-touch-icon.png"
+		/>
+		<meta name="apple-mobile-web-app-title" content="Natski" />
+		<link
+			rel="manifest"
+			href="https://natski.vercel.app/icon/system_icons/favicon/site.webmanifest"
+		/>
+
+		<meta property="og:title" content="Natski" />
+		<meta
+			name="og:description"
+			content="The home of NATSKI web tools and games"
+		/>
+		<meta
+			property="og:image"
+			content="https://natski.vercel.app/icon/system_icons/embed/400.png"
+		/>
+		<meta property="og:image:width" content="400" />
+		<meta property="og:image:height" content="400" />
+		<meta property="og:url" content="https://natski.vercel.app" />
+		<meta property="og:locale" content="en_US" />
+		<meta property="og:type" content="website" />
+		<meta property="og:site_name" content="NATSKI" />
+		<meta name="twitter:title" content="Natski" />
+		<meta
+			name="twitter:description"
+			content="The home of NATSKI web tools and games"
+		/>
+		<meta
+			name="twitter:image"
+			content="https://natski.vercel.app/icon/system_icons/embed/400.png"
+		/>
+		<meta name="twitter:site" content="@natspooky_" />
+		<meta name="twitter:creator" content="@natspooky_" />
+		<meta name="twitter:card" content="summary" />
+		<link rel="stylesheet" type="text/css" href="./lib/css/main.css" />
+		<link rel="stylesheet" type="text/css" href="./lib/css/index.css" />
+		<link
+			rel="stylesheet"
+			type="text/css"
+			media="screen and (orientation: portrait)"
+			href="./lib/css/scale.css"
+		/>
+		<script type="module" src="./lib/js/embedded_page_scripts.js"></script>
+		<script type="module" async>
+			import { render } from './apis/encore/element-creator/ec.js';
+
+			render(
+				'root',
+				(components) => {
+					components.layout = function ({ children }) {
+						return {
+							tag: 'div',
+							children: [
+								{
+									tag: 'h1',
+									children: {
+										tag: 'text',
+										text: 'Layout',
+									},
+								},
+								children,
+							],
+						};
+					};
+
+					function pageOne() {
+						return [
+							{
+								tag: 'div',
+								events: {
+									click: {
+										callback: () => {
+											components.replaceComponent(
+												'content',
+												pageTwo(),
+											);
+										},
+									},
+								},
+								children: {
+									tag: 'h2',
+									children: {
+										tag: 'text',
+										text: 'pageOne',
+									},
+								},
+							},
+							{
+								tag: 'h3',
+								events: {
+									click: {
+										callback: () => {
+											components.replaceComponent(
+												'layout',
+												pageOne(),
+											);
+										},
+									},
+								},
+								children: {
+									tag: 'text',
+									text: 'remove layout [one]',
+								},
+							},
+						];
+					}
+
+					function pageTwo() {
+						return [
+							{
+								tag: 'div',
+								events: {
+									click: {
+										callback: () => {
+											components.replaceComponent(
+												'content',
+												pageOne(),
+											);
+										},
+									},
+								},
+								children: {
+									tag: 'h2',
+									children: {
+										tag: 'text',
+										text: 'pageTwo',
+									},
+								},
+							},
+							{
+								tag: 'h3',
+								events: {
+									click: {
+										callback: () => {
+											components.replaceComponent(
+												'layout',
+												pageOne(),
+											);
+										},
+									},
+								},
+								children: {
+									tag: 'text',
+									text: 'remove layout [two]',
+								},
+							},
+						];
+					}
+
+					return pageOne();
+				},
+				{
+					useIcons: true,
+				},
+			);
+		</script>
+	</head>
+	<body id="root"></body>
+</html>

@@ -89,7 +89,6 @@ function buildComponent(elementData) {
 					message: 'Support warning:',
 					warn: `Event '${eventType}' is not supported in current Document`,
 				});
-
 				return;
 			}
 
@@ -112,11 +111,26 @@ function buildComponent(elementData) {
 	}
 
 	if (elementData.onAppend) {
-		// figure out a good name for this or find a way to join it into the event list
-		elementAppended(element, elementData.onAppend);
+		if (typeof elementData.onAppend !== 'function') {
+			encoreConsole({
+				message: 'Event error:',
+				error: `The onAppend event value '${elementData.onAppend}' is not a function`,
+			});
+		} else {
+			elementAppended(element, elementData.onAppend);
+		}
 	}
 
-	elementData.onCreation?.(element);
+	if (elementData.onCreation) {
+		if (typeof elementData.onCreation !== 'function') {
+			encoreConsole({
+				message: 'Event error:',
+				error: `The onCreation event value '${elementData.onCreation}' is not a function`,
+			});
+		} else {
+			elementData.onCreation(element);
+		}
+	}
 
 	return element;
 }
@@ -203,7 +217,7 @@ function render(root, callback, settings) {
 		try {
 			const time = performance.now();
 			const renderComponent = await callback(components);
-			const componentName = 'holy fuck idk what to call this';
+			const componentName = 'content';
 			const layout = components.layout;
 
 			components.setComponent(componentName, renderComponent);
@@ -213,6 +227,7 @@ function render(root, callback, settings) {
 					'layout',
 					layout({
 						children:
+							components.getComponent(componentName).fragment ??
 							components.getComponent(componentName).element,
 					}),
 				);
@@ -226,7 +241,7 @@ function render(root, callback, settings) {
 			const finalTime = Math.round(performance.now() - time);
 
 			encoreConsole({
-				message: `Render complete in ${
+				message: `Hydration complete in ${
 					finalTime > 0 ? finalTime : '< 1'
 				}ms`,
 			});
@@ -234,7 +249,7 @@ function render(root, callback, settings) {
 			if (finalTime > 500) {
 				encoreConsole({
 					message: 'Performance warning:',
-					warn: `${finalTime}ms. bloody massive load time`,
+					warn: `${finalTime}ms. :(`,
 				});
 			}
 		} catch (error) {
@@ -257,7 +272,7 @@ function render(root, callback, settings) {
 	if (document.readyState === 'complete')
 		encoreConsole({
 			message: 'Performance warning:',
-			warn: 'Rendering after document load is unadvised for performance',
+			warn: 'Rendering after document load is unadvised',
 		});
 }
 
@@ -329,8 +344,26 @@ function jsonElementAppend(element, elementData) {
 	}
 
 	if (elementData.onAppend) {
-		// figure out a good name for this or find a way to join it into the event list
+		if (typeof elementData.onAppend !== 'function') {
+			encoreConsole({
+				message: 'Event error:',
+				error: `The onAppend event value '${elementData.onAppend}' is not a function`,
+			});
+			return;
+		}
+
 		elementAppended(element, elementData.onAppend);
+	}
+
+	if (elementData.onCreation) {
+		if (typeof elementData.onCreation !== 'function') {
+			encoreConsole({
+				message: 'Event error:',
+				error: `The onCreation event value '${elementData.onCreation}' is not a function`,
+			});
+			return;
+		}
+		elementData.onCreation(element);
 	}
 
 	return element;
@@ -519,7 +552,7 @@ class ComponentManager {
 	}
 
 	removeComponent(ID) {
-		const component = this.getComponent(ID).element;
+		const component = this.getComponent(ID)?.element;
 		if (!component) {
 			encoreConsole({
 				message: 'Error:',
@@ -583,22 +616,33 @@ class ComponentManager {
 			);
 
 		if (!oldComponent) {
-			this.setComponent(ID, jsonString);
+			encoreConsole({
+				message: 'Error:',
+				error: `The component '${ID}' does not exist`,
+			});
 			return;
 		}
 
 		if (Array.isArray(oldComponent.element)) {
-			if (document.body.contains(oldComponent.element[0])) {
-				oldComponent.element.forEach((element) => {
-					element.replaceWith(fragment ? fragment : component);
+			if (!document.body.contains(oldComponent.element[0])) {
+				encoreConsole({
+					message: 'Error:',
+					error: `The component '${ID}' does not exist`,
 				});
+				return;
 			}
+			oldComponent.element.forEach((element) => {
+				element.replaceWith(fragment ?? component);
+			});
 		} else {
-			if (document.body.contains(oldComponent.element)) {
-				oldComponent.element.replaceWith(
-					fragment ? fragment : component,
-				);
+			if (!document.body.contains(oldComponent.element)) {
+				encoreConsole({
+					message: 'Error:',
+					error: `The component '${ID}' does not exist`,
+				});
+				return;
 			}
+			oldComponent.element.replaceWith(fragment ?? component);
 		}
 
 		this.#components[ID] = {
@@ -619,10 +663,7 @@ class ComponentManager {
 			return;
 		}
 
-		appendChildren(
-			element,
-			component.fragment ? component.fragment : component.element,
-		);
+		appendChildren(element, component.fragment ?? component.element);
 	}
 
 	insertComponentBefore(element, ID, beforeElement) {
@@ -637,7 +678,7 @@ class ComponentManager {
 
 		insertChildrenBefore(
 			element,
-			component.fragment ? component.fragment : component.element,
+			component.fragment ?? component.element,
 			beforeElement,
 		);
 	}
