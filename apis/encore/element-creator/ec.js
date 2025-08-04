@@ -11,8 +11,6 @@ import IconSystem from '../icon-system/is.min.js';
 import encoreConsole from '../dependencies/encoreConsole.js';
 
 function buildComponent(elementData) {
-	if (elementData && elementData.nodeType) return elementData;
-
 	if (Array.isArray(elementData)) {
 		const arr = [];
 
@@ -23,6 +21,8 @@ function buildComponent(elementData) {
 
 		return arr;
 	}
+
+	if (elementData && elementData.nodeType) return elementData;
 
 	let element;
 
@@ -220,15 +220,15 @@ function render(root, callback, settings) {
 			const componentName = 'content';
 			const layout = components.layout;
 
-			components.setComponent(componentName, renderComponent);
+			const content = components
+				.setComponent(componentName, renderComponent)
+				.getComponent(componentName);
 
 			if (layout) {
 				components.setComponent(
 					'layout',
 					layout({
-						children:
-							components.getComponent(componentName).fragment ??
-							components.getComponent(componentName).element,
+						children: content.fragment ?? content.element,
 					}),
 				);
 			}
@@ -239,6 +239,12 @@ function render(root, callback, settings) {
 			);
 
 			const finalTime = Math.round(performance.now() - time);
+
+			components.componentIDs.forEach((ID) => {
+				encoreConsole({
+					message: `Component '${ID}' rendered`,
+				});
+			});
 
 			encoreConsole({
 				message: `Hydration complete in ${
@@ -482,7 +488,6 @@ function className(classes, ...extraClasses) {
 		if (!Array.isArray(classData)) classData = classData.split(' ');
 		classes.push(...classData);
 	});
-
 	return classes;
 }
 
@@ -494,11 +499,69 @@ function checkForKeys(component) {
 
 class ComponentManager {
 	#components;
+	#componentGroups;
 	#layout;
 
 	constructor() {
 		this.#components = {};
+		this.#componentGroups = {};
 	}
+
+	//groups
+
+	setGroup(ID) {
+		if (this.getGroup(ID)) {
+			encoreConsole({
+				message: 'Assignment Error:',
+				error: `The group '${ID}' is already assigned`,
+			});
+			return;
+		}
+		this.#componentGroups[ID] = new ComponentManager();
+
+		return this.#componentGroups[ID];
+	}
+
+	getGroup(ID) {
+		return this.#componentGroups?.[ID];
+	}
+
+	getGroups(...IDs) {
+		return [...IDs].map((ID) => this.getGroup(ID));
+	}
+
+	getAllGroups() {
+		return Object.entries(this.#componentGroups).map(([, group]) => {
+			return group;
+		});
+	}
+
+	removeGroup(ID) {
+		const group = this.getGroup(ID);
+		if (!group) {
+			encoreConsole({
+				message: 'Error:',
+				error: `The group '${ID}' does not exist`,
+			});
+			return;
+		}
+
+		group.removeAllComponents();
+
+		delete this.#components[ID];
+	}
+
+	removeGroups(...IDs) {
+		[...IDs].forEach((ID) => this.removeGroup(ID));
+	}
+
+	removeAllGroups() {
+		Object.entries(this.#componentGroups).forEach(([ID]) =>
+			this.removeGroup(ID),
+		);
+	}
+
+	//components
 
 	#createComponent(jsonString) {
 		let fragment,
@@ -535,6 +598,8 @@ class ComponentManager {
 			fragment: fragment,
 			settings: settings,
 		};
+
+		return this;
 	}
 
 	getComponent(ID) {
@@ -570,16 +635,22 @@ class ComponentManager {
 		}
 
 		delete this.#components[ID];
+
+		return this;
 	}
 
 	removeComponents(...IDs) {
 		[...IDs].forEach((ID) => this.removeComponent(ID));
+
+		return this;
 	}
 
 	removeAllComponents() {
 		Object.entries(this.#components).forEach(([ID]) =>
 			this.removeComponent(ID),
 		);
+
+		return this;
 	}
 
 	changeComponentID(oldID, newID) {
@@ -606,6 +677,8 @@ class ComponentManager {
 
 		this.setComponent(newID, oldComponent.json);
 		delete this.#components[oldID];
+
+		return this;
 	}
 
 	replaceComponent(ID, jsonString, settings) {
@@ -651,6 +724,8 @@ class ComponentManager {
 			fragment: fragment,
 			settings: settings,
 		};
+
+		return this;
 	}
 
 	appendComponent(element, ID) {
@@ -664,6 +739,8 @@ class ComponentManager {
 		}
 
 		appendChildren(element, component.fragment ?? component.element);
+
+		return this;
 	}
 
 	insertComponentBefore(element, ID, beforeElement) {
@@ -681,6 +758,8 @@ class ComponentManager {
 			component.fragment ?? component.element,
 			beforeElement,
 		);
+
+		return this;
 	}
 
 	get componentCount() {
