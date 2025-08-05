@@ -10,7 +10,7 @@ import { fileExtention } from '../../dependencies/file-utils/fu.min.js';
 import encoreConsole from '../dependencies/encoreConsole.js';
 
 class IS extends HTMLElement {
-	static observedAttributes = ['name', 'src', 'width', 'height'];
+	static observedAttributes = ['name', 'src'];
 
 	#iconPath;
 	#self;
@@ -100,20 +100,8 @@ class IS extends HTMLElement {
 		this.#showIcon();
 	}
 
-	attributeChangedCallback(name, oldValue, newValue) {
-		oldValue = newValue;
-		switch (name) {
-			case 'src':
-			case 'name':
-				this.#scanIcon();
-				break;
-			case 'width':
-				break;
-			case 'height':
-				break;
-			default:
-				throw new Error('FATAL ERROR');
-		}
+	attributeChangedCallback() {
+		this.#scanIcon();
 	}
 }
 
@@ -125,6 +113,9 @@ export default class IconSystem {
 			return;
 		}
 
-		// throw new Error('An instance of Icon System is already active');
+		encoreConsole({
+			message: 'Construction error:',
+			error: 'An instance of Icon System is already active',
+		});
 	}
 }

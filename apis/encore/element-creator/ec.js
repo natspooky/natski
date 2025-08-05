@@ -121,14 +121,14 @@ function buildComponent(elementData) {
 		}
 	}
 
-	if (elementData.onCreation) {
-		if (typeof elementData.onCreation !== 'function') {
+	if (elementData.onCreate) {
+		if (typeof elementData.onCreate !== 'function') {
 			encoreConsole({
 				message: 'Event error:',
-				error: `The onCreation event value '${elementData.onCreation}' is not a function`,
+				error: `The onCreate event value '${elementData.onCreate}' is not a function`,
 			});
 		} else {
-			elementData.onCreation(element);
+			elementData.onCreate(element);
 		}
 	}
 
@@ -239,12 +239,6 @@ function render(root, callback, settings) {
 			);
 
 			const finalTime = Math.round(performance.now() - time);
-
-			components.componentIDs.forEach((ID) => {
-				encoreConsole({
-					message: `Component '${ID}' rendered`,
-				});
-			});
 
 			encoreConsole({
 				message: `Hydration complete in ${
@@ -361,15 +355,15 @@ function jsonElementAppend(element, elementData) {
 		elementAppended(element, elementData.onAppend);
 	}
 
-	if (elementData.onCreation) {
-		if (typeof elementData.onCreation !== 'function') {
+	if (elementData.onCreate) {
+		if (typeof elementData.onCreate !== 'function') {
 			encoreConsole({
 				message: 'Event error:',
-				error: `The onCreation event value '${elementData.onCreation}' is not a function`,
+				error: `The onCreate event value '${elementData.onCreate}' is not a function`,
 			});
 			return;
 		}
-		elementData.onCreation(element);
+		elementData.onCreate(element);
 	}
 
 	return element;
