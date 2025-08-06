@@ -80,7 +80,10 @@
 		/>
 		<script type="module" src="./lib/js/embedded_page_scripts.js"></script>
 		<script type="module" async>
-			import { render } from './apis/encore/element-creator/ec.js';
+			import {
+				render,
+				detectChange,
+			} from './apis/encore/element-creator/ec.js';
 			import RootLayout from './lib/layouts/rootLayout.js';
 			import IS from './lib/components/image_components/IS.js';
 			import LinkButton from './lib/components/button_components/linkButton.js';
@@ -90,6 +93,7 @@
 			render(
 				'root',
 				(components) => {
+					let changingArr = [];
 					globalComponents = components;
 
 					components.layout = RootLayout;
@@ -97,6 +101,13 @@
 					function buttonContainers() {
 						return {
 							tag: 'div',
+							events: {
+								mousemove: {
+									callback: () => {
+										changingArr.push('e');
+									},
+								},
+							},
 							children: [
 								Button({
 									name: 'page One',
@@ -280,6 +291,10 @@
 							},
 						];
 					}
+
+					detectChange(() => {
+						console.log('run');
+					}, changingArr);
 
 					return buttonContainers();
 				},

@@ -52,6 +52,10 @@ class IS extends HTMLElement {
 		const source = this.getAttribute('src');
 
 		if (!name && !source) {
+			encoreConsole({
+				warn: `No 'src' or 'name' provided`,
+				message: `Icon load error:`,
+			});
 			this.#self.style.mask = this.#createMask('alert');
 			this.#showIcon();
 			return;

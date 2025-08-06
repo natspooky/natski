@@ -137,7 +137,7 @@ function buildComponent(elementData) {
 
 function checkEvent(eventName) {
 	if (typeof eventName != 'string' || eventName.length == 0) return false;
-	const TAGNAMES = {
+	const tagNames = {
 		select: 'input',
 		change: 'input',
 		submit: 'form',
@@ -146,7 +146,7 @@ function checkEvent(eventName) {
 		load: 'img',
 		abort: 'img',
 	};
-	let element = document.createElement(TAGNAMES[eventName] || 'div');
+	let element = document.createElement(tagNames[eventName] || 'div');
 	eventName = 'on' + eventName;
 	let isSupported = eventName in element;
 	if (!isSupported) {
@@ -155,6 +155,67 @@ function checkEvent(eventName) {
 	}
 	element = null;
 	return isSupported;
+}
+
+function detectChange(callback, array) {
+	if (!window.EncoreRender) {
+		encoreConsole({
+			message: 'Error:',
+			error: '', //do this
+		});
+		return;
+	}
+
+	if (!(callback || typeof callback === 'function')) {
+		encoreConsole({
+			message: 'Type error:',
+			error: '', //do this
+		});
+		return;
+	}
+
+	if (!(array || Array.isArray(array))) {
+		encoreConsole({
+			message: 'Type error:',
+			error: '', //do this
+		});
+		return;
+	}
+
+	if (array.length <= 0) {
+		callback();
+		return;
+	}
+
+	listenArray(array, callback);
+}
+
+function keepState(initialInput) {
+	const obj = {
+		data: initialInput ?? undefined,
+	};
+
+	function setter(value) {
+		obj.data = value;
+	}
+
+	function getter() {
+		return obj.data;
+	}
+
+	return [getter, setter]; //do this
+}
+
+function listenArray(array, callback) {
+	['pop', 'push', 'reverse', 'shift', 'unshift', 'splice', 'sort'].forEach(
+		(func) => {
+			array[func] = function () {
+				var res = Array.prototype[func].apply(array, arguments);
+				callback.apply(array, arguments);
+				return res;
+			};
+		},
+	);
 }
 
 function render(root, callback, settings) {
@@ -166,7 +227,9 @@ function render(root, callback, settings) {
 		return;
 	}
 
-	window.EncoreRender = true;
+	window.EncoreRender = {
+		renderData: {},
+	};
 
 	encoreConsole({
 		message: 'Hydrating page',
@@ -267,13 +330,13 @@ function render(root, callback, settings) {
 		return;
 	}
 
-	hydrate(manager);
-
 	if (document.readyState === 'complete')
 		encoreConsole({
 			message: 'Performance warning:',
 			warn: 'Rendering after document load is unadvised',
 		});
+
+	hydrate(manager);
 }
 
 function jsonElementAppend(element, elementData) {
@@ -493,69 +556,11 @@ function checkForKeys(component) {
 
 class ComponentManager {
 	#components;
-	#componentGroups;
 	#layout;
 
 	constructor() {
 		this.#components = {};
-		this.#componentGroups = {};
 	}
-
-	//groups
-
-	setGroup(ID) {
-		if (this.getGroup(ID)) {
-			encoreConsole({
-				message: 'Assignment Error:',
-				error: `The group '${ID}' is already assigned`,
-			});
-			return;
-		}
-		this.#componentGroups[ID] = new ComponentManager();
-
-		return this.#componentGroups[ID];
-	}
-
-	getGroup(ID) {
-		return this.#componentGroups?.[ID];
-	}
-
-	getGroups(...IDs) {
-		return [...IDs].map((ID) => this.getGroup(ID));
-	}
-
-	getAllGroups() {
-		return Object.entries(this.#componentGroups).map(([, group]) => {
-			return group;
-		});
-	}
-
-	removeGroup(ID) {
-		const group = this.getGroup(ID);
-		if (!group) {
-			encoreConsole({
-				message: 'Error:',
-				error: `The group '${ID}' does not exist`,
-			});
-			return;
-		}
-
-		group.removeAllComponents();
-
-		delete this.#components[ID];
-	}
-
-	removeGroups(...IDs) {
-		[...IDs].forEach((ID) => this.removeGroup(ID));
-	}
-
-	removeAllGroups() {
-		Object.entries(this.#componentGroups).forEach(([ID]) =>
-			this.removeGroup(ID),
-		);
-	}
-
-	//components
 
 	#createComponent(jsonString) {
 		let fragment,
@@ -610,7 +615,7 @@ class ComponentManager {
 		});
 	}
 
-	removeComponent(ID) {
+	removeComponent(ID, settings) {
 		const component = this.getComponent(ID)?.element;
 		if (!component) {
 			encoreConsole({
@@ -628,7 +633,9 @@ class ComponentManager {
 			});
 		}
 
-		delete this.#components[ID];
+		if (settings?.deleteComponent) {
+			delete this.#components[ID];
+		}
 
 		return this;
 	}
@@ -639,9 +646,9 @@ class ComponentManager {
 		return this;
 	}
 
-	removeAllComponents() {
+	removeAllComponents(settings) {
 		Object.entries(this.#components).forEach(([ID]) =>
-			this.removeComponent(ID),
+			this.removeComponent(ID, settings),
 		);
 
 		return this;
@@ -787,4 +794,5 @@ export {
 	ComponentManager,
 	checkEvent,
 	render,
+	detectChange,
 };
