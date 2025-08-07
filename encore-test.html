@@ -90,24 +90,16 @@
 			import Button from './lib/components/button_components/button.js';
 
 			let globalComponents;
+
 			render(
 				'root',
 				(components) => {
-					let changingArr = [];
-					globalComponents = components;
-
 					components.layout = RootLayout;
 
 					function buttonContainers() {
 						return {
 							tag: 'div',
-							events: {
-								mousemove: {
-									callback: () => {
-										changingArr.push('e');
-									},
-								},
-							},
+
 							children: [
 								Button({
 									name: 'page One',
@@ -291,10 +283,6 @@
 							},
 						];
 					}
-
-					detectChange(() => {
-						console.log('run');
-					}, changingArr);
 
 					return buttonContainers();
 				},

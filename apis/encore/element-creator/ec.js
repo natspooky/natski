@@ -227,15 +227,13 @@ function render(root, callback, settings) {
 		return;
 	}
 
-	window.EncoreRender = {
-		renderData: {},
-	};
+	window.EncoreRender = true;
 
 	encoreConsole({
 		message: 'Hydrating page',
 	});
 
-	if (settings?.useIcons && !window.IconSystem) new IconSystem();
+	if (settings?.useIcons) new IconSystem();
 
 	const manager = new ComponentManager();
 	const rootType = typeof root;
@@ -279,6 +277,7 @@ function render(root, callback, settings) {
 	const hydrate = async (components) => {
 		try {
 			const time = performance.now();
+			const page = components.setGroup('page').getGroup('page');
 			const renderComponent = await callback(components);
 			const componentName = 'content';
 			const layout = components.layout;
@@ -556,13 +555,67 @@ function checkForKeys(component) {
 
 class ComponentManager {
 	#components;
+	#groups;
 	#layout;
 
 	constructor() {
 		this.#components = {};
+		this.#groups = {};
 	}
 
-	#createComponent(jsonString) {
+	//groups
+
+	appendGroup(element, ID) {
+		const group = this.getGroup(ID);
+		if (!group) {
+			encoreConsole({
+				message: 'Error:',
+				error: `The group '${ID}' does not exist`,
+			});
+			return;
+		}
+
+		if (group.layout) appendChildren(element, group.componentList());
+	}
+
+	setGroup(ID) {
+		if (this.getGroup(ID)) {
+			encoreConsole({
+				message: 'Assignment Error:',
+				error: `The group '${ID}' is already assigned`,
+			});
+			return;
+		}
+
+		this.#groups[ID] = new ComponentManager();
+
+		return this;
+	}
+
+	getGroup(ID) {
+		return this.#groups?.[ID];
+	}
+
+	removeGroup(ID, settings) {
+		const group = this.getGroup(ID);
+		if (!group) {
+			encoreConsole({
+				message: 'Error:',
+				error: `The group '${ID}' does not exist`,
+			});
+			return;
+		}
+
+		group.removeAllComponents({ deleteComponent: true });
+
+		if (settings?.deleteGroup) delete this.#groups[ID];
+
+		return this;
+	}
+
+	// components
+
+	#generateComponent(jsonString) {
 		let fragment,
 			component = buildComponent(jsonString);
 
@@ -586,7 +639,7 @@ class ComponentManager {
 			return;
 		}
 
-		const { fragment, component } = this.#createComponent(
+		const { fragment, component } = this.#generateComponent(
 			jsonString,
 			settings,
 		);
@@ -609,9 +662,9 @@ class ComponentManager {
 		return [...IDs].map((ID) => this.getComponent(ID));
 	}
 
-	getAllComponents() {
-		return Object.entries(this.#components).map(([, element]) => {
-			return element;
+	componentList() {
+		return Object.entries(this.#components).map(([, component]) => {
+			return component.fragment ?? component.element;
 		});
 	}
 
@@ -633,9 +686,7 @@ class ComponentManager {
 			});
 		}
 
-		if (settings?.deleteComponent) {
-			delete this.#components[ID];
-		}
+		if (settings?.deleteComponent) delete this.#components[ID];
 
 		return this;
 	}
@@ -684,7 +735,7 @@ class ComponentManager {
 
 	replaceComponent(ID, jsonString, settings) {
 		const oldComponent = this.getComponent(ID),
-			{ fragment, component } = this.#createComponent(
+			{ fragment, component } = this.#generateComponent(
 				jsonString,
 				settings,
 			);
