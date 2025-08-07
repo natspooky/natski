@@ -845,5 +845,4 @@ export {
 	ComponentManager,
 	checkEvent,
 	render,
-	detectChange,
 };
