@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>About</title>
+		<title>test</title>
 		<meta charset="UTF-8" />
 		<meta
 			name="viewport"
@@ -80,10 +80,7 @@
 		/>
 		<script type="module" src="./lib/js/embedded_page_scripts.js"></script>
 		<script type="module" async>
-			import {
-				render,
-				detectChange,
-			} from './apis/encore/element-creator/ec.js';
+			import { render } from './apis/encore/element-creator/ec.test.js';
 			import RootLayout from './lib/layouts/rootLayout.js';
 			import IS from './lib/components/image_components/IS.js';
 			import LinkButton from './lib/components/button_components/linkButton.js';
@@ -96,195 +93,21 @@
 				(components) => {
 					components.layout = RootLayout;
 
-					function buttonContainers() {
-						return {
-							tag: 'div',
-
-							children: [
-								Button({
-									name: 'page One',
-									action: {
-										callback: () => {
-											components.replaceComponent(
-												'content',
-												[
-													buttonContainers(),
-													...pageOne(),
-												],
-											);
-										},
-									},
-								}),
-								Button({
-									name: 'page Two',
-									action: {
-										callback: () => {
-											components.replaceComponent(
-												'content',
-												[
-													buttonContainers(),
-													...pageTwo(),
-												],
-											);
-										},
-									},
-								}),
-								Button({
-									name: 'page Three',
-									action: {
-										callback: () => {
-											components.replaceComponent(
-												'content',
-												[
-													buttonContainers(),
-													...pageThree(),
-												],
-											);
-										},
-									},
-								}),
-							],
-						};
-					}
-
-					function pageThree() {
-						return [
-							{
-								tag: 'div',
-								children: [
-									Button({
-										name: 'go to page 1',
-										action: {
-											callback: () => {
-												components.replaceComponent(
-													'content',
-													pageOne(),
-												);
-											},
-										},
-									}),
-								],
+					return {
+						tag: 'div',
+						attributes: {
+							style: 'height: 100px;background:red',
+						},
+						events: {
+							click: {
+								callback: (target) => {
+									console.log(target);
+								},
+								target: document,
+								param: 'target',
 							},
-							{
-								tag: 'div',
-								children: [
-									Button({
-										name: 'go to page 2',
-										action: {
-											callback: () => {
-												components.replaceComponent(
-													'content',
-													pageTwo(),
-												);
-											},
-										},
-									}),
-								],
-							},
-							{
-								tag: 'div',
-								children: [
-									Button({
-										name: 'remove All',
-										action: {
-											callback: () => {
-												components.removeComponent(
-													'layout',
-												);
-											},
-										},
-									}),
-								],
-							},
-							{},
-						];
-					}
-
-					function pageOne() {
-						return [
-							{
-								tag: 'div',
-								events: {
-									click: {
-										callback: () => {
-											components.replaceComponent(
-												'content',
-												pageTwo(),
-											);
-										},
-									},
-								},
-								children: {
-									tag: 'h2',
-									children: {
-										tag: 'text',
-										text: 'pageOne',
-									},
-								},
-							},
-							{
-								tag: 'h3',
-								events: {
-									click: {
-										callback: () => {
-											components.replaceComponent(
-												'layout',
-												pageOne(),
-											);
-										},
-									},
-								},
-								children: {
-									tag: 'text',
-									text: 'remove layout [one]',
-								},
-							},
-						];
-					}
-
-					function pageTwo() {
-						return [
-							{
-								tag: 'div',
-								events: {
-									click: {
-										callback: () => {
-											components.replaceComponent(
-												'content',
-												pageThree(),
-											);
-										},
-									},
-								},
-								children: {
-									tag: 'h2',
-									children: {
-										tag: 'text',
-										text: 'pageTwo',
-									},
-								},
-							},
-							{
-								tag: 'h3',
-								events: {
-									click: {
-										callback: () => {
-											components.replaceComponent(
-												'layout',
-												pageOne(),
-											);
-										},
-									},
-								},
-								children: {
-									tag: 'text',
-									text: 'remove layout [two]',
-								},
-							},
-						];
-					}
-
-					return buttonContainers();
+						},
+					}; //buttonContainers();
 				},
 				{
 					useIcons: true,
