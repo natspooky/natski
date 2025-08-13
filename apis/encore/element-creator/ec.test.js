@@ -748,17 +748,16 @@ function functionType({ param, callback, target }, element) {
 	if (!checkExists(param)) return callback;
 
 	if (Array.isArray(param)) {
-		let value = param.map((value) => checkValue(value, target, element));
-		return (ev) => callback(...value);
+		return (ev) =>
+			callback(
+				...param.map((value) => checkValue(value, target, element, ev)),
+			);
 	} else {
-		let value = checkValue(param, target, element);
-
-		return (ev) => callback(value);
+		return (ev) => callback(checkValue(param, target, element, ev));
 	}
 }
 
-function checkValue(value, target, element) {
-	console.log('uh oh');
+function checkValue(value, target, element, ev) {
 	switch (value) {
 		case 'self':
 			return element;
@@ -772,6 +771,9 @@ function checkValue(value, target, element) {
 				error: '',
 			}); //do this
 			break;
+
+		case 'event':
+			return ev;
 
 		default:
 			return value;

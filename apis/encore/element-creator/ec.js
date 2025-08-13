@@ -241,15 +241,27 @@ class ComponentManager {
 		const firstComponent = this.getComponent(firstID),
 			secondComponent = this.getComponent(secondID);
 
-		if (!) {
-			encoreConsole({//do this
-				message: "",
-				error: ""
-			})
-				return 
-			}
-		
-		this.replaceComponent();
+		if (!firstComponent) {
+			encoreConsole({
+				//do this
+				message: '',
+				error: '',
+			});
+			return;
+		}
+
+		if (!secondComponent) {
+			encoreConsole({
+				//do this
+				message: '',
+				error: '',
+			});
+			return;
+		}
+
+		this.replaceComponent(); //do this
+
+		return this;
 	}
 
 	appendComponent(element, ID) {
@@ -387,18 +399,16 @@ function buildComponent(elementData) {
 				return;
 			}
 
-			let target = eventType?.target || element;
-
 			if (Array.isArray(event)) {
 				event.forEach((eventData) => {
-					target.addEventListener(
+					(eventData?.target || element).addEventListener(
 						eventType,
 						functionType(eventData, element),
 						eventData.options,
 					);
 				});
 			} else {
-				target.addEventListener(
+				(event?.target || element).addEventListener(
 					eventType,
 					functionType(event, element),
 					event.options,
@@ -482,18 +492,16 @@ function appendDataToComponent(element, elementData) {
 				return;
 			}
 
-			let target = eventType?.target || element;
-
 			if (Array.isArray(event)) {
 				event.forEach((eventData) => {
-					target.addEventListener(
+					(eventData?.target || element).addEventListener(
 						eventType,
 						functionType(eventData, element),
 						eventData.options,
 					);
 				});
 			} else {
-				target.addEventListener(
+				(event?.target || element).addEventListener(
 					eventType,
 					functionType(event, element),
 					event.options,
@@ -736,49 +744,36 @@ function elementAppended(element, callback) {
 	});
 }
 
-function functionType(event, element) {
-	if (!checkExists(event.param)) return event.callback;
+function functionType({ param, callback, target }, element) {
+	if (!checkExists(param)) return callback;
 
-	if (Array.isArray(event.param) && event.param.length > 1) {
-		if (event.param[0] === 'self') {
-			return () => event.callback(element, ...event.param.slice(1));
-		} else if (event.param[0] === 'event') {
-			return (ev) => event.callback(ev, ...event.param.slice(1));
-		} else {
-			return () => event.callback(...event.param);
-		}
-	} else {
-		if (Array.isArray(event.param)) event.param = event.param[0];
-
+	if (Array.isArray(param)) {
 		return (ev) =>
-			event.callback(checkValue(event.param, event.target, element, ev));
-
-		if (event.param === 'self') {
-			return () => event.callback(element);
-		} else if (event.param === 'event') {
-			return (ev) => event.callback(ev);
-		} else {
-			return () => event.callback(event.param);
-		}
+			callback(
+				...param.map((value) => checkValue(value, target, element, ev)),
+			);
+	} else {
+		return (ev) => callback(checkValue(param, target, element, ev));
 	}
 }
 
-function checkValue(value, target, element, event) {
-	console.log('uh oh');
+function checkValue(value, target, element, ev) {
 	switch (value) {
 		case 'self':
 			return element;
 
 		case 'target':
-			if (!target) {
-				encoreConsole({}); //do this
-				return;
+			if (target) {
+				return target;
 			}
-
-			return target;
+			encoreConsole({
+				message: '',
+				error: '',
+			}); //do this
+			break;
 
 		case 'event':
-			return event;
+			return ev;
 
 		default:
 			return value;
