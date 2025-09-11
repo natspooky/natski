@@ -111,13 +111,13 @@ export default class SSC {
 	#createElements() {
 		if (this.settings.thumbs) {
 			(() => {
-				let thumbcont = SEC.jsonElementify({
+				let thumbcont = SEC.buildComponent({
 					tag: 'div',
 					classes: ['SSCthumbs'],
 				});
 				for (let i = 0; i < this.pages.length; i++) {
 					thumbcont.appendChild(
-						SEC.jsonElementify({
+						SEC.buildComponent({
 							tag: 'div',
 							classes: ['SSCthumb'],
 							events: {
@@ -145,7 +145,7 @@ export default class SSC {
 		if (this.settings.progressBar) {
 			(() => {
 				this.SSC.appendChild(
-					SEC.jsonElementify({
+					SEC.buildComponent({
 						tag: 'div',
 						classes: ['SSCprogress'],
 						children: [
@@ -166,7 +166,7 @@ export default class SSC {
 		if (this.settings.pauseButton) {
 			(() => {
 				this.SSC.appendChild(
-					SEC.jsonElementify({
+					SEC.buildComponent({
 						tag: 'button',
 						classes: ['SSCpauseButton'],
 						events: {
@@ -204,7 +204,7 @@ export default class SSC {
 		if (this.settings.sideButtons && !this.device) {
 			SEC.appendChildren(
 				this.SSC,
-				SEC.jsonElementify([
+				SEC.buildComponent([
 					{
 						tag: 'button',
 						classes: ['SSCpageButton'],

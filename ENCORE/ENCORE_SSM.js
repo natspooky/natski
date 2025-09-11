@@ -31,7 +31,7 @@ class SSM {
 		observerHeight: 0,
 	};
 	constructor(element, settings) {
-		this.#SSM = element; //SEC.jsonElementify(element);
+		this.#SSM = element; //SEC.buildComponent(element);
 		this.#GIS = new GIS.observe(this.#SSM);
 
 		this.#observers.intersect = new IntersectionObserver(this.#intersect, {

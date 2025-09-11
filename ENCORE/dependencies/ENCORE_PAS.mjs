@@ -262,7 +262,7 @@ export default class PAS {
 	}
 
 	#createElements(data) {
-		return SEC.jsonElementify({
+		return SEC.buildComponent({
 			tag: 'div',
 			classes: ['PAS-popup'],
 			attributes: {

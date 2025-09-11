@@ -7,7 +7,7 @@
 
 'use strict';
 
-export function jsonElementify(elementData) {
+export function buildComponent(elementData) {
 	if (Array.isArray(elementData)) {
 		return jsonMultiElementify(elementData);
 	}
@@ -74,7 +74,7 @@ export function jsonElementify(elementData) {
 	}
 
 	if (elementData.children) {
-		appendChildren(element, jsonElementify(elementData.children));
+		appendChildren(element, buildComponent(elementData.children));
 	}
 
 	return element;
@@ -95,7 +95,7 @@ function jsonMultiElementify(elements) {
 
 	for (const element of elements) {
 		if (checkForKeys(element)) {
-			arr.push(jsonElementify(element));
+			arr.push(buildComponent(element));
 		}
 	}
 

@@ -53,7 +53,7 @@ export default class BIM {
 	}
 
 	createElements() {
-		return SEC.jsonElementify({
+		return SEC.buildComponent({
 			tag: 'div',
 			classes: ['BIM-popup'],
 			children: [

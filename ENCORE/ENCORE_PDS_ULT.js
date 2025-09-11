@@ -535,10 +535,10 @@ class PDS {
 	constructor(settings) {}
 
 	#createContainer() {
-		SEC.jsonElementify({});
+		SEC.buildComponent({});
 	}
 
 	#createControls() {
-		SEC.jsonElementify({});
+		SEC.buildComponent({});
 	}
 }

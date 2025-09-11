@@ -226,12 +226,12 @@ export default class SSCU {
 		}
 		if (this.settings.thumbs) {
 			(() => {
-				let thumbcont = SEC.jsonElementify({
+				let thumbcont = SEC.buildComponent({
 					tag: 'div',
 					classes: ['SSCUthumbs'],
 				});
 				for (let i = 0; i < this.pages.length; i++) {
-					let thumb = SEC.jsonElementify({
+					let thumb = SEC.buildComponent({
 						tag: 'div',
 						classes: ['SSCUthumb'],
 						events: {
@@ -265,7 +265,7 @@ export default class SSCU {
 		if (this.settings.pauseButton) {
 			(() => {
 				this.SSCU.appendChild(
-					SEC.jsonElementify({
+					SEC.buildComponent({
 						tag: 'button',
 						classes: ['SSCUpauseButton'],
 						events: {
@@ -303,7 +303,7 @@ export default class SSCU {
 		if (this.settings.sideButtons && !this.device) {
 			SEC.appendChildren(
 				this.SSCU,
-				SEC.jsonElementify([
+				SEC.buildComponent([
 					{
 						tag: 'button',
 						classes: ['SSCUpageButton'],

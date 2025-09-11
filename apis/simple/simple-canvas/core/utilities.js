@@ -5,13 +5,13 @@
 /* How to use? : Check the GitHub README or visit https://natski.net/apis/encore/element-creator
 /* ----------------------------------------------- */
 
-function jsonElementify(elementData) {
+function buildComponent(elementData) {
 	if (Array.isArray(elementData)) {
 		const arr = [];
 
 		elementData.forEach((element) => {
 			if (checkForKeys(element)) {
-				arr.push(jsonElementify(element));
+				arr.push(buildComponent(element));
 			}
 		});
 
@@ -69,7 +69,7 @@ function jsonElementify(elementData) {
 	}
 
 	if (elementData.children) {
-		appendChildren(element, jsonElementify(elementData.children));
+		appendChildren(element, buildComponent(elementData.children));
 	}
 
 	if (elementData.events) {
@@ -140,7 +140,7 @@ function jsonElementAppend(element, elementData) {
 	}
 
 	if (elementData.children) {
-		appendChildren(element, jsonElementify(elementData.children));
+		appendChildren(element, buildComponent(elementData.children));
 	}
 
 	if (elementData.events) {
@@ -301,7 +301,7 @@ class ComponentManager {
 		if (this.getComponent(ID))
 			throw new Error(`Component ID "${ID}" is already assigned`);
 
-		const component = jsonElementify(jsonString);
+		const component = buildComponent(jsonString);
 
 		this.#components[ID] = {
 			json: jsonString,
@@ -368,7 +368,7 @@ class ComponentManager {
 	//FIX -- wont work. consider a diff approach
 	replaceComponent(ID, jsonString) {
 		const oldComponent = this.getComponent(ID),
-			newComponent = jsonElementify(jsonString);
+			newComponent = buildComponent(jsonString);
 		if (!oldComponent) {
 			this.setComponent(ID, jsonString);
 			return;
@@ -437,7 +437,7 @@ class ComponentManager {
 }
 
 export {
-	jsonElementify,
+	buildComponent,
 	jsonElementAppend,
 	checkExists,
 	setFallback,

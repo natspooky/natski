@@ -2,7 +2,7 @@ import * as SEC from 'https://natski.netlify.app/ENCORE/dependencies/ENCORE_SEC.
 
 export function component(data) {
 	// {data, componentFunct}
-	return SEC.jsonElementify(data.element(data.data));
+	return SEC.buildComponent(data.element(data.data));
 }
 
 export function setComponentFromValue(data) {

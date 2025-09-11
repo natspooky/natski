@@ -18,7 +18,7 @@ footer button {
 footer p {
 	position: relative;
 	margin: 0;
-	color: var(--text-tertiary);
+	color: rgba(255, 255, 255, 0.5);
 }
 
 footer button icon-system {
@@ -27,7 +27,7 @@ footer button icon-system {
 	height: 15px;
 	display: block;
 	margin-right: 7px;
-	background-color: var(--text-tertiary);
+	background-color: rgba(255, 255, 255, 0.5);
 }
 
 footer button a {
@@ -45,7 +45,7 @@ footer section {
 	display: flex;
 	align-items: baseline;
 	justify-content: center;
-	border-top: 1px solid var(--border-color);
+	border-top: 1px solid rgba(255, 255, 255, 0.3);
 }
 footer section:first-of-type {
 	padding: 20px 20px;
@@ -73,7 +73,7 @@ footer h1 {
 	position: relative;
 	margin: 0 0 8px 0;
 	font-size: 1.1em;
-	color: var(--text-secondary);
+	color: rgba(255, 255, 255, 0.8);
 }
 
 @media screen and (max-width: 768px) {
@@ -90,9 +90,9 @@ footer h1 {
 
 @media (hover: hover) {
 	footer button:hover icon-system {
-		background-color: var(--text-secondary);
+		background-color: rgba(255, 255, 255, 0.8);
 	}
 	footer button:hover p {
-		color: var(--text-secondary);
+		color: rgba(255, 255, 255, 0.8);
 	}
 }

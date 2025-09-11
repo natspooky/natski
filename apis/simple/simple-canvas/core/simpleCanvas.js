@@ -2,7 +2,7 @@ import Config from './config.js';
 import Render from './render.js';
 import Event from './event.js';
 import LayerManager from './layerManager.js';
-import { jsonElementify } from './utilities.js';
+import { buildComponent } from './utilities.js';
 
 export default class SimpleCanvas {
 	#canvas;
@@ -28,7 +28,7 @@ export default class SimpleCanvas {
 			if (!this.#canvas.element)
 				throw new Error('Element ID has no corresponding HTMLElement');
 		} else {
-			throw new TypeErorr(
+			throw new TypeError(
 				"Element provided is not of type 'string' or 'ELEMENT_NODE'",
 			);
 		}
@@ -76,7 +76,7 @@ export default class SimpleCanvas {
 			return { id, classes };
 		})(identifiers); // call function immediately
 
-		const element = jsonElementify({
+		const element = buildComponent({
 			tag: 'canvas',
 			attributes: {
 				id: id,

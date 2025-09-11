@@ -80,7 +80,7 @@
 		/>
 		<script type="module" src="./lib/js/embedded_page_scripts.js"></script>
 		<script type="module" async>
-			import { render } from './apis/encore/element-creator/ec.test.js';
+			import { render } from './apis/encore/element-creator/ec.js';
 			import RootLayout from './lib/layouts/rootLayout.js';
 			import IS from './lib/components/image_components/IS.js';
 			import LinkButton from './lib/components/button_components/linkButton.js';
@@ -92,22 +92,25 @@
 				'root',
 				(components) => {
 					components.layout = RootLayout;
-
-					return {
-						tag: 'div',
-						attributes: {
-							style: 'height: 100px;background:red',
-						},
-						events: {
-							click: {
-								callback: (target) => {
-									console.log(target);
-								},
-								target: document,
-								param: 'target',
+					return [
+						Button({
+							classes: 'icon-button glass',
+							icon: 'config',
+						}),
+						{
+							tag: 'div',
+							attributes: {
+								style: 'width: fit-content; padding: 15px; display: flex; margin: auto; ',
 							},
+							classes: 'glass titlecard',
+							children: [
+								IS({
+									icon: 'NATSKI',
+									classes: 'ic',
+								}),
+							],
 						},
-					}; //buttonContainers();
+					];
 				},
 				{
 					useIcons: true,

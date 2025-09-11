@@ -220,8 +220,9 @@ html {
 	-webkit-text-size-adjust: 100%;
 }
 body {
-	background: var(--background);
+	background: rgb(37, 86, 160);
 	color: var(--text-primary);
+
 	word-wrap: break-word;
 	text-rendering: optimizeLegibility;
 	height: auto;
@@ -247,55 +248,24 @@ main {
 	min-width: 35px;
 	height: fit-content;
 	min-height: 35px;
-	border: 0;
-	border-radius: 100vmax;
-	background-color: transparent;
 	display: flex;
 	cursor: pointer;
 	justify-content: center;
 	align-items: center;
-	transition: 0.2s;
+}
+.icon-button a {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .icon-button icon-system {
 	position: relative;
+	display: block;
 	width: 18px;
 	height: 18px;
 	background-color: var(--text-secondary);
 	transition: 0.2s;
-}
-
-.icon-button::before {
-	content: '';
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	border-radius: 100vmax;
-	transform: scale(1);
-	background-color: var(--input-background);
-	border: 1px solid var(--border-color);
-	transition: 0.2s;
-}
-
-.icon-button:hover::before {
-	border: 2px solid var(--input-focus);
-	transform: scale(0.95);
-	box-shadow: 0 2px 40px -4px var(--input-focus);
-}
-
-.icon-button:hover icon-system {
-	background-color: var(--input-active);
-}
-
-.icon-button:hover {
-	color: var(--input-active);
-}
-
-.icon-button:active::before {
-	transform: scale(0.85);
-	transition: 0s;
 }
 
 .text-gradient {
@@ -340,6 +310,91 @@ main {
 			transparent 1.5px 30px
 		) -4px 0 / 30px 30px;
 	background-position: center center;
+}
+
+.glass {
+	background-color: rgba(255, 255, 255, 0.1);
+	overflow: hidden;
+	margin: 10px auto;
+	padding: 15px;
+	max-width: calc(100% - 20px);
+	border-radius: 40px;
+	transform: scale(1, 1);
+	border: 1px solid rgba(255, 255, 255, 0.092);
+	box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25);
+	color: rgba(255, 255, 255, 0.5);
+	transition: 0.3s cubic-bezier(0.29, 0.05, 0, 2), background-color 0.3s;
+}
+
+.glass:hover {
+	transform: scale(0.99, 1.04);
+	background-color: rgba(255, 255, 255, 0.15);
+	transition: 0.3s cubic-bezier(0.29, 0.05, 0, 2),
+		background-color 0.3s cubic-bezier(0.17, 0.67, 0.51, 1.5);
+}
+
+.glass:active {
+	transform: scale(1.01, 1.03);
+	background-color: rgba(255, 255, 255, 0.18);
+}
+
+.glass::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-image: linear-gradient(
+		-12deg,
+		transparent,
+		rgba(255, 255, 255, 0.1)
+	);
+}
+
+.glass-backing {
+	background-color: rgba(0, 0, 0, 0.1);
+	margin: 10px auto;
+	padding: 15px;
+	overflow: hidden;
+	max-width: calc(100% - 20px);
+	border-radius: 45px;
+	transform: scale(1, 1);
+	border: 1px solid rgba(255, 255, 255, 0.07);
+	box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25);
+	transition: 0.3s cubic-bezier(0.29, 0.05, 0, 2), background-color 0.3s;
+}
+
+.glass-backing:hover {
+	transform: scale(0.99, 1.04);
+	background-color: rgba(0, 0, 0, 0.15);
+	transition: 0.3s cubic-bezier(0.29, 0.05, 0, 2),
+		background-color 0.3s cubic-bezier(0.17, 0.67, 0.51, 1.5);
+}
+
+.glass-backing:active {
+	transform: scale(1.01, 1.03);
+	background-color: rgba(0, 0, 0, 0.18);
+}
+
+.glass-backing::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-image: linear-gradient(-12deg, transparent, rgba(0, 0, 0, 0.2));
+}
+
+.glass-icon {
+	background-color: rgba(255, 255, 255, 0.4);
+	box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25);
+}
+
+.blurred-bg {
+	filter: blur(0);
+	backdrop-filter: blur(5px);
 }
 
 .hover-grid {
