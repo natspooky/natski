@@ -10,7 +10,7 @@ import { fileExtention } from '../../dependencies/file-utils/fu.min.js';
 import encoreConsole from '../dependencies/encoreConsole.js';
 
 class IS extends HTMLElement {
-	static observedAttributes = ['name', 'src'];
+	static observedAttributes = ['name', 'src', 'positionable'];
 
 	#iconPath;
 	#self;
@@ -23,7 +23,7 @@ class IS extends HTMLElement {
 			'https://natski.vercel.app/apis/encore/icon-system/dependencies/svg/?.svg';
 	}
 
-	#createMask(icon, custom) {
+	#createMask(icon, custom, editable) {
 		if (!IS_DATA.includes(icon) && !custom) {
 			encoreConsole({
 				error: `The icon System icon '${icon}' doesn't exist`,
@@ -32,9 +32,9 @@ class IS extends HTMLElement {
 
 			icon = 'alert';
 		}
-		return `url(${
-			custom ? icon : this.#iconPath.replace('?', icon)
-		}) no-repeat center`;
+		return `url(${custom ? icon : this.#iconPath.replace('?', icon)})${
+			editable ? '' : ' no-repeat center'
+		}`;
 	}
 
 	#showIcon() {
@@ -50,30 +50,36 @@ class IS extends HTMLElement {
 
 		const name = this.getAttribute('name');
 		const source = this.getAttribute('src');
+		const editable = this.getAttribute('src');
 
 		if (!name && !source) {
 			encoreConsole({
 				warn: `No 'src' or 'name' provided`,
 				message: `Icon load error:`,
 			});
-			this.#self.style.mask = this.#createMask('alert');
+			this.#self.style.mask = this.#createMask('alert', false, editable);
 			this.#showIcon();
 			return;
 		}
 
 		if (name) {
-			this.#self.style.mask = this.#createMask(name);
+			this.#self.style.mask = this.#createMask(name, false, editable);
 			this.#showIcon();
 			return;
 		}
 
 		if (source) {
 			if (fileExtention(source) === 'svg') {
-				this.#self.style.mask = this.#createMask(source, true);
+				this.#self.style.mask = this.#createMask(
+					source,
+					true,
+					editable,
+				);
 			} else {
 				this.#self.style.backgroundImage = this.#createMask(
 					source,
 					true,
+					editable,
 				);
 			}
 			this.#showIcon();
@@ -85,7 +91,11 @@ class IS extends HTMLElement {
 					message: 'Icon load error:',
 					error: `The custom icon '${source}' doesn't exist`,
 				});
-				this.#self.style.mask = this.#createMask('alert');
+				this.#self.style.mask = this.#createMask(
+					'alert',
+					false,
+					editable,
+				);
 			};
 
 			buffer.src = source;

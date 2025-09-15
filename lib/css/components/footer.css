@@ -1,11 +1,18 @@
+.footer-container {
+	position: relative;
+	padding: 20px 0;
+}
+
 footer {
 	position: relative;
-	width: 100%;
-	margin: 20px 0 0 0;
+	width: min(calc(100% - 40px), 900px);
 	padding: 0 20px 20px 20px;
 	background-color: var(--card-background);
-
 	border-top: 1px solid var(--border-color);
+}
+
+footer.glass-backing {
+	margin: 0 auto;
 }
 
 footer button {

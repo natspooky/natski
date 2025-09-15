@@ -1,6 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap');
-@import url('../css/components/footer.css');
-@import url('../css/components/header.css');
+@import url('./components/nav.css');
+@import url('./components/glass.css');
+@import url('./components/backgrounds.css');
+@import url('./components/footer.css');
+
 * {
 	margin: 0;
 	padding: 0;
@@ -171,26 +174,6 @@
 	--token-keyword: var(--blue-700);
 	--token-function: var(--pink-400);
 	--token-punctuation: var(--blue-600);
-
-	--dynamic-bezier: ease; /*cubic-bezier(0.23, 0.24, 0.11, 1.47);
-	/*cubic-bezier(0.29, 0.05, 0, 1.66);*/
-}
-
-#load {
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100vw;
-	height: 100vh;
-	background-color: var(--background);
-	z-index: 9999999;
-	opacity: 1;
-	transition: 0.7s background-color;
-}
-
-#load.loaded {
-	background-color: transparent;
-	pointer-events: none;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -214,15 +197,33 @@
 *::before {
 	box-sizing: border-box;
 }
+
+#load {
+	position: fixed;
+	z-index: 999999;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100vh;
+	background-color: var(--background);
+	filter: blur(0px);
+	backdrop-filter: blur(5px);
+	transition: 0.5s;
+}
+
+#load.loaded {
+	background-color: transparent;
+	backdrop-filter: blur(0px);
+}
+
 html {
 	font: 100% / 1.2888 var(--font-display);
 	-ms-text-size-adjust: 100%;
 	-webkit-text-size-adjust: 100%;
 }
 body {
-	background: rgb(37, 86, 160);
+	background: var(--background);
 	color: var(--text-primary);
-
 	word-wrap: break-word;
 	text-rendering: optimizeLegibility;
 	height: auto;
@@ -233,7 +234,6 @@ body {
 	touch-action: manipulation;
 	scrollbar-width: none;
 	position: relative;
-	padding-top: 60px;
 }
 
 main {
@@ -242,30 +242,12 @@ main {
 	min-height: calc(90vh - 50px);
 }
 
-.icon-button {
+header {
 	position: relative;
-	width: fit-content;
-	min-width: 35px;
-	height: fit-content;
-	min-height: 35px;
-	display: flex;
-	cursor: pointer;
-	justify-content: center;
-	align-items: center;
-}
-.icon-button a {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
-.icon-button icon-system {
-	position: relative;
-	display: block;
-	width: 18px;
-	height: 18px;
-	background-color: var(--text-secondary);
-	transition: 0.2s;
+	width: 100%;
+	padding-top: 60px;
+	padding: 80px 20px 20px 20px;
+	height: 100vh;
 }
 
 .text-gradient {
@@ -304,165 +286,16 @@ main {
 .fade-down-bg {
 	mask-image: linear-gradient(to bottom, black, transparent);
 }
+
+.fade-up-bg {
+	mask-image: linear-gradient(to top, black 50%, transparent);
+}
 .dotted-bg {
 	background: radial-gradient(
 			oklch(from var(--gray-1200) l c h / 30%) 1.5px,
 			transparent 1.5px 30px
 		) -4px 0 / 30px 30px;
 	background-position: center center;
-}
-
-.glass {
-	background-color: rgba(255, 255, 255, 0.1);
-	overflow: hidden;
-	margin: 10px auto;
-	padding: 15px;
-	max-width: calc(100% - 20px);
-	border-radius: 40px;
-	transform: scale(1, 1);
-	border: 1px solid rgba(255, 255, 255, 0.092);
-	box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25);
-	color: rgba(255, 255, 255, 0.5);
-	transition: 0.3s cubic-bezier(0.29, 0.05, 0, 2), background-color 0.3s;
-}
-
-.glass:hover {
-	transform: scale(0.99, 1.04);
-	background-color: rgba(255, 255, 255, 0.15);
-	transition: 0.3s cubic-bezier(0.29, 0.05, 0, 2),
-		background-color 0.3s cubic-bezier(0.17, 0.67, 0.51, 1.5);
-}
-
-.glass:active {
-	transform: scale(1.01, 1.03);
-	background-color: rgba(255, 255, 255, 0.18);
-}
-
-.glass::before {
-	content: '';
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background-image: linear-gradient(
-		-12deg,
-		transparent,
-		rgba(255, 255, 255, 0.1)
-	);
-}
-
-.glass-backing {
-	background-color: rgba(0, 0, 0, 0.1);
-	margin: 10px auto;
-	padding: 15px;
-	overflow: hidden;
-	max-width: calc(100% - 20px);
-	border-radius: 45px;
-	transform: scale(1, 1);
-	border: 1px solid rgba(255, 255, 255, 0.07);
-	box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25);
-	transition: 0.3s cubic-bezier(0.29, 0.05, 0, 2), background-color 0.3s;
-}
-
-.glass-backing:hover {
-	transform: scale(0.99, 1.04);
-	background-color: rgba(0, 0, 0, 0.15);
-	transition: 0.3s cubic-bezier(0.29, 0.05, 0, 2),
-		background-color 0.3s cubic-bezier(0.17, 0.67, 0.51, 1.5);
-}
-
-.glass-backing:active {
-	transform: scale(1.01, 1.03);
-	background-color: rgba(0, 0, 0, 0.18);
-}
-
-.glass-backing::before {
-	content: '';
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background-image: linear-gradient(-12deg, transparent, rgba(0, 0, 0, 0.2));
-}
-
-.glass-icon {
-	background-color: rgba(255, 255, 255, 0.4);
-	box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25);
-}
-
-.blurred-bg {
-	filter: blur(0);
-	backdrop-filter: blur(5px);
-}
-
-.hover-grid {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-}
-.hover-grid .grid-mask {
-	position: relative;
-	width: 100%;
-	display: block;
-	height: 100%;
-}
-.circle {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100px;
-	height: 100px;
-	background-color: #8157de;
-	border-radius: 50%;
-	filter: blur(20px);
-}
-
-.text-title {
-	position: relative;
-	width: 100%;
-	padding: 10px 0;
-}
-.text-title div {
-	position: absolute;
-	top: 0;
-	left: 0;
-	height: 100%;
-	width: 100%;
-}
-.text-title h1 {
-	position: relative;
-	display: block;
-	margin: auto;
-	width: fit-content;
-	font-size: 22px;
-}
-
-.docs-link {
-	position: relative;
-	margin: auto;
-	width: fit-content;
-	padding: 15px 0;
-	margin: 20px auto;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
-
-.docs-link p {
-	position: relative;
-	margin-right: 10px;
-	color: var(--text-tertiary);
-}
-
-.docs-button p {
-	margin: 0;
-}
-
-@media (hover: hover) {
 }
 
 @keyframes rotate {

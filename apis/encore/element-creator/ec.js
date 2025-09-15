@@ -371,9 +371,9 @@ function buildComponent(elementData) {
 	if (elementData.classes) {
 		if (Array.isArray(elementData.classes)) {
 			elementData.classes.forEach((className) => {
-				if (className.includes(' ')) {
-					elementData.classes.split(' ').forEach((className) => {
-						element.classList.add(className);
+				if (className?.includes(' ')) {
+					className.split(' ').forEach((name) => {
+						element.classList.add(name);
 					});
 				} else {
 					element.classList.add(className);
@@ -440,7 +440,12 @@ function buildComponent(elementData) {
 		);
 	}
 
-	if (elementData.onInView) {
+	if (elementData.onInView && elementData.onInView.callback) {
+		createIntersect(
+			element,
+			elementData.onInView.callback,
+			elementData.onInView?.options,
+		);
 	}
 
 	if (elementData.onCreate) {
@@ -513,7 +518,7 @@ function checkEvent(eventName) {
 }
 
 function render(root, callback, settings) {
-	if (window.EncoreRender) {
+	if (window.components) {
 		encoreConsole({
 			message: 'Hydration error:',
 			error: 'Only one render call can be made per page',
@@ -521,15 +526,13 @@ function render(root, callback, settings) {
 		return;
 	}
 
-	window.EncoreRender = true;
-
 	encoreConsole({
 		message: 'Hydrating page',
 	});
 
 	if (settings?.useIcons) new IconSystem();
 
-	const manager = new ComponentManager();
+	window.components = new ComponentManager();
 	const rootType = typeof root;
 	let rootElement;
 
@@ -568,11 +571,13 @@ function render(root, callback, settings) {
 		}
 	}
 
-	const hydrate = async (components) => {
+	const hydrate = async () => {
 		try {
+			await settings?.hooks?.before?.();
+
 			const time = performance.now();
 
-			const page = components.setGroup('page').getGroup('page');
+			const page = window.components.setGroup('page').getGroup('page');
 			const renderComponent = await callback(page);
 			const layout = page.layout;
 			const componentName = 'content';
@@ -608,26 +613,54 @@ function render(root, callback, settings) {
 			});
 			console.error(error);
 		}
+
+		settings?.hooks?.after?.();
 	};
 
 	if (document.readyState === 'loading') {
 		window.addEventListener('DOMContentLoaded', () => {
-			hydrate(manager);
+			hydrate();
 		});
 		return;
 	}
 
-	if (document.readyState === 'complete')
-		encoreConsole({
-			message: 'Performance warning:',
-			warn: 'Rendering after document load is unadvised',
-		});
-
-	hydrate(manager);
+	hydrate();
 }
 
-function isIntersecting(element, callback, options) {
-	if (options?.awaitResourceLoad) {
+function createIntersect(element, callback, options) {
+	const intersectFunction = (entries, observer) => {
+		const entry = entries[0];
+
+		if (entry.isIntersecting) {
+			if (options?.clearOnceInView) observer.unobserve(element);
+			callback?.visible(element, entry);
+		} else {
+			callback?.hidden(element, entry);
+		}
+	};
+
+	const intersectSettings = {
+		root: options?.root ?? document,
+		rootMargin: '0px',
+		scrollMargin: '0px',
+		threshold: options?.threshold ?? [0, 0.25, 0.5, 0.75, 1],
+	};
+
+	const observer = new IntersectionObserver(
+		intersectFunction,
+		intersectSettings,
+	);
+
+	if (options?.awaitContentLoad) {
+		if (document.readyState === 'complete') {
+			observer.observe(element);
+		} else {
+			window.addEventListener('load', () => {
+				observer.observe(element);
+			});
+		}
+	} else {
+		observer.observe(element);
 	}
 }
 
@@ -738,7 +771,11 @@ function checkExists(data) {
 }
 
 function setFallback(data, fallback) {
-	if (checkExists(data)) return data;
+	return returnIf(checkExists(data), data, fallback);
+}
+
+function returnIf(bool, value, fallback) {
+	if (bool) return value;
 	return fallback;
 }
 
@@ -766,12 +803,28 @@ function insertChildrenBefore(element, children, beforeElement) {
 }
 
 function className(classes, ...extraClasses) {
-	if (![...extraClasses][0]) return classes;
+	if (![...extraClasses][0] && [...extraClasses].length === 1) return classes;
+
 	if (!Array.isArray(classes)) classes = classes.split(' ');
-	[...extraClasses].forEach((classData) => {
-		if (!Array.isArray(classData)) classData = classData.split(' ');
-		classes.push(...classData);
-	});
+
+	const extraClassArr = [...extraClasses];
+
+	const check = (classes) => {
+		const tempArr = [];
+		classes.forEach((classData) => {
+			if (!classData) return;
+			if (Array.isArray(classData)) {
+				tempArr.push(...check(classData));
+				return;
+			}
+			tempArr.push(...classData.split(' '));
+		});
+
+		return tempArr;
+	};
+
+	classes.push(...check(extraClassArr));
+
 	return classes;
 }
 
@@ -786,6 +839,7 @@ export {
 	appendDataToComponent,
 	checkExists,
 	setFallback,
+	returnIf,
 	appendChildren,
 	insertChildrenBefore,
 	className,

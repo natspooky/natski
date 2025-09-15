@@ -1,6 +1,4 @@
-//import SimpleTest from './apis/simple/simple-test/core/simpleTest.js';
 import { MIME } from './apis/dependencies/file-utils/fu.min.js';
-
 import { createServer } from 'http';
 import { StatusCodes } from 'http-status-codes';
 import { existsSync, stat as _stat, readFile as _readFile } from 'fs';
@@ -8,30 +6,6 @@ import terminalLink from 'terminal-link';
 import { join, extname as _extname } from 'path';
 import path from 'path';
 import { parse, fileURLToPath } from 'url';
-/*
-const tester = new SimpleTest();
-
-tester.collection('Dependencies', (test) => {
-	test.collection('Mobile Util', (test) => {
-		test.test('thing', (assert) => {
-			assert.true(true);
-		});
-	});
-	test.collection('File Util', (test) => {});
-});
-
-tester.collection('Simple APIs', (collection) => {
-	collection.collection('Simple Test', (test) => {});
-	collection.collection('Simple Canvas', (test) => {});
-	collection.collection('Simple Audio', (test) => {});
-});
-
-tester.collection('ENCORE', (collection) => {
-	collection.collection('Icon System', (test) => {});
-	collection.collection('File Util', (test) => {});
-});
-
-tester.start();*/
 
 const consoleColor = {
 	reset: '\x1b[0m',
