@@ -3,6 +3,7 @@
 @import url('./components/glass.css');
 @import url('./components/backgrounds.css');
 @import url('./components/footer.css');
+@import url('./components/selector.css');
 
 * {
 	margin: 0;
