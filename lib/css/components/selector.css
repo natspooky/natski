@@ -49,14 +49,15 @@
 .selector .overlay {
 	height: calc(100% - 20px);
 	top: 0;
-	left: 10px;
+	left: 0;
+	translate: 0 0;
 	width: var(--width);
 	position: absolute;
 	pointer-events: none;
 	transform-origin: center center;
 	opacity: 0;
 	transition: 0.3s cubic-bezier(0.29, 0.05, 0, 2), background-color 0.3s,
-		width 0.2s, left 0.2s, opacity 0.2s;
+		width 0.2s, translate 0.2s, opacity 0.2s;
 }
 
 .selector .overlay.active {
