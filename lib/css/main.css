@@ -179,14 +179,14 @@
 
 ::-webkit-scrollbar-thumb {
 	background-color: var(--text-tertiary);
-	border: 3px solid var(--background);
+	border: 1px solid var(--background);
 	border-radius: 100vmax;
 }
 ::-webkit-scrollbar-thumb:hover {
 	border: 2px solid var(--background);
 }
 ::-webkit-scrollbar {
-	width: 0px;
+	width: 10px;
 	height: 0px;
 	background-color: transparent;
 }

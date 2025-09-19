@@ -414,6 +414,7 @@ function buildComponent(elementData) {
 
 			if (Array.isArray(event)) {
 				event.forEach((eventData) => {
+					if (!eventData) return;
 					(eventData?.target ?? element).addEventListener(
 						eventType,
 						functionType(eventData, element),
@@ -440,12 +441,16 @@ function buildComponent(elementData) {
 		);
 	}
 
+	if (elementData.onOrientationChange) {
+		//do this
+	}
+
 	if (elementData.onInView && elementData.onInView.callback) {
 		createIntersect(
 			element,
 			elementData.onInView.callback,
 			elementData.onInView?.options,
-		);
+		); //do this
 	}
 
 	if (elementData.onCreate) {
@@ -577,17 +582,16 @@ function render(root, callback, settings) {
 
 			const time = performance.now();
 
-			const page = window.components.setGroup('page').getGroup('page');
-			const renderComponent = await callback(page);
-			const layout = page.layout;
+			const renderComponent = await callback();
+			const layout = window.components.layout;
 			const componentName = 'content';
 
-			const content = page
+			const content = window.components
 				.setComponent(componentName, renderComponent)
 				.getComponent(componentName);
 
 			if (layout) {
-				page.setComponent(
+				window.components.setComponent(
 					'layout',
 					layout({
 						children: content.fragment ?? content.element,
@@ -595,7 +599,7 @@ function render(root, callback, settings) {
 				);
 			}
 
-			page.appendComponent(
+			window.components.appendComponent(
 				rootElement,
 				layout ? 'layout' : componentName,
 			);
