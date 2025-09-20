@@ -88,29 +88,66 @@
 
 			let globalComponents;
 
+			function CoolButton() {
+				const transform = {
+					x: 0,
+					y: 0,
+				};
+
+				const mouseOver = (self, event) => {
+					const dampenValue = 10;
+					transform.x = (
+						(event.clientX - self.offsetLeft) /
+						dampenValue
+					).toFixed(0);
+					transform.y = (
+						(event.clientY - self.offsetTop) /
+						dampenValue
+					).toFixed(0);
+
+					const funciton = `translate(${(transform.x / 10).toFixed(
+						0,
+					)}px,${(transform.y / 10).toFixed(0)}px) rotate(${0}deg)`;
+
+					console.log(funciton);
+
+					self.style.transform = funciton;
+				};
+
+				return {
+					tag: 'button',
+					events: {
+						mousemove: {
+							callback: mouseOver,
+							param: ['self', 'event'],
+							options: {
+								passive: true,
+							},
+						},
+					},
+					attributes: {
+						style: 'position: relative;padding: 20px',
+					},
+					children: {
+						tag: 'text',
+						text: 'cool asf button',
+					},
+				};
+			}
+
 			render(
 				'root',
-				(components) => {
-					components.layout = RootLayout;
-					return [
-						Button({
-							classes: 'icon-button glass',
-							icon: 'config',
-						}),
-						{
-							tag: 'div',
-							attributes: {
-								style: 'width: fit-content; padding: 15px; display: flex; margin: auto; ',
-							},
-							classes: 'glass titlecard',
-							children: [
-								IS({
-									icon: 'NATSKI',
-									classes: 'ic',
-								}),
-							],
+				() => {
+					window.components.setComponent('button', CoolButton());
+
+					return {
+						tag: 'div',
+						attributes: {
+							style: 'padding: 100px',
 						},
-					];
+						children:
+							window.components.getComponent('button').element,
+					};
 				},
 				{
 					useIcons: true,
