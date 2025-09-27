@@ -9,6 +9,7 @@
 
 import IconSystem from '../icon-system/is.min.js';
 import encoreConsole from '../dependencies/encoreConsole.js';
+import { append, create } from './dependencies/eventTable.js';
 
 class ComponentManager {
 	#components;
@@ -348,20 +349,26 @@ function buildComponent(elementData) {
 
 	let element;
 
-	if (elementData.tag) {
-		switch (elementData.tag) {
-			case 'text':
-				return document.createTextNode(elementData.text ?? '');
-			default:
-				if (!elementData.namespace) {
-					element = document.createElement(elementData.tag);
-				} else {
-					element = document.createElementNS(
-						elementData.namespace,
-						elementData.tag,
-					);
-				}
-		}
+	if (!elementData.tag) {
+		encoreConsole({
+			message: 'Component error:',
+			error: 'Cannot create HTML Node without a tag',
+		});
+		return;
+	}
+
+	switch (elementData.tag) {
+		case 'text':
+			return document.createTextNode(elementData.text ?? '');
+		default:
+			if (!elementData.namespace) {
+				element = document.createElement(elementData.tag);
+			} else {
+				element = document.createElementNS(
+					elementData.namespace,
+					elementData.tag,
+				);
+			}
 	}
 
 	if (elementData.innerHTML) {
@@ -434,6 +441,7 @@ function buildComponent(elementData) {
 	if (elementData.onAppend && elementData.onAppend.callback) {
 		//do this
 		//make it support and array of append requests with different options
+
 		elementAppended(
 			element,
 			elementData.onAppend.callback,
@@ -452,6 +460,8 @@ function buildComponent(elementData) {
 			elementData.onInView?.options,
 		); //do this
 	}
+
+	//element.dispatchEvent(create);
 
 	if (elementData.onCreate) {
 		if (typeof elementData.onCreate !== 'function') {
@@ -522,6 +532,18 @@ function checkEvent(eventName) {
 	return isSupported;
 }
 
+function buildCustomEventWorker() {
+	const evnt = new Event('append', {
+		detail: {},
+	});
+
+	document.addEventListener('append', (e) => {
+		console.log(e);
+	});
+
+	document.dispatchEvent(evnt);
+}
+
 function render(root, callback, settings) {
 	if (window.components) {
 		encoreConsole({
@@ -536,6 +558,12 @@ function render(root, callback, settings) {
 	});
 
 	if (settings?.useIcons) new IconSystem();
+
+	if (settings?.customEvents) {
+		//do this
+	}
+
+	buildCustomEventWorker();
 
 	window.components = new ComponentManager();
 	const rootType = typeof root;
@@ -580,6 +608,14 @@ function render(root, callback, settings) {
 		try {
 			await settings?.hooks?.before?.();
 
+			if (settings?.awaitFontLoad && !settings?.awaitPageLoad) {
+				encoreConsole({
+					message: 'Awaiting fonts',
+				});
+
+				await document.fonts.ready;
+			}
+
 			const time = performance.now();
 
 			const renderComponent = await callback();
@@ -620,6 +656,15 @@ function render(root, callback, settings) {
 
 		settings?.hooks?.after?.();
 	};
+
+	if (settings?.awaitPageLoad && document.readyState !== 'complete') {
+		window.addEventListener('load', () => {
+			hydrate();
+		});
+		encoreConsole({ message: 'Awaiting document complete' });
+		return;
+	}
+	//encoreConsole({ message: document.readyState });
 
 	if (document.readyState === 'loading') {
 		window.addEventListener('DOMContentLoaded', () => {
@@ -690,6 +735,9 @@ function isAppended(element) {
 	return element instanceof Document;
 }
 
+//do this
+//refresh page on back button
+
 function elementAppended(element, callback, options) {
 	if (isAppended(element)) {
 		callback(element);
@@ -710,7 +758,10 @@ function elementAppended(element, callback, options) {
 				continue;
 			if (!options?.perminant) observer.disconnect();
 
-			if (!options?.awaitContentLoad) {
+			//do this
+			//add font await for appendcallback
+
+			if (!options?.awaitPageLoad && !options?.awaitFontLoad) {
 				callback(element);
 				break;
 			}
@@ -748,7 +799,7 @@ function functionType({ param, callback, target }, element) {
 	}
 }
 
-function checkValue(value, target, element, event) {
+function checkValue(value, target, element, event, callback) {
 	switch (value) {
 		case 'self':
 			return element;
@@ -765,6 +816,8 @@ function checkValue(value, target, element, event) {
 			break;
 		case 'event':
 			return event;
+		case 'remover': //do this
+			return (target ?? element).removeEventListener();
 		default:
 			return value;
 	}
@@ -832,6 +885,24 @@ function className(classes, ...extraClasses) {
 	return classes;
 }
 
+function ElementDefiner(elementName, elementInformation) {
+	class customElement extends HTMLElement {
+		#self;
+
+		constructor() {
+			let self = super();
+
+			this.#self = self;
+		}
+
+		onElementAppended() {}
+
+		onElementRemoved() {}
+	}
+
+	customElements.define(elementName);
+}
+
 function checkForKeys(component) {
 	return (
 		Object.keys(component).length !== 0 && component.constructor === Object
@@ -851,6 +922,7 @@ export {
 	ComponentManager,
 	checkEvent,
 	render,
+	//ElementDefiner,
 };
 
 /*

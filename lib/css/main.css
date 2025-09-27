@@ -4,6 +4,7 @@
 @import url('./components/backgrounds.css');
 @import url('./components/footer.css');
 @import url('./components/selector.css');
+@import url('./components/contextMenu.css');
 
 * {
 	margin: 0;

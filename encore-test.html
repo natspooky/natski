@@ -85,72 +85,18 @@
 			import IS from './lib/components/image_components/IS.js';
 			import LinkButton from './lib/components/button_components/linkButton.js';
 			import Button from './lib/components/button_components/button.js';
-
-			let globalComponents;
-
-			function CoolButton() {
-				const transform = {
-					x: 0,
-					y: 0,
-				};
-
-				const mouseOver = (self, event) => {
-					const dampenValue = 10;
-					transform.x = (
-						(event.clientX - self.offsetLeft) /
-						dampenValue
-					).toFixed(0);
-					transform.y = (
-						(event.clientY - self.offsetTop) /
-						dampenValue
-					).toFixed(0);
-
-					const funciton = `translate(${(transform.x / 10).toFixed(
-						0,
-					)}px,${(transform.y / 10).toFixed(0)}px) rotate(${0}deg)`;
-
-					console.log(funciton);
-
-					self.style.transform = funciton;
-				};
-
-				return {
-					tag: 'button',
-					events: {
-						mousemove: {
-							callback: mouseOver,
-							param: ['self', 'event'],
-							options: {
-								passive: true,
-							},
-						},
-					},
-					attributes: {
-						style: 'position: relative;padding: 20px',
-					},
-					children: {
-						tag: 'text',
-						text: 'cool asf button',
-					},
-				};
-			}
+			import ContextMenu from './lib/components/contextMenu.js';
 
 			render(
 				'root',
 				() => {
-					window.components.setComponent('button', CoolButton());
+					//window.components.layout = RootLayout;
 
-					return {
-						tag: 'div',
-						attributes: {
-							style: 'padding: 100px',
-						},
-						children:
-							window.components.getComponent('button').element,
-					};
+					return ContextMenu({});
 				},
 				{
 					useIcons: true,
+					awaitFontLoad: true,
 				},
 			);
 		</script>
