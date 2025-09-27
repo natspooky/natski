@@ -422,14 +422,14 @@ function buildComponent(elementData) {
 			if (Array.isArray(event)) {
 				event.forEach((eventData) => {
 					if (!eventData) return;
-					(eventData?.target ?? element).addEventListener(
+					(eventData.target ?? element).addEventListener(
 						eventType,
 						functionType(eventData, element),
 						eventData.options,
 					);
 				});
 			} else {
-				(event?.target ?? element).addEventListener(
+				(event.target ?? element).addEventListener(
 					eventType,
 					functionType(event, element),
 					event.options,
@@ -532,18 +532,6 @@ function checkEvent(eventName) {
 	return isSupported;
 }
 
-function buildCustomEventWorker() {
-	const evnt = new Event('append', {
-		detail: {},
-	});
-
-	document.addEventListener('append', (e) => {
-		console.log(e);
-	});
-
-	document.dispatchEvent(evnt);
-}
-
 function render(root, callback, settings) {
 	if (window.components) {
 		encoreConsole({
@@ -562,8 +550,6 @@ function render(root, callback, settings) {
 	if (settings?.customEvents) {
 		//do this
 	}
-
-	buildCustomEventWorker();
 
 	window.components = new ComponentManager();
 	const rootType = typeof root;
@@ -658,10 +644,18 @@ function render(root, callback, settings) {
 	};
 
 	if (settings?.awaitPageLoad && document.readyState !== 'complete') {
+		if (settings.awaitFontLoad) {
+			encoreConsole({
+				message: 'Warning',
+				warn: "'awaitPageLoad' skipped due to greater await: 'awaitPageLoad'",
+			});
+		}
 		window.addEventListener('load', () => {
 			hydrate();
 		});
-		encoreConsole({ message: 'Awaiting document complete' });
+		encoreConsole({
+			message: 'Awaiting document completion',
+		});
 		return;
 	}
 	//encoreConsole({ message: document.readyState });
@@ -766,6 +760,16 @@ function elementAppended(element, callback, options) {
 				break;
 			}
 
+			if (options?.awaitFontLoad) {
+				const awaitFont = async () => {
+					await document.fonts.ready;
+					callback(element);
+				};
+
+				awaitFont();
+				break;
+			}
+
 			if (document.readyState === 'complete') {
 				callback(element);
 			} else {
@@ -794,21 +798,19 @@ function functionType({ param, callback, target }, element) {
 					checkValue(value, target, element, event),
 				),
 			);
-	} else {
-		return (event) => callback(checkValue(param, target, element, event));
 	}
+	return (event) => callback(checkValue(param, target, element, event));
 }
 
-function checkValue(value, target, element, event, callback) {
+function checkValue(value, target, element, event) {
 	switch (value) {
 		case 'self':
 			return element;
 		case 'parent':
 			return element.parentNode;
 		case 'target':
-			if (target) {
-				return target;
-			}
+			if (target) return target;
+
 			encoreConsole({
 				message: 'Type Error:',
 				error: `the target value in '${element}' has not been set`,
@@ -816,8 +818,8 @@ function checkValue(value, target, element, event, callback) {
 			break;
 		case 'event':
 			return event;
-		case 'remover': //do this
-			return (target ?? element).removeEventListener();
+		//case 'remover': //do this
+		//	return (target ?? element).removeEventListener(callback);
 		default:
 			return value;
 	}
