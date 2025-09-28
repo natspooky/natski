@@ -563,7 +563,7 @@ function renderDifference(pageElement, reRenderedElement) {
 
 	differentNodes.forEach(({ oldNode, newNode }) => {
 		oldNode.replaceWith(newNode);
-	});
+	}); //make this detect className changes and new elements alongside internal text content
 }
 
 function checkEvent(eventName) {
