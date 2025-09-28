@@ -8,7 +8,7 @@
 	transform: scale(1, 1);
 	border: 1px solid rgba(255, 255, 255, 0.092);
 	box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25);
-	color: rgba(255, 255, 255, 0.5);
+	color: rgba(255, 255, 255, 0.6);
 	transition: 0.3s cubic-bezier(0.29, 0.05, 0, 2), background-color 0.3s,
 		opacity 0.3s;
 }
@@ -41,6 +41,7 @@
 
 .glass-backing {
 	background-color: rgba(0, 0, 0, 0.1);
+	color: rgba(255, 255, 255, 0.5);
 	margin: 10px auto;
 	padding: 15px;
 	overflow: hidden;

@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap');
+@import url('./animations.css');
 @import url('./components/nav.css');
 @import url('./components/glass.css');
 @import url('./components/backgrounds.css');

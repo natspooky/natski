@@ -80,23 +80,106 @@
 		/>
 		<script type="module" src="./lib/js/embedded_page_scripts.js"></script>
 		<script type="module" async>
-			import { render } from './apis/encore/element-creator/ec.js';
+			import {
+				render,
+				useState,
+			} from './apis/encore/element-creator/ec.js';
 			import RootLayout from './lib/layouts/rootLayout.js';
 			import IS from './lib/components/image_components/IS.js';
 			import LinkButton from './lib/components/button_components/linkButton.js';
 			import Button from './lib/components/button_components/button.js';
 			import ContextMenu from './lib/components/contextMenu.js';
 
+			function buttonScreen() {
+				return useState((getter, setter) => {
+					return {
+						tag: 'section',
+						children: [
+							{
+								tag: 'button',
+								events: {
+									click: {
+										callback: () => {
+											setter('aaaaaaaaaaaaaaaaaaaa');
+										},
+									},
+								},
+								children: {
+									tag: 'text',
+									text: getter,
+								},
+							},
+							useState((getter, setter) => {
+								return {
+									tag: 'div',
+									classes: 'glass-backing',
+									children: [
+										{
+											tag: 'button',
+											events: {
+												click: {
+													callback: () => setter(0),
+												},
+											},
+											classes:
+												getter == 0
+													? 'glass'
+													: 'glass-backing',
+											children: {
+												tag: 'text',
+												text: `getter: ${getter}`,
+											},
+										},
+										{
+											tag: 'button',
+											events: {
+												click: {
+													callback: () => setter(1),
+												},
+											},
+											classes:
+												getter == 1
+													? 'glass'
+													: 'glass-backing',
+											children: {
+												tag: 'text',
+												text: `getter: ${getter}`,
+											},
+										},
+										{
+											tag: 'button',
+											events: {
+												click: {
+													callback: () => setter(2),
+												},
+											},
+											classes:
+												getter == 2
+													? 'glass'
+													: 'glass-backing',
+											children: {
+												tag: 'text',
+												text: `the world: ${getter}`,
+											},
+										},
+									],
+								};
+							}, 0),
+						],
+					};
+				}, 'burger');
+			}
+
 			render(
 				'root',
 				() => {
-					//window.components.layout = RootLayout;
+					window.components.layout = RootLayout;
 
-					return ContextMenu({});
+					return [buttonScreen()];
 				},
 				{
 					useIcons: true,
-					awaitFontLoad: true,
+					awaitPageLoad: true,
 				},
 			);
 		</script>

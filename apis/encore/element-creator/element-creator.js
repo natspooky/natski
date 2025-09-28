@@ -135,6 +135,64 @@ function render(root, callback, settings) {
 	hydrate();
 }
 
-function componentCompare() {}
+class EncoreDOM {
+	#root;
+
+	constructor(root) {
+		window.components = new ComponentManager();
+		const rootType = typeof root;
+
+		if (rootType !== 'string' && rootType !== 'object') {
+			encoreConsole({
+				message: 'Hydration error:',
+				error: `The root element '${root}' is not an ID or a HTMLElement`,
+			});
+			return;
+		}
+
+		if (rootType === 'string') {
+			this.#root = document.getElementById(root);
+			if (!this.#root) {
+				encoreConsole({
+					message: 'Hydration error:',
+					error: `The root element '${root}' does not exist in the document`,
+				});
+				return;
+			}
+		}
+
+		if (rootType === 'object') {
+			this.#root = root;
+			if (
+				!(
+					this.#root.nodeType &&
+					this.#root.nodeType === Node.ELEMENT_NODE
+				)
+			) {
+				encoreConsole({
+					message: 'Hydration error:',
+					error: `The root element '${
+						this.#root
+					}' does not exist in the document`,
+				});
+				return;
+			}
+		}
+	}
+
+	render(componentTree) {}
+}
+
+function newRender(root, fn, settings) {
+	if (window.EncoreDOM) {
+		encoreConsole({
+			message: 'ENCORE error:',
+			error: 'Only one render call can be made per page. Render call ignored',
+		});
+		return;
+	}
+
+	window.EncoreDOM = new EncoreDOM(root);
+}
 
 export { render, useState, useEffect };

@@ -11,6 +11,8 @@ import IconSystem from '../icon-system/is.min.js';
 import encoreConsole from '../dependencies/encoreConsole.js';
 import { append, create } from './dependencies/eventTable.js';
 
+//encoreDOM;
+
 class ComponentManager {
 	#components;
 	#groups;
@@ -530,10 +532,12 @@ function useState(callback, initVal) {
 				callback(stateManager.getter, stateManager.setter),
 			);
 
+			if (stateManager.element.isEqualNode(newElement)) return;
+
 			stateManager.element.replaceWith(newElement);
 
 			stateManager.element = newElement;
-		},
+		}, //broken because elements that arent on the DOM dont show psuedo elements
 
 		get getter() {
 			return stateManager.state;
@@ -545,6 +549,21 @@ function useState(callback, initVal) {
 	);
 
 	return stateManager.element;
+}
+
+function renderDifference(pageElement, reRenderedElement) {
+	//do this
+	if (pageElement.isEqualNode(reRenderedElement)) return;
+
+	const differentNodes = [];
+
+	pageElement.element.children.forEach((childElement, index) => {
+		if (!reRenderedElement.children.contains(childElement)) return;
+	});
+
+	differentNodes.forEach(({ oldNode, newNode }) => {
+		oldNode.replaceWith(newNode);
+	});
 }
 
 function checkEvent(eventName) {
@@ -631,14 +650,6 @@ function render(root, callback, settings) {
 		try {
 			await settings?.hooks?.before?.();
 
-			if (settings?.awaitFontLoad && !settings?.awaitPageLoad) {
-				encoreConsole({
-					message: 'Awaiting fonts',
-				});
-
-				await document.fonts.ready;
-			}
-
 			const time = performance.now();
 
 			const renderComponent = await callback();
@@ -681,17 +692,11 @@ function render(root, callback, settings) {
 	};
 
 	if (settings?.awaitPageLoad && document.readyState !== 'complete') {
-		if (settings.awaitFontLoad) {
-			encoreConsole({
-				message: 'Warning',
-				warn: "'awaitFontLoad' skipped due to greater await: 'awaitPageLoad'",
-			});
-		}
 		window.addEventListener('load', () => {
 			hydrate();
 		});
 		encoreConsole({
-			message: 'Awaiting document completion',
+			message: "Awaiting document state 'complete'",
 		});
 		return;
 	}
