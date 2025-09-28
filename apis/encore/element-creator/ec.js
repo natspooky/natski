@@ -332,6 +332,14 @@ class ComponentManager {
 		return this.#layout;
 	}
 }
+/*
+class ENComponent {}
+
+function buildComponent() {
+	const ENC = {};
+
+	return;
+}*/
 
 function buildComponent(elementData) {
 	if (Array.isArray(elementData)) {
@@ -510,6 +518,35 @@ function appendDataToComponent(element, elementData) {
 	return element;
 }
 
+function useState(callback, initVal) {
+	const stateManager = {
+		element: null,
+		state: initVal,
+
+		setter: (value) => {
+			stateManager.state = value;
+
+			const newElement = buildComponent(
+				callback(stateManager.getter, stateManager.setter),
+			);
+
+			stateManager.element.replaceWith(newElement);
+
+			stateManager.element = newElement;
+		},
+
+		get getter() {
+			return stateManager.state;
+		},
+	};
+
+	stateManager.element = buildComponent(
+		callback(stateManager.getter, stateManager.setter),
+	);
+
+	return stateManager.element;
+}
+
 function checkEvent(eventName) {
 	if (typeof eventName != 'string' || eventName.length == 0) return false;
 	const tagNames = {
@@ -647,7 +684,7 @@ function render(root, callback, settings) {
 		if (settings.awaitFontLoad) {
 			encoreConsole({
 				message: 'Warning',
-				warn: "'awaitPageLoad' skipped due to greater await: 'awaitPageLoad'",
+				warn: "'awaitFontLoad' skipped due to greater await: 'awaitPageLoad'",
 			});
 		}
 		window.addEventListener('load', () => {
@@ -658,7 +695,6 @@ function render(root, callback, settings) {
 		});
 		return;
 	}
-	//encoreConsole({ message: document.readyState });
 
 	if (document.readyState === 'loading') {
 		window.addEventListener('DOMContentLoaded', () => {
@@ -887,24 +923,6 @@ function className(classes, ...extraClasses) {
 	return classes;
 }
 
-function ElementDefiner(elementName, elementInformation) {
-	class customElement extends HTMLElement {
-		#self;
-
-		constructor() {
-			let self = super();
-
-			this.#self = self;
-		}
-
-		onElementAppended() {}
-
-		onElementRemoved() {}
-	}
-
-	customElements.define(elementName);
-}
-
 function checkForKeys(component) {
 	return (
 		Object.keys(component).length !== 0 && component.constructor === Object
@@ -924,6 +942,7 @@ export {
 	ComponentManager,
 	checkEvent,
 	render,
+	useState,
 	//ElementDefiner,
 };
 
