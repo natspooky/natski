@@ -110,12 +110,10 @@ class IS extends HTMLElement {
 		this.#hideIcon();
 	}
 
-	connectedMoveCallback() {
-		this.#showIcon();
-	}
-
-	attributeChangedCallback() {
-		this.#scanIcon();
+	attributeChangedCallback(name, oldValue, newValue) {
+		if (oldValue !== newValue) {
+			this.#scanIcon();
+		}
 	}
 }
 

@@ -1368,3 +1368,135 @@ export default class SimpleCanvas {
 		this.#settings.drawState.paused.user = false;
 	}
 }
+
+//new simple canvas
+
+class Canvas {
+	#supportedEvents = {
+		mousedown: true,
+		mousemove: true,
+		mouseup: true,
+
+		touch:
+			'ontouchstart' in window ||
+			navigator.maxTouchPoints > 0 ||
+			navigator.msMaxTouchPoints > 0,
+		wheel: 'onwheel' in document,
+		hover: window.matchMedia('(hover: hover)').matches,
+	};
+
+	#eventCallbacks = {};
+	#wheelState = {};
+	#keyState = {};
+	#mouseState = {};
+	#canvasState = {
+		canvas: undefined,
+		context: undefined,
+		inDocument: false,
+		size: {
+			width: 0,
+			height: 0,
+			locked: false,
+		},
+	};
+	#transformState = {};
+	#drawingState = {
+		drawing: false,
+		drawFn: undefined,
+	};
+
+	constructor(canvas, settings = {}) {
+		this.#mergeSettings(settings);
+
+		let canvasElement;
+
+		switch (typeof canvas) {
+			case 'string':
+				canvasElement = document.getElementById(canvas);
+				if (!canvasElement) throw new Error('brokey asf');
+				break;
+			case 'object':
+				if (
+					!(
+						(canvas.tagName === 'CANVAS') &
+						(canvas.nodeType === Node.ELEMENT_NODE)
+					)
+				) {
+					throw new Error();
+				}
+
+				canvasElement = canvas;
+
+				break;
+			default:
+				throw new Error('uh oh');
+		}
+
+		//checkDOMconnected();
+	}
+
+	//user functions
+
+	static create(identifiers, settings) {
+		const element = document.createElement('canvas');
+
+		identifiers.split(' ').forEach((identifier) => {
+			switch (identifier.slice(0, 1)) {
+				case '#':
+					element.id = identifier.slice(1);
+					break;
+				case '.':
+					element.classList.add(identifier.slice(1));
+					break;
+				default:
+					console.error('passed param is not a className or ID');
+			}
+		});
+
+		return new Canvas(element, settings);
+	}
+
+	start() {}
+
+	stop() {}
+
+	on(eventName, callback, options = {}) {
+		if (!this.#supportedEvents[eventName]) {
+			console.log('uh oh');
+		}
+		this.#eventCallbacks[eventName] = { callback, options };
+	}
+
+	//util
+
+	#mergeSettings(userSettings) {
+		const defaultSettings = {
+			fps: 60,
+			autoClear: true,
+
+			useCursor: false,
+			useTouch: false,
+			useWheel: false,
+			useKey: false,
+			detectWindowFocus: false,
+			autoResize: true,
+		};
+
+		this.settings = {
+			...defaultSettings,
+			...userSettings,
+		};
+	}
+
+	#setEvents() {
+		//mouse
+
+		if (this.settings.useCursor) {
+		}
+
+		//keyboard
+
+		if (this.settings.useKey) {
+		}
+	}
+}

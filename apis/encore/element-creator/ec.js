@@ -120,7 +120,7 @@ class ComponentManager {
 	}
 
 	componentList() {
-		return Object.entries(this.#components).map(([, component]) => {
+		return Object.values(this.#components).map((component) => {
 			return component.fragment ?? component.element;
 		});
 	}
@@ -156,7 +156,7 @@ class ComponentManager {
 	}
 
 	removeAllComponents(settings) {
-		Object.entries(this.#components).forEach(([ID]) =>
+		Object.keys(this.#components).forEach((ID) =>
 			this.removeComponent(ID, settings),
 		);
 
@@ -229,11 +229,11 @@ class ComponentManager {
 				});
 				return;
 			}
-			oldComponent.element.forEach((element) => {
-				element.replaceWith(
-					replacingComponent.fragment ?? replacingComponent.element,
-				);
-			});
+
+			oldComponent[0].element.replaceWith(
+				replacingComponent.fragment ?? replacingComponent.element,
+			);
+			oldComponent.slice(1).forEach((element) => element.remove());
 		} else {
 			if (!document.body.contains(oldComponent.element)) {
 				encoreConsole({
@@ -317,13 +317,11 @@ class ComponentManager {
 	}
 
 	get componentCount() {
-		return Object.entries(this.#components).length;
+		return Object.keys(this.#components).length;
 	}
 
 	get componentIDs() {
-		return Object.entries(this.#components).map(([ID]) => {
-			return ID;
-		});
+		return Object.keys(this.#components);
 	}
 
 	set layout(callback) {
@@ -345,14 +343,13 @@ function buildComponent() {
 
 function buildComponent(elementData) {
 	if (Array.isArray(elementData)) {
-		const arr = [];
+		const elementArr = elementData
+			.filter((element) => checkForKeys(element) || element.nodeType)
+			.map((element) => {
+				return buildComponent(element);
+			});
 
-		elementData.forEach((element) => {
-			if (checkForKeys(element) || element.nodeType)
-				arr.push(buildComponent(element));
-		});
-
-		return arr;
+		return elementArr;
 	}
 
 	if (elementData && elementData.nodeType) return elementData;
@@ -368,8 +365,16 @@ function buildComponent(elementData) {
 	}
 
 	switch (elementData.tag) {
-		case 'text':
-			return document.createTextNode(elementData.text ?? '');
+		case 'text': {
+			const textData = document.createTextNode(elementData.text ?? '');
+			const trackingComment = document.createComment('');
+
+			const textFragment = document.createDocumentFragment();
+
+			appendChildren(textFragment, [textData, trackingComment]);
+
+			return textFragment;
+		}
 		default:
 			if (!elementData.namespace) {
 				element = document.createElement(elementData.tag);
@@ -429,22 +434,16 @@ function buildComponent(elementData) {
 				return;
 			}
 
-			if (Array.isArray(event)) {
-				event.forEach((eventData) => {
-					if (!eventData) return;
-					(eventData.target ?? element).addEventListener(
-						eventType,
-						functionType(eventData, element),
-						eventData.options,
-					);
-				});
-			} else {
-				(event.target ?? element).addEventListener(
+			const events = Array.isArray(event) ? event : [event];
+
+			events.forEach((eventData) => {
+				if (!eventData || !eventData.callback) return;
+				(eventData.target ?? element).addEventListener(
 					eventType,
-					functionType(event, element),
-					event.options,
+					functionType(eventData, element),
+					eventData.options,
 				);
-			}
+			});
 		});
 	}
 
@@ -528,6 +527,7 @@ function useState(fn, initVal) {
 		state: initVal,
 
 		setter: (value) => {
+			if (stateManager.state === value) return;
 			stateManager.state = value;
 
 			const newElement = buildComponent(
@@ -675,9 +675,11 @@ function render(root, fn, settings) {
 			const finalTime = Math.round(performance.now() - time);
 
 			encoreConsole({
-				message: `Hydration complete in ${
-					finalTime > 0 ? finalTime : '< 1'
-				}ms`,
+				message: `Hydration complete in ${returnIf(
+					finalTime > 0,
+					finalTime,
+					'< 1',
+				)}ms`,
 			});
 		} catch (error) {
 			encoreConsole({
@@ -690,9 +692,7 @@ function render(root, fn, settings) {
 	};
 
 	if (settings?.awaitPageLoad && document.readyState !== 'complete') {
-		window.addEventListener('load', () => {
-			hydrate();
-		});
+		window.addEventListener('load', hydrate);
 		encoreConsole({
 			message: "Awaiting document state 'complete'",
 		});
@@ -700,9 +700,7 @@ function render(root, fn, settings) {
 	}
 
 	if (document.readyState === 'loading') {
-		window.addEventListener('DOMContentLoaded', () => {
-			hydrate();
-		});
+		window.addEventListener('DOMContentLoaded', hydrate);
 		return;
 	}
 
@@ -784,11 +782,12 @@ function elementAppended(element, callback, options) {
 		for (const mutation of mutations) {
 			if (mutation.addedNodes.length === 0) continue;
 			if (
-				Array.from(mutation.addedNodes).filter((node) =>
+				!Array.from(mutation.addedNodes).some((node) =>
 					node.contains(element),
-				).length === 0
+				)
 			)
 				continue;
+
 			if (!options?.perminant) observer.disconnect();
 
 			//do this
@@ -879,51 +878,45 @@ function returnIf(bool, value, fallback) {
 
 function appendChildren(element, children) {
 	if (!children) return;
-	if (Array.isArray(children)) {
-		for (const child of children) {
-			element.appendChild(child);
-		}
-	} else {
-		element.appendChild(children);
-	}
 
-	return element;
+	const childArr = Array.isArray(children) ? children : [children];
+
+	childArr.forEach((child) => {
+		element.appendChild(child);
+	});
 }
 
 function insertChildrenBefore(element, children, beforeElement) {
-	if (Array.isArray(children)) {
-		for (const child of children) {
-			element.insertBefore(child, beforeElement);
-		}
-	} else {
-		element.insertBefore(children, beforeElement);
-	}
+	if (!children) return;
+
+	const childArr = Array.isArray(children) ? children : [children];
+
+	childArr.forEach((child) => {
+		element.insertBefore(child, beforeElement);
+	});
 }
 
 function className(classes, ...extraClasses) {
 	if (![...extraClasses][0] && [...extraClasses].length === 1) return classes;
 
-	if (!Array.isArray(classes)) classes = classes.split(' ');
+	classes = Array.isArray(classes)
+		? [...classes, ...extraClasses]
+		: [classes, ...extraClasses];
 
-	const extraClassArr = [...extraClasses];
-
-	const check = (classes) => {
+	const process = (classes) => {
 		const tempArr = [];
-		classes.forEach((classData) => {
-			if (!classData) return;
-			if (Array.isArray(classData)) {
-				tempArr.push(...check(classData));
-				return;
-			}
-			tempArr.push(...classData.split(' '));
-		});
+		classes
+			.flat(Infinity)
+			.filter(Boolean)
+			.forEach((classData) => {
+				if (classData === '') return;
+				tempArr.push(...classData.split(' '));
+			});
 
 		return tempArr;
 	};
 
-	classes.push(...check(extraClassArr));
-
-	return classes;
+	return Array.from(new Set(process(classes)));
 }
 
 function checkForKeys(component) {
