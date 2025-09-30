@@ -4,5 +4,6 @@
 			"source": "/(.*)",
 			"destination": "/404.html"
 		}
-	]
+	],
+	"cleanUrls": true
 }

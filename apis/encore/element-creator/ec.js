@@ -520,7 +520,9 @@ function appendDataToComponent(element, elementData) {
 	return element;
 }
 
-function useState(callback, initVal) {
+function useEffect(fn, props) {}
+
+function useState(fn, initVal) {
 	const stateManager = {
 		element: null,
 		state: initVal,
@@ -529,7 +531,7 @@ function useState(callback, initVal) {
 			stateManager.state = value;
 
 			const newElement = buildComponent(
-				callback(stateManager.getter, stateManager.setter),
+				fn(stateManager.getter, stateManager.setter),
 			);
 
 			if (stateManager.element.isEqualNode(newElement)) return;
@@ -545,7 +547,7 @@ function useState(callback, initVal) {
 	};
 
 	stateManager.element = buildComponent(
-		callback(stateManager.getter, stateManager.setter),
+		fn(stateManager.getter, stateManager.setter),
 	);
 
 	return stateManager.element;
@@ -556,10 +558,6 @@ function renderDifference(pageElement, reRenderedElement) {
 	if (pageElement.isEqualNode(reRenderedElement)) return;
 
 	const differentNodes = [];
-
-	pageElement.element.children.forEach((childElement, index) => {
-		if (!reRenderedElement.children.contains(childElement)) return;
-	});
 
 	differentNodes.forEach(({ oldNode, newNode }) => {
 		oldNode.replaceWith(newNode);
@@ -588,7 +586,7 @@ function checkEvent(eventName) {
 	return isSupported;
 }
 
-function render(root, callback, settings) {
+function render(root, fn, settings) {
 	if (window.components) {
 		encoreConsole({
 			message: 'Hydration error:',
@@ -652,7 +650,7 @@ function render(root, callback, settings) {
 
 			const time = performance.now();
 
-			const renderComponent = await callback();
+			const renderComponent = await fn();
 			const layout = window.components.layout;
 			const componentName = 'content';
 
