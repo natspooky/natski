@@ -1371,6 +1371,11 @@ export default class SimpleCanvas {
 
 //new simple canvas
 
+//
+//
+// actually make dispatching events work this time considering it is a closed system
+//
+//
 class Canvas {
 	#supportedEvents = {
 		mousedown: true,
@@ -1385,10 +1390,28 @@ class Canvas {
 		hover: window.matchMedia('(hover: hover)').matches,
 	};
 
-	#eventCallbacks = {};
+	#customEvents = {
+		append: undefined,
+	};
+
+	#eventListeners = {};
 	#wheelState = {};
 	#keyState = {};
-	#mouseState = {};
+	#mouseState = {
+		pressed: false,
+
+		motion: {
+			position: {
+				x: undefined,
+				y: undefined,
+			},
+			lastPostion: {
+				x: undefined,
+				y: undefined,
+			},
+			vel: {},
+		},
+	};
 	#canvasState = {
 		canvas: undefined,
 		context: undefined,
@@ -1432,6 +1455,10 @@ class Canvas {
 				throw new Error('uh oh');
 		}
 
+		if (!document.body.contains(canvasElement)) {
+			this.#awaitAppend(canvasElement, () => {});
+		}
+
 		//checkDOMconnected();
 	}
 
@@ -1460,11 +1487,23 @@ class Canvas {
 
 	stop() {}
 
-	on(eventName, callback, options = {}) {
+	on(eventName, listener, options = {}) {
 		if (!this.#supportedEvents[eventName]) {
 			console.log('uh oh');
 		}
-		this.#eventCallbacks[eventName] = { callback, options };
+		this.#eventListeners[eventName] = { listener, options };
+	}
+
+	removeEvent(eventName) {
+		if (!this.#supportedEvents[eventName]) {
+			console.log('uh oh');
+		}
+
+		this.canvas.element.removeEventListener(
+			eventName,
+			this.#eventListeners[eventName],
+		);
+		delete this.#eventListeners[eventName];
 	}
 
 	//util
@@ -1492,11 +1531,62 @@ class Canvas {
 		//mouse
 
 		if (this.settings.useCursor) {
+			const mouseOptions = {
+				capture: false,
+				once: false,
+				passive: false,
+			};
+
+			this.canvas.element.addEventListener('mouseup', fn, mouseOptions);
+			this.canvas.element.addEventListener('mousedown', fn, mouseOptions);
+			this.canvas.element.addEventListener('mousemove', fn, mouseOptions);
 		}
 
 		//keyboard
 
 		if (this.settings.useKey) {
+			const keyOptions = {
+				capture: false,
+				once: false,
+				passive: false,
+			};
+
+			this.canvas.element.addEventListener('keyup', fn, keyOptions);
+			this.canvas.element.addEventListener('keydown', fn, keyOptions);
 		}
+	}
+
+	#awaitAppend(element, callback) {
+		const isAppended = (element) => {
+			while (element.parentNode) element = element.parentNode;
+			return element instanceof Document;
+		};
+
+		if (isAppended(element)) {
+			element.dispatchEvent(this.#customEvents.append);
+			//	callback(element);
+			return;
+		}
+
+		const observer = new MutationObserver((mutations) => {
+			for (const mutation of mutations) {
+				if (mutation.addedNodes.length === 0) continue;
+				if (
+					!Array.from(mutation.addedNodes).some((node) =>
+						node.contains(element),
+					)
+				)
+					continue;
+
+				observer.disconnect();
+				element.dispatchEvent(this.#customEvents.append);
+				//callback(element);
+			}
+		});
+
+		observer.observe(document.body, {
+			childList: true,
+			subtree: true,
+		});
 	}
 }
