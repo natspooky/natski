@@ -1376,6 +1376,11 @@ export default class SimpleCanvas {
 // actually make dispatching events work this time considering it is a closed system
 //
 //
+
+
+const append = new Event("append")
+
+
 class Canvas {
 	#supportedEvents = {
 		mousedown: true,
@@ -1456,6 +1461,7 @@ class Canvas {
 		}
 
 		if (!document.body.contains(canvasElement)) {
+			canvasElement.addEventListener("append")
 			this.#awaitAppend(canvasElement, () => {});
 		}
 
@@ -1527,7 +1533,15 @@ class Canvas {
 		};
 	}
 
-	#setEvents() {
+	#removeEvents() {}
+
+	#createEvents() {
+		if (this.settings.autoResize) {
+			window.addEventListener() {}
+		}
+
+		//
+
 		//mouse
 
 		if (this.settings.useCursor) {
@@ -1589,4 +1603,27 @@ class Canvas {
 			subtree: true,
 		});
 	}
+
+	// listener & observer functions
+
+	#windowResize() {}
+
+	#resize() {}
+
+	#mouseDown() {}
+
+	#mouseUp() {}
+
+	#mouseMove() {}
+
+	#keyUp() {}
+
+	#keyDown() { }
+	
+	
+	// canvas body data update functions
+
+	#sizeUpdate() { }
+	
+
 }
