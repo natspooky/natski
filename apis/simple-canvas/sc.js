@@ -1395,10 +1395,6 @@ class Canvas {
 		hover: window.matchMedia('(hover: hover)').matches,
 	};
 
-	#customEvents = {
-		append: undefined,
-	};
-
 	#eventListeners = {};
 	#wheelState = {};
 	#keyState = {};
@@ -1577,7 +1573,7 @@ class Canvas {
 		};
 
 		if (isAppended(element)) {
-			element.dispatchEvent(this.#customEvents.append);
+			element.dispatchEvent(append);
 			//	callback(element);
 			return;
 		}
@@ -1593,7 +1589,7 @@ class Canvas {
 					continue;
 
 				observer.disconnect();
-				element.dispatchEvent(this.#customEvents.append);
+				element.dispatchEvent(append);
 				//callback(element);
 			}
 		});
@@ -1623,7 +1619,12 @@ class Canvas {
 	
 	// canvas body data update functions
 
-	#sizeUpdate() { }
+	#sizeUpdate() {
+
+
+	}
+	
+	
 	
 
 }
