@@ -1377,25 +1377,19 @@ export default class SimpleCanvas {
 //
 //
 
-
-const append = new Event("append")
-
+const append = new Event('append');
 
 class Canvas {
-	#supportedEvents = {
-		mousedown: true,
-		mousemove: true,
-		mouseup: true,
+	#supportedEvents = [
+		'mousedown',
+		'mouseup',
+		'mousemove',
+		'dblclick',
+		'click',
+	].filter(this.#checkEventSupport);
 
-		touch:
-			'ontouchstart' in window ||
-			navigator.maxTouchPoints > 0 ||
-			navigator.msMaxTouchPoints > 0,
-		wheel: 'onwheel' in document,
-		hover: window.matchMedia('(hover: hover)').matches,
-	};
-
-	#eventListeners = {};
+	#userEventListeners = {};
+	#canvasEventRemovers = {};
 	#wheelState = {};
 	#keyState = {};
 	#mouseState = {
@@ -1457,7 +1451,7 @@ class Canvas {
 		}
 
 		if (!document.body.contains(canvasElement)) {
-			canvasElement.addEventListener("append")
+			canvasElement.addEventListener('append');
 			this.#awaitAppend(canvasElement, () => {});
 		}
 
@@ -1489,23 +1483,23 @@ class Canvas {
 
 	stop() {}
 
-	on(eventName, listener, options = {}) {
-		if (!this.#supportedEvents[eventName]) {
+	on(eventName, fn) {
+		if (!this.#supportedEvents.contains(eventName)) {
 			console.log('uh oh');
 		}
-		this.#eventListeners[eventName] = { listener, options };
+		this.#userEventListeners[eventName] = fn;
 	}
 
 	removeEvent(eventName) {
-		if (!this.#supportedEvents[eventName]) {
+		if (!this.#supportedEvents.contains(eventName)) {
 			console.log('uh oh');
 		}
 
 		this.canvas.element.removeEventListener(
 			eventName,
-			this.#eventListeners[eventName],
+			this.#userEventListeners[eventName],
 		);
-		delete this.#eventListeners[eventName];
+		delete this.#userEventListeners[eventName];
 	}
 
 	//util
@@ -1514,13 +1508,13 @@ class Canvas {
 		const defaultSettings = {
 			fps: 60,
 			autoClear: true,
-
 			useCursor: false,
 			useTouch: false,
 			useWheel: false,
 			useKey: false,
 			detectWindowFocus: false,
 			autoResize: true,
+			console: false,
 		};
 
 		this.settings = {
@@ -1529,11 +1523,42 @@ class Canvas {
 		};
 	}
 
-	#removeEvents() {}
+	#checkEventSupport(eventName) {
+		if (typeof eventName != 'string' || eventName.length == 0) return false;
+		const tagNames = {
+			select: 'input',
+			change: 'input',
+			submit: 'form',
+			reset: 'form',
+			error: 'img',
+			load: 'img',
+			abort: 'img',
+		};
+		let element = document.createElement(tagNames[eventName] || 'div');
+		eventName = 'on' + eventName;
+		let isSupported = eventName in element;
+		if (!isSupported) {
+			element.setAttribute(eventName, 'return;');
+			isSupported = typeof element[eventName] == 'function';
+		}
+		element = null;
+		return isSupported;
+	}
+
+	#buildEmbedEvent({ target, eventName, fn, options }) {
+		target.addEventListener(eventName, fn, options);
+
+		this.#canvasEventRemovers[eventName] = () =>
+			target.removeEventListener(eventName, fn);
+	}
+
+	#removeEvents(eventName) {
+		if (!eventName) return; //should make it a console error maybe
+	}
 
 	#createEvents() {
 		if (this.settings.autoResize) {
-			window.addEventListener() {}
+			window.addEventListener();
 		}
 
 		//
@@ -1614,17 +1639,9 @@ class Canvas {
 
 	#keyUp() {}
 
-	#keyDown() { }
-	
-	
+	#keyDown() {}
+
 	// canvas body data update functions
 
-	#sizeUpdate() {
-
-
-	}
-	
-	
-	
-
+	#sizeUpdate() {}
 }

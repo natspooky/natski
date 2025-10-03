@@ -48,7 +48,6 @@ function readFile(file_path, contentType, res) {
 	if (existsSync(file_path)) {
 		res.writeHead(StatusCodes.OK, {
 			'Content-Type': contentType,
-			'Cache-Control': 'max-age=31536000',
 		});
 
 		_readFile(file_path, (error, data) => {
