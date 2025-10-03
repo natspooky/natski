@@ -1381,11 +1381,32 @@ const append = new Event('append');
 
 class Canvas {
 	#supportedEvents = [
+		//mouse
 		'mousedown',
 		'mouseup',
 		'mousemove',
+		'mouseenter',
+		'mouseleave',
+		'mouseout',
+		'mouseover',
 		'dblclick',
 		'click',
+		'contextmenu',
+		'auxclick',
+
+		//touch
+		'touchstart',
+		'touchend',
+		'touchmove',
+		'touchcancel',
+
+		//key
+		'keyup',
+		'keydown',
+
+		//focus
+		'blur',
+		'focus',
 	].filter(this.#checkEventSupport);
 
 	#userEventListeners = {};
