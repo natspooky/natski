@@ -84,7 +84,9 @@
 				render,
 				useState,
 			} from './apis/encore/element-creator/ec.js';
+			import { Canvas } from './apis/simple-canvas/sc.js';
 			import RootLayout from './lib/layouts/rootLayout.js';
+			import { Glass } from './lib/components/ui/glass.js';
 			import IS from './lib/components/image_components/IS.js';
 			import LinkButton from './lib/components/button_components/linkButton.js';
 			import Button from './lib/components/button_components/button.js';
@@ -100,7 +102,7 @@
 								events: {
 									click: {
 										callback: () => {
-											setter('aaaaaaaaaaaaaaaaaaaa');
+											setter('useState worked!');
 										},
 									},
 								},
@@ -170,16 +172,94 @@
 				}, 'burger');
 			}
 
+			function testUseState() {
+				return useState((number, setNumber) => {
+					return {
+						tag: 'div',
+						children: [
+							Glass({
+								hover: true,
+								active: true,
+								tag: 'button',
+								events: {
+									click: {
+										callback: () => {
+											setNumber(number + 1);
+										},
+									},
+								},
+								children: {
+									tag: 'text',
+									text: number,
+								},
+							}),
+							renderCanvas(),
+						],
+					};
+				}, 0);
+			}
+
+			function renderCanvas() {
+				const canvas = Canvas.create(
+					'#canvas',
+					{
+						fps: 60,
+						autoResize: true,
+						setupOnResize: true,
+						diagnostics: true,
+						useCursor: true,
+						useTouch: true,
+						detectWindowFocus: false,
+					},
+					'Test Name',
+				);
+
+				const ctx = canvas.context;
+
+				canvas.element.style.width = '100%';
+				canvas.element.style.height = '100vh';
+
+				const setup = () => {
+					ctx.font = '60px sans-serif';
+				};
+
+				const append = () => {
+					canvas.render();
+				};
+
+				const resize = ({ width, height }) => {
+					//console.log(width, height);
+				};
+
+				const draw = () => {
+					ctx.fillStyle = '#ffffff';
+					ctx.fillRect(
+						0,
+						0,
+						canvas.element.width,
+						canvas.element.height,
+					);
+					ctx.fillStyle = '#000000';
+				};
+
+				canvas.append(append);
+				canvas.setup(setup);
+				canvas.resize(resize);
+				canvas.draw(draw);
+
+				return canvas.element;
+			}
+
 			render(
 				'root',
 				() => {
-					window.components.layout = RootLayout;
+					//window.components.layout = RootLayout;
 
-					return [buttonScreen()];
+					return [testUseState()];
 				},
 				{
 					useIcons: true,
-					awaitPageLoad: true,
+					awaitPageLoad: false,
 				},
 			);
 		</script>

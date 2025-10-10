@@ -52,8 +52,8 @@ export default class SimpleCanvas {
 			data: {
 				currentFPS: 0,
 				frameDelta: [],
-				fpsBuffer: 0,
-				fpsBufferTwo: 0,
+				renderBuffer: 0,
+				renderBufferTwo: 0,
 			},
 		},
 		sizing: {
@@ -1034,14 +1034,14 @@ export default class SimpleCanvas {
 		this.#canvas.context.fillStyle = '#00000040';
 		this.#canvas.context.fillRect(10, 10, 210, 70);
 		this.#canvas.context.fillStyle = '#ffffff';
-		if (this.#settings.diagnostic.data.fpsBufferTwo >= 1) {
+		if (this.#settings.diagnostic.data.renderBufferTwo >= 1) {
 			this.#settings.diagnostic.data.currentFPS =
-				this.#settings.diagnostic.data.fpsBuffer;
-			this.#settings.diagnostic.data.fpsBuffer = 0;
-			this.#settings.diagnostic.data.fpsBufferTwo = 0;
+				this.#settings.diagnostic.data.renderBuffer;
+			this.#settings.diagnostic.data.renderBuffer = 0;
+			this.#settings.diagnostic.data.renderBufferTwo = 0;
 		} else {
-			this.#settings.diagnostic.data.fpsBuffer++;
-			this.#settings.diagnostic.data.fpsBufferTwo +=
+			this.#settings.diagnostic.data.renderBuffer++;
+			this.#settings.diagnostic.data.renderBufferTwo +=
 				this.#canvas.time.render;
 		}
 
@@ -1379,7 +1379,7 @@ export default class SimpleCanvas {
 
 const append = new Event('append');
 
-class Canvas {
+export class Canvas {
 	#supportedEvents = [
 		//mouse
 		'mousedown',
@@ -1387,8 +1387,6 @@ class Canvas {
 		'mousemove',
 		'mouseenter',
 		'mouseleave',
-		'mouseout',
-		'mouseover',
 		'dblclick',
 		'click',
 		'contextmenu',
@@ -1404,7 +1402,10 @@ class Canvas {
 		'keyup',
 		'keydown',
 
-		//focus
+		//wheel
+		'wheel',
+
+		//window focus
 		'blur',
 		'focus',
 	].filter(this.#checkEventSupport);
@@ -1412,10 +1413,17 @@ class Canvas {
 	#userEventListeners = {};
 	#canvasEventRemovers = {};
 	#wheelState = {};
-	#keyState = {};
+	#keyState = {
+		pressing: false,
+		pressCount: 0,
+	};
 	#mouseState = {
 		pressed: false,
-
+		covering: false,
+		click: {
+			startPosition: {}, //maybe? think of a good application first i guess
+			endPosition: {},
+		},
 		motion: {
 			position: {
 				x: undefined,
@@ -1425,63 +1433,120 @@ class Canvas {
 				x: undefined,
 				y: undefined,
 			},
-			vel: {},
+			velocity: {
+				x: 0,
+				y: 0,
+			},
+			acceleration: {
+				x: 0,
+				y: 0,
+			},
+			speed: 0,
 		},
+	};
+	#touchState = {
+		touching: false,
+		touchCount: 0,
 	};
 	#canvasState = {
 		canvas: undefined,
 		context: undefined,
-		inDocument: false,
+		id: undefined,
 		size: {
-			width: 0,
-			height: 0,
+			width: 300,
+			height: 150,
 			locked: false,
+			scale: window.devicePixelRatio || 1,
 		},
 	};
-	#transformState = {};
 	#drawingState = {
+		paused: false,
 		drawing: false,
+		renderTime: 0,
+		interval: 1000 / 60,
+		runTime: 0,
 		drawFn: undefined,
+		setupFn: undefined,
+		resizeFn: undefined,
+		appendFn: undefined,
 	};
 
-	constructor(canvas, settings = {}) {
-		this.#mergeSettings(settings);
+	#diagnosticsData = {
+		frameBuffer: [],
+		renderBuffer: 0,
+		renderBufferTwo: 0,
+		currentFPS: 0,
+	};
 
-		let canvasElement;
+	#timers = {
+		motionState: undefined,
+		resize: undefined,
+	};
+
+	constructor(canvas, settings = {}, name = 'unnamed canvas') {
+		this.#mergeSettings(settings);
 
 		switch (typeof canvas) {
 			case 'string':
-				canvasElement = document.getElementById(canvas);
-				if (!canvasElement) throw new Error('brokey asf');
+				this.#canvasState.canvas = document.getElementById(canvas);
+				if (!this.#canvasState.canvas)
+					Canvas.console({
+						message: 'Assignment error:',
+						error: `The ID '${canvas}' does not exist in the DOM`,
+					});
 				break;
 			case 'object':
 				if (
 					!(
-						(canvas.tagName === 'CANVAS') &
-						(canvas.nodeType === Node.ELEMENT_NODE)
+						canvas.tagName === 'CANVAS' &&
+						canvas.nodeType === Node.ELEMENT_NODE
 					)
 				) {
-					throw new Error();
+					Canvas.console({
+						message: 'Assignment error:',
+						error: "HTML Node is not a 'CANVAS'",
+					});
+					return;
 				}
 
-				canvasElement = canvas;
+				this.#canvasState.canvas = canvas;
 
 				break;
 			default:
-				throw new Error('uh oh');
+				Canvas.console({
+					message: 'Type error:',
+					error: 'Passed canvas is not of type HTML Node or String ID',
+				});
 		}
 
-		if (!document.body.contains(canvasElement)) {
-			canvasElement.addEventListener('append');
-			this.#awaitAppend(canvasElement, () => {});
+		this.#canvasState.context = this.#canvasState.canvas.getContext('2d');
+		this.#canvasState.id = name;
+
+		this.#attachEvents();
+
+		if (!document.body.contains(this.#canvasState.canvas)) {
+			this.#canvasState.canvas.addEventListener(
+				'append',
+				() => {
+					if (!this.settings.autoResize) {
+					}
+					this.#resize();
+					this.#drawingState.appendFn?.();
+				},
+				{
+					once: true,
+				},
+			);
+			this.#awaitAppend(this.#canvasState.canvas);
+			return;
 		}
 
-		//checkDOMconnected();
+		this.#resize();
 	}
 
 	//user functions
 
-	static create(identifiers, settings) {
+	static create(identifiers, settings, name) {
 		const element = document.createElement('canvas');
 
 		identifiers.split(' ').forEach((identifier) => {
@@ -1493,55 +1558,165 @@ class Canvas {
 					element.classList.add(identifier.slice(1));
 					break;
 				default:
-					console.error('passed param is not a className or ID');
+					Canvas.console({
+						message: 'Assignment error:',
+						error: 'Class and ID keys dont match required syntax: (#Id .class)',
+					});
+					break;
 			}
 		});
 
-		return new Canvas(element, settings);
+		return new Canvas(element, settings, name);
 	}
 
-	start() {}
+	static console(message) {
+		if (!Array.isArray(message)) {
+			message = [message];
+		}
 
-	stop() {}
+		const checkType = (single) => {
+			if (single.error)
+				return [
+					'background-color: #ff000049; padding: 3px 5px; border-radius: 7px;',
+					'font-weight: normal;',
+				];
+			if (single.warn)
+				return [
+					'background-color: #ffff0049; padding: 3px 5px; border-radius: 7px;',
+					'font-weight: normal;',
+				];
+			return [];
+		};
+
+		message.forEach((single) => {
+			if (!single) return;
+
+			console.log(
+				`%cSimple-Canvas%c ${single.message}${
+					single.error || single.warn
+						? '\n%c' + (single.error || single.warn) + '%c'
+						: ''
+				}`,
+				'font-weight: bold; color: #29a36aff; background-color: black; padding: 0 5px; border-radius: 7px; border: 1px solid #29a36aff',
+				'font-weight: normal;',
+				...checkType(single),
+			);
+		});
+	}
+
+	async render() {
+		Canvas.console({
+			message: `Rendering '${this.#canvasState.id}' at ${
+				this.settings.fps
+			}fps`,
+		});
+
+		if (!this.#drawingState.drawFn) {
+			Canvas.console({
+				message: 'Render error:',
+				error: 'No draw function provided',
+			});
+			return;
+		}
+
+		if (!document.body.contains(this.#canvasState.canvas)) {
+			Canvas.console({
+				message: 'Render error:',
+				error: 'Canvas cannot render content while outside of the Document body',
+			});
+			return;
+		}
+
+		await this.#drawingState.setupFn?.();
+
+		this.#drawingState.drawing = true;
+
+		this.#frameLoop();
+	}
+
+	disconnect() {
+		this.#removeEvents();
+	}
+
+	pause() {
+		this.#drawingState.paused = true;
+	}
+
+	play() {
+		this.#drawingState.paused = false;
+	}
+
+	setup(fn) {
+		this.#drawingState.setupFn = fn;
+	}
+
+	append(fn) {
+		this.#drawingState.appendFn = fn;
+	}
+
+	draw(fn) {
+		this.#drawingState.drawFn = fn;
+	}
+
+	resize(fn) {
+		this.#drawingState.resizeFn = fn;
+	}
+
+	set lockSize(bool) {
+		this.#canvasState.size.locked = bool;
+
+		if (!bool) this.#resize();
+	}
+
+	set fps(newFPS) {
+		this.settings.fps = newFPS;
+		this.#drawingState.interval = 1000 / newFPS;
+	}
 
 	on(eventName, fn) {
-		if (!this.#supportedEvents.contains(eventName)) {
-			console.log('uh oh');
+		if (!this.#supportedEvents.includes(eventName)) {
+			Canvas.console({
+				message: 'Event warning:',
+				warn: `'${eventName}' is not supported in Simple Canvas`,
+			});
 		}
 		this.#userEventListeners[eventName] = fn;
 	}
 
 	removeEvent(eventName) {
-		if (!this.#supportedEvents.contains(eventName)) {
+		if (!this.#supportedEvents.includes(eventName)) {
 			console.log('uh oh');
 		}
 
-		this.canvas.element.removeEventListener(
-			eventName,
-			this.#userEventListeners[eventName],
-		);
 		delete this.#userEventListeners[eventName];
 	}
 
 	//util
 
 	#mergeSettings(userSettings) {
-		const defaultSettings = {
+		this.settings = {
 			fps: 60,
 			autoClear: true,
 			useCursor: false,
 			useTouch: false,
 			useWheel: false,
 			useKey: false,
-			detectWindowFocus: false,
+			diagnostics: false,
+			detectWindowFocus: true,
 			autoResize: true,
-			console: false,
-		};
+			setupOnResize: false,
+			debugConsole: false,
 
-		this.settings = {
-			...defaultSettings,
 			...userSettings,
 		};
+
+		this.fps = this.settings.fps;
+
+		if (this.settings.size) {
+			this.#canvasState.size.locked = true;
+			this.#canvasState.size.width = this.settings.size.width;
+			this.#canvasState.size.height = this.settings.size.height;
+		}
 	}
 
 	#checkEventSupport(eventName) {
@@ -1567,52 +1742,145 @@ class Canvas {
 	}
 
 	#buildEmbedEvent({ target, eventName, fn, options }) {
-		target.addEventListener(eventName, fn, options);
+		if (!this.#supportedEvents.includes(eventName)) {
+			return;
+		}
+
+		const boundEventFn = fn.bind(this);
+
+		target.addEventListener(eventName, boundEventFn, options);
 
 		this.#canvasEventRemovers[eventName] = () =>
-			target.removeEventListener(eventName, fn);
+			target.removeEventListener(eventName, boundEventFn);
 	}
 
 	#removeEvents(eventName) {
-		if (!eventName) return; //should make it a console error maybe
-	}
+		if (!eventName) {
+			Object.values(this.#canvasEventRemovers).forEach((eventRemover) => {
+				eventRemover();
+			});
 
-	#createEvents() {
-		if (this.settings.autoResize) {
-			window.addEventListener();
+			return;
 		}
 
+		this.#canvasEventRemovers[eventName]?.();
+	}
+
+	#attachEvents() {
 		//
 
 		//mouse
 
 		if (this.settings.useCursor) {
-			const mouseOptions = {
-				capture: false,
-				once: false,
-				passive: false,
-			};
+			this.#buildEmbedEvent({
+				target: this.#canvasState.canvas,
+				eventName: 'mouseup',
+				fn: this.#mouseUp,
+				options: { passive: true },
+			});
 
-			this.canvas.element.addEventListener('mouseup', fn, mouseOptions);
-			this.canvas.element.addEventListener('mousedown', fn, mouseOptions);
-			this.canvas.element.addEventListener('mousemove', fn, mouseOptions);
+			this.#buildEmbedEvent({
+				target: document,
+				eventName: 'mousedown',
+				fn: this.#mouseDown,
+			});
+
+			this.#buildEmbedEvent({
+				target: document,
+				eventName: 'mousemove',
+				fn: this.#mouseMove,
+				options: { passive: true },
+			});
+
+			this.#buildEmbedEvent({
+				target: this.#canvasState.canvas,
+				eventName: 'mouseenter',
+				fn: this.#mouseEnter,
+				options: { passive: true },
+			});
+
+			this.#buildEmbedEvent({
+				target: this.#canvasState.canvas,
+				eventName: 'mouseleave',
+				fn: this.#mouseLeave,
+				options: { passive: true },
+			});
+		}
+
+		//touch
+
+		if (this.settings.useTouch) {
+			this.#buildEmbedEvent({
+				target: this.#canvasState.canvas,
+				eventName: 'touchstart',
+				fn: this.#touchStart,
+			});
+			this.#buildEmbedEvent({
+				target: document,
+				eventName: 'touchend',
+				fn: this.#touchEnd,
+				options: { passive: true },
+			});
+
+			this.#buildEmbedEvent({
+				target: this.#canvasState.canvas,
+				eventName: 'touchmove',
+				fn: this.#touchMove,
+			});
+
+			this.#buildEmbedEvent({
+				target: document,
+				eventName: 'touchcancel',
+				fn: this.#touchCancel,
+			});
 		}
 
 		//keyboard
 
 		if (this.settings.useKey) {
-			const keyOptions = {
-				capture: false,
-				once: false,
-				passive: false,
-			};
+			this.#buildEmbedEvent({
+				target: document,
+				eventName: 'keyup',
+				fn: this.#keyUp,
+				options: { passive: true },
+			});
+			this.#buildEmbedEvent({
+				target: document,
+				eventName: 'keydown',
+				fn: this.#keyDown,
+			});
+		}
 
-			this.canvas.element.addEventListener('keyup', fn, keyOptions);
-			this.canvas.element.addEventListener('keydown', fn, keyOptions);
+		//resize
+
+		if (this.settings.autoResize) {
+			const resizeFn = this.#resize.bind(this);
+			const observer = new ResizeObserver(() => {
+				clearTimeout(this.#timers.resize);
+				this.#timers.resize = setTimeout(() => {
+					resizeFn();
+				}, 200);
+			});
+			observer.observe(this.#canvasState.canvas);
+		}
+
+		//focus
+
+		if (this.settings.detectWindowFocus) {
+			this.#buildEmbedEvent({
+				target: window,
+				eventName: 'blur',
+				fn: this.#pageBlur,
+			});
+			this.#buildEmbedEvent({
+				target: window,
+				eventName: 'focus',
+				fn: this.#pageFocus,
+			});
 		}
 	}
 
-	#awaitAppend(element, callback) {
+	#awaitAppend(element) {
 		const isAppended = (element) => {
 			while (element.parentNode) element = element.parentNode;
 			return element instanceof Document;
@@ -1620,7 +1888,6 @@ class Canvas {
 
 		if (isAppended(element)) {
 			element.dispatchEvent(append);
-			//	callback(element);
 			return;
 		}
 
@@ -1636,7 +1903,6 @@ class Canvas {
 
 				observer.disconnect();
 				element.dispatchEvent(append);
-				//callback(element);
 			}
 		});
 
@@ -1648,21 +1914,294 @@ class Canvas {
 
 	// listener & observer functions
 
-	#windowResize() {}
+	#pageBlur() {
+		this.#drawingState.paused = true;
+	}
 
-	#resize() {}
+	#pageFocus() {
+		this.#drawingState.paused = false;
+	}
 
-	#mouseDown() {}
+	async #resize() {
+		this.#sizeUpdate();
 
-	#mouseUp() {}
+		if (this.settings.setupOnResize && this.settings.autoResize)
+			await this.#drawingState.setupFn?.();
 
-	#mouseMove() {}
+		this.#drawingState.resizeFn?.({
+			width: this.#canvasState.size.width,
+			height: this.#canvasState.size.height,
+		});
+	}
 
-	#keyUp() {}
+	#mouseDown(event) {
+		if (!this.#mouseState.covering) return;
+		event.preventDefault();
 
-	#keyDown() {}
+		this.#mouseState.pressed = true;
+
+		this.#userEventListeners['mousedown']?.(event);
+	}
+
+	#mouseUp(event) {
+		if (!this.#mouseState.pressed) return; //prevents mouse up from firing if click didnt originate on the canvas
+		this.#mouseState.pressed = false;
+
+		this.#userEventListeners['mousedown']?.(event);
+	}
+
+	#mouseMove(event) {
+		if (!this.#mouseState.covering) return;
+
+		clearTimeout(this.#timers.cursor);
+
+		this.#mouseState.moving = true;
+
+		this.#timers.cursor = setTimeout(() => {
+			this.#mouseState.moving = false;
+		}, 10);
+
+		this.#userEventListeners['mousemove']?.(event);
+	}
+
+	#mouseEnter(event) {
+		this.#mouseState.covering = true;
+
+		this.#userEventListeners['mouseenter']?.(event);
+	}
+
+	#mouseLeave(event) {
+		this.#mouseState.covering = false;
+
+		this.#userEventListeners['mouseleave']?.(event);
+	}
+
+	#touchStart(event) {
+		this.#touchState.touching = true;
+
+		this.#touchState.touchCount++;
+
+		this.#userEventListeners['touchstart']?.(event);
+	}
+
+	#touchEnd(event) {
+		this.#touchState.touchCount--;
+
+		if (this.#touchState.touchCount <= 0) this.#touchState.touching = true;
+
+		this.#userEventListeners['touchend']?.(event);
+	}
+
+	#touchMove(event) {
+		this.#userEventListeners['touchmove']?.(event);
+	}
+
+	#touchCancel(event) {
+		this.#userEventListeners['touchcancel']?.(event);
+	}
+
+	#keyDown(event) {
+		this.#keyState.pressed = true;
+
+		this.#keyState.pressedCount++;
+
+		this.#userEventListeners['keydown']?.(event);
+	}
+
+	#keyUp(event) {
+		this.#keyState.pressedCount--;
+
+		if (this.#keyState.pressedCount <= 0) this.#keyState.pressed = false;
+
+		this.#userEventListeners['keyup']?.(event);
+	}
 
 	// canvas body data update functions
 
-	#sizeUpdate() {}
+	#sizeUpdate() {
+		if (!this.#canvasState.size.locked) {
+			this.#canvasState.size.width = Math.floor(
+				this.#canvasState.canvas.offsetWidth *
+					this.#canvasState.size.scale,
+			);
+			this.#canvasState.size.height = Math.floor(
+				this.#canvasState.canvas.offsetHeight *
+					this.#canvasState.size.scale,
+			);
+		}
+
+		this.#canvasState.canvas.width = this.#canvasState.size.width;
+		this.#canvasState.canvas.height = this.#canvasState.size.height;
+	}
+
+	async #frameLoop() {
+		let then = performance.now(),
+			delta = 0,
+			now = 0;
+
+		while (this.#drawingState.drawing) {
+			now = await new Promise(requestAnimationFrame);
+
+			if (now - then < this.#drawingState.interval - delta) continue;
+
+			delta = Math.min(
+				this.#drawingState.interval,
+				delta + now - then - this.#drawingState.interval,
+			);
+
+			if (this.#drawingState.paused) continue;
+
+			this.#drawingState.renderTime = (now - then) / 1000;
+			this.#drawingState.runTime += this.#drawingState.renderTime;
+
+			then = now;
+
+			if (this.settings.autoClear) this.#clear();
+
+			this.#drawingState.drawFn();
+
+			if (this.settings.diagnostics) this.#diagnostics();
+		}
+	}
+
+	#clear() {
+		this.#transformlessWrapper((ctx) => {
+			ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+		});
+	}
+
+	#diagnostics() {
+		this.#transformlessWrapper((ctx) => {
+			this.#fps(ctx);
+			this.#mouse(ctx);
+		});
+	}
+
+	#fps(ctx) {
+		const textWidth = 15;
+		const boxWidth = 10;
+		const graphBoxWidth = 100;
+		const margin = 20;
+		const padding = 10;
+		const textSize = 30;
+		const boxHeight = textSize * 2;
+		const graphBoxHeight = boxHeight - padding * 2;
+
+		if (this.#diagnosticsData.renderBufferTwo >= 1) {
+			this.#diagnosticsData.currentFPS =
+				this.#diagnosticsData.renderBuffer;
+			this.#diagnosticsData.renderBuffer = 0;
+			this.#diagnosticsData.renderBufferTwo = 0;
+		} else {
+			this.#diagnosticsData.renderBuffer++;
+			this.#diagnosticsData.renderBufferTwo +=
+				this.#drawingState.renderTime;
+		}
+
+		const text =
+			this.#diagnosticsData.currentFPS + '/' + this.settings.fps + 'fps';
+		const boxContainerWidth =
+			graphBoxWidth + boxWidth + (textSize / textWidth) * text.length;
+
+		if (this.#diagnosticsData.frameBuffer.length >= 50)
+			this.#diagnosticsData.frameBuffer.shift();
+
+		this.#diagnosticsData.frameBuffer.push(this.#drawingState.renderTime);
+
+		ctx.fillStyle = '#00000090';
+		ctx.font = `${textSize}px monospace`;
+
+		ctx.fillRect(
+			20,
+			20,
+			boxContainerWidth + textWidth * text.length + 20,
+			boxHeight,
+		);
+
+		ctx.fillRect(
+			margin + padding,
+			margin + padding,
+			graphBoxWidth,
+			graphBoxHeight,
+		);
+		ctx.strokeStyle = '#ffffff';
+		ctx.beginPath();
+		this.#diagnosticsData.frameBuffer.forEach((height, index, arr) => {
+			const scaledHeight = Math.max(
+				0,
+				graphBoxHeight -
+					(this.#drawingState.interval / (height * 1000)) *
+						graphBoxHeight,
+			);
+
+			const xPos =
+				(graphBoxWidth / arr.length) * index + margin + padding;
+
+			if (index === 0) {
+				ctx.moveTo(xPos, scaledHeight + padding + margin);
+				return;
+			}
+
+			ctx.lineTo(xPos, scaledHeight + padding + margin);
+		});
+		ctx.stroke();
+
+		ctx.fillStyle = '#ffffff';
+		ctx.fillText(
+			text,
+			graphBoxWidth + margin + padding * 2,
+			margin + padding + textSize,
+		);
+	}
+
+	#mouse(ctx) {
+		const textWidth = 15;
+		const boxWidth = 10;
+		const graphBoxWidth = 100;
+		const margin = 20;
+
+		const textSize = 30;
+
+		//	ctx.fillText(text, graphBoxWidth + margin * 2, margin + textSize);
+	}
+
+	// utility
+
+	#transformlessWrapper(fn) {
+		const context = this.context;
+
+		context.save();
+
+		context.setTransform(1, 0, 0, 1, 0, 0);
+
+		fn(context);
+
+		context.restore();
+	}
+
+	// canvas getter
+
+	get element() {
+		return this.#canvasState.canvas;
+	}
+
+	get context() {
+		return this.#canvasState.context;
+	}
+
+	get width() {
+		return this.#canvasState.size.width;
+	}
+
+	get height() {
+		return this.#canvasState.size.height;
+	}
+
+	//mouse getter
+
+	get cursor() {
+		return {
+			pressed: this.#mouseState.pressed,
+		};
+	}
 }
