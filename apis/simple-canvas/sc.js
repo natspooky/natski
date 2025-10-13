@@ -1480,10 +1480,9 @@ export class Canvas {
 
 	#timers = {
 		motionState: undefined,
-		resize: undefined,
 	};
 
-	constructor(canvas, settings = {}, name = 'unnamed canvas') {
+	constructor(canvas, settings = {}, name = 'Unnamed Canvas') {
 		this.#mergeSettings(settings);
 
 		switch (typeof canvas) {
@@ -1528,8 +1527,6 @@ export class Canvas {
 			this.#canvasState.canvas.addEventListener(
 				'append',
 				() => {
-					if (!this.settings.autoResize) {
-					}
 					this.#resize();
 					this.#drawingState.appendFn?.();
 				},
@@ -1546,7 +1543,12 @@ export class Canvas {
 
 	//user functions
 
-	static create(identifiers, settings, name) {
+	static create(
+		identifiers,
+		settings,
+		name = 'Unnamed Canvas',
+		//fallbackText, add this
+	) {
 		const element = document.createElement('canvas');
 
 		identifiers.split(' ').forEach((identifier) => {
@@ -1634,6 +1636,13 @@ export class Canvas {
 		this.#frameLoop();
 	}
 
+	paintAll(colour) {
+		this.#transformlessWrapper((ctx) => {
+			if (colour) ctx.fillStyle = colour;
+			ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+		});
+	}
+
 	disconnect() {
 		this.#removeEvents();
 	}
@@ -1704,7 +1713,7 @@ export class Canvas {
 			diagnostics: false,
 			detectWindowFocus: true,
 			autoResize: true,
-			setupOnResize: false,
+			setupOnResize: true,
 			debugConsole: false,
 
 			...userSettings,
@@ -1856,10 +1865,7 @@ export class Canvas {
 		if (this.settings.autoResize) {
 			const resizeFn = this.#resize.bind(this);
 			const observer = new ResizeObserver(() => {
-				clearTimeout(this.#timers.resize);
-				this.#timers.resize = setTimeout(() => {
-					resizeFn();
-				}, 200);
+				resizeFn();
 			});
 			observer.observe(this.#canvasState.canvas);
 		}
@@ -1940,12 +1946,17 @@ export class Canvas {
 
 		this.#mouseState.pressed = true;
 
+		this.#mouseState.click.startPosition = this.#mouseState.motion.position;
+
 		this.#userEventListeners['mousedown']?.(event);
 	}
 
 	#mouseUp(event) {
-		if (!this.#mouseState.pressed) return; //prevents mouse up from firing if click didnt originate on the canvas
+		if (!this.#mouseState.pressed) return;
+
 		this.#mouseState.pressed = false;
+
+		this.#mouseState.click.endPosition = this.#mouseState.motion.position;
 
 		this.#userEventListeners['mousedown']?.(event);
 	}
@@ -1953,11 +1964,13 @@ export class Canvas {
 	#mouseMove(event) {
 		if (!this.#mouseState.covering) return;
 
-		clearTimeout(this.#timers.cursor);
+		this.#mouseState.motion.lastPostion = this.#mouseState.motion.position;
+
+		clearTimeout(this.#timers.motionState);
 
 		this.#mouseState.moving = true;
 
-		this.#timers.cursor = setTimeout(() => {
+		this.#timers.motionState = setTimeout(() => {
 			this.#mouseState.moving = false;
 		}, 10);
 
@@ -1993,6 +2006,14 @@ export class Canvas {
 	}
 
 	#touchMove(event) {
+		clearTimeout(this.#timers.motionState);
+
+		this.#touchState.moving = true;
+
+		this.#timers.motionState = setTimeout(() => {
+			this.#touchState.moving = false;
+		}, 10);
+
 		this.#userEventListeners['touchmove']?.(event);
 	}
 
@@ -2077,6 +2098,17 @@ export class Canvas {
 		});
 	}
 
+	#container({
+		width,
+		height,
+		padding,
+		clip,
+		child,
+		fn,
+		round,
+		parentData,
+	}) {}
+
 	#fps(ctx) {
 		const textWidth = 15;
 		const boxWidth = 10;
@@ -2111,20 +2143,41 @@ export class Canvas {
 		ctx.fillStyle = '#00000090';
 		ctx.font = `${textSize}px monospace`;
 
-		ctx.fillRect(
+		ctx.beginPath();
+		ctx.roundRect(
 			20,
 			20,
 			boxContainerWidth + textWidth * text.length + 20,
 			boxHeight,
+			[15],
 		);
-
-		ctx.fillRect(
+		ctx.fill();
+		ctx.beginPath();
+		ctx.roundRect(
 			margin + padding,
 			margin + padding,
 			graphBoxWidth,
 			graphBoxHeight,
+			[5],
 		);
+		ctx.fill();
+
 		ctx.strokeStyle = '#ffffff';
+		ctx.fillStyle = '#ffffff';
+		ctx.fillText(
+			text,
+			graphBoxWidth + margin + padding * 2,
+			margin + padding + textSize,
+		);
+		let region = new Path2D();
+		region.roundRect(
+			margin + padding,
+			margin + padding,
+			graphBoxWidth,
+			graphBoxHeight,
+			[5],
+		);
+		ctx.clip(region);
 		ctx.beginPath();
 		this.#diagnosticsData.frameBuffer.forEach((height, index, arr) => {
 			const scaledHeight = Math.max(
@@ -2145,13 +2198,6 @@ export class Canvas {
 			ctx.lineTo(xPos, scaledHeight + padding + margin);
 		});
 		ctx.stroke();
-
-		ctx.fillStyle = '#ffffff';
-		ctx.fillText(
-			text,
-			graphBoxWidth + margin + padding * 2,
-			margin + padding + textSize,
-		);
 	}
 
 	#mouse(ctx) {
