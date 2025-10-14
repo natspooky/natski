@@ -459,6 +459,10 @@ export default class SimpleCanvas {
 		this.#settings.fps.interval = 1000 / value;
 	}
 
+	get fps() {
+		return this.#settings.fps.set;
+	}
+
 	/**
 	 * @param {object} size
 	 */
@@ -1695,6 +1699,10 @@ export class Canvas {
 		this.#drawingState.interval = 1000 / newFPS;
 	}
 
+	get fps() {
+		return this.settings.fps;
+	}
+
 	on(eventName, fn) {
 		if (!this.#supportedEvents.includes(eventName)) {
 			Canvas.console({
@@ -2001,7 +2009,7 @@ export class Canvas {
 
 		this.#mouseState.click.endPosition = this.#mouseState.motion.position;
 
-		this.#userEventListeners['mousedown']?.(event);
+		this.#userEventListeners['mouseup']?.(event);
 	}
 
 	#mouseMove(event) {
