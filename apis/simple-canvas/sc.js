@@ -1405,6 +1405,10 @@ export class Canvas {
 		//wheel
 		'wheel',
 
+		//scroll
+		'scroll',
+		'scrollend',
+
 		//window focus
 		'blur',
 		'focus',
@@ -1412,7 +1416,12 @@ export class Canvas {
 
 	#userEventListeners = {};
 	#canvasEventRemovers = {};
-	#wheelState = {};
+	#wheelState = {
+		scrolling: false,
+	};
+	#scrollState = {
+		scrolling: false,
+	};
 	#keyState = {
 		pressing: false,
 		pressCount: 0,
@@ -1472,14 +1481,18 @@ export class Canvas {
 	};
 
 	#diagnosticsData = {
-		frameBuffer: [],
-		renderBuffer: 0,
-		renderBufferTwo: 0,
-		currentFPS: 0,
+		fps: {
+			frameBuffer: [],
+			renderBuffer: 0,
+			renderBufferTwo: 0,
+			currentFPS: 0,
+		},
 	};
 
 	#timers = {
 		motionState: undefined,
+		wheelMotionState: undefined,
+		scrollMotionState: undefined, //possibly dont need
 	};
 
 	constructor(canvas, settings = {}, name = 'Unnamed Canvas') {
@@ -1706,14 +1719,15 @@ export class Canvas {
 		this.settings = {
 			fps: 60,
 			autoClear: true,
+			autoResize: true,
+			setupOnResize: true,
 			useCursor: false,
 			useTouch: false,
 			useWheel: false,
+			useScroll: false,
 			useKey: false,
 			diagnostics: false,
 			detectWindowFocus: true,
-			autoResize: true,
-			setupOnResize: true,
 			debugConsole: false,
 
 			...userSettings,
@@ -1803,6 +1817,12 @@ export class Canvas {
 
 			this.#buildEmbedEvent({
 				target: this.#canvasState.canvas,
+				eventName: 'contextmenu',
+				fn: this.#contextMenu,
+			});
+
+			this.#buildEmbedEvent({
+				target: this.#canvasState.canvas,
 				eventName: 'mouseenter',
 				fn: this.#mouseEnter,
 				options: { passive: true },
@@ -1857,6 +1877,26 @@ export class Canvas {
 				target: document,
 				eventName: 'keydown',
 				fn: this.#keyDown,
+			});
+		}
+
+		//wheel
+
+		if (this.settings.useWheel) {
+			this.#buildEmbedEvent({
+				target: this.#canvasState.canvas,
+				eventName: 'wheel',
+				fn: this.#wheel,
+			});
+		}
+
+		//scroll
+
+		if (this.settings.useScroll) {
+			this.#buildEmbedEvent({
+				target: document,
+				eventName: 'scroll',
+				fn: this.#scroll,
 			});
 		}
 
@@ -1938,6 +1978,9 @@ export class Canvas {
 			width: this.#canvasState.size.width,
 			height: this.#canvasState.size.height,
 		});
+
+		if (this.#drawingState.drawing && !this.#drawingState.paused)
+			this.#drawSequence();
 	}
 
 	#mouseDown(event) {
@@ -1975,6 +2018,10 @@ export class Canvas {
 		}, 10);
 
 		this.#userEventListeners['mousemove']?.(event);
+	}
+
+	#contextMenu(event) {
+		event.preventDefault();
 	}
 
 	#mouseEnter(event) {
@@ -2037,6 +2084,33 @@ export class Canvas {
 		this.#userEventListeners['keyup']?.(event);
 	}
 
+	#wheel(event) {
+		//maybe get rid of this or add a settings
+		event.preventDefault();
+
+		clearTimeout(this.#timers.wheelMotionState);
+
+		this.#wheelState.scrolling = true;
+
+		this.#timers.wheelMotionState = setTimeout(() => {
+			this.#wheelState.scrolling = false;
+		}, 10);
+
+		this.#userEventListeners['wheel']?.(event);
+	}
+
+	#scroll(event) {
+		clearTimeout(this.#timers.wheelMotionState);
+
+		this.#scrollState.scrolling = true;
+
+		this.#timers.wheelMotionState = setTimeout(() => {
+			this.#scrollState.scrolling = false;
+		}, 10);
+
+		this.#userEventListeners['scroll']?.(event);
+	}
+
 	// canvas body data update functions
 
 	#sizeUpdate() {
@@ -2053,6 +2127,14 @@ export class Canvas {
 
 		this.#canvasState.canvas.width = this.#canvasState.size.width;
 		this.#canvasState.canvas.height = this.#canvasState.size.height;
+	}
+
+	#drawSequence() {
+		if (this.settings.autoClear) this.#clear();
+
+		this.#drawingState.drawFn();
+
+		if (this.settings.diagnostics) this.#diagnostics();
 	}
 
 	async #frameLoop() {
@@ -2077,11 +2159,7 @@ export class Canvas {
 
 			then = now;
 
-			if (this.settings.autoClear) this.#clear();
-
-			this.#drawingState.drawFn();
-
-			if (this.settings.diagnostics) this.#diagnostics();
+			this.#drawSequence();
 		}
 	}
 
@@ -2119,26 +2197,31 @@ export class Canvas {
 		const boxHeight = textSize * 2;
 		const graphBoxHeight = boxHeight - padding * 2;
 
-		if (this.#diagnosticsData.renderBufferTwo >= 1) {
-			this.#diagnosticsData.currentFPS =
-				this.#diagnosticsData.renderBuffer;
-			this.#diagnosticsData.renderBuffer = 0;
-			this.#diagnosticsData.renderBufferTwo = 0;
+		if (this.#diagnosticsData.fps.renderBufferTwo >= 1) {
+			this.#diagnosticsData.fps.currentFPS =
+				this.#diagnosticsData.fps.renderBuffer;
+			this.#diagnosticsData.fps.renderBuffer = 0;
+			this.#diagnosticsData.fps.renderBufferTwo = 0;
 		} else {
-			this.#diagnosticsData.renderBuffer++;
-			this.#diagnosticsData.renderBufferTwo +=
+			this.#diagnosticsData.fps.renderBuffer++;
+			this.#diagnosticsData.fps.renderBufferTwo +=
 				this.#drawingState.renderTime;
 		}
 
 		const text =
-			this.#diagnosticsData.currentFPS + '/' + this.settings.fps + 'fps';
+			this.#diagnosticsData.fps.currentFPS +
+			'/' +
+			this.settings.fps +
+			'fps';
 		const boxContainerWidth =
 			graphBoxWidth + boxWidth + (textSize / textWidth) * text.length;
 
-		if (this.#diagnosticsData.frameBuffer.length >= 50)
-			this.#diagnosticsData.frameBuffer.shift();
+		if (this.#diagnosticsData.fps.frameBuffer.length >= 50)
+			this.#diagnosticsData.fps.frameBuffer.shift();
 
-		this.#diagnosticsData.frameBuffer.push(this.#drawingState.renderTime);
+		this.#diagnosticsData.fps.frameBuffer.push(
+			this.#drawingState.renderTime,
+		);
 
 		ctx.fillStyle = '#00000090';
 		ctx.font = `${textSize}px monospace`;
@@ -2179,7 +2262,7 @@ export class Canvas {
 		);
 		ctx.clip(region);
 		ctx.beginPath();
-		this.#diagnosticsData.frameBuffer.forEach((height, index, arr) => {
+		this.#diagnosticsData.fps.frameBuffer.forEach((height, index, arr) => {
 			const scaledHeight = Math.max(
 				0,
 				graphBoxHeight -
