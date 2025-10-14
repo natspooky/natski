@@ -1695,8 +1695,15 @@ export class Canvas {
 	}
 
 	set fps(newFPS) {
-		this.settings.fps = newFPS;
-		this.#drawingState.interval = 1000 / newFPS;
+		new Promise((resolve) =>
+			requestAnimationFrame((t1) =>
+				requestAnimationFrame((t2) => resolve(1000 / (t2 - t1))),
+			),
+		).then((maxFPS) => {
+			newFPS = Math.min(newFPS, maxFPS);
+			this.settings.fps = newFPS;
+			this.#drawingState.interval = 1000 / newFPS;
+		});
 	}
 
 	get fps() {
