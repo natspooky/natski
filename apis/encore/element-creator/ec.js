@@ -9,7 +9,6 @@
 
 import IconSystem from '../icon-system/is.min.js';
 import encoreConsole from '../dependencies/encoreConsole.js';
-import { append, create } from './dependencies/eventTable.js';
 
 //encoreDOM;
 

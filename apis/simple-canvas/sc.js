@@ -1697,10 +1697,22 @@ export class Canvas {
 	set fps(newFPS) {
 		new Promise((resolve) =>
 			requestAnimationFrame((t1) =>
-				requestAnimationFrame((t2) => resolve(1000 / (t2 - t1))),
+				requestAnimationFrame((t2) =>
+					resolve(Math.floor(1000 / (t2 - t1))),
+				),
 			),
-		).then((maxFPS) => {
-			newFPS = Math.min(newFPS, maxFPS);
+		).then((calculatedFPS) => {
+			const closestRate = [
+				30, 60, 75, 90, 100, 120, 144, 180, 240, 360,
+			].reduce((previous, current) =>
+				Math.abs(current - calculatedFPS) <
+				Math.abs(previous - calculatedFPS)
+					? current
+					: previous,
+			);
+
+			newFPS = Math.min(newFPS, closestRate);
+
 			this.settings.fps = newFPS;
 			this.#drawingState.interval = 1000 / newFPS;
 		});
@@ -2191,16 +2203,9 @@ export class Canvas {
 		});
 	}
 
-	#container({
-		width,
-		height,
-		padding,
-		clip,
-		child,
-		fn,
-		round,
-		parentData,
-	}) {}
+	#container({ width, height, padding, clip, child, fn, round, parentData }) {
+		//give option to scale with dpi!
+	}
 
 	#fps(ctx) {
 		const textWidth = 15;
@@ -2347,5 +2352,28 @@ export class Canvas {
 		return {
 			pressed: this.#mouseState.pressed,
 		};
+	}
+}
+
+class CanvasContainer {
+	#width;
+	#height;
+	#type;
+
+	constructor({ width, height, useDPI, type, clip, top, left, context }) {}
+
+	move({ x, y }) {}
+
+	absoluteMove() {}
+
+	draw() {
+		switch (type) {
+			case 'rect':
+				break;
+			case 'round':
+				break;
+			case 'arc':
+				break;
+		}
 	}
 }
