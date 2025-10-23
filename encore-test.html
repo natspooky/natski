@@ -203,7 +203,7 @@
 				const canvas = Canvas.create(
 					'#canvas',
 					{
-						fps: 1000,
+						fps: 120,
 						autoResize: true,
 						setupOnResize: true,
 						diagnostics: true,
@@ -240,7 +240,7 @@
 					const text = 'Simple Canvas';
 
 					ctx.fillText(text, -((text.length / 2) * 65), 30);
-					ctx.rotate(0.01);
+					//ctx.rotate(0.01);
 				};
 
 				canvas.append(append);

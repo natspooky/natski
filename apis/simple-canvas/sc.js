@@ -1416,6 +1416,9 @@ export class Canvas {
 		//window focus
 		'blur',
 		'focus',
+
+		//resize
+		'resize',
 	].filter(this.#checkEventSupport);
 
 	#userEventListeners = {};
@@ -1624,12 +1627,6 @@ export class Canvas {
 	}
 
 	async render() {
-		Canvas.console({
-			message: `Rendering '${this.#canvasState.id}' at ${
-				this.settings.fps
-			}fps`,
-		});
-
 		if (!this.#drawingState.drawFn) {
 			Canvas.console({
 				message: 'Render error:',
@@ -1648,6 +1645,12 @@ export class Canvas {
 
 		await this.#drawingState.setupFn?.();
 
+		Canvas.console({
+			message: `Rendering '${this.#canvasState.id}' at ${
+				this.settings.fps
+			}fps`,
+		});
+
 		this.#drawingState.drawing = true;
 
 		this.#frameLoop();
@@ -1661,7 +1664,7 @@ export class Canvas {
 	}
 
 	disconnect() {
-		this.#removeEvents();
+		this.#removeEvents(); //do this
 	}
 
 	pause() {
@@ -1688,10 +1691,8 @@ export class Canvas {
 		this.#drawingState.resizeFn = fn;
 	}
 
-	set lockSize(bool) {
-		this.#canvasState.size.locked = bool;
-
-		if (!bool) this.#resize();
+	set size({ height, width }) {
+		this.settings.size.locked = true; //do this
 	}
 
 	set fps(newFPS) {
@@ -1792,9 +1793,7 @@ export class Canvas {
 	}
 
 	#buildEmbedEvent({ target, eventName, fn, options }) {
-		if (!this.#supportedEvents.includes(eventName)) {
-			return;
-		}
+		if (!this.#supportedEvents.includes(eventName)) return;
 
 		const boundEventFn = fn.bind(this);
 
@@ -1806,9 +1805,9 @@ export class Canvas {
 
 	#removeEvents(eventName) {
 		if (!eventName) {
-			Object.values(this.#canvasEventRemovers).forEach((eventRemover) => {
-				eventRemover();
-			});
+			Object.values(this.#canvasEventRemovers).forEach((eventRemover) =>
+				eventRemover(),
+			);
 
 			return;
 		}
@@ -1817,8 +1816,6 @@ export class Canvas {
 	}
 
 	#attachEvents() {
-		//
-
 		//mouse
 
 		if (this.settings.useCursor) {
@@ -1937,6 +1934,13 @@ export class Canvas {
 			observer.observe(this.#canvasState.canvas);
 		}
 
+		this.#buildEmbedEvent({
+			target: window,
+			eventName: 'resize',
+			fn: this.#locationUpdate,
+			options: { passive: true },
+		});
+
 		//focus
 
 		if (this.settings.detectWindowFocus) {
@@ -1995,8 +1999,27 @@ export class Canvas {
 		this.#drawingState.paused = false;
 	}
 
+	#locationUpdate() {
+		const box = this.#canvasState.canvas.getBoundingClientRect();
+
+		const body = document.body;
+		const docEl = document.documentElement;
+
+		const scrollTop = docEl.scrollTop || body.scrollTop;
+		const scrollLeft = docEl.scrollLeft || body.scrollLeft;
+
+		const clientTop = docEl.clientTop || body.clientTop || 0;
+		const clientLeft = docEl.clientLeft || body.clientLeft || 0;
+		//do this
+		this.#canvasState.dimensions.position = {
+			x: Math.round(box.left + scrollLeft - clientLeft),
+			y: Math.round(box.top + scrollTop - clientTop),
+		};
+	}
+
 	async #resize() {
 		this.#sizeUpdate();
+		this.#locationUpdate();
 
 		if (this.settings.setupOnResize && this.settings.autoResize)
 			await this.#drawingState.setupFn?.();
@@ -2355,12 +2378,23 @@ export class Canvas {
 	}
 }
 
-class CanvasContainer {
+class CanvasElement {
 	#width;
 	#height;
 	#type;
+	#children;
 
-	constructor({ width, height, useDPI, type, clip, top, left, context }) {}
+	constructor({
+		width,
+		height,
+		useDPI,
+		type,
+		clip,
+		top,
+		left,
+		context,
+		children,
+	}) {}
 
 	move({ x, y }) {}
 
@@ -2375,5 +2409,7 @@ class CanvasContainer {
 			case 'arc':
 				break;
 		}
+
+		this.#children.forEach((child) => child.draw());
 	}
 }

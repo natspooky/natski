@@ -672,13 +672,10 @@ function render(root, fn, settings) {
 			);
 
 			const finalTime = Math.round(performance.now() - time);
+			const printTime = returnIf(finalTime > 0, finalTime, '< 1');
 
 			encoreConsole({
-				message: `Hydration complete in ${returnIf(
-					finalTime > 0,
-					finalTime,
-					'< 1',
-				)}ms`,
+				message: `Hydration complete in ${printTime}ms`,
 			});
 		} catch (error) {
 			encoreConsole({
