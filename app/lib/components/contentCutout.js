@@ -1,4 +1,4 @@
-import { className } from '../../apis/encore/element-creator/ec.min.js';
+import { className } from '../../apis/encore/element-creator/ec.js';
 
 export default function ContentCutout({ children, type }) {
 	const cutoutType = (type) => {

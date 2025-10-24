@@ -6,7 +6,7 @@
 /* ----------------------------------------------- */
 
 import { IS_DATA } from './dependencies/IS_DATA.js';
-import { fileExtention } from '../../dependencies/file-utils/fu.min.js';
+import { fileExtention } from '../../dependencies/file-utils/fu.js';
 import encoreConsole from '../dependencies/encoreConsole.js';
 
 class IS extends HTMLElement {

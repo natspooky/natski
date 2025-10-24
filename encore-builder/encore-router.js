@@ -1,4 +1,4 @@
-import { MIME } from '../app/apis/dependencies/file-utils/fu.min.js';
+import { MIME } from '../app/apis/dependencies/file-utils/fu.js';
 import Build from './build.js';
 import { createServer } from 'http';
 import { StatusCodes } from 'http-status-codes';
@@ -26,7 +26,6 @@ const httpServer = createServer((req, res) => {
 	const pathname = parsedUrl.pathname;
 	let contentType = MIME(pathname);
 	let filePath = join(__dirname + '\\..\\.encore\\', pathname);
-	console.log(filePath, pathname);
 
 	_stat('val', (err, stat) => {
 		stat;
@@ -42,7 +41,7 @@ const httpServer = createServer((req, res) => {
 	} else if (!existsSync(filePath)) {
 		let time = performance.now();
 		message(true, time, filePath);
-		readFile(__dirname + '\\404.html', 'text/html', res);
+		//readFile(__dirname + '\\404.html', 'text/html', res);
 		return;
 	}
 

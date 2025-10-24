@@ -7,7 +7,7 @@
 
 //const ecWorker = new Worker(new URL("ecWorker.js", import.meta.url));
 
-import IconSystem from '../icon-system/is.min.js';
+import IconSystem from '../icon-system/is.js';
 import encoreConsole from '../dependencies/encoreConsole.js';
 
 //encoreDOM;

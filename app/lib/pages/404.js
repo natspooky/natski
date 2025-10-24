@@ -1,4 +1,4 @@
-import { render } from '../../apis/encore/element-creator/ec.min.js';
+import { render } from '../../apis/encore/element-creator/ec.js';
 import RootLayout from '../layouts/rootLayout.js';
 import LinkButton from '../components/button_components/linkButton.js';
 import { index } from '../js/static_data/page_index.js';

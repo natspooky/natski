@@ -1,5 +1,5 @@
 import { className } from '../../apis/encore/element-creator/ec.js';
-import isMobile from '../../apis/dependencies/mobile-utils/mu.min.js';
+import isMobile from '../../apis/dependencies/mobile-utils/mu.js';
 import LinkButton from './button_components/linkButton.js';
 import Button from './button_components/button.js';
 import IS from './image_components/IS.js';

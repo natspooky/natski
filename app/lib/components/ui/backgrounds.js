@@ -1,60 +1,17 @@
 import { className } from '../../../apis/encore/element-creator/ec.js';
-import SimpleCanvas from '../../../apis/simple-canvas/sc.min.js';
-import isMobile from '../../../apis/dependencies/mobile-utils/mu.min.js';
+import SimpleCanvas from '../../../apis/simple-canvas/sc.js';
+import isMobile from '../../../apis/dependencies/mobile-utils/mu.js';
 import IS from '../image_components/IS.js';
-
-function canvas() {
-	const canvas = SimpleCanvas.create(
-		'.canvas',
-		{
-			fps: 60,
-		},
-		'GradientSparkle',
-	);
-
-	return canvas.element;
-}
 
 function GradientSparkle({ particles, waves }) {
 	class Particles {}
 
-	let canvas;
-	let context;
-
 	const particleContainer = [];
-
-	const loadCanvas = (self) => {
-		canvas = new SimpleCanvas(self, {
-			autoClear: true,
-			useCursor: false,
-			detectResize: true,
-			detectWindowFocus: true,
-			positionLayerData: true,
-			showLayerPosition: true,
-			calculateOverlay: true,
-			calculateFPS: true,
-			fps: 60,
-		});
-		context = canvas.context;
-
-		canvas.draw(() => {});
-	};
 
 	return {
 		tag: 'span',
 		classes: className('gradient-sparkle'),
 		children: [
-			particles && false
-				? {
-						tag: 'canvas',
-						onAppend: {
-							callback: loadCanvas,
-							options: {
-								awaitContentLoad: false,
-							},
-						},
-				  }
-				: {},
 			waves
 				? {
 						tag: 'span',

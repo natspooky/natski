@@ -1,4 +1,4 @@
-import { fileName } from '../../../apis/dependencies/file-utils/fu.min.js';
+import { fileName } from '../../../apis/dependencies/file-utils/fu.js';
 
 export default function Img({ src, draggable, loading, classes }) {
 	const load = (self) => {

@@ -9,6 +9,7 @@
 		"fs": "^0.0.1-security",
 		"http": "^0.0.1-security",
 		"http-status-codes": "^2.3.0",
+		"minify": "^14.1.0",
 		"path": "^0.12.7",
 		"terminal-link": "^4.0.0",
 		"url": "^0.11.4"
@@ -16,7 +17,7 @@
 	"main": "./encore-builder/encore-router.js",
 	"scripts": {
 		"start": "nodemon .",
-		"build": "node ./encore-builder/build.js"
+		"build": "node ./encore-builder/runBuild.js"
 	},
 	"devDependencies": {
 		"@eslint/js": "^9.32.0",
