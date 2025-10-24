@@ -133,7 +133,7 @@ export default class SimpleCanvas {
 			case 'string':
 				this.#canvasState.canvas = document.getElementById(canvas);
 				if (!this.#canvasState.canvas)
-					Canvas.console({
+					SimpleCanvas.console({
 						message: 'Assignment error:',
 						error: `The ID '${canvas}' does not exist in the DOM`,
 					});
@@ -145,7 +145,7 @@ export default class SimpleCanvas {
 						canvas.nodeType === Node.ELEMENT_NODE
 					)
 				) {
-					Canvas.console({
+					SimpleCanvas.console({
 						message: 'Assignment error:',
 						error: "HTML Node is not a 'CANVAS'",
 					});
@@ -156,7 +156,7 @@ export default class SimpleCanvas {
 
 				break;
 			default:
-				Canvas.console({
+				SimpleCanvas.console({
 					message: 'Type error:',
 					error: 'Passed canvas is not of type HTML Node or String ID',
 				});
@@ -204,7 +204,7 @@ export default class SimpleCanvas {
 					element.classList.add(identifier.slice(1));
 					break;
 				default:
-					Canvas.console({
+					SimpleCanvas.console({
 						message: 'Assignment error:',
 						error: 'Class and ID keys dont match required syntax: (#Id .class)',
 					});
@@ -212,7 +212,7 @@ export default class SimpleCanvas {
 			}
 		});
 
-		return new Canvas(element, settings, name);
+		return new SimpleCanvas(element, settings, name);
 	}
 
 	static console(message) {
@@ -252,7 +252,7 @@ export default class SimpleCanvas {
 
 	async render() {
 		if (!this.#drawingState.drawFn) {
-			Canvas.console({
+			SimpleCanvas.console({
 				message: 'Render error:',
 				error: 'No draw function provided',
 			});
@@ -260,7 +260,7 @@ export default class SimpleCanvas {
 		}
 
 		if (!document.body.contains(this.#canvasState.canvas)) {
-			Canvas.console({
+			SimpleCanvas.console({
 				message: 'Render error:',
 				error: 'Canvas cannot render content while outside of the Document body',
 			});
@@ -269,7 +269,7 @@ export default class SimpleCanvas {
 
 		await this.#drawingState.setupFn?.();
 
-		Canvas.console({
+		SimpleCanvas.console({
 			message: `Rendering '${this.#canvasState.id}' at ${
 				this.settings.fps
 			}fps`,
@@ -349,7 +349,7 @@ export default class SimpleCanvas {
 
 	on(eventName, fn) {
 		if (!this.#supportedEvents.includes(eventName)) {
-			Canvas.console({
+			SimpleCanvas.console({
 				message: 'Event warning:',
 				warn: `'${eventName}' is not supported in Simple Canvas`,
 			});

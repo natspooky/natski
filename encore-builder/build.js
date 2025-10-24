@@ -1,8 +1,7 @@
 import fs from 'node:fs';
 import fsPromise from 'node:fs/promises';
 import path from 'path';
-import { minify } from 'minify';
-import tryToCatch from 'try-to-catch';
+import { minify } from 'terser';
 
 export default async function createBuildFolder() {
 	console.log('BUILDING');
@@ -22,8 +21,6 @@ export default async function createBuildFolder() {
 			);
 		}
 
-		//fs.mkdirSync(buildRoot);
-
 		const globals = {
 			css: fs.existsSync('./app/lib/css/global.css')
 				? './app/lib/css/global.css'
@@ -41,7 +38,7 @@ export default async function createBuildFolder() {
 			...findFiles('./app/icon'),
 		];
 
-		pageArr.forEach(async (file) => {
+		pageArr.forEach((file) => {
 			const dirArray = path.dirname(file).split('\\');
 
 			const dir = dirArray
@@ -146,35 +143,9 @@ function createLongDir(dir) {
 }
 
 async function copyMinFile(dir, endDir) {
-	const options = {
-		js: {
-			type: 'putout',
-			putout: {
-				quotes: `'`,
-				fixCount: 1,
-				conditions: false,
-				mangleClassNames: false,
-				mangle: false,
-				mergeVariables: false,
-				removeUnusedVariables: false,
-				removeConsole: false,
-				removeUselessSpread: false,
-				applyTemplateLiterals: false,
-				convertStrictEqualToEqual: false,
-			},
-		},
-		css: {
-			type: 'lightningcss',
-		},
-	};
-
-	const [error, data] = await tryToCatch(minify, dir, options);
 	createLongDir(endDir);
 
-	//console.log(endDir);
-	if (true) {
-		//console.error(error);
-
+	if (path.extname(dir) !== '.js') {
 		fs.copyFile(dir, endDir, function (err) {
 			if (err) {
 				return console.log(err);
@@ -183,11 +154,13 @@ async function copyMinFile(dir, endDir) {
 		return;
 	}
 
-	fs.writeFile(endDir, data, function (err) {
-		if (err) {
-			return console.log(err);
-		}
+	const contents = await fsPromise.readFile(dir, {
+		encoding: 'utf8',
 	});
+	console.log(dir);
+	const min = await minify(contents);
+
+	await fsPromise.writeFile(endDir, min['code']);
 }
 
 function createPage(dir, metaData) {
@@ -240,6 +213,13 @@ function createPage(dir, metaData) {
 							tag: 'meta',
 							params: ['name="theme-color"', 'content="#010409"'],
 						}),
+						meta({
+							tag: 'meta',
+							params: [
+								'name="description"',
+								`content="${metaData.description}"`,
+							],
+						}),
 						metaData.pageCssPath
 							? element({
 									tag: 'link',
@@ -286,20 +266,9 @@ function createPage(dir, metaData) {
 				}),
 			].join(''),
 		}); /*`
-	<!DOCTYPE html>
-<html lang="en-US">
-	<head>
-        
-		<meta charset="UTF-8" />
-		<meta
-			name="viewport"
-			content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
-		/>
-		<meta name="theme-color" content="#010409" />
-		<meta
-			name="description"
-			content="The home of NATSKI web tools and games"
-		/>
+
+
+
 		<meta name="keywords" content="portfolio, natspooky, natski" />
 		<meta name="author" content="NATSKI" />
 		<meta name="copyright" content="NATSKI" />
@@ -357,14 +326,7 @@ function createPage(dir, metaData) {
 		<meta name="twitter:creator" content="@natspooky_" />
 		<meta name="twitter:card" content="summary" />
 		
-		<link rel="stylesheet" type="text/css" href="lib/css/index.css" />
-		
-		<script type="module" src="../lib/js/embedded_page_scripts.js"></script>
-		<script async type="module" src="${meta.pageJsPath}"></script>
-	</head>
-
-	<body id="root"></body>
-</html>
+	
 
 	`;*/
 

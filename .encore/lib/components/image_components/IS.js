@@ -1,18 +1,1 @@
-export default function IS({
-	icon,
-	customIcon,
-	classes,
-	children,
-	positionable,
-}) {
-	return {
-		tag: 'icon-system',
-		classes: classes,
-		attributes: {
-			name: icon,
-			src: customIcon,
-			positionable,
-		},
-		children: children,
-	};
-}
+export default function IS({icon:s,customIcon:e,classes:t,children:n,positionable:c}){return{tag:"icon-system",classes:t,attributes:{name:s,src:e,positionable:c},children:n}}

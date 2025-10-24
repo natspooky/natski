@@ -1,3 +1,1 @@
-import { appendChildren, buildComponent } from '';
-
-export default function ContextMenu({}) {}
+import{appendChildren,buildComponent}from"";export default function ContextMenu({}){}

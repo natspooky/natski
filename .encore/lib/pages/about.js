@@ -1,2 +1,1 @@
-const meta = [];
-export default meta;
+const meta=[];export default meta;

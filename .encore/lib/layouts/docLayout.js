@@ -1,9 +1,1 @@
-import RootLayout from './rootLayout.js';
-
-export default function DocumentationLayout({ children }) {
-	const contents = children; //[{}];
-
-	return RootLayout({
-		children: contents,
-	});
-}
+import RootLayout from"./rootLayout.js";export default function DocumentationLayout({children:o}){return RootLayout({children:o})}
