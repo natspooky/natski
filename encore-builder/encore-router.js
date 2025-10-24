@@ -32,16 +32,15 @@ const httpServer = createServer((req, res) => {
 	});
 
 	if (req.url == '/') {
-		filePath += 'index.html';
+		filePath += 'home.html';
 		contentType = 'text/html';
 	} else if (_extname(filePath) === '') {
-		console.log('runnn');
 		filePath += '.html';
 		contentType = 'text/html';
 	} else if (!existsSync(filePath)) {
 		let time = performance.now();
 		message(true, time, filePath);
-		//readFile(__dirname + '\\404.html', 'text/html', res);
+		//readFile(filePath + '\\404.html', 'text/html', res);
 		return;
 	}
 

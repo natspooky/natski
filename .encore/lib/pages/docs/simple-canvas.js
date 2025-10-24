@@ -1,0 +1,15 @@
+import { render, useState } from '../../../apis/encore/element-creator/ec.js';
+
+import DocLayout from '../../layouts/docLayout.js';
+
+render(
+	'root',
+	() => {
+		window.components.layout = DocLayout;
+
+		return [];
+	},
+	{
+		useIcons: true,
+	},
+);

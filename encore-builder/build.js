@@ -24,11 +24,14 @@ export default async function createBuildFolder() {
 
 		//fs.mkdirSync(buildRoot);
 
-		/*
 		const globals = {
-			css: findFiles('./app/lib/css/global.css'),
-			js: findFiles('./app/lib/js/global.js'),
-		};*/
+			css: fs.existsSync('./app/lib/css/global.css')
+				? './app/lib/css/global.css'
+				: null,
+			js: fs.existsSync('./app/lib/js/global.js')
+				? './app/lib/js/global.js'
+				: null,
+		};
 
 		const pageArr = findFiles('./app/lib/pages');
 
@@ -63,7 +66,34 @@ export default async function createBuildFolder() {
 						path.basename(file),
 					),
 				),
-				//...meta,
+				globalCssPath: globals.css
+					? path.relative(
+							htmlDir,
+							path.join(
+								buildRoot,
+								path
+									.dirname(globals.css)
+									.split('/')
+									.slice(2)
+									.join('\\'),
+								path.basename(globals.css),
+							),
+					  )
+					: null,
+				globalJsPath: globals.js
+					? path.relative(
+							htmlDir,
+							path.join(
+								buildRoot,
+								path
+									.dirname(globals.js)
+									.split('/')
+									.slice(2)
+									.join('\\'),
+								path.basename(globals.js),
+							),
+					  )
+					: null,
 			});
 		});
 
@@ -78,7 +108,6 @@ export default async function createBuildFolder() {
 			);
 		});
 
-		console.log('BUILD COMPLETE');
 		//const cssArr = findFiles('./lib/css');
 	} catch (err) {
 		console.error(err);
@@ -139,10 +168,10 @@ async function copyMinFile(dir, endDir) {
 		},
 	};
 
-	const [, data] = await tryToCatch(minify, dir, options);
+	const [error, data] = await tryToCatch(minify, dir, options);
 	createLongDir(endDir);
 
-	console.log(endDir);
+	//console.log(endDir);
 	if (true) {
 		//console.error(error);
 
@@ -161,10 +190,102 @@ async function copyMinFile(dir, endDir) {
 	});
 }
 
-function createPage(dir, meta) {
+function createPage(dir, metaData) {
 	createLongDir(dir);
 
-	const page = `
+	const element = ({ tag, children, params }) => {
+		return `<${tag}${params ? ' ' + params.join(' ') : ''}>${
+			children ?? ''
+		}</${tag}>`;
+	};
+
+	const meta = ({ tag, params }) => {
+		return `<${tag}${params ? ' ' + params.join(' ') : ''}/>`;
+	};
+
+	const page =
+		'<!DOCTYPE html>' +
+		element({
+			tag: 'html',
+			params: ['lang="en-US"'],
+			children: [
+				element({
+					tag: 'head',
+					children: [
+						element({
+							tag: 'title',
+							children: path
+								.basename(dir, path.extname(dir))
+								.split('-')
+								.map((word) => {
+									return (
+										word.slice(0, 1).toUpperCase() +
+										word.slice(1)
+									);
+								})
+								.join(' '),
+						}),
+						meta({
+							tag: 'meta',
+							params: ['charset="UTF-8"'],
+						}),
+						meta({
+							tag: 'meta',
+							params: [
+								'name="viewport"',
+								'content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"',
+							],
+						}),
+						meta({
+							tag: 'meta',
+							params: ['name="theme-color"', 'content="#010409"'],
+						}),
+						metaData.pageCssPath
+							? element({
+									tag: 'link',
+									params: [
+										'rel="stlyesheet"',
+										'type="text/css"',
+										`href="${metaData.pageCssPath}"`,
+									],
+							  })
+							: '',
+						metaData.globalCssPath
+							? element({
+									tag: 'link',
+									params: [
+										'rel="stylesheet"',
+										'type="text/css"',
+										`href="${metaData.globalCssPath}"`,
+									],
+							  })
+							: '',
+						metaData.globalJsPath
+							? element({
+									tag: 'script',
+									params: [
+										'type="module"',
+										`src="${metaData.globalJsPath}"`,
+									],
+							  })
+							: '',
+						element({
+							tag: 'script',
+							params: [
+								'async',
+								'type="module"',
+								`src="${metaData.pageJsPath}"`,
+							],
+						}),
+					].join(''),
+				}),
+				element({
+					tag: 'body',
+					params: ['id="root"'],
+					id: 'root',
+				}),
+			].join(''),
+		}); /*`
 	<!DOCTYPE html>
 <html lang="en-US">
 	<head>
@@ -235,14 +356,9 @@ function createPage(dir, meta) {
 		<meta name="twitter:site" content="@natspooky_" />
 		<meta name="twitter:creator" content="@natspooky_" />
 		<meta name="twitter:card" content="summary" />
-		<link rel="stylesheet" type="text/css" href="lib/css/main.css" />
+		
 		<link rel="stylesheet" type="text/css" href="lib/css/index.css" />
-		<link
-			rel="stylesheet"
-			type="text/css"
-			media="screen and (orientation: portrait)"
-			href="lib/css/scale.css"
-		/>
+		
 		<script type="module" src="../lib/js/embedded_page_scripts.js"></script>
 		<script async type="module" src="${meta.pageJsPath}"></script>
 	</head>
@@ -250,7 +366,7 @@ function createPage(dir, meta) {
 	<body id="root"></body>
 </html>
 
-	`;
+	`;*/
 
 	fs.writeFile(dir, page, function (err) {
 		if (err) {

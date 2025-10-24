@@ -5,6 +5,9 @@
 			"destination": "/404.html"
 		}
 	],
+	"redirects": [
+		{ "source": "/", "destination": "/home.html", "permanent": true }
+	],
 	"cleanUrls": true,
 	"trailingSlash": true,
 	"outputDirectory": ".encore"
