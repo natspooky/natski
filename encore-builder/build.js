@@ -22,7 +22,7 @@ export default async function createBuildFolder() {
 			);
 		}
 
-		fs.mkdirSync(buildRoot);
+		//fs.mkdirSync(buildRoot);
 
 		/*
 		const globals = {
@@ -78,6 +78,7 @@ export default async function createBuildFolder() {
 			);
 		});
 
+		console.log('BUILD COMPLETE');
 		//const cssArr = findFiles('./lib/css');
 	} catch (err) {
 		console.error(err);
@@ -140,6 +141,8 @@ async function copyMinFile(dir, endDir) {
 
 	const [, data] = await tryToCatch(minify, dir, options);
 	createLongDir(endDir);
+
+	console.log(endDir);
 	if (true) {
 		//console.error(error);
 

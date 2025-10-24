@@ -1,0 +1,57 @@
+.gradient-sparkle {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: #0f0c29;
+	background: -webkit-linear-gradient(to left, #24243e, #302b63, #0f0c29);
+	background: linear-gradient(to left, #24243e, #302b63, #0f0c29);
+
+	overflow: hidden;
+}
+
+.gradient-sparkle .grad-wave-container {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 200px;
+	overflow: hidden;
+}
+
+.gradient-sparkle canvas {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: transparent;
+	border: 0;
+}
+
+.grad-wave-container .grad-wave {
+	position: absolute;
+	bottom: 0;
+	width: 6400px;
+	height: 198px;
+	display: block;
+	mask-repeat: repeat-x;
+	background-image: url(../../../icon/svg/wave.svg);
+	mask-position: center center;
+	animation: wave 10s linear infinite;
+}
+
+.grad-wave.wave-back {
+	margin-bottom: -50px;
+	animation: wave 25s linear infinite -3s;
+}
+
+@keyframes wave {
+	0% {
+		margin-left: 0;
+	}
+	100% {
+		margin-left: -1600px;
+	}
+}

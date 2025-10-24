@@ -1,0 +1,105 @@
+.footer-container {
+	position: relative;
+	padding: 20px 0;
+}
+
+footer {
+	position: relative;
+	width: min(calc(100% - 40px), 900px);
+	padding: 0 20px 20px 20px;
+	background-color: var(--card-background);
+	border-top: 1px solid var(--border-color);
+}
+
+footer.glass-backing {
+	margin: 0 auto;
+}
+
+footer button {
+	cursor: pointer;
+	background-color: transparent;
+	border: 0;
+	display: block;
+}
+
+footer p {
+	position: relative;
+	margin: 0;
+	color: rgba(255, 255, 255, 0.5);
+}
+
+footer button icon-system {
+	position: relative;
+	width: 15px;
+	height: 15px;
+	display: block;
+	margin-right: 7px;
+	background-color: rgba(255, 255, 255, 0.5);
+}
+
+footer button a {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-decoration: none;
+}
+
+footer section {
+	position: relative;
+	width: 100%;
+	padding: 20px 0;
+	display: flex;
+	align-items: baseline;
+	justify-content: center;
+	border-top: 1px solid rgba(255, 255, 255, 0.3);
+}
+footer section:first-of-type {
+	padding: 20px 20px;
+	border-top: 0px;
+}
+
+footer section span {
+	position: relative;
+	width: auto;
+	flex-grow: 1;
+}
+footer section span:first-of-type {
+	flex-grow: 2;
+}
+
+footer section span button {
+	margin: 7px 0 0 0;
+}
+
+footer section span {
+	display: block;
+}
+
+footer h1 {
+	position: relative;
+	margin: 0 0 8px 0;
+	font-size: 1.1em;
+	color: rgba(255, 255, 255, 0.8);
+}
+
+@media screen and (max-width: 768px) {
+	footer section:first-of-type {
+		flex-direction: column;
+	}
+	footer section span {
+		margin-bottom: 30px;
+	}
+	footer section span:last-of-type {
+		margin-bottom: 0;
+	}
+}
+
+@media (hover: hover) {
+	footer button:hover icon-system {
+		background-color: rgba(255, 255, 255, 0.8);
+	}
+	footer button:hover p {
+		color: rgba(255, 255, 255, 0.8);
+	}
+}

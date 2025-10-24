@@ -1,0 +1,9 @@
+{
+	"name": "NATSKI",
+	"short_name": "NATSKI",
+	"id": "/",
+	"display": "standalone",
+	"background_color": "#010409",
+	"theme_color": "#010409",
+	"description": "The home of NATSKI web tools and games"
+}
