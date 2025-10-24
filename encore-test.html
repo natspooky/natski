@@ -254,13 +254,13 @@
 			render(
 				'root',
 				() => {
-					//window.components.layout = RootLayout;
+					window.components.layout = RootLayout;
 
 					return [testUseState()];
 				},
 				{
 					useIcons: true,
-					awaitPageLoad: false,
+					awaitPageLoad: true,
 				},
 			);
 		</script>

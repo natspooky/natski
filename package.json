@@ -13,9 +13,10 @@
 		"terminal-link": "^4.0.0",
 		"url": "^0.11.4"
 	},
-	"main": "encore-router.js",
+	"main": "./encore-builder/encore-router.js",
 	"scripts": {
-		"start": "nodemon ."
+		"start": "nodemon .",
+		"build": "node ./encore-builder/build.js"
 	},
 	"devDependencies": {
 		"@eslint/js": "^9.32.0",

@@ -1,0 +1,1020 @@
+/* -----------------------------------------------
+/* Author : NATSKI - natski.dev
+/* MIT license : https://opensource.org/license/MIT
+/* GitHub : https://github.com/natspooky/encore
+/* How to use? : Check the GitHub README or visit https://natski.dev/apis/encore/element-creator
+/* ----------------------------------------------- */
+
+//const ecWorker = new Worker(new URL("ecWorker.js", import.meta.url));
+
+import IconSystem from '../icon-system/is.min.js';
+import encoreConsole from '../dependencies/encoreConsole.js';
+
+//encoreDOM;
+
+class ComponentManager {
+	#components;
+	#groups;
+	#layout;
+
+	constructor() {
+		this.#components = {};
+		this.#groups = {};
+	}
+
+	//groups
+
+	appendGroup(element, ID) {
+		const group = this.getGroup(ID);
+		if (!group) {
+			encoreConsole({
+				message: 'Error:',
+				error: `The group '${ID}' does not exist`,
+			});
+			return;
+		}
+
+		if (group.layout) appendChildren(element, group.componentList());
+	}
+
+	setGroup(ID) {
+		if (this.getGroup(ID)) {
+			encoreConsole({
+				message: 'Assignment Error:',
+				error: `The group '${ID}' is already assigned`,
+			});
+			return;
+		}
+
+		this.#groups[ID] = new ComponentManager();
+
+		return this;
+	}
+
+	getGroup(ID) {
+		return this.#groups?.[ID];
+	}
+
+	removeGroup(ID, settings) {
+		const group = this.getGroup(ID);
+		if (!group) {
+			encoreConsole({
+				message: 'Error:',
+				error: `The group '${ID}' does not exist`,
+			});
+			return;
+		}
+
+		group.removeAllComponents({ deleteComponent: true });
+
+		if (settings?.deleteGroup) delete this.#groups[ID];
+
+		return this;
+	}
+
+	// components
+
+	#generateComponent(jsonString) {
+		let fragment,
+			element = buildComponent(jsonString);
+
+		if (Array.isArray(element)) {
+			fragment = document.createDocumentFragment();
+
+			element.forEach((item) => {
+				fragment.appendChild(item);
+			});
+		}
+
+		return { fragment, element };
+	}
+
+	setComponent(ID, json, settings) {
+		if (this.getComponent(ID)) {
+			encoreConsole({
+				message: 'Assignment Error:',
+				error: `The component '${ID}' is already assigned`,
+			});
+			return;
+		}
+
+		const { fragment, element } = this.#generateComponent(json, settings);
+
+		this.#components[ID] = {
+			json,
+			element,
+			fragment,
+			settings,
+		};
+
+		return this;
+	}
+
+	getComponent(ID) {
+		return this.#components?.[ID];
+	}
+
+	getComponents(...IDs) {
+		return [...IDs].map((ID) => this.getComponent(ID));
+	}
+
+	componentList() {
+		return Object.values(this.#components).map((component) => {
+			return component.fragment ?? component.element;
+		});
+	}
+
+	removeComponent(ID, settings) {
+		const component = this.getComponent(ID)?.element;
+		if (!component) {
+			encoreConsole({
+				message: 'Error:',
+				error: `The component '${ID}' does not exist`,
+			});
+			return;
+		}
+
+		if (!Array.isArray(component)) {
+			if (document.body.contains(component)) component.remove();
+		} else {
+			console.log(component);
+			component.forEach((element) => {
+				if (document.body.contains(element)) element.remove();
+			});
+		}
+
+		if (settings?.deleteComponent) delete this.#components[ID];
+
+		return this;
+	}
+
+	removeComponents(...IDs) {
+		[...IDs].forEach((ID) => this.removeComponent(ID));
+
+		return this;
+	}
+
+	removeAllComponents(settings) {
+		Object.keys(this.#components).forEach((ID) =>
+			this.removeComponent(ID, settings),
+		);
+
+		return this;
+	}
+
+	changeComponentID(oldID, newID) {
+		if (oldID === newID) return;
+
+		const oldComponent = this.getComponent(oldID),
+			newComponent = this.getComponent(newID);
+
+		if (!oldComponent) {
+			encoreConsole({
+				message: 'Error:',
+				error: `The component '${oldID}' does not exist`,
+			});
+			return;
+		}
+
+		if (newComponent) {
+			encoreConsole({
+				message: 'Assignment error:',
+				error: `The component '${newID}' is already assigned`,
+			});
+			return;
+		}
+
+		this.setComponent(newID, oldComponent.json);
+		delete this.#components[oldID];
+
+		return this;
+	}
+
+	replaceComponent(ID, componentData, settings) {
+		const oldComponent = this.getComponent(ID);
+
+		let replacingComponent;
+
+		if (typeof componentData === 'string') {
+			replacingComponent = this.getComponent(componentData);
+
+			if (!replacingComponent) {
+				encoreConsole({
+					message: 'Error:',
+					error: `The component '${ID}' does not exist`,
+				});
+				return;
+			}
+		} else {
+			replacingComponent = this.#generateComponent(
+				componentData,
+				settings,
+			);
+		}
+
+		if (!oldComponent) {
+			encoreConsole({
+				message: 'Error:',
+				error: `The component '${ID}' does not exist`,
+			});
+			return;
+		}
+
+		if (Array.isArray(oldComponent.element)) {
+			if (!document.body.contains(oldComponent.element[0])) {
+				encoreConsole({
+					message: 'Error:',
+					error: `The component '${ID}' does not exist`,
+				});
+				return;
+			}
+
+			oldComponent[0].element.replaceWith(
+				replacingComponent.fragment ?? replacingComponent.element,
+			);
+			oldComponent.slice(1).forEach((element) => element.remove());
+		} else {
+			if (!document.body.contains(oldComponent.element)) {
+				encoreConsole({
+					message: 'Error:',
+					error: `The component '${ID}' does not exist`,
+				});
+				return;
+			}
+			oldComponent.element.replaceWith(
+				replacingComponent.fragment ?? replacingComponent.element,
+			);
+		}
+
+		this.#components[ID] = {
+			json: replacingComponent.json ?? componentData,
+			element: replacingComponent.element,
+			fragment: replacingComponent.fragment,
+			settings,
+		};
+
+		return this;
+	}
+
+	swapComponent(firstID, secondID) {
+		const firstComponent = this.getComponent(firstID)?.json,
+			secondComponent = this.getComponent(secondID)?.json;
+
+		if (!firstComponent) {
+			encoreConsole({
+				message: 'Error:',
+				error: `The component '${firstID}' does not exist`,
+			});
+			return;
+		}
+		if (!secondComponent) {
+			encoreConsole({
+				message: 'Error:',
+				error: `The component '${secondID}' does not exist`,
+			});
+			return;
+		}
+
+		this.replaceComponent(firstID, secondComponent);
+		this.replaceComponent(secondID, firstComponent);
+
+		return this;
+	}
+
+	appendComponent(element, ID) {
+		const component = this.getComponent(ID);
+		if (!component) {
+			encoreConsole({
+				message: 'Error:',
+				error: `The component '${ID}' does not exist`,
+			});
+			return;
+		}
+
+		appendChildren(element, component.fragment ?? component.element);
+
+		return this;
+	}
+
+	insertComponentBefore(element, ID, beforeElement) {
+		const component = this.getComponent(ID);
+		if (!component) {
+			encoreConsole({
+				message: 'Error:',
+				error: `The component '${ID}' does not exist`,
+			});
+			return;
+		}
+
+		insertChildrenBefore(
+			element,
+			component.fragment ?? component.element,
+			beforeElement,
+		);
+
+		return this;
+	}
+
+	get componentCount() {
+		return Object.keys(this.#components).length;
+	}
+
+	get componentIDs() {
+		return Object.keys(this.#components);
+	}
+
+	set layout(callback) {
+		this.#layout = callback;
+	}
+
+	get layout() {
+		return this.#layout;
+	}
+}
+/*
+class ENComponent {}
+
+function buildComponent() {
+	const ENC = {};
+
+	return;
+}*/
+
+function buildComponent(elementData) {
+	if (Array.isArray(elementData)) {
+		const elementArr = elementData
+			.filter((element) => checkForKeys(element) || element.nodeType)
+			.map((element) => {
+				return buildComponent(element);
+			});
+
+		return elementArr;
+	}
+
+	if (elementData && elementData.nodeType) return elementData;
+
+	let element;
+
+	if (!elementData.tag) {
+		encoreConsole({
+			message: 'Component error:',
+			error: 'Cannot create HTML Node without a tag',
+		});
+		return;
+	}
+
+	switch (elementData.tag) {
+		case 'text': {
+			const textData = document.createTextNode(elementData.text ?? '');
+			const trackingComment = document.createComment('');
+
+			const textFragment = document.createDocumentFragment();
+
+			appendChildren(textFragment, [textData, trackingComment]);
+
+			return textFragment;
+		}
+		default:
+			if (!elementData.namespace) {
+				element = document.createElement(elementData.tag);
+			} else {
+				element = document.createElementNS(
+					elementData.namespace,
+					elementData.tag,
+				);
+			}
+	}
+
+	if (elementData.innerHTML) {
+		element.innerHTML = elementData.innerHTML;
+	}
+
+	if (elementData.classes) {
+		if (Array.isArray(elementData.classes)) {
+			elementData.classes.forEach((className) => {
+				if (className?.includes(' ')) {
+					className.split(' ').forEach((name) => {
+						element.classList.add(name);
+					});
+				} else {
+					element.classList.add(className);
+				}
+			});
+		} else {
+			elementData.classes.split(' ').forEach((className) => {
+				element.classList.add(className);
+			});
+		}
+	}
+
+	if (elementData.attributes) {
+		Object.entries(elementData.attributes).forEach(([attribute, value]) => {
+			if (checkExists(value)) {
+				element.setAttribute(attribute, value);
+			}
+		});
+	}
+
+	if (elementData.children) {
+		appendChildren(element, buildComponent(elementData.children));
+	}
+
+	if (elementData.events) {
+		Object.entries(elementData.events).forEach(([eventType, event]) => {
+			if (!event) {
+				return;
+			}
+
+			if (!checkEvent(eventType)) {
+				encoreConsole({
+					message: 'Support warning:',
+					warn: `Event '${eventType}' is not supported in current Document`,
+				});
+				return;
+			}
+
+			const events = Array.isArray(event) ? event : [event];
+
+			events.forEach((eventData) => {
+				if (!eventData || !eventData.callback) return;
+				(eventData.target ?? element).addEventListener(
+					eventType,
+					functionType(eventData, element),
+					eventData.options,
+				);
+			});
+		});
+	}
+
+	if (elementData.onAppend && elementData.onAppend.callback) {
+		//do this
+		//make it support and array of append requests with different options
+
+		elementAppended(
+			element,
+			elementData.onAppend.callback,
+			elementData.onAppend?.options,
+		);
+	}
+
+	if (elementData.onOrientationChange) {
+		//do this
+	}
+
+	if (elementData.onInView && elementData.onInView.callback) {
+		createIntersect(
+			element,
+			elementData.onInView.callback,
+			elementData.onInView?.options,
+		); //do this
+	}
+
+	//element.dispatchEvent(create);
+
+	if (elementData.onCreate) {
+		if (typeof elementData.onCreate !== 'function') {
+			encoreConsole({
+				message: 'Event error:',
+				error: `The onCreate event value '${elementData.onCreate}' is not a function`,
+			});
+		} else {
+			elementData.onCreate(element);
+		}
+	}
+
+	return element;
+}
+
+function appendDataToComponent(element, elementData) {
+	//do this
+
+	if (!(element.nodeType && element.nodeType === Node.ELEMENT_NODE)) {
+		encoreConsole({
+			message: 'Type error:',
+			error: 'Element provided is not a HTML Node',
+		});
+		return;
+	}
+
+	if (elementData.onAppend && elementData.onAppend.callback) {
+		elementAppended(
+			element,
+			elementData.onAppend.callback,
+			elementData.onAppend?.options,
+		);
+	}
+
+	if (elementData.onCreate) {
+		if (typeof elementData.onCreate !== 'function') {
+			encoreConsole({
+				message: 'Event error:',
+				error: `The onCreate event value '${elementData.onCreate}' is not a function`,
+			});
+		} else {
+			elementData.onCreate(element);
+		}
+	}
+
+	return element;
+}
+
+function useEffect(fn, props) {}
+
+function useState(fn, initVal) {
+	const stateManager = {
+		element: null,
+		state: initVal,
+
+		setter: (value) => {
+			let failed = false;
+			switch (typeof value) {
+				case 'object':
+					failed =
+						JSON.stringify(stateManager.state) ===
+						JSON.stringify(value);
+					break;
+				default:
+					failed = stateManager.state === value;
+					break;
+			}
+
+			if (failed) return;
+
+			stateManager.state = value;
+
+			const newElement = buildComponent(
+				fn(stateManager.getter, stateManager.setter),
+			);
+
+			stateManager.element.replaceWith(newElement);
+
+			stateManager.element = newElement;
+		}, //broken because elements that arent on the DOM dont show psuedo elements
+
+		get getter() {
+			return stateManager.state;
+		},
+	};
+
+	stateManager.element = buildComponent(
+		fn(stateManager.getter, stateManager.setter),
+	);
+
+	return stateManager.element;
+}
+
+function renderDifference(pageElement, reRenderedElement) {
+	//do this
+	if (pageElement.isEqualNode(reRenderedElement)) return;
+
+	const differentNodes = [];
+
+	differentNodes.forEach(({ oldNode, newNode }) => {
+		oldNode.replaceWith(newNode);
+	}); //make this detect className changes and new elements alongside internal text content
+}
+
+function checkEvent(eventName) {
+	if (typeof eventName != 'string' || eventName.length == 0) return false;
+	const tagNames = {
+		select: 'input',
+		change: 'input',
+		submit: 'form',
+		reset: 'form',
+		error: 'img',
+		load: 'img',
+		abort: 'img',
+	};
+	let element = document.createElement(tagNames[eventName] || 'div');
+	eventName = 'on' + eventName;
+	let isSupported = eventName in element;
+	if (!isSupported) {
+		element.setAttribute(eventName, 'return;');
+		isSupported = typeof element[eventName] == 'function';
+	}
+	element = null;
+	return isSupported;
+}
+
+function render(root, fn, settings) {
+	if (window.components) {
+		encoreConsole({
+			message: 'Hydration error:',
+			error: 'Only one render call can be made per page',
+		});
+		return;
+	}
+
+	encoreConsole({
+		message: 'Hydrating page',
+	});
+
+	if (settings?.useIcons) new IconSystem();
+
+	if (settings?.customEvents) {
+		//do this
+	}
+
+	window.components = new ComponentManager();
+	const rootType = typeof root;
+	let rootElement;
+
+	if (rootType !== 'string' && rootType !== 'object') {
+		encoreConsole({
+			message: 'Hydration error:',
+			error: `The root element '${root}' is not an ID or a HTMLElement`,
+		});
+		return;
+	}
+
+	if (rootType === 'string') {
+		rootElement = document.getElementById(root);
+		if (!rootElement) {
+			encoreConsole({
+				message: 'Hydration error:',
+				error: `The root element '${root}' does not exist in the document`,
+			});
+			return;
+		}
+	}
+
+	if (rootType === 'object') {
+		rootElement = root;
+		if (
+			!(
+				rootElement.nodeType &&
+				rootElement.nodeType === Node.ELEMENT_NODE
+			)
+		) {
+			encoreConsole({
+				message: 'Hydration error:',
+				error: `The root element '${rootElement}' does not exist in the document`,
+			});
+			return;
+		}
+	}
+
+	const hydrate = async () => {
+		try {
+			await settings?.hooks?.before?.();
+
+			const time = performance.now();
+
+			const renderComponent = await fn();
+			const layout = window.components.layout;
+			const componentName = 'content';
+
+			const content = window.components
+				.setComponent(componentName, renderComponent)
+				.getComponent(componentName);
+
+			if (layout) {
+				window.components.setComponent(
+					'layout',
+					layout({
+						children: content.fragment ?? content.element,
+					}),
+				);
+			}
+
+			window.components.appendComponent(
+				rootElement,
+				layout ? 'layout' : componentName,
+			);
+
+			const finalTime = Math.round(performance.now() - time);
+			const printTime = returnIf(finalTime > 0, finalTime, '< 1');
+
+			encoreConsole({
+				message: `Hydration complete in ${printTime}ms`,
+			});
+		} catch (error) {
+			encoreConsole({
+				message: 'Hydration failed:',
+			});
+			console.error(error);
+		}
+
+		settings?.hooks?.after?.();
+	};
+
+	if (settings?.awaitPageLoad && document.readyState !== 'complete') {
+		window.addEventListener('load', hydrate);
+		encoreConsole({
+			message: "Awaiting document state 'complete'",
+		});
+		return;
+	}
+
+	if (document.readyState === 'loading') {
+		window.addEventListener('DOMContentLoaded', hydrate);
+		return;
+	}
+
+	hydrate();
+}
+
+function createIntersect(element, callback, options) {
+	const intersectFunction = (entries, observer) => {
+		const entry = entries[0];
+
+		if (entry.isIntersecting) {
+			if (options?.clearOnceInView) observer.unobserve(element);
+			callback?.visible(element, entry);
+		} else {
+			callback?.hidden(element, entry);
+		}
+	};
+
+	const intersectSettings = {
+		root: options?.root ?? document,
+		rootMargin: '0px',
+		scrollMargin: '0px',
+		threshold: options?.threshold ?? [0, 0.25, 0.5, 0.75, 1],
+	};
+
+	const observer = new IntersectionObserver(
+		intersectFunction,
+		intersectSettings,
+	);
+
+	if (options?.awaitContentLoad) {
+		if (document.readyState === 'complete') {
+			observer.observe(element);
+		} else {
+			window.addEventListener('load', () => {
+				observer.observe(element);
+			});
+		}
+	} else {
+		observer.observe(element);
+	}
+}
+
+function useDeprecatedMethodToAppend(element, callback) {
+	let listener;
+	return element.addEventListener(
+		`DOMNodeInserted`,
+		(listener = (ev) => {
+			if (
+				ev.path.length > 1 &&
+				ev.path[ev.length - 2] instanceof Document
+			) {
+				element.removeEventListener(`DOMNodeInserted`, listener);
+				callback(element);
+			}
+		}),
+		false,
+	);
+}
+
+function isAppended(element) {
+	while (element.parentNode) element = element.parentNode;
+	return element instanceof Document;
+}
+
+//do this
+//refresh page on back button
+
+function elementAppended(element, callback, options) {
+	if (isAppended(element)) {
+		callback(element);
+		return;
+	}
+
+	if (!MutationObserver)
+		return useDeprecatedMethodToAppend(element, callback);
+
+	const observer = new MutationObserver((mutations) => {
+		for (const mutation of mutations) {
+			if (mutation.addedNodes.length === 0) continue;
+			if (
+				!Array.from(mutation.addedNodes).some((node) =>
+					node.contains(element),
+				)
+			)
+				continue;
+
+			if (!options?.perminant) observer.disconnect();
+
+			//do this
+			//add font await for appendcallback
+
+			if (!options?.awaitPageLoad && !options?.awaitFontLoad) {
+				callback(element);
+				break;
+			}
+
+			if (options?.awaitFontLoad) {
+				const awaitFont = async () => {
+					await document.fonts.ready;
+					callback(element);
+				};
+
+				awaitFont();
+				break;
+			}
+
+			if (document.readyState === 'complete') {
+				callback(element);
+			} else {
+				window.addEventListener('load', () => {
+					callback(element);
+				});
+			}
+
+			break;
+		}
+	});
+
+	observer.observe(document.body, {
+		childList: true,
+		subtree: true,
+	});
+}
+
+function functionType({ param, callback, target }, element) {
+	if (!checkExists(param)) return callback;
+
+	if (Array.isArray(param)) {
+		return (event) =>
+			callback(
+				...param.map((value) =>
+					checkValue(value, target, element, event),
+				),
+			);
+	}
+	return (event) => callback(checkValue(param, target, element, event));
+}
+
+function checkValue(value, target, element, event) {
+	switch (value) {
+		case 'self':
+			return element;
+		case 'parent':
+			return element.parentNode;
+		case 'target':
+			if (target) return target;
+
+			encoreConsole({
+				message: 'Type Error:',
+				error: `the target value in '${element}' has not been set`,
+			});
+			break;
+		case 'event':
+			return event;
+		//case 'remover': //do this
+		//	return (target ?? element).removeEventListener(callback);
+		default:
+			return value;
+	}
+}
+
+function checkExists(data) {
+	return undefined !== data && data !== null;
+}
+
+function setFallback(data, fallback) {
+	return returnIf(checkExists(data), data, fallback);
+}
+
+function returnIf(bool, value, fallback) {
+	if (bool) return value;
+	return fallback;
+}
+
+function appendChildren(element, children) {
+	if (!children) return;
+
+	const childArr = Array.isArray(children) ? children : [children];
+
+	childArr.forEach((child) => {
+		element.appendChild(child);
+	});
+}
+
+function insertChildrenBefore(element, children, beforeElement) {
+	if (!children) return;
+
+	const childArr = Array.isArray(children) ? children : [children];
+
+	childArr.forEach((child) => {
+		element.insertBefore(child, beforeElement);
+	});
+}
+
+function className(classes, ...extraClasses) {
+	if (![...extraClasses][0] && [...extraClasses].length === 1) return classes;
+
+	classes = Array.isArray(classes)
+		? [...classes, ...extraClasses]
+		: [classes, ...extraClasses];
+
+	const process = (classes) => {
+		const tempArr = [];
+		classes
+			.flat(Infinity)
+			.filter(Boolean)
+			.forEach((classData) => {
+				if (classData === '') return;
+				tempArr.push(...classData.split(' '));
+			});
+
+		return tempArr;
+	};
+
+	return Array.from(new Set(process(classes)));
+}
+
+function checkForKeys(component) {
+	return (
+		Object.keys(component).length !== 0 && component.constructor === Object
+	);
+}
+
+export {
+	buildComponent,
+	appendDataToComponent,
+	checkExists,
+	setFallback,
+	returnIf,
+	appendChildren,
+	insertChildrenBefore,
+	className,
+	elementAppended,
+	ComponentManager,
+	checkEvent,
+	render,
+	useState,
+	//ElementDefiner,
+};
+
+/*
+class AnimationManager {
+	constructor() {}
+
+	easeSelector(name) {
+		switch (name) {
+			case 'linear':
+				return this.linear;
+		}
+	}
+
+	linear(timeFraction) {
+		return timeFraction;
+	}
+	quad(timeFraction) {
+		return Math.pow(timeFraction, 2);
+	}
+	circ(timeFraction) {
+		return 1 - Math.sin(Math.acos(timeFraction));
+	}
+	back(x, timeFraction) {
+		return Math.pow(timeFraction, 2) * ((x + 1) * timeFraction - x);
+	}
+	bounce(timeFraction) {
+		for (let a = 0, b = 1; (a += b), (b /= 2); ) {
+			if (timeFraction >= (7 - 4 * a) / 11) {
+				return (
+					-Math.pow((11 - 6 * a - 11 * timeFraction) / 4, 2) +
+					Math.pow(b, 2)
+				);
+			}
+		}
+	}
+	elastic(x, timeFraction) {
+		return (
+			Math.pow(2, 10 * (timeFraction - 1)) *
+			Math.cos(((20 * Math.PI * x) / 3) * timeFraction)
+		);
+	}
+
+	makeEaseOut(timing) {
+		return function (timeFraction) {
+			return 1 - timing(1 - timeFraction);
+		};
+	}
+	makeEaseInOut(timing) {
+		return function (timeFraction) {
+			if (timeFraction < 0.5) return timing(2 * timeFraction) / 2;
+			else return (2 - timing(2 * (1 - timeFraction))) / 2;
+		};
+	}
+
+	animate({ easing, draw, duration }) {
+		const start = performance.now();
+		requestAnimationFrame(function animate(time) {
+			let timeFraction = (time - start) / duration;
+			if (timeFraction > 1) timeFraction = 1;
+
+			const progress = easing(timeFraction);
+
+			draw(progress);
+
+			if (timeFraction < 1) {
+				requestAnimationFrame(animate);
+			}
+		});
+	}
+}
+*/

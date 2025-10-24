@@ -5,5 +5,7 @@
 			"destination": "/404.html"
 		}
 	],
-	"cleanUrls": true
+	"cleanUrls": true,
+	"trailingSlash": true,
+	"outputDirectory": ".encore"
 }
