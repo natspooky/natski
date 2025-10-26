@@ -1,1 +1,0 @@
-import{className}from"../../../apis/encore/element-creator/ec.js";import isMobile from"../../../apis/dependencies/mobile-utils/mu.js";function GlassBacking({hover:s,active:e,blurred:l,classes:a,...i}){return{classes:className("glass-backing",[s&&!isMobile?"glass-backing-hover":null,e?"glass-backing-active":null,l?"blurred-bg":null,a]),...i}}

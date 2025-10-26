@@ -1,1 +1,0 @@
-export default function IS({icon:s,customIcon:e,classes:t,children:n,positionable:c}){return{tag:"icon-system",classes:t,attributes:{name:s,src:e,positionable:c},children:n}}

@@ -1,1 +1,0 @@
-function pageData(){new URL(window.location.href);return{icon:icon,name:name,path:path}}export{pageName};

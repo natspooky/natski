@@ -1,1 +1,0 @@
-import Button from"./button.js";export default function LinkButton({routing:n,icon:t,customIcon:e,name:o,classes:c,children:r}){return Button({icon:t,customIcon:e,name:o,classes:c,children:r,href:n.href,action:{callback:t=>{t.preventDefault(),window.open(n.href,n.display)},param:"event"}})}

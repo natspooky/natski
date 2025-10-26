@@ -1,1 +1,0 @@
-import{fileName}from"../../../apis/dependencies/file-utils/fu.js";export default function Img({src:a,draggable:e,loading:l,classes:s}){return{tag:"img",classes:s,events:{load:{callback:a=>{a.classList.add("loaded")},param:"self"},error:{callback:a=>{a.remove()},param:"self"}},attributes:{alt:fileName(a),src:a,loading:l,draggable:e}}}

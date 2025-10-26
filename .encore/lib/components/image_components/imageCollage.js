@@ -1,1 +1,0 @@
-import Img from"./img.js";export default function ImageCollage({srcSet:a,classes:e}){return{tag:"div",classes:e,children:a.map(a=>({tag:"span",children:Img({src:a,loading:"lazy",draggable:!1})}))}}

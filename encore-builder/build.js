@@ -3,10 +3,10 @@ import fsPromise from 'node:fs/promises';
 import path from 'path';
 import { minify } from 'terser';
 
-export default async function createBuildFolder() {
+export default async function createBuildFolder(folder) {
 	console.log('BUILDING');
 
-	const buildRoot = './.encore';
+	const buildRoot = folder;
 
 	try {
 		if (fs.existsSync(buildRoot)) {

@@ -97,7 +97,7 @@ httpServer.listen(portNumber, () => {
 
 	console.clear();
 
-	Build();
+	Build('./.encore');
 	console.log(
 		`${consoleColor.magenta}
     _/_/_/_/  _/      _/    _/_/_/    _/_/    _/_/_/    _/_/_/_/   

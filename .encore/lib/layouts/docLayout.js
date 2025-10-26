@@ -1,1 +1,0 @@
-import RootLayout from"./rootLayout.js";export default function DocumentationLayout({children:o}){return RootLayout({children:o})}
