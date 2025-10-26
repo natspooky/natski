@@ -18,7 +18,7 @@
 	"main": "./encore-builder/encore-router.js",
 	"scripts": {
 		"dev": "nodemon .",
-		"build": "node ./encore_builder/runBuild.js"
+		"build": "node encore_builder/runBuild.js"
 	},
 	"devDependencies": {
 		"@eslint/js": "^9.32.0",
