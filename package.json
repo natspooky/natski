@@ -17,7 +17,8 @@
 	},
 	"main": "./encore-builder/encore-router.js",
 	"scripts": {
-		"start": "nodemon ."
+		"dev": "nodemon .",
+		"build": "./encore_builder/runBuild.js"
 	},
 	"devDependencies": {
 		"@eslint/js": "^9.32.0",
