@@ -112,6 +112,7 @@ export default async function createBuildFolder(folder) {
 }
 
 function findFiles(dir) {
+	if(!fs.existsSync(dir)) return null;
 	const dirContent = fs.readdirSync(dir).map((fileName) => {
 		const filePath = path.join(dir, fileName);
 
