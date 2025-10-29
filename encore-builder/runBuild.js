@@ -1,3 +1,6 @@
 import Build from './build.js';
 
-Build('./public');
+Build('./build');
+
+//	//"outputDirectory": ".encore"
+//	"main": "./encore-builder/encore-router.js",
