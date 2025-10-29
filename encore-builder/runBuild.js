@@ -1,3 +1,3 @@
 import Build from './build.js';
 
-Build('./build');
+Build('./public');
