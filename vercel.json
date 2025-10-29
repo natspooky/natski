@@ -9,6 +9,5 @@
 		{ "source": "/", "destination": "/home.html", "permanent": true }
 	],
 	"cleanUrls": true,
-	"trailingSlash": true,
-	"outputDirectory": "build"
+	"trailingSlash": true
 }
