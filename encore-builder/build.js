@@ -44,6 +44,7 @@ export default async function createBuildFolder(folder) {
 			const dir = dirArray
 				.slice(dirArray.indexOf('pages') + 1)
 				.join('\\');
+			console.log(dir);
 			const name = path.basename(file, path.extname(file));
 
 			const htmlDir = path.format({
@@ -52,6 +53,7 @@ export default async function createBuildFolder(folder) {
 				name: name,
 				ext: 'html',
 			});
+			console.log(htmlDir);
 
 			//	const { meta } = await import(file);
 
