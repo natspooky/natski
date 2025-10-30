@@ -22,28 +22,29 @@ export default async function createBuildFolder(folder) {
 		}
 
 		const globals = {
-			css: fs.existsSync('./app/lib/css/global.css')
-				? './app/lib/css/global.css'
+			css: fs.existsSync('app/lib/css/global.css')
+				? 'app/lib/css/global.css'
 				: null,
-			js: fs.existsSync('./app/lib/js/global.js')
-				? './app/lib/js/global.js'
+			js: fs.existsSync('app/lib/js/global.js')
+				? 'app/lib/js/global.js'
 				: null,
 		};
 
-		const pageArr = findFiles('./app/lib/pages');
+		const pageArr = findFiles('app/lib/pages');
 
 		const allDataArr = [
-			...findFiles('./app/lib'),
-			...findFiles('./app/apis'),
-			...findFiles('./app/icon'),
+			...findFiles('app/lib'),
+			...findFiles('app/apis'),
+			...findFiles('app/icon'),
 		];
 
 		pageArr.forEach((file) => {
 			const dirArray = path.dirname(file).split(/\/|\\/);
 
-			const dir = dirArray
-				.slice(dirArray.indexOf('pages') + 1)
-				.join(/\/|\\/);
+			const dir = path.join(
+				...dirArray.slice(dirArray.indexOf('pages') + 1),
+			);
+
 			console.log(dir);
 			const name = path.basename(file, path.extname(file));
 
@@ -61,7 +62,7 @@ export default async function createBuildFolder(folder) {
 				pageJsPath: path.relative(
 					htmlDir,
 					path.join(
-						path.dirname(file).split(/\/|\\/).slice(1).join('\\'),
+						...path.dirname(file).split(/\/|\\/).slice(1),
 						path.basename(file),
 					),
 				),
@@ -70,11 +71,11 @@ export default async function createBuildFolder(folder) {
 							htmlDir,
 							path.join(
 								buildRoot,
-								path
+								...path
 									.dirname(globals.css)
-									.split('/')
-									.slice(2)
-									.join('\\'),
+									.split(/\/|\\/)
+									.slice(2),
+
 								path.basename(globals.css),
 							),
 					  )
@@ -84,11 +85,11 @@ export default async function createBuildFolder(folder) {
 							htmlDir,
 							path.join(
 								buildRoot,
-								path
+								...path
 									.dirname(globals.js)
-									.split('/')
-									.slice(2)
-									.join('\\'),
+									.split(/\/|\\/)
+									.slice(2),
+
 								path.basename(globals.js),
 							),
 					  )
@@ -101,7 +102,7 @@ export default async function createBuildFolder(folder) {
 				file,
 				path.join(
 					buildRoot,
-					path.dirname(file).split(/\/|\\/).slice(1).join('\\'),
+					...path.dirname(file).split(/\/|\\/).slice(1),
 					path.basename(file),
 				),
 			);
@@ -119,11 +120,11 @@ function createLongDir(dir) {
 	const pathArr = pathname.split(/\/|\\/);
 
 	pathArr.forEach((pathName, index, arr) => {
-		const directory = arr
-			.filter((item, i) => {
+		const directory = path.join(
+			...arr.filter((item, i) => {
 				return i <= index;
-			})
-			.join('\\');
+			}),
+		);
 		if (!fs.existsSync(directory)) {
 			fs.mkdirSync(directory);
 		}
@@ -338,8 +339,8 @@ async function build(rootFolder) {
 		);
 	}
 
-	const appContents = findFiles('./app');
-	const pageDir = findDirectory('pages', './app');
+	const appContents = findFiles('app');
+	const pageDir = findDirectory('pages', 'app');
 
 	console.log(pageDir);
 
@@ -390,11 +391,11 @@ function createDirectory(path) {
 	const pathComponents = path.dirname(path).split(/\/|\\/);
 
 	pathComponents.forEach((pathName, index, arr) => {
-		const pathFragment = arr
-			.filter((item, i) => {
+		const pathFragment = path.join(
+			...arr.filter((item, i) => {
 				return i <= index;
-			})
-			.join('\\');
+			}),
+		);
 
 		if (!fs.existsSync(pathFragment)) {
 			fs.mkdirSync(pathFragment);
@@ -423,5 +424,3 @@ function copyFileToLocation(copyPath, pastePath) {
 		reject('broken :(');
 	});
 }
-
-await build('./.encore');

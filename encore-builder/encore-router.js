@@ -108,7 +108,7 @@ ${consoleColor.reset}`,
 
 	console.log('*');
 
-	await Build('./.encore');
+	await Build('.encore');
 
 	console.log(`Local Server on port: ${link}`);
 });
