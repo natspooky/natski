@@ -1,4 +1,4 @@
-import { render, useState } from '../../../apis/encore/element-creator/ec.js';
+import { render, useState } from '../../../apis/encore/element-creator.js';
 
 import DocLayout from '../../layouts/docLayout.js';
 

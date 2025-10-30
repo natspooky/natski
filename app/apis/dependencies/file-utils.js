@@ -101,7 +101,7 @@ export function checkMediaType(file, type) {
 		case 'font':
 			return /(o|t)tf|wof(f2|f)/i.test(ext);
 		default:
-			throw new Error('media type not recognised');
+			throw new Error('Unknown media type');
 	}
 }
 

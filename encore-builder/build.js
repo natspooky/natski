@@ -111,21 +111,6 @@ export default async function createBuildFolder(folder) {
 	}
 }
 
-function findFiles(dir) {
-	if(!fs.existsSync(dir)) return null;
-	const dirContent = fs.readdirSync(dir).map((fileName) => {
-		const filePath = path.join(dir, fileName);
-
-		if (path.extname(filePath) === '') {
-			return findFiles(filePath);
-		}
-
-		return filePath;
-	});
-
-	return dirContent.flat(Infinity);
-}
-
 function createLongDir(dir) {
 	const pathname = path.dirname(dir);
 
@@ -155,11 +140,11 @@ async function copyMinFile(dir, endDir) {
 		return;
 	}
 
-	const contents = await fsPromise.readFile(dir, {
-		encoding: 'utf8',
-	});
-	console.log(dir);
-	const min = await minify(contents);
+	const min = await minify(
+		await fsPromise.readFile(dir, {
+			encoding: 'utf8',
+		}),
+	);
 
 	await fsPromise.writeFile(endDir, min['code']);
 }
@@ -337,3 +322,104 @@ function createPage(dir, metaData) {
 		}
 	});
 }
+
+async function build(rootFolder) {
+	if (fs.existsSync(rootFolder)) {
+		await fsPromise.rm(
+			rootFolder,
+			{ recursive: true, force: true },
+			(err) => {
+				if (err) {
+					throw err;
+				}
+			},
+		);
+	}
+
+	const appContents = findFiles('./app');
+	const pageDir = findDirectory('pages', './app');
+
+	console.log(pageDir);
+
+	const promise1 = Promise.resolve(3);
+	const promise2 = 42;
+	const promise3 = new Promise((resolve, reject) => {
+		setTimeout(resolve, 100, 'foo');
+	});
+
+	return Promise.all([promise1, promise2, promise3]);
+}
+
+function findFiles(dir) {
+	if (!fs.existsSync(dir)) return null;
+	const dirContent = fs.readdirSync(dir).map((fileName) => {
+		const filePath = path.join(dir, fileName);
+
+		if (path.extname(filePath) === '') {
+			return findFiles(filePath);
+		}
+
+		return filePath;
+	});
+
+	return dirContent.flat(Infinity);
+}
+
+function findDirectory(name, root) {
+	const directory = fs.readdirSync(root);
+	for (const fileName of directory) {
+		console.log(fileName);
+		if (fileName === name) return path.join(root, fileName);
+
+		if (path.extname(fileName) === '') {
+			const filePath = path.join(root, fileName);
+
+			return findDirectory(name, filePath);
+		}
+	}
+	return null;
+
+	//	console.log(...dirContent.flat(Infinity).filter((item) => item != null));
+}
+
+function createDirectory(path) {
+	if (!fs.existsSync(path)) return;
+
+	const pathComponents = path.dirname(path).split('\\');
+
+	pathComponents.forEach((pathName, index, arr) => {
+		const pathFragment = arr
+			.filter((item, i) => {
+				return i <= index;
+			})
+			.join('\\');
+
+		if (!fs.existsSync(pathFragment)) {
+			fs.mkdirSync(pathFragment);
+		}
+	});
+}
+
+async function minifyFile(path) {
+	const contents = await fsPromise.readFile(path, {
+		encoding: 'utf8',
+	});
+	return await minify(contents);
+}
+
+function copyFileToLocation(copyPath, pastePath) {
+	return new Promise(async (resolve, reject) => {
+		let fileData;
+
+		if (willMinify) {
+			fileData = await minifyFile(copyPath);
+		} else {
+			fileData = copyPath;
+		}
+
+		if (fileData) resolve(fileData);
+		reject('broken :(');
+	});
+}
+
+await build('./.encore');

@@ -1,4 +1,4 @@
-import { render, useState } from '../../apis/encore/element-creator/ec.js';
+import { render, useState } from '../../apis/encore/element-creator.js';
 import FrameManager from '../js/IFrameManager.js';
 import Footer from '../components/footer.js';
 import { GlassBacking } from '../components/ui/glass.js';

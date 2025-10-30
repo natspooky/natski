@@ -1,5 +1,5 @@
 import IS from '../image_components/IS.js';
-import { className } from '../../../apis/encore/element-creator/ec.js';
+import { className } from '../../../apis/encore/element-creator.js';
 
 function Link({ children, draggable, href }) {
 	return {

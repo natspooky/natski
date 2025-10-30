@@ -1,4 +1,4 @@
-import { MIME } from '../app/apis/dependencies/file-utils/fu.js';
+import { MIME } from '../app/apis/dependencies/file-utils.js';
 import Build from './build.js';
 import { createServer } from 'http';
 import { StatusCodes } from 'http-status-codes';
@@ -92,12 +92,10 @@ const handleError = () => {
 	console.log('errored');
 };
 
-httpServer.listen(portNumber, () => {
+httpServer.listen(portNumber, async () => {
 	let link = terminalLink(portNumber, `http://localhost:${portNumber}`);
 
 	console.clear();
-
-	Build('./.encore');
 	console.log(
 		`${consoleColor.magenta}
     _/_/_/_/  _/      _/    _/_/_/    _/_/    _/_/_/    _/_/_/_/   
@@ -107,6 +105,10 @@ httpServer.listen(portNumber, () => {
 _/_/_/_/  _/      _/    _/_/_/    _/_/    _/    _/  _/_/_/_/       
 ${consoleColor.reset}`,
 	);
+
+	console.log('*');
+
+	await Build('./.encore');
 
 	console.log(`Local Server on port: ${link}`);
 });

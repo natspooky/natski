@@ -1,4 +1,4 @@
-import { default as SimpleCanvas } from '../../../apis/simple-canvas/sc.js';
+import { default as SimpleCanvas } from '../../../apis/simple/simple-canvas.js';
 
 class kuru {
 	#size = 0;

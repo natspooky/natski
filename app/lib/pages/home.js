@@ -1,4 +1,4 @@
-import { render, useState } from '../../apis/encore/element-creator/ec.js';
+import { render, useState } from '../../apis/encore/element-creator.js';
 
 import { GlassBacking, Glass } from '../components/ui/glass.js';
 
@@ -32,7 +32,7 @@ function toolsSelectorPanel() {
 			buttons: [
 				{
 					name: 'Encore',
-					icon: 'ENCORE',
+					icon: 'uhhhh',
 					action: {
 						callback: () => setPageState(encore()),
 					},
@@ -66,14 +66,31 @@ function toolsSelectorPanel() {
 	];
 }
 
+function testUseState() {
+	let setter;
+	return {
+		tag: 'div',
+		children: [
+			useState((get, set) => {
+				setter = set;
+				return get;
+			}, Glass({ tag: 'div' })),
+			Glass({ tag: 'div' }),
+		],
+		onAppend: {
+			callback: () => setter(GlassBacking({ tag: 'div' })),
+		},
+	};
+}
+
 render(
 	'root',
 	() => {
-		window.components.layout = RootLayout;
+		//window.components.layout = RootLayout;
 
-		return toolsSelectorPanel();
+		return [toolsSelectorPanel()];
 	},
 	{
-		useIcons: true,
+		useIcons: false,
 	},
 );

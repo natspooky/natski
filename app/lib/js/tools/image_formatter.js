@@ -1,7 +1,7 @@
 import {
 	buildComponent,
 	appendChildren,
-} from '../../../apis/encore/element-creator/ec.js';
+} from '../../../apis/encore/element-creator.js';
 import ImageMenu from '../../components/tools/image-formatter/imageMenu.js';
 
 function load() {

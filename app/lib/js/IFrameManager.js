@@ -1,4 +1,4 @@
-import { buildComponent } from '../../apis/encore/element-creator/ec.js';
+import { buildComponent } from '../../apis/encore/element-creator.js';
 import Navigator from './navigator.js';
 
 export default class FrameManager {

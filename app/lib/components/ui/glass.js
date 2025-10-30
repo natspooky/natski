@@ -1,5 +1,5 @@
-import { className } from '../../../apis/encore/element-creator/ec.js';
-import isMobile from '../../../apis/dependencies/mobile-utils/mu.js';
+import { className } from '../../../apis/encore/element-creator.js';
+import isMobile from '../../../apis/dependencies/mobile-utils.js';
 
 function Glass({ hover, active, blurred, classes, ...props }) {
 	const hoverClass = hover && !isMobile ? 'glass-hover' : null;

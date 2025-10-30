@@ -7,10 +7,10 @@
 
 //const ecWorker = new Worker(new URL("ecWorker.js", import.meta.url));
 
-import IconSystem from '../icon-system/is.js';
-import encoreConsole from '../dependencies/encoreConsole.js';
+import IconSystem from './icon-system.js';
+import Console from '../dependencies/console.js';
 
-//encoreDOM;
+const elementCreatorConsole = new Console('Element Creator', '#5967ffff');
 
 class ComponentManager {
 	#components;
@@ -27,7 +27,7 @@ class ComponentManager {
 	appendGroup(element, ID) {
 		const group = this.getGroup(ID);
 		if (!group) {
-			encoreConsole({
+			elementCreatorConsole.message({
 				message: 'Error:',
 				error: `The group '${ID}' does not exist`,
 			});
@@ -39,7 +39,7 @@ class ComponentManager {
 
 	setGroup(ID) {
 		if (this.getGroup(ID)) {
-			encoreConsole({
+			elementCreatorConsole.message({
 				message: 'Assignment Error:',
 				error: `The group '${ID}' is already assigned`,
 			});
@@ -58,7 +58,7 @@ class ComponentManager {
 	removeGroup(ID, settings) {
 		const group = this.getGroup(ID);
 		if (!group) {
-			encoreConsole({
+			elementCreatorConsole.message({
 				message: 'Error:',
 				error: `The group '${ID}' does not exist`,
 			});
@@ -91,7 +91,7 @@ class ComponentManager {
 
 	setComponent(ID, json, settings) {
 		if (this.getComponent(ID)) {
-			encoreConsole({
+			elementCreatorConsole.message({
 				message: 'Assignment Error:',
 				error: `The component '${ID}' is already assigned`,
 			});
@@ -127,7 +127,7 @@ class ComponentManager {
 	removeComponent(ID, settings) {
 		const component = this.getComponent(ID)?.element;
 		if (!component) {
-			encoreConsole({
+			elementCreatorConsole.message({
 				message: 'Error:',
 				error: `The component '${ID}' does not exist`,
 			});
@@ -169,7 +169,7 @@ class ComponentManager {
 			newComponent = this.getComponent(newID);
 
 		if (!oldComponent) {
-			encoreConsole({
+			elementCreatorConsole.message({
 				message: 'Error:',
 				error: `The component '${oldID}' does not exist`,
 			});
@@ -177,7 +177,7 @@ class ComponentManager {
 		}
 
 		if (newComponent) {
-			encoreConsole({
+			elementCreatorConsole.message({
 				message: 'Assignment error:',
 				error: `The component '${newID}' is already assigned`,
 			});
@@ -199,7 +199,7 @@ class ComponentManager {
 			replacingComponent = this.getComponent(componentData);
 
 			if (!replacingComponent) {
-				encoreConsole({
+				elementCreatorConsole.message({
 					message: 'Error:',
 					error: `The component '${ID}' does not exist`,
 				});
@@ -213,7 +213,7 @@ class ComponentManager {
 		}
 
 		if (!oldComponent) {
-			encoreConsole({
+			elementCreatorConsole.message({
 				message: 'Error:',
 				error: `The component '${ID}' does not exist`,
 			});
@@ -222,7 +222,7 @@ class ComponentManager {
 
 		if (Array.isArray(oldComponent.element)) {
 			if (!document.body.contains(oldComponent.element[0])) {
-				encoreConsole({
+				elementCreatorConsole.message({
 					message: 'Error:',
 					error: `The component '${ID}' does not exist`,
 				});
@@ -235,7 +235,7 @@ class ComponentManager {
 			oldComponent.slice(1).forEach((element) => element.remove());
 		} else {
 			if (!document.body.contains(oldComponent.element)) {
-				encoreConsole({
+				elementCreatorConsole.message({
 					message: 'Error:',
 					error: `The component '${ID}' does not exist`,
 				});
@@ -261,14 +261,14 @@ class ComponentManager {
 			secondComponent = this.getComponent(secondID)?.json;
 
 		if (!firstComponent) {
-			encoreConsole({
+			elementCreatorConsole.message({
 				message: 'Error:',
 				error: `The component '${firstID}' does not exist`,
 			});
 			return;
 		}
 		if (!secondComponent) {
-			encoreConsole({
+			elementCreatorConsole.message({
 				message: 'Error:',
 				error: `The component '${secondID}' does not exist`,
 			});
@@ -284,7 +284,7 @@ class ComponentManager {
 	appendComponent(element, ID) {
 		const component = this.getComponent(ID);
 		if (!component) {
-			encoreConsole({
+			elementCreatorConsole.message({
 				message: 'Error:',
 				error: `The component '${ID}' does not exist`,
 			});
@@ -299,7 +299,7 @@ class ComponentManager {
 	insertComponentBefore(element, ID, beforeElement) {
 		const component = this.getComponent(ID);
 		if (!component) {
-			encoreConsole({
+			elementCreatorConsole.message({
 				message: 'Error:',
 				error: `The component '${ID}' does not exist`,
 			});
@@ -356,7 +356,7 @@ function buildComponent(elementData) {
 	let element;
 
 	if (!elementData.tag) {
-		encoreConsole({
+		elementCreatorConsole.message({
 			message: 'Component error:',
 			error: 'Cannot create HTML Node without a tag',
 		});
@@ -426,7 +426,7 @@ function buildComponent(elementData) {
 			}
 
 			if (!checkEvent(eventType)) {
-				encoreConsole({
+				elementCreatorConsole.message({
 					message: 'Support warning:',
 					warn: `Event '${eventType}' is not supported in current Document`,
 				});
@@ -473,7 +473,7 @@ function buildComponent(elementData) {
 
 	if (elementData.onCreate) {
 		if (typeof elementData.onCreate !== 'function') {
-			encoreConsole({
+			elementCreatorConsole.message({
 				message: 'Event error:',
 				error: `The onCreate event value '${elementData.onCreate}' is not a function`,
 			});
@@ -485,40 +485,7 @@ function buildComponent(elementData) {
 	return element;
 }
 
-function appendDataToComponent(element, elementData) {
-	//do this
-
-	if (!(element.nodeType && element.nodeType === Node.ELEMENT_NODE)) {
-		encoreConsole({
-			message: 'Type error:',
-			error: 'Element provided is not a HTML Node',
-		});
-		return;
-	}
-
-	if (elementData.onAppend && elementData.onAppend.callback) {
-		elementAppended(
-			element,
-			elementData.onAppend.callback,
-			elementData.onAppend?.options,
-		);
-	}
-
-	if (elementData.onCreate) {
-		if (typeof elementData.onCreate !== 'function') {
-			encoreConsole({
-				message: 'Event error:',
-				error: `The onCreate event value '${elementData.onCreate}' is not a function`,
-			});
-		} else {
-			elementData.onCreate(element);
-		}
-	}
-
-	return element;
-}
-
-function useEffect(fn, props) {}
+//function useEffect(fn, props) {}
 
 function useState(fn, initVal) {
 	const stateManager = {
@@ -526,19 +493,19 @@ function useState(fn, initVal) {
 		state: initVal,
 
 		setter: (value) => {
-			let failed = false;
+			let skipFlag = false;
 			switch (typeof value) {
 				case 'object':
-					failed =
+					skipFlag =
 						JSON.stringify(stateManager.state) ===
 						JSON.stringify(value);
 					break;
 				default:
-					failed = stateManager.state === value;
+					skipFlag = stateManager.state === value;
 					break;
 			}
 
-			if (failed) return;
+			if (skipFlag) return;
 
 			stateManager.state = value;
 
@@ -598,14 +565,14 @@ function checkEvent(eventName) {
 
 function render(root, fn, settings) {
 	if (window.components) {
-		encoreConsole({
+		elementCreatorConsole.message({
 			message: 'Hydration error:',
 			error: 'Only one render call can be made per page',
 		});
 		return;
 	}
 
-	encoreConsole({
+	elementCreatorConsole.message({
 		message: 'Hydrating page',
 	});
 
@@ -620,7 +587,7 @@ function render(root, fn, settings) {
 	let rootElement;
 
 	if (rootType !== 'string' && rootType !== 'object') {
-		encoreConsole({
+		elementCreatorConsole.message({
 			message: 'Hydration error:',
 			error: `The root element '${root}' is not an ID or a HTMLElement`,
 		});
@@ -630,7 +597,7 @@ function render(root, fn, settings) {
 	if (rootType === 'string') {
 		rootElement = document.getElementById(root);
 		if (!rootElement) {
-			encoreConsole({
+			elementCreatorConsole.message({
 				message: 'Hydration error:',
 				error: `The root element '${root}' does not exist in the document`,
 			});
@@ -646,7 +613,7 @@ function render(root, fn, settings) {
 				rootElement.nodeType === Node.ELEMENT_NODE
 			)
 		) {
-			encoreConsole({
+			elementCreatorConsole.message({
 				message: 'Hydration error:',
 				error: `The root element '${rootElement}' does not exist in the document`,
 			});
@@ -685,11 +652,11 @@ function render(root, fn, settings) {
 			const finalTime = Math.round(performance.now() - time);
 			const printTime = returnIf(finalTime > 0, finalTime, '< 1');
 
-			encoreConsole({
+			elementCreatorConsole.message({
 				message: `Hydration complete in ${printTime}ms`,
 			});
 		} catch (error) {
-			encoreConsole({
+			elementCreatorConsole.message({
 				message: 'Hydration failed:',
 			});
 			console.error(error);
@@ -700,7 +667,7 @@ function render(root, fn, settings) {
 
 	if (settings?.awaitPageLoad && document.readyState !== 'complete') {
 		window.addEventListener('load', hydrate);
-		encoreConsole({
+		elementCreatorConsole.message({
 			message: "Awaiting document state 'complete'",
 		});
 		return;
@@ -856,7 +823,7 @@ function checkValue(value, target, element, event) {
 		case 'target':
 			if (target) return target;
 
-			encoreConsole({
+			elementCreatorConsole.message({
 				message: 'Type Error:',
 				error: `the target value in '${element}' has not been set`,
 			});
@@ -934,7 +901,6 @@ function checkForKeys(component) {
 
 export {
 	buildComponent,
-	appendDataToComponent,
 	checkExists,
 	setFallback,
 	returnIf,

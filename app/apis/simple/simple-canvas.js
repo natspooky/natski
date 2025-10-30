@@ -5,7 +5,10 @@
 /* How to use? : Check the GitHub README or visit https://natski.dev/api/simple-canvas
 /* ----------------------------------------------- */
 
+import Console from '../dependencies/console.js';
+
 const append = new Event('append');
+const simpleCanvasConsole = new Console('Simple Canvas', '#48953r');
 
 export default class SimpleCanvas {
 	#supportedEvents = [
@@ -133,7 +136,7 @@ export default class SimpleCanvas {
 			case 'string':
 				this.#canvasState.canvas = document.getElementById(canvas);
 				if (!this.#canvasState.canvas)
-					SimpleCanvas.console({
+					simpleCanvasConsole.message({
 						message: 'Assignment error:',
 						error: `The ID '${canvas}' does not exist in the DOM`,
 					});
@@ -145,7 +148,7 @@ export default class SimpleCanvas {
 						canvas.nodeType === Node.ELEMENT_NODE
 					)
 				) {
-					SimpleCanvas.console({
+					simpleCanvasConsole.message({
 						message: 'Assignment error:',
 						error: "HTML Node is not a 'CANVAS'",
 					});
@@ -156,7 +159,7 @@ export default class SimpleCanvas {
 
 				break;
 			default:
-				SimpleCanvas.console({
+				simpleCanvasConsole.message({
 					message: 'Type error:',
 					error: 'Passed canvas is not of type HTML Node or String ID',
 				});
@@ -190,7 +193,7 @@ export default class SimpleCanvas {
 	static create(
 		identifiers,
 		settings,
-		name = 'Unnamed Canvas',
+		name,
 		//fallbackText, add this
 	) {
 		const element = document.createElement('canvas');
@@ -204,7 +207,7 @@ export default class SimpleCanvas {
 					element.classList.add(identifier.slice(1));
 					break;
 				default:
-					SimpleCanvas.console({
+					simpleCanvasConsole.message({
 						message: 'Assignment error:',
 						error: 'Class and ID keys dont match required syntax: (#Id .class)',
 					});
@@ -252,7 +255,7 @@ export default class SimpleCanvas {
 
 	async render() {
 		if (!this.#drawingState.drawFn) {
-			SimpleCanvas.console({
+			simpleCanvasConsole.message({
 				message: 'Render error:',
 				error: 'No draw function provided',
 			});
@@ -260,7 +263,7 @@ export default class SimpleCanvas {
 		}
 
 		if (!document.body.contains(this.#canvasState.canvas)) {
-			SimpleCanvas.console({
+			simpleCanvasConsole.message({
 				message: 'Render error:',
 				error: 'Canvas cannot render content while outside of the Document body',
 			});
@@ -269,7 +272,7 @@ export default class SimpleCanvas {
 
 		await this.#drawingState.setupFn?.();
 
-		SimpleCanvas.console({
+		simpleCanvasConsole.message({
 			message: `Rendering '${this.#canvasState.id}' at ${
 				this.settings.fps
 			}fps`,
@@ -349,7 +352,7 @@ export default class SimpleCanvas {
 
 	on(eventName, fn) {
 		if (!this.#supportedEvents.includes(eventName)) {
-			SimpleCanvas.console({
+			simpleCanvasConsole.message({
 				message: 'Event warning:',
 				warn: `'${eventName}' is not supported in Simple Canvas`,
 			});
@@ -949,13 +952,6 @@ export default class SimpleCanvas {
 	}
 
 	#mouse(ctx) {
-		const textWidth = 15;
-		const boxWidth = 10;
-		const graphBoxWidth = 100;
-		const margin = 20;
-
-		const textSize = 30;
-
 		//	ctx.fillText(text, graphBoxWidth + margin * 2, margin + textSize);
 	}
 
@@ -997,41 +993,5 @@ export default class SimpleCanvas {
 		return {
 			pressed: this.#mouseState.pressed,
 		};
-	}
-}
-
-class CanvasElement {
-	#width;
-	#height;
-	#type;
-	#children;
-
-	constructor({
-		width,
-		height,
-		useDPI,
-		type,
-		clip,
-		top,
-		left,
-		context,
-		children,
-	}) {}
-
-	move({ x, y }) {}
-
-	absoluteMove() {}
-
-	draw() {
-		switch (type) {
-			case 'rect':
-				break;
-			case 'round':
-				break;
-			case 'arc':
-				break;
-		}
-
-		this.#children.forEach((child) => child.draw());
 	}
 }

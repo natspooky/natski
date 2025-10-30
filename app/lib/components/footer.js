@@ -1,5 +1,5 @@
 import LinkButton from './button_components/linkButton.js';
-import isMobile from '../../apis/dependencies/mobile-utils/mu.js';
+import isMobile from '../../apis/dependencies/mobile-utils.js';
 import { GlassBacking } from './ui/glass.js';
 import { GradientSparkle } from './ui/backgrounds.js';
 

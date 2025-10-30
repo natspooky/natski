@@ -5,9 +5,11 @@
 /* How to use? : Check the GitHub README or visit https://natski.dev/apis/encore/icon-system
 /* ----------------------------------------------- */
 
-import { IS_DATA } from './dependencies/IS_DATA.js';
-import { fileExtention } from '../../dependencies/file-utils/fu.js';
-import encoreConsole from '../dependencies/encoreConsole.js';
+import { IS_DATA } from './dependencies/icon-system/IS_DATA.js';
+import { fileExtention } from '../dependencies/file-utils.js';
+import Console from '../dependencies/console.js';
+
+const iconSystemConsole = new Console('Icon System', '#1fa5baff');
 
 class IS extends HTMLElement {
 	static observedAttributes = ['name', 'src', 'positionable'];
@@ -20,13 +22,13 @@ class IS extends HTMLElement {
 
 		this.#self = self;
 		this.#iconPath =
-			'https://natski.vercel.app/apis/encore/icon-system/dependencies/svg/?.svg';
+			'https://natski.vercel.app/apis/encore/dependencies/icon-system/svg/?.svg';
 	}
 
 	#createMask(icon, custom, editable) {
 		if (!IS_DATA.includes(icon) && !custom) {
-			encoreConsole({
-				error: `The icon System icon '${icon}' doesn't exist`,
+			iconSystemConsole.message({
+				error: `The Icon-System icon '${icon}' doesn't exist. Did you mean to use 'src' instead of 'name'?`,
 				message: `Icon load error:`,
 			});
 
@@ -53,7 +55,7 @@ class IS extends HTMLElement {
 		const editable = this.getAttribute('src');
 
 		if (!name && !source) {
-			encoreConsole({
+			iconSystemConsole.message({
 				warn: `No 'src' or 'name' provided`,
 				message: `Icon load error:`,
 			});
@@ -87,7 +89,7 @@ class IS extends HTMLElement {
 			const buffer = new Image();
 
 			buffer.onerror = () => {
-				encoreConsole({
+				iconSystemConsole.message({
 					message: 'Icon load error:',
 					error: `The custom icon '${source}' doesn't exist`,
 				});
@@ -125,7 +127,7 @@ export default class IconSystem {
 			return;
 		}
 
-		encoreConsole({
+		iconSystemConsole.message({
 			message: 'Construction error:',
 			error: 'An instance of Icon System is already active',
 		});

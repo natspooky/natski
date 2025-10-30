@@ -1,6 +1,6 @@
-import { className } from '../../../apis/encore/element-creator/ec.js';
-import SimpleCanvas from '../../../apis/simple-canvas/sc.js';
-import isMobile from '../../../apis/dependencies/mobile-utils/mu.js';
+import { className } from '../../../apis/encore/element-creator.js';
+import SimpleCanvas from '../../../apis/simple/simple-canvas.js';
+import isMobile from '../../../apis/dependencies/mobile-utils.js';
 import IS from '../image_components/IS.js';
 
 function GradientSparkle({ particles, waves }) {
