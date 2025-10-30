@@ -86,9 +86,9 @@ function testUseState() {
 render(
 	'root',
 	() => {
-		//window.components.layout = RootLayout;
+		window.components.layout = RootLayout;
 
-		return [toolsSelectorPanel()];
+		return [testUseState()];
 	},
 	{
 		useIcons: false,

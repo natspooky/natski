@@ -45,7 +45,6 @@ export default async function createBuildFolder(folder) {
 				...dirArray.slice(dirArray.indexOf('pages') + 1),
 			);
 
-			console.log(dir);
 			const name = path.basename(file, path.extname(file));
 
 			const htmlDir = path.format({
@@ -54,7 +53,6 @@ export default async function createBuildFolder(folder) {
 				name: name,
 				ext: 'html',
 			});
-			console.log(htmlDir);
 
 			//	const { meta } = await import(file);
 
@@ -74,8 +72,7 @@ export default async function createBuildFolder(folder) {
 								...path
 									.dirname(globals.css)
 									.split(/\/|\\/)
-									.slice(2),
-
+									.slice(1),
 								path.basename(globals.css),
 							),
 					  )
@@ -88,7 +85,7 @@ export default async function createBuildFolder(folder) {
 								...path
 									.dirname(globals.js)
 									.split(/\/|\\/)
-									.slice(2),
+									.slice(1),
 
 								path.basename(globals.js),
 							),
