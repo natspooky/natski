@@ -39,11 +39,11 @@ export default async function createBuildFolder(folder) {
 		];
 
 		pageArr.forEach((file) => {
-			const dirArray = path.dirname(file).split('\\');
+			const dirArray = path.dirname(file).split(/\/|\\/);
 
 			const dir = dirArray
 				.slice(dirArray.indexOf('pages') + 1)
-				.join('\\');
+				.join(/\/|\\/);
 			console.log(dir);
 			const name = path.basename(file, path.extname(file));
 
@@ -61,7 +61,7 @@ export default async function createBuildFolder(folder) {
 				pageJsPath: path.relative(
 					htmlDir,
 					path.join(
-						path.dirname(file).split('\\').slice(1).join('\\'),
+						path.dirname(file).split(/\/|\\/).slice(1).join('\\'),
 						path.basename(file),
 					),
 				),
@@ -101,7 +101,7 @@ export default async function createBuildFolder(folder) {
 				file,
 				path.join(
 					buildRoot,
-					path.dirname(file).split('\\').slice(1).join('\\'),
+					path.dirname(file).split(/\/|\\/).slice(1).join('\\'),
 					path.basename(file),
 				),
 			);
@@ -116,7 +116,7 @@ export default async function createBuildFolder(folder) {
 function createLongDir(dir) {
 	const pathname = path.dirname(dir);
 
-	const pathArr = pathname.split('\\');
+	const pathArr = pathname.split(/\/|\\/);
 
 	pathArr.forEach((pathName, index, arr) => {
 		const directory = arr
@@ -387,7 +387,7 @@ function findDirectory(name, root) {
 function createDirectory(path) {
 	if (!fs.existsSync(path)) return;
 
-	const pathComponents = path.dirname(path).split('\\');
+	const pathComponents = path.dirname(path).split(/\/|\\/);
 
 	pathComponents.forEach((pathName, index, arr) => {
 		const pathFragment = arr
