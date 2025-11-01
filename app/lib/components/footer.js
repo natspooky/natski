@@ -123,10 +123,11 @@ export default function Footer() {
 								children: [
 									{
 										tag: 'h1',
-										innerHTML: 'Socials',
+										innerHTML: 'References',
 									},
-
-									...socials.map((data) => LinkButton(data)),
+									...references.map((data) =>
+										LinkButton(data),
+									),
 								],
 							},
 							{
@@ -134,11 +135,10 @@ export default function Footer() {
 								children: [
 									{
 										tag: 'h1',
-										innerHTML: 'References',
+										innerHTML: 'Socials',
 									},
-									...references.map((data) =>
-										LinkButton(data),
-									),
+
+									...socials.map((data) => LinkButton(data)),
 								],
 							},
 						],

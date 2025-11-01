@@ -91,6 +91,6 @@ render(
 		return [testUseState()];
 	},
 	{
-		useIcons: false,
+		useIcons: true,
 	},
 );
