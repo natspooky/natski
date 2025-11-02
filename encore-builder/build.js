@@ -38,8 +38,12 @@ export default async function createBuildFolder(folder) {
 			...findFiles('app/icon'),
 		];
 
-		pageArr.forEach((file) => {
+		pageArr.forEach(async (file) => {
 			const dirArray = path.dirname(file).split(/\/|\\/);
+
+			//	let { metadata } = await import('../' + file);
+
+			//	console.log('../' + file);
 
 			const dir = path.join(
 				...dirArray.slice(dirArray.indexOf('pages') + 1),

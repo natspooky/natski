@@ -8,7 +8,7 @@
 import Console from '../dependencies/console.js';
 
 const append = new Event('append');
-const simpleCanvasConsole = new Console('Simple Canvas', '#48953r');
+const simpleCanvasConsole = new Console('Simple Canvas', '#ec3e92ff');
 
 export default class SimpleCanvas {
 	#supportedEvents = [
@@ -216,41 +216,6 @@ export default class SimpleCanvas {
 		});
 
 		return new SimpleCanvas(element, settings, name);
-	}
-
-	static console(message) {
-		if (!Array.isArray(message)) {
-			message = [message];
-		}
-
-		const checkType = (single) => {
-			if (single.error)
-				return [
-					'background-color: #ff000049; padding: 3px 5px; border-radius: 7px;',
-					'font-weight: normal;',
-				];
-			if (single.warn)
-				return [
-					'background-color: #ffff0049; padding: 3px 5px; border-radius: 7px;',
-					'font-weight: normal;',
-				];
-			return [];
-		};
-
-		message.forEach((single) => {
-			if (!single) return;
-
-			console.log(
-				`%cSimple-Canvas%c ${single.message}${
-					single.error || single.warn
-						? '\n%c' + (single.error || single.warn) + '%c'
-						: ''
-				}`,
-				'font-weight: bold; color: #29a36aff; background-color: black; padding: 0 5px; border-radius: 7px; border: 1px solid #29a36aff',
-				'font-weight: normal;',
-				...checkType(single),
-			);
-		});
 	}
 
 	async render() {
