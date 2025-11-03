@@ -113,6 +113,7 @@ export default async function createBuildFolder(folder) {
 	} catch (err) {
 		console.error(err);
 	}
+	console.log('BUILD COMPLETE');
 }
 
 function createLongDir(dir) {

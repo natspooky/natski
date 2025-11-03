@@ -106,9 +106,9 @@ _/_/_/_/  _/      _/    _/_/_/    _/_/    _/    _/  _/_/_/_/
 ${consoleColor.reset}`,
 	);
 
-	console.log('*');
+	//console.log('*');
 
 	await Build('.encore');
 
-	console.log(`Local Server on port: ${link}`);
+	//console.log(`Local Server on port: ${link}`);
 });

@@ -487,7 +487,7 @@ function buildComponent(elementData) {
 	return element;
 }
 
-//function useEffect(fn, props) {}
+function useEffect(fn, props) {}
 
 function loadElement(element) {
 	return new Promise((resolve) => {
@@ -499,6 +499,24 @@ function loadElement(element) {
 				elementCreatorConsole.message({
 					message: 'Element load error:',
 					error: `The ${element.tagName} failed to load`,
+				});
+				resolve();
+			},
+			true,
+		);
+	});
+}
+
+function loadVideo(element) {
+	return new Promise((resolve) => {
+		if (element.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) resolve();
+		element.addEventListener('loadeddata', resolve, true);
+		element.addEventListener(
+			'error',
+			() => {
+				elementCreatorConsole.message({
+					message: 'Element load error:',
+					error: `The ${element.tagName} with data ${element.src} failed to load`,
 				});
 				resolve();
 			},
@@ -531,6 +549,9 @@ function awaitContentLoad(element) {
 			case 'STYLE':
 			case 'BODY':
 				loadableElements.push(loadElement(element));
+				return false;
+			case 'VIDEO':
+				loadableElements.push(loadVideo(element));
 				return false;
 			default:
 				return false;
@@ -583,7 +604,8 @@ function useId() {
 			.map(() => {
 				return ':|' + Math.floor(Math.random() * 99).toString(16);
 			})
-			.join('&');
+			.join('&') +
+		'i';
 
 	if (!window.elementCreatorIdSessionStorage.includes(id)) {
 		window.elementCreatorIdSessionStorage.push(id);
@@ -592,6 +614,54 @@ function useId() {
 	}
 
 	return id;
+}
+
+function useCallback(fn, dependencies) {
+	return () => {
+		fn(...dependencies);
+	};
+}
+
+function useTransition() {
+	const transitionManager = {
+		stateSystem: useState(),
+
+		setter: (value) => {
+			let skipFlag = false;
+			switch (typeof value) {
+				case 'object':
+					skipFlag =
+						JSON.stringify(stateManager.state) ===
+						JSON.stringify(value);
+					break;
+				default:
+					skipFlag = stateManager.state === value;
+					break;
+			}
+
+			if (skipFlag) return;
+
+			stateManager.state = value;
+
+			const newElement = buildComponent(
+				fn(stateManager.getter, stateManager.setter),
+			);
+
+			stateManager.element.replaceWith(newElement);
+
+			stateManager.element = newElement;
+		}, //broken because elements that arent on the DOM dont show psuedo elements
+
+		get getter() {
+			return stateManager.state;
+		},
+	};
+
+	stateManager.element = buildComponent(
+		fn(stateManager.getter, stateManager.setter),
+	);
+
+	return stateManager.element;
 }
 
 function createPortal() {}

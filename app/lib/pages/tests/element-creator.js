@@ -19,7 +19,8 @@ function page() {
 		stateComponent,
 		idComponent,
 		classNameComponent,
-		suspenceComponent,
+		suspenceComponentImage,
+		suspenceComponentVideo,
 		checkEventComponent,
 	].map((component) => {
 		return {
@@ -30,7 +31,6 @@ function page() {
 			children: [
 				{
 					tag: 'p',
-
 					children: textNode(component.name + ' test'),
 				},
 				component(),
@@ -71,7 +71,32 @@ function idComponent() {
 	};
 }
 
-function suspenceComponent() {
+function suspenceComponentVideo() {
+	return useSuspense(
+		() => {
+			return {
+				tag: 'div',
+				children: [
+					{
+						tag: 'video',
+						attributes: {
+							src: '../../../icon/artwork/alevel_art/5.mp4',
+							muted: '',
+							autoplay: '',
+							playsinline: '',
+						},
+					},
+				],
+			};
+		},
+		{
+			tag: 'p',
+			children: textNode('loading video'),
+		},
+	);
+}
+
+function suspenceComponentImage() {
 	return useSuspense(
 		() => {
 			return {
@@ -93,12 +118,20 @@ function suspenceComponent() {
 							src: 'https://images.unsplash.com/photo-1608848461950-0fe51dfc41cb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MTl8fHxlbnwwfHx8fA%3D%3D&w=1000&q=80',
 						},
 					},
+					{
+						tag: 'img',
+						attributes: {
+							src: 'https://i.pinimg.com/originals/6f/a2/e5/6fa2e5ab9ee2db9845f4f2a6e6f7ee28.png',
+							width: 300,
+							height: 300,
+						},
+					},
 				],
 			};
 		},
 		{
 			tag: 'p',
-			children: textNode('loading...'),
+			children: textNode('loading images'),
 		},
 	);
 }
