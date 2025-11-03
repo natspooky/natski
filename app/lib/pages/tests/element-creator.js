@@ -4,18 +4,15 @@ import {
 	useSuspense,
 	useId,
 	className,
-	buildComponent,
 	checkEvent,
-	//createContext,
-	//useContext,
 } from '../../../apis/encore/element-creator.js';
 
-const textNode = (text) => {
+function textNode(text) {
 	return {
 		tag: 'text',
 		text: text,
 	};
-};
+}
 
 function page() {
 	return [
@@ -28,7 +25,7 @@ function page() {
 		return {
 			tag: 'div',
 			attributes: {
-				style: 'margin-top: 20px; margin-left: 20px',
+				style: 'margin-top: 20px;',
 			},
 			children: [
 				{
@@ -134,7 +131,9 @@ function checkEventComponent() {
 function layout({ children }) {
 	return {
 		tag: 'div',
-
+		attributes: {
+			style: 'margin: 20px',
+		},
 		children: [
 			{
 				tag: 'h1',

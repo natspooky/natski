@@ -252,7 +252,6 @@ function createPage(dir, metaData) {
 				element({
 					tag: 'body',
 					params: ['id="root"'],
-					id: 'root',
 				}),
 			].join(''),
 		}); /*`

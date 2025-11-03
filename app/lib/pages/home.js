@@ -2,7 +2,7 @@ import { render, useState } from '../../apis/encore/element-creator.js';
 
 import { GlassBacking, Glass } from '../components/ui/glass.js';
 
-import RootLayout from '../layouts/rootLayout.js';
+import StandardLayout from '../layouts/standardLayout.js';
 import Selector from '../components/selector.js';
 
 function encore() {
@@ -86,7 +86,7 @@ function testUseState() {
 render(
 	'root',
 	() => {
-		window.components.layout = RootLayout;
+		window.components.layout = StandardLayout;
 
 		return [testUseState()];
 	},

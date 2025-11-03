@@ -1,11 +1,11 @@
-import { render, useState } from '../../apis/encore/element-creator.js';
+import { render } from '../../apis/encore/element-creator.js';
 import FrameManager from '../js/IFrameManager.js';
 import Footer from '../components/footer.js';
 import { GlassBacking, Glass } from '../components/ui/glass.js';
 import IS from '../components/image_components/IS.js';
 import LinkButton from '../components/button_components/linkButton.js';
 import Button from '../components/button_components/button.js';
-import RootLayout from '../layouts/rootLayout.js';
+import StandardLayout from '../layouts/standardLayout.js';
 import Selector from '../components/selector.js';
 import Header from '../components/header.js';
 
@@ -16,7 +16,7 @@ function Websites() {}
 render(
 	'root',
 	() => {
-		window.components.rootLayout = RootLayout;
+		window.components.rootLayout = StandardLayout;
 		return [Apis(), Websites()];
 	},
 	{
