@@ -1,4 +1,4 @@
-import { render, useState } from '../../../apis/encore/element-creator.js';
+import { render } from '../../../apis/encore/element-creator.js';
 import Canvas from '../../components/canvas.js';
 
 render(
@@ -8,7 +8,7 @@ render(
 			name: 'Canvas One',
 			classes: 'bingus bongus',
 			draw: ({ context: ctx, canvas }) => {
-				canvas.paintAll('red');
+				canvas.paintAll('blue');
 				ctx.fillRect(0, 0, 10, 10);
 			},
 			settings: {

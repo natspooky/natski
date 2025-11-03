@@ -340,6 +340,8 @@ function buildComponent() {
 	return;
 }*/
 
+function image() {}
+
 function buildComponent(elementData) {
 	if (Array.isArray(elementData)) {
 		const elementArr = elementData
@@ -486,6 +488,132 @@ function buildComponent(elementData) {
 }
 
 //function useEffect(fn, props) {}
+
+function loadElement(element) {
+	return new Promise((resolve) => {
+		if (element.complete) resolve();
+		element.addEventListener('load', resolve, true);
+		element.addEventListener(
+			'error',
+			() => {
+				elementCreatorConsole.message({
+					message: 'Element load error:',
+					error: `The ${element.tagName} failed to load`,
+				});
+				resolve();
+			},
+			true,
+		);
+	});
+}
+
+function awaitContentLoad(element) {
+	const loadableElements = [];
+
+	const elements = Array.isArray(element) ? element : [element];
+
+	const elementType = (element) => {
+		switch (element.tagName) {
+			case 'IMG':
+				if (element.src) loadableElements.push(loadElement(element));
+				return true;
+			case 'INPUT':
+				if (
+					element.hasAttribute('type') &&
+					element.getAttribute('type') === 'image'
+				)
+					loadableElements.push(loadElement(element));
+				return true;
+			case 'IFRAME':
+			case 'FRAME':
+			case 'SCRIPT':
+			case 'LINK':
+			case 'STYLE':
+			case 'BODY':
+				loadableElements.push(loadElement(element));
+				return false;
+			default:
+				return false;
+		}
+	};
+
+	const crawlChildren = (element) => {
+		if (element.children.length === 0) {
+			console.log('uhhh');
+			if (elementType(element)) return;
+		}
+		Array.from(element.children).forEach((child) => {
+			if (elementType(child)) return;
+
+			crawlChildren(child);
+		});
+	};
+
+	elements.forEach((element) => {
+		crawlChildren(element);
+	});
+
+	return Promise.all(loadableElements);
+}
+
+function useSuspense(fn, fallback) {
+	let suspenseFired = false;
+
+	return useState((content, setContent) => {
+		if (!suspenseFired) {
+			suspenseFired = true;
+			const element = buildComponent(fn());
+
+			awaitContentLoad(element).then(() => {
+				setContent(element);
+			});
+		}
+		return content;
+	}, fallback);
+}
+
+function useId() {
+	if (!window.elementCreatorIdSessionStorage)
+		window.elementCreatorIdSessionStorage = [];
+
+	const id = new Array(5)
+		.fill(0)
+		.map(() => {
+			return ':|' + Math.floor(Math.random() * 99).toString(16);
+		})
+		.join('&');
+
+	if (!window.elementCreatorIdSessionStorage.includes(id)) {
+		window.elementCreatorIdSessionStorage.push(id);
+	} else {
+		return useId();
+	}
+
+	return id;
+}
+
+function createPortal() {}
+
+function createContext(init) {
+	window.elementCreatorContext;
+
+	return ({ value, children, ...props }) => {
+		return {
+			contextProvider: value ?? init,
+			tag: 'context-wrapper',
+			children,
+			...props,
+		};
+	};
+}
+
+function memo(fn) {
+	//prevent re-rendering of component when parent is re-rendered
+
+	return;
+}
+
+function useContext() {}
 
 function useState(fn, initVal) {
 	const stateManager = {
@@ -912,7 +1040,8 @@ export {
 	checkEvent,
 	render,
 	useState,
-	//ElementDefiner,
+	useSuspense,
+	useId,
 };
 
 /*
