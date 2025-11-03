@@ -4,6 +4,7 @@
 @import url('./components/glass.css');
 @import url('./components/backgrounds.css');
 @import url('./components/footer.css');
+@import url('./components/header.css');
 @import url('./components/selector.css');
 @import url('./components/contextMenu.css');
 
@@ -242,14 +243,6 @@ main {
 	position: relative;
 	width: 100%;
 	min-height: calc(90vh - 50px);
-}
-
-header {
-	position: relative;
-	width: 100%;
-	padding-top: 60px;
-	padding: 80px 20px 20px 20px;
-	height: 100vh;
 }
 
 .text-gradient {

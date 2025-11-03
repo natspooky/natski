@@ -88,7 +88,7 @@ export default function Nav() {
 			classes: 'nav-main-container',
 			children: [
 				Button({
-					icon: 'NATSKI',
+					icon: 'ENCORE',
 					classes: 'icon',
 				}),
 			],

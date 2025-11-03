@@ -56,7 +56,7 @@ class IS extends HTMLElement {
 
 		if (!name && !source) {
 			iconSystemConsole.message({
-				warn: `No 'src' or 'name' provided`,
+				error: `No 'src' or 'name' provided`,
 				message: `Icon load error:`,
 			});
 			this.#self.style.mask = this.#createMask('alert', false, editable);

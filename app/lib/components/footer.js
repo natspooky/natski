@@ -27,7 +27,7 @@ export default function Footer() {
 			name: 'LinkedIn',
 			routing: {
 				display: '_blank',
-				href: 'https://www.instagram.com/natspki/',
+				href: 'https://linkedin.com/in/michael-earle-ab055338b',
 			},
 		},
 	];

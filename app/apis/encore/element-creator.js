@@ -576,12 +576,14 @@ function useId() {
 	if (!window.elementCreatorIdSessionStorage)
 		window.elementCreatorIdSessionStorage = [];
 
-	const id = new Array(5)
-		.fill(0)
-		.map(() => {
-			return ':|' + Math.floor(Math.random() * 99).toString(16);
-		})
-		.join('&');
+	const id =
+		'NTSK' +
+		new Array(5)
+			.fill(0)
+			.map(() => {
+				return ':|' + Math.floor(Math.random() * 99).toString(16);
+			})
+			.join('&');
 
 	if (!window.elementCreatorIdSessionStorage.includes(id)) {
 		window.elementCreatorIdSessionStorage.push(id);
