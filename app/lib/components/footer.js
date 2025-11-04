@@ -58,7 +58,7 @@ export default function Footer() {
 			GradientSparkle({ waves: true }),
 			GlassBacking({
 				active: isMobile,
-				blurred: true,
+				blurred: false,
 				tag: 'footer',
 				hover: true,
 				children: [

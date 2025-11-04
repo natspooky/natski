@@ -50,14 +50,15 @@
 		magenta 360deg
 	);
 	border-radius: 50%;
-	filter: blur(15px);
-	/*animation: rotate 4s linear infinite;*/
+	filter: blur(10px);
+	animation: rotate 4s linear infinite;
 }
 
 .header .content-window div .image-container img {
 	position: relative;
 	border: 2px solid #ffffff60;
 	border-radius: 50%;
+	mix-blend-mode: hard-light;
 }
 
 .header .content-window .temp-logo {

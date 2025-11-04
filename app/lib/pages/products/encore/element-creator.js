@@ -4,6 +4,7 @@ import Header from '../../../components/header.js';
 import { Glass } from '../../../components/ui/glass.js';
 import TitlePage from '../../../components/ui/titlePage.js';
 import IS from '../../../components/image_components/IS.js';
+import Selector from '../../../components/selector.js';
 
 render(
 	'root',
@@ -18,7 +19,7 @@ render(
 					description: 'Start creating beautiful frontends with ease',
 					buttons: [
 						{
-							name: 'Learn Element Creator',
+							name: 'Element Creator Docs',
 							icon: 'export',
 						},
 						{
@@ -40,6 +41,22 @@ render(
 					),
 				}),
 			}),
+			{
+				tag: 'main',
+				children: [
+					Selector({
+						buttons: [
+							{
+								name: 'bungas',
+								active: true,
+							},
+							{
+								name: 'scrungle',
+							},
+						],
+					}),
+				],
+			},
 		];
 	},
 	{

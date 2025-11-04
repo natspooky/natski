@@ -7,8 +7,19 @@ function GradientSparkle({ particles, waves }) {
 	const canvasID = useId();
 
 	class Particles {
+		#speed;
 		#position;
-		constructor() {}
+		constructor(height) {
+			this.#speed = Math.random() * 9;
+			this.#position = {
+				x: 0,
+				y: Math.random() * height,
+			};
+		}
+
+		draw() {
+			this.#position.x += this.#speed;
+		}
 
 		get position() {
 			return this.#position;

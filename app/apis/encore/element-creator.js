@@ -331,16 +331,6 @@ class ComponentManager {
 		return this.#layout;
 	}
 }
-/*
-class ENComponent {}
-
-function buildComponent() {
-	const ENC = {};
-
-	return;
-}*/
-
-function image() {}
 
 function buildComponent(elementData) {
 	if (Array.isArray(elementData)) {
