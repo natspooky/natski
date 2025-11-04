@@ -24,6 +24,24 @@ render(
 						},
 						{
 							name: 'Information',
+							action: () =>
+								panelSetter({
+									tag: 'div',
+									attributes: {
+										style: 'position:absolute;top:0;left:0;width: 100%;height: 100%;background:#00000090',
+									},
+									events: {
+										click: {
+											callback: () =>
+												panelSetter({
+													tag: 'section',
+													attributes: {
+														hidden: '',
+													},
+												}),
+										},
+									},
+								}),
 							//icon: 'information',
 						},
 					],
