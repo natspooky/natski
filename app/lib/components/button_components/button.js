@@ -5,6 +5,7 @@ function Link({ children, draggable, href }) {
 	return {
 		tag: 'a',
 		attributes: {
+			tabindex: '-1',
 			href,
 			draggable,
 		},

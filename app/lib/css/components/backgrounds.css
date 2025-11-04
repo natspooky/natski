@@ -21,7 +21,7 @@
 	overflow: hidden;
 }
 
-.gradient-sparkle canvas {
+.gradient-sparkle .sparkle-canvas {
 	position: absolute;
 	top: 0;
 	left: 0;

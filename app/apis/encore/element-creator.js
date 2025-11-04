@@ -560,7 +560,6 @@ function awaitContentLoad(element) {
 
 	const crawlChildren = (element) => {
 		if (element.children.length === 0) {
-			console.log('uhhh');
 			if (elementType(element)) return;
 		}
 		Array.from(element.children).forEach((child) => {
@@ -622,46 +621,46 @@ function useCallback(fn, dependencies) {
 	};
 }
 
-function useTransition() {
+function useTransition(fn) {
 	const transitionManager = {
-		stateSystem: useState(),
+		stateSystem: useState((getter, setter) => {}),
 
 		setter: (value) => {
 			let skipFlag = false;
 			switch (typeof value) {
 				case 'object':
 					skipFlag =
-						JSON.stringify(stateManager.state) ===
+						JSON.stringify(transitionManager.state) ===
 						JSON.stringify(value);
 					break;
 				default:
-					skipFlag = stateManager.state === value;
+					skipFlag = transitionManager.state === value;
 					break;
 			}
 
 			if (skipFlag) return;
 
-			stateManager.state = value;
+			transitionManager.state = value;
 
 			const newElement = buildComponent(
-				fn(stateManager.getter, stateManager.setter),
+				fn(transitionManager.getter, transitionManager.setter),
 			);
 
-			stateManager.element.replaceWith(newElement);
+			transitionManager.element.replaceWith(newElement);
 
-			stateManager.element = newElement;
+			transitionManager.element = newElement;
 		}, //broken because elements that arent on the DOM dont show psuedo elements
 
 		get getter() {
-			return stateManager.state;
+			return transitionManager.state;
 		},
 	};
 
-	stateManager.element = buildComponent(
-		fn(stateManager.getter, stateManager.setter),
+	transitionManager.element = buildComponent(
+		fn(transitionManager.getter, transitionManager.setter),
 	);
 
-	return stateManager.element;
+	return transitionManager.element;
 }
 
 function createPortal() {}
@@ -684,8 +683,6 @@ function memo(fn) {
 
 	return;
 }
-
-function useContext() {}
 
 function useState(fn, initVal) {
 	const stateManager = {

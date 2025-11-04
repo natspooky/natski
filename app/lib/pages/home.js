@@ -5,81 +5,9 @@ import { GlassBacking, Glass } from '../components/ui/glass.js';
 import StandardLayout from '../layouts/standardLayout.js';
 import Selector from '../components/selector.js';
 
-function encore() {
-	return Glass({
-		tag: 'p',
-		children: {
-			tag: 'text',
-			text: 'balls',
-		},
-	});
-}
-
-function simple() {
-	return {
-		tag: 'p',
-		children: {
-			tag: 'text',
-			text: 'simplePage',
-		},
-	};
-}
-
-function toolsSelectorPanel() {
-	var setPageState;
-	return [
-		Selector({
-			buttons: [
-				{
-					name: 'Encore',
-					icon: 'uhhhh',
-					action: {
-						callback: () => setPageState(encore()),
-					},
-					active: true,
-				},
-				{
-					name: 'Simple',
-					icon: 'simple',
-					action: {
-						callback: () => setPageState(simple()),
-					},
-				},
-				{
-					name: 'Arc',
-					icon: 'ARC',
-					action: {
-						callback: () => setPageState(encore()),
-					},
-				},
-			],
-		}),
-		GlassBacking({
-			tag: 'div',
-			hover: true,
-			children: useState((page, setPage) => {
-				setPageState = setPage;
-
-				return page;
-			}, encore()),
-		}),
-	];
-}
-
 function testUseState() {
-	let setter;
 	return {
 		tag: 'div',
-		children: [
-			useState((get, set) => {
-				setter = set;
-				return get;
-			}, Glass({ tag: 'div' })),
-			Glass({ tag: 'div' }),
-		],
-		onAppend: {
-			callback: () => setter(GlassBacking({ tag: 'div' })),
-		},
 	};
 }
 

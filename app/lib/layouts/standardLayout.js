@@ -1,5 +1,4 @@
 import Footer from '../components/footer.js';
-import Header from '../components/header.js';
 import Nav from '../components/nav.js';
 import RootLayout from './rootLayout.js';
 
@@ -13,8 +12,6 @@ export default function StandardLayout({ children }) {
 		}, 10);
 	};
 
-	const headerContents = [];
-
 	return RootLayout({
 		children: {
 			tag: 'div',
@@ -27,9 +24,12 @@ export default function StandardLayout({ children }) {
 
 			children: [
 				Nav(),
-				Header({ children: headerContents }),
 				{
-					tag: 'main',
+					tag: 'div',
+					attributes: {
+						style: 'padding-top: 60px',
+					},
+					classes: 'main',
 					children,
 				},
 				Footer(),
@@ -42,7 +42,7 @@ export default function StandardLayout({ children }) {
 					onAppend: {
 						callback: append,
 						options: {
-							awaitFontLoad: false,
+							awaitFontLoad: true,
 						},
 					},
 				},

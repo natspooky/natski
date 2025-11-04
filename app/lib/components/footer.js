@@ -89,7 +89,7 @@ export default function Footer() {
 								children: [
 									{
 										tag: 'h1',
-										innerHTML: 'APIs',
+										innerHTML: 'API',
 									},
 
 									LinkButton({
@@ -97,7 +97,7 @@ export default function Footer() {
 										name: 'Encore',
 										routing: {
 											display: '_self',
-											href: '/apis/encore',
+											href: '/products/encore',
 										},
 									}),
 									LinkButton({
@@ -105,7 +105,7 @@ export default function Footer() {
 										name: 'Simple',
 										routing: {
 											display: '_self',
-											href: '/apis/simple',
+											href: '/products/simple',
 										},
 									}),
 									LinkButton({

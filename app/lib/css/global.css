@@ -239,7 +239,7 @@ body {
 	position: relative;
 }
 
-main {
+.main {
 	position: relative;
 	width: 100%;
 	min-height: calc(90vh - 50px);
