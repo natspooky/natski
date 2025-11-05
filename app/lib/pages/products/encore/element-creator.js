@@ -28,7 +28,7 @@ render(
 								panelSetter({
 									tag: 'div',
 									attributes: {
-										style: 'position:absolute;top:0;left:0;width: 100%;height: 100%;background:#00000090',
+										style: 'position:absolute;top:0;left:0;width: 100%;height: 100%;background:#00000090;backdrop-filter: blur(10px); filter: blur(0px); border-radius: 20px',
 									},
 									events: {
 										click: {
