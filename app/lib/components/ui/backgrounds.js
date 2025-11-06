@@ -37,7 +37,7 @@ function GradientSparkle({ particles, waves }) {
 		tag: 'span',
 		classes: className('gradient-sparkle'),
 		children: [
-			particles
+			particles && false
 				? Canvas({
 						name: canvasID,
 						draw,

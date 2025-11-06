@@ -563,6 +563,8 @@ function awaitContentLoad(element) {
 		crawlChildren(element);
 	});
 
+	if (loadableElements.length === 0) return Promise.resolve(0);
+
 	return Promise.all(loadableElements);
 }
 
@@ -581,14 +583,32 @@ function useSuspense(fn, fallback) {
 		return content;
 	}, fallback);
 }
+/*
+function useAnimate(fn, id) {
+	let animationFrame;
+
+	const animator = (animation) => {
+		animation();
+		animationFrame = requestAnimationFrame(() => animator(animation));
+	};
+
+	if (!window.elemCreatorAnimate) window.elemCreatorAnimate = {};
+
+	if (window.elemCreatorAnimate[id]) {
+		cancelAnimationFrame(window.elemCreatorAnimate[id]);
+	}
+
+	animationFrame = requestAnimationFrame(() => animator(fn));
+	window.elemCreatorAnimate[id] = animationFrame;
+}*/
 
 function useId() {
 	if (!window.elementCreatorIdSessionStorage)
-		window.elementCreatorIdSessionStorage = [];
+		window.elementCreatorIdSessionStorage = {};
 
 	const id =
 		'NTSK' +
-		new Array(5)
+		new Array(2)
 			.fill(0)
 			.map(() => {
 				return ':|' + Math.floor(Math.random() * 99).toString(16);
@@ -596,8 +616,8 @@ function useId() {
 			.join('&') +
 		'i';
 
-	if (!window.elementCreatorIdSessionStorage.includes(id)) {
-		window.elementCreatorIdSessionStorage.push(id);
+	if (!window.elementCreatorIdSessionStorage[id]) {
+		window.elementCreatorIdSessionStorage[id] = true;
 	} else {
 		return useId();
 	}
@@ -639,7 +659,7 @@ function useTransition(fn) {
 			transitionManager.element.replaceWith(newElement);
 
 			transitionManager.element = newElement;
-		}, //broken because elements that arent on the DOM dont show psuedo elements
+		},
 
 		get getter() {
 			return transitionManager.state;
@@ -677,9 +697,10 @@ function memo(fn) {
 function useState(fn, initVal) {
 	const stateManager = {
 		element: null,
+		container: document.createDocumentFragment(),
 		state: initVal,
 
-		setter: (value) => {
+		setter: async (value) => {
 			let skipFlag = false;
 			switch (typeof value) {
 				case 'object':
@@ -700,13 +721,26 @@ function useState(fn, initVal) {
 				fn(stateManager.getter, stateManager.setter),
 			);
 
+			if (!stateManager.element) await stateManager.check();
+
 			stateManager.element.replaceWith(newElement);
 
 			stateManager.element = newElement;
-		}, //broken because elements that arent on the DOM dont show psuedo elements
+		},
 
 		get getter() {
 			return stateManager.state;
+		},
+
+		check() {
+			return new Promise((res) => {
+				const interval = setInterval(() => {
+					if (stateManager.element) {
+						clearInterval(interval);
+						res();
+					}
+				}, 1);
+			});
 		},
 	};
 
@@ -714,7 +748,9 @@ function useState(fn, initVal) {
 		fn(stateManager.getter, stateManager.setter),
 	);
 
-	return stateManager.element;
+	stateManager.container.appendChild(stateManager.element);
+
+	return stateManager.container;
 }
 
 function renderDifference(pageElement, reRenderedElement) {

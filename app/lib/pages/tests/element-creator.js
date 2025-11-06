@@ -19,6 +19,7 @@ function page() {
 		stateComponent,
 		idComponent,
 		classNameComponent,
+		suspenseComponentElement,
 		suspenceComponentImage,
 		suspenceComponentVideo,
 		checkEventComponent,
@@ -50,6 +51,9 @@ function stateComponent() {
 					},
 				},
 			},
+			onCreate: () => {
+				setNumber(3);
+			},
 			children: textNode(`clicked ${number} times`),
 		};
 	}, 0);
@@ -69,6 +73,24 @@ function idComponent() {
 			};
 		}),
 	};
+}
+
+function suspenseComponentElement() {
+	return useSuspense(
+		() => {
+			return {
+				tag: 'div',
+				children: {
+					tag: 'p',
+					children: textNode('loaded!'),
+				},
+			};
+		},
+		{
+			tag: 'p',
+			children: textNode('loading element'),
+		},
+	);
 }
 
 function suspenceComponentVideo() {

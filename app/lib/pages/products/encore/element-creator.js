@@ -65,11 +65,11 @@ render(
 					Selector({
 						buttons: [
 							{
-								name: 'bungas',
+								name: 'On',
 								active: true,
 							},
 							{
-								name: 'scrungle',
+								name: 'Off',
 							},
 						],
 					}),

@@ -22,6 +22,7 @@ render(
 		return [
 			link({ href: 'simple-canvas' }),
 			link({ href: 'element-creator' }),
+			link({ href: 'components' }),
 		];
 	},
 	{
