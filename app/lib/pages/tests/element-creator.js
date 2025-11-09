@@ -6,6 +6,7 @@ import {
 	className,
 	checkEvent,
 } from '../../../apis/encore/element-creator.js';
+import Selector from '../../../lib/components/selector.js';
 
 function textNode(text) {
 	return {
@@ -202,12 +203,42 @@ function layout({ children }) {
 	};
 }
 
+function pageSwapComponent() {
+	let pageSetter;
+	return [
+		Selector({
+			buttons: [
+				{
+					name: 'page one',
+					active: true,
+					action: {
+						callback: () => pageSetter(page()),
+					},
+				},
+				{
+					name: 'page two',
+					action: {
+						callback: () => pageSetter(idComponent()),
+					},
+				},
+			],
+		}),
+		useState((page, setPage) => {
+			pageSetter = setPage;
+			return {
+				tag: 'div',
+				children: page,
+			};
+		}, page()),
+	];
+}
+
 render(
 	'root',
 	() => {
 		window.components.layout = layout;
 
-		return page();
+		return [...page(), ...pageSwapComponent()];
 	},
 	{
 		useIcons: true,

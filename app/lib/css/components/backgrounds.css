@@ -39,15 +39,22 @@
 	display: block;
 	mask-repeat: repeat-x;
 	background-image: url(../../../icon/svg/wave.svg);
-	mask-position: center center;
-	animation: wave 10s linear infinite;
+	animation: move-forever linear infinite 10s;
 }
 
 .grad-wave.wave-back {
 	margin-bottom: -50px;
-	animation: wave 25s linear infinite -3s;
+	animation: move-forever linear infinite 15s -5s;
 }
-
+@keyframes move-forever {
+	0% {
+		transform: translate3d(0px, 0, 0);
+	}
+	100% {
+		transform: translate3d(-1600px, 0, 0);
+	}
+}
+/*
 @keyframes wave {
 	0% {
 		margin-left: 0;
@@ -56,3 +63,4 @@
 		margin-left: -1600px;
 	}
 }
+*/

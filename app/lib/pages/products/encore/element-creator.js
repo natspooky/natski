@@ -14,7 +14,7 @@ render(
 		return [
 			Header({
 				children: TitlePage({
-					image: '../../icon/misc/elementcreatorlogo.png',
+					image: '../../icon/misc/natskilogo.png',
 					title: 'Encore Element Creator',
 					description: 'Start creating beautiful frontends with ease',
 					buttons: [
