@@ -568,7 +568,7 @@ function awaitContentLoad(element) {
 	return Promise.all(loadableElements);
 }
 
-function useSuspense(fn, fallback) {
+function useSuspense(fn, loading, fallback) {
 	let suspenseFired = false;
 
 	return useState((content, setContent) => {
@@ -576,12 +576,19 @@ function useSuspense(fn, fallback) {
 			suspenseFired = true;
 			const element = buildComponent(fn());
 
-			awaitContentLoad(element).then(() => {
-				setContent(element);
-			});
+			awaitContentLoad(element).then(
+				() => {
+					setContent(element);
+				},
+				() => {
+					fallback
+						? setContent(buildComponent(fallback()))
+						: setContent(buildComponent(element));
+				},
+			);
 		}
 		return content;
-	}, fallback);
+	}, loading);
 }
 /*
 function useAnimate(fn, id) {
