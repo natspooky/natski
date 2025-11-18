@@ -6,6 +6,7 @@
 /* ----------------------------------------------- */
 
 //const ecWorker = new Worker(new URL("ecWorker.js", import.meta.url));
+//use this to start preloading links
 
 import IconSystem from './icon-system.js';
 import Console from '../dependencies/console.js';
@@ -382,21 +383,7 @@ function buildComponent(elementData) {
 	}
 
 	if (elementData.classes) {
-		if (Array.isArray(elementData.classes)) {
-			elementData.classes.forEach((className) => {
-				if (className?.includes(' ')) {
-					className.split(' ').forEach((name) => {
-						element.classList.add(name);
-					});
-				} else {
-					element.classList.add(className);
-				}
-			});
-		} else {
-			elementData.classes.split(' ').forEach((className) => {
-				element.classList.add(className);
-			});
-		}
+		element.classList.add(...className(elementData.classes));
 	}
 
 	if (elementData.attributes) {
@@ -583,13 +570,14 @@ function useSuspense(fn, loading, fallback) {
 				() => {
 					fallback
 						? setContent(buildComponent(fallback()))
-						: setContent(buildComponent(element));
+						: setContent(element);
 				},
 			);
 		}
 		return content;
-	}, loading);
+	}, loading ?? { tag: 'div', attributes: { hidden: '' } });
 }
+
 /*
 function useAnimate(fn, id) {
 	let animationFrame;
@@ -630,6 +618,10 @@ function useId() {
 	}
 
 	return id;
+}
+
+function usePath() {
+	return new URL(window.location.href).pathname;
 }
 
 function useCallback(fn, dependencies) {
@@ -700,6 +692,8 @@ function memo(fn) {
 
 	return;
 }
+
+function useRef(init) {}
 
 function useState(fn, initVal) {
 	const stateManager = {
@@ -994,9 +988,6 @@ function elementAppended(element, callback, options) {
 
 			if (!options?.perminant) observer.disconnect();
 
-			//do this
-			//add font await for appendcallback
-
 			if (!options?.awaitPageLoad && !options?.awaitFontLoad) {
 				callback(element);
 				break;
@@ -1107,7 +1098,7 @@ function className(classes, ...extraClasses) {
 		? [...classes, ...extraClasses]
 		: [classes, ...extraClasses];
 
-	const process = (classes) => {
+	const processClasses = (classes) => {
 		const tempArr = [];
 		classes
 			.flat(Infinity)
@@ -1120,7 +1111,7 @@ function className(classes, ...extraClasses) {
 		return tempArr;
 	};
 
-	return Array.from(new Set(process(classes)));
+	return Array.from(new Set(processClasses(classes)));
 }
 
 function checkForKeys(component) {
@@ -1144,6 +1135,7 @@ export {
 	useState,
 	useSuspense,
 	useId,
+	usePath,
 };
 
 /*

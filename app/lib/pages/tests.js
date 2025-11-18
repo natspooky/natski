@@ -18,11 +18,11 @@ function link({ href }) {
 render(
 	'root',
 	() => {
-		window.components.rootLayout = StandardLayout;
+		window.components.layout = StandardLayout;
 		return [
 			link({ href: 'simple-canvas' }),
 			link({ href: 'element-creator' }),
-			link({ href: 'components' }),
+			link({ href: 'ui-components' }),
 		];
 	},
 	{

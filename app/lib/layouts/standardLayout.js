@@ -26,9 +26,6 @@ export default function StandardLayout({ children }) {
 				Nav(),
 				{
 					tag: 'div',
-					attributes: {
-						style: 'padding-top: 60px',
-					},
 					classes: 'main',
 					children,
 				},

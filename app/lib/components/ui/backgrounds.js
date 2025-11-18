@@ -72,6 +72,23 @@ function GradientSparkle({ particles, waves }) {
 	};
 }
 
+function Waves() {
+	return {
+		tag: 'span',
+		classes: 'grad-wave-container',
+		children: [
+			{
+				tag: 'span',
+				classes: 'grad-wave wave-front',
+			},
+			{
+				tag: 'span',
+				classes: 'grad-wave wave-back',
+			},
+		],
+	};
+}
+
 function DottedFade() {}
 
-export { GradientSparkle };
+export { GradientSparkle, Waves };

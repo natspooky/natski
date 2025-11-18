@@ -10,23 +10,25 @@ export default function Marquee({ children, classes, speed }) {
 
 	let position = 0;
 	let first = true;
+	let counter = 0;
 
 	let animateID;
+
+	const animate = () => {
+		position += speed;
+
+		if (scroller.offsetWidth / counter < position) position = 0;
+
+		scroller.style.marginLeft = `-${position}px`;
+
+		animateID = requestAnimationFrame(animate);
+	};
 
 	return useSuspense(
 		() => {
 			return useState((count, setCount) => {
 				cancelAnimationFrame(animateID);
 
-				const animate = () => {
-					position += speed;
-
-					if (scroller.offsetWidth / count < position) position = 0;
-
-					scroller.style.marginLeft = `-${position}px`;
-
-					animateID = requestAnimationFrame(animate);
-				};
 				return {
 					tag: 'div',
 					classes: className('marquee', classes),
@@ -74,4 +76,6 @@ export default function Marquee({ children, classes, speed }) {
 			},
 		},
 	);
+	// fix where the usestate is so it doesnt suck!!
+	ssssss;
 }

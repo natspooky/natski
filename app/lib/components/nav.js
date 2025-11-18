@@ -1,113 +1,133 @@
-import { className } from '../../apis/encore/element-creator.js';
+import {
+	className,
+	usePath,
+	useState,
+} from '../../apis/encore/element-creator.js';
 import isMobile from '../../apis/dependencies/mobile-utils.js';
 import LinkButton from './button_components/linkButton.js';
-import Button from './button_components/button.js';
+//import Button from './button_components/button.js';
 import IS from './image_components/IS.js';
-import { GlassBacking } from './ui/glass.js';
+
+function Button({ name, icon, classes, href, events }) {
+	return {
+		events: {
+			click: {
+				callback: () => {
+					window.open(href, '_self');
+				},
+			},
+			...events,
+		},
+		tag: 'button',
+		classes: className(
+			'navi-button',
+			classes,
+			isMobile ? 'icon-only' : null,
+		),
+		children: [
+			name ? { tag: 'span', children: { tag: 'text', text: name } } : {},
+			icon ? IS({ icon }) : {},
+		],
+	};
+}
 
 export default function Nav() {
-	const mobile = isMobile ? 'mobile-nav' : null;
+	const pageName = usePath();
 
-	let transformPosY = 0;
-	let lastScroll = 0;
-	let scrollBuffer = 0;
+	let setter;
 
-	const animateOnScrollController = (self) => {
-		const scroll = window.scrollY;
-		const scrollDelta = lastScroll - scroll;
-		const hiddenHeight = self.offsetHeight;
+	const linkArray = [
+		{
+			name: 'Home',
+			icon: 'home',
+			href: '/home',
+		},
 
-		lastScroll = scroll;
+		{
+			name: 'Docs',
+			icon: 'document',
+			href: '/docs',
+		},
+		{
+			name: 'Projects',
+			icon: 'apps',
+			href: 'aa',
+		},
+	];
 
-		scrollBuffer = Math.max(scrollBuffer - scrollDelta, 0);
-
-		if (scrollBuffer <= 350) return;
-
-		if (transformPosY < hiddenHeight || scrollDelta > 0) {
-			transformPosY = Math.min(
-				Math.max(transformPosY + scrollDelta, -hiddenHeight),
-				0,
-			);
-		}
-
-		const range = transformPosY / -hiddenHeight;
-
-		if (range <= 0 && scrollDelta > 0) scrollBuffer = 0;
-
-		self.style.translate = `0px ${transformPosY}px`;
-		self.style.opacity = 1 - transformPosY / -hiddenHeight;
-	};
-
-	function MobileContent() {
-		return [
+	return {
+		tag: 'nav',
+		events: {
+			mouseleave: {
+				callback: () => setter(null),
+			},
+		},
+		classes: className('navigator', isMobile ? 'nav-mobile' : null),
+		children: [
 			{
 				tag: 'div',
-				classes: 'nav-main-container',
+				classes: 'nav-quick-select',
 				children: [
-					Button({
-						icon: 'NATSKI',
-						classes: 'icon',
-					}),
 					{
-						tag: 'div',
-						attributes: {
-							id: 'menuToggle',
-						},
+						tag: 'section',
+						classes: 'nav-section nav-left',
+						children: Button({
+							icon: 'burger',
+							name: 'Natski',
+							classes: 'icon-only',
+						}),
+					},
+					{
+						tag: 'section',
+						classes: 'nav-section nav-center',
+						children: linkArray.map((item) => {
+							if (
+								pageName.slice(
+									pageName.lastIndexOf('/') + 1,
+								) ===
+								item.href.slice(item.href.lastIndexOf('/') + 1)
+							)
+								return Button({
+									...item,
+									classes: 'active',
+									events: {
+										mouseenter: {
+											callback: () =>
+												setter(['a', 1, 1, 1]),
+										},
+									},
+								});
+							return Button({ ...item });
+						}),
+					},
+					{
+						tag: 'section',
+						classes: 'nav-section nav-right',
 						children: [
-							{
-								tag: 'input',
-								attributes: {
-									type: 'checkbox',
-									id: 'menuCheckbox',
-								},
-							},
-							{
-								tag: 'span',
-							},
-							{
-								tag: 'span',
-							},
-							{
-								tag: 'span',
-							},
+							Button({
+								icon: 'magnify',
+								classes: 'icon-only',
+							}),
 						],
 					},
 				],
 			},
-			{
-				tag: 'div',
-				classes: 'nav-mobile-container',
-				children: [], //make it have the dropdown functionality from settings
-			},
-		];
-	}
-
-	function PcContent() {
-		return {
-			tag: 'div',
-			classes: 'nav-main-container',
-			children: [
-				Button({
-					icon: 'ENCORE',
-					classes: 'icon',
-				}),
-			],
-		};
-	}
-
-	return GlassBacking({
-		blurred: true,
-		active: isMobile,
-		tag: 'nav',
-		classes: className('navigator', mobile),
-		events: {
-			scroll: {
-				callback: animateOnScrollController,
-				param: 'self',
-				target: document,
-			},
-		},
-
-		children: isMobile ? MobileContent() : PcContent(),
-	});
+			useState((navItems, setNavItems) => {
+				setter = setNavItems;
+				return {
+					tag: 'div',
+					classes: 'nav-dropdown',
+					children: navItems?.map(() => {
+						return { tag: 'text', text: 'aaaaaa1' };
+					}),
+				};
+			}, null),
+		],
+	};
 }
+
+/*
+
+
+
+*/

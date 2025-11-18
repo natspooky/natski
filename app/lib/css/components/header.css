@@ -1,18 +1,42 @@
 .header {
 	position: relative;
 	width: 100%;
-	padding: 20px;
-	height: calc(100vh - 60px);
+	height: calc(50vh + 60px);
 }
 
 .header .content-window {
 	position: relative;
 	height: 100%;
-	padding-bottom: 60px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
+}
+
+.header .image-container {
+	position: absolute;
+	display: block;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+.image-container::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	filter: blur(0px);
+	backdrop-filter: blur(10px);
+}
+
+.header .image-container img {
+	position: relative;
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
 }
 
 .header .content-window h1 {

@@ -1,22 +1,25 @@
 import { render, useState } from '../../apis/encore/element-creator.js';
 
-import { GlassBacking, Glass } from '../components/ui/glass.js';
+import Nav from '../components/nav.js';
 
-import StandardLayout from '../layouts/standardLayout.js';
+import standardLayout from '../layouts/standardLayout.js';
 import Selector from '../components/selector.js';
 
-function testUseState() {
+function headerLinkCard() {}
+
+function infoPanel() {
 	return {
 		tag: 'div',
+		children: {},
 	};
 }
 
 render(
 	'root',
 	() => {
-		window.components.layout = StandardLayout;
+		window.components.layout = standardLayout;
 
-		return [testUseState()];
+		return {};
 	},
 	{
 		useIcons: true,

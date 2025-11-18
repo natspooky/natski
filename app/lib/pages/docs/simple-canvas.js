@@ -1,4 +1,8 @@
-import { render, useState } from '../../../apis/encore/element-creator.js';
+import {
+	render,
+	useState,
+	useSuspense,
+} from '../../../apis/encore/element-creator.js';
 
 import DocLayout from '../../layouts/docLayout.js';
 

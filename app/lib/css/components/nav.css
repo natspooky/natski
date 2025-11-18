@@ -1,110 +1,164 @@
-.navigator.glass-backing {
+.navigator {
 	position: fixed;
-	top: 0px;
-	left: 0px;
+	top: 0;
+	left: 0;
 	width: 100%;
-	height: 60px;
+	height: fit-content;
+	background-color: rgba(0, 0, 0, 0.9);
+	filter: blur(0px);
+	backdrop-filter: blur(20px);
 	z-index: 9999;
 	display: block;
-	border-left: 0 solid rgba(255, 255, 255, 0.092);
-	border-top: 0 solid rgba(255, 255, 255, 0.092);
-	border-right: 0 solid rgba(255, 255, 255, 0.092);
-	max-width: unset;
-	border-radius: 0;
-	margin: 0 0 0 0;
-	padding: 0 0 0 0;
-	transition: 0.3s cubic-bezier(0.29, 0.05, 0, 2), background-color 0.3s,
-		opacity 0s, translate 0s;
 }
-
-.navigator.glass-backing.mobile-nav {
-	border-left: 1px solid rgba(255, 255, 255, 0.092);
-	border-top: 1px solid rgba(255, 255, 255, 0.092);
-	border-right: 1px solid rgba(255, 255, 255, 0.092);
-	top: 10px;
+.navigator.nav-mobile {
 	left: 10px;
+	top: 10px;
 	width: calc(100% - 20px);
-	padding: 0;
-	border-radius: 30px;
+	border-radius: 20px;
 }
-
-.nav-main-container {
+.navigator .nav-quick-select {
 	position: relative;
-	width: min(100%, 900px);
+	width: 100%;
+	height: 60px;
+	padding: 0 min(70px, 5vw);
+	overflow: hidden;
+}
+.navigator.nav-mobile .nav-quick-select {
+	padding: 0 12.5px;
+}
+.navigator .navigator .nav-dropdown {
+	overflow: hidden;
+	height: auto;
+	border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+.navigator .nav-section {
+	position: relative;
+	width: fit-content;
+	height: 100%;
 	display: flex;
-	padding: 0px 20px;
-	margin: auto;
+	flex-shrink: 0;
 	align-items: center;
-	justify-content: space-between;
+	gap: 15px;
 }
-
-.navigator button {
+.navigator .nav-section.nav-left {
+	float: left;
+}
+.navigator .nav-section.nav-right {
+	float: right;
+}
+.navigator .nav-section.nav-center {
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%) scale(1);
+	opacity: 1;
+	filter: blur(0px);
+	transition: transform 0.3s, opacity 0.3s, filter 0.3s;
+}
+.navigator .nav-section.nav-center.scrolled {
+	transform: translateX(-50%) scale(0.9);
+	opacity: 0;
+	filter: blur(5px);
+}
+.navigator .navi-button {
+	cursor: pointer;
 	position: relative;
-	width: 40px;
-	margin: 10px;
-	display: block;
-	background-color: transparent;
 	border: 0;
+	height: 35px;
+	font-size: 20px;
+	padding: 0 15px;
+	font-weight: 500;
 	display: flex;
+	border-radius: 100vmax;
 	align-items: center;
 	justify-content: center;
-	height: 40px;
+	background-color: transparent;
 }
-.navigator button icon-system {
-	position: relative;
-	width: 30px;
-	height: 30px;
-	background-color: #ffffffc3;
-	display: block;
+.navigator .navi-button span {
+	color: #a1a1a1;
+	transform: scale(1);
+	opacity: 1;
+	filter: blur(0px);
+	transition: transform 0.3s, color 0.3s, opacity 0.3s, filter 0.3s;
 }
-
-#menuToggle {
-	display: block;
-	margin: 4px 10px 0 10px;
-	position: relative;
-	margin-top: 4px;
-	z-index: 1;
-	-webkit-user-select: none;
-	width: fit-content;
-	height: fit-content;
-	user-select: none;
+.navigator .navi-button.active span,
+.navigator .navi-button:focus-visible span,
+.navigator .navi-button:hover span {
+	color: #fff;
+	opacity: 0;
+	transform: scale(1.15);
 }
-
-#menuToggle input {
+.navigator .navi-button:hover span {
+	filter: blur(10px);
+}
+.navigator .navi-button.active span {
+	color: #fff;
+	opacity: 0;
+	transform: scale(1.15);
+	filter: blur(10px);
+	transition: transform 0s, color 0s, opacity 0s;
+}
+.navigator .navi-button icon-system {
+	transform: scale(0.7);
+	background-color: #fff;
+	position: absolute;
+	width: 20px;
+	height: 20px;
 	display: block;
+	opacity: 0;
+	transition: transform 0.3s, opacity 0.3s;
+}
+.navigator .navi-button.active icon-system,
+.navigator .navi-button:focus-visible icon-system,
+.navigator .navi-button:hover icon-system {
+	transform: scale(1);
+	opacity: 1;
+}
+.navigator .navi-button.active icon-system {
+	transition: transform 0s, opacity 0s;
+}
+.navigator .navi-button::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
 	width: 100%;
 	height: 100%;
-	position: absolute;
-	cursor: pointer;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.253);
+	border-radius: 100vmax;
 	opacity: 0;
-	z-index: 2;
-	-webkit-touch-callout: none;
+	background-color: var(--accent);
+	pointer-events: none;
+	transform: scale(1.1);
+	transition: opacity 0.3s, transform 0.3s;
 }
-
-#menuToggle span {
-	display: block;
-	width: 30px;
-	height: 4px;
-	margin-bottom: 5px;
-	position: relative;
-	background: #ffffffc3;
-	border-radius: 3px;
-	z-index: 1;
-	transform-origin: left center;
-	transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
-		background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease;
-}
-
-#menuToggle input:checked ~ span {
+.navigator .navi-button:hover::before,
+.navigator .navi-button.active::before,
+.navigator .navi-button:focus-visible::before {
 	opacity: 1;
-	transform: rotate(45deg) translate(3.5px, -3px);
+	transform: scale(1);
 }
-
-#menuToggle input:checked ~ span:nth-child(3) {
-	opacity: 0;
-	transform: rotate(0deg) scale(0.2, 0.2);
+.navigator .navi-button.active::before {
+	transition: opacity 0s, transform 0s;
 }
-
-#menuToggle input:checked ~ span:nth-child(4) {
-	transform: rotate(-45deg) translate(1px, 5.5px);
+.navigator .navi-button.icon-only {
+	width: 35px;
+	padding: 0;
+}
+.navigator .navi-button.icon-only span {
+	display: none;
+}
+.navigator .navi-button.icon-only icon-system {
+	background-color: #a1a1a1;
+	transform: scale(0.9);
+	opacity: 1;
+	transition: transform 0.3s, background-color 0.3s;
+}
+.navigator .navi-button.icon-only:hover icon-system,
+.navigator .navi-button.icon-only:focus-visible icon-system,
+.navigator .navi-button.icon-only.active icon-system {
+	background-color: #fff;
+	transform: scale(1);
+}
+.navigator .navi-button.icon-only.active icon-system {
+	transition: transform 0s, background-color 0s;
 }
