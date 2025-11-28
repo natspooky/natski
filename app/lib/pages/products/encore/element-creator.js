@@ -3,8 +3,7 @@ import StandardLayout from '../../../layouts/standardLayout.js';
 import Header from '../../../components/header.js';
 import { Glass } from '../../../components/ui/glass.js';
 import TitlePage from '../../../components/ui/titlePage.js';
-import IS from '../../../components/image_components/IS.js';
-import Selector from '../../../components/selector.js';
+import Selector from '../../../components/ui/selector.js';
 
 render(
 	'root',

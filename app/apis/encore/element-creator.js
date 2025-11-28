@@ -138,7 +138,6 @@ class ComponentManager {
 		if (!Array.isArray(component)) {
 			if (document.body.contains(component)) component.remove();
 		} else {
-			console.log(component);
 			component.forEach((element) => {
 				if (document.body.contains(element)) element.remove();
 			});
@@ -333,10 +332,25 @@ class ComponentManager {
 	}
 }
 
+function buildText(text) {
+	const textData = document.createTextNode(text);
+	const trackingComment = document.createComment('');
+	const textFragment = document.createDocumentFragment();
+	appendChildren(textFragment, [textData, trackingComment]);
+	return textFragment;
+}
+
 function buildComponent(elementData) {
 	if (Array.isArray(elementData)) {
 		const elementArr = elementData
-			.filter((element) => checkForKeys(element) || element.nodeType)
+			.flat(Infinity)
+			.filter(
+				(element) =>
+					checkForKeys(element) ||
+					element.nodeType ||
+					typeof element === 'string' ||
+					typeof element === 'number',
+			)
 			.map((element) => {
 				return buildComponent(element);
 			});
@@ -344,7 +358,10 @@ function buildComponent(elementData) {
 		return elementArr;
 	}
 
-	if (elementData && elementData.nodeType) return elementData;
+	if (elementData?.nodeType) return elementData;
+
+	if (typeof elementData === 'string' || typeof elementData === 'number')
+		return buildText(elementData);
 
 	let element;
 
@@ -358,14 +375,7 @@ function buildComponent(elementData) {
 
 	switch (elementData.tag) {
 		case 'text': {
-			const textData = document.createTextNode(elementData.text ?? '');
-			const trackingComment = document.createComment('');
-
-			const textFragment = document.createDocumentFragment();
-
-			appendChildren(textFragment, [textData, trackingComment]);
-
-			return textFragment;
+			return buildText(elementData.text ?? '');
 		}
 		default:
 			if (!elementData.namespace) {
@@ -464,7 +474,21 @@ function buildComponent(elementData) {
 	return element;
 }
 
-function useEffect(fn, props) {}
+class Anchor extends HTMLElement {
+	#self;
+
+	constructor() {
+		const self = super();
+
+		this.#self = self;
+	}
+
+	connectedCallback() {
+		this.#self.setAttribute('hidden', '');
+	}
+
+	disconnectedCallback() {}
+}
 
 function loadElement(element) {
 	return new Promise((resolve) => {
@@ -510,7 +534,9 @@ function awaitContentLoad(element) {
 	const elementType = (element) => {
 		switch (element.tagName) {
 			case 'IMG':
-				if (element.src) loadableElements.push(loadElement(element));
+			case 'SVG':
+				if (element.src && element.getAttribute('type') !== 'lazy')
+					loadableElements.push(loadElement(element));
 				return true;
 			case 'INPUT':
 				if (
@@ -536,9 +562,8 @@ function awaitContentLoad(element) {
 	};
 
 	const crawlChildren = (element) => {
-		if (element.children.length === 0) {
-			if (elementType(element)) return;
-		}
+		if (element.children.length === 0 && elementType(element)) return;
+
 		Array.from(element.children).forEach((child) => {
 			if (elementType(child)) return;
 
@@ -575,107 +600,24 @@ function useSuspense(fn, loading, fallback) {
 			);
 		}
 		return content;
-	}, loading ?? { tag: 'div', attributes: { hidden: '' } });
+	}, loading);
 }
-
-/*
-function useAnimate(fn, id) {
-	let animationFrame;
-
-	const animator = (animation) => {
-		animation();
-		animationFrame = requestAnimationFrame(() => animator(animation));
-	};
-
-	if (!window.elemCreatorAnimate) window.elemCreatorAnimate = {};
-
-	if (window.elemCreatorAnimate[id]) {
-		cancelAnimationFrame(window.elemCreatorAnimate[id]);
-	}
-
-	animationFrame = requestAnimationFrame(() => animator(fn));
-	window.elemCreatorAnimate[id] = animationFrame;
-}*/
 
 function useId() {
 	if (!window.elementCreatorIdSessionStorage)
-		window.elementCreatorIdSessionStorage = {};
+		window.elementCreatorIdSessionStorage = 0;
 
-	const id =
-		'NTSK' +
-		new Array(2)
-			.fill(0)
-			.map(() => {
-				return ':|' + Math.floor(Math.random() * 99).toString(16);
-			})
-			.join('&') +
-		'i';
-
-	if (!window.elementCreatorIdSessionStorage[id]) {
-		window.elementCreatorIdSessionStorage[id] = true;
-	} else {
-		return useId();
-	}
-
-	return id;
+	return ':' + (window.elementCreatorIdSessionStorage++).toString(16) + '&e:';
 }
 
 function usePath() {
 	return new URL(window.location.href).pathname;
 }
 
-function useCallback(fn, dependencies) {
-	return () => {
-		fn(...dependencies);
-	};
-}
-
-function useTransition(fn) {
-	const transitionManager = {
-		stateSystem: useState((getter, setter) => {}),
-
-		setter: (value) => {
-			let skipFlag = false;
-			switch (typeof value) {
-				case 'object':
-					skipFlag =
-						JSON.stringify(transitionManager.state) ===
-						JSON.stringify(value);
-					break;
-				default:
-					skipFlag = transitionManager.state === value;
-					break;
-			}
-
-			if (skipFlag) return;
-
-			transitionManager.state = value;
-
-			const newElement = buildComponent(
-				fn(transitionManager.getter, transitionManager.setter),
-			);
-
-			transitionManager.element.replaceWith(newElement);
-
-			transitionManager.element = newElement;
-		},
-
-		get getter() {
-			return transitionManager.state;
-		},
-	};
-
-	transitionManager.element = buildComponent(
-		fn(transitionManager.getter, transitionManager.setter),
-	);
-
-	return transitionManager.element;
-}
-
-function createPortal() {}
-
-function createContext(init) {
+function createContext(name, init) {
 	window.elementCreatorContext;
+
+	localStorage.setItem();
 
 	return ({ value, children, ...props }) => {
 		return {
@@ -687,15 +629,16 @@ function createContext(init) {
 	};
 }
 
-function memo(fn) {
-	//prevent re-rendering of component when parent is re-rendered
-
-	return;
-}
+function useContext({ children, id }) {}
 
 function useRef(init) {}
 
 function useState(fn, initVal) {
+	const checkState = (val) => {
+		if (val) return val;
+		return { tag: 'ec-anchor' };
+	};
+
 	const stateManager = {
 		element: null,
 		container: document.createDocumentFragment(),
@@ -719,7 +662,7 @@ function useState(fn, initVal) {
 			stateManager.state = value;
 
 			const newElement = buildComponent(
-				fn(stateManager.getter, stateManager.setter),
+				checkState(fn(stateManager.getter, stateManager.setter)),
 			);
 
 			if (!stateManager.element) await stateManager.check();
@@ -746,7 +689,7 @@ function useState(fn, initVal) {
 	};
 
 	stateManager.element = buildComponent(
-		fn(stateManager.getter, stateManager.setter),
+		checkState(fn(stateManager.getter, stateManager.setter)),
 	);
 
 	stateManager.container.appendChild(stateManager.element);
@@ -754,19 +697,28 @@ function useState(fn, initVal) {
 	return stateManager.container;
 }
 
-function renderDifference(pageElement, reRenderedElement) {
-	//do this
-	if (pageElement.isEqualNode(reRenderedElement)) return;
+function isObject(item) {
+	return item && typeof item === 'object' && !Array.isArray(item);
+}
 
-	const differentNodes = [];
-
-	differentNodes.forEach(({ oldNode, newNode }) => {
-		oldNode.replaceWith(newNode);
-	}); //make this detect className changes and new elements alongside internal text content
+function merge(target, ...sources) {
+	if (!sources.length) return target;
+	const source = sources.shift();
+	if (isObject(target) && isObject(source)) {
+		for (const key in source) {
+			if (isObject(source[key])) {
+				if (!target[key]) Object.assign(target, { [key]: {} });
+				merge(target[key], source[key]);
+			} else {
+				Object.assign(target, { [key]: source[key] });
+			}
+		}
+	}
+	return merge(target, ...sources);
 }
 
 function checkEvent(eventName) {
-	if (typeof eventName != 'string' || eventName.length == 0) return false;
+	if (typeof eventName !== 'string' || eventName.length === 0) return false;
 	const tagNames = {
 		select: 'input',
 		change: 'input',
@@ -781,7 +733,7 @@ function checkEvent(eventName) {
 	let isSupported = eventName in element;
 	if (!isSupported) {
 		element.setAttribute(eventName, 'return;');
-		isSupported = typeof element[eventName] == 'function';
+		isSupported = typeof element[eventName] === 'function';
 	}
 	element = null;
 	return isSupported;
@@ -801,6 +753,15 @@ function render(root, fn, settings) {
 	});
 
 	if (settings?.useIcons) new IconSystem();
+
+	if (settings?.htmlElements)
+		Object.entries(settings.htmlElements).forEach(
+			([name, elementClass]) => {
+				customElements.define(name, elementClass);
+			},
+		);
+
+	customElements.define('ec-anchor', Anchor);
 
 	if (settings?.customEvents) {
 		//do this
@@ -1098,20 +1059,17 @@ function className(classes, ...extraClasses) {
 		? [...classes, ...extraClasses]
 		: [classes, ...extraClasses];
 
-	const processClasses = (classes) => {
-		const tempArr = [];
-		classes
-			.flat(Infinity)
-			.filter(Boolean)
-			.forEach((classData) => {
-				if (classData === '') return;
-				tempArr.push(...classData.split(' '));
-			});
+	const tempArr = [];
 
-		return tempArr;
-	};
+	classes
+		.flat(Infinity)
+		.filter(Boolean)
+		.forEach((classData) => {
+			if (classData === '') return;
+			tempArr.push(...classData.split(' '));
+		});
 
-	return Array.from(new Set(processClasses(classes)));
+	return Array.from(new Set(tempArr));
 }
 
 function checkForKeys(component) {
@@ -1136,74 +1094,5 @@ export {
 	useSuspense,
 	useId,
 	usePath,
+	merge,
 };
-
-/*
-class AnimationManager {
-	constructor() {}
-
-	easeSelector(name) {
-		switch (name) {
-			case 'linear':
-				return this.linear;
-		}
-	}
-
-	linear(timeFraction) {
-		return timeFraction;
-	}
-	quad(timeFraction) {
-		return Math.pow(timeFraction, 2);
-	}
-	circ(timeFraction) {
-		return 1 - Math.sin(Math.acos(timeFraction));
-	}
-	back(x, timeFraction) {
-		return Math.pow(timeFraction, 2) * ((x + 1) * timeFraction - x);
-	}
-	bounce(timeFraction) {
-		for (let a = 0, b = 1; (a += b), (b /= 2); ) {
-			if (timeFraction >= (7 - 4 * a) / 11) {
-				return (
-					-Math.pow((11 - 6 * a - 11 * timeFraction) / 4, 2) +
-					Math.pow(b, 2)
-				);
-			}
-		}
-	}
-	elastic(x, timeFraction) {
-		return (
-			Math.pow(2, 10 * (timeFraction - 1)) *
-			Math.cos(((20 * Math.PI * x) / 3) * timeFraction)
-		);
-	}
-
-	makeEaseOut(timing) {
-		return function (timeFraction) {
-			return 1 - timing(1 - timeFraction);
-		};
-	}
-	makeEaseInOut(timing) {
-		return function (timeFraction) {
-			if (timeFraction < 0.5) return timing(2 * timeFraction) / 2;
-			else return (2 - timing(2 * (1 - timeFraction))) / 2;
-		};
-	}
-
-	animate({ easing, draw, duration }) {
-		const start = performance.now();
-		requestAnimationFrame(function animate(time) {
-			let timeFraction = (time - start) / duration;
-			if (timeFraction > 1) timeFraction = 1;
-
-			const progress = easing(timeFraction);
-
-			draw(progress);
-
-			if (timeFraction < 1) {
-				requestAnimationFrame(animate);
-			}
-		});
-	}
-}
-*/

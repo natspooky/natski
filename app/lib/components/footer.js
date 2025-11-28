@@ -1,53 +1,58 @@
-import LinkButton from './button_components/linkButton.js';
 import isMobile from '../../apis/dependencies/mobile-utils.js';
 import { GlassBacking } from './ui/glass.js';
+import IconLink from './ui/buttons/link.js';
 import { GradientSparkle } from './ui/backgrounds.js';
 
 export default function Footer() {
+	const apis = [
+		{
+			name: 'ENCORE',
+			children: 'Encore',
+			href: '/products/encore',
+		},
+		{
+			name: 'simple',
+			children: 'Simple',
+			href: '/products/simple',
+		},
+		{
+			name: 'ARC',
+			children: 'Arc',
+			href: '/apis/arc',
+		},
+	];
+
 	const socials = [
 		{
-			customIcon: '/icon/system_icons/socials/github.svg',
-			name: 'GitHub',
-			routing: {
-				display: '_blank',
-				href: 'https://github.com/natspooky',
-			},
+			src: '/icon/system_icons/socials/github.svg',
+			children: 'GitHub',
+			target: '_blank',
+			href: 'https://github.com/natspooky',
 		},
 		{
-			customIcon: '/icon/system_icons/socials/instagram.svg',
-			name: 'Instagram',
-			routing: {
-				display: '_blank',
-				href: 'https://www.instagram.com/natspki/',
-			},
+			src: '/icon/system_icons/socials/instagram.svg',
+			children: 'Instagram',
+			target: '_blank',
+			href: 'https://www.instagram.com/natspki/',
 		},
-
 		{
-			customIcon: '/icon/system_icons/socials/linkedin.svg',
-			name: 'LinkedIn',
-			routing: {
-				display: '_blank',
-				href: 'https://linkedin.com/in/michael-earle-ab055338b',
-			},
+			src: '/icon/system_icons/socials/linkedin.svg',
+			children: 'LinkedIn',
+			target: '_blank',
+			href: 'https://linkedin.com/in/michael-earle-ab055338b',
 		},
 	];
 
 	const references = [
 		{
-			icon: 'document',
-			name: 'Documentation',
-			routing: {
-				display: '_self',
-				href: '/docs',
-			},
+			name: 'document',
+			children: 'Documentation',
+			href: '/docs',
 		},
 		{
-			icon: 'CLS',
-			name: 'Changelog',
-			routing: {
-				display: '_self',
-				href: '/changelog',
-			},
+			name: 'CLS',
+			children: 'Changelog',
+			href: '/changelog',
 		},
 	];
 
@@ -70,17 +75,11 @@ export default function Footer() {
 								children: [
 									{
 										tag: 'h1',
-										children: {
-											tag: 'text',
-											text: 'natski.dev',
-										},
+										children: 'natski.dev',
 									},
 									{
 										tag: 'p',
-										children: {
-											tag: 'text',
-											text: 'Going insane ♪(´▽｀)',
-										},
+										children: 'Going insane ♪(´▽｀)',
 									},
 								],
 							},
@@ -89,33 +88,9 @@ export default function Footer() {
 								children: [
 									{
 										tag: 'h1',
-										innerHTML: 'API',
+										children: 'APIs',
 									},
-
-									LinkButton({
-										icon: 'ENCORE',
-										name: 'Encore',
-										routing: {
-											display: '_self',
-											href: '/products/encore',
-										},
-									}),
-									LinkButton({
-										icon: 'simple',
-										name: 'Simple',
-										routing: {
-											display: '_self',
-											href: '/products/simple',
-										},
-									}),
-									LinkButton({
-										icon: 'ARC',
-										name: 'Arc',
-										routing: {
-											display: '_self',
-											href: '/apis/arc',
-										},
-									}),
+									apis.map((data) => IconLink(data)),
 								],
 							},
 							{
@@ -123,11 +98,9 @@ export default function Footer() {
 								children: [
 									{
 										tag: 'h1',
-										innerHTML: 'References',
+										children: 'References',
 									},
-									...references.map((data) =>
-										LinkButton(data),
-									),
+									references.map((data) => IconLink(data)),
 								],
 							},
 							{
@@ -135,23 +108,19 @@ export default function Footer() {
 								children: [
 									{
 										tag: 'h1',
-										innerHTML: 'Socials',
+										children: 'Socials',
 									},
-
-									...socials.map((data) => LinkButton(data)),
+									socials.map((data) => IconLink(data)),
 								],
 							},
 						],
 					},
 					{
 						tag: 'section',
-						children: LinkButton({
-							icon: 'NATSKI',
-							name: `${new Date().getFullYear()} Natski`,
-							routing: {
-								display: '_self',
-								href: '/',
-							},
+						children: IconLink({
+							name: 'NATSKI',
+							href: '/',
+							children: `${new Date().getFullYear()} Natski`,
 						}),
 					},
 				],

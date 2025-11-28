@@ -46,7 +46,7 @@ export default class SimpleCanvas {
 
 		//resize
 		'resize',
-	].filter(this.#checkEventSupport);
+	];
 
 	#userEventListeners = {};
 	#canvasEventRemovers = {};
@@ -130,6 +130,10 @@ export default class SimpleCanvas {
 	};
 
 	constructor(canvas, settings = {}, name = 'Unnamed Canvas') {
+		this.#supportedEvents = this.#supportedEvents.filter(
+			this.#checkEventSupport,
+		);
+
 		this.#mergeSettings(settings);
 
 		switch (typeof canvas) {
@@ -814,10 +818,6 @@ export default class SimpleCanvas {
 			this.#fps(ctx);
 			this.#mouse(ctx);
 		});
-	}
-
-	#container({ width, height, padding, clip, child, fn, round, parentData }) {
-		//give option to scale with dpi!
 	}
 
 	#fps(ctx) {

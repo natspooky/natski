@@ -1,7 +1,7 @@
 .marquee {
 	position: relative;
 	background-color: aliceblue;
-	width: 100%;
+	width: 70%;
 	height: fit-content;
 	overflow: hidden;
 }

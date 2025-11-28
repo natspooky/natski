@@ -1,9 +1,25 @@
-import RootLayout from './rootLayout.js';
+import StandardLayout from '../standardLayout.js';
+
+function SideNav() {
+	return {
+		tag: 'div',
+	};
+}
+
+function TopNav() {
+	return {
+		tag: 'div',
+	};
+}
 
 export default function DocumentationLayout({ children }) {
-	const contents = children; //[{}];
-
-	return RootLayout({
-		children: contents,
+	return StandardLayout({
+		children: [
+			SideNav(),
+			{
+				tag: 'div',
+				children: [TopNav(), children],
+			},
+		],
 	});
 }

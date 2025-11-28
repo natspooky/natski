@@ -2,7 +2,6 @@
 	position: relative;
 	width: fit-content;
 	display: flex;
-	z-index: 100;
 	bottom: 0;
 }
 

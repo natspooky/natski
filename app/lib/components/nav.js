@@ -4,9 +4,7 @@ import {
 	useState,
 } from '../../apis/encore/element-creator.js';
 import isMobile from '../../apis/dependencies/mobile-utils.js';
-import LinkButton from './button_components/linkButton.js';
-//import Button from './button_components/button.js';
-import IS from './image_components/IS.js';
+import Icon from './ui/icon.js';
 
 function Button({ name, icon, classes, href, events }) {
 	return {
@@ -26,15 +24,13 @@ function Button({ name, icon, classes, href, events }) {
 		),
 		children: [
 			name ? { tag: 'span', children: { tag: 'text', text: name } } : {},
-			icon ? IS({ icon }) : {},
+			icon ? Icon({ name: icon }) : {},
 		],
 	};
 }
 
 export default function Nav() {
 	const pageName = usePath();
-
-	let setter;
 
 	const linkArray = [
 		{
@@ -48,20 +44,10 @@ export default function Nav() {
 			icon: 'document',
 			href: '/docs',
 		},
-		{
-			name: 'Projects',
-			icon: 'apps',
-			href: 'aa',
-		},
 	];
 
 	return {
 		tag: 'nav',
-		events: {
-			mouseleave: {
-				callback: () => setter(null),
-			},
-		},
 		classes: className('navigator', isMobile ? 'nav-mobile' : null),
 		children: [
 			{
@@ -90,12 +76,6 @@ export default function Nav() {
 								return Button({
 									...item,
 									classes: 'active',
-									events: {
-										mouseenter: {
-											callback: () =>
-												setter(['a', 1, 1, 1]),
-										},
-									},
 								});
 							return Button({ ...item });
 						}),
@@ -112,22 +92,6 @@ export default function Nav() {
 					},
 				],
 			},
-			useState((navItems, setNavItems) => {
-				setter = setNavItems;
-				return {
-					tag: 'div',
-					classes: 'nav-dropdown',
-					children: navItems?.map(() => {
-						return { tag: 'text', text: 'aaaaaa1' };
-					}),
-				};
-			}, null),
 		],
 	};
 }
-
-/*
-
-
-
-*/

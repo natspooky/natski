@@ -1,7 +1,6 @@
 import { className, useId } from '../../../apis/encore/element-creator.js';
 import Canvas from '../canvas.js';
 import isMobile from '../../../apis/dependencies/mobile-utils.js';
-import IS from '../image_components/IS.js';
 
 function GradientSparkle({ particles, waves }) {
 	const canvasID = useId();

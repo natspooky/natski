@@ -6,7 +6,6 @@ import { IS_DATA } from '../../../../apis/encore/dependencies/icon-system/IS_DAT
 import StandardLayout from '../../../layouts/standardLayout.js';
 import Header from '../../../components/header.js';
 import { Glass } from '../../../components/ui/glass.js';
-import IS from '../../../components/image_components/IS.js';
 
 function iconGrid() {
 	return IS_DATA.map((icon) => {

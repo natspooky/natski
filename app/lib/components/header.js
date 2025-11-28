@@ -1,7 +1,6 @@
-import IS from './image_components/IS.js';
 import { Waves } from './ui/backgrounds.js';
 import { Glass } from './ui/glass.js';
-import Button from './button_components/button.js';
+import Link from './ui/buttons/link.js';
 import { useSuspense } from '../../apis/encore/element-creator.js';
 
 export default function Header({ src, title }) {
@@ -9,7 +8,6 @@ export default function Header({ src, title }) {
 		tag: 'header',
 		classes: 'header',
 		children: [
-			//GradientSparkle({ waves: true, particles: true }),
 			{
 				tag: 'div',
 				classes: 'content-window',
@@ -17,13 +15,25 @@ export default function Header({ src, title }) {
 					{
 						tag: 'div',
 						classes: 'image-container',
-						children: {
-							tag: 'img',
-							attributes: {
-								src,
-							},
-						},
+						children: useSuspense(() => {
+							return {
+								tag: 'img',
+								attributes: {
+									src,
+									alt: src,
+								},
+								onAppend: {
+									callback: (self) => {
+										self.classList.add('loaded');
+									},
+									options: {
+										awaitFontLoad: true,
+									},
+								},
+							};
+						}),
 					},
+					Link({ href: '/home' }),
 					Waves(),
 				],
 				//children,

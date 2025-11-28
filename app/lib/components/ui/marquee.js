@@ -4,78 +4,80 @@ import {
 	useSuspense,
 } from '../../../apis/encore/element-creator.js';
 
-export default function Marquee({ children, classes, speed }) {
-	let scroller;
+export default function Marquee({ children, speed, classes }) {
 	let container;
+	let scroller;
 
 	let position = 0;
 	let first = true;
 	let counter = 0;
 
 	let animateID;
+	let countSetter;
 
 	const animate = () => {
 		position += speed;
 
 		if (scroller.offsetWidth / counter < position) position = 0;
 
-		scroller.style.marginLeft = `-${position}px`;
+		scroller.style.transform = `translateX(-${position}px)`;
 
 		animateID = requestAnimationFrame(animate);
 	};
 
-	return useSuspense(
-		() => {
-			return useState((count, setCount) => {
-				cancelAnimationFrame(animateID);
+	const resize = () => {
+		first = true;
+		countSetter(1);
+	};
 
-				return {
-					tag: 'div',
-					classes: className('marquee', classes),
-					children: {
-						tag: 'div',
-						classes: 'marquee-sub',
-						children: {
-							tag: 'section',
-							classes: 'marquee-scroller',
-							children: new Array(count).fill(0).map(() => {
-								return children;
-							}),
-							onCreate: (self) => {
-								scroller = self;
+	return useSuspense(() => {
+		return {
+			tag: 'div',
+			events: {
+				resize: {
+					target: window,
+					callback: resize,
+				},
+			},
+			classes: className('marquee', classes),
+			children: {
+				tag: 'div',
+				classes: 'marquee-sub',
+				children: useState((count, setCount) => {
+					cancelAnimationFrame(animateID);
+					counter = count;
+					countSetter = setCount;
+
+					return {
+						tag: 'section',
+						classes: 'marquee-scroller',
+						children: new Array(count).fill(0).map(() => {
+							return children;
+						}),
+						onAppend: {
+							callback: () => {
+								const cWidth = container.offsetWidth;
+								const sWidth = scroller.offsetWidth;
+								if (cWidth > sWidth || first) {
+									first = false;
+									setCount(Math.ceil(cWidth / sWidth) + 1);
+								} else {
+									animate();
+								}
+							},
+							options: {
+								awaitFontLoad: true,
 							},
 						},
-					},
-					onCreate: (self) => {
-						container = self;
-					},
-					onAppend: {
-						callback: () => {
-							const cWidth = container.offsetWidth;
-							const sWidth = scroller.offsetWidth;
-
-							if (cWidth > sWidth || first) {
-								first = false;
-
-								setCount(Math.ceil(cWidth / sWidth) + 1);
-							} else {
-								animate();
-							}
+						onCreate: (self) => {
+							scroller = self;
 						},
-						options: {
-							awaitFontLoad: true,
-						},
-					},
-				};
-			}, 1);
-		},
-		{
-			tag: 'div',
-			attributes: {
-				hidden: '',
+					};
+				}, 1),
 			},
-		},
-	);
-	// fix where the usestate is so it doesnt suck!!
-	ssssss;
+			onCreate: (self) => {
+				container = self;
+			},
+		};
+	});
 }

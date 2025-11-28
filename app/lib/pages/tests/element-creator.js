@@ -4,9 +4,11 @@ import {
 	useSuspense,
 	useId,
 	className,
+	buildComponent,
+	merge,
 	checkEvent,
 } from '../../../apis/encore/element-creator.js';
-import Selector from '../../../lib/components/selector.js';
+import Selector from '../../components/ui/selector.js';
 
 function textNode(text) {
 	return {
@@ -18,8 +20,12 @@ function textNode(text) {
 function page() {
 	return [
 		stateComponent,
+		objectMergeTest,
 		idComponent,
 		classNameComponent,
+		stackerTest,
+		stringTest,
+		suspenceComponentAnchor,
 		suspenseComponentElement,
 		suspenceComponentImage,
 		suspenceComponentVideo,
@@ -41,6 +47,54 @@ function page() {
 	});
 }
 
+function stringTest() {
+	return [textNode('textNode'), 'string text'];
+}
+
+function objectMergeTest() {
+	return JSON.stringify(
+		merge(
+			{
+				tag: 'div',
+				attributes: {
+					name: 'bunga',
+					src: 'red',
+				},
+			},
+			{
+				attributes: {
+					name: 'blue',
+				},
+			},
+		),
+	);
+}
+
+function stackerTest() {
+	return [
+		{
+			tag: 'div',
+			children: textNode('above stacker'),
+		},
+		[
+			{
+				tag: 'div',
+				children: textNode('inbetween stacker'),
+			},
+			[
+				{
+					tag: 'div',
+					children: textNode('double inbetween stacker'),
+				},
+			],
+		],
+		{
+			tag: 'div',
+			children: textNode('below stacker'),
+		},
+	];
+}
+
 function stateComponent() {
 	return useState((number, setNumber) => {
 		return {
@@ -53,7 +107,7 @@ function stateComponent() {
 				},
 			},
 			onCreate: () => {
-				setNumber(3);
+				if (number === 0) setNumber(3);
 			},
 			children: textNode(`clicked ${number} times`),
 		};
@@ -66,7 +120,7 @@ function idComponent() {
 	return {
 		tag: 'span',
 		classes: linkId,
-		children: new Array(10).fill(0).map(() => {
+		children: new Array(3).fill(0).map(() => {
 			return {
 				tag: 'p',
 				classes: linkId,
@@ -94,6 +148,15 @@ function suspenseComponentElement() {
 	);
 }
 
+function suspenceComponentAnchor() {
+	return useSuspense(() => {
+		return {
+			tag: 'div',
+			children: 'Anchored!',
+		};
+	});
+}
+
 function suspenceComponentVideo() {
 	return useSuspense(
 		() => {
@@ -104,9 +167,6 @@ function suspenceComponentVideo() {
 						tag: 'video',
 						attributes: {
 							src: '../../../icon/artwork/alevel_art/5.mp4',
-							muted: '',
-							autoplay: '',
-							playsinline: '',
 						},
 					},
 				],
@@ -141,14 +201,6 @@ function suspenceComponentImage() {
 							src: 'https://images.unsplash.com/photo-1608848461950-0fe51dfc41cb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MTl8fHxlbnwwfHx8fA%3D%3D&w=1000&q=80',
 						},
 					},
-					{
-						tag: 'img',
-						attributes: {
-							src: 'https://i.pinimg.com/originals/6f/a2/e5/6fa2e5ab9ee2db9845f4f2a6e6f7ee28.png',
-							width: 300,
-							height: 300,
-						},
-					},
 				],
 			};
 		},
@@ -164,7 +216,7 @@ function classNameComponent() {
 
 	return {
 		tag: 'p',
-		children: textNode(className(...classes).join(' ')),
+		children: className(...classes).join(' '),
 	};
 }
 

@@ -18,7 +18,7 @@ class IS extends HTMLElement {
 	#self;
 
 	constructor() {
-		let self = super();
+		const self = super();
 
 		this.#self = self;
 		this.#iconPath =

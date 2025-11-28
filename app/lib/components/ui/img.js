@@ -1,6 +1,5 @@
 import {
 	className,
-	useState,
 	useSuspense,
 } from '../../../apis/encore/element-creator.js';
 
@@ -12,6 +11,7 @@ export default function Img({
 	fallback,
 	events,
 	attributes,
+	classes,
 	...props
 }) {
 	return useSuspense(
@@ -24,12 +24,15 @@ export default function Img({
 					width,
 					height,
 					src,
+					alt: src,
+					draggable: false,
 				},
 				events: {
 					...events,
 					load: [{}, events.load],
 					error: [{}, events.error],
 				},
+				classes: className('', classes),
 			};
 		},
 		loading,

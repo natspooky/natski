@@ -1,6 +1,6 @@
-import Button from './button_components/button.js';
-import { Glass, GlassBacking } from './ui/glass.js';
-
+import Button from './buttons/button.js';
+import { Glass, GlassBacking } from './glass.js';
+/*
 export default function selector({ buttons }) {
 	let overlay;
 
@@ -35,7 +35,7 @@ export default function selector({ buttons }) {
 		tag: 'div',
 		classes: 'selector',
 		children: [
-			...buttons.map(({ action, icon, name, active }) => {
+			buttons.map(({ action, icon, name, active }) => {
 				return Button({
 					action: [
 						{
@@ -67,4 +67,28 @@ export default function selector({ buttons }) {
 			}),
 		],
 	});
+}*/
+
+/*
+export default function Selector({ classes, setter }, ...buttons) {
+
+	
+	
+	const drag = () => { }
+	
+	const click = () => { }
+
+	const create = () => { }
+	
+	const append = () => {}
+
+
+	return {
+		classes: className("", classes),
+
+	}
+}*/
+
+export default function Selector({ classes, setter }, ...buttons) {
+	return [];
 }

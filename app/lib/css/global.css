@@ -204,8 +204,7 @@
 }
 
 #load {
-	position: fixed;
-	z-index: 999999;
+	position: absolute;
 	top: 0;
 	left: 0;
 	width: 100%;
@@ -243,7 +242,6 @@ body {
 .main {
 	position: relative;
 	width: 100%;
-	min-height: calc(90vh - 50px);
 }
 
 .text-gradient {
