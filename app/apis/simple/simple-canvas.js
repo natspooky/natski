@@ -170,6 +170,7 @@ export default class SimpleCanvas {
 		}
 
 		this.#canvasState.context = this.#canvasState.canvas.getContext('2d');
+
 		this.#canvasState.id = name;
 
 		this.#attachEvents();
@@ -933,7 +934,7 @@ export default class SimpleCanvas {
 		context.restore();
 	}
 
-	// canvas getter
+	// canvas state getter
 
 	get element() {
 		return this.#canvasState.canvas;
@@ -941,6 +942,10 @@ export default class SimpleCanvas {
 
 	get context() {
 		return this.#canvasState.context;
+	}
+
+	get id() {
+		return this.#canvasState.id;
 	}
 
 	get width() {
@@ -951,7 +956,7 @@ export default class SimpleCanvas {
 		return this.#canvasState.size.height;
 	}
 
-	//time
+	//draw state getter
 
 	get runTime() {
 		return this.#drawingState.runTime;
@@ -961,7 +966,15 @@ export default class SimpleCanvas {
 		return this.#drawingState.renderTime;
 	}
 
-	//mouse getter
+	get paused() {
+		return this.#drawingState.paused;
+	}
+
+	get drawing() {
+		return this.#drawingState.drawing;
+	}
+
+	//mouse state getter
 
 	get cursor() {
 		return {
