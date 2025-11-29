@@ -25,7 +25,7 @@ class IS extends HTMLElement {
 			'https://natski.vercel.app/apis/encore/dependencies/icon-system/svg/?.svg';
 	}
 
-	#createMask(icon, custom, editable) {
+	#createMask(icon, custom) {
 		if (!IS_DATA.includes(icon) && !custom) {
 			iconSystemConsole.message({
 				error: `The Icon-System icon '${icon}' doesn't exist. Did you mean to use 'src' instead of 'name'?`,
@@ -34,9 +34,9 @@ class IS extends HTMLElement {
 
 			icon = 'alert';
 		}
-		return `url(${custom ? icon : this.#iconPath.replace('?', icon)})${
-			editable ? '' : ' no-repeat center'
-		}`;
+		return `url(${
+			custom ? icon : this.#iconPath.replace('?', icon)
+		}) no-repeat center`;
 	}
 
 	#showIcon() {
@@ -52,36 +52,30 @@ class IS extends HTMLElement {
 
 		const name = this.getAttribute('name');
 		const source = this.getAttribute('src');
-		const editable = this.getAttribute('src');
 
 		if (!name && !source) {
 			iconSystemConsole.message({
 				error: `No 'src' or 'name' provided`,
 				message: `Icon load error:`,
 			});
-			this.#self.style.mask = this.#createMask('alert', false, editable);
+			this.#self.style.mask = this.#createMask('alert', false);
 			this.#showIcon();
 			return;
 		}
 
 		if (name) {
-			this.#self.style.mask = this.#createMask(name, false, editable);
+			this.#self.style.mask = this.#createMask(name, false);
 			this.#showIcon();
 			return;
 		}
 
 		if (source) {
 			if (fileExtention(source) === 'svg') {
-				this.#self.style.mask = this.#createMask(
-					source,
-					true,
-					editable,
-				);
+				this.#self.style.mask = this.#createMask(source, true);
 			} else {
 				this.#self.style.backgroundImage = this.#createMask(
 					source,
 					true,
-					editable,
 				);
 			}
 			this.#showIcon();
@@ -93,11 +87,7 @@ class IS extends HTMLElement {
 					message: 'Icon load error:',
 					error: `The custom icon '${source}' doesn't exist`,
 				});
-				this.#self.style.mask = this.#createMask(
-					'alert',
-					false,
-					editable,
-				);
+				this.#self.style.mask = this.#createMask('alert', false);
 			};
 
 			buffer.src = source;
