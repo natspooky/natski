@@ -352,7 +352,6 @@ export default class SimpleCanvas {
 			useKey: false,
 			diagnostics: false,
 			detectWindowFocus: true,
-			debugConsole: false,
 
 			...userSettings,
 		};
@@ -950,6 +949,16 @@ export default class SimpleCanvas {
 
 	get height() {
 		return this.#canvasState.size.height;
+	}
+
+	//time
+
+	get runTime() {
+		return this.#drawingState.runTime;
+	}
+
+	get renderTime() {
+		return this.#drawingState.renderTime;
 	}
 
 	//mouse getter
