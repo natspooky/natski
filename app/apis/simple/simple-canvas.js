@@ -527,14 +527,14 @@ export default class SimpleCanvas {
 			const observer = new ResizeObserver(() => resizeFn());
 			observer.observe(this.#canvasState.canvas);
 		}
-
+		/*
 		this.#buildEmbedEvent({
 			target: window,
 			eventName: 'resize',
 			fn: this.#locationUpdate,
 			options: { passive: true },
 		});
-
+*/
 		//focus
 
 		if (this.settings.detectWindowFocus) {
@@ -613,7 +613,7 @@ export default class SimpleCanvas {
 
 	async #resize() {
 		this.#sizeUpdate();
-		this.#locationUpdate();
+		//this.#locationUpdate();
 
 		if (this.settings.setupOnResize && this.settings.autoResize)
 			await this.#drawingState.setupFn?.();
