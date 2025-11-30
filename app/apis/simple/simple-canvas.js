@@ -130,9 +130,7 @@ export default class SimpleCanvas {
 	};
 
 	#timers = {
-		motionState: undefined,
-		wheelMotionState: undefined,
-		scrollMotionState: undefined, //possibly dont need
+		cursorMotionState: undefined,
 	};
 
 	constructor(canvas, settings = {}, name = 'Unnamed Canvas') {
@@ -201,12 +199,7 @@ export default class SimpleCanvas {
 
 	//user functions
 
-	static create(
-		identifiers,
-		settings,
-		name,
-		//fallbackText, add this
-	) {
+	static create(identifiers, settings, name) {
 		const element = document.createElement('canvas');
 
 		identifiers.split(' ').forEach((identifier) => {
@@ -437,7 +430,6 @@ export default class SimpleCanvas {
 			Object.values(this.#canvasEventRemovers).forEach((eventRemover) =>
 				eventRemover(),
 			);
-
 			return;
 		}
 
@@ -569,11 +561,13 @@ export default class SimpleCanvas {
 			target: window,
 			eventName: 'blur',
 			fn: this.#pageBlur,
+			options: { passive: true },
 		});
 		this.#buildEmbedEvent({
 			target: window,
 			eventName: 'focus',
 			fn: this.#pageFocus,
+			options: { passive: true },
 		});
 	}
 
@@ -698,7 +692,7 @@ export default class SimpleCanvas {
 
 		this.#mouseState.motion.lastPostion = this.#mouseState.motion.position;
 
-		clearTimeout(this.#timers.motionState);
+		clearTimeout(this.#timers.cursorMotionState);
 
 		this.#mouseState.moving = true;
 
@@ -741,7 +735,7 @@ export default class SimpleCanvas {
 
 		this.#mouseState.motion.lastEntryTime = performance.now();
 
-		this.#timers.motionState = setTimeout(() => {
+		this.#timers.cursorMotionState = setTimeout(() => {
 			this.#mouseState.moving = false;
 			this.#mouseState.motion.velocity = {
 				x: 0,
@@ -788,11 +782,11 @@ export default class SimpleCanvas {
 	}
 
 	#touchMove(event) {
-		clearTimeout(this.#timers.motionState);
+		clearTimeout(this.#timers.cursorMotionState);
 
 		this.#touchState.moving = true;
 
-		this.#timers.motionState = setTimeout(() => {
+		this.#timers.cursorMotionState = setTimeout(() => {
 			this.#touchState.moving = false;
 		}, 10);
 
