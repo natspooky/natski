@@ -61,26 +61,24 @@ export default class SimpleCanvas {
 		currentKeys: {},
 	};
 	#mouseState = {
-		pressed: false,
+		pressing: false,
 		covering: false,
+		moving: false,
 		click: {
 			startPosition: {}, //maybe? think of a good application first i guess
 			endPosition: {},
 		},
 		motion: {
+			lastEntryTime: 0,
 			position: {
-				x: undefined,
-				y: undefined,
-			},
-			lastPostion: {
-				x: undefined,
-				y: undefined,
-			},
-			velocity: {
 				x: 0,
 				y: 0,
 			},
-			acceleration: {
+			lastPostion: {
+				x: 0,
+				y: 0,
+			},
+			velocity: {
 				x: 0,
 				y: 0,
 			},
@@ -98,6 +96,10 @@ export default class SimpleCanvas {
 		location: {
 			top: 0,
 			left: 0,
+		},
+		elementSize: {
+			width: 0,
+			height: 0,
 		},
 		size: {
 			width: 300,
@@ -346,32 +348,55 @@ export default class SimpleCanvas {
 
 	//util
 
-	#mergeSettings(userSettings) {
-		this.settings = {
-			fps: 60,
-			autoClear: true,
-			autoResize: true,
-			setupOnResize: true,
-			cursor: {
-				active: false,
-				global: false,
-			},
-			useTouch: false,
-			useWheel: false,
-			useScroll: false,
-			useKey: false,
-			diagnostics: false,
-			detectWindowFocus: false,
-			useRetina: true,
+	#isObject(item) {
+		return item && typeof item === 'object' && !Array.isArray(item);
+	}
 
-			...userSettings,
-		};
+	#merge(target, ...sources) {
+		if (!sources.length) return target;
+		const source = sources.shift();
+		if (this.#isObject(target) && this.#isObject(source)) {
+			for (const key in source) {
+				if (this.#isObject(source[key])) {
+					if (!target[key]) Object.assign(target, { [key]: {} });
+					this.#merge(target[key], source[key]);
+				} else {
+					Object.assign(target, { [key]: source[key] });
+				}
+			}
+		}
+		return this.#merge(target, ...sources);
+	}
+
+	#mergeSettings(userSettings) {
+		this.settings = this.#merge(
+			{
+				fps: 60,
+				autoClear: true,
+				autoResize: true,
+				setupOnResize: true,
+				cursor: {
+					active: false,
+					global: false,
+					passive: true,
+				},
+				key: {
+					active: false,
+					passive: true,
+				},
+				useTouch: false,
+				useWheel: false,
+				useScroll: false,
+				diagnostics: false,
+				detectWindowFocus: false,
+				useRetina: true,
+			},
+			userSettings,
+		);
 
 		this.fps = this.settings.fps;
 
-		if (this.settings.size) {
-			this.size = this.settings.size;
-		}
+		if (this.settings.size) this.size = this.settings.size;
 	}
 
 	#checkEventSupport(eventName) {
@@ -422,40 +447,37 @@ export default class SimpleCanvas {
 	#attachEvents() {
 		//mouse
 
-		if (this.settings.useCursor) {
+		if (this.settings.cursor.active) {
 			this.#buildEmbedEvent({
 				target: this.#canvasState.canvas,
 				eventName: 'mouseup',
 				fn: this.#mouseUp,
 				options: { passive: true },
 			});
-
 			this.#buildEmbedEvent({
 				target: document,
 				eventName: 'mousedown',
 				fn: this.#mouseDown,
+				options: { passive: this.settings.cursor.passive },
 			});
-
 			this.#buildEmbedEvent({
 				target: document,
 				eventName: 'mousemove',
 				fn: this.#mouseMove,
 				options: { passive: true },
 			});
-
 			this.#buildEmbedEvent({
 				target: this.#canvasState.canvas,
 				eventName: 'contextmenu',
 				fn: this.#contextMenu,
+				options: { passive: this.settings.cursor.passive },
 			});
-
 			this.#buildEmbedEvent({
 				target: this.#canvasState.canvas,
 				eventName: 'mouseenter',
 				fn: this.#mouseEnter,
 				options: { passive: true },
 			});
-
 			this.#buildEmbedEvent({
 				target: this.#canvasState.canvas,
 				eventName: 'mouseleave',
@@ -478,13 +500,11 @@ export default class SimpleCanvas {
 				fn: this.#touchEnd,
 				options: { passive: true },
 			});
-
 			this.#buildEmbedEvent({
 				target: this.#canvasState.canvas,
 				eventName: 'touchmove',
 				fn: this.#touchMove,
 			});
-
 			this.#buildEmbedEvent({
 				target: document,
 				eventName: 'touchcancel',
@@ -494,7 +514,7 @@ export default class SimpleCanvas {
 
 		//keyboard
 
-		if (this.settings.useKey) {
+		if (this.settings.key.active) {
 			this.#buildEmbedEvent({
 				target: document,
 				eventName: 'keyup',
@@ -505,6 +525,7 @@ export default class SimpleCanvas {
 				target: document,
 				eventName: 'keydown',
 				fn: this.#keyDown,
+				options: { passive: this.settings.key.passive },
 			});
 		}
 
@@ -535,7 +556,6 @@ export default class SimpleCanvas {
 			const observer = new ResizeObserver(() => resizeFn());
 			observer.observe(this.#canvasState.canvas);
 		}
-
 		this.#buildEmbedEvent({
 			target: window,
 			eventName: 'resize',
@@ -545,18 +565,16 @@ export default class SimpleCanvas {
 
 		//focus
 
-		if (this.settings.detectWindowFocus) {
-			this.#buildEmbedEvent({
-				target: window,
-				eventName: 'blur',
-				fn: this.#pageBlur,
-			});
-			this.#buildEmbedEvent({
-				target: window,
-				eventName: 'focus',
-				fn: this.#pageFocus,
-			});
-		}
+		this.#buildEmbedEvent({
+			target: window,
+			eventName: 'blur',
+			fn: this.#pageBlur,
+		});
+		this.#buildEmbedEvent({
+			target: window,
+			eventName: 'focus',
+			fn: this.#pageFocus,
+		});
 	}
 
 	#awaitAppend(element) {
@@ -594,11 +612,28 @@ export default class SimpleCanvas {
 	// listener & observer functions
 
 	#pageBlur() {
-		this.#drawingState.paused = true;
+		if (this.settings.detectWindowFocus) this.#drawingState.paused = true;
+
+		this.#keyState = {
+			pressing: false,
+			pressCount: 0,
+			currentKeys: {},
+		};
+
+		this.#mouseState.pressing = false;
+		this.#mouseState.covering = false;
+
+		this.#scrollState = {
+			scrolling: false,
+		};
+
+		this.#wheelState = {
+			scrolling: false,
+		};
 	}
 
 	#pageFocus() {
-		this.#drawingState.paused = false;
+		if (this.settings.detectWindowFocus) this.#drawingState.paused = false;
 	}
 
 	#locationUpdate() {
@@ -614,8 +649,8 @@ export default class SimpleCanvas {
 		const clientLeft = docEl.clientLeft || body.clientLeft || 0;
 
 		this.#canvasState.location = {
-			top: Math.round(box.left + scrollLeft - clientLeft),
-			left: Math.round(box.top + scrollTop - clientTop),
+			left: Math.round(box.left + scrollLeft - clientLeft),
+			top: Math.round(box.top + scrollTop - clientTop),
 		};
 	}
 
@@ -627,8 +662,10 @@ export default class SimpleCanvas {
 			await this.#drawingState.setupFn?.();
 
 		this.#drawingState.resizeFn?.({
-			width: this.#canvasState.size.width,
-			height: this.#canvasState.size.height,
+			width: this.width,
+			height: this.height,
+			top: this.top,
+			left: this.left,
 		});
 
 		if (this.#drawingState.drawing && !this.#drawingState.paused)
@@ -636,10 +673,10 @@ export default class SimpleCanvas {
 	}
 
 	#mouseDown(event) {
-		if (!this.#mouseState.covering && !this.settings.globalCursor) return;
-		if (!this.settings.globalCursor) event.preventDefault();
+		if (!this.#mouseState.covering && !this.settings.cursor.global) return;
+		if (!this.settings.cursor.passive) event.preventDefault();
 
-		this.#mouseState.pressed = true;
+		this.#mouseState.pressing = true;
 
 		this.#mouseState.click.startPosition = this.#mouseState.motion.position;
 
@@ -647,9 +684,9 @@ export default class SimpleCanvas {
 	}
 
 	#mouseUp(event) {
-		if (!this.#mouseState.pressed) return;
+		if (!this.#mouseState.pressing) return;
 
-		this.#mouseState.pressed = false;
+		this.#mouseState.pressing = false;
 
 		this.#mouseState.click.endPosition = this.#mouseState.motion.position;
 
@@ -657,7 +694,7 @@ export default class SimpleCanvas {
 	}
 
 	#mouseMove(event) {
-		if (!this.#mouseState.covering && !this.settings.globalCursor) return;
+		if (!this.#mouseState.covering && !this.settings.cursor.global) return;
 
 		this.#mouseState.motion.lastPostion = this.#mouseState.motion.position;
 
@@ -665,8 +702,52 @@ export default class SimpleCanvas {
 
 		this.#mouseState.moving = true;
 
+		if (!this.#canvasState.size.locked) {
+			const retina = this.retinaScale;
+			this.#mouseState.motion.position = {
+				x: (event.clientX - this.#canvasState.location.left) * retina,
+				y: (event.clientY - this.#canvasState.location.top) * retina,
+			};
+		} else {
+			this.#mouseState.motion.position = {
+				x:
+					(this.#canvasState.size.width /
+						this.#canvasState.elementSize.width) *
+					(event.clientX - this.#canvasState.location.left),
+				y:
+					(this.#canvasState.size.height /
+						this.#canvasState.elementSize.height) *
+					(event.clientY - this.#canvasState.location.top),
+			};
+		}
+
+		const time = performance.now() - this.#mouseState.motion.lastEntryTime;
+
+		this.#mouseState.motion.velocity = {
+			x:
+				(this.#mouseState.motion.lastPostion.x -
+					this.#mouseState.motion.position.x) /
+				time,
+			y:
+				(this.#mouseState.motion.lastPostion.y -
+					this.#mouseState.motion.position.y) /
+				time,
+		};
+
+		this.#mouseState.motion.speed = this.#pythag(
+			this.#mouseState.motion.velocity.x,
+			this.#mouseState.motion.velocity.y,
+		);
+
+		this.#mouseState.motion.lastEntryTime = performance.now();
+
 		this.#timers.motionState = setTimeout(() => {
 			this.#mouseState.moving = false;
+			this.#mouseState.motion.velocity = {
+				x: 0,
+				y: 0,
+			};
+			this.#mouseState.motion.speed = 0;
 		}, 10);
 
 		this.#userEventListeners['mousemove']?.(event);
@@ -724,6 +805,9 @@ export default class SimpleCanvas {
 
 	#keyDown(event) {
 		if (this.#keyState.currentKeys[event.key]) return;
+
+		if (!this.settings.key.passive) event.preventDefault();
+
 		this.#keyState.pressing = true;
 
 		this.#keyState.currentKeys[event.key] = true;
@@ -734,6 +818,8 @@ export default class SimpleCanvas {
 	}
 
 	#keyUp(event) {
+		if (!this.#keyState.currentKeys[event.key]) return;
+
 		delete this.#keyState.currentKeys[event.key];
 
 		this.#keyState.pressCount--;
@@ -773,15 +859,18 @@ export default class SimpleCanvas {
 	// canvas body data update functions
 
 	#sizeUpdate() {
+		this.#canvasState.elementSize.width =
+			this.#canvasState.canvas.offsetWidth;
+		this.#canvasState.elementSize.height =
+			this.#canvasState.canvas.offsetHeight;
+
 		if (!this.#canvasState.size.locked) {
-			const retina = this.settings.useRetina
-				? this.#canvasState.size.scale
-				: 1;
+			const retina = this.retinaScale;
 			this.#canvasState.size.width = Math.floor(
-				this.#canvasState.canvas.offsetWidth * retina,
+				this.#canvasState.elementSize.width * retina,
 			);
 			this.#canvasState.size.height = Math.floor(
-				this.#canvasState.canvas.offsetHeight * retina,
+				this.#canvasState.elementSize.height * retina,
 			);
 		}
 
@@ -815,6 +904,7 @@ export default class SimpleCanvas {
 			if (this.#drawingState.paused) continue;
 
 			this.#drawingState.renderTime = (now - then) / 1000;
+
 			this.#drawingState.runTime += this.#drawingState.renderTime;
 
 			then = now;
@@ -832,8 +922,6 @@ export default class SimpleCanvas {
 	#diagnostics() {
 		this.#transformlessWrapper((ctx) => {
 			this.#fps(ctx);
-			this.#mouse(ctx);
-			this.#keyboard(ctx);
 		});
 	}
 
@@ -933,13 +1021,11 @@ export default class SimpleCanvas {
 		ctx.stroke();
 	}
 
-	#mouse(ctx) {
-		//	ctx.fillText(text, graphBoxWidth + margin * 2, margin + textSize);
-	}
-
-	#keyboard(ctx) {}
-
 	// utility
+
+	#pythag(a, b) {
+		return Math.sqrt(a ** 2 + b ** 2);
+	}
 
 	#transformlessWrapper(fn) {
 		const context = this.context;
@@ -1002,14 +1088,20 @@ export default class SimpleCanvas {
 	}
 
 	get retinaScale() {
-		return this.#canvasState.size.scale;
+		return this.settings.useRetina ? this.#canvasState.size.scale : 1;
 	}
 
 	//mouse state getter
 
 	get cursor() {
 		return {
-			pressed: this.#mouseState.pressed,
+			pressing: this.#mouseState.pressing,
+			covering: this.#mouseState.covering,
+			moving: this.#mouseState.moving,
+			position: this.#mouseState.motion.position,
+			prevPosition: this.#mouseState.motion.lastPostion,
+			speed: this.#mouseState.motion.speed,
+			velocity: this.#mouseState.motion.velocity,
 		};
 	}
 

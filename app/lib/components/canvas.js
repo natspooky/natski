@@ -27,8 +27,8 @@ export default function Canvas({
 		await setup?.({ canvas, context });
 	};
 
-	const compResize = ({ height, width }) => {
-		resize?.({ height, width, canvas, context });
+	const compResize = (resizeData) => {
+		resize?.({ canvas, context, ...resizeData });
 	};
 
 	const compDraw = () => {

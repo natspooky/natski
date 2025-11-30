@@ -29,8 +29,8 @@ function Canvas({
 		await setup?.({ canvas, context });
 	};
 
-	const compResize = ({ height, width }) => {
-		resize?.({ height, width, canvas, context });
+	const compResize = (resizeData) => {
+		resize?.({ canvas, context, ...resizeData });
 	};
 
 	const compDraw = () => {
@@ -59,57 +59,124 @@ function Canvas({
 render(
 	'root',
 	() => {
-		const size = { height: 410, width: 410 };
+		const sizeValue = 200;
+		const size = { height: sizeValue, width: sizeValue };
+		const fps = 6000;
 
 		return [
 			{
 				tag: 'style',
 				innerHTML: '.simple-canvas{width:300px;height:300px;}',
 			},
-			Canvas({
-				name: 'Draw Test',
-				classes: 'bingus bongus',
-				draw: ({ canvas }) => {
-					canvas.paintAll('blue');
-				},
-				settings: {
-					fps: 400,
-					useCursor: true,
-					diagnostics: true,
-					size,
-				},
-			}),
-			Canvas({
-				name: 'Event Test',
-				draw: ({ canvas }) => {
-					canvas.paintAll('blue');
-					if (canvas.keyboard.pressing) {
-						console.log(canvas.keyboard);
-					}
-				},
-				settings: {
-					fps: 400,
-					useCursor: true,
-					globalCursor: true,
-					useTouch: true,
-					useWheel: true,
-					useScroll: true,
-					useKey: true,
-					diagnostics: true,
-					size,
-				},
-			}),
+			{
+				tag: 'div',
+				children: [
+					{
+						tag: 'p',
+						children: 'Mouse Test',
+					},
+					{
+						tag: 'div',
+						children: [
+							Canvas({
+								name: 'Mouse Fixed Size',
+								draw: ({ canvas, context: ctx }) => {
+									canvas.paintAll('blue');
+									if (canvas.keyboard.pressing) {
+										console.log(canvas.keyboard);
+									}
+									if (canvas.cursor.covering) {
+										const { x, y } = canvas.cursor.position;
+										const { x: xVel, y: yVel } =
+											canvas.cursor.velocity;
+
+										const speed = canvas.cursor.speed;
+
+										ctx.fillRect(x - 5, y - 5, 10, 10);
+									}
+								},
+								settings: {
+									fps,
+									cursor: {
+										global: true,
+										active: true,
+									},
+									key: {
+										active: true,
+									},
+									diagnostics: true,
+									useRetina: true,
+									size,
+								},
+							}),
+							Canvas({
+								name: 'Mouse Dynamic Size',
+								draw: ({ canvas, context: ctx }) => {
+									canvas.paintAll('blue');
+									if (canvas.keyboard.pressing) {
+										console.log(canvas.keyboard);
+									}
+									if (canvas.cursor.covering) {
+										const { x, y } = canvas.cursor.position;
+
+										ctx.fillRect(x - 5, y - 5, 10, 10);
+									}
+								},
+								settings: {
+									fps,
+									cursor: {
+										global: true,
+										active: true,
+									},
+									key: {
+										active: true,
+									},
+									diagnostics: true,
+									useRetina: true,
+								},
+							}),
+						],
+					},
+				],
+			},
+			{
+				tag: 'div',
+				children: [
+					{
+						tag: 'p',
+						children: 'Key Test',
+					},
+					{
+						tag: 'div',
+						children: [
+							Canvas({
+								name: 'Key Test',
+								draw: ({ canvas }) => {
+									canvas.paintAll('blue');
+								},
+
+								settings: {
+									fps,
+									diagnostics: true,
+								},
+							}),
+						],
+					},
+				],
+			},
 			Canvas({
 				name: 'Resize Test',
 				draw: ({ canvas }) => {
 					canvas.paintAll('blue');
-					if (canvas.keyboard.pressing) {
-						console.log(canvas.keyboard);
-					}
+				},
+				setup: ({ canvas }) => {
+					console.log(canvas.context.getTransform());
+				},
+				resize: ({ top, left, width, height }) => {
+					console.log(top, left, width, height);
 				},
 				settings: {
-					fps: 400,
-					useKey: true,
+					fps,
 					diagnostics: true,
 				},
 			}),

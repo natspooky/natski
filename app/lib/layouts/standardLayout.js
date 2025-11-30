@@ -25,8 +25,6 @@ function CoverScreen() {
 }
 
 export default function StandardLayout({ children }) {
-	console.log([children, Footer(), CoverScreen()]);
-
 	const variab = [children, Footer(), CoverScreen()];
 
 	return RootLayout({

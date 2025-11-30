@@ -30,7 +30,7 @@ function Button({ name, icon, classes, href, events }) {
 }
 
 export default function Nav() {
-	const pageName = usePath();
+	const pageName = usePath().pathname;
 
 	const linkArray = [
 		{
