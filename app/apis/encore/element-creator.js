@@ -611,7 +611,7 @@ function useId() {
 }
 
 function usePath() {
-	return new URL(window.location.href).pathname;
+	return new URL(window.location.href);
 }
 
 function createContext(name, init) {

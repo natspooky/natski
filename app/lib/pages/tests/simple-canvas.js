@@ -1,8 +1,7 @@
-import { render } from '../../../apis/encore/element-creator.js';
+import { render, className } from '../../../apis/encore/element-creator.js';
 //import Canvas from '../../components/canvas.js';
 
-import { className } from '../../apis/encore/element-creator.js';
-import SimpleCanvas from '../../apis/simple/simple-canvas.js';
+import SimpleCanvas from '../../../apis/simple/simple-canvas.js';
 
 function Canvas({
 	name,
@@ -60,22 +59,61 @@ function Canvas({
 render(
 	'root',
 	() => {
-		return Canvas({
-			name: 'Canvas One',
-			classes: 'bingus bongus',
-			draw: ({ context: ctx, canvas }) => {
-				canvas.paintAll('blue');
-				ctx.fillRect(0, 0, 10, 10);
+		const size = { height: 410, width: 410 };
+
+		return [
+			{
+				tag: 'style',
+				innerHTML: '.simple-canvas{width:300px;height:300px;}',
 			},
-			settings: {
-				useCursor: true,
-				diagnostics: true,
-				size: {
-					height: 600,
-					width: 600,
+			Canvas({
+				name: 'Draw Test',
+				classes: 'bingus bongus',
+				draw: ({ canvas }) => {
+					canvas.paintAll('blue');
 				},
-			},
-		});
+				settings: {
+					fps: 400,
+					useCursor: true,
+					diagnostics: true,
+					size,
+				},
+			}),
+			Canvas({
+				name: 'Event Test',
+				draw: ({ canvas }) => {
+					canvas.paintAll('blue');
+					if (canvas.keyboard.pressing) {
+						console.log(canvas.keyboard);
+					}
+				},
+				settings: {
+					fps: 400,
+					useCursor: true,
+					globalCursor: true,
+					useTouch: true,
+					useWheel: true,
+					useScroll: true,
+					useKey: true,
+					diagnostics: true,
+					size,
+				},
+			}),
+			Canvas({
+				name: 'Resize Test',
+				draw: ({ canvas }) => {
+					canvas.paintAll('blue');
+					if (canvas.keyboard.pressing) {
+						console.log(canvas.keyboard);
+					}
+				},
+				settings: {
+					fps: 400,
+					useKey: true,
+					diagnostics: true,
+				},
+			}),
+		];
 	},
 	{
 		useIcons: true,
