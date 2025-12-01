@@ -30,10 +30,8 @@ export default class SimpleCanvas {
 		'keyup',
 		'keydown',
 
-		//wheel
-		'wheel',
-
 		//scroll
+		'wheel',
 		'scroll',
 		'scrollend',
 
@@ -47,20 +45,26 @@ export default class SimpleCanvas {
 		//canvas context
 		'contextlost',
 		'contextrestored',
-	];
+	]; // will tell the canvas to not attach or allow any event listeners that the current document doesnt support
+
 	#userEventListeners = {};
+
 	#canvasEventRemovers = {};
+
 	#wheelState = {
 		scrolling: false,
 	};
+
 	#scrollState = {
 		scrolling: false,
 	};
+
 	#keyState = {
 		pressing: false,
 		pressCount: 0,
 		currentKeys: {},
 	};
+
 	#mouseState = {
 		pressing: false,
 		covering: false,
@@ -86,10 +90,23 @@ export default class SimpleCanvas {
 			speed: 0,
 		},
 	};
+
 	#touchState = {
-		touching: false,
+		pressing: false,
+		moving: false,
 		touchCount: 0,
+		motion: {
+			position: {
+				x: 0,
+				y: 0,
+			},
+			lastPostion: {
+				x: 0,
+				y: 0,
+			},
+		},
 	};
+
 	#canvasState = {
 		canvas: undefined,
 		context: undefined,
@@ -109,6 +126,7 @@ export default class SimpleCanvas {
 			scale: window.devicePixelRatio || 1,
 		},
 	};
+
 	#drawingState = {
 		paused: false,
 		drawing: false,
@@ -380,7 +398,12 @@ export default class SimpleCanvas {
 					active: false,
 					passive: true,
 				},
-				useTouch: false,
+				touch: {
+					active: false,
+					global: false,
+					passive: true,
+					correctTransform: true,
+				},
 				useWheel: false,
 				useScroll: false,
 				diagnostics: false,
@@ -1135,6 +1158,21 @@ export default class SimpleCanvas {
 
 	get fps() {
 		return this.settings.fps;
+	}
+
+	//touch state getter
+
+	get touch() {
+		return {
+			pressing: this.#touchState.pressing,
+			touchCount: this.#touchState.touchCount,
+			covering: this.#touchState.covering,
+			moving: this.#touchState.moving,
+			position: this.#touchState.motion.position,
+			prevPosition: this.#touchState.motion.lastPostion,
+			speed: this.#touchState.motion.speed,
+			velocity: this.#touchState.motion.velocity,
+		};
 	}
 
 	//mouse state getter

@@ -2,6 +2,18 @@ import { render, useState } from '../../../apis/encore/element-creator.js';
 import Canvas from '../../components/canvas.js';
 import StandardLayout from '../../layouts/standardLayout.js';
 
+class canvasObj {
+	constructor({ width, height }) {}
+}
+
+class canvasEnemy extends canvasObj {}
+
+class cactus extends canvasEnemy {}
+
+class bird extends canvasEnemy {}
+
+class dino extends canvasObj {}
+
 function dinoGame() {
 	const append = () => {};
 
@@ -10,7 +22,8 @@ function dinoGame() {
 
 		const key = cnv.keyboard;
 
-		if (key.pressing && key.keys[' ']) console.log('eee');
+		if (key.pressing && key.keys[' ']) {
+		}
 	};
 
 	const resize = () => {};

@@ -66,12 +66,14 @@ render(
 		return [
 			{
 				tag: 'style',
-				innerHTML:
-					'.simple-canvas{width:300px;height:300px;}.simple-canvas.large{width:100%;height:100vh;}',
+				innerHTML: `.simple-canvas
+				{width:300px;height:300px;}
+				.simple-canvas.large
+				{width:100%;height:100vh;}`,
 			},
 			Canvas({
 				name: 'large Dynamic Size',
-				setup: ({ canvas, context: ctx }) => {
+				setup: ({ context: ctx }) => {
 					ctx.translate(100, 100);
 					ctx.scale(1, 1);
 				},
@@ -79,7 +81,7 @@ render(
 					const mouse = canvas.cursor;
 					const key = canvas.keyboard;
 
-					canvas.paintAll('#0000ff10');
+					canvas.paintAll('#ff000010');
 					if (key.pressing) {
 						console.log(key);
 					}
