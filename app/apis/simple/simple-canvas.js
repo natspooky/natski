@@ -2,7 +2,7 @@
 /* Author : NATSKI - natski.dev
 /* MIT license : https://opensource.org/license/MIT
 /* GitHub : https://github.com/natspooky/simple-canvas
-/* How to use? : Check the GitHub README or visit https://natski.dev/api/simple-canvas
+/* How to use? : Check the GitHub README or visit https://natski.dev/apis/simple/simple-canvas
 /* ----------------------------------------------- */
 
 import Console from '../dependencies/console.js';
@@ -18,10 +18,7 @@ export default class SimpleCanvas {
 		'mousemove',
 		'mouseenter',
 		'mouseleave',
-		'dblclick',
-		'click',
 		'contextmenu',
-		'auxclick',
 
 		//touch
 		'touchstart',
@@ -46,6 +43,10 @@ export default class SimpleCanvas {
 
 		//resize
 		'resize',
+
+		//canvas context
+		'contextlost',
+		'contextrestored',
 	];
 	#userEventListeners = {};
 	#canvasEventRemovers = {};
@@ -173,7 +174,10 @@ export default class SimpleCanvas {
 				});
 		}
 
-		this.#canvasState.context = this.#canvasState.canvas.getContext('2d');
+		this.#canvasState.context = this.#canvasState.canvas.getContext(
+			'2d',
+			this.settings.canvas,
+		);
 
 		this.#canvasState.id = name;
 
@@ -287,6 +291,8 @@ export default class SimpleCanvas {
 		this.#drawingState.resizeFn = fn;
 	}
 
+	animate() {}
+
 	set size({ height, width }) {
 		this.#canvasState.size.locked = true;
 		if (width) this.#canvasState.size.width = width;
@@ -315,10 +321,6 @@ export default class SimpleCanvas {
 			this.settings.fps = newFPS;
 			this.#drawingState.interval = 1000 / newFPS;
 		});
-	}
-
-	get fps() {
-		return this.settings.fps;
 	}
 
 	on(eventName, fn) {
@@ -372,6 +374,7 @@ export default class SimpleCanvas {
 					active: false,
 					global: false,
 					passive: true,
+					correctTransform: true,
 				},
 				key: {
 					active: false,
@@ -383,6 +386,10 @@ export default class SimpleCanvas {
 				diagnostics: false,
 				detectWindowFocus: false,
 				useRetina: true,
+				canvas: {
+					willReadFrequently: false,
+					failIfMajorPerformanceCaveat: false,
+				},
 			},
 			userSettings,
 		);
@@ -437,11 +444,26 @@ export default class SimpleCanvas {
 	}
 
 	#attachEvents() {
+		//context
+
+		this.#buildEmbedEvent({
+			target: this.#canvasState.canvas,
+			eventName: 'contextlost',
+			fn: this.#contextLost,
+		});
+
+		this.#buildEmbedEvent({
+			target: this.#canvasState.canvas,
+			eventName: 'contextrestored',
+			fn: this.#contextRestored,
+			options: { passive: true },
+		});
+
 		//mouse
 
 		if (this.settings.cursor.active) {
 			this.#buildEmbedEvent({
-				target: this.#canvasState.canvas,
+				target: document,
 				eventName: 'mouseup',
 				fn: this.#mouseUp,
 				options: { passive: true },
@@ -528,7 +550,7 @@ export default class SimpleCanvas {
 				target: this.#canvasState.canvas,
 				eventName: 'wheel',
 				fn: this.#wheel,
-			});
+			}); // when scrolling without motion of the page
 		}
 
 		//scroll
@@ -538,14 +560,14 @@ export default class SimpleCanvas {
 				target: document,
 				eventName: 'scroll',
 				fn: this.#scroll,
-			});
+			}); // when scrolling and the page move
 		}
 
 		//resize
 
 		if (this.settings.autoResize) {
 			const resizeFn = this.#resize.bind(this);
-			const observer = new ResizeObserver(() => resizeFn());
+			const observer = new ResizeObserver(resizeFn);
 			observer.observe(this.#canvasState.canvas);
 		}
 		this.#buildEmbedEvent({
@@ -604,6 +626,18 @@ export default class SimpleCanvas {
 	}
 
 	// listener & observer functions
+
+	#contextLost(event) {
+		event.preventDefault();
+
+		this.#drawingState.drawing = false;
+
+		this.#userEventListeners['contextlost']?.(event);
+	}
+
+	#contextRestored(event) {
+		this.#userEventListeners['contextrestored']?.(event);
+	}
 
 	#pageBlur() {
 		if (this.settings.detectWindowFocus) this.#drawingState.paused = true;
@@ -696,22 +730,36 @@ export default class SimpleCanvas {
 
 		this.#mouseState.moving = true;
 
+		const matrix = this.settings.cursor.correctTransform
+			? this.#canvasState.context.getTransform()
+			: new DOMMatrix();
+
 		if (!this.#canvasState.size.locked) {
 			const retina = this.retinaScale;
 			this.#mouseState.motion.position = {
-				x: (event.clientX - this.#canvasState.location.left) * retina,
-				y: (event.clientY - this.#canvasState.location.top) * retina,
+				x:
+					((event.pageX - this.#canvasState.location.left) * retina) /
+						matrix.a -
+					matrix.e / matrix.a,
+				y:
+					((event.pageY - this.#canvasState.location.top) * retina) /
+						matrix.d -
+					matrix.f / matrix.d,
 			};
 		} else {
 			this.#mouseState.motion.position = {
 				x:
-					(this.#canvasState.size.width /
+					((this.#canvasState.size.width /
 						this.#canvasState.elementSize.width) *
-					(event.clientX - this.#canvasState.location.left),
+						(event.pageX - this.#canvasState.location.left)) /
+						matrix.a -
+					matrix.e / matrix.a,
 				y:
-					(this.#canvasState.size.height /
+					((this.#canvasState.size.height /
 						this.#canvasState.elementSize.height) *
-					(event.clientY - this.#canvasState.location.top),
+						(event.pageY - this.#canvasState.location.top)) /
+						matrix.d -
+					matrix.f / matrix.d,
 			};
 		}
 
@@ -1083,6 +1131,10 @@ export default class SimpleCanvas {
 
 	get retinaScale() {
 		return this.settings.useRetina ? this.#canvasState.size.scale : 1;
+	}
+
+	get fps() {
+		return this.settings.fps;
 	}
 
 	//mouse state getter
