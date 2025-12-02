@@ -1,41 +1,36 @@
-import {
-	className,
-	useSuspense,
-} from '../../../apis/encore/element-creator.js';
+import { useSuspense, merge } from '../../../apis/encore/element-creator.js';
+import { fileName } from '../../../apis/dependencies/file-utils.js';
 
 export default function Img({
 	src,
 	width,
 	height,
+	awaitLoad,
 	loading,
 	fallback,
-	events,
-	attributes,
-	classes,
 	...props
 }) {
-	return useSuspense(
-		() => {
-			return {
-				...props,
-				tag: 'img',
-				attributes: {
-					...attributes,
-					width,
-					height,
-					src,
-					alt: src,
-					draggable: false,
-				},
-				events: {
-					...events,
-					load: [{}, events.load],
-					error: [{}, events.error],
-				},
-				classes: className('', classes),
-			};
+	const image = merge(
+		{
+			tag: 'img',
+			attributes: {
+				width,
+				height,
+				src,
+				alt: fileName(src),
+				draggable: false,
+			},
 		},
-		loading,
-		fallback,
+		props,
 	);
+
+	return awaitLoad
+		? useSuspense(
+				() => {
+					return image;
+				},
+				loading,
+				fallback,
+		  )
+		: image;
 }

@@ -4,7 +4,7 @@ import {
 	useSuspense,
 } from '../../../apis/encore/element-creator.js';
 
-export default function Marquee({ children, speed, classes }) {
+export default function Marquee({ children, speed = 1, classes }) {
 	let container;
 	let scroller;
 
