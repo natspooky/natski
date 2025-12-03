@@ -1,6 +1,8 @@
 .footer-container {
 	position: relative;
 	padding: 20px 0;
+	border-radius: 12px;
+	overflow: hidden;
 }
 
 footer {

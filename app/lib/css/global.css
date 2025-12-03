@@ -242,7 +242,7 @@ body {
 .main {
 	position: relative;
 	width: 100%;
-	padding: 60px min(15%, 50px) 0px min(15%, 50px);
+	padding: 60px min(15%, 50px) 20px min(15%, 50px);
 }
 
 .text-gradient {
