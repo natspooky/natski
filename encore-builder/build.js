@@ -32,11 +32,7 @@ export default async function createBuildFolder(folder) {
 
 		const pageArr = findFiles('app/lib/pages');
 
-		const allDataArr = [
-			...findFiles('app/lib'),
-			...findFiles('app/apis'),
-			...findFiles('app/icon'),
-		];
+		const allDataArr = findFiles('app');
 
 		pageArr.forEach(async (file) => {
 			const dirArray = path.dirname(file).split(/\/|\\/);

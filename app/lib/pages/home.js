@@ -28,11 +28,11 @@ function Grid({ children, classes }) {
 }
 
 function GitHubTile() {
-	return {};
+	return { tag: 'div' };
 }
 
 function ButtonArray() {
-	return {};
+	return { tag: 'div' };
 }
 
 function MarqueeItem({ src, colour }) {
@@ -50,24 +50,43 @@ function MarqueeItem({ src, colour }) {
 }
 
 function MarqueeCard() {
-	let marqueeData = [{}, {}];
+	const marqueeData = [
+		{
+			src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Python_logo_01.svg/640px-Python_logo_01.svg.png',
+		},
+		{
+			src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Python_logo_01.svg/640px-Python_logo_01.svg.png',
+		},
+	];
 
 	const half = Math.floor(marqueeData.length / 2);
 
-	marqueeData = [marqueeData.slice(0, half), marqueeData.slice(half)];
-
-	return [
-		{
-			tag: 'div',
-			children: marqueeData.map((marqData) =>
-				marqData.map((data) => MarqueeItem(data)),
-			),
-		},
-		{
-			tag: 'p',
-			children: 'temp Text',
-		},
-	];
+	return {
+		tag: 'div',
+		classes: 'marquee-card',
+		children: [
+			{
+				tag: 'div',
+				classes: 'marquee-container',
+				children: [
+					marqueeData.slice(0, half),
+					marqueeData.slice(half),
+				].map((marqData) =>
+					Marquee({
+						speed: 0.1,
+						children: {
+							tag: 'div',
+							children: marqData.map((data) => MarqueeItem(data)),
+						},
+					}),
+				),
+			},
+			{
+				tag: 'span',
+				children: 'temp Text',
+			},
+		],
+	};
 }
 
 function HomeHeader() {
