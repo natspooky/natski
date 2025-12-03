@@ -1,15 +1,9 @@
-import {
-	render,
-	useState,
-	className,
-	useSuspense,
-} from '../../apis/encore/element-creator.js';
-
+import { render, className } from '../../apis/encore/element-creator.js';
 import standardLayout from '../layouts/standardLayout.js';
-
 import Marquee from '../components/ui/marquee.js';
-import IconLink from '../components/ui/buttons/iconLink.js';
+import Link from '../components/ui/buttons/link.js';
 import Img from '../components/ui/img.js';
+import Icon from '../components/ui/icon.js';
 
 function Flex({ children, classes }) {
 	return {
@@ -28,16 +22,55 @@ function Grid({ children, classes }) {
 }
 
 function GitHubTile() {
-	return { tag: 'div' };
+	return {
+		tag: 'div',
+		classes: 'github-tile',
+	};
 }
 
 function ButtonArray() {
-	return { tag: 'div' };
+	const childEl = ({ icon, name }) => {
+		return [
+			{
+				tag: 'span',
+				children: name,
+			},
+			Icon({ name: icon }),
+		];
+	};
+
+	const buttonData = [
+		{
+			href: '/products/encore',
+			icon: 'ENCORE',
+			name: 'Encore',
+			colour: 'blue',
+		},
+		{
+			href: '/products/simple',
+			icon: 'simple',
+			name: 'Simple',
+			colour: 'yellow',
+		},
+		{ href: '/products/arc', icon: 'ARC', name: 'Arc', colour: 'red' },
+	];
+
+	return buttonData.map(({ name, icon, href, colour }) =>
+		Link({
+			children: childEl({ icon, name }),
+			href,
+			classes: 'button-array-button',
+			attributes: {
+				style: `--bg-colour: ${colour}`,
+			},
+		}),
+	);
 }
 
 function MarqueeItem({ src, colour }) {
 	return {
 		tag: 'div',
+		classes: 'marquee-item',
 		attributes: {
 			style: `--bg-colour: ${colour}`,
 		},
@@ -53,9 +86,19 @@ function MarqueeCard() {
 	const marqueeData = [
 		{
 			src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Python_logo_01.svg/640px-Python_logo_01.svg.png',
+			colour: 'blue',
+		},
+		{
+			src: 'https://www.pngmart.com/files/22/Symbol-Logo-PNG-Image.png',
+			colour: 'black',
 		},
 		{
 			src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Python_logo_01.svg/640px-Python_logo_01.svg.png',
+			colour: 'blue',
+		},
+		{
+			src: 'https://www.pngmart.com/files/22/Symbol-Logo-PNG-Image.png',
+			colour: 'black',
 		},
 	];
 
@@ -76,6 +119,7 @@ function MarqueeCard() {
 						speed: 0.1,
 						children: {
 							tag: 'div',
+							classes: 'marquee-contents',
 							children: marqData.map((data) => MarqueeItem(data)),
 						},
 					}),
@@ -89,20 +133,31 @@ function MarqueeCard() {
 	};
 }
 
+function InfoBar() {
+	return {};
+}
+
 function HomeHeader() {
 	return Flex({
-		classes: 'wrap',
+		classes: 'gap-1',
 		children: [
+			InfoBar(),
 			Flex({
-				classes: 'column',
+				classes: 'wrap gap-1 home-header',
 				children: [
-					MarqueeCard({}),
 					Flex({
-						children: ButtonArray(),
+						classes: 'column gap-1 grow',
+						children: [
+							MarqueeCard({}),
+							Flex({
+								classes: 'gap-1',
+								children: ButtonArray(),
+							}),
+						],
 					}),
+					GitHubTile({}),
 				],
 			}),
-			GitHubTile({}),
 		],
 	});
 }

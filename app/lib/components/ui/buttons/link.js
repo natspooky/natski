@@ -1,3 +1,5 @@
+import { merge } from '../../../../apis/encore/element-creator.js';
+
 import Button from './button.js';
 
 export default function Link({ href, target, children, ...props }) {
@@ -6,22 +8,23 @@ export default function Link({ href, target, children, ...props }) {
 		window.open(href, target ?? '_self');
 	};
 
-	return Button({
-		...props,
-		events: {
-			click: {
-				callback: linkHandler,
-				params: 'event',
+	return Button(
+		merge(props, {
+			events: {
+				click: {
+					callback: linkHandler,
+					params: 'event',
+				},
 			},
-		},
-		children: {
-			tag: 'a',
-			attributes: {
-				tabindex: -1,
-				draggable: false,
-				href,
+			children: {
+				tag: 'a',
+				attributes: {
+					tabindex: -1,
+					draggable: false,
+					href,
+				},
+				children,
 			},
-			children,
-		},
-	});
+		}),
+	);
 }

@@ -33,9 +33,6 @@ export default function StandardLayout({ children }) {
 			{
 				tag: 'div',
 				classes: 'main',
-				attributes: {
-					style: 'padding-top:60px;',
-				},
 				children: variab,
 			},
 		],
