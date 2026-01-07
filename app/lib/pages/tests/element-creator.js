@@ -2,7 +2,6 @@ import {
 	render,
 	useState,
 	useSuspense,
-	useStateInterval,
 	useId,
 	className,
 	merge,
@@ -245,8 +244,8 @@ function StateTest() {
 		];
 	}
 
-	function IntervalTest2() {
-		const [state, getFn, setFn] = useState((getter, setter) => {
+	function IntervalTest() {
+		const [state, getFn, setFn] = useState((getter) => {
 			return {
 				tag: 'span',
 				style: {
@@ -269,60 +268,6 @@ function StateTest() {
 						callback: () => {
 							clearInterval(interval);
 							setFn('stopped');
-						},
-					},
-				},
-			}),
-		];
-	}
-
-	function IntervalTest() {
-		const dateFn = () => {
-			const d = new Date();
-			return [
-				{
-					tag: 'span',
-					style: {
-						color: d.getHours() % 2 === 0 ? 'red' : 'green',
-					},
-					children: d.getHours(),
-				},
-				':',
-				{
-					tag: 'span',
-					style: {
-						color: d.getMinutes() % 2 === 0 ? 'red' : 'green',
-					},
-					children: d.getMinutes(),
-				},
-				':',
-				{
-					tag: 'span',
-					style: {
-						color: d.getSeconds() % 2 === 0 ? 'red' : 'green',
-					},
-					children: d.getSeconds(),
-				},
-			];
-		};
-
-		const [element, , set, interval] = useStateInterval(
-			(getter) => {
-				return H3({ children: getter });
-			},
-			dateFn,
-			1000,
-		);
-
-		return [
-			element,
-			BUTTON({
-				children: 'stop interval',
-				events: {
-					click: {
-						callback: () => {
-							clearInterval(interval);
-							set([dateFn(), ' ', 'paused']);
 						},
 					},
 				},
@@ -362,8 +307,8 @@ function StateTest() {
 
 	return {
 		IncrementTest,
+
 		IntervalTest,
-		IntervalTest2,
 		PageObjectRepeatTest,
 		PageValueRepeatTest,
 		ChangeStateOnCreateTest,
