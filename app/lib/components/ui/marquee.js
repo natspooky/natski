@@ -13,7 +13,6 @@ export default function Marquee({ children, speed = 1, classes }) {
 	let counter = 0;
 
 	let animateID;
-	let countSetter;
 
 	const animate = () => {
 		position += speed;
@@ -25,10 +24,38 @@ export default function Marquee({ children, speed = 1, classes }) {
 		animateID = requestAnimationFrame(animate);
 	};
 
-	const resize = () => {
-		first = true;
-		countSetter(1);
-	};
+	const [state, , setCounter] = useState((count, setCount) => {
+		cancelAnimationFrame(animateID);
+		counter = count;
+
+		return {
+			tag: 'section',
+			classes: 'marquee-scroller',
+			style: {
+				position: 'relative',
+				display: 'flex',
+				alignItems: 'center',
+				flexDirection: 'row',
+				width: 'fit-content',
+				height: 'fit-content',
+			},
+			children: new Array(count).fill(0).map(() => children),
+			onAppend: {
+				callback: () => {
+					const cWidth = container.offsetWidth;
+					const sWidth = scroller.offsetWidth;
+					if (cWidth > sWidth || first) {
+						first = false;
+						setCount(Math.ceil(cWidth / sWidth) + 1);
+					} else {
+						animate();
+					}
+				},
+				options: { awaitFontLoad: true },
+			},
+			onCreate: (self) => (scroller = self),
+		};
+	}, 1);
 
 	return useSuspense(() => {
 		return {
@@ -36,48 +63,32 @@ export default function Marquee({ children, speed = 1, classes }) {
 			events: {
 				resize: {
 					target: window,
-					callback: resize,
+					callback: () => {
+						first = true;
+						setCounter(1);
+					},
 				},
 			},
 			classes: className('marquee', classes),
+			style: {
+				position: 'relative',
+				backgroundColor: 'aliceblue',
+				width: '70%',
+				height: 'fit-content',
+				overflow: 'hidden',
+			},
 			children: {
 				tag: 'div',
 				classes: 'marquee-sub',
-				children: useState((count, setCount) => {
-					cancelAnimationFrame(animateID);
-					counter = count;
-					countSetter = setCount;
-
-					return {
-						tag: 'section',
-						classes: 'marquee-scroller',
-						children: new Array(count).fill(0).map(() => {
-							return children;
-						}),
-						onAppend: {
-							callback: () => {
-								const cWidth = container.offsetWidth;
-								const sWidth = scroller.offsetWidth;
-								if (cWidth > sWidth || first) {
-									first = false;
-									setCount(Math.ceil(cWidth / sWidth) + 1);
-								} else {
-									animate();
-								}
-							},
-							options: {
-								awaitFontLoad: true,
-							},
-						},
-						onCreate: (self) => {
-							scroller = self;
-						},
-					};
-				}, 1),
+				style: {
+					position: 'relative',
+					width: '100%',
+					height: '100%',
+					overflow: 'hidden',
+				},
+				children: state,
 			},
-			onCreate: (self) => {
-				container = self;
-			},
+			onCreate: (self) => (container = self),
 		};
 	});
 }

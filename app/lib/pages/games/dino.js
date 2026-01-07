@@ -1,5 +1,5 @@
 import { render, useState } from '../../../apis/encore/element-creator.js';
-import Canvas from '../../components/canvas.js';
+import Canvas from '../../components/ui/canvas.js';
 import StandardLayout from '../../layouts/standardLayout.js';
 
 class canvasObj {
@@ -14,7 +14,9 @@ class bird extends canvasEnemy {}
 
 class dino extends canvasObj {}
 
-function dinoGame() {
+function DinoGame() {
+	let jumpHeight = 0;
+
 	const append = () => {};
 
 	const draw = ({ canvas: cnv, context: ctx }) => {
@@ -23,6 +25,7 @@ function dinoGame() {
 		const key = cnv.keyboard;
 
 		if (key.pressing && key.keys[' ']) {
+			jumpHeight += 1 * cnv.renderTime;
 		}
 	};
 
@@ -59,7 +62,18 @@ render(
 	() => {
 		window.components.layout = StandardLayout;
 
-		return dinoGame();
+		return {
+			tag: 'div',
+			classes: 'dino-wrapper',
+			children: [
+				DinoGame(),
+				{
+					tag: 'div',
+					classes: 'dino-controls',
+					children: {},
+				},
+			],
+		};
 	},
 	{
 		useIcons: true,

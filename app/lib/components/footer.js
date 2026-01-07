@@ -1,9 +1,7 @@
 import isMobile from '../../apis/dependencies/mobile-utils.js';
-import { GlassBacking } from './ui/glass.js';
-import IconLink from './ui/buttons/link.js';
-import { GradientSparkle } from './ui/backgrounds.js';
+import { IconLink } from './ui/link.js';
 
-export default function Footer() {
+export function ooter() {
 	const apis = [
 		{
 			name: 'ENCORE',
@@ -60,8 +58,7 @@ export default function Footer() {
 		tag: 'div',
 		classes: 'footer-container',
 		children: [
-			GradientSparkle({ waves: true }),
-			GlassBacking({
+			{
 				active: isMobile,
 				blurred: false,
 				tag: 'footer',
@@ -124,7 +121,19 @@ export default function Footer() {
 						}),
 					},
 				],
-			}),
+			},
 		],
+	};
+}
+
+export default function Footer() {
+	return {
+		tag: 'footer',
+		style: {
+			position: 'relative',
+			width: '100%',
+			padding: '15px',
+		},
+		children: {},
 	};
 }

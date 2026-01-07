@@ -1,5 +1,5 @@
 import { className, useId } from '../../../apis/encore/element-creator.js';
-import Canvas from '../canvas.js';
+import Canvas from './canvas.js';
 import isMobile from '../../../apis/dependencies/mobile-utils.js';
 
 function GradientSparkle({ particles, waves }) {

@@ -1,13 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
 @import url('./animations.css');
-@import url('./components/nav.css');
-@import url('./components/glass.css');
-@import url('./components/backgrounds.css');
-@import url('./components/footer.css');
-@import url('./components/header.css');
-@import url('./components/marquee.css');
-@import url('./components/selector.css');
-@import url('./components/contextMenu.css');
 
 * {
 	margin: 0;
@@ -366,6 +358,7 @@ body {
 }
 .button-array-button a {
 	position: relative;
+	display: block;
 	width: 100%;
 	height: 100%;
 }
@@ -375,6 +368,7 @@ body {
 	flex-grow: 1;
 	height: 100%;
 	border-radius: 12px;
+	min-width: min(400px, 80%);
 	border: 1px solid white;
 }
 
@@ -384,6 +378,8 @@ body {
 	background-color: #4a4377;
 	border-radius: 12px;
 	overflow: hidden;
+	width: 100%;
+	min-width: min(400px, 80%);
 	border: 1px solid gray;
 }
 

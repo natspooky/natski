@@ -1,5 +1,5 @@
-import { className } from '../../apis/encore/element-creator.js';
-import SimpleCanvas from '../../apis/simple/simple-canvas.js';
+import { className } from '../../../apis/encore/element-creator.js';
+import SimpleCanvas from '../../../apis/simple/simple-canvas.js';
 
 export default function Canvas({
 	name,

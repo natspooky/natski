@@ -1,18 +1,12 @@
 import { render } from '../../apis/encore/element-creator.js';
 import StandardLayout from '../layouts/standardLayout.js';
+import { Link } from '../components/ui/link.js';
 
 function link({ href }) {
-	return {
-		tag: 'a',
-
-		attributes: {
-			href: '/tests/' + href,
-		},
-		children: {
-			tag: 'text',
-			text: href.split('-').join(' '),
-		},
-	};
+	return Link({
+		href: '/tests/' + href,
+		children: href.split('-').join(' '),
+	});
 }
 
 render(

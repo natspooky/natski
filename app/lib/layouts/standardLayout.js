@@ -1,6 +1,7 @@
 import Footer from '../components/footer.js';
 import Nav from '../components/nav.js';
 import RootLayout from './rootLayout.js';
+import { Modal, ModalButton } from '../components/ui/modal.js';
 
 function CoverScreen() {
 	const append = (self) => {
@@ -25,15 +26,13 @@ function CoverScreen() {
 }
 
 export default function StandardLayout({ children }) {
-	const variab = [children, Footer(), CoverScreen()];
-
 	return RootLayout({
 		children: [
 			Nav(),
 			{
 				tag: 'div',
 				classes: 'main',
-				children: variab,
+				children: [children, Footer(), CoverScreen()],
 			},
 		],
 	});

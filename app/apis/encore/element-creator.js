@@ -5,9 +5,6 @@
 /* How to use? : Check the GitHub README or visit https://natski.dev/apis/encore/element-creator
 /* ----------------------------------------------- */
 
-//const ecWorker = new Worker(new URL("ecWorker.js", import.meta.url));
-//use this to start preloading links
-
 import IconSystem from './icon-system.js';
 import Console from '../dependencies/console.js';
 
@@ -332,149 +329,160 @@ class ComponentManager {
 	}
 }
 
-function buildText(text) {
-	const textData = document.createTextNode(text);
-	const trackingComment = document.createComment('');
-	const textFragment = document.createDocumentFragment();
-	appendChildren(textFragment, [textData, trackingComment]);
-	return textFragment;
-}
-
-function buildComponent(elementData) {
-	if (Array.isArray(elementData)) {
-		const elementArr = elementData
+function buildComponent(obj) {
+	if (obj && Array.isArray(obj)) {
+		const components = obj
 			.flat(Infinity)
-			.filter(
-				(element) =>
-					checkForKeys(element) ||
-					element.nodeType ||
-					typeof element === 'string' ||
-					typeof element === 'number',
-			)
-			.map((element) => {
-				return buildComponent(element);
-			});
+			.map(buildComponent)
+			.filter(Boolean);
 
-		return elementArr;
+		return components;
 	}
 
-	if (elementData?.nodeType) return elementData;
+	if (obj?.nodeType) return obj;
 
-	if (typeof elementData === 'string' || typeof elementData === 'number')
-		return buildText(elementData);
+	let component;
+	const textTypes = ['number', 'bigint', 'string'];
+	const componentType = typeof obj;
 
-	let element;
+	if (![...textTypes, 'object'].includes(componentType)) {
+		switch (componentType) {
+			case '':
+				break;
+			default:
+				break;
+		}
 
-	if (!elementData.tag) {
-		elementCreatorConsole.message({
-			message: 'Component error:',
-			error: 'Cannot create HTML Node without a tag',
-		});
+		//make error messages
+
 		return;
 	}
 
-	switch (elementData.tag) {
-		case 'text': {
-			return buildText(elementData.text ?? '');
-		}
-		default:
-			if (!elementData.namespace) {
-				element = document.createElement(elementData.tag);
-			} else {
-				element = document.createElementNS(
-					elementData.namespace,
-					elementData.tag,
-				);
-			}
-	}
+	if (textTypes.includes(componentType)) {
+		const textComponent = document.createElement('ec-text');
 
-	if (elementData.innerHTML) {
-		element.innerHTML = elementData.innerHTML;
-	}
-
-	if (elementData.classes) {
-		element.classList.add(...className(elementData.classes));
-	}
-
-	if (elementData.attributes) {
-		Object.entries(elementData.attributes).forEach(([attribute, value]) => {
-			if (checkExists(value)) {
-				element.setAttribute(attribute, value);
-			}
-		});
-	}
-
-	if (elementData.children) {
-		appendChildren(element, buildComponent(elementData.children));
-	}
-
-	if (elementData.events) {
-		Object.entries(elementData.events).forEach(([eventType, event]) => {
-			if (!event) {
-				return;
-			}
-
-			if (!checkEvent(eventType)) {
-				elementCreatorConsole.message({
-					message: 'Support warning:',
-					warn: `Event '${eventType}' is not supported in current Document`,
-				});
-				return;
-			}
-
-			const events = Array.isArray(event) ? event : [event];
-
-			events.forEach((eventData) => {
-				if (!eventData || !eventData.callback) return;
-				(eventData.target ?? element).addEventListener(
-					eventType,
-					functionType(eventData, element),
-					eventData.options,
-				);
-			});
-		});
-	}
-
-	if (elementData.onAppend && elementData.onAppend.callback) {
-		//do this
-		//make it support and array of append requests with different options
-
-		elementAppended(
-			element,
-			elementData.onAppend.callback,
-			elementData.onAppend?.options,
+		appendChildren(
+			textComponent,
+			document.createTextNode(obj),
+			//document.createComment(obj),
 		);
+		return textComponent;
 	}
 
-	if (elementData.onOrientationChange) {
-		//do this
+	if (!obj.tag) {
+		//error
+		return;
 	}
 
-	if (elementData.onInView && elementData.onInView.callback) {
-		createIntersect(
-			element,
-			elementData.onInView.callback,
-			elementData.onInView?.options,
-		); //do this
+	if (obj.namespace) {
+		component = document.createElementNS(obj.namespace, obj.tag);
+	} else {
+		component = document.createElement(obj.tag);
 	}
 
-	//element.dispatchEvent(create);
+	obj.classes =
+		obj.style || obj.classes
+			? [(obj.classes, obj.style ? useId() : null)]
+			: null;
 
-	if (elementData.onCreate) {
-		if (typeof elementData.onCreate !== 'function') {
-			elementCreatorConsole.message({
-				message: 'Event error:',
-				error: `The onCreate event value '${elementData.onCreate}' is not a function`,
+	if (obj.classes) component.classList.add(...className(obj.classes));
+
+	if (obj.attributes) {
+		Object.entries(obj.attributes).forEach(([attribute, value]) => {
+			if (checkExists(value)) component.setAttribute(attribute, value);
+		});
+	}
+
+	if (obj.innerHTML) component.innerHTML = obj.innerHTML;
+
+	if (obj.children) appendChildren(component, buildComponent(obj.children));
+
+	if (obj.events) {
+		Object.entries(obj.events)
+			.filter(([, event]) => event)
+			.forEach(([eventType, event]) => {
+				if (!checkEvent(eventType)) {
+					elementCreatorConsole.message({
+						message: 'Support warning:',
+						warn: `Event '${eventType}' is not supported in current Document`,
+					});
+					return;
+				}
+
+				(Array.isArray(event) ? event : [event]).forEach(
+					(eventData) => {
+						if (!eventData || !eventData.callback) return;
+						(eventData.target ?? component).addEventListener(
+							eventType,
+							functionType(eventData, component),
+							eventData.options,
+						);
+					},
+				);
 			});
-		} else {
-			elementData.onCreate(element);
-		}
 	}
 
-	return element;
+	if (obj.onAppend && obj.onAppend.callback)
+		elementAppended(
+			component,
+			obj.onAppend.callback,
+			obj.onAppend?.options,
+		);
+
+	if (obj.onCreate) obj.onCreate(component);
+
+	if (obj.style) {
+		const tempComp = buildComponent({
+			tag: 'ec-style-fragment',
+			children: {
+				tag: 'style',
+				innerHTML: styleSheet(
+					obj.style,
+					obj.classes[obj.classes.length - 1],
+				),
+			},
+		});
+
+		appendChildren(tempComp, component);
+
+		component = tempComp;
+	}
+
+	return component;
 }
 
-class Anchor extends HTMLElement {
+function embedSheet(className, [key, data]) {
+	return `.${className}${key.replaceAll(
+		'className',
+		className,
+	)}{${Object.entries(data)
+		.map((obj) => {
+			return dataSheet(className, obj);
+		})
+		.join('')}}`;
+}
+
+function standardSheet(className, obj) {
+	return `.${className}{${dataSheet(className, obj)}}`;
+}
+
+function dataSheet(className, [key, data]) {
+	return `${key
+		.split(/(?=[A-Z])/)
+		.join('-')
+		.toLowerCase()}:${data};`.replaceAll('className', className);
+}
+
+function styleSheet(obj, className) {
+	return Object.entries(obj)
+		.map(([key, data]) => {
+			if (key.match(/(:|@)/)) return embedSheet(className, [key, data]);
+			return standardSheet(className, [key, data]);
+		})
+		.join('');
+}
+
+class ECAnchor extends HTMLElement {
 	#self;
 
 	constructor() {
@@ -484,10 +492,50 @@ class Anchor extends HTMLElement {
 	}
 
 	connectedCallback() {
+		this.#self = this;
 		this.#self.setAttribute('hidden', '');
 	}
 
-	disconnectedCallback() {}
+	disconnectedCallback() {
+		this.#self = null;
+	}
+}
+
+class ECWrapper extends HTMLElement {
+	#self;
+
+	constructor() {
+		const self = super();
+
+		this.#self = self;
+	}
+
+	connectedCallback() {
+		this.#self = this;
+		this.#self.style.display = 'contents';
+	}
+
+	disconnectedCallback() {
+		this.#self = null;
+	}
+}
+
+class ECStyle extends ECWrapper {
+	constructor() {
+		super();
+	}
+}
+
+class ECText extends ECWrapper {
+	constructor() {
+		super();
+	}
+}
+
+class ECFragment extends ECWrapper {
+	constructor() {
+		super();
+	}
 }
 
 function loadElement(element) {
@@ -571,9 +619,7 @@ function awaitContentLoad(element) {
 		});
 	};
 
-	elements.forEach((element) => {
-		crawlChildren(element);
-	});
+	elements.forEach(crawlChildren);
 
 	if (loadableElements.length === 0) return Promise.resolve(0);
 
@@ -583,7 +629,7 @@ function awaitContentLoad(element) {
 function useSuspense(fn, loading, fallback) {
 	let suspenseFired = false;
 
-	return useState((content, setContent) => {
+	const [state] = useState((content, setContent) => {
 		if (!suspenseFired) {
 			suspenseFired = true;
 			const element = buildComponent(fn());
@@ -601,63 +647,54 @@ function useSuspense(fn, loading, fallback) {
 		}
 		return content;
 	}, loading);
+
+	return state;
 }
 
 function useId() {
 	if (!window.elementCreatorIdSessionStorage)
 		window.elementCreatorIdSessionStorage = 0;
-
-	return ':' + (window.elementCreatorIdSessionStorage++).toString(16) + '&e:';
+	return `e${(window.elementCreatorIdSessionStorage++).toString(16)}c`;
 }
 
-function usePath() {
-	return new URL(window.location.href);
-}
-
-function createContext(name, init) {
-	window.elementCreatorContext;
-
-	localStorage.setItem();
-
-	return ({ value, children, ...props }) => {
+function checkState(val) {
+	if (!val)
 		return {
-			contextProvider: value ?? init,
-			tag: 'context-wrapper',
-			children,
-			...props,
+			tag: 'ec-anchor',
 		};
-	};
+	if (Array.isArray(val)) {
+		if (val.length < 1)
+			return {
+				tag: 'ec-anchor',
+			};
+		if (val.length === 1) return val[0];
+		return {
+			tag: 'ec-fragment',
+			children: val,
+		};
+	}
+	return val;
 }
-
-function useContext({ children, id }) {}
-
-function useRef(init) {}
 
 function useState(fn, initVal) {
-	const checkState = (val) => {
-		if (val) return val;
-		return { tag: 'ec-anchor' };
-	};
-
 	const stateManager = {
 		element: null,
 		container: document.createDocumentFragment(),
 		state: initVal,
 
 		setter: async (value) => {
-			let skipFlag = false;
 			switch (typeof value) {
 				case 'object':
-					skipFlag =
+					if (
 						JSON.stringify(stateManager.state) ===
-						JSON.stringify(value);
+						JSON.stringify(value)
+					)
+						return;
 					break;
 				default:
-					skipFlag = stateManager.state === value;
+					if (stateManager.state === value) return;
 					break;
 			}
-
-			if (skipFlag) return;
 
 			stateManager.state = value;
 
@@ -676,6 +713,10 @@ function useState(fn, initVal) {
 			return stateManager.state;
 		},
 
+		getterFn() {
+			return stateManager.getter;
+		},
+
 		check() {
 			return new Promise((res) => {
 				const interval = setInterval(() => {
@@ -683,7 +724,7 @@ function useState(fn, initVal) {
 						clearInterval(interval);
 						res();
 					}
-				}, 1);
+				}, 0.5);
 			});
 		},
 	};
@@ -694,7 +735,7 @@ function useState(fn, initVal) {
 
 	stateManager.container.appendChild(stateManager.element);
 
-	return stateManager.container;
+	return [stateManager.container, stateManager.getterFn, stateManager.setter];
 }
 
 function isObject(item) {
@@ -710,7 +751,9 @@ function merge(target, ...sources) {
 				if (!target[key]) Object.assign(target, { [key]: {} });
 				merge(target[key], source[key]);
 			} else {
-				Object.assign(target, { [key]: source[key] });
+				Object.assign(target, {
+					[key]: source[key],
+				});
 			}
 		}
 	}
@@ -748,11 +791,16 @@ function render(root, fn, settings) {
 		return;
 	}
 
-	elementCreatorConsole.message({
-		message: 'Hydrating page',
-	});
+	customElements.define('ec-anchor', ECAnchor);
+	customElements.define('ec-text', ECText);
+	customElements.define('ec-fragment', ECFragment);
+	customElements.define('ec-style-fragment', ECStyle);
 
 	if (settings?.useIcons) new IconSystem();
+
+	elementCreatorConsole.message({
+		message: 'Starting page hydration',
+	});
 
 	if (settings?.htmlElements)
 		Object.entries(settings.htmlElements).forEach(
@@ -760,8 +808,6 @@ function render(root, fn, settings) {
 				customElements.define(name, elementClass);
 			},
 		);
-
-	customElements.define('ec-anchor', Anchor);
 
 	if (settings?.customEvents) {
 		//do this
@@ -864,43 +910,6 @@ function render(root, fn, settings) {
 	}
 
 	hydrate();
-}
-
-function createIntersect(element, callback, options) {
-	const intersectFunction = (entries, observer) => {
-		const entry = entries[0];
-
-		if (entry.isIntersecting) {
-			if (options?.clearOnceInView) observer.unobserve(element);
-			callback?.visible(element, entry);
-		} else {
-			callback?.hidden(element, entry);
-		}
-	};
-
-	const intersectSettings = {
-		root: options?.root ?? document,
-		rootMargin: '0px',
-		scrollMargin: '0px',
-		threshold: options?.threshold ?? [0, 0.25, 0.5, 0.75, 1],
-	};
-
-	const observer = new IntersectionObserver(
-		intersectFunction,
-		intersectSettings,
-	);
-
-	if (options?.awaitContentLoad) {
-		if (document.readyState === 'complete') {
-			observer.observe(element);
-		} else {
-			window.addEventListener('load', () => {
-				observer.observe(element);
-			});
-		}
-	} else {
-		observer.observe(element);
-	}
 }
 
 function useDeprecatedMethodToAppend(element, callback) {
@@ -1035,33 +1044,37 @@ function returnIf(bool, value, fallback) {
 function appendChildren(element, children) {
 	if (!children) return;
 
-	const childArr = Array.isArray(children) ? children : [children];
-
-	childArr.forEach((child) => {
-		element.appendChild(child);
-	});
+	(Array.isArray(children) ? children : [children])
+		.filter(Boolean)
+		.forEach((child) => {
+			element.appendChild(child);
+		});
 }
 
 function insertChildrenBefore(element, children, beforeElement) {
 	if (!children) return;
 
-	const childArr = Array.isArray(children) ? children : [children];
+	(Array.isArray(children) ? children : [children])
+		.filter(Boolean)
+		.forEach((child) => {
+			element.insertBefore(child, beforeElement);
+		});
+}
 
-	childArr.forEach((child) => {
-		element.insertBefore(child, beforeElement);
-	});
+function createPortal(element, root) {
+	if (!root) root = document.body;
+	appendChildren(root, buildComponent(element));
 }
 
 function className(classes, ...extraClasses) {
 	if (![...extraClasses][0] && [...extraClasses].length === 1) return classes;
 
-	classes = Array.isArray(classes)
-		? [...classes, ...extraClasses]
-		: [classes, ...extraClasses];
-
 	const tempArr = [];
 
-	classes
+	(Array.isArray(classes)
+		? [...classes, ...extraClasses]
+		: [classes, ...extraClasses]
+	)
 		.flat(Infinity)
 		.filter(Boolean)
 		.forEach((classData) => {
@@ -1070,12 +1083,6 @@ function className(classes, ...extraClasses) {
 		});
 
 	return Array.from(new Set(tempArr));
-}
-
-function checkForKeys(component) {
-	return (
-		Object.keys(component).length !== 0 && component.constructor === Object
-	);
 }
 
 export {
@@ -1093,6 +1100,6 @@ export {
 	useState,
 	useSuspense,
 	useId,
-	usePath,
 	merge,
+	createPortal,
 };

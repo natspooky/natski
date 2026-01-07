@@ -382,7 +382,29 @@ function findDirectory(name, root) {
 	//	console.log(...dirContent.flat(Infinity).filter((item) => item != null));
 }
 
-function createDirectory(path) {
+function copyFileToLocation(copyPath, pastePath) {
+	return new Promise(async (resolve, reject) => {
+		let fileData;
+
+		if (willMinify) {
+			fileData = await minifyFile(copyPath);
+		} else {
+			fileData = copyPath;
+		}
+
+		if (fileData) resolve(fileData);
+		reject('broken :(');
+	});
+}
+
+async function minifyFile(path) {
+	const contents = await fsPromise.readFile(path, {
+		encoding: 'utf8',
+	});
+	return await minify(contents);
+}
+/*
+function BuildDirectory(path) {
 	if (!fs.existsSync(path)) return;
 
 	const pathComponents = path.dirname(path).split(/\/|\\/);
@@ -400,24 +422,7 @@ function createDirectory(path) {
 	});
 }
 
-async function minifyFile(path) {
-	const contents = await fsPromise.readFile(path, {
-		encoding: 'utf8',
-	});
-	return await minify(contents);
-}
+function buildRoot() {}
 
-function copyFileToLocation(copyPath, pastePath) {
-	return new Promise(async (resolve, reject) => {
-		let fileData;
-
-		if (willMinify) {
-			fileData = await minifyFile(copyPath);
-		} else {
-			fileData = copyPath;
-		}
-
-		if (fileData) resolve(fileData);
-		reject('broken :(');
-	});
-}
+function BuildPage() {}
+*/

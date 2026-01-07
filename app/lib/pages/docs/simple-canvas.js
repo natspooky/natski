@@ -17,5 +17,3 @@ render(
 		useIcons: true,
 	},
 );
-
-export const metadata = { icon: 'boob' };
