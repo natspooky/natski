@@ -283,7 +283,7 @@ function StateTest() {
 
 		const interval = setInterval(() => {
 			setFn(getFn() + 1);
-		}, 100);
+		}, 10);
 
 		return [
 			state,
@@ -525,11 +525,11 @@ function MiscTests() {
 	function IdTest() {
 		return new Array(10).fill(0).map(() => {
 			return [
-				{ tag: 'br' },
 				{
 					tag: 'span',
 					children: useId(),
 				},
+				{ tag: 'br' },
 			];
 		});
 	}

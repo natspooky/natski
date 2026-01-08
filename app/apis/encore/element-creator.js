@@ -701,7 +701,7 @@ function checkState(val) {
 function useState(fn, initVal) {
 	const stateManager = {
 		element: null,
-		container: document.createDocumentFragment(),
+		container: buildComponent({ tag: 'ec-fragment' }),
 		state: initVal,
 
 		setter: async (value) => {
