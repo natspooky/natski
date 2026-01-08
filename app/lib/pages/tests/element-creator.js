@@ -176,6 +176,32 @@ function StateTest() {
 		return element;
 	}
 
+	function embededStateTest() {
+		const [embed] = useState((getter, setter) => {
+			return BUTTON({
+				children: `Click counter 2: ${getter}`,
+				events: { click: { callback: () => setter(getter + 1) } },
+			});
+		}, 0);
+
+		const [element] = useState((getter, setter) => {
+			return {
+				tag: 'div',
+				children: [
+					BUTTON({
+						children: `Click counter 1: ${getter}`,
+						events: {
+							click: { callback: () => setter(getter + 1) },
+						},
+					}),
+					embed,
+				],
+			};
+		}, 0);
+
+		return element;
+	}
+
 	function PageObjectRepeatTest() {
 		function page1() {
 			return H3({ children: 'this is page 1' });
@@ -307,7 +333,7 @@ function StateTest() {
 
 	return {
 		IncrementTest,
-
+		embededStateTest,
 		IntervalTest,
 		PageObjectRepeatTest,
 		PageValueRepeatTest,
@@ -400,29 +426,47 @@ function ContextTests() {
 
 function MergeTests() {
 	function ReplaceTest() {
-		const obj1 = {};
-		const obj2 = {};
+		const obj1 = { data: 'red' };
+		const obj2 = { data: 'blue' };
 
-		return [obj1, obj2, merge(obj1, obj2)].map((item) => {
-			return JSON.stringify(item);
+		return [obj1, obj2, merge({}, obj1, obj2)].map((item) => {
+			return [JSON.stringify(item), { tag: 'br' }];
 		});
 	}
 
 	function ArrayTest() {
-		const obj1 = {};
-		const obj2 = {};
+		const obj1 = {
+			data: [],
+			otherData: 3,
+			nullerData: [400],
+		};
+		const obj2 = { data: 7, otherData: [30], nullData: [100] };
 
-		return [obj1, obj2, merge(obj1, obj2)].map((item) => {
-			return JSON.stringify(item);
+		return [obj1, obj2, merge({}, obj1, obj2)].map((item) => {
+			return [JSON.stringify(item), { tag: 'br' }];
 		});
 	}
 
 	function EmbeddedObjectTest() {
-		const obj1 = {};
-		const obj2 = {};
+		const obj1 = {
+			data: {
+				otherData: 'green',
+				extraOtherData: {
+					data: 'blue',
+				},
+			},
+		};
+		const obj2 = {
+			data: {
+				otherData: 'red',
+				extraOtherData: {
+					data: 'black',
+				},
+			},
+		};
 
-		return [obj1, obj2, merge(obj1, obj2)].map((item) => {
-			return JSON.stringify(item);
+		return [obj1, obj2, merge({}, obj1, obj2)].map((item) => {
+			return [JSON.stringify(item), { tag: 'br' }];
 		});
 	}
 
@@ -506,30 +550,6 @@ function MiscTests() {
 		IdTest,
 		PortalTest,
 	};
-}
-
-function objectMergeTest() {
-	const obj1 = {
-		tag: 'div',
-		attributes: {
-			name: 'bunga',
-			src: 'red',
-		},
-	};
-
-	const obj2 = {
-		attributes: {
-			name: 'blue',
-		},
-	};
-
-	return [
-		JSON.stringify(obj1),
-		{ tag: 'br' },
-		JSON.stringify(obj2),
-		{ tag: 'br' },
-		JSON.stringify(merge(obj1, obj2)),
-	];
 }
 
 render(

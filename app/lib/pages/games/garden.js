@@ -17,8 +17,9 @@ function HoverFlower() {
 
 	return {
 		tag: 'h1',
-		attributes: {
-			style: 'width: fit-content; height: fit-content',
+		style: {
+			width: 'fit-content',
+			height: 'fit-content',
 		},
 		events: {
 			mouseenter: {
@@ -46,14 +47,22 @@ function Garden(num) {
 
 	return {
 		tag: 'div',
-		attributes: {
-			style: 'display: flex; width: 100%; height: 100%; align-items: center; justify-content: center',
+		style: {
+			display: 'flex',
+			width: '100%',
+			height: '100%',
+			alignItems: 'center',
+			justifyContent: 'center',
 		},
+
 		children: {
 			tag: 'div',
-
-			attributes: {
-				style: 'display: flex; width: min(600px, 90%); height: min(600px,90%); flex-wrap: wrap; align-items: center; justify-content: center',
+			style: {
+				display: 'flex',
+				width: 'min(600px,90%)',
+				flexWrap: 'wrap',
+				alignItems: 'center',
+				justifyContent: 'center',
 			},
 			children: state,
 		},
@@ -63,7 +72,7 @@ function Garden(num) {
 render(
 	'root',
 	() => {
-		return Garden(195);
+		return Garden(400);
 	},
 	{
 		useIcons: true,

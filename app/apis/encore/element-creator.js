@@ -452,6 +452,7 @@ function buildComponent(obj) {
 }
 
 function embedSheet(className, [key, data]) {
+	if (!data) return '';
 	return `.${className}${key.replaceAll(
 		'className',
 		className,
@@ -462,11 +463,17 @@ function embedSheet(className, [key, data]) {
 		.join('')}}`;
 }
 
-function standardSheet(className, obj) {
-	return `.${className}{${dataSheet(className, obj)}}`;
+function embedSheetAlt(className, [key, data]) {
+	if (!data) return '';
+	return `${key.replaceAll('className', className)}{${Object.entries(data)
+		.map((obj) => {
+			return dataSheet(className, obj);
+		})
+		.join('')}}`;
 }
 
 function dataSheet(className, [key, data]) {
+	if (!data) return '';
 	return `${key
 		.split(/(?=[A-Z])/)
 		.join('-')
@@ -474,12 +481,27 @@ function dataSheet(className, [key, data]) {
 }
 
 function styleSheet(obj, className) {
-	return Object.entries(obj)
-		.map(([key, data]) => {
-			if (key.match(/(:|@)/)) return embedSheet(className, [key, data]);
-			return standardSheet(className, [key, data]);
-		})
-		.join('');
+	let normalSheetArr = [];
+	let embedSheetArr = [];
+
+	Object.entries(obj).forEach(([key, data]) => {
+		if (!data) return;
+		if (isObject(data)) {
+			if (key.match(/(:)/)) {
+				embedSheetArr.push(embedSheet(className, [key, data]));
+				return;
+			}
+
+			if (key.match(/(@|\.)/)) {
+				embedSheetArr.push(embedSheetAlt(className, [key, data]));
+				return;
+			}
+		}
+
+		normalSheetArr.push(dataSheet(className, [key, data]));
+	});
+
+	return `.${className}{${normalSheetArr.join('')}}${embedSheetArr.join('')}`;
 }
 
 class ECAnchor extends HTMLElement {
@@ -749,27 +771,25 @@ function merge(target, ...sources) {
 		for (const key in source) {
 			if (isObject(source[key])) {
 				if (!target[key]) Object.assign(target, { [key]: {} });
-				if (Array.isArray(target[key]))
-					Object.assign(target, {
-						[key]: [...target[key], source[key]],
-					});
-
 				merge(target[key], source[key]);
 			} else {
-				if (Array.isArray(target[key])) {
+				if (Array.isArray(target[key]) || Array.isArray(source[key])) {
 					Object.assign(target, {
 						[key]: [
-							...target[key],
-							...(Array.isArray(source[key])
+							...(Array.isArray((target[key] ??= []))
+								? target[key]
+								: [target[key]]),
+
+							...(Array.isArray((source[key] ??= []))
 								? source[key]
 								: [source[key]]),
 						],
 					});
+				} else {
+					Object.assign(target, {
+						[key]: source[key],
+					});
 				}
-
-				Object.assign(target, {
-					[key]: source[key],
-				});
 			}
 		}
 	}

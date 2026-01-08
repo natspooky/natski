@@ -9,6 +9,7 @@ import {
 import Marquee from '../../components/ui/marquee.js';
 import Carousel from '../../components/ui/carousel.js';
 import { Selector } from '../../components/ui/selector.js';
+import { Glass } from '../../components/ui/glass.js';
 import { Modal, ModalButton } from '../../components/ui/modal.js';
 
 render(
@@ -27,14 +28,14 @@ render(
 					},
 				},
 			}),
-			ModalButton({ modal: Modal({}), children: 'epics' }),
-			Carousel({
-				slides: [
-					{
-						tag: 'div',
-						classes: 'ball',
+			new Array(100).fill(0).map(() => {
+				return Glass({
+					tag: 'div',
+					style: {
+						margin: '10px',
+						width: 'fit-content',
 					},
-				],
+				});
 			}),
 		];
 	},
