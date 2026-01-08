@@ -749,8 +749,24 @@ function merge(target, ...sources) {
 		for (const key in source) {
 			if (isObject(source[key])) {
 				if (!target[key]) Object.assign(target, { [key]: {} });
+				if (Array.isArray(target[key]))
+					Object.assign(target, {
+						[key]: [...target[key], source[key]],
+					});
+
 				merge(target[key], source[key]);
 			} else {
+				if (Array.isArray(target[key])) {
+					Object.assign(target, {
+						[key]: [
+							...target[key],
+							...(Array.isArray(source[key])
+								? source[key]
+								: [source[key]]),
+						],
+					});
+				}
+
 				Object.assign(target, {
 					[key]: source[key],
 				});

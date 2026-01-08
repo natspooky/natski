@@ -134,7 +134,7 @@ function page() {
 			.join(' ');
 	};
 
-	return [StateTest, SuspenseTest, MiscTests].map((component) => {
+	return [StateTest, SuspenseTest, MergeTests, MiscTests].map((component) => {
 		const element = component();
 
 		return DIV({
@@ -452,6 +452,41 @@ function ContextTests() {
 
 	return {}
 }*/
+
+function MergeTests() {
+	function ReplaceTest() {
+		const obj1 = {};
+		const obj2 = {};
+
+		return [obj1, obj2, merge(obj1, obj2)].map((item) => {
+			return JSON.stringify(item);
+		});
+	}
+
+	function ArrayTest() {
+		const obj1 = {};
+		const obj2 = {};
+
+		return [obj1, obj2, merge(obj1, obj2)].map((item) => {
+			return JSON.stringify(item);
+		});
+	}
+
+	function EmbeddedObjectTest() {
+		const obj1 = {};
+		const obj2 = {};
+
+		return [obj1, obj2, merge(obj1, obj2)].map((item) => {
+			return JSON.stringify(item);
+		});
+	}
+
+	return {
+		ReplaceTest,
+		ArrayTest,
+		EmbeddedObjectTest,
+	};
+}
 
 function MiscTests() {
 	function StyleTest() {
