@@ -542,6 +542,12 @@ class ECWrapper extends HTMLElement {
 	}
 }
 
+class ECState extends ECWrapper {
+	constructor() {
+		super();
+	}
+}
+
 class ECStyle extends ECWrapper {
 	constructor() {
 		super();
@@ -701,7 +707,7 @@ function checkState(val) {
 function useState(fn, initVal) {
 	const stateManager = {
 		element: null,
-		container: buildComponent({ tag: 'ec-fragment' }),
+		container: buildComponent({ tag: 'ec-state' }),
 		state: initVal,
 
 		setter: async (value) => {
@@ -831,6 +837,7 @@ function render(root, fn, settings) {
 	customElements.define('ec-text', ECText);
 	customElements.define('ec-fragment', ECFragment);
 	customElements.define('ec-style-fragment', ECStyle);
+	customElements.define('ec-state', ECState);
 
 	if (settings?.useIcons) new IconSystem();
 
