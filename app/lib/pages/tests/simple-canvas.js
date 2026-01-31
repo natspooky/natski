@@ -61,7 +61,7 @@ render(
 	() => {
 		const sizeValue = 400;
 		const size = { height: sizeValue, width: sizeValue };
-		const fps = 6000;
+		const fps = 1000;
 
 		return [
 			{
@@ -230,6 +230,26 @@ render(
 				settings: {
 					fps,
 					diagnostics: true,
+				},
+			}),
+			Canvas({
+				name: 'clock',
+				setup: ({ canvas, context: ctx }) => {},
+				draw: ({ canvas, context: ctx }) => {
+					canvas.paintAll('white');
+					const w = canvas.width;
+				},
+				settings: {
+					fps,
+					cursor: {
+						global: true,
+						active: true,
+					},
+					key: {
+						active: true,
+					},
+					diagnostics: true,
+					useRetina: true,
 				},
 			}),
 		];

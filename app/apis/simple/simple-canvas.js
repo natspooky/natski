@@ -11,7 +11,7 @@ const append = new Event('append');
 const simpleCanvasConsole = new Console('Simple Canvas', '#ec3e92ff');
 
 export default class SimpleCanvas {
-	#supportedEvents = [
+	static #supportedEvents = [
 		//mouse
 		'mousedown',
 		'mouseup',
@@ -45,7 +45,7 @@ export default class SimpleCanvas {
 		//canvas context
 		'contextlost',
 		'contextrestored',
-	]; // will tell the canvas to not attach or allow any event listeners that the current document doesnt support
+	].filter(SimpleCanvas.checkEventSupport); // will tell the canvas to not attach or allow any event listeners that the current document doesnt support
 
 	#userEventListeners = {};
 
@@ -153,10 +153,6 @@ export default class SimpleCanvas {
 	};
 
 	constructor(canvas, settings = {}, name = 'Unnamed Canvas') {
-		this.#supportedEvents = this.#supportedEvents.filter(
-			this.#checkEventSupport,
-		);
-
 		this.#mergeSettings(settings);
 
 		switch (typeof canvas) {
@@ -244,6 +240,23 @@ export default class SimpleCanvas {
 		return new SimpleCanvas(element, settings, name);
 	}
 
+	static CreateBound({ top, left, height, width, padding, parent }) {
+		return {
+			top,
+			left,
+			height,
+			width,
+			padding,
+			offsetTop: top + padding,
+			offsetLeft: left + padding,
+			offsetHeight: height + padding,
+			offsetWidth: width + padding,
+			parentContext: parent,
+		};
+	}
+
+	static transformBound() {}
+
 	async render() {
 		if (!this.#drawingState.drawFn) {
 			simpleCanvasConsole.message({
@@ -309,8 +322,6 @@ export default class SimpleCanvas {
 		this.#drawingState.resizeFn = fn;
 	}
 
-	animate() {}
-
 	set size({ height, width }) {
 		this.#canvasState.size.locked = true;
 		if (width) this.#canvasState.size.width = width;
@@ -342,7 +353,7 @@ export default class SimpleCanvas {
 	}
 
 	on(eventName, fn) {
-		if (!this.#supportedEvents.includes(eventName)) {
+		if (!SimpleCanvas.#supportedEvents.includes(eventName)) {
 			simpleCanvasConsole.message({
 				message: 'Event warning:',
 				warn: `'${eventName}' is not supported in Simple Canvas`,
@@ -352,7 +363,7 @@ export default class SimpleCanvas {
 	}
 
 	removeEvent(eventName) {
-		if (!this.#supportedEvents.includes(eventName)) {
+		if (!SimpleCanvas.#supportedEvents.includes(eventName)) {
 			console.log('uh oh');
 		}
 
@@ -422,7 +433,7 @@ export default class SimpleCanvas {
 		if (this.settings.size) this.size = this.settings.size;
 	}
 
-	#checkEventSupport(eventName) {
+	static checkEventSupport(eventName) {
 		if (typeof eventName != 'string' || eventName.length == 0) return false;
 		const tagNames = {
 			select: 'input',
@@ -445,7 +456,7 @@ export default class SimpleCanvas {
 	}
 
 	#buildEmbedEvent({ target, eventName, fn, options }) {
-		if (!this.#supportedEvents.includes(eventName)) return;
+		if (!SimpleCanvas.#supportedEvents.includes(eventName)) return;
 
 		const boundEventFn = fn.bind(this);
 
@@ -759,46 +770,46 @@ export default class SimpleCanvas {
 
 		if (!this.#canvasState.size.locked) {
 			const retina = this.retinaScale;
-			this.#mouseState.motion.position = {
-				x:
-					((event.pageX - this.#canvasState.location.left) * retina) /
-						matrix.a -
-					matrix.e / matrix.a,
-				y:
-					((event.pageY - this.#canvasState.location.top) * retina) /
-						matrix.d -
-					matrix.f / matrix.d,
-			};
+
+			this.#mouseState.motion.position.x =
+				((event.pageX - this.#canvasState.location.left) * retina) /
+					matrix.a -
+				matrix.e / matrix.a;
+
+			this.#mouseState.motion.position.y =
+				((event.pageY - this.#canvasState.location.top) * retina) /
+					matrix.d -
+				matrix.f / matrix.d;
 		} else {
-			this.#mouseState.motion.position = {
-				x:
-					((this.#canvasState.size.width /
-						this.#canvasState.elementSize.width) *
-						(event.pageX - this.#canvasState.location.left)) /
-						matrix.a -
-					matrix.e / matrix.a,
-				y:
-					((this.#canvasState.size.height /
-						this.#canvasState.elementSize.height) *
-						(event.pageY - this.#canvasState.location.top)) /
-						matrix.d -
-					matrix.f / matrix.d,
-			};
+			this.#mouseState.motion.position.x =
+				((this.#canvasState.size.width /
+					this.#canvasState.elementSize.width) *
+					(event.pageX - this.#canvasState.location.left)) /
+					matrix.a -
+				matrix.e / matrix.a;
+
+			this.#mouseState.motion.position.y =
+				((this.#canvasState.size.height /
+					this.#canvasState.elementSize.height) *
+					(event.pageY - this.#canvasState.location.top)) /
+					matrix.d -
+				matrix.f / matrix.d;
 		}
 
 		const time = performance.now() - this.#mouseState.motion.lastEntryTime;
 
-		this.#mouseState.motion.velocity = {
-			x:
-				(this.#mouseState.motion.lastPostion.x -
-					this.#mouseState.motion.position.x) /
-				time,
-			y:
-				(this.#mouseState.motion.lastPostion.y -
-					this.#mouseState.motion.position.y) /
-				time,
-		};
+		//velocity code
+		this.#mouseState.motion.velocity.x =
+			(this.#mouseState.motion.lastPostion.x -
+				this.#mouseState.motion.position.x) /
+			time;
 
+		this.#mouseState.motion.velocity.y =
+			(this.#mouseState.motion.lastPostion.y -
+				this.#mouseState.motion.position.y) /
+			time;
+
+		//speed code
 		this.#mouseState.motion.speed = this.#pythag(
 			this.#mouseState.motion.velocity.x,
 			this.#mouseState.motion.velocity.y,
@@ -806,6 +817,7 @@ export default class SimpleCanvas {
 
 		this.#mouseState.motion.lastEntryTime = performance.now();
 
+		//reset the motion of the cursor when the mouse stops moving
 		this.#timers.cursorMotionState = setTimeout(() => {
 			this.#mouseState.moving = false;
 			this.#mouseState.motion.velocity = {

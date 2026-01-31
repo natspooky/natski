@@ -1,7 +1,6 @@
 import Footer from '../components/footer.js';
-import Nav from '../components/nav.js';
+import Nav from '../components/layout/nav.js';
 import RootLayout from './rootLayout.js';
-import { Modal, ModalButton } from '../components/ui/modal.js';
 
 function CoverScreen() {
 	const append = (self) => {

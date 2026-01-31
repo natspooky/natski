@@ -5,7 +5,7 @@ import {
 } from '../../../apis/encore/element-creator.js';
 import { Selector, SelectorButton } from './selector.js';
 
-function PageSwap({ e }, pages) {
+function PageSwap({ data }, pages) {
 	const [pageState, getPage, setPage] = useState(() => {});
 
 	return {

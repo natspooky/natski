@@ -1,167 +1,193 @@
-import { render, className } from '../../apis/encore/element-creator.js';
+import {
+	render,
+	className,
+	useState,
+} from '../../apis/encore/element-creator.js';
 import standardLayout from '../layouts/standardLayout.js';
 import Marquee from '../components/ui/marquee.js';
 import { Link } from '../components/ui/link.js';
 import { Img } from '../components/ui/img.js';
 import Icon from '../components/ui/icon.js';
 
-function Flex({ children, classes }) {
-	return {
-		tag: 'div',
-		classes: className('flex-container', classes),
-		children,
-	};
-}
+const pageData = [
+	{
+		name: 'Element Creator',
+		icon: 'ENCORE',
+		category: 'Encore',
+		description: 'desc',
+		links: { href: '' },
+	},
+	{
+		name: 'Icon System',
+		icon: 'ENCORE',
+		category: 'Encore',
+		description: 'desc',
+		links: { href: '' },
+	},
+	{
+		name: 'Simple Canvas',
+		icon: 'simple',
+		category: 'Simple',
+		description: 'desc',
+		links: { href: '' },
+	},
+	{
+		name: 'lorem ipsum loren sample treblum',
+		icon: 'simple',
+		category: 'Simple',
+		description: 'desc',
+		links: { href: '' },
+	},
+];
 
-function Grid({ children, classes }) {
+function AnimateWrapper(obj) {
 	return {
-		tag: 'div',
-		classes: className('grid-container', classes),
-		children,
-	};
-}
-
-function GitHubTile() {
-	return {
-		tag: 'div',
-		classes: 'github-tile',
-	};
-}
-
-function ButtonArray() {
-	const childEl = ({ icon, name }) => {
-		return [
-			{
-				tag: 'span',
-				children: name,
+		tag: 'ec-fragment',
+		children: obj,
+		onAppend: {
+			callback: (self) => {
+				self.classList.add('animate');
 			},
-			Icon({ name: icon }),
-		];
-	};
-
-	const buttonData = [
-		{
-			href: '/products/encore',
-			icon: 'ENCORE',
-			name: 'Encore',
-			colour: 'blue',
-		},
-		{
-			href: '/products/simple',
-			icon: 'simple',
-			name: 'Simple',
-			colour: 'yellow',
-		},
-		{ href: '/products/arc', icon: 'ARC', name: 'Arc', colour: 'red' },
-	];
-
-	return buttonData.map(({ name, icon, href, colour }) =>
-		Link({
-			children: childEl({ icon, name }),
-			href,
-			classes: 'button-array-button',
-			attributes: {
-				style: `--bg-colour: ${colour}`,
+			options: {
+				awaitFontLoad: true,
 			},
-		}),
-	);
-}
-
-function MarqueeItem({ src, colour }) {
-	return {
-		tag: 'div',
-		classes: 'marquee-item',
-		attributes: {
-			style: `--bg-colour: ${colour}`,
 		},
-		children: Img({
-			src,
-			width: 40,
-			height: 40,
-		}),
 	};
 }
 
-function MarqueeCard() {
-	const marqueeData = [
-		{
-			src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Python_logo_01.svg/640px-Python_logo_01.svg.png',
-			colour: 'blue',
+function AnimatedText(text) {
+	return {
+		tag: 'p',
+		style: {
+			'.className.animate span': {
+				opacity: '1',
+				transform: 'translateX(0px) scale(1)',
+			},
 		},
-		{
-			src: 'https://www.pngmart.com/files/22/Symbol-Logo-PNG-Image.png',
-			colour: 'black',
+		children: text.split(' ').map((word, i) => {
+			return [
+				word.split('').map((letter, index) => {
+					return {
+						tag: 'span',
+						style: {
+							transition: '0.4s cubic-bezier(.47,1.53,.77,1.01)',
+							position: 'relative',
+							display: 'inline-block',
+							opacity: '0',
+							transform: 'translateX(15px) scale(0.6)',
+							transitionDelay: `${(i + 1) * (index + 1) * 0.02}s`,
+						},
+						children: letter,
+					};
+				}),
+				' ',
+			];
+		}),
+		onAppend: {
+			callback: (self) => {
+				self.classList.add('animate');
+			},
+			options: {
+				awaitFontLoad: true,
+			},
 		},
-		{
-			src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Python_logo_01.svg/640px-Python_logo_01.svg.png',
-			colour: 'blue',
-		},
-		{
-			src: 'https://www.pngmart.com/files/22/Symbol-Logo-PNG-Image.png',
-			colour: 'black',
-		},
-	];
+	};
+}
 
-	const half = Math.floor(marqueeData.length / 2);
+function CenterStage() {
+	const [buttonArr] = useState((get, set) => {
+		function Button({ name, icon }, index, active) {
+			const textCol = 'white';
+			return {
+				tag: 'button',
+				children: [
+					Icon({
+						name: icon,
+						style: {
+							display: 'block',
+							width: '15px',
+							height: '15px',
+							backgroundColor: textCol,
+							marginRight: '5px',
+						},
+					}),
+					{
+						tag: 'span',
+						style: {
+							color: textCol,
+						},
+						children: name,
+					},
+				],
+				style: {
+					backgroundColor: active ? 'black' : 'red',
+					display: 'flex',
+					alignItems: 'center',
+					padding: '10px 20px',
+					borderRadius: '20px',
+					fontWeight: 'bold',
+					border: '1px solid black',
+				},
+				events: {
+					click: {
+						callback: () => {
+							setCenterStage(pageData[index]);
+							set(index);
+						},
+					},
+				},
+			};
+		}
+
+		return {
+			tag: 'div',
+			style: {
+				gap: '10px',
+				display: 'flex',
+			},
+			children: pageData.map((obj, index) => {
+				if (get === index) return Button(obj, index, true);
+				return Button(obj, index, false);
+			}),
+		};
+	}, 0);
+	const [currentPage, , setCenterStage] = useState((get) => {
+		return CenterStageLayout(get);
+	}, pageData[0]);
 
 	return {
 		tag: 'div',
-		classes: 'marquee-card',
 		children: [
 			{
 				tag: 'div',
-				classes: 'marquee-container',
-				children: [
-					marqueeData.slice(0, half),
-					marqueeData.slice(half),
-				].map((marqData) =>
-					Marquee({
-						speed: 0.1,
-						children: {
-							tag: 'div',
-							classes: 'marquee-contents',
-							children: marqData.map((data) => MarqueeItem(data)),
-						},
-					}),
-				),
-			},
-			{
-				tag: 'span',
-				children: 'temp Text',
+				children: [buttonArr, currentPage],
 			},
 		],
 	};
 }
 
-function InfoBar() {
+function CenterStageLayout({ name, description }) {
 	return {
 		tag: 'div',
-	};
-}
-
-function HomeHeader() {
-	return Flex({
-		classes: 'gap-1',
 		children: [
-			InfoBar(),
-			Flex({
-				classes: 'wrap gap-1 home-header',
-				children: [
-					Flex({
-						classes: 'column gap-1 grow',
-						children: [
-							MarqueeCard({}),
-							Flex({
-								classes: 'gap-1',
-								children: ButtonArray(),
-							}),
-						],
-					}),
-					GitHubTile({}),
-				],
-			}),
+			{
+				tag: 'h1',
+				children: AnimatedText(name),
+			},
+			{
+				tag: 'div',
+				children: {
+					tag: 'span',
+					children: 'IMG PALCEHOLDER',
+					style: { backgroundColor: 'black', height: '100px' },
+				},
+			},
+			{
+				tag: 'h3',
+				children: description,
+			},
 		],
-	});
+	};
 }
 
 render(
@@ -169,9 +195,31 @@ render(
 	() => {
 		window.components.layout = standardLayout;
 
-		return [HomeHeader()];
+		return CenterStage();
 	},
 	{
 		useIcons: true,
 	},
 );
+/*
+function AnimateWrapper(obj) {
+	return {
+		tag: 'ec-fragment',
+		children: obj,
+		onAppend: {
+			callback: () => {},
+			options: {
+				awaitFontLoad: true,
+			},
+		},
+	};
+}
+
+function ScrollAnimateWrapper(obj) {
+	const observer = new IntersectionObserver();
+
+	return {
+		tag: 'ec-fragment',
+		children: obj,
+	};
+}*/

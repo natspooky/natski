@@ -382,7 +382,7 @@ function buildComponent(obj) {
 
 	obj.classes =
 		obj.style || obj.classes
-			? [(obj.classes, obj.style ? useId() : null)]
+			? [obj.classes ? obj.classes : null, obj.style ? useId() : null]
 			: null;
 
 	if (obj.classes) component.classList.add(...className(obj.classes));
@@ -707,7 +707,7 @@ function checkState(val) {
 function useState(fn, initVal) {
 	const stateManager = {
 		element: null,
-		container: buildComponent({ tag: 'ec-state' }),
+		container: buildComponent({ tag: 'ec-state-fragment' }),
 		state: initVal,
 
 		setter: async (value) => {
@@ -837,7 +837,7 @@ function render(root, fn, settings) {
 	customElements.define('ec-text', ECText);
 	customElements.define('ec-fragment', ECFragment);
 	customElements.define('ec-style-fragment', ECStyle);
-	customElements.define('ec-state', ECState);
+	customElements.define('ec-state-fragment', ECState);
 
 	if (settings?.useIcons) new IconSystem();
 
@@ -853,7 +853,7 @@ function render(root, fn, settings) {
 		);
 
 	if (settings?.customEvents) {
-		//do this
+		//do this maybe?
 	}
 
 	window.components = new ComponentManager();
@@ -897,7 +897,13 @@ function render(root, fn, settings) {
 
 	const hydrate = async () => {
 		try {
-			await settings?.hooks?.before?.();
+			if (
+				settings?.hooks?.before &&
+				typeof settings.hooks.before === 'function'
+			) {
+				//maybe add a preview of data here. like a template or sometging idk, just think about it later whne you arent on a train
+				await settings.hooks.before();
+			}
 
 			const time = performance.now();
 
