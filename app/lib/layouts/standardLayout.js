@@ -18,7 +18,7 @@ function CoverScreen() {
 		onAppend: {
 			callback: append,
 			options: {
-				awaitPageLoad: true,
+				awaitFontLoad: true,
 			},
 		},
 	};

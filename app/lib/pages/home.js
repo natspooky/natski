@@ -32,10 +32,11 @@ const pageData = [
 		links: { href: '' },
 	},
 	{
-		name: 'lorem ipsum loren sample treblum',
+		name: 'Lorem Thingy',
 		icon: 'simple',
 		category: 'Simple',
-		description: 'desc',
+		description:
+			'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
 		links: { href: '' },
 	},
 ];
@@ -55,18 +56,20 @@ function AnimateWrapper(obj) {
 	};
 }
 
-function AnimatedText(text) {
+function AnimatedText(text, extra = 0) {
+	let counter = 0;
 	return {
-		tag: 'p',
+		tag: 'ec-fragment',
 		style: {
 			'.className.animate span': {
 				opacity: '1',
 				transform: 'translateX(0px) scale(1)',
 			},
 		},
-		children: text.split(' ').map((word, i) => {
+		children: text.split(' ').map((word, _, arr) => {
 			return [
 				word.split('').map((letter, index) => {
+					counter += 1;
 					return {
 						tag: 'span',
 						style: {
@@ -74,8 +77,8 @@ function AnimatedText(text) {
 							position: 'relative',
 							display: 'inline-block',
 							opacity: '0',
-							transform: 'translateX(15px) scale(0.6)',
-							transitionDelay: `${(i + 1) * (index + 1) * 0.02}s`,
+							transform: 'translateX(15px) scale(0.2)',
+							transitionDelay: `${(index + counter) * ((arr.length > 20 ? 0.004 : 0.01) + extra)}s`,
 						},
 						children: letter,
 					};
@@ -126,7 +129,12 @@ function CenterStage() {
 					padding: '10px 20px',
 					borderRadius: '20px',
 					fontWeight: 'bold',
-					border: '1px solid black',
+					border: '1px solid transparent',
+					transition: '0.2s',
+					':hover': {
+						transition: '0s',
+						border: '1px solid white',
+					},
 				},
 				events: {
 					click: {
@@ -179,12 +187,17 @@ function CenterStageLayout({ name, description }) {
 				children: {
 					tag: 'span',
 					children: 'IMG PALCEHOLDER',
-					style: { backgroundColor: 'black', height: '100px' },
+					style: {
+						backgroundColor: 'black',
+						height: '50vh',
+						display: 'block',
+						position: 'relative',
+					},
 				},
 			},
 			{
 				tag: 'h3',
-				children: description,
+				children: AnimatedText(description),
 			},
 		],
 	};

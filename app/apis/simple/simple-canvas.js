@@ -1109,7 +1109,13 @@ export default class SimpleCanvas {
 
 		context.save();
 
+		context.lineWidth = 1;
+		context.lineCap = 'flat';
+		context.lineJoin = 'flat';
+		context.setLineDash([]);
+
 		context.setTransform(1, 0, 0, 1, 0, 0);
+		//context.reset();
 
 		fn(context);
 
