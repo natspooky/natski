@@ -240,23 +240,6 @@ export default class SimpleCanvas {
 		return new SimpleCanvas(element, settings, name);
 	}
 
-	static CreateBound({ top, left, height, width, padding, parent }) {
-		return {
-			top,
-			left,
-			height,
-			width,
-			padding,
-			offsetTop: top + padding,
-			offsetLeft: left + padding,
-			offsetHeight: height + padding,
-			offsetWidth: width + padding,
-			parentContext: parent,
-		};
-	}
-
-	static transformBound() {}
-
 	async render() {
 		if (!this.#drawingState.drawFn) {
 			simpleCanvasConsole.message({
@@ -766,34 +749,38 @@ export default class SimpleCanvas {
 
 		const matrix = this.settings.cursor.correctTransform
 			? this.#canvasState.context.getTransform()
-			: new DOMMatrix();
+			: new DOMMatrixReadOnly();
 
 		if (!this.#canvasState.size.locked) {
 			const retina = this.retinaScale;
 
-			this.#mouseState.motion.position.x =
-				((event.pageX - this.#canvasState.location.left) * retina) /
-					matrix.a -
-				matrix.e / matrix.a;
+			const nonRelativeCursorPos = new DOMPointReadOnly(
+				(event.pageX - this.#canvasState.location.left) * retina,
+				(event.pageY - this.#canvasState.location.top) * retina,
+			);
 
-			this.#mouseState.motion.position.y =
-				((event.pageY - this.#canvasState.location.top) * retina) /
-					matrix.d -
-				matrix.f / matrix.d;
+			const relativeCursorPos = nonRelativeCursorPos.matrixTransform(
+				matrix.inverse(),
+			);
+
+			this.#mouseState.motion.position.x = relativeCursorPos.x;
+			this.#mouseState.motion.position.y = relativeCursorPos.y;
 		} else {
-			this.#mouseState.motion.position.x =
-				((this.#canvasState.size.width /
+			const nonRelativeCursorPos = new DOMPointReadOnly(
+				(this.#canvasState.size.width /
 					this.#canvasState.elementSize.width) *
-					(event.pageX - this.#canvasState.location.left)) /
-					matrix.a -
-				matrix.e / matrix.a;
-
-			this.#mouseState.motion.position.y =
-				((this.#canvasState.size.height /
+					(event.pageX - this.#canvasState.location.left),
+				(this.#canvasState.size.height /
 					this.#canvasState.elementSize.height) *
-					(event.pageY - this.#canvasState.location.top)) /
-					matrix.d -
-				matrix.f / matrix.d;
+					(event.pageY - this.#canvasState.location.top),
+			);
+
+			const relativeCursorPos = nonRelativeCursorPos.matrixTransform(
+				matrix.inverse(),
+			);
+
+			this.#mouseState.motion.position.x = relativeCursorPos.x;
+			this.#mouseState.motion.position.y = relativeCursorPos.y;
 		}
 
 		const time = performance.now() - this.#mouseState.motion.lastEntryTime;

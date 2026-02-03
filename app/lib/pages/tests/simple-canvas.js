@@ -342,6 +342,7 @@ render(
 								setup: ({ canvas, context: ctx }) => {
 									ctx.translate(100, 100);
 									ctx.scale(0.8, 2);
+									ctx.rotate(1280);
 								},
 								draw: ({ canvas, context: ctx }) => {
 									canvas.paintAll('blue');
@@ -377,6 +378,7 @@ render(
 								setup: ({ canvas, context: ctx }) => {
 									ctx.translate(100, 100);
 									ctx.scale(0.8, 2);
+									ctx.rotate(180);
 								},
 								draw: ({ canvas, context: ctx }) => {
 									canvas.paintAll('blue');
