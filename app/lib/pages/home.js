@@ -236,3 +236,34 @@ function ScrollAnimateWrapper(obj) {
 		children: obj,
 	};
 }*/
+
+function GlitchText(text) {
+	const [state, getter, setter] = useState((get, set) => {
+		return;
+	});
+
+	return state;
+}
+
+function draw() {
+	t += 0.015;
+	const w = canvas.width;
+	const h = canvas.height;
+	ctx.clearRect(0, 0, w, h);
+
+	const grid = 40;
+	for (let x = 0; x < w; x += grid) {
+		for (let y = 0; y < h; y += grid) {
+			const pulse =
+				Math.sin((x + y) * 0.02 + t * 3) * 0.5 +
+				Math.sin(t + (x - y) * 0.01) * 0.5;
+
+			const size = (pulse + 1) * 5 + 2;
+
+			ctx.fillStyle = `hsl(${(t * 40 + x * 0.1 + y * 0.1) % 360}, 90%, 60%)`;
+			ctx.beginPath();
+			ctx.arc(x + grid / 2, y + grid / 2, size, 0, Math.PI * 2);
+			ctx.fill();
+		}
+	}
+}

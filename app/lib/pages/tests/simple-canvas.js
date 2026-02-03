@@ -241,6 +241,7 @@ render(
 						console.log(key);
 					}
 					if (mouse.covering) {
+						console.log(mouse.speed, mouse.moving);
 						if (mouse.pressing) {
 							drawArray.push({
 								x: mouse.position.x,
