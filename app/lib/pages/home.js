@@ -235,21 +235,17 @@ function BannerSelector() {
 				top: '0',
 				height: '25px',
 				width: '25px',
-				//backfaceVisibility: 'hidden',
 				overflow: 'hidden',
-				//boxShadow: '0px 0px 0 50px var(--background)',
-				//clipPath: 'inset(0)',
 			},
 			'::before': {
 				left: '-25px',
-				//borderRadius: '0 100vmax 0 0',
 				backgroundImage:
-					'radial-gradient(circle at 0% 100%, transparent 25px, var(--background) 20px)',
+					'radial-gradient(circle at 0% 100%, transparent 25px, var(--background) 15px)',
 			},
 			'::after': {
 				right: '-25px',
 				backgroundImage:
-					'radial-gradient(circle at 100% 100%, transparent 25px, var(--background) 20px)',
+					'radial-gradient(circle at 100% 100%, transparent 25px, var(--background) 15px)',
 			},
 		},
 		children: [
