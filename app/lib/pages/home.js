@@ -164,7 +164,6 @@ function Selector({ buttons }) {
 		},
 		children: [
 			state,
-
 			buttons.map(({ name, action }, index) => {
 				return {
 					tag: 'button',
@@ -292,11 +291,11 @@ function Banner() {
 			display: 'block',
 			margin: '0 auto',
 			height: 'auto',
-			aspectRatio: '4 / 3',
+			aspectRatio: '5 / 3',
 			maxWidth: '2100px',
 			borderRadius: 'var(--border-radius-4)',
 			overflow: 'hidden',
-			backgroundImage: 'linear-gradient(to top, #fff, #00000030)',
+			backgroundImage: 'linear-gradient(to top, #ce3ee8, #25cf8330)',
 		},
 		children: [BannerSelector()],
 	};
