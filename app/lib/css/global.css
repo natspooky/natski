@@ -1,11 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
 @import url('./animations.css');
 
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	font-family: 'Quicksand', sans-serif;
+	font-family: 'Rubik', sans-serif;
 	font-optical-sizing: auto;
 	font-style: normal;
 	-webkit-tap-highlight-color: rgba(255, 255, 255, 0);
@@ -14,44 +14,28 @@
 }
 
 :root {
-	--border-radius-0: 4px;
-	--border-radius-1: 8px;
-	--border-radius-2: 12px;
-	--border-radius-3: 16px;
-	--space-0: 0px;
-	--space-1: 4px;
-	--space-2: 8px;
-	--space-3: 12px;
-	--space-4: 16px;
-	--space-5: 24px;
-	--space-6: 32px;
-	--space-7: 40px;
-	--space-8: 48px;
-	--space-9: 56px;
-	--space-10: 64px;
-	--space-11: 80px;
-	--space-12: 96px;
-	--space-13: 128px;
-	--space-14: 256px;
-	--space-15: 512px;
 	-webkit-font-smoothing: antialiased;
-	--font-fallback: -apple-system, 'BlinkMacSystemFont', 'Segoe UI', 'Roboto',
-		'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
-		'Helvetica Neue', sans-serif;
-	--font-display: 'Inter', var(--font-fallback);
-	--font-mono: 'Fira Code', monospace;
-	--font-numeric: 'Space Grotesk', var(--font-fallback);
+	--font-fallback:
+		-apple-system, 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Oxygen',
+		'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+		sans-serif;
+
+	--border-radius-1: 5px;
+	--border-radius-2: 12px;
+	--border-radius-3: 18px;
+	--border-radius-4: 23px;
+	--border-radius-50: 42%;
+
 	--font-size-1: 14px;
 	--font-size-3: 16px;
 	--font-size-4: 18px;
 	--font-size-5: 20px;
 	--font-size-6: 24px;
 	--font-size-7: 32px;
+	--font-size-8: 38px;
 	--font-weight-400: 400;
 	--font-weight-500: 500;
 	--font-weight-600: 560;
-	--font-paragraph-spacing: 0.3px;
-	--font-paragraph-height: 1.75;
 
 	--SSC: #8157de;
 	--PDS: #489ed4;
@@ -141,8 +125,16 @@
 	--pink-1000: oklch(55.6% 0.24 352);
 	--pink-1100: oklch(42.39% 0.195 352);
 	--pink-1200: oklch(30.21% 0.138 352);
-	--accent: var(--blue-800);
-	--background: #141030; /*var(--gray-200);*/
+
+	--background: rgb(255, 255, 255); /*#141030 var(--gray-200);*/
+	--accent: rgb(145, 141, 246);
+	--accent-sub: rgba(145, 141, 246, 0.08);
+	--background-sub: rgba(0, 0, 0, 0.03);
+	--darken: rgb(20, 20, 31);
+	--text-color: rgb(24, 25, 37);
+	--text-sub-color: rgb(102, 102, 102);
+	--text-supersub-color: rgba(0, 0, 0, 0.4);
+
 	--header: oklch(from var(--gray-100) l c h / 40%);
 	--emphasis: oklch(from var(--blue-800) l c h / 7%);
 	--foreground: var(--gray-300);
@@ -195,23 +187,6 @@
 	box-sizing: border-box;
 }
 
-#load {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100vh;
-	background-color: var(--background);
-	filter: blur(0px);
-	backdrop-filter: blur(5px);
-	transition: 0.5s;
-}
-
-#load.loaded {
-	background-color: transparent;
-	backdrop-filter: blur(0px);
-}
-
 html {
 	font: 100% / 1.2888 var(--font-display);
 	-ms-text-size-adjust: 100%;
@@ -219,7 +194,7 @@ html {
 }
 body {
 	background: var(--background);
-	color: var(--text-primary);
+	color: var(--text-color);
 	word-wrap: break-word;
 	text-rendering: optimizeLegibility;
 	height: auto;
@@ -248,11 +223,13 @@ body {
 }
 
 .grid-bg {
-	background: linear-gradient(
+	background:
+		linear-gradient(
 				90deg,
 				oklch(from var(--gray-1200) l c h / 10%) 1.5px,
 				transparent 1.5px 30px
-			) -4px 0 / 30px 30px,
+			) -4px
+			0 / 30px 30px,
 		linear-gradient(
 				oklch(from var(--gray-1200) l c h / 10%) 1.5px,
 				transparent 1.5px 30px
@@ -261,7 +238,8 @@ body {
 	background-position: center center;
 }
 .grid-mask {
-	mask-image: linear-gradient(to right, black 1px, transparent 1px 30px),
+	mask-image:
+		linear-gradient(to right, black 1px, transparent 1px 30px),
 		linear-gradient(to bottom, black 1px, transparent 1px 30px);
 	mask-size: 20px 20px;
 	mask-position: center center;
@@ -281,7 +259,8 @@ body {
 	background: radial-gradient(
 			oklch(from var(--gray-1200) l c h / 30%) 1.5px,
 			transparent 1.5px 30px
-		) -4px 0 / 30px 30px;
+		) -4px
+		0 / 30px 30px;
 	background-position: center center;
 }
 
@@ -292,138 +271,4 @@ body {
 	to {
 		transform: rotate(360deg);
 	}
-}
-
-.flex-container {
-	display: flex;
-}
-.flex-container.column {
-	flex-direction: column;
-}
-.flex-container.wrap {
-	flex-wrap: wrap;
-}
-.flex-container.center {
-	align-items: center;
-	justify-content: center;
-}
-.flex-container.items-center {
-	align-items: center;
-}
-.flex-container.justify-center {
-	justify-content: center;
-}
-.flex-container.grow {
-	flex-grow: 1;
-}
-.flex-container.grow-2 {
-	flex-grow: 2;
-}
-.flex-container.grow-3 {
-	flex-grow: 3;
-}
-.flex-container.grow-4 {
-	flex-grow: 4;
-}
-.flex-container.gap-1 {
-	gap: 10px;
-}
-.flex-container.gap-2 {
-	gap: 20px;
-}
-.flex-container.gap-3 {
-	gap: 30px;
-}
-.flex-container.gap-4 {
-	gap: 40px;
-}
-.flex-container.gap-5 {
-	gap: 50px;
-}
-
-.home-header {
-	position: relative;
-	height: 45vh;
-	width: 100%;
-	padding: 10px 0;
-}
-
-.button-array-button {
-	position: relative;
-	height: 50px;
-	background-color: var(--bg-colour);
-	flex-grow: 1;
-	border: 0;
-	border-radius: 12px;
-}
-.button-array-button a {
-	position: relative;
-	display: block;
-	width: 100%;
-	height: 100%;
-}
-
-.github-tile {
-	position: relative;
-	flex-grow: 1;
-	height: 100%;
-	border-radius: 12px;
-	min-width: min(400px, 80%);
-	border: 1px solid white;
-}
-
-.marquee-card {
-	position: relative;
-	flex-grow: 1;
-	background-color: #4a4377;
-	border-radius: 12px;
-	overflow: hidden;
-	width: 100%;
-	min-width: min(400px, 80%);
-	border: 1px solid gray;
-}
-
-.marquee-card .marquee-container {
-	position: absolute;
-	height: fit-content;
-	display: flex;
-	flex-direction: column;
-	width: 100%;
-	transform: translateX(20%) translateY(15%) rotate(-40deg);
-}
-
-.marquee-card .marquee-container .marquee {
-	width: 100%;
-	background-color: transparent;
-}
-.marquee-card .marquee-container .marquee:last-child {
-	transform: translateX(-65px);
-}
-
-.marquee-card .marquee-container .marquee .marquee-contents {
-	display: flex;
-}
-
-.marquee-card span {
-	position: absolute;
-	top: 10px;
-	left: 10px;
-	color: red;
-}
-
-.marquee-item {
-	position: relative;
-	border-radius: 30px;
-	padding: 20px;
-	margin: 10px;
-	flex-shrink: 0;
-	box-shadow: 3px 3px 5px #00000020;
-	background-color: var(--bg-colour);
-}
-
-.marquee-item img {
-	position: relative;
-	object-fit: contain;
-	height: 80px;
-	width: 80px;
 }

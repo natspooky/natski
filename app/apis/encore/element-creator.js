@@ -491,7 +491,6 @@ function styleSheet(obj, className) {
 				embedSheetArr.push(embedSheet(className, [key, data]));
 				return;
 			}
-
 			if (key.match(/(@|\.)/)) {
 				embedSheetArr.push(embedSheetAlt(className, [key, data]));
 				return;
@@ -638,7 +637,7 @@ function awaitContentLoad(element) {
 	};
 
 	const crawlChildren = (element) => {
-		if (element.children.length === 0 && elementType(element)) return;
+		if (element.children.length === 0 || elementType(element)) return;
 
 		Array.from(element.children).forEach((child) => {
 			if (elementType(child)) return;

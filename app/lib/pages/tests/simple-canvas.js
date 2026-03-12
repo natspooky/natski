@@ -1,7 +1,87 @@
-import { render, className } from '../../../apis/encore/element-creator.js';
+import {
+	render,
+	className,
+	merge,
+} from '../../../apis/encore/element-creator.js';
 //import Canvas from '../../components/canvas.js';
 
 import SimpleCanvas from '../../../apis/simple/simple-canvas.js';
+
+function H1(props) {
+	return { tag: 'h1', ...props };
+}
+
+function H2(props) {
+	return { tag: 'h2', ...props };
+}
+
+function H3(props) {
+	return { tag: 'h3', ...props };
+}
+
+function P(props) {
+	return { tag: 'p', ...props };
+}
+
+function DIV({ children, ...props }) {
+	return merge(
+		{
+			tag: 'div',
+			style: {
+				marginTop: '15px',
+			},
+			children,
+		},
+		props,
+	);
+}
+
+function BUTTON(props) {
+	return merge(
+		{
+			tag: 'button',
+			style: {
+				background: 'darkgray',
+				border: '2px solid gray',
+				borderRadius: '100vmax',
+				padding: '5px 10px',
+				margin: '5px',
+				transition: '0.2s',
+				':hover': {
+					border: '2px solid darkgray',
+					background: 'gray',
+					transition: '0s',
+				},
+			},
+		},
+		props,
+	);
+}
+
+function BorderContainer(props) {
+	return merge(
+		{
+			tag: 'div',
+			style: {
+				border: '1px solid gray',
+				padding: '10px',
+				transition: '0.2s',
+				':hover': {
+					border: '1px solid white',
+					transition: '0s',
+				},
+			},
+		},
+		props,
+	);
+}
+
+function dummyText() {
+	const dummy =
+		'lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum';
+	const split = dummy.split(' ');
+	return split[Math.floor(Math.random() * split.length)];
+}
 
 function Canvas({
 	name,
@@ -287,192 +367,202 @@ render(
 				},
 				classes: 'large',
 			}),
-			Canvas({
-				name: 'large Dynamic Size',
-				setup: ({ context: ctx }) => {
-					ctx.translate(100, 100);
-					ctx.scale(1, 1);
-				},
-				draw: ({ canvas, context: ctx }) => {
-					const mouse = canvas.cursor;
-					const key = canvas.keyboard;
-
-					canvas.paintAll('#ff000010');
-					if (key.pressing) {
-						console.log(key);
-					}
-					if (mouse.covering) {
-						const { x, y } = mouse.position;
-
-						if (mouse.pressing) ctx.fillStyle = 'red';
-						if (mouse.moving) ctx.fillStyle = 'green';
-
-						ctx.fillRect(x - 5, y - 5, 10, 10);
-
-						ctx.fillStyle = 'black';
-					}
-				},
-				settings: {
-					fps,
-					cursor: {
-						global: true,
-						active: true,
-					},
-					key: {
-						active: true,
-					},
-					diagnostics: true,
-					autoClear: false,
-					useRetina: true,
-				},
-				classes: 'large',
-			}),
-			{
-				tag: 'div',
-				children: [
-					{
-						tag: 'p',
-						children: 'Mouse Test',
-					},
-					{
-						tag: 'div',
-						children: [
-							Canvas({
-								name: 'Mouse Fixed Size',
-								setup: ({ canvas, context: ctx }) => {
-									ctx.translate(100, 100);
-									ctx.scale(0.8, 2);
-									ctx.rotate(1280);
-								},
-								draw: ({ canvas, context: ctx }) => {
-									canvas.paintAll('blue');
-									if (canvas.keyboard.pressing) {
-										console.log(canvas.keyboard);
-									}
-									if (canvas.cursor.covering) {
-										const { x, y } = canvas.cursor.position;
-										const { x: xVel, y: yVel } =
-											canvas.cursor.velocity;
-
-										const speed = canvas.cursor.speed;
-
-										ctx.fillRect(x - 5, y - 5, 10, 10);
-									}
-								},
-								settings: {
-									fps,
-									cursor: {
-										global: true,
-										active: true,
-									},
-									key: {
-										active: true,
-									},
-									diagnostics: true,
-									useRetina: true,
-									size,
-								},
-							}),
-							Canvas({
-								name: 'Mouse Dynamic Size',
-								setup: ({ canvas, context: ctx }) => {
-									ctx.translate(100, 100);
-									ctx.scale(0.8, 2);
-									ctx.rotate(180);
-								},
-								draw: ({ canvas, context: ctx }) => {
-									canvas.paintAll('blue');
-									if (canvas.keyboard.pressing) {
-										console.log(canvas.keyboard);
-									}
-									if (canvas.cursor.covering) {
-										const { x, y } = canvas.cursor.position;
-
-										ctx.fillRect(x - 5, y - 5, 10, 10);
-									}
-								},
-								settings: {
-									fps,
-									cursor: {
-										global: true,
-										active: true,
-									},
-									key: {
-										active: true,
-									},
-									diagnostics: true,
-									useRetina: true,
-								},
-							}),
-						],
-					},
-				],
-			},
-			{
-				tag: 'div',
-				children: [
-					{
-						tag: 'p',
-						children: 'Key Test',
-					},
-					{
-						tag: 'div',
-						children: [
-							Canvas({
-								name: 'Key Test',
-								draw: ({ canvas }) => {
-									canvas.paintAll('blue');
-								},
-
-								settings: {
-									fps,
-									diagnostics: true,
-									size,
-								},
-							}),
-						],
-					},
-				],
-			},
-			Canvas({
-				name: 'Resize Test',
-				draw: ({ canvas }) => {
-					canvas.paintAll('blue');
-				},
-				setup: ({ canvas }) => {
-					console.log(canvas.context.getTransform());
-				},
-				resize: ({ top, left, width, height }) => {
-					console.log(top, left, width, height);
-				},
-				settings: {
-					fps,
-					diagnostics: true,
-				},
-			}),
-			Canvas({
-				name: 'clock',
-				setup: ({ canvas, context: ctx }) => {},
-				draw: ({ canvas, context: ctx }) => {
-					canvas.paintAll('white');
-					const w = canvas.width;
-				},
-				settings: {
-					fps,
-					cursor: {
-						global: true,
-						active: true,
-					},
-					key: {
-						active: true,
-					},
-					diagnostics: true,
-					useRetina: true,
-				},
-			}),
+			page(),
 		];
 	},
 	{
 		useIcons: true,
 	},
 );
+
+function page() {
+	const createName = (name) => {
+		return name
+			.split(/(?=[A-Z])/)
+			.map((word, index) => {
+				if (index !== 0) return word.toLowerCase();
+				return word.slice(0, 1).toUpperCase() + word.slice(1);
+			})
+			.join(' ');
+	};
+
+	return [MouseTests, KeyTests, RetinaTests].map((component) => {
+		const element = component();
+
+		return DIV({
+			children: BorderContainer({
+				children: [
+					H1({ children: createName(component.name) }),
+					DIV({
+						children:
+							!element.tag && !Array.isArray(element)
+								? Object.entries(element).map(
+										([key, value]) => {
+											return BorderContainer({
+												children: [
+													H2({
+														children:
+															createName(key),
+													}),
+													value(),
+												],
+											});
+										},
+									)
+								: element,
+					}),
+				],
+			}),
+		});
+	});
+}
+
+function MouseTests() {
+	const mouseSettings = {
+		fps: 1000,
+		cursor: {
+			global: true,
+			active: true,
+			correctTransform: true,
+		},
+		diagnostics: true,
+	};
+
+	const setup = ({ context: ctx }) => {
+		ctx.translate(100, 100);
+		ctx.scale(0.8, 2);
+		ctx.rotate(180);
+	};
+
+	const draw = ({ canvas, context: ctx }) => {
+		canvas.paintAll('blue');
+
+		const context = ctx;
+
+		context.save();
+
+		context.setTransform(1, 0, 0, 1, 0, 0);
+
+		ctx.beginPath();
+		ctx.rect(0, 0, canvas.width, canvas.height);
+		ctx.stroke();
+
+		context.restore();
+
+		if (canvas.cursor.covering) {
+			const { x, y } = canvas.cursor.position;
+
+			ctx.fillRect(x - 5, y - 5, 10, 10);
+		}
+	};
+
+	function MouseTestFixedSize() {
+		return Canvas({
+			name: 'Mouse Fixed Size',
+			setup,
+			draw,
+			settings: { ...mouseSettings, size: { width: 400, height: 400 } },
+		});
+	}
+
+	function MouseTestDynamicSize() {
+		return [
+			Canvas({
+				name: 'Mouse Fixed Size',
+				setup,
+				draw,
+				settings: mouseSettings,
+			}),
+			Canvas({
+				name: 'Mouse Fixed Size',
+				setup,
+				draw,
+				settings: { ...mouseSettings, useRetina: false },
+			}),
+		];
+	}
+
+	return { MouseTestDynamicSize, MouseTestFixedSize };
+}
+
+function KeyTests() {
+	const keySettings = {
+		fps: 1000,
+		key: {
+			active: true,
+		},
+
+		diagnostics: true,
+	};
+
+	const draw = ({ canvas, context: ctx }) => {
+		canvas.paintAll('blue');
+		ctx.beginPath();
+		ctx.rect(0, 0, canvas.width, canvas.height);
+		ctx.stroke();
+	};
+
+	function KeyTest() {
+		return Canvas({ name: 'keyboard', draw, settings: keySettings });
+	}
+
+	return { KeyTest };
+}
+
+function RetinaTests() {
+	const retinaSettings = {
+		fps: 1000,
+		key: {
+			active: true,
+		},
+
+		diagnostics: true,
+		useRetina: false,
+	};
+
+	const draw = ({ canvas, context: ctx }) => {
+		canvas.paintAll('blue');
+		ctx.beginPath();
+		ctx.rect(0, 0, canvas.width, canvas.height);
+		ctx.stroke();
+	};
+
+	function Retina() {
+		return [
+			Canvas({
+				name: 'Retina',
+				draw,
+				settings: { ...retinaSettings, useRetina: true },
+			}),
+			Canvas({
+				name: 'Retina',
+				draw,
+				settings: {
+					...retinaSettings,
+					useRetina: true,
+					size: { height: 400, width: 400 },
+				},
+			}),
+		];
+	}
+
+	function NoRetina() {
+		return [
+			Canvas({
+				name: 'No Retina',
+				draw,
+				settings: retinaSettings,
+			}),
+			Canvas({
+				name: 'No Retina',
+				draw,
+				settings: {
+					...retinaSettings,
+					size: { height: 400, width: 400 },
+				},
+			}),
+		];
+	}
+
+	return { Retina, NoRetina };
+}

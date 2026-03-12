@@ -15,10 +15,6 @@ function Link({ href, target, children, ...props }) {
 					callback: linkHandler,
 					param: 'event',
 				},
-				mouseover: {
-					callback: () => {},
-					param: 'event',
-				},
 			},
 			children: {
 				tag: 'a',

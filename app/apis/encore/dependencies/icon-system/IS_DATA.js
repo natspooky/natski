@@ -115,7 +115,6 @@ export const IS_DATA = [
 	'PSS',
 	'CMS',
 	'CMSF',
-	'GIS',
 	'SSM',
 	'SSMF',
 	'bezier',

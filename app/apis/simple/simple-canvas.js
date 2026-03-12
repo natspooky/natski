@@ -10,6 +10,69 @@ import Console from '../dependencies/console.js';
 const append = new Event('append');
 const simpleCanvasConsole = new Console('Simple Canvas', '#ec3e92ff');
 
+class SimpleCanvasUI {
+	constructor(
+		x = 0,
+		y = 0,
+		width = 10,
+		height = 10,
+		padding = 0,
+		margin = 0,
+		round = 0,
+	) {
+		this.parent = null;
+		this.children = [];
+		this.x = x;
+		this.y = y;
+		this.width = width;
+		this.height = height;
+		this.padding = padding;
+		this.margin = margin;
+		this.round = round;
+	}
+
+	addChild(child) {
+		child.parent = this;
+		this.children.push(child);
+
+		return this;
+	}
+
+	get global() {
+		return {
+			x:
+				(this.parent
+					? this.parent.global.x + this.x + this.parent.padding
+					: this.x) + this.margin,
+			y:
+				(this.parent
+					? this.parent.global.y + this.y + this.parent.padding
+					: this.y) + this.margin,
+			height:
+				(this.parent
+					? this.parent.global.height + this.height
+					: this.height) + this.padding,
+			width:
+				(this.parent
+					? this.parent.global.width + this.width
+					: this.width) + this.padding,
+		};
+	}
+
+	draw(ctx) {
+		this.render(ctx);
+		this.children.forEach((child) => {
+			child.draw(ctx);
+		});
+	}
+
+	render(ctx) {
+		ctx.beginPath();
+		ctx.roundRect([this.round]);
+		ctx.fill();
+	}
+}
+
 export default class SimpleCanvas {
 	static #supportedEvents = [
 		//mouse
@@ -401,7 +464,7 @@ export default class SimpleCanvas {
 				useWheel: false,
 				useScroll: false,
 				diagnostics: false,
-				detectWindowFocus: false,
+				pauseOnBlur: false,
 				useRetina: true,
 				canvas: {
 					willReadFrequently: false,
@@ -657,28 +720,34 @@ export default class SimpleCanvas {
 	}
 
 	#pageBlur() {
-		if (this.settings.detectWindowFocus) this.#drawingState.paused = true;
+		if (this.settings.pauseOnBlur) this.#drawingState.paused = true;
 
-		this.#keyState = {
-			pressing: false,
-			pressCount: 0,
-			currentKeys: {},
-		};
+		if (this.settings.key.active) {
+			this.#keyState = {
+				pressing: false,
+				pressCount: 0,
+				currentKeys: {},
+			};
+		}
 
-		this.#mouseState.pressing = false;
-		this.#mouseState.covering = false;
+		if (this.settings.cursor.active) {
+			this.#mouseState.pressing = false;
+			this.#mouseState.covering = false;
+		}
 
-		this.#scrollState = {
-			scrolling: false,
-		};
+		if (this.settings.useScroll)
+			this.#scrollState = {
+				scrolling: false,
+			};
 
-		this.#wheelState = {
-			scrolling: false,
-		};
+		if (this.settings.useWheel)
+			this.#wheelState = {
+				scrolling: false,
+			};
 	}
 
 	#pageFocus() {
-		if (this.settings.detectWindowFocus) this.#drawingState.paused = false;
+		if (this.settings.pauseOnBlur) this.#drawingState.paused = false;
 	}
 
 	#locationUpdate() {
@@ -714,7 +783,7 @@ export default class SimpleCanvas {
 		});
 
 		if (this.#drawingState.drawing && !this.#drawingState.paused)
-			this.#drawSequence();
+			this.drawFrame();
 	}
 
 	#mouseDown(event) {
@@ -748,25 +817,20 @@ export default class SimpleCanvas {
 		this.#mouseState.moving = true;
 
 		const matrix = this.settings.cursor.correctTransform
-			? this.#canvasState.context.getTransform()
+			? this.#canvasState.context.getTransform().inverse()
 			: new DOMMatrixReadOnly();
+
+		let nonRelativeCursorPos;
 
 		if (!this.#canvasState.size.locked) {
 			const retina = this.retinaScale;
 
-			const nonRelativeCursorPos = new DOMPointReadOnly(
+			nonRelativeCursorPos = new DOMPointReadOnly(
 				(event.pageX - this.#canvasState.location.left) * retina,
 				(event.pageY - this.#canvasState.location.top) * retina,
 			);
-
-			const relativeCursorPos = nonRelativeCursorPos.matrixTransform(
-				matrix.inverse(),
-			);
-
-			this.#mouseState.motion.position.x = relativeCursorPos.x;
-			this.#mouseState.motion.position.y = relativeCursorPos.y;
 		} else {
-			const nonRelativeCursorPos = new DOMPointReadOnly(
+			nonRelativeCursorPos = new DOMPointReadOnly(
 				(this.#canvasState.size.width /
 					this.#canvasState.elementSize.width) *
 					(event.pageX - this.#canvasState.location.left),
@@ -774,14 +838,12 @@ export default class SimpleCanvas {
 					this.#canvasState.elementSize.height) *
 					(event.pageY - this.#canvasState.location.top),
 			);
-
-			const relativeCursorPos = nonRelativeCursorPos.matrixTransform(
-				matrix.inverse(),
-			);
-
-			this.#mouseState.motion.position.x = relativeCursorPos.x;
-			this.#mouseState.motion.position.y = relativeCursorPos.y;
 		}
+
+		const relativeCursorPos = nonRelativeCursorPos.matrixTransform(matrix);
+
+		this.#mouseState.motion.position.x = relativeCursorPos.x;
+		this.#mouseState.motion.position.y = relativeCursorPos.y;
 
 		const time = performance.now() - this.#mouseState.motion.lastEntryTime;
 
@@ -942,7 +1004,7 @@ export default class SimpleCanvas {
 		this.#canvasState.canvas.height = this.#canvasState.size.height;
 	}
 
-	#drawSequence() {
+	drawFrame() {
 		if (this.settings.autoClear) this.#clear();
 
 		this.#drawingState.drawFn();
@@ -973,7 +1035,7 @@ export default class SimpleCanvas {
 
 			then = now;
 
-			this.#drawSequence();
+			this.drawFrame();
 		}
 	}
 
@@ -985,9 +1047,19 @@ export default class SimpleCanvas {
 
 	#diagnostics() {
 		this.#transformlessWrapper((ctx) => {
-			this.#fps(ctx);
+			let diagHeight = 0;
+			this.context.scale(0.9, 0.9);
+
+			diagHeight += this.#fps(ctx);
+			//this.#position()
+			//this.#size()
+			//if (this.settings.cursor.active) this.#cursor()
+			//if (this.settings.touch.active) this.#touch()
+			//if (this.settings.key.active) this.#key()
 		});
 	}
+
+	#position() {}
 
 	#fps(ctx) {
 		const textWidth = 15;
@@ -1054,7 +1126,7 @@ export default class SimpleCanvas {
 			graphBoxWidth + margin + padding * 2,
 			margin + padding + textSize,
 		);
-		let region = new Path2D();
+		const region = new Path2D();
 		region.roundRect(
 			margin + padding,
 			margin + padding,
@@ -1083,6 +1155,8 @@ export default class SimpleCanvas {
 			ctx.lineTo(xPos, scaledHeight + padding + margin);
 		});
 		ctx.stroke();
+
+		return boxHeight;
 	}
 
 	// utility

@@ -19,7 +19,7 @@ function IconButton({ name, src, children, ...props }) {
 				src,
 			}),
 			{
-				tag: 'p',
+				tag: 'span',
 				children,
 			},
 		],

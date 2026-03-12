@@ -1,9 +1,11 @@
-import {
-	render,
-	className,
-	useState,
-} from '../../apis/encore/element-creator.js';
+import { render, useState, merge } from '../../apis/encore/element-creator.js';
+import SimpleCanvas from '../../apis/simple/simple-canvas.js';
+import { IS_DATA } from '../../apis/encore/dependencies/icon-system/IS_DATA.js';
 import standardLayout from '../layouts/standardLayout.js';
+import Animator from '../components/layout/animator.js';
+import Header from '../components/layout/header.js';
+import Section from '../components/layout/section.js';
+import Card from '../components/layout/card.js';
 import Marquee from '../components/ui/marquee.js';
 import { Link } from '../components/ui/link.js';
 import { Img } from '../components/ui/img.js';
@@ -41,165 +43,263 @@ const pageData = [
 	},
 ];
 
-function AnimateWrapper(obj) {
-	return {
-		tag: 'ec-fragment',
-		children: obj,
-		onAppend: {
-			callback: (self) => {
-				self.classList.add('animate');
+function Globe() {
+	const canvas = SimpleCanvas.create(
+		'#globe',
+		{
+			fps: 30,
+			autoClear: true,
+			autoResize: true,
+			setupOnResize: true,
+			cursor: {
+				active: false,
+				global: false,
+				passive: true,
+				correctTransform: true,
 			},
-			options: {
-				awaitFontLoad: true,
+			key: {
+				active: false,
+				passive: true,
+			},
+			touch: {
+				active: false,
+				global: false,
+				passive: true,
+				correctTransform: true,
+			},
+			useWheel: false,
+			useScroll: false,
+			diagnostics: false,
+			pauseOnBlur: false,
+			useRetina: false,
+			canvas: {
+				willReadFrequently: false,
+				failIfMajorPerformanceCaveat: false,
 			},
 		},
-	};
-}
+		'Globe Graphic',
+	);
 
-function AnimatedText(text, extra = 0) {
-	let counter = 0;
+	const ctx = canvas.context;
+
+	const compSetup = () => {
+		ctx.lineWidth = 0.05;
+		ctx.scale(
+			Math.min(canvas.width, canvas.height),
+			Math.min(canvas.width, canvas.height),
+		);
+		ctx.translate(0.5, 0.5);
+		//ctx.rotate((45 * Math.PI) / 180);
+	};
+
+	const compResize = (resizeData) => {};
+
+	const compDraw = () => {};
+
+	const compAppend = () => {
+		canvas.render();
+	};
+
+	canvas.setup(compSetup);
+	canvas.resize(compResize);
+	canvas.draw(compDraw);
+	canvas.append(compAppend);
+
 	return {
-		tag: 'ec-fragment',
+		tag: 'div',
+
 		style: {
-			'.className.animate span': {
-				opacity: '1',
-				transform: 'translateX(0px) scale(1)',
+			height: '200px',
+			width: '300px',
+			border: '1px solid gray',
+			'.className #globe': {
+				height: '100%',
+				width: '100%',
 			},
 		},
-		children: text.split(' ').map((word, _, arr) => {
-			return [
-				word.split('').map((letter, index) => {
-					counter += 1;
-					return {
-						tag: 'span',
-						style: {
-							transition: '0.4s cubic-bezier(.47,1.53,.77,1.01)',
-							position: 'relative',
-							display: 'inline-block',
-							opacity: '0',
-							transform: 'translateX(15px) scale(0.2)',
-							transitionDelay: `${(index + counter) * ((arr.length > 20 ? 0.004 : 0.01) + extra)}s`,
-						},
-						children: letter,
-					};
-				}),
-				' ',
-			];
-		}),
+		children: canvas.element,
+	};
+}
+
+function HomeHeader() {
+	return {};
+}
+
+function Selector({ buttons }) {
+	const buttonArr = [];
+	const [state, getSlider, setSlider] = useState((get) => {
+		return get;
+	}, null);
+	let slider;
+
+	return {
+		tag: 'div',
+		style: {
+			display: 'flex',
+			padding: '0 10px',
+		},
 		onAppend: {
-			callback: (self) => {
-				self.classList.add('animate');
+			callback: () => {
+				setSlider({
+					tag: 'span',
+					onCreate: (self) => {
+						slider = self;
+					},
+					style: {
+						position: 'absolute',
+						left: '0',
+						top: '50%',
+						height: '70%',
+						borderRadius: 'var(--border-radius-4)',
+						width: `${buttonArr[0].offsetWidth}px`,
+						transform: `translate(${buttonArr[0].offsetLeft}px, -50%)`,
+						backgroundColor: 'var(--background-sub)',
+						transition: '0.2s',
+					},
+				});
 			},
 			options: {
 				awaitFontLoad: true,
 			},
 		},
+		children: [
+			state,
+
+			buttons.map(({ name, action }, index) => {
+				return {
+					tag: 'button',
+					classes: index === 0 ? 'active' : null,
+					style: {
+						position: 'relative',
+						padding: '0 10px',
+						color: 'var(--text-supersub-color)',
+						flexShrink: '0',
+						flexGrow: '0',
+						fontSize: 'var(--font-size-3)',
+						backgroundColor: 'transparent',
+						border: '0px',
+						transition: '0.2s',
+						'.className.active, .className:hover': {
+							color: 'var(--text-color)',
+						},
+					},
+					events: {
+						click: [
+							{
+								callback: (self) => {
+									if (!self.classList.contains('active')) {
+										buttonArr.forEach((button) => {
+											button.classList.remove('active');
+										});
+										self.classList.add('active');
+
+										slider.style.width = `${self.offsetWidth}px`;
+										slider.style.transform = `translate(${self.offsetLeft}px, -50%)`;
+									}
+								},
+								param: 'self',
+							},
+							action,
+						],
+					},
+					children: name,
+					onCreate: (self) => {
+						buttonArr.push(self);
+					},
+				};
+			}),
+		],
 	};
 }
 
-function CenterStage() {
-	const [buttonArr] = useState((get, set) => {
-		function Button({ name, icon }, index, active) {
-			const textCol = 'white';
-			return {
-				tag: 'button',
-				children: [
-					Icon({
-						name: icon,
-						style: {
-							display: 'block',
-							width: '15px',
-							height: '15px',
-							backgroundColor: textCol,
-							marginRight: '5px',
-						},
-					}),
-					{
-						tag: 'span',
-						style: {
-							color: textCol,
-						},
-						children: name,
-					},
-				],
-				style: {
-					backgroundColor: active ? 'black' : 'red',
-					display: 'flex',
-					alignItems: 'center',
-					padding: '10px 20px',
-					borderRadius: '20px',
-					fontWeight: 'bold',
-					border: '1px solid transparent',
-					transition: '0.2s',
-					':hover': {
-						transition: '0s',
-						border: '1px solid white',
-					},
-				},
-				events: {
-					click: {
-						callback: () => {
-							setCenterStage(pageData[index]);
-							set(index);
-						},
-					},
-				},
-			};
+function BannerSelector() {
+	return {
+		tag: 'div',
+		style: {
+			position: 'absolute',
+			top: '0',
+			left: '50%',
+			width: 'fit-content',
+			display: 'flex',
+			alignItems: 'center',
+			justifyContent: 'center',
+			padding: '5px 3px',
+			height: '55px',
+			borderRadius: '0 0 var(--border-radius-4) var(--border-radius-4)',
+			transform: 'translateX(-50%)',
+			backgroundColor: 'var(--background)',
+			'::before, .className::after': {
+				content: `''`,
+				position: 'absolute',
+				backgroundColor: 'transparent',
+				top: '0',
+				height: '25px',
+				width: '25px',
+				backfaceVisibility: 'hidden',
+				overflow: 'hidden',
+				boxShadow: '0px 0px 0 50px var(--background)',
+				clipPath: 'inset(0)',
+			},
+			'::before': {
+				left: '-25px',
+				borderRadius: '0 100vmax 0 0',
+			},
+			'::after': {
+				right: '-25px',
+				borderRadius: '100vmax 0 0 0',
+			},
+		},
+		children: [
+			Selector({
+				buttons: new Array(5).fill(0).map(() => {
+					return { name: lorem(1), action: '' };
+				}),
+			}),
+		],
+	};
+}
+
+function lorem(range) {
+	function shuffle(array) {
+		let currentIndex = array.length;
+		while (currentIndex != 0) {
+			let randomIndex = Math.floor(Math.random() * currentIndex);
+			currentIndex--;
+			[array[currentIndex], array[randomIndex]] = [
+				array[randomIndex],
+				array[currentIndex],
+			];
 		}
 
-		return {
-			tag: 'div',
-			style: {
-				gap: '10px',
-				display: 'flex',
-			},
-			children: pageData.map((obj, index) => {
-				if (get === index) return Button(obj, index, true);
-				return Button(obj, index, false);
-			}),
-		};
-	}, 0);
-	const [currentPage, , setCenterStage] = useState((get) => {
-		return CenterStageLayout(get);
-	}, pageData[0]);
-
-	return {
-		tag: 'div',
-		children: [
-			{
-				tag: 'div',
-				children: [buttonArr, currentPage],
-			},
-		],
-	};
+		return array;
+	}
+	return shuffle(
+		'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum'.split(
+			' ',
+		),
+	)
+		.slice(0, range)
+		.join(' ')
+		.toLowerCase()
+		.replaceAll(/\.|,/g, '');
 }
 
-function CenterStageLayout({ name, description }) {
+function Banner() {
 	return {
 		tag: 'div',
-		children: [
-			{
-				tag: 'h1',
-				children: AnimatedText(name),
-			},
-			{
-				tag: 'div',
-				children: {
-					tag: 'span',
-					children: 'IMG PALCEHOLDER',
-					style: {
-						backgroundColor: 'black',
-						height: '50vh',
-						display: 'block',
-						position: 'relative',
-					},
-				},
-			},
-			{
-				tag: 'h3',
-				children: AnimatedText(description),
-			},
-		],
+		style: {
+			position: 'relative',
+			width: 'calc(100% - 20px)',
+			display: 'block',
+			margin: '0 auto',
+			height: 'auto',
+			aspectRatio: '4 / 3',
+			maxWidth: '2100px',
+			borderRadius: 'var(--border-radius-4)',
+			overflow: 'hidden',
+			backgroundImage: 'linear-gradient(to top, #fff, #00000030)',
+		},
+		children: [BannerSelector()],
 	};
 }
 
@@ -208,62 +308,63 @@ render(
 	() => {
 		window.components.layout = standardLayout;
 
-		return CenterStage();
+		return [
+			Banner(),
+			new Array(10).fill(0).map(() => {
+				return Animator({
+					children: Section({
+						children: Card({
+							cards: new Array(3).fill(0).map(() => {
+								return {
+									icon: IS_DATA.filter((item) => {
+										return item.includes('circle');
+									})[
+										Math.floor(
+											Math.random() *
+												IS_DATA.filter((item) => {
+													return item.includes(
+														'circle',
+													);
+												}).length,
+										)
+									],
+									title:
+										lorem(
+											Math.floor(Math.random() * 4 + 2),
+										) + '.',
+									description: lorem(
+										Math.floor(Math.random() * 10 + 6),
+									),
+								};
+							}),
+						}),
+					}),
+				});
+			}),
+			new Array(20).fill(0).map(() => {
+				return Animator({
+					children: [
+						Section({
+							children: [
+								Header({
+									chip: lorem(
+										Math.floor(Math.random() * 2 + 1),
+									),
+									title: lorem(
+										Math.floor(Math.random() * 4 + 3),
+									),
+									description: lorem(
+										Math.floor(Math.random() * 30 + 10),
+									),
+								}),
+							],
+						}),
+					],
+				});
+			}),
+		];
 	},
 	{
 		useIcons: true,
 	},
 );
-/*
-function AnimateWrapper(obj) {
-	return {
-		tag: 'ec-fragment',
-		children: obj,
-		onAppend: {
-			callback: () => {},
-			options: {
-				awaitFontLoad: true,
-			},
-		},
-	};
-}
-
-function ScrollAnimateWrapper(obj) {
-	const observer = new IntersectionObserver();
-
-	return {
-		tag: 'ec-fragment',
-		children: obj,
-	};
-}*/
-
-function GlitchText(text) {
-	const [state, getter, setter] = useState((get, set) => {
-		return;
-	});
-
-	return state;
-}
-
-function draw() {
-	t += 0.015;
-	const w = canvas.width;
-	const h = canvas.height;
-	ctx.clearRect(0, 0, w, h);
-
-	const grid = 40;
-	for (let x = 0; x < w; x += grid) {
-		for (let y = 0; y < h; y += grid) {
-			const pulse =
-				Math.sin((x + y) * 0.02 + t * 3) * 0.5 +
-				Math.sin(t + (x - y) * 0.01) * 0.5;
-
-			const size = (pulse + 1) * 5 + 2;
-
-			ctx.fillStyle = `hsl(${(t * 40 + x * 0.1 + y * 0.1) % 360}, 90%, 60%)`;
-			ctx.beginPath();
-			ctx.arc(x + grid / 2, y + grid / 2, size, 0, Math.PI * 2);
-			ctx.fill();
-		}
-	}
-}

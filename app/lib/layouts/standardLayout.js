@@ -1,38 +1,21 @@
-import Footer from '../components/footer.js';
+import Footer from '../components/layout/footer.js';
 import Nav from '../components/layout/nav.js';
 import RootLayout from './rootLayout.js';
-
-function CoverScreen() {
-	const append = (self) => {
-		self.classList.add('loaded');
-		setTimeout(() => {
-			self.remove();
-		}, 800);
-	};
-
-	return {
-		tag: 'section',
-		attributes: {
-			id: 'load',
-		},
-		onAppend: {
-			callback: append,
-			options: {
-				awaitFontLoad: true,
-			},
-		},
-	};
-}
+import { useSuspense } from '../../../apis/encore/element-creator.js';
 
 export default function StandardLayout({ children }) {
 	return RootLayout({
 		children: [
-			Nav(),
 			{
 				tag: 'div',
-				classes: 'main',
-				children: [children, Footer(), CoverScreen()],
+				style: {
+					position: 'relative',
+					paddingTop: '90px',
+					width: '100%',
+				},
+				children: [children, Footer()],
 			},
+			Nav(),
 		],
 	});
 }
