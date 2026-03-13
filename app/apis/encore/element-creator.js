@@ -661,6 +661,8 @@ function useSuspense(fn, loading, fallback) {
 			suspenseFired = true;
 			const element = buildComponent(fn());
 
+			console.log('brug', element);
+
 			awaitContentLoad(element).then(
 				() => {
 					setContent(element);

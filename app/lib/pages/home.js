@@ -1,10 +1,16 @@
-import { render, useState, merge } from '../../apis/encore/element-creator.js';
+import {
+	render,
+	useState,
+	useSuspense,
+} from '../../apis/encore/element-creator.js';
+import isMobile from '../../apis/dependencies/mobile-utils.js';
 import SimpleCanvas from '../../apis/simple/simple-canvas.js';
 import { IS_DATA } from '../../apis/encore/dependencies/icon-system/IS_DATA.js';
 import standardLayout from '../layouts/standardLayout.js';
 import Animator from '../components/layout/animator.js';
 import Header from '../components/layout/header.js';
 import Section from '../components/layout/section.js';
+import Banner from '../components/layout/banner.js';
 import Card from '../components/layout/card.js';
 import Marquee from '../components/ui/marquee.js';
 import { Link } from '../components/ui/link.js';
@@ -43,9 +49,22 @@ const pageData = [
 	},
 ];
 
-function Globe() {
+class Particle {
+	#position;
+	#size;
+	#speed;
+
+	randomize() {
+		this.#size = Math.random() * 60 + 20;
+		this.#speed = Math.random() * 10 + 3;
+	}
+
+	draw() {}
+}
+
+function CanvasBG() {
 	const canvas = SimpleCanvas.create(
-		'#globe',
+		'#CanvasBG',
 		{
 			fps: 30,
 			autoClear: true,
@@ -55,7 +74,7 @@ function Globe() {
 				active: false,
 				global: false,
 				passive: true,
-				correctTransform: true,
+				correctTransform: false,
 			},
 			key: {
 				active: false,
@@ -69,15 +88,15 @@ function Globe() {
 			},
 			useWheel: false,
 			useScroll: false,
-			diagnostics: false,
-			pauseOnBlur: false,
-			useRetina: false,
+			diagnostics: true,
+			pauseOnBlur: true,
+			useRetina: true,
 			canvas: {
 				willReadFrequently: false,
 				failIfMajorPerformanceCaveat: false,
 			},
 		},
-		'Globe Graphic',
+		'Banner Background',
 	);
 
 	const ctx = canvas.context;
@@ -107,12 +126,11 @@ function Globe() {
 
 	return {
 		tag: 'div',
-
 		style: {
-			height: '200px',
-			width: '300px',
-			border: '1px solid gray',
-			'.className #globe': {
+			position: 'absolute',
+			height: '100%',
+			width: '100%',
+			'.className #CanvasBG': {
 				height: '100%',
 				width: '100%',
 			},
@@ -122,137 +140,13 @@ function Globe() {
 }
 
 function HomeHeader() {
-	return {};
-}
-
-function Selector({ buttons }) {
-	const buttonArr = [];
-	const [state, getSlider, setSlider] = useState((get) => {
-		return get;
-	}, null);
-	let slider;
-
 	return {
 		tag: 'div',
-		style: {
-			display: 'flex',
-			padding: '0 10px',
-		},
-		onAppend: {
-			callback: () => {
-				setSlider({
-					tag: 'span',
-					onCreate: (self) => {
-						slider = self;
-					},
-					style: {
-						position: 'absolute',
-						left: '0',
-						top: '50%',
-						height: '70%',
-						borderRadius: 'var(--border-radius-4)',
-						width: `${buttonArr[0].offsetWidth}px`,
-						transform: `translate(${buttonArr[0].offsetLeft}px, -50%)`,
-						backgroundColor: 'var(--background-sub)',
-						transition: '0.2s',
-					},
-				});
-			},
-			options: {
-				awaitFontLoad: true,
-			},
-		},
 		children: [
-			state,
-			buttons.map(({ name, action }, index) => {
-				return {
-					tag: 'button',
-					classes: index === 0 ? 'active' : null,
-					style: {
-						position: 'relative',
-						padding: '0 10px',
-						color: 'var(--text-supersub-color)',
-						flexShrink: '0',
-						flexGrow: '0',
-						fontSize: 'var(--font-size-3)',
-						backgroundColor: 'transparent',
-						border: '0px',
-						transition: '0.2s',
-						'.className.active, .className:hover': {
-							color: 'var(--text-color)',
-						},
-					},
-					events: {
-						click: [
-							{
-								callback: (self) => {
-									if (!self.classList.contains('active')) {
-										buttonArr.forEach((button) => {
-											button.classList.remove('active');
-										});
-										self.classList.add('active');
-
-										slider.style.width = `${self.offsetWidth}px`;
-										slider.style.transform = `translate(${self.offsetLeft}px, -50%)`;
-									}
-								},
-								param: 'self',
-							},
-							action,
-						],
-					},
-					children: name,
-					onCreate: (self) => {
-						buttonArr.push(self);
-					},
-				};
-			}),
-		],
-	};
-}
-
-function BannerSelector() {
-	return {
-		tag: 'div',
-		style: {
-			position: 'absolute',
-			top: '0',
-			left: '50%',
-			width: 'fit-content',
-			display: 'flex',
-			alignItems: 'center',
-			justifyContent: 'center',
-			padding: '5px 3px',
-			height: '55px',
-			borderRadius: '0 0 var(--border-radius-4) var(--border-radius-4)',
-			transform: 'translateX(-50%)',
-			backgroundColor: 'var(--background)',
-			'::before, .className::after': {
-				content: `''`,
-				position: 'absolute',
-				backgroundColor: 'transparent',
-				top: '0',
-				height: '25px',
-				width: '25px',
-				overflow: 'hidden',
+			{
+				tag: 'h1',
+				children: 'NATSKI',
 			},
-			'::before': {
-				left: '-25px',
-				backgroundImage:
-					'radial-gradient(circle at 0% 100%, transparent 25px, var(--background) 15px)',
-			},
-			'::after': {
-				right: '-25px',
-				backgroundImage:
-					'radial-gradient(circle at 100% 100%, transparent 25px, var(--background) 15px)',
-			},
-		},
-		children: [
-			Selector({
-				buttons: new Array(5).fill(0).map(() => {
-					return { name: lorem(1), action: '' };
-				}),
-			}),
 		],
 	};
 }
@@ -282,23 +176,8 @@ function lorem(range) {
 		.replaceAll(/\.|,/g, '');
 }
 
-function Banner() {
-	return {
-		tag: 'div',
-		style: {
-			position: 'relative',
-			width: 'calc(100% - 20px)',
-			display: 'block',
-			margin: '0 auto',
-			height: 'auto',
-			aspectRatio: '5 / 3',
-			maxWidth: '2100px',
-			borderRadius: 'var(--border-radius-4)',
-			overflow: 'hidden',
-			backgroundImage: 'linear-gradient(to top, #ce3ee8, #25cf8330)',
-		},
-		children: [BannerSelector()],
-	};
+function BannerContent({ e }) {
+	return 'bunga';
 }
 
 render(
@@ -307,58 +186,67 @@ render(
 		window.components.layout = standardLayout;
 
 		return [
-			Banner(),
-			new Array(10).fill(0).map(() => {
-				return Animator({
-					children: Section({
-						children: Card({
-							cards: new Array(3).fill(0).map(() => {
-								return {
-									icon: IS_DATA.filter((item) => {
-										return item.includes('circle');
-									})[
-										Math.floor(
-											Math.random() *
-												IS_DATA.filter((item) => {
-													return item.includes(
-														'circle',
-													);
-												}).length,
-										)
-									],
-									title:
-										lorem(
-											Math.floor(Math.random() * 4 + 2),
-										) + '.',
-									description: lorem(
-										Math.floor(Math.random() * 10 + 6),
-									),
-								};
-							}),
-						}),
-					}),
-				});
+			Section({
+				children: HomeHeader(),
 			}),
-			new Array(20).fill(0).map(() => {
-				return Animator({
-					children: [
-						Section({
-							children: [
-								Header({
-									chip: lorem(
-										Math.floor(Math.random() * 2 + 1),
-									),
-									title: lorem(
-										Math.floor(Math.random() * 4 + 3),
-									),
-									description: lorem(
-										Math.floor(Math.random() * 30 + 10),
-									),
-								}),
-							],
-						}),
-					],
-				});
+			Animator({
+				children: Banner(
+					{
+						buttons: [
+							{ name: 'Encore' },
+							{ name: 'Simple' },
+							{ name: 'Misc' },
+						],
+						background: [
+							{
+								tag: 'div',
+								style: {
+									position: 'absolute',
+									top: '0',
+									left: '0',
+									width: '100%',
+									height: '100%',
+									opacity: '0.5',
+									backgroundImage:
+										'linear-gradient(to bottom right, var(--PDS), var(--SSC), var(--VPS))',
+									maskImage:
+										'linear-gradient(to right, transparent 2px, black 2px 30px), linear-gradient(to bottom, transparent 2px, black 2px 30px)',
+									maskSize: '50px 50px',
+									maskPosition: 'center center',
+								},
+							},
+							CanvasBG(),
+						],
+					},
+					{
+						tag: 'span',
+						style: { top: '50px' },
+						children: 'loading',
+					},
+				),
+			}),
+			Animator({
+				children: Section({
+					children: Card({
+						cards: [
+							{
+								icon: 'chain',
+								title: '',
+								description: '',
+							},
+							{
+								icon: 'hidden',
+								title: '',
+								description: '',
+							},
+							{
+								icon: 'scanner',
+								title: '',
+								description: '',
+							},
+						],
+					}),
+				}),
 			}),
 		];
 	},

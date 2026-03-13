@@ -4,7 +4,7 @@ import {
 	useSuspense,
 } from '../../../apis/encore/element-creator.js';
 
-export default function Marquee({ children, speed = 1, classes }) {
+export default function Marquee({ children, speed = 1, style }) {
 	let container;
 	let scroller;
 
@@ -57,38 +57,44 @@ export default function Marquee({ children, speed = 1, classes }) {
 		};
 	}, 1);
 
-	return useSuspense(() => {
-		return {
-			tag: 'div',
-			events: {
-				resize: {
-					target: window,
-					callback: () => {
-						first = true;
-						setCounter(1);
-					},
+	return {
+		tag: 'div',
+		events: {
+			resize: {
+				target: window,
+				callback: () => {
+					first = true;
+					setCounter(1);
 				},
 			},
-			classes: className('marquee', classes),
+		},
+		style: {
+			position: 'relative',
+			width: '100%',
+			height: 'fit-content',
+			overflow: 'hidden',
+			opacity: '0',
+			transform: 'translateY(10px)',
+			transition: '0.4s cubic-bezier(.47,1.53,.77,1.01)',
+			'.animate .className': {
+				opacity: '1',
+				transform: 'translateY(0px)',
+			},
+			...style,
+		},
+		children: {
+			tag: 'div',
+			classes: 'marquee-sub',
 			style: {
 				position: 'relative',
-				backgroundColor: 'aliceblue',
-				width: '70%',
-				height: 'fit-content',
+				width: '100%',
+				height: '100%',
 				overflow: 'hidden',
 			},
-			children: {
-				tag: 'div',
-				classes: 'marquee-sub',
-				style: {
-					position: 'relative',
-					width: '100%',
-					height: '100%',
-					overflow: 'hidden',
-				},
-				children: state,
-			},
-			onCreate: (self) => (container = self),
-		};
-	});
+			children: state,
+		},
+		onCreate: (self) => {
+			container = self;
+		},
+	};
 }

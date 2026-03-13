@@ -2,7 +2,10 @@ export default function Animator({ children }, settings) {
 	const inView = (entries, observer) => {
 		entries.forEach((entry) => {
 			if (entry.isIntersecting) {
-				entry.target.classList.add('animate');
+				setTimeout(() => {
+					if (entry.target) entry.target.classList.add('animate');
+				}, 250);
+
 				observer.unobserve(entry.target);
 			}
 		});
@@ -11,11 +14,12 @@ export default function Animator({ children }, settings) {
 	const observer = new IntersectionObserver(inView, {
 		rootMargin: '0px',
 		scrollMargin: '0px',
-		threshold: 1.0,
+		threshold: 0.01,
 		...settings,
 	});
 	return {
 		tag: 'div',
+
 		onAppend: {
 			callback: (self) => observer.observe(self),
 			options: {

@@ -24,6 +24,7 @@
 	--border-radius-2: 12px;
 	--border-radius-3: 18px;
 	--border-radius-4: 23px;
+	--border-radius-5: 34px;
 	--border-radius-50: 42%;
 
 	--font-size-1: 14px;
@@ -206,12 +207,6 @@ body {
 	position: relative;
 }
 
-.main {
-	position: relative;
-	width: 100%;
-	padding: 60px min(15%, 50px) 20px min(15%, 50px);
-}
-
 .text-gradient {
 	background: linear-gradient(
 		to right,
@@ -239,9 +234,9 @@ body {
 }
 .grid-mask {
 	mask-image:
-		linear-gradient(to right, black 1px, transparent 1px 30px),
-		linear-gradient(to bottom, black 1px, transparent 1px 30px);
-	mask-size: 20px 20px;
+		linear-gradient(to right, transparent 2px, black 2px 30px),
+		linear-gradient(to bottom, transparent 2px, black 2px 30px);
+	mask-size: 50px 50px;
 	mask-position: center center;
 }
 .fade-bg {

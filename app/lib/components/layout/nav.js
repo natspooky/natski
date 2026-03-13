@@ -1,33 +1,82 @@
 import { className, useState } from '../../../apis/encore/element-creator.js';
-import { IconLink } from '../ui/link.js';
-import { Button } from '../ui/button.js';
+
 import isMobile from '../../../apis/dependencies/mobile-utils.js';
+import Icon from '../ui/icon.js';
 
-function Expandable() {}
-
-function NavContents() {
-	const buttons = [
-		{
-			name: 'home',
-			icon: 'home',
-			dropdown: false,
-			href: '/',
+function Link({ name, src, text, target, href }) {
+	const linkHandler = (event) => {
+		event.preventDefault();
+		window.open(href, target ?? '_self');
+	};
+	return {
+		tag: 'button',
+		style: {
+			position: 'relative',
+			height: '40px',
+			width: '40px',
+			margin: '5px 7px',
+			backgroundColor: 'transparent',
+			border: '0px',
 		},
-	];
+		events: {
+			click: {
+				callback: linkHandler,
+				param: 'event',
+			},
+		},
+		children: {
+			tag: 'a',
+			attributes: {
+				tabindex: -1,
+				draggable: false,
+				href,
+			},
+			children: [
+				Icon({
+					name,
+					src,
+					style: {
+						position: 'relative',
+						display: 'block',
+						margin: 'auto',
+						height: '25px',
+						width: '25px',
+						backgroundColor: 'var(--background)',
+					},
+				}),
+				{
+					tag: 'span',
+					text,
+				},
+			],
+		},
+	};
+}
 
-	const pathName = new URL(window.location.href).pathname;
+function NavMainBar() {
+	if (isMobile) {
+		return;
+	}
 
 	return {
 		tag: 'div',
-		children: buttons.map(({ name, icon, dropdown, href }) => {
-			return dropdown
-				? Button()
-				: IconLink({
-						name,
-						icon,
-						href,
-						style: {},
-					});
+		style: {},
+		children: Link({
+			name: 'ENCORE',
+			href: '/',
+			style: {
+				position: 'relative',
+				height: '40px',
+				width: '40px',
+				margin: '5px',
+				'.className icon-system': {
+					position: 'relative',
+					display: 'block',
+					height: '30px',
+					width: '30px',
+					backgroundColor: 'var(--background)',
+				},
+			},
 		}),
 	};
 }
@@ -46,7 +95,7 @@ function Nav() {
 			borderRadius: 'var(--border-radius-4)',
 			transform: 'translateX(-50%)',
 		},
-		children: [NavContents()],
+		children: [NavMainBar()],
 	};
 }
 

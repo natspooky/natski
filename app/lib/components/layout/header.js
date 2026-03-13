@@ -31,7 +31,7 @@ export default function Header({ chip, title, description }) {
 						},
 						children: chip,
 					}
-				: null,
+				: {},
 			{
 				tag: 'h1',
 				style: {

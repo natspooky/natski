@@ -8,25 +8,23 @@ function Link({ href, target, children, ...props }) {
 		window.open(href, target ?? '_self');
 	};
 
-	return Button(
-		merge(props, {
-			events: {
-				click: {
-					callback: linkHandler,
-					param: 'event',
-				},
+	return Button({
+		events: {
+			click: {
+				callback: linkHandler,
+				param: 'event',
 			},
-			children: {
-				tag: 'a',
-				attributes: {
-					tabindex: -1,
-					draggable: false,
-					href,
-				},
-				children,
+		},
+		children: {
+			tag: 'a',
+			attributes: {
+				tabindex: -1,
+				draggable: false,
+				href,
 			},
-		}),
-	);
+			children,
+		},
+	});
 }
 
 function IconLink({ name, src, children, ...props }) {
@@ -37,10 +35,12 @@ function IconLink({ name, src, children, ...props }) {
 				name,
 				src,
 			}),
-			{
-				tag: 'p',
-				children,
-			},
+			children
+				? {
+						tag: 'span',
+						children,
+					}
+				: {},
 		],
 	});
 }
