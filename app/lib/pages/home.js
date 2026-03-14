@@ -186,8 +186,10 @@ render(
 		window.components.layout = standardLayout;
 
 		return [
-			Section({
-				children: HomeHeader(),
+			Animator({
+				children: Section({
+					children: HomeHeader(),
+				}),
 			}),
 			Animator({
 				children: Banner(
