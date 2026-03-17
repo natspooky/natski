@@ -8,6 +8,7 @@ export default function Header({ chip, title, description }) {
 			position: 'relative',
 			width: 'min(90%, 400px)',
 			margin: '50px auto 30px auto',
+			textAlign: 'center',
 		},
 		children: [
 			chip
@@ -39,7 +40,6 @@ export default function Header({ chip, title, description }) {
 					fontSize: 'var(--font-size-7)',
 					fontWeight: '500',
 					color: 'var(--text-color)',
-					textAlign: 'center',
 				},
 				children: title.split(' ').map((word) => {
 					headerCounter += 1;
@@ -69,7 +69,6 @@ export default function Header({ chip, title, description }) {
 				tag: 'p',
 				style: {
 					fontSize: 'var(--font-size-4)',
-					textAlign: 'center',
 					color: 'var(--text-sub-color)',
 				},
 				children: description.split(' ').map((word) => {

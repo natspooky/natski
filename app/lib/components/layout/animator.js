@@ -1,10 +1,10 @@
-export default function Animator({ children }, settings) {
+export default function Animator({ children }, timer) {
 	const inView = (entries, observer) => {
 		entries.forEach((entry) => {
 			if (entry.isIntersecting) {
 				setTimeout(() => {
 					if (entry.target) entry.target.classList.add('animate');
-				}, 250);
+				}, timer ?? 250);
 
 				observer.unobserve(entry.target);
 			}
@@ -15,7 +15,6 @@ export default function Animator({ children }, settings) {
 		rootMargin: '0px',
 		scrollMargin: '0px',
 		threshold: 0.01,
-		...settings,
 	});
 	return {
 		tag: 'div',
