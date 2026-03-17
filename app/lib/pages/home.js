@@ -222,7 +222,7 @@ render(
 										maskPosition: 'center center',
 									},
 								},
-								CanvasBG(),
+								//CanvasBG(),
 							],
 						},
 						{
