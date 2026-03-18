@@ -155,7 +155,7 @@ function page() {
 												],
 											});
 										},
-								  )
+									)
 								: element,
 					}),
 				],
@@ -356,11 +356,23 @@ function SuspenseTest() {
 	}
 
 	function ImageTest() {
-		return container(
-			useSuspense(() => {
-				return IMG({ attributes: { src: testData.image[0] } });
-			}),
-		);
+		return [
+			container(
+				useSuspense(() => {
+					return IMG({ attributes: { src: testData.image[0] } });
+				}),
+			),
+			container(
+				useSuspense(() => {
+					return IMG({
+						attributes: { src: testData.image[0] },
+						style: {
+							background: 'red',
+						},
+					});
+				}, 'poop'),
+			),
+		];
 	}
 
 	function MultiImageTest() {

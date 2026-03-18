@@ -325,7 +325,7 @@ export default class SimpleCanvas {
 		simpleCanvasConsole.message({
 			message: `Rendering '${this.#canvasState.id}' at ${
 				this.settings.fps
-			}fps`,
+			}FPS`,
 		});
 
 		this.#drawingState.drawing = true;
@@ -1086,7 +1086,7 @@ export default class SimpleCanvas {
 			this.#diagnosticsData.fps.currentFPS +
 			'/' +
 			this.settings.fps +
-			'fps';
+			'FPS';
 		const boxContainerWidth =
 			graphBoxWidth + boxWidth + (textSize / textWidth) * text.length;
 

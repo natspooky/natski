@@ -566,7 +566,7 @@ class ECFragment extends ECWrapper {
 }
 
 function loadElement(element) {
-	return new Promise((resolve) => {
+	return new Promise((resolve, reject) => {
 		if (element.complete) resolve();
 		element.addEventListener('load', resolve, true);
 		element.addEventListener(
@@ -576,7 +576,7 @@ function loadElement(element) {
 					message: 'Element load error:',
 					error: `The ${element.tagName} failed to load`,
 				});
-				resolve();
+				reject();
 			},
 			true,
 		);
@@ -584,7 +584,7 @@ function loadElement(element) {
 }
 
 function loadVideo(element) {
-	return new Promise((resolve) => {
+	return new Promise((resolve, reject) => {
 		if (element.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) resolve();
 		element.addEventListener('loadeddata', resolve, true);
 		element.addEventListener(
@@ -594,7 +594,7 @@ function loadVideo(element) {
 					message: 'Element load error:',
 					error: `The ${element.tagName} with data ${element.src} failed to load`,
 				});
-				resolve();
+				reject();
 			},
 			true,
 		);
@@ -613,19 +613,16 @@ function awaitContentLoad(element) {
 				if (element.src && element.getAttribute('type') !== 'lazy')
 					loadableElements.push(loadElement(element));
 				return true;
-			case 'INPUT':
+			/*case 'INPUT':
 				if (
 					element.hasAttribute('type') &&
 					element.getAttribute('type') === 'image'
 				)
 					loadableElements.push(loadElement(element));
-				return true;
+				return true;*/
 			case 'IFRAME':
 			case 'FRAME':
-			case 'SCRIPT':
 			case 'LINK':
-			case 'STYLE':
-			case 'BODY':
 				loadableElements.push(loadElement(element));
 				return false;
 			case 'VIDEO':
@@ -637,11 +634,9 @@ function awaitContentLoad(element) {
 	};
 
 	const crawlChildren = (element) => {
-		if (element.children.length === 0 || elementType(element)) return;
-
+		if (elementType(element) || element.children.length === 0) return;
 		Array.from(element.children).forEach((child) => {
 			if (elementType(child)) return;
-
 			crawlChildren(child);
 		});
 	};
@@ -654,28 +649,31 @@ function awaitContentLoad(element) {
 }
 
 function useSuspense(fn, loading, fallback) {
-	let suspenseFired = false;
+	const [state, , setState] = useState(
+		(content) => {
+			return content;
+		},
+		typeof loading === 'function' ? loading() : loading,
+	);
 
-	const [state] = useState((content, setContent) => {
-		if (!suspenseFired) {
-			suspenseFired = true;
-			const element = buildComponent(fn());
+	const element = buildComponent(fn());
 
-			console.log('brug', element);
-
-			awaitContentLoad(element).then(
-				() => {
-					setContent(element);
-				},
-				() => {
-					fallback
-						? setContent(buildComponent(fallback()))
-						: setContent(element);
-				},
-			);
-		}
-		return content;
-	}, loading);
+	awaitContentLoad(element).then(
+		() => {
+			setState(element);
+		},
+		() => {
+			fallback
+				? setState(
+						buildComponent(
+							typeof fallback === 'function'
+								? fallback()
+								: fallback,
+						),
+					)
+				: setState(element);
+		},
+	);
 
 	return state;
 }

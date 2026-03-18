@@ -5,7 +5,6 @@ import {
 } from '../../apis/encore/element-creator.js';
 import isMobile from '../../apis/dependencies/mobile-utils.js';
 import SimpleCanvas from '../../apis/simple/simple-canvas.js';
-import { IS_DATA } from '../../apis/encore/dependencies/icon-system/IS_DATA.js';
 import standardLayout from '../layouts/standardLayout.js';
 import Animator from '../components/layout/animator.js';
 import Header from '../components/layout/header.js';
@@ -13,10 +12,6 @@ import Section from '../components/layout/section.js';
 import Banner from '../components/layout/banner.js';
 import Title from '../components/layout/title.js';
 import Card from '../components/layout/card.js';
-import Marquee from '../components/ui/marquee.js';
-import { Link } from '../components/ui/link.js';
-import { Img } from '../components/ui/img.js';
-import Icon from '../components/ui/icon.js';
 
 const pageData = [
 	{
@@ -140,18 +135,6 @@ function CanvasBG() {
 	};
 }
 
-function HomeHeader() {
-	return {
-		tag: 'div',
-		children: [
-			{
-				tag: 'h1',
-				children: 'NATSKI',
-			},
-		],
-	};
-}
-
 function lorem(range) {
 	function shuffle(array) {
 		let currentIndex = array.length;
@@ -177,8 +160,94 @@ function lorem(range) {
 		.replaceAll(/\.|,/g, '');
 }
 
-function BannerContent({ e }) {
-	return 'bunga';
+function homePageContent() {
+	return [
+		Animator({
+			children: Section({
+				children: Title({
+					title: lorem(Math.floor(Math.random() * 3 + 3)),
+					description: lorem(Math.floor(Math.random() * 10 + 10)),
+				}),
+			}),
+		}),
+		Animator(
+			{
+				children: Banner(
+					{
+						buttons: [
+							{ name: 'Encore' },
+							{ name: 'Simple' },
+							{ name: 'Misc' },
+						],
+						background: [
+							{
+								tag: 'div',
+								style: {
+									position: 'absolute',
+									top: '0',
+									left: '0',
+									width: '100%',
+									height: '100%',
+									opacity: '0.5',
+									backgroundImage:
+										'linear-gradient(to bottom right, var(--PDS), var(--SSC), var(--VPS))',
+									maskImage:
+										'linear-gradient(to right, transparent 2px, black 2px 30px), linear-gradient(to bottom, transparent 2px, black 2px 30px)',
+									maskSize: '50px 50px',
+									maskPosition: 'center center',
+								},
+							},
+							//CanvasBG(),
+						],
+					},
+					{
+						tag: 'span',
+						style: { top: '50px' },
+						children: 'loading',
+					},
+				),
+			},
+			500,
+		),
+		Animator({
+			children: Section({
+				children: Card({
+					cards: [
+						{
+							icon: 'chain',
+							title: lorem(Math.floor(Math.random() * 3 + 2)),
+							description: lorem(
+								Math.floor(Math.random() * 10 + 10),
+							),
+						},
+						{
+							icon: 'hidden',
+							title: lorem(Math.floor(Math.random() * 3 + 2)),
+							description: lorem(
+								Math.floor(Math.random() * 10 + 10),
+							),
+						},
+						{
+							icon: 'scanner',
+							title: lorem(Math.floor(Math.random() * 3 + 2)),
+							description: lorem(
+								Math.floor(Math.random() * 10 + 10),
+							),
+						},
+					],
+				}),
+			}),
+		}),
+		Animator({
+			children: Section({
+				children: Header({
+					title: lorem(Math.floor(Math.random() * 3 + 2)),
+					description: lorem(Math.floor(Math.random() * 20 + 10)),
+					chip: lorem(Math.floor(Math.random() * 2 + 1)),
+				}),
+			}),
+		}),
+	];
 }
 
 render(
@@ -186,93 +255,9 @@ render(
 	() => {
 		window.components.layout = standardLayout;
 
-		return [
-			Animator({
-				children: Section({
-					children: Title({
-						title: lorem(Math.floor(Math.random() * 3 + 3)),
-						description: lorem(Math.floor(Math.random() * 10 + 10)),
-					}),
-				}),
-			}),
-			Animator(
-				{
-					children: Banner(
-						{
-							buttons: [
-								{ name: 'Encore' },
-								{ name: 'Simple' },
-								{ name: 'Misc' },
-							],
-							background: [
-								{
-									tag: 'div',
-									style: {
-										position: 'absolute',
-										top: '0',
-										left: '0',
-										width: '100%',
-										height: '100%',
-										opacity: '0.5',
-										backgroundImage:
-											'linear-gradient(to bottom right, var(--PDS), var(--SSC), var(--VPS))',
-										maskImage:
-											'linear-gradient(to right, transparent 2px, black 2px 30px), linear-gradient(to bottom, transparent 2px, black 2px 30px)',
-										maskSize: '50px 50px',
-										maskPosition: 'center center',
-									},
-								},
-								//CanvasBG(),
-							],
-						},
-						{
-							tag: 'span',
-							style: { top: '50px' },
-							children: 'loading',
-						},
-					),
-				},
-				500,
-			),
-			Animator({
-				children: Section({
-					children: Card({
-						cards: [
-							{
-								icon: 'chain',
-								title: lorem(Math.floor(Math.random() * 3 + 2)),
-								description: lorem(
-									Math.floor(Math.random() * 10 + 10),
-								),
-							},
-							{
-								icon: 'hidden',
-								title: lorem(Math.floor(Math.random() * 3 + 2)),
-								description: lorem(
-									Math.floor(Math.random() * 10 + 10),
-								),
-							},
-							{
-								icon: 'scanner',
-								title: lorem(Math.floor(Math.random() * 3 + 2)),
-								description: lorem(
-									Math.floor(Math.random() * 10 + 10),
-								),
-							},
-						],
-					}),
-				}),
-			}),
-			Animator({
-				children: Section({
-					children: Header({
-						title: lorem(Math.floor(Math.random() * 3 + 2)),
-						description: lorem(Math.floor(Math.random() * 20 + 10)),
-						chip: lorem(Math.floor(Math.random() * 2 + 1)),
-					}),
-				}),
-			}),
-		];
+		return useSuspense(() => {
+			return homePageContent();
+		});
 	},
 	{
 		useIcons: true,
