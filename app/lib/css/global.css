@@ -132,7 +132,7 @@
 	--background: rgb(255, 255, 255); /*#141030 var(--gray-200);*/
 	--accent: rgb(145, 141, 246);
 	--accent-sub: rgba(145, 141, 246, 0.08);
-	--background-sub: rgba(0, 0, 0, 0.03);
+	--background-sub: rgba(0, 0, 0, 0.05);
 	--darken: rgb(20, 20, 31);
 	--text-color: rgb(24, 25, 37);
 	--text-sub-color: rgb(102, 102, 102);

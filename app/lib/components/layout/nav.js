@@ -54,15 +54,11 @@ function Link({ name, src, text, target, href }) {
 }
 
 function NavMainBar() {
-	if (isMobile) {
-		return;
-	}
-
 	return {
 		tag: 'div',
 		style: {},
 		children: Link({
-			name: 'ENCORE',
+			name: 'NATSKI',
 			href: '/',
 			style: {
 				position: 'relative',
@@ -86,7 +82,7 @@ function Nav() {
 		tag: 'nav',
 		style: {
 			position: 'fixed',
-			width: '400px',
+			width: 'min(400px, 90%)',
 			top: '0',
 			left: '50%',
 			margin: '30px auto 0px auto',

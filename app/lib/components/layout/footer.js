@@ -1,17 +1,74 @@
-import Icon from '../ui/icon.js';
+import Section from '../layout/section.js';
+
+const info = [
+	{
+		header: 'socials',
+		links: [
+			{ name: 'Instagram' },
+			{ name: 'Discord' },
+			{ name: 'Facebook' },
+		],
+	},
+];
 
 export default function Footer() {
-	return {
-		tag: 'footer',
-		style: {
-			position: 'relative',
-			width: '100%',
-			height: '300px',
-			overflow: 'hidden',
-		},
+	return Section({
+		children: {
+			tag: 'footer',
+			style: {
+				position: 'relative',
+				width: '100%',
+				height: '300px',
+				overflow: 'hidden',
+				color: 'var(--text-sub-color)',
+			},
 
-		children: [],
-	};
+			children: [
+				{
+					tag: 'div',
+					children: [
+						{
+							tag: 'p',
+							children: 'desc slop',
+						},
+						{
+							tag: 'span',
+							children: `© ${new Date().getFullYear()} Natski.`,
+						},
+					],
+				},
+				{
+					tag: 'div',
+					children: info.map(({ header, links }) => {
+						return {
+							tag: 'div',
+
+							children: [
+								{
+									tag: 'span',
+									style: {
+										color: 'var(--text-color)',
+									},
+									children: header,
+								},
+								links.map(({ name, href }) => {
+									return {
+										tag: 'button',
+										style: {
+											border: '0px',
+											backgroundColor: 'transparent',
+											color: 'var(--text-sub-color)',
+										},
+										children: name,
+									};
+								}),
+							],
+						};
+					}),
+				},
+			],
+		},
+	});
 }
 
-//`© 2024-${new Date().getFullYear()} Natski.`,
+//
