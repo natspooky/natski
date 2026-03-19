@@ -54,7 +54,6 @@ function Banner({ buttons, background }) {
 			justifyContent: 'center',
 			margin: '20px auto',
 			height: 'auto',
-
 			aspectRatio: '5 / 3',
 			maxHeight: 'min(80vh, 800px)',
 			overflow: 'hidden',

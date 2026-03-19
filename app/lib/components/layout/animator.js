@@ -1,4 +1,4 @@
-export default function Animator({ children }, timer) {
+function Animator({ children }, timer) {
 	const inView = (entries, observer) => {
 		entries.forEach((entry) => {
 			if (entry.isIntersecting) {
@@ -28,3 +28,5 @@ export default function Animator({ children }, timer) {
 		children,
 	};
 }
+
+export default Animator;

@@ -11,7 +11,7 @@ const info = [
 	},
 ];
 
-export default function Footer() {
+function Footer() {
 	return Section({
 		children: {
 			tag: 'footer',
@@ -53,7 +53,10 @@ export default function Footer() {
 								},
 								links.map(({ name, href }) => {
 									return {
-										tag: 'button',
+										tag: 'a',
+										attributes: {
+											href,
+										},
 										style: {
 											border: '0px',
 											backgroundColor: 'transparent',
@@ -71,4 +74,4 @@ export default function Footer() {
 	});
 }
 
-//
+export default Footer;

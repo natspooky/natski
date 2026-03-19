@@ -1,4 +1,4 @@
-export default function Header({ chip, title, description }) {
+function Header({ chip, title, description }) {
 	let headerCounter = 0,
 		textCounter = 0;
 
@@ -102,3 +102,5 @@ export default function Header({ chip, title, description }) {
 		],
 	};
 }
+
+export default Header;

@@ -1,4 +1,4 @@
-export default function Section({ children }) {
+function Section({ children }) {
 	return {
 		tag: 'section',
 		style: {
@@ -9,3 +9,5 @@ export default function Section({ children }) {
 		children,
 	};
 }
+
+export default Section;
