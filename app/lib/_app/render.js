@@ -5,6 +5,7 @@ export default function Render(renderFn) {
 		render('root', renderFn, {
 			useIcons: true,
 			awaitFontLoad: true,
+			awaitPageLoad: false,
 		});
 	};
 }

@@ -951,11 +951,11 @@ function render(root, fn, settings) {
 		});
 		return;
 	}
-
+	/*
 	if (document.readyState === 'loading') {
 		window.addEventListener('DOMContentLoaded', hydrate);
 		return;
-	}
+	}*/
 
 	hydrate();
 }

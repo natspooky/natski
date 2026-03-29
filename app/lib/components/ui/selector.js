@@ -34,7 +34,7 @@ function Selector({ buttons, setter }) {
 					backgroundColor: 'var(--background-sub)',
 					border: '0px',
 					padding: '10px',
-					borderRadius: 'var(--border-radius-50)',
+					borderRadius: 'var(--border-radius-max)',
 					cursor: 'pointer',
 				},
 				events: {
@@ -98,8 +98,7 @@ function Selector({ buttons, setter }) {
 						width: `${buttonArr[0].offsetWidth}px`,
 						transform: `translate(${buttonArr[0].offsetLeft}px, -50%)`,
 						backgroundColor: 'var(--background-sub)',
-						transition:
-							'0.2s transform, 0.3s cubic-bezier(.47,1.40,.77,1.01)',
+						transition: '0.3s cubic-bezier(.47,1.30,.77,1.01)',
 					},
 				});
 			},

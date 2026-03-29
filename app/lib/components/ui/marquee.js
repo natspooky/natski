@@ -4,7 +4,7 @@ import {
 	useSuspense,
 } from '../../../apis/encore/element-creator.js';
 
-export default function Marquee({ children, speed = 1, style }) {
+function Maquee({ children, speed = 1, style }) {
 	let container;
 	let scroller;
 
@@ -98,3 +98,42 @@ export default function Marquee({ children, speed = 1, style }) {
 		},
 	};
 }
+
+function Marquee({ children }) {
+	const [scroller, getterFn, setterFn] = useState((get, set) => {
+		return {
+			tag: 'section',
+			children: new Array(count).fill(0).map(() => children),
+			onCreate: sizeCheck,
+		};
+	});
+
+	return {
+		tag: 'section',
+		style: {
+			position: 'relative',
+			width: '100%',
+			height: 'fit-content',
+		},
+		children: {
+			tag: 'div',
+			children: scroller,
+		},
+	};
+}
+
+function sizeCheck(children) {}
+
+function scroll(self) {}
+
+function marqueeReloader(event, self) {
+	let timer;
+
+	if (timer) clearTimeout(timer);
+
+	timer = setTimeout(() => {
+		self;
+	}, 200);
+}
+
+export default Marquee;

@@ -15,6 +15,7 @@ function BannerSelector({ buttons, setter }) {
 			padding: '5px 10px',
 			height: '70px',
 			borderRadius: '0 0 var(--border-radius-5) var(--border-radius-5)',
+			cornerShape: 'var(border-shape)',
 			backgroundColor: 'var(--background)',
 			'::before, .className::after': {
 				content: `''`,
@@ -43,7 +44,7 @@ function BannerSelector({ buttons, setter }) {
 function Banner({ buttons, background }) {
 	const [bannerContent, , setter] = useState((get) => {
 		return get;
-	}, buttons[0].data);
+	}, buttons?.[0].data ?? null);
 
 	return {
 		tag: 'div',
@@ -58,18 +59,15 @@ function Banner({ buttons, background }) {
 			maxHeight: 'min(80vh, 800px)',
 			overflow: 'hidden',
 			background: 'var(--background-sub)',
-			transition: '1s',
-			opacity: '0',
-			'.animate .className': {
-				opacity: '1',
-			},
 		},
 		children: [
 			background,
-			BannerSelector({
-				buttons,
-				setter,
-			}),
+			buttons
+				? BannerSelector({
+						buttons,
+						setter,
+					})
+				: {},
 			Section({ children: bannerContent }),
 		],
 	};

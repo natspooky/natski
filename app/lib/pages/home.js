@@ -1,6 +1,6 @@
-import { render, useSuspense } from '../../apis/encore/element-creator.js';
-import isMobile from '../../apis/dependencies/mobile-utils.js';
-import SimpleCanvas from '../../apis/simple/simple-canvas.js';
+import { render } from '../../apis/encore/element-creator.js';
+//import isMobile from '../../apis/dependencies/mobile-utils.js';
+//import SimpleCanvas from '../../apis/simple/simple-canvas.js';
 import standardLayout from '../layouts/standardLayout.js';
 import Animator from '../components/layout/animator.js';
 import Header from '../components/layout/header.js';
@@ -8,6 +8,7 @@ import Section from '../components/layout/section.js';
 import Banner from '../components/layout/banner.js';
 import Title from '../components/layout/title.js';
 import Card from '../components/layout/card.js';
+import Icon from '../components/ui/icon.js';
 
 function lorem(range) {
 	function shuffle(array) {
@@ -40,50 +41,44 @@ function random(base, mult) {
 
 function homePageContent() {
 	return [
-		Animator({
-			children: Section({
-				children: Title({
-					title: lorem(random(3, 3)),
-					description: lorem(random(10, 10)),
-				}),
+		Section({
+			children: Title({
+				title: 'Natski.dev',
+				description: 'home of Natski products',
+				buttons: [{ name: 'Products' }, { name: 'Docs' }],
 			}),
 		}),
-		Animator(
+
+		Section({ children: IconArray() }),
+
+		Banner(
 			{
-				children: Banner(
-					{
-						buttons: [
-							{ name: 'Encore' },
-							{ name: 'Simple' },
-							{ name: 'Misc' },
-						],
-						background: {
-							tag: 'div',
-							style: {
-								position: 'absolute',
-								top: '0',
-								left: '0',
-								width: '100%',
-								height: '100%',
-								opacity: '0.5',
-								backgroundImage:
-									'linear-gradient(to bottom right, var(--PDS), var(--SSC), var(--VPS))',
-								maskImage:
-									'linear-gradient(to right, transparent 2px, black 2px 30px), linear-gradient(to bottom, transparent 2px, black 2px 30px)',
-								maskSize: '50px 50px',
-								maskPosition: 'center center',
-							},
-						},
+				buttons: [
+					{ name: 'Encore' },
+					{ name: 'Simple' },
+					{ name: 'Misc' },
+				],
+				background: {
+					tag: 'div',
+					style: {
+						position: 'absolute',
+						top: '0',
+						left: '0',
+						width: '100%',
+						height: '100%',
+						opacity: '0.5',
+						backgroundImage:
+							'linear-gradient(to bottom right, var(--PDS), var(--SSC), var(--VPS))',
 					},
-					{
-						tag: 'span',
-						style: { top: '50px' },
-						children: 'loading',
-					},
-				),
+				},
 			},
-			500,
+			{
+				tag: 'span',
+				style: { top: '50px' },
+				children: 'loading',
+			},
 		),
+
 		Animator({
 			children: Section({
 				children: Card({
@@ -119,14 +114,135 @@ function homePageContent() {
 	];
 }
 
-render(
-	'root',
-	() => {
-		window.components.layout = standardLayout;
+function IconArray() {
+	return {
+		tag: 'section',
+		style: {
+			position: 'relative',
+			width: '100%',
+			height: 'fit-content',
+			display: 'flex',
+			justifyContent: 'center',
+			gap: '25px',
+			padding: '10px 0 0 0',
+		},
+		children: ['SSC', 'PDS', 'CLS', 'VPS', 'SSM', 'PSS', 'CMS'].map(
+			(icon) => {
+				return Icon({
+					name: icon,
+					style: {
+						position: 'relative',
+						display: 'block',
+						height: '30px',
+						width: '30px',
+						backgroundColor: 'var(--text-color)',
+						opacity: '0.5',
+						transition: '0.2s',
+						':hover': {
+							opacity: '1',
+						},
+					},
+				});
+			},
+		),
+	};
+}
 
-		return homePageContent();
-	},
-	{
-		useIcons: true,
-	},
-);
+function componentTestPage() {
+	return [
+		Section({
+			children: Title({
+				title: lorem(random(3, 3)),
+				description: lorem(random(10, 10)),
+				buttons: [
+					{ name: lorem(random(1, 1)) },
+					{ name: lorem(random(1, 1)) },
+				],
+			}),
+		}),
+
+		Banner({
+			buttons: [
+				{ name: lorem(random(1, 1)) },
+				{ name: lorem(random(1, 1)) },
+				{ name: lorem(random(1, 1)) },
+			],
+			background: {
+				tag: 'div',
+				style: {
+					position: 'absolute',
+					top: '0',
+					left: '0',
+					width: '100%',
+					height: '100%',
+					opacity: '0.5',
+					backgroundImage:
+						'linear-gradient(to bottom right, var(--PDS), var(--SSC), var(--VPS))',
+					maskImage:
+						'linear-gradient(to right, transparent 2px, black 2px 30px), linear-gradient(to bottom, transparent 2px, black 2px 30px)',
+					maskSize: '50px 50px',
+					maskPosition: 'center center',
+				},
+			},
+		}),
+		Banner({
+			background: {
+				tag: 'div',
+				style: {
+					position: 'absolute',
+					top: '0',
+					left: '0',
+					width: '100%',
+					height: '100%',
+					opacity: '0.5',
+					backgroundImage:
+						'linear-gradient(to bottom right, var(--PDS), var(--SSC), var(--VPS))',
+					maskImage:
+						'linear-gradient(to right, transparent 2px, black 2px 30px), linear-gradient(to bottom, transparent 2px, black 2px 30px)',
+					maskSize: '50px 50px',
+					maskPosition: 'center center',
+				},
+			},
+		}),
+		Animator({
+			children: Section({
+				children: Card({
+					cards: [
+						{
+							icon: 'chain',
+							title: lorem(random(2, 3)),
+							description: lorem(random(10, 10)),
+						},
+						{
+							icon: 'chain',
+							title: lorem(random(2, 3)),
+							description: lorem(random(10, 10)),
+						},
+						{
+							icon: 'chain',
+							title: lorem(random(2, 3)),
+							description: lorem(random(10, 10)),
+						},
+					],
+				}),
+			}),
+		}),
+		Animator({
+			children: Section({
+				children: Header({
+					title: lorem(random(2, 3)),
+					description: lorem(random(10, 20)),
+					chip: lorem(random(1, 2)),
+				}),
+			}),
+		}),
+	];
+}
+
+function page() {
+	window.components.layout = standardLayout;
+
+	return [homePageContent(), componentTestPage()];
+}
+
+render('root', page, { useIcons: true });
