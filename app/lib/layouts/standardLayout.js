@@ -15,7 +15,7 @@ export default function StandardLayout({ children }) {
 					width: '100%',
 				},
 				children: useSuspense(() => {
-					return [children, Footer()];
+					return [{ tag: 'main', children }, Footer()];
 				}),
 			},
 			Nav(),

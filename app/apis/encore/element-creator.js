@@ -595,33 +595,46 @@ class ECFragment extends ECWrapper {
 
 function loadElement(element) {
 	return new Promise((resolve, reject) => {
-		if (element.complete) resolve();
-		element.addEventListener('load', resolve);
-		element.addEventListener('error', () => {
+		function load() {
+			element.removeEventListener('error', error);
+			resolve();
+		}
+
+		function error() {
+			element.removeEventListener('load', load);
 			elementCreatorConsole.message({
 				message: 'Element load error:',
 				error: `The ${element.tagName} failed to load`,
 			});
 			reject();
-		});
+		}
+
+		if (element.complete) resolve();
+
+		element.addEventListener('load', load, { once: true });
+		element.addEventListener('error', error, { once: true });
 	});
 }
 
 function loadVideoAudio(element) {
 	return new Promise((resolve, reject) => {
+		function load() {
+			element.removeEventListener('error', error);
+			resolve();
+		}
+
+		function error() {
+			element.removeEventListener('loadeddata', load);
+			elementCreatorConsole.message({
+				message: 'Element load error:',
+				error: `The ${element.tagName} with data ${element.src} failed to load`,
+			});
+			reject();
+		}
+
 		if (element.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) resolve();
-		element.addEventListener('loadeddata', resolve, true);
-		element.addEventListener(
-			'error',
-			() => {
-				elementCreatorConsole.message({
-					message: 'Element load error:',
-					error: `The ${element.tagName} with data ${element.src} failed to load`,
-				});
-				reject();
-			},
-			true,
-		);
+		element.addEventListener('loadeddata', load, { once: true });
+		element.addEventListener('error', error, { once: true });
 	});
 }
 
@@ -632,6 +645,7 @@ function awaitContentLoad(element) {
 
 	const elementType = (element) => {
 		switch (element.tagName) {
+			case 'SCRIPT':
 			case 'IMG':
 			case 'SVG':
 				if (element.src && element.getAttribute('loading') !== 'lazy')
@@ -644,17 +658,11 @@ function awaitContentLoad(element) {
 				)
 					loadableElements.push(loadElement(element));
 				return true;*/
-			case 'IFRAME':
-			case 'FRAME':
-			case 'SCRIPT':
-				if (element.src && element.getAttribute('loading') !== 'lazy')
-					loadableElements.push(loadElement(element));
-				return false;
 
 			case 'LINK':
 				if (element.href && element.getAttribute('loading') !== 'lazy')
 					loadableElements.push(loadElement(element));
-				return false;
+				return true;
 			case 'VIDEO':
 			case 'AUDIO':
 				if (element.src && element.getAttribute('loading') !== 'lazy')
@@ -978,7 +986,7 @@ function render(root, fn, settings) {
 	};
 
 	if (settings?.awaitPageLoad && document.readyState !== 'complete') {
-		window.addEventListener('load', hydrate);
+		window.addEventListener('load', hydrate, { once: true });
 		elementCreatorConsole.message({
 			message: "Awaiting document state 'complete'",
 		});
@@ -1057,9 +1065,13 @@ function elementAppended(element, callback, options) {
 			if (document.readyState === 'complete') {
 				callback(element);
 			} else {
-				window.addEventListener('load', () => {
-					callback(element);
-				});
+				window.addEventListener(
+					'load',
+					() => {
+						callback(element);
+					},
+					{ once: true },
+				);
 			}
 
 			break;
@@ -1133,7 +1145,9 @@ function appendChildren(element, children) {
 }
 
 function insertChildrenBefore(element, children, beforeElement) {
-	if (!children || !beforeElement.parent.isEqualNode(element)) return;
+	console.log(element, children, beforeElement);
+	console.log(element.tagName);
+	if (!children || !beforeElement.parent?.isEqualNode(element)) return;
 	if (!beforeElement) {
 		appendChildren(element, children);
 		return;

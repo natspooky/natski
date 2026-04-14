@@ -20,7 +20,9 @@ function homePageContent() {
 			}),
 		}),
 
-		Section({ children: IconArray() }),
+		Section({
+			children: IconArray(['VPS', 'CMS', 'ENCORE', 'SSM', 'SSC']),
+		}),
 
 		Banner(
 			{
@@ -52,7 +54,7 @@ function homePageContent() {
 	];
 }
 
-function IconArray() {
+function IconArray(icons) {
 	return {
 		tag: 'section',
 		style: {
@@ -64,7 +66,7 @@ function IconArray() {
 			gap: '25px',
 			padding: '10px 0 0 0',
 		},
-		children: ['VPS', 'CMS', 'PDS', 'SSM', 'SSC'].map((icon) => {
+		children: icons.map((icon) => {
 			return Icon({
 				name: icon,
 				style: {

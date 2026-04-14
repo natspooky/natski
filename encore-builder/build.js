@@ -75,7 +75,7 @@ export default async function createBuildFolder(folder) {
 									.slice(1),
 								path.basename(globals.css),
 							),
-					  )
+						)
 					: null,
 				globalJsPath: globals.js
 					? path.relative(
@@ -89,7 +89,7 @@ export default async function createBuildFolder(folder) {
 
 								path.basename(globals.js),
 							),
-					  )
+						)
 					: null,
 			});
 		});
@@ -190,6 +190,15 @@ function createPage(dir, metaData) {
 							params: ['charset="UTF-8"'],
 						}),
 						meta({
+							tag: 'link',
+							params: [
+								'rel="icon"',
+								'type="image/png"',
+								'href="https://natski.vercel.app/icon/system_icons/favicon/favicon-96x96.png"',
+								'sizes="96x96"',
+							],
+						}),
+						meta({
 							tag: 'meta',
 							params: [
 								'name="viewport"',
@@ -215,7 +224,7 @@ function createPage(dir, metaData) {
 										'type="text/css"',
 										`href="${metaData.pageCssPath}"`,
 									],
-							  })
+								})
 							: '',
 						metaData.globalCssPath
 							? element({
@@ -225,7 +234,7 @@ function createPage(dir, metaData) {
 										'type="text/css"',
 										`href="${metaData.globalCssPath}"`,
 									],
-							  })
+								})
 							: '',
 						metaData.globalJsPath
 							? element({
@@ -234,7 +243,7 @@ function createPage(dir, metaData) {
 										'type="module"',
 										`src="${metaData.globalJsPath}"`,
 									],
-							  })
+								})
 							: '',
 						element({
 							tag: 'script',

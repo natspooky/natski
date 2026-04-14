@@ -5,6 +5,10 @@ import {
 	useId,
 	className,
 	merge,
+	appendChildren,
+	insertChildrenBefore,
+	insertChildrenAfter,
+	buildComponent,
 	checkEvent,
 	createPortal,
 } from '../../../apis/encore/element-creator.js';
@@ -120,6 +124,7 @@ const testData = {
 		'https://images.unsplash.com/photo-1608848461950-0fe51dfc41cb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MTl8fHxlbnwwfHx8fA%3D%3D&w=1000&q=80',
 	],
 	video: ['../../../icon/artwork/alevel_art/5.mp4'],
+	audio: ['https://samplelib.com/mp3/sample-3s.mp3'],
 };
 
 function page() {
@@ -133,7 +138,13 @@ function page() {
 			.join(' ');
 	};
 
-	return [StateTest, SuspenseTest, MergeTests, MiscTests].map((component) => {
+	return [
+		StateTest,
+		SuspenseTest,
+		ComponentAppendTests,
+		MergeTests,
+		MiscTests,
+	].map((component) => {
 		const element = component();
 
 		return DIV({
@@ -344,12 +355,31 @@ function StateTest() {
 	};
 }
 
+function ComponentAppendTests() {
+	function AppendChildrenSingleTest() {}
+
+	function AppendChildrenMultiTest() {}
+
+	function AppendChildrenBeforeSingleTest() {}
+
+	function AppendChildrenBeforeMultiTest() {}
+
+	return {
+		AppendChildrenSingleTest,
+		AppendChildrenMultiTest,
+		AppendChildrenBeforeSingleTest,
+		AppendChildrenBeforeMultiTest,
+	};
+}
+
 function SuspenseTest() {
 	function container(children) {
 		return {
 			tag: 'div',
-			attributes: {
-				style: 'height: 100px; width: fit-content; overflow: hidden',
+			style: {
+				height: '100px',
+				width: 'fit-content',
+				overflow: 'hidden',
 			},
 			children,
 		};
@@ -360,7 +390,7 @@ function SuspenseTest() {
 			container(
 				useSuspense(() => {
 					return IMG({ attributes: { src: testData.image[0] } });
-				}),
+				}, 'loading image'),
 			),
 			container(
 				useSuspense(() => {
@@ -370,9 +400,19 @@ function SuspenseTest() {
 							background: 'red',
 						},
 					});
-				}, 'poop'),
+				}, 'loading image'),
 			),
 		];
+	}
+
+	function LazyImageTest() {
+		return container(
+			useSuspense(() => {
+				return IMG({
+					attributes: { src: testData.image[0], loading: 'lazy' },
+				});
+			}, 'loading image'),
+		);
 	}
 
 	function MultiImageTest() {
@@ -382,7 +422,7 @@ function SuspenseTest() {
 					IMG({ attributes: { src: testData.image[0] } }),
 					IMG({ attributes: { src: testData.image[1] } }),
 				];
-			}),
+			}, 'loading images'),
 		);
 	}
 
@@ -390,7 +430,17 @@ function SuspenseTest() {
 		return container(
 			useSuspense(() => {
 				return VIDEO({ attributes: { src: testData.video[0] } });
-			}),
+			}, 'loading video'),
+		);
+	}
+
+	function LazyVideoTest() {
+		return container(
+			useSuspense(() => {
+				return VIDEO({
+					attributes: { src: testData.video[0], loading: 'lazy' },
+				});
+			}, 'loading video'),
 		);
 	}
 
@@ -401,27 +451,75 @@ function SuspenseTest() {
 					VIDEO({ attributes: { src: testData.video[0] } }),
 					VIDEO({ attributes: { src: testData.video[0] } }),
 				];
-			}),
+			}, 'loading videos'),
+		);
+	}
+
+	function AudioTest() {
+		return container(
+			useSuspense(() => {
+				return {
+					tag: 'audio',
+					attributes: { src: testData.audio[0], controls: '' },
+				};
+			}, 'loading audio'),
+		);
+	}
+
+	function LazyAudioTest() {
+		return container(
+			useSuspense(() => {
+				return {
+					tag: 'audio',
+					attributes: {
+						src: testData.audio[0],
+						controls: '',
+						loading: 'lazy',
+					},
+				};
+			}, 'loading audio'),
+		);
+	}
+
+	function MultiAudioTest() {
+		return container(
+			useSuspense(() => {
+				return [
+					{
+						tag: 'audio',
+						attributes: { src: testData.audio[0], controls: '' },
+					},
+					{
+						tag: 'audio',
+						attributes: { src: testData.audio[0], controls: '' },
+					},
+				];
+			}, 'loading audio'),
 		);
 	}
 
 	function NonLoadableSuspence() {
 		return useSuspense(() => {
 			return dummyText();
-		}, 'load failed');
+		}, 'loading text');
 	}
 
 	function NonLoadableMultipleSuspence() {
 		return useSuspense(() => {
 			return [dummyText(), dummyText()];
-		}, ['load ', 'failed']);
+		}, 'loading texts');
 	}
 
 	return {
 		ImageTest,
+		LazyImageTest,
 		MultiImageTest,
 		VideoTest,
+		LazyVideoTest,
 		MultiVideoTest,
+		AudioTest,
+		LazyAudioTest,
+		MultiAudioTest,
 		NonLoadableSuspence,
 		NonLoadableMultipleSuspence,
 	};
@@ -588,5 +686,6 @@ render(
 	},
 	{
 		useIcons: true,
+		awaitPageLoad: true,
 	},
 );
