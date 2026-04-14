@@ -14,9 +14,13 @@ export default function StandardLayout({ children }) {
 					paddingTop: '90px',
 					width: '100%',
 				},
-				children: useSuspense(() => {
-					return [{ tag: 'main', children }, Footer()];
-				}),
+				children: [
+					{
+						tag: 'main',
+						children,
+					},
+					Footer(),
+				],
 			},
 			Nav(),
 		],

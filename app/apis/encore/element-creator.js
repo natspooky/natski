@@ -398,6 +398,18 @@ function buildComponent(obj) {
 
 	if (obj.innerHTML) component.innerHTML = obj.innerHTML;
 
+	if (obj.style)
+		obj.children = [
+			{
+				tag: 'style',
+				innerHTML: styleSheet(
+					obj.style,
+					obj.classes[obj.classes.length - 1],
+				),
+			},
+			obj.children ?? [],
+		];
+
 	if (obj.children) appendChildren(component, buildComponent(obj.children));
 
 	if (obj.events) {
@@ -434,6 +446,7 @@ function buildComponent(obj) {
 
 	if (obj.onCreate) obj.onCreate(component);
 
+	/*
 	if (obj.style) {
 		const tempComp = buildComponent({
 			tag: 'ec-style-fragment',
@@ -448,8 +461,7 @@ function buildComponent(obj) {
 
 		appendChildren(tempComp, component);
 
-		component = tempComp;
-	}
+		component = tempComp;*/
 
 	return component;
 }
@@ -570,12 +582,6 @@ class ECError extends HTMLElement {
 }
 
 class ECState extends ECWrapper {
-	constructor() {
-		super();
-	}
-}
-
-class ECStyle extends ECWrapper {
 	constructor() {
 		super();
 	}
@@ -875,7 +881,6 @@ function render(root, fn, settings) {
 	customElements.define('ec-anchor', ECAnchor);
 	customElements.define('ec-text', ECText);
 	customElements.define('ec-fragment', ECFragment);
-	customElements.define('ec-style-fragment', ECStyle);
 	customElements.define('ec-state-fragment', ECState);
 	customElements.define('ec-error', ECError);
 
