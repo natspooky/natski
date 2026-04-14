@@ -510,6 +510,10 @@ function MiscTests() {
 		};
 	}
 
+	function ErrorTests() {
+		return {};
+	}
+
 	function EmbedArrayTest() {
 		return ['one ', ['two '], 'three ', [[['four ']]]];
 	}
@@ -556,6 +560,7 @@ function MiscTests() {
 
 	return {
 		StyleTest,
+		ErrorTests,
 		EmbedArrayTest,
 		ClassnameTest,
 		checkEventTest,

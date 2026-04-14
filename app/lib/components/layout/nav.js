@@ -79,18 +79,29 @@ function NavMainBar() {
 function Nav() {
 	return {
 		tag: 'nav',
-		style: {
-			position: 'fixed',
-			width: 'min(400px, 90%)',
-			top: '0',
-			left: '50%',
-			margin: '30px auto 0px auto',
-			height: '50px',
-			backgroundColor: 'var(--darken)',
-			borderRadius: 'var(--border-radius-max)',
-			cornerShape: 'var(--border-shape)',
-			transform: 'translateX(-50%)',
-		},
+		style: isMobile
+			? {
+					position: 'fixed',
+					width: 'calc(100% - 20px)',
+					top: '10px',
+					left: '10px',
+					height: '50px',
+					backgroundColor: 'var(--darken)',
+					borderRadius: 'var(--border-radius-3)',
+					cornerShape: 'var(--border-shape)',
+				}
+			: {
+					position: 'fixed',
+					width: 'min(400px, 90%)',
+					top: '0',
+					left: '50%',
+					margin: '30px auto 0px auto',
+					height: '50px',
+					backgroundColor: 'var(--darken)',
+					borderRadius: 'var(--border-radius-max)',
+					cornerShape: 'var(--border-shape)',
+					transform: 'translateX(-50%)',
+				},
 		children: [NavMainBar()],
 	};
 }

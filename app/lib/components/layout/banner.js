@@ -58,7 +58,6 @@ function Banner({ buttons, background }) {
 			aspectRatio: '5 / 3',
 			maxHeight: 'min(80vh, 800px)',
 			overflow: 'hidden',
-			background: 'var(--background-sub)',
 		},
 		children: [
 			background,

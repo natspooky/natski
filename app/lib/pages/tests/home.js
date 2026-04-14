@@ -9,6 +9,8 @@ import Section from '../../components/layout/section.js';
 import Banner from '../../components/layout/banner.js';
 import Title from '../../components/layout/title.js';
 import Card from '../../components/layout/card.js';
+import CardContainer from '../../components/layout/cardContainer.js';
+import Grid from '../../components/layout/grid.js';
 import Icon from '../../components/ui/icon.js';
 
 function lorem(range) {
@@ -140,6 +142,19 @@ function HomeTestPage() {
 				}),
 			}),
 		}),
+
+		Section({
+			children: Grid({
+				columns: 2,
+				children: [
+					CardContainer({ children: lorem(40, 100) }),
+					CardContainer({ children: lorem(4, 4) }),
+					CardContainer({ children: lorem(40, 100) }),
+					CardContainer({ children: lorem(4, 4) }),
+				],
+			}),
+		}),
+
 		Animator({
 			children: Section({
 				children: Header({

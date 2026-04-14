@@ -330,6 +330,8 @@ class ComponentManager {
 }
 
 function buildComponent(obj) {
+	//instead of just error messages, make it return an error element
+
 	if (obj && Array.isArray(obj)) {
 		const components = obj
 			.flat(Infinity)
@@ -355,23 +357,24 @@ function buildComponent(obj) {
 
 		//make error messages
 
-		return;
+		return document.createElement('ec-error');
 	}
 
 	if (textTypes.includes(componentType)) {
 		const textComponent = document.createElement('ec-text');
 
-		appendChildren(
-			textComponent,
+		appendChildren(textComponent, [
 			document.createTextNode(obj),
-			//document.createComment(obj),
-		);
+			document.createComment(
+				`DataType='${textTypes[textTypes.indexOf(componentType)]}'`,
+			),
+		]);
 		return textComponent;
 	}
 
 	if (!obj.tag) {
 		//error
-		return;
+		return document.createElement('ec-error');
 	}
 
 	if (obj.namespace) {
@@ -541,6 +544,31 @@ class ECWrapper extends HTMLElement {
 	}
 }
 
+class ECError extends HTMLElement {
+	#self;
+
+	constructor() {
+		const self = super();
+
+		this.#self = self;
+	}
+
+	connectedCallback() {
+		this.#self = this;
+		this.#self.style.display = 'block';
+		this.#self.style.backgroundColor = 'red';
+		this.#self.style.padding = '5px 10px';
+		this.#self.style.borderRadius = '10px';
+		this.#self.style.width = 'fit-content';
+		this.#self.style.height = 'fit-content';
+		this.#self.innerHTML = 'Error';
+	}
+
+	disconnectedCallback() {
+		this.#self = null;
+	}
+}
+
 class ECState extends ECWrapper {
 	constructor() {
 		super();
@@ -568,22 +596,18 @@ class ECFragment extends ECWrapper {
 function loadElement(element) {
 	return new Promise((resolve, reject) => {
 		if (element.complete) resolve();
-		element.addEventListener('load', resolve, true);
-		element.addEventListener(
-			'error',
-			() => {
-				elementCreatorConsole.message({
-					message: 'Element load error:',
-					error: `The ${element.tagName} failed to load`,
-				});
-				reject();
-			},
-			true,
-		);
+		element.addEventListener('load', resolve);
+		element.addEventListener('error', () => {
+			elementCreatorConsole.message({
+				message: 'Element load error:',
+				error: `The ${element.tagName} failed to load`,
+			});
+			reject();
+		});
 	});
 }
 
-function loadVideo(element) {
+function loadVideoAudio(element) {
 	return new Promise((resolve, reject) => {
 		if (element.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) resolve();
 		element.addEventListener('loadeddata', resolve, true);
@@ -610,7 +634,7 @@ function awaitContentLoad(element) {
 		switch (element.tagName) {
 			case 'IMG':
 			case 'SVG':
-				if (element.src && element.getAttribute('type') !== 'lazy')
+				if (element.src && element.getAttribute('loading') !== 'lazy')
 					loadableElements.push(loadElement(element));
 				return true;
 			/*case 'INPUT':
@@ -622,11 +646,19 @@ function awaitContentLoad(element) {
 				return true;*/
 			case 'IFRAME':
 			case 'FRAME':
+			case 'SCRIPT':
+				if (element.src && element.getAttribute('loading') !== 'lazy')
+					loadableElements.push(loadElement(element));
+				return false;
+
 			case 'LINK':
-				loadableElements.push(loadElement(element));
+				if (element.href && element.getAttribute('loading') !== 'lazy')
+					loadableElements.push(loadElement(element));
 				return false;
 			case 'VIDEO':
-				loadableElements.push(loadVideo(element));
+			case 'AUDIO':
+				if (element.src && element.getAttribute('loading') !== 'lazy')
+					loadableElements.push(loadVideoAudio(element));
 				return false;
 			default:
 				return false;
@@ -837,6 +869,7 @@ function render(root, fn, settings) {
 	customElements.define('ec-fragment', ECFragment);
 	customElements.define('ec-style-fragment', ECStyle);
 	customElements.define('ec-state-fragment', ECState);
+	customElements.define('ec-error', ECError);
 
 	if (settings?.useIcons) new IconSystem();
 
