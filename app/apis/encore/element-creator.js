@@ -1100,12 +1100,45 @@ function appendChildren(element, children) {
 }
 
 function insertChildrenBefore(element, children, beforeElement) {
-	if (!children) return;
+	if (!children || !beforeElement.parent.isEqualNode(element)) return;
+	if (!beforeElement) {
+		appendChildren(element, children);
+		return;
+	}
 
 	(Array.isArray(children) ? children : [children])
 		.filter(Boolean)
 		.forEach((child) => {
 			element.insertBefore(child, beforeElement);
+		});
+}
+
+function insertChildrenAfter(element, children, afterElement) {
+	if (!children || !afterElement.parent.isEqualNode(element)) return;
+	if (!afterElement) {
+		appendChildren(element, children);
+		return;
+	}
+
+	(Array.isArray(children) ? children : [children])
+		.filter(Boolean)
+		.forEach((child, index) => {
+			if (
+				element.children[element.children.length - 1].isEqualNode(
+					element,
+				)
+			) {
+				element.appendChild(child);
+				return;
+			}
+
+			insertChildrenBefore(
+				element,
+				child,
+				element.children[
+					element.children.indexOf(afterElement) + index
+				],
+			);
 		});
 }
 
@@ -1140,6 +1173,7 @@ export {
 	returnIf,
 	appendChildren,
 	insertChildrenBefore,
+	insertChildrenAfter,
 	className,
 	elementAppended,
 	ComponentManager,
