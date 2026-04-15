@@ -33,6 +33,10 @@ function IMG(props) {
 	return merge(
 		{
 			tag: 'img',
+			style: {
+				borderRadius: '10px',
+				display: 'inline-block',
+			},
 			attributes: {
 				draggable: false,
 				alt: 'test-image',
@@ -99,10 +103,13 @@ function BorderContainer(props) {
 			tag: 'div',
 			style: {
 				border: '1px solid gray',
-				padding: '10px',
+				borderRadius: '10px',
+				padding: '15px',
+				margin: '5px',
+				backgroundColor: '#00000020',
 				transition: '0.2s',
 				':hover': {
-					border: '1px solid white',
+					border: '1px solid black',
 					transition: '0s',
 				},
 			},
@@ -285,31 +292,19 @@ function StateTest() {
 		const [state, getFn, setFn] = useState((getter) => {
 			return {
 				tag: 'span',
-				style: {
-					color: getter % 2 === 0 ? 'red' : 'pink',
-				},
 				children: getter,
 			};
 		}, 1);
 
 		const interval = setInterval(() => {
 			setFn(getFn() + 1);
+			if (getFn() === 500) {
+				clearInterval(interval);
+				setFn('500 cycles completed');
+			}
 		}, 10);
 
-		return [
-			state,
-			BUTTON({
-				children: 'stop',
-				events: {
-					click: {
-						callback: () => {
-							clearInterval(interval);
-							setFn('stopped');
-						},
-					},
-				},
-			}),
-		];
+		return [state];
 	}
 
 	function TextOnlyTest() {
@@ -445,6 +440,26 @@ function ComponentAppendTests() {
 		return element;
 	}
 
+	function AppendChildrenAfterLastChildTest() {
+		const element = buildComponent(
+			DIV({ children: P({ children: 'First Child' }) }),
+		);
+
+		const afterEl = buildComponent(P({ children: 'After El Anchor' }));
+
+		const children = buildComponent([
+			P({ children: 'Second child' }),
+			P({ children: 'Third child' }),
+			P({ children: 'Fourth child' }),
+		]);
+
+		appendChildren(element, afterEl);
+
+		insertChildrenAfter(element, children, afterEl);
+
+		return element;
+	}
+
 	function AppendChildrenAfterMultiTest() {
 		const element = buildComponent(
 			DIV({ children: P({ children: 'First Child' }) }),
@@ -460,7 +475,7 @@ function ComponentAppendTests() {
 
 		appendChildren(element, [
 			afterEl,
-			//buildComponent(P({ children: 'Last Child' })),
+			buildComponent(P({ children: 'Last Child' })),
 		]);
 
 		insertChildrenAfter(element, children, afterEl);
@@ -474,6 +489,7 @@ function ComponentAppendTests() {
 		AppendChildrenBeforeSingleTest,
 		AppendChildrenBeforeMultiTest,
 		AppendChildrenAfterSingleTest,
+		AppendChildrenAfterLastChildTest,
 		AppendChildrenAfterMultiTest,
 	};
 }
@@ -699,16 +715,19 @@ function MiscTests() {
 			tag: 'div',
 			style: {
 				background: 'red',
+				padding: '10px',
+				width: 'fit-content',
 				':hover': { background: 'blue' },
 				':active': { background: 'purple' },
-				'::before': { content: `'beforeEl'` },
+				'::before': { content: `'beforeEl. '` },
+				'::after': { content: `' afterEl.'` },
 				':not(.className)': { background: 'green' },
 			},
 			children: [
-				'text in div',
+				'text in div. ',
 				{
 					tag: 'span',
-					children: 'text in span',
+					children: 'text in span.',
 				},
 			],
 		};

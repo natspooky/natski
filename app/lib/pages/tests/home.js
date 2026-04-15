@@ -112,10 +112,6 @@ function HomeTestPage() {
 					opacity: '0.5',
 					backgroundImage:
 						'linear-gradient(to bottom right, var(--PDS), var(--SSC), var(--VPS))',
-					maskImage:
-						'linear-gradient(to right, transparent 2px, black 2px 30px), linear-gradient(to bottom, transparent 2px, black 2px 30px)',
-					maskSize: '50px 50px',
-					maskPosition: 'center center',
 				},
 			},
 		}),

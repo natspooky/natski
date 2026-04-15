@@ -568,7 +568,9 @@ class ECError extends HTMLElement {
 	connectedCallback() {
 		this.#self = this;
 		this.#self.style.display = 'block';
-		this.#self.style.backgroundColor = 'red';
+		this.#self.style.backgroundColor = '#ff000070';
+		this.#self.style.border = '2px solid #000000';
+		this.#self.style.fontWeight = 'bold';
 		this.#self.style.padding = '5px 10px';
 		this.#self.style.borderRadius = '10px';
 		this.#self.style.width = 'fit-content';
@@ -1165,37 +1167,20 @@ function insertChildrenBefore(element, children, beforeElement) {
 
 function insertChildrenAfter(element, children, afterElement) {
 	if (!children || !afterElement.parentNode.isEqualNode(element)) return;
-	if (!afterElement) {
+	if (!afterElement || element.lastChild.isEqualNode(afterElement)) {
 		appendChildren(element, children);
 		return;
 	}
 
+	let beforeEl = Array.from(element.children).indexOf(afterElement) + 1;
+
 	(Array.isArray(children) ? children : [children])
 		.filter(Boolean)
 		.forEach((child, index) => {
-			if (
-				element.children[element.children.length - 1].isEqualNode(
-					element,
-				)
-			) {
-				element.appendChild(child);
-				return;
-			}
-
-			console.log(
-				element.children[
-					Array.from(element.children).indexOf(afterElement)
-				],
-			);
-
 			insertChildrenBefore(
 				element,
 				child,
-				element.children[
-					Array.from(element.children).indexOf(afterElement) +
-						1 +
-						index
-				],
+				element.children[beforeEl + index],
 			);
 		});
 }

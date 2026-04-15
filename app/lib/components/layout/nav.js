@@ -52,27 +52,110 @@ function Link({ name, src, text, target, href }) {
 	};
 }
 
+function NavButton({ href, fn, param, children, style }) {
+	return {
+		tag: 'button',
+		style: {
+			position: 'relative',
+			border: '0px',
+			backgroundColor: 'transparent',
+			display: 'inline-block',
+			...style,
+		},
+		events: {
+			click: {
+				callback:
+					fn ??
+					((event) => {
+						event.preventDefault();
+						window.open(href, '_self');
+					}),
+				param: param ?? 'event',
+			},
+		},
+		children: href
+			? {
+					tag: 'a',
+					style: {
+						position: 'relative',
+						top: '0',
+						left: '0',
+						width: '100%',
+						height: '100%',
+					},
+					attributes: {
+						tabindex: '-1',
+						href,
+					},
+					children,
+				}
+			: children,
+	};
+}
+
+function NavIconButton({ name, fn, param, href }) {
+	return NavButton({
+		children: Icon({
+			name,
+			style: {
+				position: 'relative',
+				display: 'block',
+				margin: 'auto',
+				height: '25px',
+				width: '25px',
+				backgroundColor: 'var(--background)',
+			},
+		}),
+		fn,
+		param,
+		href,
+		style: {
+			height: '50px',
+			width: '30px',
+			margin: '0px 15px',
+		},
+	});
+}
+
+function NavTextButton({ fn, param, href, name }) {
+	return NavButton({
+		children: { tag: 'span', children: name },
+		fn,
+		param,
+		href,
+		style: {
+			height: '35px',
+			padding: '0px 15px',
+			backgroundColor: 'var(--accent)',
+			borderRadius: 'var(--border-radius-max)',
+			cornerShape: 'var(--border-shape)',
+		},
+	});
+}
+
 function NavMainBar() {
 	return {
 		tag: 'div',
-		style: {},
-		children: Link({
-			name: 'NATSKI',
-			href: '/',
-			style: {
-				position: 'relative',
-				height: '40px',
-				width: '40px',
-				margin: '5px',
-				'.className icon-system': {
-					position: 'relative',
-					display: 'block',
-					height: '30px',
-					width: '30px',
-					backgroundColor: 'var(--background)',
-				},
-			},
-		}),
+		style: {
+			position: 'relative',
+			width: '100%',
+			height: '50px',
+
+			display: 'flex',
+			alignItems: 'center',
+			justifyContent: 'space-between',
+		},
+		children: [
+			NavIconButton({ name: 'ARC', href: '/' }),
+			//NavTextButton({ name: 'hello', href: '/' }),
+			NavIconButton({ name: 'avatar', href: '/' }),
+		],
+	};
+}
+
+function NavSubSection() {
+	return {
+		tag: 'section',
 	};
 }
 
@@ -98,11 +181,11 @@ function Nav() {
 					margin: '30px auto 0px auto',
 					height: '50px',
 					backgroundColor: 'var(--darken)',
-					borderRadius: 'var(--border-radius-max)',
+					borderRadius: 'var(--border-radius-4)',
 					cornerShape: 'var(--border-shape)',
 					transform: 'translateX(-50%)',
 				},
-		children: [NavMainBar()],
+		children: [NavMainBar(), NavSubSection()],
 	};
 }
 
