@@ -1150,9 +1150,7 @@ function appendChildren(element, children) {
 }
 
 function insertChildrenBefore(element, children, beforeElement) {
-	console.log(element, children, beforeElement);
-	console.log(element.tagName);
-	if (!children || !beforeElement.parent?.isEqualNode(element)) return;
+	if (!children || !beforeElement.parentNode.isEqualNode(element)) return;
 	if (!beforeElement) {
 		appendChildren(element, children);
 		return;
@@ -1166,7 +1164,7 @@ function insertChildrenBefore(element, children, beforeElement) {
 }
 
 function insertChildrenAfter(element, children, afterElement) {
-	if (!children || !afterElement.parent.isEqualNode(element)) return;
+	if (!children || !afterElement.parentNode.isEqualNode(element)) return;
 	if (!afterElement) {
 		appendChildren(element, children);
 		return;
@@ -1184,11 +1182,19 @@ function insertChildrenAfter(element, children, afterElement) {
 				return;
 			}
 
+			console.log(
+				element.children[
+					Array.from(element.children).indexOf(afterElement)
+				],
+			);
+
 			insertChildrenBefore(
 				element,
 				child,
 				element.children[
-					element.children.indexOf(afterElement) + index
+					Array.from(element.children).indexOf(afterElement) +
+						1 +
+						index
 				],
 			);
 		});

@@ -356,19 +356,125 @@ function StateTest() {
 }
 
 function ComponentAppendTests() {
-	function AppendChildrenSingleTest() {}
+	function AppendChildrenSingleTest() {
+		const element = buildComponent(
+			DIV({ children: P({ children: 'First Child' }) }),
+		);
 
-	function AppendChildrenMultiTest() {}
+		const children = buildComponent(P({ children: 'Second child' }));
 
-	function AppendChildrenBeforeSingleTest() {}
+		appendChildren(element, children);
 
-	function AppendChildrenBeforeMultiTest() {}
+		return element;
+	}
+
+	function AppendChildrenMultiTest() {
+		const element = buildComponent(
+			DIV({ children: P({ children: 'First Child' }) }),
+		);
+
+		const children = buildComponent([
+			P({ children: 'Second child' }),
+			P({ children: 'Third child' }),
+			P({ children: 'Fourth child' }),
+		]);
+
+		appendChildren(element, children);
+
+		return element;
+	}
+
+	function AppendChildrenBeforeSingleTest() {
+		const element = buildComponent(
+			DIV({ children: P({ children: 'First Child' }) }),
+		);
+
+		const beforeEl = buildComponent(P({ children: 'Before El Anchor' }));
+
+		const children = buildComponent(P({ children: 'Second child' }));
+
+		appendChildren(element, [
+			beforeEl,
+			buildComponent(P({ children: 'Last Child' })),
+		]);
+
+		insertChildrenBefore(element, children, beforeEl);
+
+		return element;
+	}
+
+	function AppendChildrenBeforeMultiTest() {
+		const element = buildComponent(
+			DIV({ children: P({ children: 'First Child' }) }),
+		);
+
+		const beforeEl = buildComponent(P({ children: 'Before El Anchor' }));
+
+		const children = buildComponent([
+			P({ children: 'Second child' }),
+			P({ children: 'Third child' }),
+			P({ children: 'Fourth child' }),
+		]);
+
+		appendChildren(element, [
+			beforeEl,
+			buildComponent(P({ children: 'Last Child' })),
+		]);
+
+		insertChildrenBefore(element, children, beforeEl);
+
+		return element;
+	}
+
+	function AppendChildrenAfterSingleTest() {
+		const element = buildComponent(
+			DIV({ children: P({ children: 'First Child' }) }),
+		);
+
+		const afterEl = buildComponent(P({ children: 'After El Anchor' }));
+
+		const children = buildComponent(P({ children: 'Second child' }));
+
+		appendChildren(element, [
+			afterEl,
+			buildComponent(P({ children: 'Last Child' })),
+		]);
+
+		insertChildrenAfter(element, children, afterEl);
+
+		return element;
+	}
+
+	function AppendChildrenAfterMultiTest() {
+		const element = buildComponent(
+			DIV({ children: P({ children: 'First Child' }) }),
+		);
+
+		const afterEl = buildComponent(P({ children: 'After El Anchor' }));
+
+		const children = buildComponent([
+			P({ children: 'Second child' }),
+			P({ children: 'Third child' }),
+			P({ children: 'Fourth child' }),
+		]);
+
+		appendChildren(element, [
+			afterEl,
+			//buildComponent(P({ children: 'Last Child' })),
+		]);
+
+		insertChildrenAfter(element, children, afterEl);
+
+		return element;
+	}
 
 	return {
 		AppendChildrenSingleTest,
 		AppendChildrenMultiTest,
 		AppendChildrenBeforeSingleTest,
 		AppendChildrenBeforeMultiTest,
+		AppendChildrenAfterSingleTest,
+		AppendChildrenAfterMultiTest,
 	};
 }
 
