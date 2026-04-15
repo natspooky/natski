@@ -1121,7 +1121,7 @@ function checkValue(value, target, element, event) {
 			break;
 		case 'event':
 			return event;
-		//case 'remover': //do this
+		//case 'remover':
 		//	return (target ?? element).removeEventListener(callback);
 		default:
 			return value;
@@ -1172,7 +1172,7 @@ function insertChildrenAfter(element, children, afterElement) {
 		return;
 	}
 
-	let beforeEl = Array.from(element.children).indexOf(afterElement) + 1;
+	let beforeElIndex = Array.from(element.children).indexOf(afterElement) + 1;
 
 	(Array.isArray(children) ? children : [children])
 		.filter(Boolean)
@@ -1180,7 +1180,7 @@ function insertChildrenAfter(element, children, afterElement) {
 			insertChildrenBefore(
 				element,
 				child,
-				element.children[beforeEl + index],
+				element.children[beforeElIndex + index],
 			);
 		});
 }
