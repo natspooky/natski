@@ -59,7 +59,7 @@ function Garden(num) {
 			tag: 'div',
 			style: {
 				display: 'flex',
-				width: 'min(600px,90%)',
+				width: 'min(1300px,90%)',
 				flexWrap: 'wrap',
 				alignItems: 'center',
 				justifyContent: 'center',
