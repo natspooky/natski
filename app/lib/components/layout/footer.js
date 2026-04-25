@@ -2,16 +2,59 @@ import Section from '../layout/section.js';
 
 const info = [
 	{
-		header: 'socials',
+		title: 'socials',
 		links: [
-			{ name: 'Instagram' },
-			{ name: 'Discord' },
-			{ name: 'Facebook' },
+			{ title: 'Instagram', href: '' },
+			{ title: 'Discord', href: '' },
+			{ title: 'Facebook', href: '' },
 		],
 	},
 ];
 
+function LinkSection({ title, links }) {
+	return {
+		tag: 'div',
+		children: [
+			{
+				tag: 'span',
+				style: {
+					color: 'var(--text-color)',
+					fontSize: 'var(--font-size-4)',
+					fontWeight: '500',
+				},
+				children: title,
+			},
+			{
+				tag: 'div',
+				children: links.map(({ title, href }) => {
+					return {
+						tag: 'a',
+						style: {
+							textDecoration: 'none',
+							color: 'var(--text-color-sub)',
+							display: 'block',
+							':hover': {
+								color: 'var(--text-color)',
+							},
+						},
+						attributes: {
+							draggable: 'false',
+							href,
+						},
+						children: {
+							tag: 'span',
+							children: title,
+						},
+					};
+				}),
+			},
+		],
+	};
+}
+
 function Footer() {
+	const year = new Date().getFullYear();
+
 	return Section({
 		children: {
 			tag: 'footer',
@@ -33,42 +76,13 @@ function Footer() {
 						},
 						{
 							tag: 'span',
-							children: `© ${new Date().getFullYear()} Natski.`,
+							children: `© ${year > 2026 ? `2026 - ${year}` : year} Natski`,
 						},
 					],
 				},
-				{
-					tag: 'div',
-					children: info.map(({ header, links }) => {
-						return {
-							tag: 'div',
-
-							children: [
-								{
-									tag: 'span',
-									style: {
-										color: 'var(--text-color)',
-									},
-									children: header,
-								},
-								links.map(({ name, href }) => {
-									return {
-										tag: 'a',
-										attributes: {
-											href,
-										},
-										style: {
-											border: '0px',
-											backgroundColor: 'transparent',
-											color: 'var(--text-sub-color)',
-										},
-										children: name,
-									};
-								}),
-							],
-						};
-					}),
-				},
+				info.map((data) => {
+					return LinkSection(data);
+				}),
 			],
 		},
 	});
