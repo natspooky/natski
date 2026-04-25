@@ -1,32 +1,4 @@
-import Icon from '../ui/icon.js';
-
-function AccentIcon({ name, src, style }) {
-	return {
-		tag: 'span',
-		style: {
-			position: 'relative',
-			padding: '9px 13px',
-			width: 'fit-content',
-			height: 'fit-content',
-			display: 'block',
-			borderRadius: 'var(--border-radius-max)',
-			cornerShape: 'var(--border-shape)',
-			backgroundColor: 'var(--accent-sub)',
-			...style,
-		},
-		children: Icon({
-			name,
-			src,
-			style: {
-				display: 'block',
-				position: 'relative',
-				width: 'var(--font-size-4)',
-				height: 'var(--font-size-4)',
-				backgroundColor: 'var(--accent)',
-			},
-		}),
-	};
-}
+import IconChip from './iconChip.js';
 
 function Card({ icon, title, description, delay }) {
 	return {
@@ -41,7 +13,7 @@ function Card({ icon, title, description, delay }) {
 			color: 'var(--text-sub-color)',
 		},
 		children: [
-			AccentIcon({
+			IconChip({
 				name: icon,
 				style: {
 					margin: '10px auto 15px auto',
@@ -94,7 +66,7 @@ function CardWrapper({ cards }) {
 			gap: '1em',
 			display: 'grid',
 			alignItems: 'start',
-			gridTemplateColumns: 'repeat(auto-fit,minmax(max(25%,280px),1fr))',
+			gridTemplateColumns: `repeat(auto-fit,minmax(max(calc(33% - (1em * ${cards.length})),280px),1fr))`,
 		},
 		children: cards.map((card, index) => {
 			return Card({ ...card, delay: (index + 1) * 0.1 });

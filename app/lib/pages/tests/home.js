@@ -9,7 +9,7 @@ import Section from '../../components/layout/section.js';
 import Banner from '../../components/layout/banner.js';
 import Title from '../../components/layout/title.js';
 import Card from '../../components/layout/card.js';
-import CardContainer from '../../components/layout/cardContainer.js';
+import InfographicCard from '../../components/layout/infographicCard.js';
 import Grid from '../../components/layout/grid.js';
 import Icon from '../../components/ui/icon.js';
 
@@ -121,17 +121,17 @@ function HomeTestPage() {
 					cards: [
 						{
 							icon: IS(),
-							title: lorem(random(2, 3)),
+							title: lorem(random(2, 3)) + '.',
 							description: lorem(random(10, 10)),
 						},
 						{
 							icon: IS(),
-							title: lorem(random(2, 3)),
+							title: lorem(random(2, 3)) + '.',
 							description: lorem(random(10, 10)),
 						},
 						{
 							icon: IS(),
-							title: lorem(random(2, 3)),
+							title: lorem(random(2, 3)) + '.',
 							description: lorem(random(10, 10)),
 						},
 					],
@@ -142,12 +142,29 @@ function HomeTestPage() {
 		Section({
 			children: Grid({
 				columns: 2,
-				children: [
-					CardContainer({ children: lorem(40, 100) }),
-					CardContainer({ children: lorem(4, 4) }),
-					CardContainer({ children: lorem(40, 100) }),
-					CardContainer({ children: lorem(4, 4) }),
-				],
+				children: new Array(4).fill(0).map((_, index) => {
+					const colours = [
+						'#EF9C66',
+						'#658147',
+						'#8E7AB5',
+						'#78ABA8',
+					];
+					return Animator({
+						children: InfographicCard({
+							name: IS(),
+							title: lorem(3),
+							description: lorem(random(5, 3)),
+							color: colours[index],
+							infoChip: new Array(3).fill(0).map(() => {
+								return {
+									name: IS(),
+									description: lorem(random(2, 2)),
+								};
+							}),
+							//	children: 'temp',
+						}),
+					});
+				}),
 			}),
 		}),
 

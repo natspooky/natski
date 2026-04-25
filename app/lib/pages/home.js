@@ -89,7 +89,34 @@ function IconArray(icons) {
 function page() {
 	window.components.layout = standardLayout;
 
-	return homePageContent();
+	return {
+		tag: 'div',
+		style: {
+			position: 'fixed',
+			top: '0',
+			left: '0',
+			height: '100vh',
+			width: '100%',
+			backgroundColor: 'var(--darken)',
+			zIndex: '99999',
+			display: 'flex',
+			justifyContent: 'center',
+			alignItems: 'center',
+		},
+		children: [
+			{},
+			{
+				tag: 'h1',
+				style: {
+					position: 'absolute',
+					margin: 'auto',
+					display: 'block',
+					color: 'var(--background)',
+				},
+				children: [''],
+			},
+		],
+	}; //homePageContent();
 }
 
 render('root', page, { useIcons: true });

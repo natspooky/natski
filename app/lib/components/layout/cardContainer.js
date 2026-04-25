@@ -1,4 +1,4 @@
-function CardContainer({ children }) {
+function CardContainer({ children, style }) {
 	return {
 		tag: 'div',
 		style: {
@@ -8,7 +8,8 @@ function CardContainer({ children }) {
 			backgroundColor: 'var(--background-sub)',
 			minHeight: 'fit-content',
 			height: '100%',
-			padding: '20px',
+			overflow: 'hidden',
+			...style,
 		},
 		children,
 	};
