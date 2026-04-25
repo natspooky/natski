@@ -28,7 +28,7 @@ function Title({ title, description, buttons }) {
 				},
 				children: description,
 			},
-			buttons ? Buttons(buttons) : {},
+			buttons ? Buttons(buttons) : [],
 		],
 	};
 }

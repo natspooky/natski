@@ -114,7 +114,7 @@ function InfoChip({ infoChip, color }) {
 							position: 'relative',
 							display: 'block',
 							fontWeight: '500',
-							fontSize: 'var(--font-size-1)',
+							fontSize: 'var(--font-size-2)',
 						},
 						children: description,
 					},

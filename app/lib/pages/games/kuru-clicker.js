@@ -1,7 +1,7 @@
-import { render, useState } from '../../../apis/encore/element-creator.js';
+import { render } from '../../../apis/encore/element-creator.js';
 import SimpleCanvas from '../../../apis/simple/simple-canvas.js';
-import GameLayout from '../../layouts/standardLayout.js';
-import StandardLayout from '../../ccomponents/';
+import GameLayout from '../../layouts/gameLayout.js';
+import GamePage from '../../components/layout/game/gamePage.js';
 
 function GameWindow() {
 	const canvas = SimpleCanvas.create(
@@ -18,7 +18,7 @@ function GameWindow() {
 				correctTransform: true,
 			},
 			key: {
-				active: true,
+				active: false,
 				passive: false,
 			},
 			touch: {
@@ -55,23 +55,32 @@ function GameWindow() {
 	return {
 		tag: 'div',
 		style: {
-			height: '100vh',
+			height: '100%',
+			width: '100%',
 			'.game-canvas': {
 				width: '100%',
 				height: '100%',
 				position: 'relative',
 			},
 		},
-		children: canvas.element,
+		children: [
+			canvas.element,
+			{
+				tag: 'section',
+				classes: 'game-ui',
+			},
+		],
 	};
 }
 
-render(
-	'root',
-	() => {
-		return GameWindow();
-	},
-	{
-		useIcons: true,
-	},
-);
+function page() {
+	window.components.layout = GameLayout;
+
+	return GamePage({
+		title: 'Kuru Clicker',
+		description: 'A fun little Herta based clicker game',
+		gameWindow: GameWindow(),
+	});
+}
+
+render('root', page, { useIcons: true });

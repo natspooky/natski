@@ -40,7 +40,7 @@ function IconLink({ name, src, children, ...props }) {
 						tag: 'span',
 						children,
 					}
-				: {},
+				: [],
 		],
 	});
 }

@@ -710,6 +710,54 @@ function MergeTests() {
 }
 
 function MiscTests() {
+	function EmbedTest() {
+		return [
+			{
+				tag: 'iframe',
+				style: {
+					border: '0px',
+					borderRadius: '15px',
+					overflow: 'hidden',
+					width: '100%',
+					display: 'block',
+				},
+				attributes: {
+					height: 200,
+					src: 'http://localhost:8080/tests/embed',
+				},
+			},
+			{
+				tag: 'iframe',
+				style: {
+					border: '0px',
+					borderRadius: '15px',
+					overflow: 'hidden',
+					width: '100%',
+					display: 'block',
+				},
+				attributes: {
+					height: 200,
+					src: 'http://localhost:8080/tests/embed#noembed',
+				},
+			},
+			{
+				tag: 'iframe',
+				style: {
+					border: '0px',
+					borderRadius: '15px',
+					overflow: 'hidden',
+					width: '100%',
+					display: 'block',
+				},
+				attributes: {
+					height: 400,
+
+					src: 'http://localhost:8080/games/kuru-clicker',
+				},
+			},
+		];
+	}
+
 	function StyleTest() {
 		return {
 			tag: 'div',
@@ -789,6 +837,7 @@ function MiscTests() {
 		checkEventTest,
 		IdTest,
 		PortalTest,
+		EmbedTest,
 	};
 }
 
@@ -811,6 +860,5 @@ render(
 	},
 	{
 		useIcons: true,
-		awaitPageLoad: true,
 	},
 );

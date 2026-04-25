@@ -66,8 +66,10 @@ function Banner({ buttons, background }) {
 						buttons,
 						setter,
 					})
-				: {},
-			Section({ children: bannerContent }),
+				: [],
+			Section({
+				children: bannerContent,
+			}),
 		],
 	};
 }

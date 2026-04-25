@@ -1,19 +1,35 @@
-function EmbedSelector(children) {
+import { buildComponent } from '../../../apis/encore/element-creator.js';
+
+function EmbedSelector({ children }) {
 	return {
-		tag: 'div',
+		tag: 'ec-fragment',
 		onAppend: {
 			callback: (self) => {
-				Array.from(document.body.children).forEach(
-					(item, index, arr) => {
-						if (index !== arr.length) {
-							item.remove();
-							return;
-						}
-						item.replaceWith(self);
-					},
-				);
+				if (
+					window !== window.parent &&
+					!window.location.hash.includes('noembed')
+				) {
+					document.body.replaceWith(
+						buildComponent({
+							tag: 'body',
+							style: {
+								'.className, html': {
+									padding: '0',
+									margin: '0',
+									height: '100%',
+									width: '100%',
+									overflow: 'hidden',
+								},
+								'.className': {
+									top: '0',
+									left: '0',
+								},
+							},
+							children: self,
+						}),
+					);
+				}
 			},
-			options: {},
 		},
 		children,
 	};

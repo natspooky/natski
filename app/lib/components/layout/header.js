@@ -18,7 +18,7 @@ function Header({ chip, title, description }) {
 							position: 'relative',
 							borderRadius: 'var(--border-radius-1)',
 							padding: '2px 7px',
-							fontSize: 'var(--font-size-1)',
+							fontSize: 'var(--font-size-2)',
 							display: 'block',
 							backgroundColor: 'var(--background-sub)',
 							color: 'var(--text-supersub-color)',
@@ -32,7 +32,7 @@ function Header({ chip, title, description }) {
 						},
 						children: chip,
 					}
-				: {},
+				: [],
 			{
 				tag: 'h1',
 				style: {
