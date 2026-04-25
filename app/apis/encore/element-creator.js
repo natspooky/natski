@@ -330,8 +330,6 @@ class ComponentManager {
 }
 
 function buildComponent(obj) {
-	//instead of just error messages, make it return an error element
-
 	if (obj && Array.isArray(obj)) {
 		const components = obj
 			.flat(Infinity)
@@ -344,18 +342,14 @@ function buildComponent(obj) {
 	if (obj?.nodeType) return obj;
 
 	let component;
-	const textTypes = ['number', 'bigint', 'string'];
+	const textTypes = ['number', 'bigint', 'string', 'boolean'];
 	const componentType = typeof obj;
 
 	if (![...textTypes, 'object'].includes(componentType)) {
-		switch (componentType) {
-			case '':
-				break;
-			default:
-				break;
-		}
-
-		//make error messages
+		elementCreatorConsole.message({
+			message: 'Component build error:',
+			error: `${componentType} is not a valid component data type. (e.g. ${['object', ...textTypes].join(' ')})`,
+		});
 
 		return document.createElement('ec-error');
 	}
@@ -373,7 +367,10 @@ function buildComponent(obj) {
 	}
 
 	if (!obj.tag) {
-		//error
+		elementCreatorConsole.message({
+			message: 'Component build error:',
+			error: 'Components must have a "tag" parameter.',
+		});
 		return document.createElement('ec-error');
 	}
 
@@ -419,7 +416,7 @@ function buildComponent(obj) {
 				if (!checkEvent(eventType)) {
 					elementCreatorConsole.message({
 						message: 'Support warning:',
-						warn: `Event '${eventType}' is not supported in current Document`,
+						warn: `Event '${eventType}' is not supported in current Document. EventListener Rejected.`,
 					});
 					return;
 				}
@@ -445,23 +442,6 @@ function buildComponent(obj) {
 		);
 
 	if (obj.onCreate) obj.onCreate(component);
-
-	/*
-	if (obj.style) {
-		const tempComp = buildComponent({
-			tag: 'ec-style-fragment',
-			children: {
-				tag: 'style',
-				innerHTML: styleSheet(
-					obj.style,
-					obj.classes[obj.classes.length - 1],
-				),
-			},
-		});
-
-		appendChildren(tempComp, component);
-
-		component = tempComp;*/
 
 	return component;
 }

@@ -3,13 +3,15 @@ function EmbedSelector(children) {
 		tag: 'div',
 		onAppend: {
 			callback: (self) => {
-				Array.from(document.body).forEach((item, index, arr) => {
-					if (index !== arr.length) {
-						item.remove();
-						return;
-					}
-					item.replaceWith(self);
-				});
+				Array.from(document.body.children).forEach(
+					(item, index, arr) => {
+						if (index !== arr.length) {
+							item.remove();
+							return;
+						}
+						item.replaceWith(self);
+					},
+				);
 			},
 			options: {},
 		},

@@ -1,4 +1,4 @@
-export default function RootLayout({ children }) {
+function RootLayout({ children }) {
 	return {
 		tag: 'div',
 		events: {
@@ -10,3 +10,5 @@ export default function RootLayout({ children }) {
 		children,
 	};
 }
+
+export default RootLayout;
