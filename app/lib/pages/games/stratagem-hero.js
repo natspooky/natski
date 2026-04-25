@@ -1,9 +1,11 @@
-import { render, useState } from '../../../apis/encore/element-creator.js';
+import { render } from '../../../apis/encore/element-creator.js';
 import SimpleCanvas from '../../../apis/simple/simple-canvas.js';
+import GameLayout from '../../layouts/gameLayout.js';
+import GamePage from '../../components/layout/game/gamePage.js';
 
 function GameWindow() {
 	const canvas = SimpleCanvas.create(
-		'.stratagem',
+		'.game-canvas',
 		{
 			fps: Infinity,
 			autoClear: true,
@@ -16,7 +18,7 @@ function GameWindow() {
 				correctTransform: true,
 			},
 			key: {
-				active: true,
+				active: false,
 				passive: false,
 			},
 			touch: {
@@ -46,10 +48,6 @@ function GameWindow() {
 	canvas.resize(() => {});
 	canvas.draw(() => {
 		canvas.paintAll('red');
-
-		const key = canvas.key;
-		if (key.pressing) {
-		}
 	});
 
 	canvas.append(canvas.render.bind(canvas));
@@ -57,23 +55,32 @@ function GameWindow() {
 	return {
 		tag: 'div',
 		style: {
-			height: '100vh',
-			'.stratagem': {
+			height: '100%',
+			width: '100%',
+			'.game-canvas': {
 				width: '100%',
 				height: '100%',
 				position: 'relative',
 			},
 		},
-		children: canvas.element,
+		children: [
+			canvas.element,
+			{
+				tag: 'section',
+				classes: 'game-ui',
+			},
+		],
 	};
 }
 
-render(
-	'root',
-	() => {
-		return GameWindow();
-	},
-	{
-		useIcons: true,
-	},
-);
+function page() {
+	window.components.layout = GameLayout;
+
+	return GamePage({
+		title: 'Stratagem Hero',
+		description: 'based on Helldivers 2',
+		gameWindow: GameWindow(),
+	});
+}
+
+render('root', page, { useIcons: true });

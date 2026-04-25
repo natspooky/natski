@@ -1,7 +1,7 @@
 import { render } from '../../apis/encore/element-creator.js';
 //import isMobile from '../../apis/dependencies/mobile-utils.js';
 //import SimpleCanvas from '../../apis/simple/simple-canvas.js';
-import standardLayout from '../layouts/standardLayout.js';
+import StandardLayout from '../layouts/standardLayout.js';
 import Animator from '../components/layout/animator.js';
 import Header from '../components/layout/header.js';
 import Section from '../components/layout/section.js';
@@ -87,7 +87,7 @@ function IconArray(icons) {
 }
 
 function page() {
-	window.components.layout = standardLayout;
+	window.components.layout = StandardLayout;
 
 	return {
 		tag: 'div',
@@ -100,20 +100,35 @@ function page() {
 			backgroundColor: 'var(--darken)',
 			zIndex: '99999',
 			display: 'flex',
+			flexDirection: 'column',
 			justifyContent: 'center',
 			alignItems: 'center',
 		},
 		children: [
-			{},
 			{
 				tag: 'h1',
 				style: {
-					position: 'absolute',
-					margin: 'auto',
-					display: 'block',
+					position: 'relative',
+					marginBottom: '20px',
 					color: 'var(--background)',
 				},
-				children: [''],
+				children: 'Coming soon',
+			},
+			{
+				tag: 'iframe',
+				attributes: {
+					src: '/games/kuru-clicker',
+				},
+				style: {
+					position: 'relative',
+					height: '50vh',
+					width: '50vw',
+					backgroundColor: 'var(--background-sub)',
+					borderRadius: 'var(--border-radius-4)',
+					cornerShape: 'var(--border-shape)',
+					border: '2px solid transparent',
+					overflow: 'hidden',
+				},
 			},
 		],
 	}; //homePageContent();

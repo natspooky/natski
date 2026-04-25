@@ -25,7 +25,26 @@ function EmbedSelector({ children }) {
 									left: '0',
 								},
 							},
-							children: self,
+							children: [
+								self,
+								{
+									tag: 'a',
+									attributes: {
+										href: '',
+										target: '_blank',
+										tabIndex: '-1',
+									},
+									style: {
+										position: 'absolute',
+										bottom: '12px',
+										right: '12px',
+										zIndex: '999999',
+										textDecoration: 'none',
+										color: 'var(--text-color)',
+									},
+									children: 'Visit',
+								},
+							],
 						}),
 					);
 				}

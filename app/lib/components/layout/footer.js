@@ -1,12 +1,22 @@
 import Section from '../layout/section.js';
+import Grid from '../layout/grid.js';
+import Icon from '../ui/icon.js';
 
 const info = [
 	{
-		title: 'socials',
+		title: 'Socials',
 		links: [
 			{ title: 'Instagram', href: '' },
 			{ title: 'Discord', href: '' },
 			{ title: 'Facebook', href: '' },
+		],
+	},
+	{
+		title: 'Links',
+		links: [
+			{ title: 'Landing', href: '/' },
+			{ title: 'Games', href: '/games' },
+			{ title: 'Docs', href: '/docs' },
 		],
 	},
 ];
@@ -14,12 +24,15 @@ const info = [
 function LinkSection({ title, links }) {
 	return {
 		tag: 'div',
+		style: {
+			position: 'relative',
+			display: 'inline-block',
+		},
 		children: [
 			{
 				tag: 'span',
 				style: {
 					color: 'var(--text-color)',
-					fontSize: 'var(--font-size-4)',
 					fontWeight: '500',
 				},
 				children: title,
@@ -33,8 +46,10 @@ function LinkSection({ title, links }) {
 							textDecoration: 'none',
 							color: 'var(--text-color-sub)',
 							display: 'block',
+							marginTop: '5px',
+							transition: '0.1s',
 							':hover': {
-								color: 'var(--text-color)',
+								color: 'var(--text-sub-color)',
 							},
 						},
 						attributes: {
@@ -61,9 +76,15 @@ function Footer() {
 			style: {
 				position: 'relative',
 				width: '100%',
-				height: '300px',
+				height: 'fit-content',
+				padding: '0 0 70px 0',
+				display: 'flex',
+				flexWrap: 'no-wrap',
+				fontSize: 'var(--font-size-2)',
+				fontWeight: '500',
+				justifyContent: 'space-between',
 				overflow: 'hidden',
-				color: 'var(--text-sub-color)',
+				color: 'var(--text-supersub-color)',
 			},
 
 			children: [
@@ -72,17 +93,48 @@ function Footer() {
 					children: [
 						{
 							tag: 'p',
+							style: { marginBottom: '15px' },
 							children: 'desc slop',
 						},
 						{
-							tag: 'span',
-							children: `© ${year > 2026 ? `2026 - ${year}` : year} Natski`,
+							tag: 'div',
+							style: {
+								display: 'flex',
+								alignItems: 'center',
+								gap: '5px',
+							},
+							children: [
+								`© ${year > 2026 ? `2026 - ${year}` : year}`,
+								Icon({
+									name: 'NATSKI',
+									style: {
+										position: 'relative',
+										height: '15px',
+										width: '15px',
+										backgroundColor:
+											'var(--text-supersub-color)',
+									},
+								}),
+								'Natski',
+							],
 						},
 					],
 				},
-				info.map((data) => {
-					return LinkSection(data);
-				}),
+				{
+					tag: 'div',
+					style: {
+						position: 'relative',
+						width: '50%',
+					},
+					children: Grid({
+						children: info.map((data) => {
+							return LinkSection(data);
+						}),
+						width: '100',
+						columns: 2,
+						gap: 20,
+					}),
+				},
 			],
 		},
 	});

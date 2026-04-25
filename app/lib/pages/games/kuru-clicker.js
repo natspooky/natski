@@ -47,7 +47,7 @@ function GameWindow() {
 	});
 	canvas.resize(() => {});
 	canvas.draw(() => {
-		canvas.paintAll('red');
+		//canvas.paintAll('red');
 	});
 
 	canvas.append(canvas.render.bind(canvas));
