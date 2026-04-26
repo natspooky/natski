@@ -29,7 +29,7 @@ function GameWindow() {
 			},
 			useWheel: false,
 			useScroll: false,
-			diagnostics: true,
+			diagnostics: false,
 			detectWindowFocus: false,
 			useRetina: true,
 			canvas: {

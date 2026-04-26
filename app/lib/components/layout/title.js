@@ -16,7 +16,31 @@ function Title({ title, description, buttons }) {
 					fontWeight: '500',
 					margin: '0px auto 10px auto',
 				},
-				children: title,
+				children: title.split(' ').map((word, index) => {
+					return [
+						{
+							tag: 'span',
+							style: {
+								display: 'inline-block',
+								overflow: 'hidden',
+							},
+							children: {
+								tag: 'span',
+								style: {
+									display: 'block',
+									transform: 'translateY(100%)',
+									transition: 'transform 0.4s',
+									transitionDelay: `${index * 50}ms`,
+									'.animate .className': {
+										transform: 'translateY(0px)',
+									},
+								},
+								children: word,
+							},
+						},
+						' ',
+					];
+				}),
 			},
 			{
 				tag: 'p',
@@ -25,6 +49,15 @@ function Title({ title, description, buttons }) {
 					fontSize: 'var(--font-size-4)',
 					position: 'relative',
 					display: 'inline-block',
+					transform: 'translateY(15px)',
+					opacity: '0',
+					transition:
+						'transform 0.4s cubic-bezier(.47,1.53,.77,1.01), opacity 0.4s',
+					transitionDelay: '0.3s',
+					'.animate .className': {
+						opacity: '1',
+						transform: 'translateY(0px)',
+					},
 				},
 				children: description,
 			},
@@ -77,6 +110,16 @@ function Buttons(buttons) {
 						opacity: first ? '1' : '0.6',
 						cornerShape: 'var(--border-shape)',
 						transition: '0.2s',
+					},
+
+					transform: 'translateY(15px)',
+					opacity: '0',
+					transition:
+						'transform 0.4s cubic-bezier(.47,1.53,.77,1.01), opacity 0.4s',
+					transitionDelay: `calc(0.4s + ${(index + 1) * 70}ms)`,
+					'.animate .className': {
+						opacity: '1',
+						transform: 'translateY(0px)',
 					},
 
 					':hover::before': {

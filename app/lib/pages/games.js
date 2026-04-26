@@ -2,19 +2,18 @@ import { render } from '../../apis/encore/element-creator.js';
 
 import StandardLayout from '../layouts/standardLayout.js';
 import Animator from '../components/layout/animator.js';
-import Header from '../components/layout/header.js';
 import Section from '../components/layout/section.js';
-import Banner from '../components/layout/banner.js';
 import Title from '../components/layout/title.js';
-import Card from '../components/layout/card.js';
-import Icon from '../components/ui/icon.js';
 
 function GamesPageContent() {
 	return [
-		Section({
-			children: Title({
-				title: 'Games',
-				description: '',
+		Animator({
+			children: Section({
+				children: Title({
+					title: 'The Cellar Games',
+					description:
+						'A collection of little games that can be embedded into any web project',
+				}),
 			}),
 		}),
 	];

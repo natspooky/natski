@@ -80,14 +80,16 @@ function IconArray({ icons }) {
 
 function HomeTestPage() {
 	return [
-		Section({
-			children: Title({
-				title: lorem(random(3, 3)),
-				description: lorem(random(10, 10)),
-				buttons: [
-					{ name: lorem(random(1, 1)), href: '/home' },
-					{ name: lorem(random(1, 1)) },
-				],
+		Animator({
+			children: Section({
+				children: Title({
+					title: lorem(random(3, 3)),
+					description: lorem(random(10, 10)),
+					buttons: [
+						{ name: lorem(random(1, 1)), href: '/home' },
+						{ name: lorem(random(1, 1)) },
+					],
+				}),
 			}),
 		}),
 
