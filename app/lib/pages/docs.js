@@ -1,17 +1,28 @@
-import { render, useState } from '../../apis/encore/element-creator.js';
-import Footer from '../components/footer.js';
+import { render } from '../../apis/encore/element-creator.js';
 
-import DocLayout from '../layouts/docs/docLayout.js';
-import Selector from '../components/ui/selector.js';
-import Header from '../components/header.js';
+import StandardLayout from '../layouts/standardLayout.js';
+import Animator from '../components/layout/animator.js';
+import Section from '../components/layout/section.js';
+import Title from '../components/layout/title.js';
 
-render(
-	'root',
-	() => {
-		window.components.layout = DocLayout;
-		return [Header({ children: [] })];
-	},
-	{
-		useIcons: true,
-	},
-);
+function GamesPageContent() {
+	return [
+		Animator({
+			children: Section({
+				children: Title({
+					title: 'Docs Home',
+					description:
+						'Documentation for Encore, Simple and Arc libraries.',
+				}),
+			}),
+		}),
+	];
+}
+
+function Page() {
+	window.components.layout = StandardLayout;
+
+	return GamesPageContent();
+}
+
+render('root', Page, { useIcons: true });

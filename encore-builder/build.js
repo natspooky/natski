@@ -229,7 +229,7 @@ function createPage(dir, metaData) {
 						}),
 						meta({
 							tag: 'meta',
-							params: ['name="theme-color"', 'content="#010409"'],
+							params: ['name="theme-color"', 'content="#ffffff"'],
 						}),
 						meta({
 							tag: 'meta',
