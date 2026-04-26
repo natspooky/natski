@@ -90,11 +90,16 @@ function Footer() {
 			children: [
 				{
 					tag: 'div',
+					style: {
+						position: 'relative',
+						width: '30%',
+					},
 					children: [
 						{
 							tag: 'p',
 							style: { marginBottom: '15px' },
-							children: 'desc slop',
+							children:
+								"It’s just a cursor and a void of gray pixels. It doesn't promise to change the world, but it does offer an escape from the noise of the rest of the web.",
 						},
 						{
 							tag: 'div',

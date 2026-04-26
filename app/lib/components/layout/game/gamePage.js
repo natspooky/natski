@@ -1,9 +1,66 @@
+import {
+	useState,
+	createPortal,
+} from '../../../../../apis/encore/element-creator.js';
+
 import Header from '../header.js';
 import Embed from '../embed.js';
 import Section from '../section.js';
 import Animator from '../animator.js';
+import Icon from '../../ui/icon.js';
 
 function GamePage({ title, description, gameWindow }) {
+	let container;
+
+	const [iconState, , setIcon] = useState((get) => {
+		return Icon({
+			name: get ? 'minimise' : 'maximise',
+			classes: 'fullscreen-button',
+			style: {
+				display: 'block',
+				backgroundColor: 'var(--text-supersub-color)',
+				height: '20px',
+				width: '20px',
+			},
+		});
+	}, false);
+
+	const [EmbedInfoState, , setEmbedInfoState] = useState((get) => {
+		const url = window.location.href;
+
+		return get
+			? {
+					tag: 'div',
+					style: {
+						position: 'fixed',
+						top: '0',
+						left: '0',
+						width: '100%',
+						height: '100vh',
+						zIndex: '9999',
+						display: 'flex',
+						alignItems: 'center',
+						justifyContent: 'center',
+						backgroundColor: 'var(--text-supersub-color)',
+					},
+					children: Section({
+						children: {
+							tag: 'div',
+							style: {
+								borderRadius: 'var(--border-radius-4)',
+								cornerShape: 'var(--border-shape)',
+								backgroundColor: 'var(--background)',
+								width: '100%',
+								height: '100px',
+							},
+						},
+					}),
+				}
+			: { tag: 'ec-anchor' };
+	}, true);
+
+	createPortal(EmbedInfoState);
+
 	return Section({
 		children: [
 			Animator({
@@ -16,6 +73,9 @@ function GamePage({ title, description, gameWindow }) {
 			Animator({
 				children: {
 					tag: 'div',
+					onCreate: (self) => {
+						container = self;
+					},
 					classes: 'game-container',
 					style: {
 						position: 'relative',
@@ -27,7 +87,8 @@ function GamePage({ title, description, gameWindow }) {
 						overflow: 'hidden',
 						opacity: '0',
 						transform: 'translateY(15px)',
-						transition: '0.4s cubic-bezier(.47,1.53,.77,1.01)',
+						transition:
+							'transform 0.4s cubic-bezier(.47,1.53,.77,1.01), opacity 0.4s',
 						transformOrigin: 'bottom left',
 						'.animate .className': {
 							opacity: '1',
@@ -35,9 +96,57 @@ function GamePage({ title, description, gameWindow }) {
 						},
 					},
 
-					children: Embed({
-						children: gameWindow,
-					}),
+					children: [
+						Embed({
+							children: gameWindow,
+						}),
+						{
+							tag: 'button',
+							attributes: {
+								title: 'fullscreen',
+							},
+							events: {
+								click: {
+									callback: () => {
+										if (document.fullscreenElement) {
+											document.exitFullscreen();
+											setIcon(false);
+											return;
+										}
+										container.requestFullscreen();
+										setIcon(true);
+									},
+								},
+								fullscreenchange: {
+									callback: () => {
+										if (document.fullscreenElement) {
+											setIcon(true);
+											return;
+										}
+
+										setIcon(false);
+									},
+									target: document,
+								},
+							},
+							style: {
+								cursor: 'pointer',
+								position: 'absolute',
+								bottom: '10px',
+								padding: '10px',
+								right: '10px',
+								zIndex: '99',
+								border: '0px',
+								backgroundColor: 'var(--background)',
+								borderRadius: 'var(--border-radius-2)',
+								cornerShape: 'var(--border-shape)',
+								'.className:hover .fullscreen-button': {
+									backgroundColor: 'var(--text-color)',
+								},
+							},
+							children: iconState,
+						},
+					],
 				},
 			}),
 		],

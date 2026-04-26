@@ -12,10 +12,10 @@ function GameWindow() {
 			autoResize: true,
 			setupOnResize: true,
 			cursor: {
-				active: false,
+				active: true,
 				global: false,
 				passive: true,
-				correctTransform: true,
+				correctTransform: false,
 			},
 			key: {
 				active: false,
@@ -47,7 +47,7 @@ function GameWindow() {
 	});
 	canvas.resize(() => {});
 	canvas.draw(() => {
-		//canvas.paintAll('red');
+		if (canvas.cursor.pressing) canvas.paintAll('red');
 	});
 
 	canvas.append(canvas.render.bind(canvas));
