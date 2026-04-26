@@ -75,7 +75,7 @@ function Buttons(buttons) {
 			gap: '10px',
 			padding: '20px 0 0 0',
 		},
-		children: buttons.map(({ name, href }, index) => {
+		children: buttons.map(({ title, href }, index) => {
 			const first = index === 0;
 
 			return {
@@ -131,7 +131,7 @@ function Buttons(buttons) {
 					style: {
 						position: 'relative',
 					},
-					children: name,
+					children: title,
 				},
 			};
 		}),

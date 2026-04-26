@@ -1,6 +1,4 @@
 import { render } from '../../apis/encore/element-creator.js';
-//import isMobile from '../../apis/dependencies/mobile-utils.js';
-//import SimpleCanvas from '../../apis/simple/simple-canvas.js';
 import StandardLayout from '../layouts/standardLayout.js';
 import Animator from '../components/layout/animator.js';
 import Header from '../components/layout/header.js';
@@ -18,49 +16,59 @@ function homePageContent() {
 					title: 'Natski.dev',
 					description: 'home of Natski products',
 					buttons: [
-						{ name: 'Games', href: '/games' },
-						{ name: 'Docs', href: '/docs' },
+						{ title: 'Games', href: '/games' },
+						{ title: 'Docs', href: '/docs' },
 					],
 				}),
 			}),
 		}),
 
-		Section({
-			children: IconArray(['VPS', 'CMS', 'ENCORE', 'SSM', 'SSC']),
-		}),
-
-		Animator({
-			children: Banner({
-				buttons: [
-					{ name: 'Encore' },
-					{ name: 'Simple' },
-					{ name: 'Misc' },
+		Animator(
+			{
+				children: [
+					Section({
+						children: IconArray([
+							'VPS',
+							'CMS',
+							'ENCORE',
+							'SSM',
+							'SSC',
+						]),
+					}),
+					Banner({
+						buttons: [
+							{ name: 'Encore' },
+							{ name: 'Simple' },
+							{ name: 'Misc' },
+						],
+						background: {
+							tag: 'div',
+							style: {
+								position: 'absolute',
+								top: '0',
+								left: '0',
+								width: '100%',
+								height: '100%',
+								opacity: '0.5',
+								backgroundImage:
+									'linear-gradient(to bottom right, var(--PDS), var(--SSC), var(--VPS))',
+							},
+						},
+						style: {
+							opacity: '0',
+							transform: 'translateY(15px)',
+							transition:
+								'transform 0.4s cubic-bezier(.47,1.53,.77,1.01), opacity 0.4s',
+							'.animate .className': {
+								opacity: '1',
+								transform: 'translateY(0px)',
+							},
+						},
+					}),
 				],
-				background: {
-					tag: 'div',
-					style: {
-						position: 'absolute',
-						top: '0',
-						left: '0',
-						width: '100%',
-						height: '100%',
-						opacity: '0.5',
-						backgroundImage:
-							'linear-gradient(to bottom right, var(--PDS), var(--SSC), var(--VPS))',
-					},
-				},
-				style: {
-					opacity: '0',
-					transform: 'translateY(15px)',
-					transition:
-						'transform 0.4s cubic-bezier(.47,1.53,.77,1.01), opacity 0.4s',
-					'.animate .className': {
-						opacity: '1',
-						transform: 'translateY(0px)',
-					},
-				},
-			}),
-		}),
+			},
+			500,
+		),
 	];
 }
 
@@ -75,6 +83,11 @@ function IconArray(icons) {
 			justifyContent: 'center',
 			gap: '25px',
 			padding: '10px 0 0 0',
+			opacity: '0',
+			transition: 'opacity 0.4s',
+			'.animate .className': {
+				opacity: '1',
+			},
 		},
 		children: icons.map((icon) => {
 			return Icon({

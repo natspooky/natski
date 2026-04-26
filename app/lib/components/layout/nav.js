@@ -26,7 +26,7 @@ function Link({ name, src, text, target, href }) {
 		children: {
 			tag: 'a',
 			attributes: {
-				tabindex: -1,
+				tabindex: '-1',
 				draggable: false,
 				href,
 			},
@@ -85,6 +85,7 @@ function NavButton({ href, fn, param, children, style }) {
 					},
 					attributes: {
 						tabindex: '-1',
+						draggable: false,
 						href,
 					},
 					children,
@@ -140,15 +141,14 @@ function NavMainBar() {
 			position: 'relative',
 			width: '100%',
 			height: '50px',
-
 			display: 'flex',
 			alignItems: 'center',
 			justifyContent: 'space-between',
 		},
 		children: [
-			NavIconButton({ name: 'ARC', href: '/' }),
+			NavIconButton({ name: 'NATSKI', href: '/' }),
 			//NavTextButton({ name: 'hello', href: '/' }),
-			NavIconButton({ name: 'avatar', href: '/' }),
+			//NavIconButton({ name: 'avatar', href: '/' }),
 		],
 	};
 }
