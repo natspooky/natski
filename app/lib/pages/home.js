@@ -12,11 +12,16 @@ import Icon from '../components/ui/icon.js';
 
 function homePageContent() {
 	return [
-		Section({
-			children: Title({
-				title: 'Natski.dev',
-				description: 'home of Natski products',
-				buttons: [{ name: 'Products' }, { name: 'Docs' }],
+		Animator({
+			children: Section({
+				children: Title({
+					title: 'Natski.dev',
+					description: 'home of Natski products',
+					buttons: [
+						{ name: 'Games', href: '/games' },
+						{ name: 'Docs', href: '/docs' },
+					],
+				}),
 			}),
 		}),
 
@@ -89,49 +94,7 @@ function IconArray(icons) {
 function page() {
 	window.components.layout = StandardLayout;
 
-	return {
-		tag: 'div',
-		style: {
-			position: 'fixed',
-			top: '0',
-			left: '0',
-			height: '100vh',
-			width: '100%',
-			backgroundColor: 'var(--darken)',
-			zIndex: '99999',
-			display: 'flex',
-			flexDirection: 'column',
-			justifyContent: 'center',
-			alignItems: 'center',
-		},
-		children: [
-			{
-				tag: 'h1',
-				style: {
-					position: 'relative',
-					marginBottom: '20px',
-					color: 'var(--background)',
-				},
-				children: 'Coming soon',
-			},
-			{
-				tag: 'iframe',
-				attributes: {
-					src: '/games/kuru-clicker',
-				},
-				style: {
-					position: 'relative',
-					height: '50vh',
-					width: '50vw',
-					backgroundColor: 'var(--background-sub)',
-					borderRadius: 'var(--border-radius-4)',
-					cornerShape: 'var(--border-shape)',
-					border: '2px solid transparent',
-					overflow: 'hidden',
-				},
-			},
-		],
-	}; //homePageContent();
+	return homePageContent();
 }
 
 render('root', page, { useIcons: true });

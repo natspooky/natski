@@ -1,5 +1,8 @@
 import { render, useState } from '../../../apis/encore/element-creator.js';
 
+import GameLayout from '../../layouts/gameLayout.js';
+import GamePage from '../../components/layout/game/gamePage.js';
+
 const emoji = ['🌻', '🌷', '🌹', '🌸', '🌺', '🌼', '🌿', '🌾', '🍀', '☘️'];
 
 const randomEmoji = (getter) => {
@@ -69,12 +72,14 @@ function Garden(num) {
 	};
 }
 
-render(
-	'root',
-	() => {
-		return Garden(400);
-	},
-	{
-		useIcons: true,
-	},
-);
+function page() {
+	window.components.layout = GameLayout;
+
+	return GamePage({
+		title: 'Garden',
+		description: 'Balls',
+		gameWindow: Garden(30),
+	});
+}
+
+render('root', page, { useIcons: true });
