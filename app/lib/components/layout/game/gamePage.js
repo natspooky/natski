@@ -1,7 +1,4 @@
-import {
-	useState,
-	createPortal,
-} from '../../../../../apis/encore/element-creator.js';
+import { useState } from '../../../../../apis/encore/element-creator.js';
 
 import Header from '../header.js';
 import Embed from '../embed.js';
@@ -24,42 +21,6 @@ function GamePage({ title, description, gameWindow }) {
 			},
 		});
 	}, false);
-
-	const [EmbedInfoState, , setEmbedInfoState] = useState((get) => {
-		const url = window.location.href;
-
-		return get
-			? {
-					tag: 'div',
-					style: {
-						position: 'fixed',
-						top: '0',
-						left: '0',
-						width: '100%',
-						height: '100vh',
-						zIndex: '9999',
-						display: 'flex',
-						alignItems: 'center',
-						justifyContent: 'center',
-						backgroundColor: 'var(--text-supersub-color)',
-					},
-					children: Section({
-						children: {
-							tag: 'div',
-							style: {
-								borderRadius: 'var(--border-radius-4)',
-								cornerShape: 'var(--border-shape)',
-								backgroundColor: 'var(--background)',
-								width: '100%',
-								height: '100px',
-							},
-						},
-					}),
-				}
-			: { tag: 'ec-anchor' };
-	}, true);
-
-	createPortal(EmbedInfoState);
 
 	return Section({
 		children: [

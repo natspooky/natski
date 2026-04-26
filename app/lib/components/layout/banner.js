@@ -41,7 +41,7 @@ function BannerSelector({ buttons, setter }) {
 	};
 }
 
-function Banner({ buttons, background }) {
+function Banner({ buttons, background, style }) {
 	const [bannerContent, , setter] = useState((get) => {
 		return get;
 	}, buttons?.[0].data ?? null);
@@ -58,9 +58,10 @@ function Banner({ buttons, background }) {
 			aspectRatio: '5 / 3',
 			maxHeight: 'min(80vh, 800px)',
 			overflow: 'hidden',
+			...style,
 		},
 		children: [
-			background,
+			background ?? [],
 			buttons
 				? BannerSelector({
 						buttons,

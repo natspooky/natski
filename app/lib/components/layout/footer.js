@@ -87,60 +87,65 @@ function Footer() {
 				color: 'var(--text-supersub-color)',
 			},
 
-			children: [
-				{
-					tag: 'div',
-					style: {
-						position: 'relative',
-						width: '30%',
-					},
-					children: [
-						{
-							tag: 'p',
-							style: { marginBottom: '15px' },
-							children:
-								"It’s just a cursor and a void of gray pixels. It doesn't promise to change the world, but it does offer an escape from the noise of the rest of the web.",
+			children: Grid({
+				gap: 20,
+				columns: 2,
+				children: [
+					{
+						tag: 'div',
+						style: {
+							position: 'relative',
+							width: '70%',
 						},
-						{
-							tag: 'div',
-							style: {
-								display: 'flex',
-								alignItems: 'center',
-								gap: '5px',
+						children: [
+							{
+								tag: 'p',
+								style: { marginBottom: '15px' },
+								children:
+									"It’s just a cursor and a void of gray pixels. It doesn't promise to change the world, but it does offer an escape from the noise of the rest of the web.",
 							},
-							children: [
-								`© ${year > 2026 ? `2026 - ${year}` : year}`,
-								Icon({
-									name: 'NATSKI',
-									style: {
-										position: 'relative',
-										height: '15px',
-										width: '15px',
-										backgroundColor:
-											'var(--text-supersub-color)',
-									},
-								}),
-								'Natski',
-							],
-						},
-					],
-				},
-				{
-					tag: 'div',
-					style: {
-						position: 'relative',
-						width: '50%',
+							{
+								tag: 'div',
+								style: {
+									display: 'flex',
+									alignItems: 'center',
+									gap: '5px',
+								},
+								children: [
+									`© ${year > 2026 ? `2026 - ${year}` : year}`,
+									Icon({
+										name: 'NATSKI',
+										style: {
+											position: 'relative',
+											height: '15px',
+											width: '15px',
+											backgroundColor:
+												'var(--text-supersub-color)',
+										},
+									}),
+									'Natski',
+								],
+							},
+						],
 					},
-					children: Grid({
-						children: info.map((data) => {
-							return LinkSection(data);
+					{
+						tag: 'div',
+						style: {
+							justifySelf: 'end',
+							position: 'relative',
+							width: '80%',
+						},
+						children: Grid({
+							children: info.map((data) => {
+								return LinkSection(data);
+							}),
+							width: '100',
+							columns: 2,
+							gap: 20,
 						}),
-						width: '100',
-						columns: 2,
-						gap: 20,
-					}),
-				},
-			],
+					},
+				],
+			}),
 		},
 	});
 }

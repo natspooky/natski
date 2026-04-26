@@ -36,6 +36,12 @@ function Selector({ buttons, setter }) {
 					padding: '10px',
 					borderRadius: 'var(--border-radius-max)',
 					cursor: 'pointer',
+					transform: 'scale(1)',
+					transition:
+						'transform 0.4s cubic-bezier(.47,1.53,.77,1.01)',
+					':active': {
+						transform: 'scale(0.85)',
+					},
 				},
 				events: {
 					click: {
