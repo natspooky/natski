@@ -7,10 +7,7 @@ import { useState } from '../../../apis/encore/element-creator.js';
 
 function GameLayout({ children }) {
 	function codeLayout({ children }) {
-		return {
-			tag: 'span',
-			children,
-		};
+		return {};
 	}
 
 	const [EmbedInfoState, , setEmbedInfoState] = useState((get) => {
@@ -63,46 +60,52 @@ function GameLayout({ children }) {
 							0,
 						),
 						Section({
-							children: Animator({
-								children: {
-									tag: 'div',
-									style: {
-										position: 'relative',
-										borderRadius: 'var(--border-radius-4)',
-										cornerShape: 'var(--border-shape)',
-										backgroundColor: 'var(--background)',
-										width: '100%',
-										height: 'fit-content',
-										overflow: 'hidden',
-										opacity: '0',
-										transform: 'translateY(15px)',
-										transition:
-											'transform 0.4s cubic-bezier(.47,1.53,.77,1.01), opacity 0.4s',
-										'.animate .className': {
-											opacity: '1',
-											transform: 'translateY(0px)',
-										},
-									},
-									children: Banner({
-										buttons: [
-											{
-												name: 'Encore',
-												data: codeLayout({
-													children: `<iframe src="${url}" title="Natski Game"></iframe>`,
-												}),
-											},
-											{ name: 'React' },
-											{ name: 'HTML' },
-										],
-
+							children: Animator(
+								{
+									children: {
+										tag: 'div',
 										style: {
-											margin: '0',
-											aspectRatio: null,
-											height: '300px',
+											position: 'relative',
+											borderRadius:
+												'var(--border-radius-4)',
+											cornerShape: 'var(--border-shape)',
+											backgroundColor:
+												'var(--background)',
+											width: '100%',
+											height: 'fit-content',
+											overflow: 'hidden',
+											opacity: '0',
+											transform: 'translateY(15px)',
+											transition:
+												'transform 0.4s cubic-bezier(.47,1.53,.77,1.01), opacity 0.4s',
+											'.animate .className': {
+												opacity: '1',
+												transform: 'translateY(0px)',
+											},
 										},
-									}),
+										children: Banner({
+											buttons: [
+												{
+													name: 'Encore',
+													data: codeLayout({
+														children: `<iframe src="${url}" title="Natski Game"></iframe>`,
+													}),
+												},
+												{ name: 'React' },
+												{ name: 'HTML' },
+												{ name: 'Share' },
+											],
+
+											style: {
+												margin: '0',
+												aspectRatio: null,
+												height: '300px',
+											},
+										}),
+									},
 								},
-							}),
+								100,
+							),
 						}),
 					],
 				}
@@ -128,7 +131,7 @@ function GameLayout({ children }) {
 											},
 										},
 									},
-									children: 'button',
+									children: 'Embed',
 								},
 							}),
 						],
