@@ -24,8 +24,8 @@ function homePageContent() {
 			children: IconArray(['VPS', 'CMS', 'ENCORE', 'SSM', 'SSC']),
 		}),
 
-		Banner(
-			{
+		Animator({
+			children: Banner({
 				buttons: [
 					{ name: 'Encore' },
 					{ name: 'Simple' },
@@ -44,13 +44,18 @@ function homePageContent() {
 							'linear-gradient(to bottom right, var(--PDS), var(--SSC), var(--VPS))',
 					},
 				},
-			},
-			{
-				tag: 'span',
-				style: { top: '50px' },
-				children: 'loading',
-			},
-		),
+				style: {
+					opacity: '0',
+					transform: 'translateY(15px)',
+					transition:
+						'transform 0.4s cubic-bezier(.47,1.53,.77,1.01), opacity 0.4s',
+					'.animate .className': {
+						opacity: '1',
+						transform: 'translateY(0px)',
+					},
+				},
+			}),
+		}),
 	];
 }
 
