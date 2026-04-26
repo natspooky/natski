@@ -879,57 +879,46 @@ function render(root, fn, settings) {
 			},
 		);
 
-	if (settings?.customEvents) {
-		//do this maybe?
-	}
-
 	window.components = new ComponentManager();
-	const rootType = typeof root;
-	let rootElement;
-
-	if (rootType !== 'string' && rootType !== 'object') {
-		elementCreatorConsole.message({
-			message: 'Hydration error:',
-			error: `The root element '${root}' is not an ID or a HTMLElement`,
-		});
-		return;
-	}
-
-	if (rootType === 'string') {
-		rootElement = document.getElementById(root);
-		if (!rootElement) {
-			elementCreatorConsole.message({
-				message: 'Hydration error:',
-				error: `The root element '${root}' does not exist in the document`,
-			});
-			return;
-		}
-	}
-
-	if (rootType === 'object') {
-		rootElement = root;
-		if (
-			!(
-				rootElement.nodeType &&
-				rootElement.nodeType === Node.ELEMENT_NODE
-			)
-		) {
-			elementCreatorConsole.message({
-				message: 'Hydration error:',
-				error: `The root element '${rootElement}' does not exist in the document`,
-			});
-			return;
-		}
-	}
 
 	const hydrate = async () => {
 		try {
-			if (
-				settings?.hooks?.before &&
-				typeof settings.hooks.before === 'function'
-			) {
-				//maybe add a preview of data here. like a template or sometging idk, just think about it later whne you arent on a train
-				await settings.hooks.before();
+			const rootType = typeof root;
+			let rootElement;
+
+			if (rootType !== 'string' && rootType !== 'object') {
+				elementCreatorConsole.message({
+					message: 'Hydration error:',
+					error: `The root element '${root}' is not an ID or a HTMLElement`,
+				});
+				return;
+			}
+
+			if (rootType === 'string') {
+				rootElement = document.getElementById(root);
+				if (!rootElement) {
+					elementCreatorConsole.message({
+						message: 'Hydration error:',
+						error: `The root element '${root}' does not exist in the document`,
+					});
+					return;
+				}
+			}
+
+			if (rootType === 'object') {
+				rootElement = root;
+				if (
+					!(
+						rootElement.nodeType &&
+						rootElement.nodeType === Node.ELEMENT_NODE
+					)
+				) {
+					elementCreatorConsole.message({
+						message: 'Hydration error:',
+						error: `The root element '${rootElement}' does not exist in the document`,
+					});
+					return;
+				}
 			}
 
 			const time = performance.now();
@@ -968,8 +957,6 @@ function render(root, fn, settings) {
 			});
 			console.error(error);
 		}
-
-		settings?.hooks?.after?.();
 	};
 
 	if (settings?.awaitPageLoad && document.readyState !== 'complete') {
@@ -979,11 +966,11 @@ function render(root, fn, settings) {
 		});
 		return;
 	}
-	/*
-	if (document.readyState === 'loading') {
+
+	if (document.readyState === 'loading' || !document.body) {
 		window.addEventListener('DOMContentLoaded', hydrate);
 		return;
-	}*/
+	}
 
 	hydrate();
 }
@@ -1009,9 +996,6 @@ function isAppended(element) {
 	while (element.parentNode) element = element.parentNode;
 	return element instanceof Document;
 }
-
-//do this
-//refresh page on back button
 
 function elementAppended(element, callback, options) {
 	if (isAppended(element)) {

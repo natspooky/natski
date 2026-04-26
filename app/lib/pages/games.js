@@ -10,7 +10,7 @@ function GamesPageContent() {
 		Animator({
 			children: Section({
 				children: Title({
-					title: 'The Cellar Games',
+					title: 'The Cellar',
 					description:
 						'A collection of little games that can be embedded into any web project',
 				}),

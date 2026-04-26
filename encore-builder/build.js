@@ -199,6 +199,28 @@ function createPage(dir, metaData) {
 							],
 						}),
 						meta({
+							tag: 'link',
+							params: [
+								'rel="preconnect"',
+								'href="https://fonts.googleapis.com"',
+							],
+						}),
+						meta({
+							tag: 'link',
+							params: [
+								'rel="preconnect"',
+								'href="https://fonts.gstatic.com"',
+								'crossorigin',
+							],
+						}),
+						meta({
+							tag: 'link',
+							params: [
+								'href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"',
+								'rel="stylesheet"',
+							],
+						}),
+						meta({
 							tag: 'meta',
 							params: [
 								'name="viewport"',
@@ -215,6 +237,27 @@ function createPage(dir, metaData) {
 								'name="description"',
 								`content="${metaData.description}"`,
 							],
+						}),
+						metaData.globalJsPath
+							? element({
+									tag: 'script',
+									params: [
+										'type="module"',
+										`src="${metaData.globalJsPath}"`,
+									],
+								})
+							: '',
+						element({
+							tag: 'script',
+							params: [
+								'async',
+								'type="module"',
+								`src="${metaData.pageJsPath}"`,
+							],
+						}),
+						element({
+							tag: 'script',
+							children: `const VAR_LOADE = 0;`,
 						}),
 						metaData.pageCssPath
 							? element({
@@ -236,28 +279,15 @@ function createPage(dir, metaData) {
 									],
 								})
 							: '',
-						metaData.globalJsPath
-							? element({
-									tag: 'script',
-									params: [
-										'type="module"',
-										`src="${metaData.globalJsPath}"`,
-									],
-								})
-							: '',
-						element({
-							tag: 'script',
-							params: [
-								'async',
-								'type="module"',
-								`src="${metaData.pageJsPath}"`,
-							],
-						}),
 					].join(''),
 				}),
 				element({
 					tag: 'body',
 					params: ['id="root"'],
+					children: element({
+						tag: 'script',
+						children: '0',
+					}),
 				}),
 			].join(''),
 		}); /*`
@@ -406,12 +436,6 @@ function copyFileToLocation(copyPath, pastePath) {
 	});
 }
 
-async function minifyFile(path) {
-	const contents = await fsPromise.readFile(path, {
-		encoding: 'utf8',
-	});
-	return await minify(contents);
-}
 /*
 function BuildDirectory(path) {
 	if (!fs.existsSync(path)) return;
@@ -435,3 +459,49 @@ function buildRoot() {}
 
 function BuildPage() {}
 */
+
+function encoreConsole() {}
+
+async function EncoreBuild(outputPath) {
+	try {
+		encoreConsole('Preparing build.');
+
+		if (!getDirectory('app')) throw new Error('No app folder found');
+
+		await checkBuildPath(outputPath);
+	} catch (e) {
+		encoreConsole('Build failed. ' + e);
+	}
+}
+
+async function checkBuildPath(outputPath) {
+	if (fs.existsSync(outputPath)) {
+		encoreConsole('Preparing build folder.');
+		await fsPromise.rm(
+			outputPath,
+			{ recursive: true, force: true },
+			(err) => {
+				if (err) {
+					throw err;
+				}
+			},
+		);
+	}
+}
+
+function getFile() {}
+
+function getDirectory(dirPath) {}
+
+async function minifyFile(filePath) {
+	const textContent = await fsPromise.readFile(filePath, {
+		encoding: 'utf8',
+	});
+	return await minify(textContent);
+}
+
+function buildPages() {}
+
+function buildFileSystem() {}
+
+function mergeDependencies() {}
