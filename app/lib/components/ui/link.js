@@ -1,48 +1,38 @@
-import { merge } from '../../../apis/encore/element-creator.js';
-import { Button } from './button.js';
-import Icon from './icon.js';
+import { useState } from '../../../apis/encore/element-creator.js';
 
-function Link({ href, target, children, ...props }) {
-	const linkHandler = (event) => {
-		event.preventDefault();
-		window.open(href, target ?? '_self');
-	};
+const linkHandler = (event, href, target) => {
+	event.preventDefault();
+	if(window.components.)
+	window.open(href, target ?? '_self');
+};
 
-	return Button({
+function Link({ children, style, href, target }) {
+	return {
+		tag: 'button',
 		events: {
 			click: {
 				callback: linkHandler,
-				param: 'event',
+				param: ['event', href, target],
 			},
+		},
+		style: {
+			...style,
 		},
 		children: {
 			tag: 'a',
+			style: {
+				appearance: 'none',
+				textDecoration: 'none',
+				position: 'relative',
+			},
 			attributes: {
-				tabindex: -1,
+				tabindex: '-1',
 				draggable: false,
 				href,
 			},
 			children,
 		},
-	});
+	};
 }
 
-function IconLink({ name, src, children, ...props }) {
-	return Link({
-		...props,
-		chilren: [
-			Icon({
-				name,
-				src,
-			}),
-			children
-				? {
-						tag: 'span',
-						children,
-					}
-				: [],
-		],
-	});
-}
-
-export { Link, IconLink };
+export { Link };

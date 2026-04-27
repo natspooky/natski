@@ -25,4 +25,6 @@ function Page() {
 	return GamesPageContent();
 }
 
+export default Page;
+
 render('root', Page, { useIcons: true });

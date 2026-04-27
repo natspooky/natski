@@ -118,22 +118,6 @@ function NavIconButton({ name, fn, param, href }) {
 	});
 }
 
-function NavTextButton({ fn, param, href, name }) {
-	return NavButton({
-		children: { tag: 'span', children: name },
-		fn,
-		param,
-		href,
-		style: {
-			height: '35px',
-			padding: '0px 15px',
-			backgroundColor: 'var(--accent)',
-			borderRadius: 'var(--border-radius-max)',
-			cornerShape: 'var(--border-shape)',
-		},
-	});
-}
-
 function NavMainBar() {
 	return {
 		tag: 'div',
@@ -145,11 +129,6 @@ function NavMainBar() {
 			alignItems: 'center',
 			justifyContent: 'space-between',
 		},
-		children: [
-			NavIconButton({ name: 'NATSKI', href: '/' }),
-			//NavTextButton({ name: 'hello', href: '/' }),
-			//NavIconButton({ name: 'avatar', href: '/' }),
-		],
 	};
 }
 
@@ -175,7 +154,7 @@ function Nav() {
 				}
 			: {
 					position: 'fixed',
-					width: 'min(400px, 90%)',
+					width: 'min(450px, 90%)',
 					top: '0',
 					left: '50%',
 					margin: '30px auto 0px auto',
