@@ -2,56 +2,6 @@ import { className, useState } from '../../../apis/encore/element-creator.js';
 import isMobile from '../../../apis/dependencies/mobile-utils.js';
 import Icon from '../ui/icon.js';
 
-function Link({ name, src, text, target, href }) {
-	const linkHandler = (event) => {
-		event.preventDefault();
-		window.open(href, target ?? '_self');
-	};
-	return {
-		tag: 'button',
-		style: {
-			position: 'relative',
-			height: '40px',
-			width: '40px',
-			margin: '5px 7px',
-			backgroundColor: 'transparent',
-			border: '0px',
-		},
-		events: {
-			click: {
-				callback: linkHandler,
-				param: 'event',
-			},
-		},
-		children: {
-			tag: 'a',
-			attributes: {
-				tabindex: '-1',
-				draggable: false,
-				href,
-			},
-			children: [
-				Icon({
-					name,
-					src,
-					style: {
-						position: 'relative',
-						display: 'block',
-						margin: 'auto',
-						height: '25px',
-						width: '25px',
-						backgroundColor: 'var(--background)',
-					},
-				}),
-				{
-					tag: 'span',
-					text,
-				},
-			],
-		},
-	};
-}
-
 function NavButton({ href, fn, param, children, style }) {
 	return {
 		tag: 'button',

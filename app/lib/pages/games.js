@@ -4,6 +4,7 @@ import StandardLayout from '../layouts/standardLayout.js';
 import Animator from '../components/layout/animator.js';
 import Section from '../components/layout/section.js';
 import Title from '../components/layout/title.js';
+import GameCards from '../components/layout/game/gameCards.js';
 
 function GamesPageContent() {
 	return [
@@ -14,6 +15,11 @@ function GamesPageContent() {
 					description:
 						'A collection of little games that can be embedded into any web project',
 				}),
+			}),
+		}),
+		Section({
+			children: GameCards({
+				games: [{}, {}],
 			}),
 		}),
 	];

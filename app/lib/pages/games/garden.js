@@ -23,6 +23,7 @@ function HoverFlower() {
 		style: {
 			width: 'fit-content',
 			height: 'fit-content',
+			display: 'block',
 		},
 		events: {
 			mouseenter: {
@@ -51,24 +52,15 @@ function Garden(num) {
 	return {
 		tag: 'div',
 		style: {
-			display: 'flex',
-			width: '100%',
+			position: 'relative',
 			height: '100%',
+			width: '100%',
+			display: 'flex',
 			alignItems: 'center',
 			justifyContent: 'center',
+			flexWrap: 'wrap',
 		},
-
-		children: {
-			tag: 'div',
-			style: {
-				display: 'flex',
-				width: 'min(1300px,90%)',
-				flexWrap: 'wrap',
-				alignItems: 'center',
-				justifyContent: 'center',
-			},
-			children: state,
-		},
+		children: state,
 	};
 }
 
@@ -78,7 +70,7 @@ function page() {
 	return GamePage({
 		title: 'Garden',
 		description: 'Balls',
-		gameWindow: Garden(30),
+		gameWindow: Garden(100),
 	});
 }
 

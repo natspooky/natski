@@ -1,4 +1,5 @@
 import { buildComponent } from '../../../apis/encore/element-creator.js';
+import Link from '../ui/link.js';
 
 function EmbedSelector({ children }) {
 	return {
@@ -27,13 +28,9 @@ function EmbedSelector({ children }) {
 							},
 							children: [
 								self,
-								{
-									tag: 'a',
-									attributes: {
-										href: '',
-										target: '_blank',
-										tabIndex: '-1',
-									},
+								Link({
+									href: window.location.href,
+									target: '_blank',
 									style: {
 										position: 'absolute',
 										bottom: '12px',
@@ -43,7 +40,7 @@ function EmbedSelector({ children }) {
 										color: 'var(--text-color)',
 									},
 									children: 'Visit',
-								},
+								}),
 							],
 						}),
 					);
