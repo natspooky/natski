@@ -23,7 +23,7 @@ function homePageContent() {
 			}),
 		}),
 
-		Animator( c
+		Animator(
 			{
 				children: [
 					Section({

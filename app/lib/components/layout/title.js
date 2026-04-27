@@ -1,3 +1,5 @@
+import Link from '../ui/link.js';
+
 function Title({ title, description, buttons }) {
 	return {
 		tag: 'section',
@@ -78,11 +80,8 @@ function Buttons(buttons) {
 		children: buttons.map(({ title, href }, index) => {
 			const first = index === 0;
 
-			return {
-				tag: 'a',
-				attributes: {
-					href,
-				},
+			return Link({
+				href,
 				style: {
 					backgroundColor: 'transparent',
 					color: first
@@ -111,7 +110,6 @@ function Buttons(buttons) {
 						cornerShape: 'var(--border-shape)',
 						transition: '0.2s',
 					},
-
 					transform: 'translateY(15px)',
 					opacity: '0',
 					transition:
@@ -121,7 +119,6 @@ function Buttons(buttons) {
 						opacity: '1',
 						transform: 'translateY(0px)',
 					},
-
 					':hover::before': {
 						opacity: first ? '0.8' : '1',
 					},
@@ -133,7 +130,7 @@ function Buttons(buttons) {
 					},
 					children: title,
 				},
-			};
+			});
 		}),
 	};
 }

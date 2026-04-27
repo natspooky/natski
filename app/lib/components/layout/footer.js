@@ -1,6 +1,7 @@
 import Section from '../layout/section.js';
 import Grid from '../layout/grid.js';
 import Icon from '../ui/icon.js';
+import Link from '../ui/link.js';
 
 const info = [
 	{
@@ -40,27 +41,23 @@ function LinkSection({ title, links }) {
 			{
 				tag: 'div',
 				children: links.map(({ title, href }) => {
-					return {
-						tag: 'a',
+					return Link({
+						href,
 						style: {
-							textDecoration: 'none',
 							color: 'var(--text-color-sub)',
 							display: 'block',
 							marginTop: '5px',
+							fontWeight: '500',
 							transition: '0.1s',
 							':hover': {
 								color: 'var(--text-sub-color)',
 							},
 						},
-						attributes: {
-							draggable: 'false',
-							href,
-						},
 						children: {
 							tag: 'span',
 							children: title,
 						},
-					};
+					});
 				}),
 			},
 		],
