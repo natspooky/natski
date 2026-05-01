@@ -1,17 +1,32 @@
 import { render } from '../../apis/encore/element-creator.js';
-import StandardLayout from '../layouts/standardLayout.js';
-import { Link } from '../components/ui/link.js';
+import standardLayout from '../layouts/standardLayout.js';
+import Animator from '../components/layout/animator.js';
+import Title from '../components/layout/title.js';
 
-function Page() {
-	return [Link({ name: 'Return home' })];
-}
+import Section from '../components/layout/section.js';
 
 render(
 	'root',
 	() => {
-		window.components.layout = StandardLayout;
+		window.components.layout = standardLayout;
 
-		return Page();
+		return [
+			Animator({
+				children: Section({
+					children: Title({
+						title: '404 Not Found',
+						description:
+							"Something went wrong and we couldn't find the page you're looking for...",
+						buttons: [
+							{
+								title: 'Go home',
+								href: '/',
+							},
+						],
+					}),
+				}),
+			}),
+		];
 	},
 	{
 		useIcons: true,

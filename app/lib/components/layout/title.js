@@ -30,10 +30,12 @@ function Title({ title, description, buttons }) {
 								tag: 'span',
 								style: {
 									display: 'block',
-									transform: 'translateY(100%)',
 									transition: 'transform 0.4s',
 									transitionDelay: `${index * 50}ms`,
-									'.animate .className': {
+									'.await-animate .className': {
+										transform: 'translateY(100%)',
+									},
+									'.await-animate.animate .className': {
 										transform: 'translateY(0px)',
 									},
 								},
@@ -51,12 +53,14 @@ function Title({ title, description, buttons }) {
 					fontSize: 'var(--font-size-4)',
 					position: 'relative',
 					display: 'inline-block',
-					transform: 'translateY(15px)',
-					opacity: '0',
 					transition:
 						'transform 0.4s cubic-bezier(.47,1.53,.77,1.01), opacity 0.4s',
 					transitionDelay: '0.3s',
-					'.animate .className': {
+					'.await-animate .className': {
+						transform: 'translateY(15px)',
+						opacity: '0',
+					},
+					'.await-animate.animate .className': {
 						opacity: '1',
 						transform: 'translateY(0px)',
 					},
@@ -110,17 +114,19 @@ function Buttons(buttons) {
 						cornerShape: 'var(--border-shape)',
 						transition: '0.2s',
 					},
-					transform: 'translateY(15px)',
-					opacity: '0',
+					':hover::before': {
+						opacity: first ? '0.8' : '1',
+					},
 					transition:
 						'transform 0.4s cubic-bezier(.47,1.53,.77,1.01), opacity 0.4s',
 					transitionDelay: `calc(0.4s + ${(index + 1) * 70}ms)`,
-					'.animate .className': {
+					'.await-animate .className': {
+						transform: 'translateY(15px)',
+						opacity: '0',
+					},
+					'.await-animate.animate .className': {
 						opacity: '1',
 						transform: 'translateY(0px)',
-					},
-					':hover::before': {
-						opacity: first ? '0.8' : '1',
 					},
 				},
 				children: {

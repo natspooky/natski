@@ -39,10 +39,12 @@ function InfographicCard({
 			children ?? [],
 		],
 		style: {
-			opacity: '0',
-			transform: 'translateY(15px)',
 			transition: '0.4s cubic-bezier(.47,1.53,.77,1.01)',
-			'.animate .className': {
+			'.await-animate .className': {
+				opacity: '0',
+				transform: 'translateY(15px)',
+			},
+			'.await-animate.animate .className': {
 				opacity: '1',
 				transform: 'translateY(0px)',
 			},

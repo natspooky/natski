@@ -8,6 +8,7 @@ function CardContainer({ children, style }) {
 			backgroundColor: 'var(--background-sub)',
 			minHeight: 'fit-content',
 			height: '100%',
+			width: '100%',
 			overflow: 'hidden',
 			...style,
 		},

@@ -46,12 +46,14 @@ function GamePage({ title, description, gameWindow }) {
 						borderRadius: 'var(--border-radius-4)',
 						cornerShape: 'var(--border-shape)',
 						overflow: 'hidden',
-						opacity: '0',
-						transform: 'translateY(15px)',
 						transition:
 							'transform 0.4s cubic-bezier(.47,1.53,.77,1.01), opacity 0.4s',
 						transformOrigin: 'bottom left',
-						'.animate .className': {
+						'.await-animate .className': {
+							opacity: '0',
+							transform: 'translateY(15px)',
+						},
+						'.await-animate.animate .className': {
 							opacity: '1',
 							transform: 'translateY(0px)',
 						},

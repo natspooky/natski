@@ -35,13 +35,21 @@ const httpServer = createServer((req, res) => {
 		filePath += 'home.html';
 		contentType = 'text/html';
 	} else if (_extname(filePath) === '') {
+		console.log(filePath.slice(filePath.length - 1));
+		if (filePath.slice(filePath.length - 1) == '\\') {
+			filePath = filePath.slice(0, filePath.length - 1);
+			console.log(filePath);
+		}
+
 		filePath += '.html';
 		contentType = 'text/html';
+
+		if (!existsSync(filePath)) {
+			filePath = join(__dirname + '\\..\\.encore\\', '404.html');
+		}
 	} else if (!existsSync(filePath)) {
 		let time = performance.now();
 		message(true, time, filePath);
-		//readFile(filePath + '\\404.html', 'text/html', res);
-		return;
 	}
 
 	readFile(filePath, contentType, res);
@@ -49,6 +57,7 @@ const httpServer = createServer((req, res) => {
 
 function readFile(file_path, contentType, res) {
 	let time = performance.now();
+
 	if (existsSync(file_path)) {
 		res.writeHead(StatusCodes.OK, {
 			'Content-Type': contentType,

@@ -4,7 +4,7 @@
 /* How to use? : Visit https://natski.dev/dependencies/file-utils
 /* ----------------------------------------------- */
 
-export function MIME(file) {
+function MIME(file) {
 	switch (fileExtention(file)) {
 		case 'html':
 		case 'htm':
@@ -87,8 +87,8 @@ export function MIME(file) {
 	}
 }
 
-export function checkMediaType(file, type) {
-	let ext = fileExtention(file);
+function checkMediaType(file, type) {
+	const ext = fileExtention(file);
 	switch (type) {
 		case 'video':
 			return /mp(4|eg)|ts|avi|webm|ogv/i.test(ext);
@@ -105,19 +105,25 @@ export function checkMediaType(file, type) {
 	}
 }
 
-export function fileExtention(file) {
-	const index = file.indexOf('.');
+function fileExtention(file) {
+	if (typeof file !== 'string') throw new Error('File path must be a string');
+
+	const index = file.lastIndexOf('.');
 
 	if (index !== -1) return file.slice(index + 1);
 
 	return 'unknown';
 }
 
-export function fileName(file) {
-	const start = file.lastIndexOf('/');
-	const end = file.indexOf('.');
+function fileName(file) {
+	if (typeof file !== 'string') throw new Error('File path must be a string');
 
-	if (end === -1) return 'unknown';
+	const start = file.lastIndexOf('/');
+	const end = file.lastIndexOf('.');
+
+	if (end === -1) return 'unknown file name';
 
 	return file.slice(start !== -1 ? start + 1 : 0, end);
 }
+
+export { fileName, fileExtention, checkMediaType, MIME };

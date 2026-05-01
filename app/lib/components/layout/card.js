@@ -17,10 +17,12 @@ function Card({ icon, title, description, delay }) {
 				name: icon,
 				style: {
 					margin: '10px auto 15px auto',
-					opacity: '0',
 					transition: '1s',
 					transitionDelay: `${delay}s`,
-					'.animate .className': {
+					'.await-animate .className': {
+						opacity: '0',
+					},
+					'.await-animate.animate .className': {
 						opacity: '1',
 					},
 				},
@@ -28,11 +30,13 @@ function Card({ icon, title, description, delay }) {
 			{
 				tag: 'p',
 				style: {
-					opacity: '0',
-					transform: 'translateY(15px)',
 					transition: '0.4s cubic-bezier(.47,1.53,.77,1.01)',
 					transitionDelay: `${delay}s`,
-					'.animate .className': {
+					'.await-animate .className': {
+						opacity: '0',
+						transform: 'translateY(15px)',
+					},
+					'.await-animate.animate .className': {
 						opacity: '1',
 						transform: 'translateY(0px)',
 					},

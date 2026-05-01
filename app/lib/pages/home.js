@@ -55,11 +55,13 @@ function homePageContent() {
 							},
 						},
 						style: {
-							opacity: '0',
-							transform: 'translateY(15px)',
 							transition:
 								'transform 0.4s cubic-bezier(.47,1.53,.77,1.01), opacity 0.4s',
-							'.animate .className': {
+							'.await-animate .className': {
+								opacity: '0',
+								transform: 'translateY(15px)',
+							},
+							'.await-animate.animate .className': {
 								opacity: '1',
 								transform: 'translateY(0px)',
 							},
@@ -83,9 +85,12 @@ function IconArray(icons) {
 			justifyContent: 'center',
 			gap: '25px',
 			padding: '10px 0 0 0',
-			opacity: '0',
+
 			transition: 'opacity 0.4s',
-			'.animate .className': {
+			'.await-animate .className': {
+				opacity: '0',
+			},
+			'.await-animate.animate .className': {
 				opacity: '1',
 			},
 		},

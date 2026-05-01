@@ -76,10 +76,7 @@ function Maquee({ children, speed = 1, style }) {
 			opacity: '0',
 			transform: 'translateY(10px)',
 			transition: '0.4s cubic-bezier(.47,1.53,.77,1.01)',
-			'.animate .className': {
-				opacity: '1',
-				transform: 'translateY(0px)',
-			},
+
 			...style,
 		},
 		children: {

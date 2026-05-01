@@ -1,12 +1,19 @@
-function Animator({ children }, timer) {
+function Animator({ children, once = true }, timer) {
 	const inView = (entries, observer) => {
-		entries.forEach((entry) => {
-			if (entry.isIntersecting) {
-				setTimeout(() => {
-					if (entry.target) entry.target.classList.add('animate');
-				}, timer ?? 250);
+		let timeout;
 
-				observer.unobserve(entry.target);
+		entries.forEach((entry) => {
+			if (entry.target) {
+				if (entry.isIntersecting) {
+					timeout = setTimeout(() => {
+						entry.target.classList.add('animate');
+					}, timer ?? 250);
+
+					if (once) observer.unobserve(entry.target);
+				} else {
+					clearTimeout(timeout);
+					entry.target.classList.remove('animate');
+				}
 			}
 		});
 	};
@@ -14,11 +21,11 @@ function Animator({ children }, timer) {
 	const observer = new IntersectionObserver(inView, {
 		rootMargin: '0px',
 		scrollMargin: '0px',
-		threshold: 0.01,
+		threshold: 0.06,
 	});
 	return {
 		tag: 'div',
-
+		classes: 'await-animate',
 		onAppend: {
 			callback: (self) => observer.observe(self),
 			options: {

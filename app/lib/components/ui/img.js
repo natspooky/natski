@@ -1,8 +1,9 @@
 import { useSuspense, merge } from '../../../apis/encore/element-creator.js';
 import { fileName } from '../../../apis/dependencies/file-utils.js';
+import Icon from './icon.js';
 
-function Img({ src, height, width, alt, ...props }) {
-	return merge(
+function Img({ src, height, width, alt, suspense, ...props }) {
+	const imageBase = merge(
 		{
 			tag: 'img',
 			attributes: {
@@ -15,22 +16,54 @@ function Img({ src, height, width, alt, ...props }) {
 		},
 		props,
 	);
+
+	const suspenseStyle = {
+		display: 'block',
+		height: height ? `${height}px` : null,
+		width: width ? `${width}px` : null,
+	};
+
+	return suspense
+		? useSuspense(
+				() => {
+					return imageBase;
+				},
+				merge(
+					{
+						tag: 'span',
+						style: suspenseStyle,
+					},
+					props,
+				),
+				merge(
+					{
+						tag: 'div',
+						style: suspenseStyle,
+						children: {
+							tag: 'span',
+							style: {
+								height: '100%',
+								width: '100%',
+								display: 'flex',
+								alignItems: 'center',
+								justifyContent: 'center',
+								backgroundColor: 'black',
+							},
+							children: Icon({
+								name: 'alert',
+								style: {
+									height: '50%',
+									width: '50%',
+									display: 'block',
+									backgroundColor: 'white',
+								},
+							}),
+						},
+					},
+					props,
+				),
+			)
+		: imageBase;
 }
 
-function SuspenceImg(props) {
-	return useSuspense(() => {
-		return Img(props);
-	});
-}
-
-function ImgCollage({}, images) {
-	return { tag: 'div', children: {} };
-}
-
-function SuspenseCollage(props, images) {
-	return useSuspense(() => {
-		return ImgCollage(props, images);
-	});
-}
-
-export { Img, ImgCollage, SuspenceImg, SuspenseCollage };
+export default Img;

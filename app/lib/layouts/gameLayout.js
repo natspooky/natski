@@ -6,10 +6,6 @@ import RootLayout from './rootLayout.js';
 import { useState } from '../../../apis/encore/element-creator.js';
 
 function GameLayout({ children }) {
-	function codeLayout({ children }) {
-		return {};
-	}
-
 	const [EmbedInfoState, , setEmbedInfoState] = useState((get) => {
 		const url = window.location.href;
 
@@ -48,10 +44,11 @@ function GameLayout({ children }) {
 										height: '100%',
 										backgroundColor:
 											'var(--text-supersub-color)',
-										opacity: '0',
-
 										transition: 'opacity 0.4s',
-										'.animate .className': {
+										'.await-animate .className': {
+											opacity: '0',
+										},
+										'.await-animate.animate .className': {
 											opacity: '1',
 										},
 									},
@@ -74,22 +71,25 @@ function GameLayout({ children }) {
 											width: '100%',
 											height: 'fit-content',
 											overflow: 'hidden',
-											opacity: '0',
-											transform: 'translateY(15px)',
+
 											transition:
 												'transform 0.4s cubic-bezier(.47,1.53,.77,1.01), opacity 0.4s',
-											'.animate .className': {
-												opacity: '1',
-												transform: 'translateY(0px)',
+											'.await-animate .className': {
+												opacity: '0',
+												transform: 'translateY(15px)',
 											},
+											'.await-animate.animate .className':
+												{
+													opacity: '1',
+													transform:
+														'translateY(0px)',
+												},
 										},
 										children: Banner({
 											buttons: [
 												{
 													name: 'Encore',
-													data: codeLayout({
-														children: `<iframe src="${url}" title="Natski Game"></iframe>`,
-													}),
+													data: `<iframe src="${url}" title="Natski Game"></iframe>`,
 												},
 												{ name: 'React' },
 												{ name: 'HTML' },

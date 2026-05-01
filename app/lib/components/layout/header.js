@@ -24,9 +24,12 @@ function Header({ chip, title, description }) {
 							color: 'var(--text-supersub-color)',
 							width: 'fit-content',
 							margin: '0px auto 25px auto',
-							opacity: '0',
+
 							transition: '1s',
-							'.animate .className': {
+							'.await-animate.className': {
+								opacity: '0',
+							},
+							'.await-animate.animate .className': {
 								opacity: '1',
 							},
 						},
@@ -47,14 +50,16 @@ function Header({ chip, title, description }) {
 						{
 							tag: 'span',
 							style: {
-								opacity: '0',
-								transform: 'translateY(-10px)',
 								transition:
 									'0.5s cubic-bezier(.47,1.53,.77,1.01)',
 								position: 'relative',
 								display: 'inline-block',
 								transitionDelay: `${headerCounter * 70}ms`,
-								'.animate .className': {
+								'.await-animate .className': {
+									opacity: '0',
+									transform: 'translateY(-10px)',
+								},
+								'.await-animate.animate .className': {
 									opacity: '1',
 									transform: 'translateX(0px)',
 								},
@@ -79,14 +84,16 @@ function Header({ chip, title, description }) {
 								{
 									tag: 'span',
 									style: {
-										opacity: '0',
-										transform: 'translateY(10px)',
 										transition:
 											'0.4s cubic-bezier(.47,1.53,.77,1.01)',
 										position: 'relative',
 										display: 'inline-block',
 										transitionDelay: `${headerCounter * 80 + textCounter * 10}ms`,
-										'.animate .className': {
+										'.await-animate .className': {
+											opacity: '0',
+											transform: 'translateY(10px)',
+										},
+										'.await-animate.animate .className': {
 											opacity: '1',
 											transform: 'translateY(0px)',
 										},
