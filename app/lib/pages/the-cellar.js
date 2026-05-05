@@ -7,7 +7,7 @@ import Title from '../components/layout/title.js';
 import Card from '../components/layout/card.js';
 import GameCards from '../components/layout/game/gameCards.js';
 
-function GamesPageContent() {
+function Page() {
 	return [
 		Animator({
 			children: Section({
@@ -17,7 +17,6 @@ function GamesPageContent() {
 				}),
 			}),
 		}),
-
 		Animator(
 			{
 				children: Section({
@@ -61,12 +60,4 @@ function GamesPageContent() {
 	];
 }
 
-function Page() {
-	window.components.layout = StandardLayout;
-
-	return GamesPageContent();
-}
-
-export default Page;
-
-render(document.body, Page, { useIcons: true });
+export { Page as default, StandardLayout as Layout };

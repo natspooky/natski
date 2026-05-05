@@ -2,7 +2,7 @@ import { render } from '../../../apis/encore/element-creator.js';
 //import isMobile from '../../../apis/dependencies/mobile-utils.js';
 //import SimpleCanvas from '../../../apis/simple/simple-canvas.js';
 import { IS_DATA } from '../../../apis/encore/dependencies/icon-system/IS_DATA.js';
-import standardLayout from '../../layouts/standardLayout.js';
+import StandardLayout from '../../layouts/standardLayout.js';
 import Animator from '../../components/layout/animator.js';
 import Header from '../../components/layout/header.js';
 import Section from '../../components/layout/section.js';
@@ -78,7 +78,7 @@ function IconArray({ icons }) {
 	};
 }
 
-function HomeTestPage() {
+function Page() {
 	return [
 		Animator({
 			children: Section({
@@ -182,10 +182,4 @@ function HomeTestPage() {
 	];
 }
 
-function page() {
-	window.components.layout = standardLayout;
-
-	return HomeTestPage();
-}
-
-render(document.body, page, { useIcons: true });
+export { Page as default, StandardLayout as Layout };

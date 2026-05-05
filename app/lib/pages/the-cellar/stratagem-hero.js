@@ -73,9 +73,7 @@ function GameWindow() {
 	};
 }
 
-function page() {
-	window.components.layout = GameLayout;
-
+function Page() {
 	return GamePage({
 		title: 'Stratagem Hero',
 		description: 'based on Helldivers 2',
@@ -83,4 +81,4 @@ function page() {
 	});
 }
 
-render(document.body, page, { useIcons: true });
+export { Page as default, GameLayout as Layout };

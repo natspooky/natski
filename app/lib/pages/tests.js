@@ -5,14 +5,7 @@ import Section from '../components/layout/section.js';
 import Animator from '../components/layout/animator.js';
 import Title from '../components/layout/title.js';
 
-function link({ href }) {
-	return Link({
-		href: '/tests/' + href,
-		children: href.split('-').join(' '),
-	});
-}
-
-function TestContent() {
+function Page() {
 	return [
 		Animator({
 			children: Section({
@@ -44,10 +37,4 @@ function TestContent() {
 	];
 }
 
-function Page() {
-	window.components.layout = StandardLayout;
-
-	return TestContent();
-}
-
-render(document.body, Page, { useIcons: true });
+export { Page as default, StandardLayout as Layout };

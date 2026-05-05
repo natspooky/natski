@@ -78,7 +78,9 @@ function NavMainBar() {
 			display: 'flex',
 			alignItems: 'center',
 			justifyContent: 'space-between',
+			color: 'white',
 		},
+		children: window.location.href,
 	};
 }
 

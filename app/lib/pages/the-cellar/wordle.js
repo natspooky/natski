@@ -3,6 +3,7 @@ import {
 	useState,
 	useRef,
 } from '../../../apis/encore/element-creator.js';
+import GameLayout from '../../layouts/gameLayout.js';
 
 function StateInput() {
 	const [state] = useState((setter) => {
@@ -38,10 +39,8 @@ function WordleContainer() {
 	return new Array(6).fill(0).map(inputPunnet);
 }
 
-render(
-	document.body,
-	() => {
-		return WordleContainer();
-	},
-	{},
-);
+function Page() {
+	return {};
+}
+
+export { Page as default, GameLayout as Layout };

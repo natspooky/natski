@@ -6,7 +6,7 @@ import Banner from '../components/layout/banner.js';
 import Title from '../components/layout/title.js';
 import Icon from '../components/ui/icon.js';
 
-function homePageContent() {
+function Page() {
 	return [
 		Animator({
 			children: Section({
@@ -24,15 +24,15 @@ function homePageContent() {
 		Animator(
 			{
 				children: [
-					// Section({
-					// 	children: IconArray([
-					// 		'VPS',
-					// 		'CMS',
-					// 		'ENCORE',
-					// 		'SSM',
-					// 		'SSC',
-					// 	]),
-					// }),
+					Section({
+						children: IconArray([
+							'VPS',
+							'CMS',
+							'ENCORE',
+							'SSM',
+							'SSC',
+						]),
+					}),
 					Banner({
 						buttons: [
 							{ name: 'Encore' },
@@ -113,10 +113,4 @@ function IconArray(icons) {
 	};
 }
 
-function page() {
-	window.components.layout = StandardLayout;
-
-	return homePageContent();
-}
-
-render(document.body, page, { useIcons: true });
+export { Page as default, StandardLayout as Layout };

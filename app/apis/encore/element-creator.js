@@ -932,12 +932,23 @@ function render(root, fn, settings) {
 				.getComponent(componentName);
 
 			if (layout) {
+				const [pageState, , setPageState] = useState((content) => {
+					return useSuspense(
+						() => {
+							return content;
+						},
+						{ tag: 'span', children: 'loading' },
+					);
+				}, content.fragment ?? content.element);
+
 				window.components.setComponent(
 					'layout',
 					layout({
-						children: content.fragment ?? content.element,
+						children: pageState,
 					}),
 				);
+
+				window.ecPageState = setPageState;
 			}
 
 			window.components.appendComponent(

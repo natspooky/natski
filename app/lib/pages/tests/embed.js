@@ -1,12 +1,12 @@
 import { render, useSuspense } from '../../../apis/encore/element-creator.js';
 import Embed from '../../components/layout/embed.js';
-import standardLayout from '../../layouts/standardLayout.js';
+import StandardLayout from '../../layouts/standardLayout.js';
 import Section from '../../components/layout/section.js';
 import Animator from '../../components/layout/animator.js';
 import Title from '../../components/layout/title.js';
 import Card from '../../components/layout/card.js';
 
-function EmbedTestPage() {
+function Page() {
 	return useSuspense(() => {
 		return [
 			Section({
@@ -50,14 +50,4 @@ function EmbedTestPage() {
 	}, 'loading frame');
 }
 
-render(
-	document.body,
-	() => {
-		window.components.layout = standardLayout;
-
-		return EmbedTestPage();
-	},
-	{
-		useIcons: true,
-	},
-);
+export { Page as default, StandardLayout as Layout };

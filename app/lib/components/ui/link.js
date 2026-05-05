@@ -1,8 +1,32 @@
-import { useState } from '../../../apis/encore/element-creator.js';
+import { useState, useRef } from '../../../apis/encore/element-creator.js';
 
 function Link({ children, style, href, target }) {
+	const linkStorage = useRef(null);
+
 	const linkClickHandler = async (event, href, target) => {
 		event.preventDefault();
+
+		const navigateViaJS = href == '/the-cellar' || '/';
+		if (navigateViaJS && window.ecPageState) {
+			document.title = href
+				.replace('/', '')
+				.split('-')
+				.map((word) => {
+					return word.slice(0, 1).toUpperCase() + word.slice(1);
+				})
+				.join(' ');
+			window.history.pushState({}, '', href);
+
+			const link = '/lib/pages' + href.replaceAll('.html', '') + '.js';
+			console.log(link);
+			const value = await import(link);
+
+			window.ecPageState(value.default());
+
+			console.log(value.default());
+
+			return;
+		}
 
 		window.open(href, target ?? '_self');
 	};
@@ -26,9 +50,11 @@ function Link({ children, style, href, target }) {
 		children: {
 			tag: 'a',
 			style: {
+				position: 'relative',
+				width: '100%',
+				height: '100%',
 				appearance: 'none',
 				textDecoration: 'inherit',
-				position: 'relative',
 				color: 'inherit',
 				fontWeight: 'inherit',
 				fontSize: 'inherit',

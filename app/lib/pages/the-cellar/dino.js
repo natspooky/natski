@@ -1,6 +1,6 @@
 import { render, useState } from '../../../apis/encore/element-creator.js';
 import Canvas from '../../components/ui/canvas.js';
-import StandardLayout from '../../layouts/standardLayout.js';
+import GameLayout from '../../layouts/gameLayout.js';
 
 class canvasObj {
 	constructor({ width, height }) {}
@@ -57,25 +57,19 @@ function DinoGame() {
 	});
 }
 
-render(
-	document.body,
-	() => {
-		window.components.layout = StandardLayout;
+function Page() {
+	return {
+		tag: 'div',
+		classes: 'dino-wrapper',
+		children: [
+			DinoGame(),
+			{
+				tag: 'div',
+				classes: 'dino-controls',
+				children: {},
+			},
+		],
+	};
+}
 
-		return {
-			tag: 'div',
-			classes: 'dino-wrapper',
-			children: [
-				DinoGame(),
-				{
-					tag: 'div',
-					classes: 'dino-controls',
-					children: {},
-				},
-			],
-		};
-	},
-	{
-		useIcons: true,
-	},
-);
+export { Page as default, GameLayout as Layout };

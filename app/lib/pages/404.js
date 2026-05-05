@@ -1,34 +1,25 @@
 import { render } from '../../apis/encore/element-creator.js';
-import standardLayout from '../layouts/standardLayout.js';
+import StandardLayout from '../layouts/standardLayout.js';
 import Animator from '../components/layout/animator.js';
 import Title from '../components/layout/title.js';
-
 import Section from '../components/layout/section.js';
 
-render(
-	document.body,
-	() => {
-		window.components.layout = standardLayout;
-
-		return [
-			Animator({
-				children: Section({
-					children: Title({
-						title: '404 Not Found',
-						description:
-							"Something went wrong and we couldn't find the page you're looking for...",
-						buttons: [
-							{
-								title: 'Go home',
-								href: '/',
-							},
-						],
-					}),
-				}),
+function Page() {
+	return Animator({
+		children: Section({
+			children: Title({
+				title: '404 Not Found',
+				description:
+					"Something went wrong and we couldn't find the page you're looking for...",
+				buttons: [
+					{
+						title: 'Go home',
+						href: '/',
+					},
+				],
 			}),
-		];
-	},
-	{
-		useIcons: true,
-	},
-);
+		}),
+	});
+}
+
+export { Page as default, StandardLayout as Layout };
