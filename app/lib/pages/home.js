@@ -24,15 +24,15 @@ function homePageContent() {
 		Animator(
 			{
 				children: [
-					Section({
-						children: IconArray([
-							'VPS',
-							'CMS',
-							'ENCORE',
-							'SSM',
-							'SSC',
-						]),
-					}),
+					// Section({
+					// 	children: IconArray([
+					// 		'VPS',
+					// 		'CMS',
+					// 		'ENCORE',
+					// 		'SSM',
+					// 		'SSC',
+					// 	]),
+					// }),
 					Banner({
 						buttons: [
 							{ name: 'Encore' },
@@ -57,10 +57,12 @@ function homePageContent() {
 								'transform 0.4s cubic-bezier(.47,1.53,.77,1.01), opacity 0.4s',
 							'.await-animate .className': {
 								opacity: '0',
+								visibility: 'hidden',
 								transform: 'translateY(15px)',
 							},
 							'.await-animate.animate .className': {
 								opacity: '1',
+								visibility: 'visible',
 								transform: 'translateY(0px)',
 							},
 						},
@@ -83,7 +85,6 @@ function IconArray(icons) {
 			justifyContent: 'center',
 			gap: '25px',
 			padding: '10px 0 0 0',
-
 			transition: 'opacity 0.4s',
 			'.await-animate .className': {
 				opacity: '0',
@@ -118,4 +119,4 @@ function page() {
 	return homePageContent();
 }
 
-render('root', page, { useIcons: true });
+render(document.body, page, { useIcons: true });

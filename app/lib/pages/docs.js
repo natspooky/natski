@@ -25,4 +25,4 @@ function Page() {
 	return GamesPageContent();
 }
 
-render('root', Page, { useIcons: true });
+render(document.body, Page, { useIcons: true });

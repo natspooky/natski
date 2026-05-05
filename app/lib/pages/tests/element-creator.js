@@ -841,7 +841,7 @@ function MiscTests() {
 }
 
 render(
-	'root',
+	document.body,
 	() => {
 		window.components.layout = ({ children }) => {
 			const [state, , setState] = useState((get) => {

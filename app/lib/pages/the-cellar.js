@@ -69,4 +69,4 @@ function Page() {
 
 export default Page;
 
-render('root', Page, { useIcons: true });
+render(document.body, Page, { useIcons: true });

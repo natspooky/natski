@@ -50,4 +50,4 @@ function Page() {
 	return TestContent();
 }
 
-render('root', Page, { useIcons: true });
+render(document.body, Page, { useIcons: true });

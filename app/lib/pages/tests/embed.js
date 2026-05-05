@@ -51,7 +51,7 @@ function EmbedTestPage() {
 }
 
 render(
-	'root',
+	document.body,
 	() => {
 		window.components.layout = standardLayout;
 

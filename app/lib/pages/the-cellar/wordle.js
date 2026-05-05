@@ -39,7 +39,7 @@ function WordleContainer() {
 }
 
 render(
-	'root',
+	document.body,
 	() => {
 		return WordleContainer();
 	},

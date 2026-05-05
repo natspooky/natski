@@ -11,7 +11,7 @@ import {
 import Icon from '../../components/ui/icon.js';
 
 render(
-	'root',
+	document.body,
 	() => {
 		return IS_DATA.map((icon) => {
 			return Icon({

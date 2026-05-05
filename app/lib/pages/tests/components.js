@@ -10,7 +10,7 @@ import {
 import Img from '../../components/ui/img.js';
 
 render(
-	'root',
+	document.body,
 	() => {
 		return [
 			Img({

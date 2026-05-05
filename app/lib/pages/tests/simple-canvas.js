@@ -137,7 +137,7 @@ function Canvas({
 }
 
 render(
-	'root',
+	document.body,
 	() => {
 		const sizeValue = 400;
 		const size = { height: sizeValue, width: sizeValue };

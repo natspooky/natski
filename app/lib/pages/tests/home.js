@@ -188,4 +188,4 @@ function page() {
 	return HomeTestPage();
 }
 
-render('root', page, { useIcons: true });
+render(document.body, page, { useIcons: true });

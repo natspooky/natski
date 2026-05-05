@@ -6,7 +6,7 @@ import Title from '../components/layout/title.js';
 import Section from '../components/layout/section.js';
 
 render(
-	'root',
+	document.body,
 	() => {
 		window.components.layout = standardLayout;
 

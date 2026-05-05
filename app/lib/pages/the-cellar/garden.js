@@ -74,4 +74,4 @@ function page() {
 	});
 }
 
-render('root', page, { useIcons: true });
+render(document.body, page, { useIcons: true });

@@ -1,5 +1,4 @@
 import Selector from '../ui/selector.js';
-import Section from '../layout/section.js';
 import { useState } from '../../../apis/encore/element-creator.js';
 
 function BannerSelector({ buttons, setter }) {
@@ -42,7 +41,7 @@ function BannerSelector({ buttons, setter }) {
 }
 
 function Banner({ buttons, background, style }) {
-	const [bannerContent, , setter] = useState((get) => {
+	const [bannerContent, , setBannerContent] = useState((get) => {
 		return get;
 	}, buttons?.[0].data);
 
@@ -62,15 +61,13 @@ function Banner({ buttons, background, style }) {
 		},
 		children: [
 			background,
+			bannerContent,
 			buttons
 				? BannerSelector({
 						buttons,
-						setter,
+						setBannerContent,
 					})
 				: null,
-			Section({
-				children: bannerContent,
-			}),
 		],
 	};
 }

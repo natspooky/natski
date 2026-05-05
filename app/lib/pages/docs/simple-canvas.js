@@ -7,7 +7,7 @@ import {
 import DocLayout from '../../layouts/docLayout.js';
 
 render(
-	'root',
+	document.body,
 	() => {
 		window.components.layout = DocLayout;
 

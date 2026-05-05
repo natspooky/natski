@@ -58,7 +58,7 @@ function DinoGame() {
 }
 
 render(
-	'root',
+	document.body,
 	() => {
 		window.components.layout = StandardLayout;
 
