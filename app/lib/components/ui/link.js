@@ -1,9 +1,17 @@
 import { useState } from '../../../apis/encore/element-creator.js';
 
-const linkHandler = (event, href, target) => {
+const linkHandler = async (event, href, target) => {
 	event.preventDefault();
+	window.equalStates = [];
+	if (window.equalStates.includes(href)) {
+		const newLink = '/lib/pages/' + href.replace('.html', '') + '.js';
 
-	if (window.components.state) {
+		const pageResponse = await fetch(newLink, {
+			headers: {},
+		});
+
+		window.layoutChildrenState();
+
 		return;
 	}
 
