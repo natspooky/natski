@@ -17,9 +17,9 @@ function Card({ icon, title, description, delay }) {
 				name: icon,
 				style: {
 					margin: '10px auto 15px auto',
-					transition: '1s',
-					transitionDelay: `${delay}s`,
 					'.await-animate .className': {
+						transition: '1s',
+						transitionDelay: `${delay}s`,
 						opacity: '0',
 					},
 					'.await-animate.animate .className': {
@@ -30,9 +30,9 @@ function Card({ icon, title, description, delay }) {
 			{
 				tag: 'p',
 				style: {
-					transition: '0.4s cubic-bezier(.47,1.53,.77,1.01)',
-					transitionDelay: `${delay}s`,
 					'.await-animate .className': {
+						transition: '0.4s cubic-bezier(.47,1.53,.77,1.01)',
+						transitionDelay: `${delay}s`,
 						opacity: '0',
 						transform: 'translateY(15px)',
 					},

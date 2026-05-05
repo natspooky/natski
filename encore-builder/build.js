@@ -201,6 +201,13 @@ function createPage(dir, metaData) {
 						meta({
 							tag: 'link',
 							params: [
+								'rel="modulepreload"',
+								`href="${metaData.pageJsPath}"`,
+							],
+						}),
+						meta({
+							tag: 'link',
+							params: [
 								'rel="preconnect"',
 								'href="https://fonts.googleapis.com"',
 							],

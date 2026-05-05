@@ -53,7 +53,7 @@ function GamesPageContent() {
 					{
 						title: 'Kuru Clicker',
 						description: 'kuru clicker description',
-						href: '/games/kuru-clicker',
+						href: '/the-cellar/kuru-clicker',
 					},
 				],
 			}),

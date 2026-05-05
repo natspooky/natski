@@ -36,11 +36,11 @@ function InfographicCard({
 					}),
 				],
 			},
-			children ?? [],
+			children,
 		],
 		style: {
-			transition: '0.4s cubic-bezier(.47,1.53,.77,1.01)',
 			'.await-animate .className': {
+				transition: '0.4s cubic-bezier(.47,1.53,.77,1.01)',
 				opacity: '0',
 				transform: 'translateY(15px)',
 			},

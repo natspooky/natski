@@ -44,7 +44,7 @@ function BannerSelector({ buttons, setter }) {
 function Banner({ buttons, background, style }) {
 	const [bannerContent, , setter] = useState((get) => {
 		return get;
-	}, buttons?.[0].data ?? null);
+	}, buttons?.[0].data);
 
 	return {
 		tag: 'div',
@@ -61,13 +61,13 @@ function Banner({ buttons, background, style }) {
 			...style,
 		},
 		children: [
-			background ?? [],
+			background,
 			buttons
 				? BannerSelector({
 						buttons,
 						setter,
 					})
-				: [],
+				: null,
 			Section({
 				children: bannerContent,
 			}),

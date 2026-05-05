@@ -723,7 +723,7 @@ function MiscTests() {
 				},
 				attributes: {
 					height: 200,
-					src: 'http://localhost:8080/tests/embed',
+					src: '/tests/embed',
 				},
 			},
 			{
@@ -737,7 +737,7 @@ function MiscTests() {
 				},
 				attributes: {
 					height: 200,
-					src: 'http://localhost:8080/tests/embed#noembed',
+					src: '/tests/embed#noembed',
 				},
 			},
 			{
@@ -751,8 +751,7 @@ function MiscTests() {
 				},
 				attributes: {
 					height: 400,
-
-					src: 'http://localhost:8080/games/kuru-clicker',
+					src: '/the-cellar/kuru-clicker',
 				},
 			},
 		];
@@ -845,9 +844,35 @@ render(
 	'root',
 	() => {
 		window.components.layout = ({ children }) => {
+			const [state, , setState] = useState((get) => {
+				return get;
+			}, children);
+
 			return DIV({
 				children: BorderContainer({
-					children: [H1({ children: 'Layout' }), children],
+					children: [
+						H1({ children: 'Layout' }),
+						BUTTON({
+							events: {
+								click: {
+									callback: () =>
+										setState(
+											DIV({ children: 'new state' }),
+										),
+								},
+							},
+							children: 'set new layout state',
+						}),
+						BUTTON({
+							events: {
+								click: {
+									callback: () => setState(children),
+								},
+							},
+							children: 'revert layout state',
+						}),
+						state,
+					],
 				}),
 				style: {
 					padding: '10px',

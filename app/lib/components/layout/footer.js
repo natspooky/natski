@@ -17,7 +17,7 @@ const info = [
 		title: 'Links',
 		links: [
 			{ title: 'Landing', href: '/' },
-			{ title: 'Games', href: '/games' },
+			{ title: 'The Cellar', href: '/the-cellar' },
 			{ title: 'Docs', href: '/docs' },
 		],
 	},
@@ -47,7 +47,8 @@ function LinkSection({ title, links }) {
 						style: {
 							color: 'var(--text-color-sub)',
 							display: 'block',
-							marginTop: '5px',
+							padding: '5px 20px 0 0',
+
 							fontWeight: '500',
 							transition: '0.1s',
 							':hover': {
@@ -84,8 +85,8 @@ function Footer() {
 					justifyContent: 'space-between',
 					overflow: 'hidden',
 					color: 'var(--text-supersub-color)',
-					transition: '0.4s',
 					'.await-animate .className': {
+						transition: '0.4s',
 						opacity: '0',
 					},
 					'.await-animate.animate .className': {

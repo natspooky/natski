@@ -7,7 +7,7 @@ function Animator({ children, once = true }, timer) {
 				if (entry.isIntersecting) {
 					timeout = setTimeout(() => {
 						entry.target.classList.add('animate');
-					}, timer ?? 250);
+					}, timer ?? 100);
 
 					if (once) observer.unobserve(entry.target);
 				} else {

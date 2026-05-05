@@ -30,9 +30,9 @@ function Title({ title, description, buttons }) {
 								tag: 'span',
 								style: {
 									display: 'block',
-									transition: 'transform 0.4s',
-									transitionDelay: `${index * 50}ms`,
 									'.await-animate .className': {
+										transition: 'transform 0.4s',
+										transitionDelay: `${index * 50}ms`,
 										transform: 'translateY(100%)',
 									},
 									'.await-animate.animate .className': {
@@ -53,10 +53,10 @@ function Title({ title, description, buttons }) {
 					fontSize: 'var(--font-size-4)',
 					position: 'relative',
 					display: 'inline-block',
-					transition:
-						'transform 0.4s cubic-bezier(.47,1.53,.77,1.01), opacity 0.4s',
-					transitionDelay: '0.3s',
 					'.await-animate .className': {
+						transition:
+							'transform 0.4s cubic-bezier(.47,1.53,.77,1.01), opacity 0.4s',
+						transitionDelay: '0.3s',
 						transform: 'translateY(15px)',
 						opacity: '0',
 					},
@@ -67,7 +67,7 @@ function Title({ title, description, buttons }) {
 				},
 				children: description,
 			},
-			buttons ? Buttons(buttons) : [],
+			buttons ? Buttons(buttons) : null,
 		],
 	};
 }
@@ -117,10 +117,10 @@ function Buttons(buttons) {
 					':hover::before': {
 						opacity: first ? '0.8' : '1',
 					},
-					transition:
-						'transform 0.4s cubic-bezier(.47,1.53,.77,1.01), opacity 0.4s',
-					transitionDelay: `calc(0.4s + ${(index + 1) * 70}ms)`,
 					'.await-animate .className': {
+						transition:
+							'transform 0.4s cubic-bezier(.47,1.53,.77,1.01), opacity 0.4s',
+						transitionDelay: `calc(0.4s + ${(index + 1) * 70}ms)`,
 						transform: 'translateY(15px)',
 						opacity: '0',
 					},

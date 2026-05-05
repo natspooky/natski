@@ -1,10 +1,9 @@
 import { render } from '../../apis/encore/element-creator.js';
 
-export default function Render(renderFn) {
+export default function Render(pageFn) {
 	return () => {
-		render('root', renderFn, {
+		render('root', pageFn, {
 			useIcons: true,
-			awaitFontLoad: true,
 			awaitPageLoad: false,
 		});
 	};

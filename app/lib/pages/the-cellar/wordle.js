@@ -1,10 +1,15 @@
-import { render, useState } from '../../../apis/encore/element-creator.js';
+import {
+	render,
+	useState,
+	useRef,
+} from '../../../apis/encore/element-creator.js';
 
 function StateInput() {
 	const [state] = useState((setter) => {
-		let inputCont;
+		let inputCont = useRef();
 		return {
 			tag: 'input',
+			ref: inputCont,
 			style: {},
 			attributes: {
 				type: 'text',
@@ -13,11 +18,10 @@ function StateInput() {
 			events: {
 				keydown: {
 					callback: () => {
-						setter(inputCont.value);
+						setter(inputCont.current.value);
 					},
 				},
 			},
-			onCreate: (self) => (inputCont = self),
 		};
 	});
 	return state;

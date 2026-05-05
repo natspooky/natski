@@ -1,29 +1,17 @@
 import { useState } from '../../../apis/encore/element-creator.js';
 
-const linkHandler = async (event, href, target) => {
-	event.preventDefault();
-	window.equalStates = [];
-	if (window.equalStates.includes(href)) {
-		const newLink = '/lib/pages/' + href.replace('.html', '') + '.js';
-
-		const pageResponse = await fetch(newLink, {
-			headers: {},
-		});
-
-		window.layoutChildrenState();
-
-		return;
-	}
-
-	window.open(href, target ?? '_self');
-};
-
 function Link({ children, style, href, target }) {
+	const linkClickHandler = async (event, href, target) => {
+		event.preventDefault();
+
+		window.open(href, target ?? '_self');
+	};
+
 	return {
 		tag: 'button',
 		events: {
 			click: {
-				callback: linkHandler,
+				callback: linkClickHandler,
 				param: ['event', href, target],
 			},
 		},

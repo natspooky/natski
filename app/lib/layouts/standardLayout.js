@@ -1,7 +1,6 @@
 import Footer from '../components/layout/footer.js';
 import Nav from '../components/layout/nav.js';
 import RootLayout from './rootLayout.js';
-import { useSuspense } from '../../../apis/encore/element-creator.js';
 
 function StandardLayout({ children }) {
 	return RootLayout({
@@ -16,9 +15,7 @@ function StandardLayout({ children }) {
 				children: [
 					{
 						tag: 'main',
-						//children: useSuspense(() => {
-						/*return*/ children,
-						//}, 'loading data'),
+						children,
 					},
 					Footer(),
 				],

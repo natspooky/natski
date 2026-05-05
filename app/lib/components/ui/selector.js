@@ -1,5 +1,5 @@
 import isMobile from '../../../apis/dependencies/mobile-utils.js';
-import { useState } from '../../../apis/encore/element-creator.js';
+import { useState, useRef } from '../../../apis/encore/element-creator.js';
 import Icon from '../../components/ui/icon.js';
 
 function Selector({ buttons, setter }) {
@@ -80,7 +80,8 @@ function Selector({ buttons, setter }) {
 	const [state, , setSlider] = useState((get) => {
 		return get;
 	}, null);
-	let slider;
+
+	const slider = useRef();
 
 	return {
 		tag: 'div',
@@ -92,9 +93,7 @@ function Selector({ buttons, setter }) {
 			callback: () => {
 				setSlider({
 					tag: 'span',
-					onCreate: (self) => {
-						slider = self;
-					},
+					ref: slider,
 					style: {
 						position: 'absolute',
 						left: '0',
@@ -144,8 +143,8 @@ function Selector({ buttons, setter }) {
 										});
 										self.classList.add('active');
 
-										slider.style.width = `${self.offsetWidth}px`;
-										slider.style.transform = `translate(${self.offsetLeft}px, -50%)`;
+										slider.current.style.width = `${self.offsetWidth}px`;
+										slider.current.style.transform = `translate(${self.offsetLeft}px, -50%)`;
 										setter(buttons[index].data);
 									}
 								},

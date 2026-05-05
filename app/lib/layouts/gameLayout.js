@@ -30,9 +30,8 @@ function GameLayout({ children }) {
 									tag: 'div',
 									events: {
 										click: {
-											callback: () => {
-												setEmbedInfoState(false);
-											},
+											callback: () =>
+												setEmbedInfoState(false),
 										},
 									},
 									style: {
@@ -44,8 +43,8 @@ function GameLayout({ children }) {
 										height: '100%',
 										backgroundColor:
 											'var(--text-supersub-color)',
-										transition: 'opacity 0.4s',
 										'.await-animate .className': {
+											transition: 'opacity 0.4s',
 											opacity: '0',
 										},
 										'.await-animate.animate .className': {
@@ -109,7 +108,7 @@ function GameLayout({ children }) {
 						}),
 					],
 				}
-			: { tag: 'ec-anchor' };
+			: null;
 	}, false);
 
 	return RootLayout({
@@ -126,9 +125,8 @@ function GameLayout({ children }) {
 									tag: 'button',
 									events: {
 										click: {
-											callback: () => {
-												setEmbedInfoState(true);
-											},
+											callback: () =>
+												setEmbedInfoState(true),
 										},
 									},
 									children: 'Embed',

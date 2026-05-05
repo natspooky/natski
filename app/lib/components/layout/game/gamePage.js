@@ -1,4 +1,7 @@
-import { useState } from '../../../../../apis/encore/element-creator.js';
+import {
+	useState,
+	useRef,
+} from '../../../../../apis/encore/element-creator.js';
 
 import Header from '../header.js';
 import Embed from '../embed.js';
@@ -7,7 +10,7 @@ import Animator from '../animator.js';
 import Icon from '../../ui/icon.js';
 
 function GamePage({ title, description, gameWindow }) {
-	let container;
+	let container = useRef();
 
 	const [iconState, , setIcon] = useState((get) => {
 		return Icon({
@@ -34,9 +37,8 @@ function GamePage({ title, description, gameWindow }) {
 			Animator({
 				children: {
 					tag: 'div',
-					onCreate: (self) => {
-						container = self;
-					},
+					ref: container,
+
 					classes: 'game-container',
 					style: {
 						position: 'relative',
@@ -46,10 +48,10 @@ function GamePage({ title, description, gameWindow }) {
 						borderRadius: 'var(--border-radius-4)',
 						cornerShape: 'var(--border-shape)',
 						overflow: 'hidden',
-						transition:
-							'transform 0.4s cubic-bezier(.47,1.53,.77,1.01), opacity 0.4s',
-						transformOrigin: 'bottom left',
 						'.await-animate .className': {
+							transition:
+								'transform 0.4s cubic-bezier(.47,1.53,.77,1.01), opacity 0.4s',
+							transformOrigin: 'bottom left',
 							opacity: '0',
 							transform: 'translateY(15px)',
 						},
@@ -76,7 +78,7 @@ function GamePage({ title, description, gameWindow }) {
 											setIcon(false);
 											return;
 										}
-										container.requestFullscreen();
+										container.current.requestFullscreen();
 										setIcon(true);
 									},
 								},

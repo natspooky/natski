@@ -24,9 +24,8 @@ function Header({ chip, title, description }) {
 							color: 'var(--text-supersub-color)',
 							width: 'fit-content',
 							margin: '0px auto 25px auto',
-
-							transition: '1s',
-							'.await-animate.className': {
+							'.await-animate .className': {
+								transition: '1s',
 								opacity: '0',
 							},
 							'.await-animate.animate .className': {
@@ -35,7 +34,7 @@ function Header({ chip, title, description }) {
 						},
 						children: chip,
 					}
-				: [],
+				: null,
 			{
 				tag: 'h1',
 				style: {
@@ -50,12 +49,12 @@ function Header({ chip, title, description }) {
 						{
 							tag: 'span',
 							style: {
-								transition:
-									'0.5s cubic-bezier(.47,1.53,.77,1.01)',
 								position: 'relative',
 								display: 'inline-block',
-								transitionDelay: `${headerCounter * 70}ms`,
 								'.await-animate .className': {
+									transition:
+										'0.5s cubic-bezier(.47,1.53,.77,1.01)',
+									transitionDelay: `${headerCounter * 70}ms`,
 									opacity: '0',
 									transform: 'translateY(-10px)',
 								},
@@ -84,12 +83,12 @@ function Header({ chip, title, description }) {
 								{
 									tag: 'span',
 									style: {
-										transition:
-											'0.4s cubic-bezier(.47,1.53,.77,1.01)',
 										position: 'relative',
 										display: 'inline-block',
-										transitionDelay: `${headerCounter * 80 + textCounter * 10}ms`,
 										'.await-animate .className': {
+											transition:
+												'0.4s cubic-bezier(.47,1.53,.77,1.01)',
+											transitionDelay: `${headerCounter * 80 + textCounter * 10}ms`,
 											opacity: '0',
 											transform: 'translateY(10px)',
 										},

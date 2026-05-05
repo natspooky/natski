@@ -77,7 +77,9 @@ class ComponentManager {
 			element = buildComponent(jsonString);
 
 		if (Array.isArray(element)) {
-			fragment = document.createDocumentFragment();
+			fragment = buildComponent({
+				tag: 'ec-fragment',
+			});
 
 			element.forEach((item) => {
 				fragment.appendChild(item);
@@ -330,6 +332,8 @@ class ComponentManager {
 }
 
 function buildComponent(obj) {
+	if (undefined === obj || null === obj) return;
+
 	if (obj && Array.isArray(obj)) {
 		const components = obj
 			.flat(Infinity)
@@ -339,11 +343,12 @@ function buildComponent(obj) {
 		return components;
 	}
 
-	if (obj?.nodeType) return obj;
+	if (obj.nodeType && obj.nodeType === Node.ELEMENT_NODE) return obj;
 
-	let component;
 	const textTypes = ['number', 'bigint', 'string', 'boolean'];
 	const componentType = typeof obj;
+
+	let component;
 
 	if (![...textTypes, 'object'].includes(componentType)) {
 		elementCreatorConsole.message({
@@ -380,6 +385,10 @@ function buildComponent(obj) {
 		component = document.createElement(obj.tag);
 	}
 
+	if (obj.ref && typeof obj.ref === 'object') {
+		obj.ref.current = component;
+	}
+
 	obj.classes =
 		obj.style || obj.classes
 			? [obj.classes ? obj.classes : null, obj.style ? useId() : null]
@@ -404,7 +413,7 @@ function buildComponent(obj) {
 					obj.classes[obj.classes.length - 1],
 				),
 			},
-			obj.children ?? [],
+			obj.children,
 		];
 
 	if (obj.children) appendChildren(component, buildComponent(obj.children));
@@ -639,14 +648,6 @@ function awaitContentLoad(element) {
 				if (element.src && element.getAttribute('loading') !== 'lazy')
 					loadableElements.push(loadElement(element));
 				return true;
-			/*case 'INPUT':
-				if (
-					element.hasAttribute('type') &&
-					element.getAttribute('type') === 'image'
-				)
-					loadableElements.push(loadElement(element));
-				return true;*/
-
 			case 'LINK':
 				if (element.href && element.getAttribute('loading') !== 'lazy')
 					loadableElements.push(loadElement(element));
@@ -677,39 +678,38 @@ function awaitContentLoad(element) {
 }
 
 function useSuspense(fn, loading, fallback) {
-	const [state, , setState] = useState(
-		(content) => {
-			return content;
-		},
-		typeof loading === 'function' ? loading() : loading,
-	);
+	const isFn = (item) => {
+		return typeof item === 'function' ? item() : item;
+	};
+
+	const [suspense, , setState] = useState((content) => {
+		return content;
+	}, isFn(loading));
 
 	const element = buildComponent(fn());
 
 	awaitContentLoad(element).then(
-		() => {
-			setState(element);
-		},
-		() => {
+		() => setState(element),
+		() =>
 			fallback
-				? setState(
-						buildComponent(
-							typeof fallback === 'function'
-								? fallback()
-								: fallback,
-						),
-					)
-				: setState(element);
-		},
+				? setState(buildComponent(isFn(fallback)))
+				: setState(element),
 	);
 
-	return state;
+	return suspense;
 }
 
 function useId() {
-	if (!window.elementCreatorIdSessionStorage)
-		window.elementCreatorIdSessionStorage = 0;
-	return `e${(window.elementCreatorIdSessionStorage++).toString(16)}c`;
+	if (!window.ecIdStorage) window.ecIdStorage = 0;
+	return `e${(window.ecIdStorage++).toString(16)}c`;
+}
+
+function useRef(initVal) {
+	const ref = {
+		current: initVal,
+	};
+
+	return ref;
 }
 
 function checkState(val) {
@@ -1189,6 +1189,7 @@ export {
 	useState,
 	useSuspense,
 	useId,
+	useRef,
 	merge,
 	createPortal,
 };
