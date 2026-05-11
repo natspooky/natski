@@ -10,327 +10,6 @@ import Console from '../dependencies/console.js';
 
 const elementCreatorConsole = new Console('Element Creator', '#5967ffff');
 
-class ComponentManager {
-	#components;
-	#groups;
-	#layout;
-
-	constructor() {
-		this.#components = {};
-		this.#groups = {};
-	}
-
-	//groups
-
-	appendGroup(element, ID) {
-		const group = this.getGroup(ID);
-		if (!group) {
-			elementCreatorConsole.message({
-				message: 'Error:',
-				error: `The group '${ID}' does not exist`,
-			});
-			return;
-		}
-
-		if (group.layout) appendChildren(element, group.componentList());
-	}
-
-	setGroup(ID) {
-		if (this.getGroup(ID)) {
-			elementCreatorConsole.message({
-				message: 'Assignment Error:',
-				error: `The group '${ID}' is already assigned`,
-			});
-			return;
-		}
-
-		this.#groups[ID] = new ComponentManager();
-
-		return this;
-	}
-
-	getGroup(ID) {
-		return this.#groups?.[ID];
-	}
-
-	removeGroup(ID, settings) {
-		const group = this.getGroup(ID);
-		if (!group) {
-			elementCreatorConsole.message({
-				message: 'Error:',
-				error: `The group '${ID}' does not exist`,
-			});
-			return;
-		}
-
-		group.removeAllComponents({ deleteComponent: true });
-
-		if (settings?.deleteGroup) delete this.#groups[ID];
-
-		return this;
-	}
-
-	// components
-
-	#generateComponent(jsonString) {
-		let fragment,
-			element = buildComponent(jsonString);
-
-		if (Array.isArray(element)) {
-			fragment = buildComponent({
-				tag: 'ec-fragment',
-			});
-
-			element.forEach((item) => {
-				fragment.appendChild(item);
-			});
-		}
-
-		return { fragment, element };
-	}
-
-	setComponent(ID, json, settings) {
-		if (this.getComponent(ID)) {
-			elementCreatorConsole.message({
-				message: 'Assignment Error:',
-				error: `The component '${ID}' is already assigned`,
-			});
-			return;
-		}
-
-		const { fragment, element } = this.#generateComponent(json, settings);
-
-		this.#components[ID] = {
-			json,
-			element,
-			fragment,
-			settings,
-		};
-
-		return this;
-	}
-
-	getComponent(ID) {
-		return this.#components?.[ID];
-	}
-
-	getComponents(...IDs) {
-		return [...IDs].map((ID) => this.getComponent(ID));
-	}
-
-	componentList() {
-		return Object.values(this.#components).map((component) => {
-			return component.fragment ?? component.element;
-		});
-	}
-
-	removeComponent(ID, settings) {
-		const component = this.getComponent(ID)?.element;
-		if (!component) {
-			elementCreatorConsole.message({
-				message: 'Error:',
-				error: `The component '${ID}' does not exist`,
-			});
-			return;
-		}
-
-		if (!Array.isArray(component)) {
-			if (document.body.contains(component)) component.remove();
-		} else {
-			component.forEach((element) => {
-				if (document.body.contains(element)) element.remove();
-			});
-		}
-
-		if (settings?.deleteComponent) delete this.#components[ID];
-
-		return this;
-	}
-
-	removeComponents(...IDs) {
-		[...IDs].forEach((ID) => this.removeComponent(ID));
-
-		return this;
-	}
-
-	removeAllComponents(settings) {
-		Object.keys(this.#components).forEach((ID) =>
-			this.removeComponent(ID, settings),
-		);
-
-		return this;
-	}
-
-	changeComponentID(oldID, newID) {
-		if (oldID === newID) return;
-
-		const oldComponent = this.getComponent(oldID),
-			newComponent = this.getComponent(newID);
-
-		if (!oldComponent) {
-			elementCreatorConsole.message({
-				message: 'Error:',
-				error: `The component '${oldID}' does not exist`,
-			});
-			return;
-		}
-
-		if (newComponent) {
-			elementCreatorConsole.message({
-				message: 'Assignment error:',
-				error: `The component '${newID}' is already assigned`,
-			});
-			return;
-		}
-
-		this.setComponent(newID, oldComponent.json);
-		delete this.#components[oldID];
-
-		return this;
-	}
-
-	replaceComponent(ID, componentData, settings) {
-		const oldComponent = this.getComponent(ID);
-
-		let replacingComponent;
-
-		if (typeof componentData === 'string') {
-			replacingComponent = this.getComponent(componentData);
-
-			if (!replacingComponent) {
-				elementCreatorConsole.message({
-					message: 'Error:',
-					error: `The component '${ID}' does not exist`,
-				});
-				return;
-			}
-		} else {
-			replacingComponent = this.#generateComponent(
-				componentData,
-				settings,
-			);
-		}
-
-		if (!oldComponent) {
-			elementCreatorConsole.message({
-				message: 'Error:',
-				error: `The component '${ID}' does not exist`,
-			});
-			return;
-		}
-
-		if (Array.isArray(oldComponent.element)) {
-			if (!document.body.contains(oldComponent.element[0])) {
-				elementCreatorConsole.message({
-					message: 'Error:',
-					error: `The component '${ID}' does not exist`,
-				});
-				return;
-			}
-
-			oldComponent[0].element.replaceWith(
-				replacingComponent.fragment ?? replacingComponent.element,
-			);
-			oldComponent.slice(1).forEach((element) => element.remove());
-		} else {
-			if (!document.body.contains(oldComponent.element)) {
-				elementCreatorConsole.message({
-					message: 'Error:',
-					error: `The component '${ID}' does not exist`,
-				});
-				return;
-			}
-			oldComponent.element.replaceWith(
-				replacingComponent.fragment ?? replacingComponent.element,
-			);
-		}
-
-		this.#components[ID] = {
-			json: replacingComponent.json ?? componentData,
-			element: replacingComponent.element,
-			fragment: replacingComponent.fragment,
-			settings,
-		};
-
-		return this;
-	}
-
-	swapComponent(firstID, secondID) {
-		const firstComponent = this.getComponent(firstID)?.json,
-			secondComponent = this.getComponent(secondID)?.json;
-
-		if (!firstComponent) {
-			elementCreatorConsole.message({
-				message: 'Error:',
-				error: `The component '${firstID}' does not exist`,
-			});
-			return;
-		}
-		if (!secondComponent) {
-			elementCreatorConsole.message({
-				message: 'Error:',
-				error: `The component '${secondID}' does not exist`,
-			});
-			return;
-		}
-
-		this.replaceComponent(firstID, secondComponent);
-		this.replaceComponent(secondID, firstComponent);
-
-		return this;
-	}
-
-	appendComponent(element, ID) {
-		const component = this.getComponent(ID);
-		if (!component) {
-			elementCreatorConsole.message({
-				message: 'Error:',
-				error: `The component '${ID}' does not exist`,
-			});
-			return;
-		}
-
-		appendChildren(element, component.fragment ?? component.element);
-
-		return this;
-	}
-
-	insertComponentBefore(element, ID, beforeElement) {
-		const component = this.getComponent(ID);
-		if (!component) {
-			elementCreatorConsole.message({
-				message: 'Error:',
-				error: `The component '${ID}' does not exist`,
-			});
-			return;
-		}
-
-		insertChildrenBefore(
-			element,
-			component.fragment ?? component.element,
-			beforeElement,
-		);
-
-		return this;
-	}
-
-	get componentCount() {
-		return Object.keys(this.#components).length;
-	}
-
-	get componentIDs() {
-		return Object.keys(this.#components);
-	}
-
-	set layout(callback) {
-		this.#layout = callback;
-	}
-
-	get layout() {
-		return this.#layout;
-	}
-}
-
 function buildComponent(obj) {
 	if (undefined === obj || null === obj) return;
 
@@ -435,7 +114,10 @@ function buildComponent(obj) {
 						if (!eventData || !eventData.callback) return;
 						(eventData.target ?? component).addEventListener(
 							eventType,
-							functionType(eventData, component),
+							functionType(
+								{ eventType, ...eventData },
+								component,
+							),
 							eventData.options,
 						);
 					},
@@ -601,7 +283,7 @@ function loadElement(element) {
 			element.removeEventListener('load', load);
 			elementCreatorConsole.message({
 				message: 'Element load error:',
-				error: `The ${element.tagName} failed to load`,
+				error: `The ${element.tagName} with data ${element.src ?? element.href} failed to load`,
 			});
 			reject();
 		}
@@ -700,16 +382,110 @@ function useSuspense(fn, loading, fallback) {
 }
 
 function useId() {
+	if (window.elementCreator) {
+		if (!window.elementCreator.useIdSession)
+			window.elementCreator.useIdSession = 0;
+		return `e${(window.elementCreator.useIdSession++).toString(16)}c`;
+	}
+
 	if (!window.ecIdStorage) window.ecIdStorage = 0;
 	return `e${(window.ecIdStorage++).toString(16)}c`;
 }
 
 function useRef(initVal) {
 	const ref = {
-		current: initVal,
+		currentRef: initVal,
+		previousRef: null,
+
+		set current(value) {
+			this.previousRef = this.currentRef;
+			this.currentRef = value;
+		},
+		get current() {
+			return this.currentRef;
+		},
+		get previous() {
+			return this.previousRef;
+		},
 	};
 
 	return ref;
+}
+
+function useNavigate(root) {
+	if (!window.elementCreator.navigator) {
+		window.addEventListener('popstate', async (event) => {
+			const { visited, to } = event.state;
+
+			if (visited) await navigate({ to });
+		});
+	}
+
+	let storage;
+	let renderable = !!window.elementCreator;
+	if (renderable) {
+		window.elementCreator.navigator = {};
+		storage = window.elementCreator.navigator;
+	}
+
+	const detectIfMultiState = ({ meta, layout }) => {
+		return window.elementCreator?.layoutData &&
+			window.elementCreator.layoutData.name == layout.name
+			? true
+			: false;
+	};
+
+	function formatURL(url) {
+		return `${root ?? ''}${url.replace(/.htm(l|)/g, '')}.js`;
+	}
+
+	const preload = async ({ to }) => {
+		if (!to || !renderable) return;
+
+		const { default: page, meta, layout } = await import(formatURL(to));
+
+		storage[to] = {
+			data: { page, meta, layout },
+			multiState: detectIfMultiState({ meta, layout }),
+		};
+	};
+
+	const navigate = async ({ to, target = '_self' }) => {
+		if (!to) return;
+
+		if (!renderable || !currentStorage?.multiState || target !== '_self') {
+			window.open(to, target);
+			return;
+		}
+
+		if (!storage[to]) await preload({ to });
+
+		const currentStorage = storage[to];
+
+		window.ecPageState([
+			'Test page state change text' + to,
+			currentStorage.default?.() ?? {
+				tag: 'div',
+				children: ['There was an error rendering the page', {}],
+			},
+		]);
+
+		const pageTitle =
+			currentStorage.meta?.title ??
+			window.location.pathname
+				.split('-')
+				.join(' ')
+				.replace(/.htm(l|)/g, '');
+
+		document.title = pageTitle;
+
+		window.history.pushState({ visited: true, to }, '', to);
+	};
+
+	return {
+		navigate,
+		preload,
+	};
 }
 
 function checkState(val) {
@@ -851,8 +627,8 @@ function checkEvent(eventName) {
 	return isSupported;
 }
 
-function render(root, fn, settings) {
-	if (window.components) {
+function render(root, pageFn, settings) {
+	if (window.elementCreator) {
 		elementCreatorConsole.message({
 			message: 'Hydration error:',
 			error: 'Only one render call can be made per page',
@@ -866,7 +642,12 @@ function render(root, fn, settings) {
 	customElements.define('ec-state-fragment', ECState);
 	customElements.define('ec-error', ECError);
 
+	window.elementCreator = {};
+
 	if (settings?.useIcons) new IconSystem();
+
+	if (settings?.navigate) {
+	} //make this work :DDDDD
 
 	elementCreatorConsole.message({
 		message: 'Starting page hydration',
@@ -878,8 +659,6 @@ function render(root, fn, settings) {
 				customElements.define(name, elementClass);
 			},
 		);
-
-	window.components = new ComponentManager();
 
 	const hydrate = async () => {
 		try {
@@ -921,46 +700,30 @@ function render(root, fn, settings) {
 				}
 			}
 
-			const time = performance.now();
+			const renderTimer = performance.now();
 
-			const renderComponent = await fn();
-			const layout = window.components.layout;
-			const componentName = 'content';
+			const encoreSettings = { layout: {} };
 
-			const content = window.components
-				.setComponent(componentName, renderComponent)
-				.getComponent(componentName);
+			const pageBody = await pageFn(encoreSettings);
+			const layout = encoreSettings.layout;
 
-			if (layout) {
-				const [pageState, , setPageState] = useState((content) => {
-					return useSuspense(
-						() => {
-							return content;
-						},
-						{ tag: 'span', children: 'loading' },
-					);
-				}, content.fragment ?? content.element);
+			const [pageRootState, , setPageState] = useState((content) => {
+				return content;
+			}, pageBody);
 
-				window.components.setComponent(
-					'layout',
-					layout({
-						children: pageState,
-					}),
-				);
+			window.elementCreator.setPageState = setPageState;
+			window.elementCreator.layoutData = layout;
 
-				window.ecPageState = setPageState;
-			}
+			const renderBody = layout?.body
+				? buildComponent(layout.body({ children: pageRootState }))
+				: pageRootState;
 
-			window.components.appendComponent(
-				rootElement,
-				layout ? 'layout' : componentName,
-			);
+			appendChildren(rootElement, renderBody);
 
-			const finalTime = Math.round(performance.now() - time);
-			const printTime = returnIf(finalTime > 0, finalTime, '< 1');
+			const renderTime = Math.round(performance.now() - renderTimer);
 
 			elementCreatorConsole.message({
-				message: `Hydration complete in ${printTime}ms`,
+				message: `Hydration complete in ${returnIf(renderTime > 0, renderTime, '< 1')}ms`,
 			});
 		} catch (error) {
 			elementCreatorConsole.message({
@@ -980,6 +743,9 @@ function render(root, fn, settings) {
 
 	if (document.readyState === 'loading' || !document.body) {
 		window.addEventListener('DOMContentLoaded', hydrate);
+		elementCreatorConsole.message({
+			message: 'Awaiting document body',
+		});
 		return;
 	}
 
@@ -1066,21 +832,28 @@ function elementAppended(element, callback, options) {
 	});
 }
 
-function functionType({ param, callback, target }, element) {
+function functionType({ param, callback, target, eventType }, element) {
 	if (!checkExists(param)) return callback;
 
-	if (Array.isArray(param)) {
-		return (event) =>
-			callback(
-				...param.map((value) =>
-					checkValue(value, target, element, event),
+	function eventListener(event) {
+		callback(
+			...(Array.isArray(param) ? param : [param]).map((value) =>
+				checkValue(
+					value,
+					target,
+					element,
+					event,
+					eventListener,
+					eventType,
 				),
-			);
+			),
+		);
 	}
-	return (event) => callback(checkValue(param, target, element, event));
+
+	return eventListener;
 }
 
-function checkValue(value, target, element, event) {
+function checkValue(value, target, element, event, callback, eventType) {
 	switch (value) {
 		case 'self':
 			return element;
@@ -1096,8 +869,9 @@ function checkValue(value, target, element, event) {
 			break;
 		case 'event':
 			return event;
-		//case 'remover':
-		//	return (target ?? element).removeEventListener(callback);
+		case 'remover':
+			return () =>
+				(target ?? element).removeEventListener(eventType, callback);
 		default:
 			return value;
 	}
@@ -1194,13 +968,13 @@ export {
 	insertChildrenAfter,
 	className,
 	elementAppended,
-	ComponentManager,
 	checkEvent,
 	render,
 	useState,
 	useSuspense,
 	useId,
 	useRef,
+	useNavigate,
 	merge,
 	createPortal,
 };

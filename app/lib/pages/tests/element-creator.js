@@ -802,7 +802,7 @@ function MiscTests() {
 	function checkEventTest() {
 		return P({
 			children:
-				!checkEvent('fake') && checkEvent('mousedown')
+				!checkEvent('fake') && checkEvent('pointerdown')
 					? 'event checker working'
 					: 'events broken',
 		});
@@ -842,12 +842,9 @@ function MiscTests() {
 
 render(
 	document.body,
-	() => {
-		window.components.layout = ({ children }) => {
-			const [state, , setState] = useState((get) => {
-				return get;
-			}, children);
-
+	(pageRender) => {
+		//pageRender.layout.allowRenderChange = true;
+		pageRender.layout.body = ({ children }) => {
 			return DIV({
 				children: BorderContainer({
 					children: [
@@ -856,22 +853,23 @@ render(
 							events: {
 								click: {
 									callback: () =>
-										setState(
+										window.elementCreator.setPageState(
 											DIV({ children: 'new state' }),
 										),
 								},
 							},
-							children: 'set new layout state',
+							children: 'change page state',
 						}),
 						BUTTON({
 							events: {
 								click: {
-									callback: () => setState(children),
+									callback: () =>
+										window.elementCreator.setPageState({}),
 								},
 							},
-							children: 'revert layout state',
+							children: 'break page state',
 						}),
-						state,
+						children,
 					],
 				}),
 				style: {
