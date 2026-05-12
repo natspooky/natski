@@ -14,7 +14,7 @@ function Page() {
 				buttons: [
 					{
 						title: 'Go home',
-						href: '/',
+						href: '/home',
 					},
 				],
 			}),

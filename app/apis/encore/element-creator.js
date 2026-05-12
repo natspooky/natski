@@ -415,20 +415,25 @@ function useRef(initVal) {
 function useNavigate(root) {
 	if (!window.elementCreator.navigator) {
 		window.addEventListener('popstate', async (event) => {
+			if (!event.state) return;
+
 			const { visited, to } = event.state;
 
-			if (visited) await navigate({ to });
+			if (visited) await navigate({ to, visited: true });
 		});
 	}
 
-	let storage;
 	let renderable = !!window.elementCreator;
-	if (renderable) {
+	if (renderable && !window.elementCreator.navigator) {
 		window.elementCreator.navigator = {};
-		storage = window.elementCreator.navigator;
 	}
 
+	const storage = window.elementCreator
+		? window.elementCreator.navigator
+		: {};
+
 	const detectIfMultiState = ({ meta, layout }) => {
+		return true;
 		return window.elementCreator?.layoutData &&
 			window.elementCreator.layoutData.name == layout.name
 			? true
@@ -442,7 +447,11 @@ function useNavigate(root) {
 	const preload = async ({ to }) => {
 		if (!to || !renderable) return;
 
-		const { default: page, meta, layout } = await import(formatURL(to));
+		const {
+			default: page,
+			Meta: meta,
+			Layout: layout,
+		} = await import(formatURL(to));
 
 		storage[to] = {
 			data: { page, meta, layout },
@@ -450,10 +459,10 @@ function useNavigate(root) {
 		};
 	};
 
-	const navigate = async ({ to, target = '_self' }) => {
+	const navigate = async ({ to, target = '_self', visited }) => {
 		if (!to) return;
 
-		if (!renderable || !currentStorage?.multiState || target !== '_self') {
+		if (!renderable || target !== '_self') {
 			window.open(to, target);
 			return;
 		}
@@ -462,29 +471,43 @@ function useNavigate(root) {
 
 		const currentStorage = storage[to];
 
-		window.ecPageState([
+		console.log(currentStorage);
+
+		window.elementCreator.setPageState([
 			'Test page state change text' + to,
-			currentStorage.default?.() ?? {
-				tag: 'div',
-				children: ['There was an error rendering the page', {}],
+			currentStorage.data.page?.() ?? {
+				tag: 'h1',
+				style: {
+					width: '100%',
+					textAlign: 'center',
+				},
+				children: 'There was an error rendering the page',
 			},
 		]);
 
-		const pageTitle =
-			currentStorage.meta?.title ??
-			window.location.pathname
-				.split('-')
-				.join(' ')
-				.replace(/.htm(l|)/g, '');
+		if (!visited) {
+			window.scrollTo(0, 0);
 
-		document.title = pageTitle;
+			const pageTitle =
+				currentStorage.data.meta.title ??
+				window.location.pathname
+					.split('-')
+					.map((word) => {
+						return word.slice(0, 1).toUpperCase() + word.slice(1);
+					})
+					.join(' ')
+					.replace(/.htm(l|)|\//g, '');
 
-		window.history.pushState({ visited: true, to }, '', to);
+			document.title = pageTitle;
+
+			window.history.pushState({ visited: true, to }, '', to);
+		}
 	};
 
 	return {
 		navigate,
 		preload,
+		storage,
 	};
 }
 

@@ -16,7 +16,7 @@ const info = [
 	{
 		title: 'Links',
 		links: [
-			{ title: 'Landing', href: '/' },
+			{ title: 'Landing', href: '/home' },
 			{ title: 'The Cellar', href: '/the-cellar' },
 			{ title: 'Docs', href: '/docs' },
 		],

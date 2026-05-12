@@ -183,3 +183,12 @@ function Page() {
 }
 
 export { Page as default, StandardLayout as Layout };
+
+render(
+	document.body,
+	(data) => {
+		data.layout = StandardLayout;
+		return Page();
+	},
+	{ useIcons: true },
+);

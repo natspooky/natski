@@ -113,4 +113,17 @@ function IconArray(icons) {
 	};
 }
 
-export { Page as default, StandardLayout as Layout };
+const Meta = {
+	title: 'poop',
+};
+
+export { Page as default, StandardLayout as Layout, Meta };
+
+render(
+	document.body,
+	(data) => {
+		data.layout.body = StandardLayout;
+		return Page();
+	},
+	{ useIcons: true },
+);

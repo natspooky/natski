@@ -141,13 +141,17 @@ async function copyMinFile(dir, endDir) {
 		return;
 	}
 
-	const min = await minify(
-		await fsPromise.readFile(dir, {
-			encoding: 'utf8',
-		}),
-	);
+	// const min = await minify(
+	// 	await fsPromise.readFile(dir, {
+	// 		encoding: 'utf8',
+	// 	}),
+	// );
 
-	await fsPromise.writeFile(endDir, min['code']);
+	const min = await fsPromise.readFile(dir, {
+		encoding: 'utf8',
+	});
+
+	await fsPromise.writeFile(endDir, min); //min['code']);
 }
 
 function createPage(dir, metaData) {

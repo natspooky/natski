@@ -5,19 +5,19 @@ import {
 } from '../../../apis/encore/element-creator.js';
 
 function Link({ children, style, href, target }) {
-	const { preload, navigate } = useNavigate('/pages');
+	const { preload, navigate, storage } = useNavigate('/lib/pages');
 
-	let preloaded = false;
-	let hoverTimer;
+	let preloaded = !!storage[href];
+	let hoverTimer = useRef(null);
 
 	const link = useRef(null);
 
 	const linkHoverStartHandler = (remover) => {
 		if (preloaded) {
-			if (preloaded) remover();
+			remover();
 			return;
 		}
-		hoverTimer = setTimeout(async () => {
+		hoverTimer.current = setTimeout(async () => {
 			await preload({ to: href });
 			preloaded = true;
 			link.current.classList.add('link-loaded');
@@ -25,8 +25,7 @@ function Link({ children, style, href, target }) {
 	};
 
 	const linkHoverEndHandler = (remover) => {
-		clearTimeout(hoverTimer);
-
+		clearTimeout(hoverTimer.current);
 		if (preloaded) remover();
 	};
 
@@ -38,6 +37,7 @@ function Link({ children, style, href, target }) {
 	return {
 		tag: 'button',
 		ref: link,
+		classes: preloaded ? 'link-loaded' : '',
 		events: {
 			click: {
 				callback: linkClickHandler,
@@ -45,9 +45,11 @@ function Link({ children, style, href, target }) {
 			},
 			mouseover: {
 				callback: linkHoverStartHandler,
+				param: 'remover',
 			},
-			mouseleave: {
+			mouseout: {
 				callback: linkHoverEndHandler,
+				param: 'remover',
 			},
 		},
 		style: {
