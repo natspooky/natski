@@ -122,6 +122,8 @@
 	--accent-sub: rgba(145, 141, 246, 0.08);
 	--background-sub: rgba(0, 0, 0, 0.035);
 	--darken: rgb(20, 20, 31);
+	--darken-text-color: rgb(255, 255, 255);
+	--darken-text-sub-color: rgb(146, 146, 146);
 	--text-color: rgb(24, 25, 37);
 	--text-sub-color: rgb(102, 102, 102);
 	--text-supersub-color: rgba(0, 0, 0, 0.4);

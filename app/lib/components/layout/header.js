@@ -1,11 +1,15 @@
-function Header({ chip, title, description }) {
+function Header({ chip, title, description, id }) {
 	let headerCounter = 0,
 		textCounter = 0;
 
 	return {
 		tag: 'section',
+		attributes: {
+			id,
+		},
 		style: {
 			position: 'relative',
+			scrollMarginTop: '120px',
 			width: 'min(90%, 400px)',
 			margin: '50px auto 30px auto',
 			textAlign: 'center',

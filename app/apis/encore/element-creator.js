@@ -70,7 +70,7 @@ function buildComponent(obj) {
 
 	obj.classes =
 		obj.style || obj.classes
-			? [obj.classes ? obj.classes : null, obj.style ? useId() : null]
+			? [obj.classes, obj.style ? useId() : null]
 			: null;
 
 	if (obj.classes) component.classList.add(...className(obj.classes));
@@ -112,7 +112,10 @@ function buildComponent(obj) {
 				(Array.isArray(event) ? event : [event]).forEach(
 					(eventData) => {
 						if (!eventData || !eventData.callback) return;
-						(eventData.target ?? component).addEventListener(
+						(eventData?.target
+							? (eventData.target?.current ?? eventData.target)
+							: component
+						).addEventListener(
 							eventType,
 							functionType(
 								{ eventType, ...eventData },
@@ -412,6 +415,8 @@ function useRef(initVal) {
 	return ref;
 }
 
+function manageMetaNavigate() {}
+
 function useNavigate(root) {
 	if (!window.elementCreator.navigator) {
 		window.addEventListener('popstate', async (event) => {
@@ -445,7 +450,15 @@ function useNavigate(root) {
 	}
 
 	const preload = async ({ to }) => {
-		if (!to || !renderable) return;
+		if (!to || !renderable || !!storage[to]) return;
+
+		const url = new URL(
+			to.startsWith(window.location.origin)
+				? to
+				: window.location.origin + to,
+		);
+
+		to = url.pathname;
 
 		const {
 			default: page,
@@ -454,7 +467,7 @@ function useNavigate(root) {
 		} = await import(formatURL(to));
 
 		storage[to] = {
-			data: { page, meta, layout },
+			data: { page: page(), meta, layout },
 			multiState: detectIfMultiState({ meta, layout }),
 		};
 	};
@@ -467,40 +480,57 @@ function useNavigate(root) {
 			return;
 		}
 
+		const url = new URL(
+			to.startsWith(window.location.origin)
+				? to
+				: window.location.origin + to,
+		);
+
+		to = url.pathname;
+
 		if (!storage[to]) await preload({ to });
 
 		const currentStorage = storage[to];
 
-		console.log(currentStorage);
+		if (!currentStorage.data?.page) {
+			await navigate({ to: '/404' });
+			return;
+		}
 
-		window.elementCreator.setPageState([
-			'Test page state change text' + to,
-			currentStorage.data.page?.() ?? {
-				tag: 'h1',
-				style: {
-					width: '100%',
-					textAlign: 'center',
-				},
-				children: 'There was an error rendering the page',
-			},
-		]);
+		window.elementCreator.setPageState(currentStorage.data.page);
 
 		if (!visited) {
-			window.scrollTo(0, 0);
+			window.history.pushState(
+				{ visited: true, to: to + url.hash },
+				'',
+				to + url.hash,
+			);
+
+			const el = document.getElementById(url.hash.slice(1));
+			if (!el) {
+				window.scrollTo(0, 0);
+			} else {
+				el.scrollIntoView();
+			}
 
 			const pageTitle =
-				currentStorage.data.meta.title ??
+				currentStorage.data?.meta?.title ??
 				window.location.pathname
+					.split('/')
+					[window.location.pathname.split('/').length - 1].replace(
+						/.htm(l|)|\//g,
+						'',
+					)
 					.split('-')
 					.map((word) => {
 						return word.slice(0, 1).toUpperCase() + word.slice(1);
 					})
-					.join(' ')
-					.replace(/.htm(l|)|\//g, '');
+					.join(' ');
 
 			document.title = pageTitle;
 
-			window.history.pushState({ visited: true, to }, '', to);
+			if (currentStorage.data?.meta)
+				manageMetaNavigate(currentStorage.data.meta);
 		}
 	};
 
@@ -590,6 +620,22 @@ function useState(fn, initVal) {
 	stateManager.container.appendChild(stateManager.element);
 
 	return [stateManager.container, stateManager.getterFn, stateManager.setter];
+}
+
+function usePageState(Fn) {
+	const [pageState, , setPageState] = useState(Fn, {
+		url: window.location,
+		title: document.title,
+	});
+
+	navigation.addEventListener('navigate', (event) => {
+		setPageState({
+			url: new URL(event.destination.url),
+			title: document.title,
+		});
+	});
+
+	return pageState;
 }
 
 function isObject(item) {
@@ -709,6 +755,7 @@ function render(root, pageFn, settings) {
 
 			if (rootType === 'object') {
 				rootElement = root;
+
 				if (
 					!(
 						rootElement.nodeType &&
@@ -737,9 +784,10 @@ function render(root, pageFn, settings) {
 			window.elementCreator.setPageState = setPageState;
 			window.elementCreator.layoutData = layout;
 
-			const renderBody = layout?.body
-				? buildComponent(layout.body({ children: pageRootState }))
-				: pageRootState;
+			const renderBody =
+				layout?.body && typeof layout.body === 'function'
+					? buildComponent(layout.body({ children: pageRootState }))
+					: pageRootState;
 
 			appendChildren(rootElement, renderBody);
 
@@ -765,7 +813,7 @@ function render(root, pageFn, settings) {
 	}
 
 	if (document.readyState === 'loading' || !document.body) {
-		window.addEventListener('DOMContentLoaded', hydrate);
+		window.addEventListener('DOMContentLoaded', hydrate, { once: true });
 		elementCreatorConsole.message({
 			message: 'Awaiting document body',
 		});
@@ -863,7 +911,7 @@ function functionType({ param, callback, target, eventType }, element) {
 			...(Array.isArray(param) ? param : [param]).map((value) =>
 				checkValue(
 					value,
-					target,
+					target?.current ?? target,
 					element,
 					event,
 					eventListener,
@@ -889,6 +937,7 @@ function checkValue(value, target, element, event, callback, eventType) {
 				message: 'Type Error:',
 				error: `the target value in '${element}' has not been set`,
 			});
+
 			break;
 		case 'event':
 			return event;
@@ -994,6 +1043,7 @@ export {
 	checkEvent,
 	render,
 	useState,
+	usePageState,
 	useSuspense,
 	useId,
 	useRef,

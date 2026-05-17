@@ -1,14 +1,21 @@
-import Footer from '../components/layout/footer.js';
 import Section from '../components/layout/section.js';
 import Banner from '../components/layout/banner.js';
 import Animator from '../components/layout/animator.js';
-import RootLayout from './rootLayout.js';
+import Code from '../components/ui/code.js';
+import Button from '../components/ui/button.js';
+import StandardLayout from './standardLayout.js';
 import { useState } from '../../../apis/encore/element-creator.js';
 
 function GameLayout({ children }) {
-	const [EmbedInfoState, , setEmbedInfoState] = useState((get) => {
-		const url = window.location.href;
+	const url = window.location.href;
+	const pageName = document.title;
 
+	const embedModalHandler = (bool) => {
+		document.body.style.overflow = bool ? 'hidden' : null;
+		setEmbedInfoState(bool);
+	};
+
+	const [EmbedInfoState, , setEmbedInfoState] = useState((get) => {
 		return get
 			? {
 					tag: 'div',
@@ -30,8 +37,8 @@ function GameLayout({ children }) {
 									tag: 'div',
 									events: {
 										click: {
-											callback: () =>
-												setEmbedInfoState(false),
+											callback: embedModalHandler,
+											param: false,
 										},
 									},
 									style: {
@@ -67,10 +74,11 @@ function GameLayout({ children }) {
 											cornerShape: 'var(--border-shape)',
 											backgroundColor:
 												'var(--background)',
-											width: '100%',
+											width: 'min(100%, 83vw)',
 											height: 'fit-content',
 											overflow: 'hidden',
-
+											display: 'block',
+											margin: 'auto',
 											transition:
 												'transform 0.4s cubic-bezier(.47,1.53,.77,1.01), opacity 0.4s',
 											'.await-animate .className': {
@@ -88,17 +96,63 @@ function GameLayout({ children }) {
 											buttons: [
 												{
 													name: 'Encore',
-													data: `<iframe src="${url}" title="Natski Game"></iframe>`,
+													data: `{
+	tag: "iframe",
+	attributes: {
+		src: "${url}",
+		title: "${pageName}",
+		loading: "lazy",
+		height: "400",
+		width: "600"
+	}
+}`,
 												},
-												{ name: 'React' },
-												{ name: 'HTML' },
-												{ name: 'Share' },
+												{
+													name: 'React',
+													data: `function GameIframe() {
+  	return (
+		<iframe
+			src="${url}",
+			title="${pageName}",
+			loading="lazy"
+			height="400"
+			width="600"
+		/>
+  	);
+};`,
+												},
+												{
+													name: 'Raw HTML',
+													data: `<iframe 
+	src="${url}"
+	title="${pageName}"
+	loading="lazy"
+	height="400"
+	width="600">
+</iframe>`,
+												},
 											],
-
 											style: {
 												margin: '0',
 												aspectRatio: null,
-												height: '300px',
+												minHeight: '350px',
+												height: 'fit-content',
+												width: '100%',
+											},
+											layout: ({ children }) => {
+												return {
+													tag: 'div',
+													style: {
+														display: 'block',
+														margin: 'auto',
+														padding:
+															'80px 20px 60px 20px',
+														maxWidth: '100%',
+													},
+													children: Code({
+														children,
+													}),
+												};
 											},
 										}),
 									},
@@ -111,30 +165,26 @@ function GameLayout({ children }) {
 			: null;
 	}, false);
 
-	return RootLayout({
+	return StandardLayout({
 		children: [
 			{
-				tag: 'div',
+				tag: 'main',
 				children: [
-					{
-						tag: 'main',
-						children: [
-							children,
-							Section({
-								children: {
-									tag: 'button',
-									events: {
-										click: {
-											callback: () =>
-												setEmbedInfoState(true),
-										},
-									},
-									children: 'Embed',
+					children,
+					Section({
+						children: Button({
+							style: {
+								backgroundColor: 'red',
+							},
+							events: {
+								click: {
+									callback: embedModalHandler,
+									param: true,
 								},
-							}),
-						],
-					},
-					Footer(),
+							},
+							children: 'Embed',
+						}),
+					}),
 				],
 			},
 			EmbedInfoState,

@@ -1,7 +1,7 @@
 import Selector from '../ui/selector.js';
 import { useState } from '../../../apis/encore/element-creator.js';
 
-function BannerSelector({ buttons, setter }) {
+function BannerSelector({ buttons, setBannerContent }) {
 	return {
 		tag: 'div',
 		style: {
@@ -36,11 +36,11 @@ function BannerSelector({ buttons, setter }) {
 					'radial-gradient(circle at 100% 100%, transparent 25px, var(--background) 15px)',
 			},
 		},
-		children: Selector({ buttons, setter }),
+		children: Selector({ buttons, setter: setBannerContent }),
 	};
 }
 
-function Banner({ buttons, background, style }) {
+function Banner({ buttons, background, style, layout }) {
 	const [bannerContent, , setBannerContent] = useState((get) => {
 		return get;
 	}, buttons?.[0].data);
@@ -61,7 +61,7 @@ function Banner({ buttons, background, style }) {
 		},
 		children: [
 			background,
-			bannerContent,
+			layout ? layout({ children: bannerContent }) : bannerContent,
 			buttons
 				? BannerSelector({
 						buttons,

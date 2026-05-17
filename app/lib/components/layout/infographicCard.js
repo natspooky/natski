@@ -88,7 +88,7 @@ function InfoChip({ infoChip, color }) {
 		style: {
 			listStyle: 'none',
 		},
-		children: infoChip.map(({ src, name, description }) => {
+		children: infoChip?.map(({ src, name, description }) => {
 			return {
 				tag: 'li',
 				style: {

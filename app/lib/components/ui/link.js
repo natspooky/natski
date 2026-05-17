@@ -1,16 +1,16 @@
 import {
-	useState,
 	useRef,
 	useNavigate,
+	usePageState,
 } from '../../../apis/encore/element-creator.js';
 
-function Link({ children, style, href, target }) {
+function Link({ children, style, href, target, attributes, ...props }) {
 	const { preload, navigate, storage } = useNavigate('/lib/pages');
 
 	let preloaded = !!storage[href];
 	let hoverTimer = useRef(null);
 
-	const link = useRef(null);
+	const linkRef = useRef(null);
 
 	const linkHoverStartHandler = (remover) => {
 		if (preloaded) {
@@ -20,7 +20,7 @@ function Link({ children, style, href, target }) {
 		hoverTimer.current = setTimeout(async () => {
 			await preload({ to: href });
 			preloaded = true;
-			link.current.classList.add('link-loaded');
+			linkRef.current.classList.add('link-loaded');
 		}, 250);
 	};
 
@@ -31,62 +31,52 @@ function Link({ children, style, href, target }) {
 
 	const linkClickHandler = async (event, href, target) => {
 		event.preventDefault();
+		clearTimeout(hoverTimer.current);
 		await navigate({ to: href, target });
 	};
 
-	return {
-		tag: 'button',
-		ref: link,
-		classes: preloaded ? 'link-loaded' : '',
-		events: {
-			click: {
-				callback: linkClickHandler,
-				param: ['event', href, target],
-			},
-			mouseover: {
-				callback: linkHoverStartHandler,
-				param: 'remover',
-			},
-			mouseout: {
-				callback: linkHoverEndHandler,
-				param: 'remover',
-			},
-		},
-		style: {
-			appearance: 'none',
-			border: '0px',
-			backgroundColor: 'transparent',
-			textDecoration: 'none',
-			cursor: 'pointer',
-			'.className.link-loaded': {
-				border: '1px solid red',
-			},
-			...style,
-		},
-		children: {
+	return usePageState(({ url }) => {
+		return {
 			tag: 'a',
+			ref: linkRef,
+			classes: url.pathname === href ? 'current' : null,
+			events: {
+				click: {
+					callback: linkClickHandler,
+					param: ['event', href, target],
+				},
+				mouseover: {
+					callback: linkHoverStartHandler,
+					param: 'remover',
+				},
+				mouseout: {
+					callback: linkHoverEndHandler,
+					param: 'remover',
+				},
+			},
 			style: {
 				position: 'relative',
-				width: '100%',
-				height: '100%',
 				appearance: 'none',
-				textDecoration: 'inherit',
 				color: 'inherit',
-				fontWeight: 'inherit',
-				fontSize: 'inherit',
 				':visited': {
 					appearance: 'none',
 					textDecoration: 'none',
 				},
+				border: '0px',
+				backgroundColor: 'transparent',
+				textDecoration: 'none',
+				cursor: 'pointer',
+				...style,
 			},
 			attributes: {
-				tabindex: '-1',
 				draggable: false,
 				href,
+				...attributes,
 			},
 			children,
-		},
-	};
+			...props,
+		};
+	});
 }
 
 export default Link;

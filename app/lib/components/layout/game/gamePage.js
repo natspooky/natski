@@ -8,6 +8,7 @@ import Embed from '../embed.js';
 import Section from '../section.js';
 import Animator from '../animator.js';
 import Icon from '../../ui/icon.js';
+import Button from '../../ui/button.js';
 
 function GamePage({ title, description, gameWindow }) {
 	let container = useRef();
@@ -65,8 +66,7 @@ function GamePage({ title, description, gameWindow }) {
 						Embed({
 							children: gameWindow,
 						}),
-						{
-							tag: 'button',
+						Button({
 							attributes: {
 								title: 'fullscreen',
 							},
@@ -95,13 +95,11 @@ function GamePage({ title, description, gameWindow }) {
 								},
 							},
 							style: {
-								cursor: 'pointer',
 								position: 'absolute',
 								bottom: '10px',
 								padding: '10px',
 								right: '10px',
 								zIndex: '99',
-								border: '0px',
 								backgroundColor: 'var(--background)',
 								borderRadius: 'var(--border-radius-2)',
 								cornerShape: 'var(--border-shape)',
@@ -110,7 +108,7 @@ function GamePage({ title, description, gameWindow }) {
 								},
 							},
 							children: iconState,
-						},
+						}),
 					],
 				},
 			}),

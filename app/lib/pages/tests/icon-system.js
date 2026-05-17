@@ -1,3 +1,4 @@
+import { render } from '../../../apis/encore/element-creator.js';
 import { IS_DATA } from '../../../apis/encore/dependencies/icon-system/IS_DATA.js';
 import Icon from '../../components/ui/icon.js';
 
@@ -18,3 +19,11 @@ function Page() {
 }
 
 export default Page;
+
+render(
+	document.body,
+	() => {
+		return Page();
+	},
+	{ useIcons: true },
+);

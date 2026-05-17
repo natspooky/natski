@@ -87,14 +87,11 @@ function Buttons(buttons) {
 			return Link({
 				href,
 				style: {
-					backgroundColor: 'transparent',
 					color: first
 						? 'var(--background)'
 						: 'var(--text-sub-color)',
-					cursor: 'pointer',
 					fontSize: 'var(--font-size-3)',
 					fontWeight: 'var(--font-weight-500)',
-					border: '0px',
 					padding: '11px 20px',
 					display: 'inline-block',
 					position: 'relative',

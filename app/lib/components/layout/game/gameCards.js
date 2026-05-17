@@ -37,7 +37,6 @@ function GameCards({ games }) {
 									tag: 'p',
 									children: description,
 								},
-								{},
 							],
 						}),
 					}),

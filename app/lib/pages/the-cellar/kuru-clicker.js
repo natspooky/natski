@@ -82,3 +82,12 @@ function Page() {
 }
 
 export { Page as default, GameLayout as Layout };
+
+render(
+	document.body,
+	(data) => {
+		data.layout.body = GameLayout;
+		return Page();
+	},
+	{ useIcons: true },
+);

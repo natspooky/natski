@@ -1,4 +1,3 @@
-import { render } from '../../apis/encore/element-creator.js';
 import StandardLayout from '../layouts/standardLayout.js';
 import Animator from '../components/layout/animator.js';
 import Title from '../components/layout/title.js';
@@ -22,4 +21,8 @@ function Page() {
 	});
 }
 
-export { Page as default, StandardLayout as Layout };
+const Meta = {
+	title: '404',
+};
+
+export { Page as default, StandardLayout as Layout, Meta };

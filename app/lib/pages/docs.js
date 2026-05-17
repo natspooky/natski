@@ -9,7 +9,7 @@ function Page() {
 	return Animator({
 		children: Section({
 			children: Title({
-				title: 'Docs Home',
+				title: 'Docs',
 				description:
 					'Documentation for Encore, Simple and Arc libraries.',
 			}),

@@ -1,14 +1,17 @@
-import { merge } from '../../../apis/encore/element-creator.js';
-
-export default function Icon({ src, name, ...props }) {
-	return merge(
-		{
-			tag: 'icon-system',
-			attributes: {
-				name,
-				src,
-			},
+function Icon({ src, name, attributes, style, ...props }) {
+	return {
+		tag: 'icon-system',
+		attributes: {
+			name,
+			src,
+			...attributes,
 		},
-		props,
-	);
+		style: {
+			display: 'block',
+			...style,
+		},
+		...props,
+	};
 }
+
+export default Icon;

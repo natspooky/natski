@@ -9,10 +9,12 @@ function Animator({ children, once = true }, timer) {
 						entry.target.classList.add('animate');
 					}, timer ?? 100);
 
-					if (once) observer.unobserve(entry.target);
+					if (once) observer.disconnect();
 				} else {
-					clearTimeout(timeout);
-					entry.target.classList.remove('animate');
+					if (!once) {
+						clearTimeout(timeout);
+						entry.target.classList.remove('animate');
+					}
 				}
 			}
 		});

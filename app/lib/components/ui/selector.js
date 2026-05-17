@@ -1,6 +1,7 @@
 import isMobile from '../../../apis/dependencies/mobile-utils.js';
 import { useState, useRef } from '../../../apis/encore/element-creator.js';
 import Icon from '../../components/ui/icon.js';
+import Button from '../../components/ui/button.js';
 
 function Selector({ buttons, setter }) {
 	if (isMobile) {
@@ -27,15 +28,12 @@ function Selector({ buttons, setter }) {
 			setter(buttons[buttonIndex].data);
 		};
 
-		function Button({ icon, index }) {
-			return {
-				tag: 'button',
+		function directionButton({ icon, index }) {
+			return Button({
 				style: {
 					backgroundColor: 'var(--background-sub)',
-					border: '0px',
 					padding: '10px',
 					borderRadius: 'var(--border-radius-max)',
-					cursor: 'pointer',
 					transform: 'scale(1)',
 					transition:
 						'transform 0.4s cubic-bezier(.47,1.53,.77,1.01)',
@@ -58,7 +56,7 @@ function Selector({ buttons, setter }) {
 						backgroundColor: 'var(--text-sub-color)',
 					},
 				}),
-			};
+			});
 		}
 
 		return {
@@ -68,9 +66,9 @@ function Selector({ buttons, setter }) {
 				fontWeight: '500',
 			},
 			children: [
-				Button({ icon: 'arrow_left', index: -1 }),
+				directionButton({ icon: 'arrow_left', index: -1 }),
 				button,
-				Button({ icon: 'arrow_right', index: 1 }),
+				directionButton({ icon: 'arrow_right', index: 1 }),
 			],
 		};
 	}
@@ -114,12 +112,10 @@ function Selector({ buttons, setter }) {
 		children: [
 			state,
 			buttons.map(({ name, action }, index) => {
-				return {
-					tag: 'button',
+				return Button({
 					classes: index === 0 ? 'active' : null,
 					style: {
 						position: 'relative',
-						cursor: 'pointer',
 						padding: '0 10px',
 						color: 'var(--text-supersub-color)',
 						flexShrink: '0',
@@ -127,7 +123,6 @@ function Selector({ buttons, setter }) {
 						fontWeight: '500',
 						fontSize: 'var(--font-size-3)',
 						backgroundColor: 'transparent',
-						border: '0px',
 						transition: '0.2s',
 						'.className.active, .className:hover': {
 							color: 'var(--text-color)',
@@ -157,7 +152,7 @@ function Selector({ buttons, setter }) {
 					onCreate: (self) => {
 						buttonArr.push(self);
 					},
-				};
+				});
 			}),
 		],
 	};

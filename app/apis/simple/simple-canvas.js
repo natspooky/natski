@@ -215,7 +215,7 @@ export default class SimpleCanvas {
 		cursorMotionState: undefined,
 	};
 
-	constructor(canvas, settings = {}, name = 'Unnamed Canvas') {
+	constructor(canvas, settings = {}, name = 'Unnamed Simple Canvas') {
 		this.#mergeSettings(settings);
 
 		switch (typeof canvas) {
@@ -228,6 +228,13 @@ export default class SimpleCanvas {
 					});
 				break;
 			case 'object':
+				if (null === canvas) {
+					simpleCanvasConsole.message({
+						message: 'Assignment error:',
+						error: 'Cannot asign canvas to NULL',
+					});
+					return;
+				}
 				if (
 					!(
 						canvas.tagName === 'CANVAS' &&
