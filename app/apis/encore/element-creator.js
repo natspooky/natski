@@ -450,7 +450,7 @@ function useNavigate(root) {
 	}
 
 	const preload = async ({ to }) => {
-		if (!to || !renderable || !!storage[to]) return;
+		if (!to || !renderable) return;
 
 		const url = new URL(
 			to.startsWith(window.location.origin)
@@ -460,14 +460,16 @@ function useNavigate(root) {
 
 		to = url.pathname;
 
-		const {
-			default: page,
-			Meta: meta,
-			Layout: layout,
-		} = await import(formatURL(to));
+		if (storage[to]) return;
+
+		const dataImport = await import(formatURL(to));
+
+		console.log('importing new content');
+
+		const { default: page, Meta: meta, Layout: layout } = dataImport;
 
 		storage[to] = {
-			data: { page: page(), meta, layout },
+			data: { page: page?.(), meta, layout },
 			multiState: detectIfMultiState({ meta, layout }),
 		};
 	};
@@ -777,10 +779,14 @@ function render(root, pageFn, settings) {
 			const pageBody = await pageFn(encoreSettings);
 			const layout = encoreSettings.layout;
 
-			const [pageRootState, , setPageState] = useState((content) => {
-				return content;
-			}, pageBody);
+			const [pageRootState, getPageState, setPageState] = useState(
+				(content) => {
+					return content;
+				},
+				pageBody,
+			);
 
+			window.elementCreator.getPageState = getPageState;
 			window.elementCreator.setPageState = setPageState;
 			window.elementCreator.layoutData = layout;
 

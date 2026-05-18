@@ -181,6 +181,72 @@ function Page() {
 			}),
 		}),
 
+		Section({
+			children: Grid({
+				columns: 2,
+				children: [
+					{
+						title: 'Encore Components',
+						description:
+							'Pre-made and pre-styled components for any web project',
+						color: 'var(--SSC)',
+						icon: 'PDS',
+						href: '/encore/components',
+					},
+					{
+						title: 'Encore Docs',
+						description:
+							'Examples and information about each Encore tool',
+						color: 'var(--PDS)',
+						icon: 'CMS',
+					},
+					{
+						title: 'Encore Tools',
+						description: 'Tools that come bundled with Encore',
+						color: 'var(--IS)',
+						icon: 'SSM',
+					},
+					{
+						title: 'Encore Router',
+						description: 'burgers',
+						color: 'var(--PSS)',
+						icon: 'albums',
+					},
+				].map(
+					({
+						icon,
+						title,
+						description,
+						color,
+						href,
+						chip,
+						children,
+					}) => {
+						return Animator({
+							children: Link({
+								href,
+								children: InfographicCard({
+									name: icon,
+									title,
+									description,
+									color,
+									infoChip: chip
+										? chip.map(({ icon, description }) => {
+												return {
+													name: icon,
+													description,
+												};
+											})
+										: null,
+									children,
+								}),
+							}),
+						});
+					},
+				),
+			}),
+		}),
+
 		Animator({
 			children: Section({
 				children: Header({

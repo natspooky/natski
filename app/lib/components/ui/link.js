@@ -10,8 +10,6 @@ function Link({ children, style, href, target, attributes, ...props }) {
 	let preloaded = !!storage[href];
 	let hoverTimer = useRef(null);
 
-	const linkRef = useRef(null);
-
 	const linkHoverStartHandler = (remover) => {
 		if (preloaded) {
 			remover();
@@ -20,8 +18,7 @@ function Link({ children, style, href, target, attributes, ...props }) {
 		hoverTimer.current = setTimeout(async () => {
 			await preload({ to: href });
 			preloaded = true;
-			linkRef.current.classList.add('link-loaded');
-		}, 250);
+		}, 100);
 	};
 
 	const linkHoverEndHandler = (remover) => {
@@ -38,7 +35,6 @@ function Link({ children, style, href, target, attributes, ...props }) {
 	return usePageState(({ url }) => {
 		return {
 			tag: 'a',
-			ref: linkRef,
 			classes: url.pathname === href ? 'current' : null,
 			events: {
 				click: {

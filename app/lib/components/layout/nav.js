@@ -184,7 +184,9 @@ function NavDropDown({ dropDownRef, dropDownContentRef }) {
 					href: '/home#tools',
 					color: 'var(--CLS)',
 				},
-			].map(DropDownItem),
+			].map((items) => {
+				return DropDownItem(items);
+			}),
 		},
 	};
 }
@@ -256,17 +258,13 @@ function DropDownItem({ icon, title, description, href, color }) {
 function NavDropDownButton({ dropDownRef, navRef, dropDownContentRef }) {
 	const buttonRef = useRef(null);
 
-	let open = false;
-
 	const mouseOverHandler = () => {
-		open = true;
 		dropDownRef.current.classList.add('open');
 		buttonRef.current.classList.add('open');
 		dropDownRef.current.style.height = `${dropDownContentRef.current.offsetHeight}px`;
 	};
 
 	const mouseOutHandler = () => {
-		open = false;
 		dropDownRef.current.classList.remove('open');
 		buttonRef.current.classList.remove('open');
 		dropDownRef.current.style.height = null;
@@ -279,6 +277,10 @@ function NavDropDownButton({ dropDownRef, navRef, dropDownContentRef }) {
 				callback: mouseOverHandler,
 			},
 			mouseleave: {
+				callback: mouseOutHandler,
+				target: navRef,
+			},
+			click: {
 				callback: mouseOutHandler,
 				target: navRef,
 			},
