@@ -111,7 +111,7 @@ function Footer() {
 										style: {
 											marginBottom: '15px',
 										},
-										children: new Array(150)
+										children: new Array(15)
 											.fill(0)
 											.map(() => {
 												const space =

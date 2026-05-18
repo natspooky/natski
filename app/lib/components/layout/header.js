@@ -80,31 +80,27 @@ function Header({ chip, title, description, id }) {
 					color: 'var(--text-sub-color)',
 				},
 				children: description.split(' ').map((word) => {
+					textCounter += 1;
 					return [
-						word.split('').map((letter) => {
-							textCounter += 1;
-							return [
-								{
-									tag: 'span',
-									style: {
-										position: 'relative',
-										display: 'inline-block',
-										'.await-animate .className': {
-											transition:
-												'0.4s cubic-bezier(.47,1.53,.77,1.01)',
-											transitionDelay: `${headerCounter * 80 + textCounter * 10}ms`,
-											opacity: '0',
-											transform: 'translateY(10px)',
-										},
-										'.await-animate.animate .className': {
-											opacity: '1',
-											transform: 'translateY(0px)',
-										},
-									},
-									children: letter,
+						{
+							tag: 'span',
+							style: {
+								position: 'relative',
+								display: 'inline-block',
+								'.await-animate .className': {
+									transition:
+										'0.4s cubic-bezier(.47,1.53,.77,1.01)',
+									transitionDelay: `${headerCounter * 80 + textCounter * 30}ms`,
+									opacity: '0',
+									transform: 'translateY(10px)',
 								},
-							];
-						}),
+								'.await-animate.animate .className': {
+									opacity: '1',
+									transform: 'translateY(0px)',
+								},
+							},
+							children: word,
+						},
 						' ',
 					];
 				}),

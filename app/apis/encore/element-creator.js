@@ -415,8 +415,6 @@ function useRef(initVal) {
 	return ref;
 }
 
-function manageMetaNavigate() {}
-
 function useNavigate(root) {
 	if (!window.elementCreator.navigator) {
 		window.addEventListener('popstate', async (event) => {
@@ -464,12 +462,18 @@ function useNavigate(root) {
 
 		const dataImport = await import(formatURL(to));
 
-		console.log('importing new content');
-
 		const { default: page, Meta: meta, Layout: layout } = dataImport;
 
+		const pageComponent = page?.();
+
+		const pageElement = buildComponent(pageComponent);
+
 		storage[to] = {
-			data: { page: page?.(), meta, layout },
+			data: {
+				page: pageElement,
+				meta,
+				layout,
+			},
 			multiState: detectIfMultiState({ meta, layout }),
 		};
 	};
@@ -493,11 +497,6 @@ function useNavigate(root) {
 		if (!storage[to]) await preload({ to });
 
 		const currentStorage = storage[to];
-
-		if (!currentStorage.data?.page) {
-			await navigate({ to: '/404' });
-			return;
-		}
 
 		window.elementCreator.setPageState(currentStorage.data.page);
 
@@ -530,9 +529,6 @@ function useNavigate(root) {
 					.join(' ');
 
 			document.title = pageTitle;
-
-			if (currentStorage.data?.meta)
-				manageMetaNavigate(currentStorage.data.meta);
 		}
 	};
 
