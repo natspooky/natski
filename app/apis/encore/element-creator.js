@@ -2,7 +2,7 @@
 /* Author : NATSKI - natski.dev
 /* MIT license : https://opensource.org/license/MIT
 /* GitHub : https://github.com/natspooky/encore
-/* How to use? : Check the GitHub README or visit https://natski.dev/apis/encore/element-creator
+/* How to use? : Check the GitHub README or visit https://natski.dev/docs/encore/element-creator
 /* ----------------------------------------------- */
 
 import IconSystem from './icon-system.js';
@@ -68,10 +68,11 @@ function buildComponent(obj) {
 		obj.ref.current = component;
 	}
 
+	const styleString = JSON.stringify(obj.style || {});
+	const uniqueStyleId = useHash(styleString);
+
 	obj.classes =
-		obj.style || obj.classes
-			? [obj.classes, obj.style ? useId() : null]
-			: null;
+		obj.style || obj.classes ? [obj.classes, uniqueStyleId] : null;
 
 	if (obj.classes) component.classList.add(...className(obj.classes));
 
@@ -83,17 +84,17 @@ function buildComponent(obj) {
 
 	if (obj.innerHTML) component.innerHTML = obj.innerHTML;
 
-	if (obj.style)
-		obj.children = [
-			{
-				tag: 'style',
-				innerHTML: styleSheet(
-					obj.style,
-					obj.classes[obj.classes.length - 1],
-				),
-			},
-			obj.children,
-		];
+	if (obj.style) {
+		const styleEl = document.getElementById(`style-${uniqueStyleId}`);
+		if (!styleEl) {
+			const styleNode = document.createElement('style');
+			styleNode.id = `style-${uniqueStyleId}`;
+			styleNode.innerHTML = styleSheet(obj.style, uniqueStyleId);
+			document.head.appendChild(styleNode);
+		} else {
+			styleEl.innerHTML = styleSheet(obj.style, uniqueStyleId);
+		}
+	}
 
 	if (obj.children) appendChildren(component, buildComponent(obj.children));
 
@@ -395,6 +396,15 @@ function useId() {
 	return `e${(window.ecIdStorage++).toString(16)}c`;
 }
 
+function useHash(name) {
+	let hash = 0;
+	for (let i = 0; i < name.length; i++) {
+		hash = (hash << 5) - hash + name.charCodeAt(i);
+		hash |= 0;
+	}
+	return `ec-${Math.abs(hash).toString(16)}`;
+}
+
 function useRef(initVal) {
 	const ref = {
 		currentRef: initVal,
@@ -416,12 +426,12 @@ function useRef(initVal) {
 }
 
 function useNavigate(root) {
-	if (!window.elementCreator.navigator) {
+	if (window.elementCreator && !window.elementCreator.hasPopStateListener) {
+		window.elementCreator.hasPopStateListener = true;
+
 		window.addEventListener('popstate', async (event) => {
 			if (!event.state) return;
-
 			const { visited, to } = event.state;
-
 			if (visited) await navigate({ to, visited: true });
 		});
 	}
@@ -437,10 +447,6 @@ function useNavigate(root) {
 
 	const detectIfMultiState = ({ meta, layout }) => {
 		return true;
-		return window.elementCreator?.layoutData &&
-			window.elementCreator.layoutData.name == layout.name
-			? true
-			: false;
 	};
 
 	function formatURL(url) {
@@ -455,22 +461,16 @@ function useNavigate(root) {
 				? to
 				: window.location.origin + to,
 		);
-
 		to = url.pathname;
 
 		if (storage[to]) return;
 
 		const dataImport = await import(formatURL(to));
-
 		const { default: page, Meta: meta, Layout: layout } = dataImport;
-
-		const pageComponent = page?.();
-
-		const pageElement = buildComponent(pageComponent);
 
 		storage[to] = {
 			data: {
-				page: pageElement,
+				pageFn: page,
 				meta,
 				layout,
 			},
@@ -491,14 +491,18 @@ function useNavigate(root) {
 				? to
 				: window.location.origin + to,
 		);
-
 		to = url.pathname;
 
 		if (!storage[to]) await preload({ to });
 
 		const currentStorage = storage[to];
 
-		window.elementCreator.setPageState(currentStorage.data.page);
+		if (currentStorage.data.pageFn) {
+			const rawConfig = currentStorage.data.pageFn();
+			const freshPageElement = buildComponent(rawConfig);
+
+			window.elementCreator.setPageState(freshPageElement);
+		}
 
 		if (!visited) {
 			window.history.pushState(
@@ -514,21 +518,8 @@ function useNavigate(root) {
 				el.scrollIntoView();
 			}
 
-			const pageTitle =
-				currentStorage.data?.meta?.title ??
-				window.location.pathname
-					.split('/')
-					[window.location.pathname.split('/').length - 1].replace(
-						/.htm(l|)|\//g,
-						'',
-					)
-					.split('-')
-					.map((word) => {
-						return word.slice(0, 1).toUpperCase() + word.slice(1);
-					})
-					.join(' ');
-
-			document.title = pageTitle;
+			document.title =
+				currentStorage.data?.meta?.title ?? window.location.href;
 		}
 	};
 
@@ -565,17 +556,11 @@ function useState(fn, initVal) {
 		state: initVal,
 
 		setter: async (value) => {
-			switch (typeof value) {
-				case 'object':
-					if (
-						JSON.stringify(stateManager.state) ===
-						JSON.stringify(value)
-					)
-						return;
-					break;
-				default:
-					if (stateManager.state === value) return;
-					break;
+			if (typeof value === 'object' && value !== null) {
+				//uuuuuuuuuuuuuuuuuuuu
+				if (stateManager.state === value) return;
+			} else if (stateManager.state === value) {
+				return;
 			}
 
 			stateManager.state = value;
@@ -587,8 +572,20 @@ function useState(fn, initVal) {
 			if (!stateManager.element) await stateManager.check();
 
 			stateManager.element.replaceWith(newElement);
-
 			stateManager.element = newElement;
+		},
+
+		check() {
+			return new Promise((res) => {
+				function wait() {
+					if (stateManager.element) {
+						res();
+					} else {
+						requestAnimationFrame(wait);
+					}
+				}
+				wait();
+			});
 		},
 
 		get getter() {
@@ -597,17 +594,6 @@ function useState(fn, initVal) {
 
 		getterFn() {
 			return stateManager.getter;
-		},
-
-		check() {
-			return new Promise((res) => {
-				const interval = setInterval(() => {
-					if (stateManager.element) {
-						clearInterval(interval);
-						res();
-					}
-				}, 0.5);
-			});
 		},
 	};
 
@@ -856,9 +842,10 @@ function elementAppended(element, callback, options) {
 	if (!MutationObserver)
 		return useDeprecatedMethodToAppend(element, callback);
 
-	const observer = new MutationObserver((mutations) => {
+	const observer = new MutationObserver((mutations, obs) => {
 		for (const mutation of mutations) {
 			if (mutation.addedNodes.length === 0) continue;
+
 			if (
 				!Array.from(mutation.addedNodes).some((node) =>
 					node.contains(element),
@@ -866,7 +853,7 @@ function elementAppended(element, callback, options) {
 			)
 				continue;
 
-			if (!options?.perminant) observer.disconnect();
+			obs.disconnect();
 
 			if (!options?.awaitPageLoad && !options?.awaitFontLoad) {
 				callback(element);
@@ -903,6 +890,12 @@ function elementAppended(element, callback, options) {
 		childList: true,
 		subtree: true,
 	});
+
+	setTimeout(() => {
+		if (!isAppended(element)) {
+			observer.disconnect();
+		}
+	}, 5000);
 }
 
 function functionType({ param, callback, target, eventType }, element) {

@@ -2,7 +2,7 @@
 /* Author : NATSKI - natski.dev
 /* MIT license : https://opensource.org/license/MIT
 /* GitHub : https://github.com/natspooky/simple-canvas
-/* How to use? : Check the GitHub README or visit https://natski.dev/apis/simple/simple-canvas
+/* How to use? : Check the GitHub README or visit https://natski.dev/docs/simple/simple-canvas
 /* ----------------------------------------------- */
 
 import Console from '../dependencies/console.js';
