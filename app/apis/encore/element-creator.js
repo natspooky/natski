@@ -91,8 +91,6 @@ function buildComponent(obj) {
 			styleNode.id = `style-${uniqueStyleId}`;
 			styleNode.innerHTML = styleSheet(obj.style, uniqueStyleId);
 			document.head.appendChild(styleNode);
-		} else {
-			styleEl.innerHTML = styleSheet(obj.style, uniqueStyleId);
 		}
 	}
 
