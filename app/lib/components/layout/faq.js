@@ -1,0 +1,3 @@
+function FAQ(d) {
+	retur;
+}

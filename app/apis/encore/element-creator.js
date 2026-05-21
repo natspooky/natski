@@ -328,7 +328,6 @@ function awaitContentLoad(element) {
 		switch (element.tagName) {
 			case 'SCRIPT':
 			case 'IMG':
-			case 'SVG':
 				if (element.src && element.getAttribute('loading') !== 'lazy')
 					loadableElements.push(loadElement(element));
 				return true;
@@ -500,6 +499,8 @@ function useNavigate(root) {
 			const freshPageElement = buildComponent(rawConfig);
 
 			window.elementCreator.setPageState(freshPageElement);
+		} else {
+			window.elementCreator.setPageState(buildComponent({}));
 		}
 
 		if (!visited) {
@@ -605,16 +606,23 @@ function useState(fn, initVal) {
 }
 
 function usePageState(Fn) {
-	const [pageState, , setPageState] = useState(Fn, {
+	const [pageState, getPageState, setPageState] = useState(Fn, {
 		url: window.location,
 		title: document.title,
 	});
 
 	navigation.addEventListener('navigate', (event) => {
-		setPageState({
+		const navigateData = {
 			url: new URL(event.destination.url),
 			title: document.title,
-		});
+		};
+
+		console.log(navigateData);
+
+		if (JSON.stringify(getPageState()) === JSON.stringify(navigateData))
+			return;
+
+		setPageState(navigateData);
 	});
 
 	return pageState;
@@ -696,9 +704,6 @@ function render(root, pageFn, settings) {
 	window.elementCreator = {};
 
 	if (settings?.useIcons) new IconSystem();
-
-	if (settings?.navigate) {
-	} //make this work :DDDDD
 
 	elementCreatorConsole.message({
 		message: 'Starting page hydration',
@@ -1039,6 +1044,7 @@ export {
 	usePageState,
 	useSuspense,
 	useId,
+	useHash,
 	useRef,
 	useNavigate,
 	merge,

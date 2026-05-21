@@ -54,6 +54,11 @@ function Page() {
 						description: 'kuru clicker description',
 						href: '/the-cellar/kuru-clicker',
 					},
+					{
+						title: 'Mini Garden',
+						description: 'mini garden desc',
+						href: '/the-cellar/mini-garden',
+					},
 				],
 			}),
 		}),

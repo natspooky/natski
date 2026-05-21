@@ -81,6 +81,7 @@ function Footer() {
 						padding: '0 0 70px 0',
 						display: 'flex',
 						flexWrap: 'no-wrap',
+						gap: '50px',
 						fontSize: 'var(--font-size-2)',
 						fontWeight: '500',
 						justifyContent: 'space-between',
@@ -95,82 +96,86 @@ function Footer() {
 						},
 					},
 
-					children: Grid({
-						gap: 20,
-						columns: 2,
-						children: [
-							{
-								tag: 'div',
-								style: {
-									position: 'relative',
-									width: '70%',
-								},
-								children: [
-									{
-										tag: 'p',
-										style: {
-											marginBottom: '15px',
-										},
-										children: new Array(15)
-											.fill(0)
-											.map(() => {
-												const space =
-													Math.floor(
-														Math.random() * 2,
-													) < 1
-														? ''
-														: ' ';
-
-												return (
-													Math.floor(
-														Math.random() * 2,
-													) + space
-												);
-											})
-											.join(''),
-									},
-									{
-										tag: 'div',
-										style: {
-											display: 'flex',
-											alignItems: 'center',
-											gap: '5px',
-										},
-										children: [
-											`©${year > 2026 ? `2026-${year}` : year}`,
-											Icon({
-												name: 'NATSKI',
-												style: {
-													position: 'relative',
-													height: '15px',
-													width: '15px',
-													backgroundColor:
-														'var(--text-supersub-color)',
-												},
-											}),
-											'Natski',
-										],
-									},
-								],
+					children: [
+						{
+							tag: 'div',
+							style: {
+								position: 'relative',
+								width: '70%',
 							},
-							{
-								tag: 'div',
-								style: {
-									justifySelf: 'end',
-									position: 'relative',
-									width: '80%',
+							children: [
+								{
+									tag: 'p',
+									style: {
+										marginBottom: '15px',
+									},
+									children: [
+										{
+											tag: 'span',
+											style: {
+												color: 'var(--text-color)',
+												textDecoration:
+													'var(--text-color) underline',
+											},
+											children: 'No AI is used',
+										},
+										' ',
+										'in the production of this website or its associated products and packages.',
+										{ tag: 'br' },
+										{ tag: 'br' },
+										{
+											tag: 'span',
+											style: {
+												fontWeight: 800,
+											},
+											children: 'Natski.dev',
+										},
+										' ',
+										'is built using both Encore (for pages) and Simple (for games) libraries.',
+									],
 								},
-								children: Grid({
-									children: info.map((data) => {
-										return LinkSection(data);
-									}),
-									width: '100',
-									columns: 2,
-									gap: 20,
+								{
+									tag: 'div',
+									style: {
+										display: 'flex',
+										alignItems: 'center',
+										gap: '5px',
+									},
+									children: [
+										`©2025-${year}`,
+										Icon({
+											name: 'NATSKI',
+											style: {
+												position: 'relative',
+												height: '15px',
+												width: '15px',
+												backgroundColor:
+													'var(--text-supersub-color)',
+											},
+										}),
+										'Natski',
+									],
+								},
+							],
+						},
+						{
+							tag: 'div',
+							style: {
+								justifySelf: 'end',
+								position: 'relative',
+								width: '80%',
+								paddingLeft: 'min(10%,100px)',
+							},
+							children: Grid({
+								children: info.map((data) => {
+									return LinkSection(data);
 								}),
-							},
-						],
-					}),
+								width: 100,
+								columns: 2,
+								gap: 20,
+							}),
+						},
+					],
 				},
 			}),
 		},

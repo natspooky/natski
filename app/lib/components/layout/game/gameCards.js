@@ -11,6 +11,7 @@ function GameCards({ games }) {
 				{
 					children: CardContainer({
 						style: {
+							padding: '10px',
 							'.await-animate .className': {
 								transition:
 									'transform 0.4s cubic-bezier(.47,1.53,.77,1.01), opacity 0.4s',

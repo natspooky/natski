@@ -1,4 +1,8 @@
-function Animator({ children, once = true }, timer) {
+import isMobile from '../../../apis/dependencies/mobile-utils.js';
+
+function Animator({ children, once = true, animClass }, timer) {
+	if (isMobile) return children;
+
 	const inView = (entries, observer) => {
 		let timeout;
 
@@ -6,14 +10,14 @@ function Animator({ children, once = true }, timer) {
 			if (entry.target) {
 				if (entry.isIntersecting) {
 					timeout = setTimeout(() => {
-						entry.target.classList.add('animate');
+						entry.target.classList.add(animClass ?? 'animate');
 					}, timer ?? 100);
 
 					if (once) observer.disconnect();
 				} else {
 					if (!once) {
 						clearTimeout(timeout);
-						entry.target.classList.remove('animate');
+						entry.target.classList.remove(animClass ?? 'animate');
 					}
 				}
 			}

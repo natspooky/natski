@@ -96,40 +96,21 @@ function GameLayout({ children }) {
 											buttons: [
 												{
 													name: 'Encore',
-													data: `{
-	tag: "iframe",
-	attributes: {
-		src: "${url}",
-		title: "${pageName}",
-		loading: "lazy",
-		height: "400",
-		width: "600"
-	}
-}`,
+													data: Code({
+														children: `function GameIframe() { return {tag: "iframe", attributes: {src: "${url}", title: "${pageName}", loading: "lazy", height: "400", width: "600"} } }`,
+													}),
 												},
 												{
 													name: 'React',
-													data: `function GameIframe() {
-  	return (
-		<iframe
-			src="${url}",
-			title="${pageName}",
-			loading="lazy"
-			height="400"
-			width="600"
-		/>
-  	);
-};`,
+													data: Code({
+														children: `function GameIframe() { return ( <iframe src="${url}" title="${pageName}" loading="lazy" height="400" width="600" /> ); };`,
+													}),
 												},
 												{
 													name: 'Raw HTML',
-													data: `<iframe 
-	src="${url}"
-	title="${pageName}"
-	loading="lazy"
-	height="400"
-	width="600">
-</iframe>`,
+													data: Code({
+														children: `<iframe src="${url}" title="${pageName}" loading="lazy" height="400" width="600"></iframe>`,
+													}),
 												},
 											],
 											style: {
@@ -149,9 +130,7 @@ function GameLayout({ children }) {
 															'80px 20px 60px 20px',
 														maxWidth: '100%',
 													},
-													children: Code({
-														children,
-													}),
+													children,
 												};
 											},
 										}),

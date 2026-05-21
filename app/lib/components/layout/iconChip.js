@@ -1,6 +1,6 @@
 import Icon from '../ui/icon.js';
 
-function IconChip({ name, src, style, color }) {
+function IconChip({ name, src, style, color, ...props }) {
 	return {
 		tag: 'span',
 		style: {
@@ -25,6 +25,7 @@ function IconChip({ name, src, style, color }) {
 				backgroundColor: color ?? 'var(--accent)',
 			},
 		}),
+		...props,
 	};
 }
 

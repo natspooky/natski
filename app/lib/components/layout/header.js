@@ -42,8 +42,8 @@ function Header({ chip, title, description, id }) {
 			{
 				tag: 'h1',
 				style: {
-					margin: '0px auto 15px auto',
-					fontSize: 'var(--font-size-7)',
+					margin: '0px auto 18px auto',
+					fontSize: 'var(--font-size-8)',
 					fontWeight: '500',
 					color: 'var(--text-color)',
 				},
@@ -76,7 +76,7 @@ function Header({ chip, title, description, id }) {
 			{
 				tag: 'p',
 				style: {
-					fontSize: 'var(--font-size-4)',
+					fontSize: 'var(--font-size-3)',
 					color: 'var(--text-sub-color)',
 				},
 				children: description.split(' ').map((word) => {

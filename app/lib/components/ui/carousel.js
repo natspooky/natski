@@ -57,7 +57,7 @@ export default function Carousel({ slides, classes }) {
 									index === 0
 										? (self) => {
 												firstPage = self;
-										  }
+											}
 										: null,
 							};
 						}),
@@ -69,4 +69,10 @@ export default function Carousel({ slides, classes }) {
 			},
 		],
 	};
+}
+
+function Carousel() {
+	const carouselRef = useRef(null);
+
+	return;
 }

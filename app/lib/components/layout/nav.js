@@ -141,7 +141,10 @@ function NavDropDown({ dropDownRef, dropDownContentRef }) {
 			height: '0px',
 			width: '100%',
 			overflow: 'hidden',
-			transition: '0.2s',
+			transition: '0.1s',
+			'.className.open': {
+				transition: '0.3s',
+			},
 			'.className.open .dropdown-nav-content': {
 				filter: 'blur(0px)',
 				opacity: '1',
@@ -158,7 +161,7 @@ function NavDropDown({ dropDownRef, dropDownContentRef }) {
 				display: 'flex',
 				gap: '10px',
 				flexWrap: 'wrap',
-				transition: '0.2s',
+				transition: 'inherit',
 				filter: 'blur(5px)',
 				opacity: '0',
 			},
@@ -223,13 +226,26 @@ function DropDownItem({ icon, title, description, href, color }) {
 			':hover::before': {
 				opacity: '0.3',
 			},
+			':hover .icon-chip': {
+				transform: 'scale(1.1)',
+			},
+			'.className icon-system': {
+				transition: '0.3s cubic-bezier(.47,1.53,.77,1.01)',
+				transform: 'rotate(0deg)',
+			},
+			':hover icon-system': {
+				transform: 'rotate(30deg)',
+			},
 		},
 		children: [
 			IconChip({
 				name: icon,
+				classes: 'icon-chip',
 				color: 'var(--darken-text-color)',
 				style: {
 					backgroundColor: color,
+					transform: 'scale(1)',
+					transition: '0.3s cubic-bezier(.47,1.53,.77,1.01)',
 				},
 			}),
 			{
@@ -280,10 +296,12 @@ function NavDropDownButton({ dropDownRef, navRef, dropDownContentRef }) {
 				callback: mouseOutHandler,
 				target: navRef,
 			},
-			click: {
-				callback: mouseOutHandler,
-				target: navRef,
-			},
+			click: !isMobile
+				? {
+						callback: mouseOutHandler,
+						target: navRef,
+					}
+				: null,
 			focus: {
 				callback: mouseOverHandler,
 			},
@@ -314,17 +332,17 @@ function NavDropDownButton({ dropDownRef, navRef, dropDownContentRef }) {
 					color: 'var(--darken-text-sub-color)',
 					transition: '0.2s',
 				},
-				children: 'Products',
+				children: 'Showcase',
 			},
 			Icon({
-				name: 'line_arrow_down',
+				name: 'mini_arrow_down',
 				classes: 'dropdown-icon',
 				style: {
-					height: '10px',
-					width: '10px',
+					height: '9px',
+					width: '9px',
 					backgroundColor: 'var(--darken-text-sub-color)',
 					transform: 'rotate(0deg)',
-					transition: '0.2s',
+					transition: '0.3s cubic-bezier(.47,1.53,.77,1.01)',
 				},
 			}),
 		],
