@@ -617,7 +617,7 @@ function usePageState(Fn) {
 			title: document.title,
 		};
 
-		console.log(navigateData);
+		console.log(navigateData); //make it so only one of these event listeneers exists
 
 		if (JSON.stringify(getPageState()) === JSON.stringify(navigateData))
 			return;

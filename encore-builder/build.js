@@ -205,28 +205,28 @@ function createPage(dir, metaData) {
 								`href="${metaData.pageJsPath}"`,
 							],
 						}),
-						meta({
-							tag: 'link',
-							params: [
-								'rel="preconnect"',
-								'href="https://fonts.googleapis.com"',
-							],
-						}),
-						meta({
-							tag: 'link',
-							params: [
-								'rel="preconnect"',
-								'href="https://fonts.gstatic.com"',
-								'crossorigin',
-							],
-						}),
-						meta({
-							tag: 'link',
-							params: [
-								'href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"',
-								'rel="stylesheet"',
-							],
-						}),
+						// meta({
+						// 	tag: 'link',
+						// 	params: [
+						// 		'rel="preconnect"',
+						// 		'href="https://fonts.googleapis.com"',
+						// 	],
+						// }),
+						// meta({
+						// 	tag: 'link',
+						// 	params: [
+						// 		'rel="preconnect"',
+						// 		'href="https://fonts.gstatic.com"',
+						// 		'crossorigin',
+						// 	],
+						// }),
+						// meta({
+						// 	tag: 'link',
+						// 	params: [
+						// 		'href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"',
+						// 		'rel="stylesheet"',
+						// 	],
+						// }),
 						meta({
 							tag: 'meta',
 							params: [
