@@ -18,7 +18,7 @@ const consoleColor = {
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const portNumber = 8020;
+const portNumber = 8006;
 
 const httpServer = createServer((req, res) => {
 	const parsedUrl = parse(req.url, true);
@@ -101,6 +101,7 @@ const handleError = () => {
 };
 
 httpServer.listen(portNumber, async () => {
+	console.log('listening on port: ', portNumber);
 	//let link = terminalLink(portNumber, `http://localhost:${portNumber}`);
 
 	console.clear();
