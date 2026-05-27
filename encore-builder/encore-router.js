@@ -101,10 +101,10 @@ const handleError = () => {
 };
 
 httpServer.listen(portNumber, async () => {
-	console.log('listening on port: ', portNumber);
 	//let link = terminalLink(portNumber, `http://localhost:${portNumber}`);
 
 	console.clear();
+	console.log('listening on port: ', portNumber);
 	console.log(
 		`${consoleColor.magenta}
     _/_/_/_/  _/      _/    _/_/_/    _/_/    _/_/_/    _/_/_/_/   
