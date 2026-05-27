@@ -18,7 +18,7 @@ const consoleColor = {
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const portNumber = 80;
+const portNumber = 8020;
 
 const httpServer = createServer((req, res) => {
 	const parsedUrl = parse(req.url, true);
