@@ -35,7 +35,7 @@ const httpServer = createServer((req, res) => {
 		contentType = 'text/html';
 	} else if (_extname(filePath) === '') {
 		console.log(filePath.slice(filePath.length - 1));
-		if (filePath.slice(filePath.length - 1) == '\\') {
+		if (filePath.slice(filePath.length - 1) == '/') {
 			filePath = filePath.slice(0, filePath.length - 1);
 			console.log(filePath);
 		}
@@ -85,12 +85,12 @@ function message(state, time, file_path) {
 		`${state ? '❌' : '✅'} ${
 			state ? consoleColor.red : consoleColor.green
 		}[ ${state ? 'ERR' : 'GET'} ] ${consoleColor.reset}${
-			file_path.split('\\')[file_path.split('\\').length - 1]
+			file_path.split('\\')[file_path.split('/').length - 1]
 		} in ${consoleColor.magenta}${finalTime > 0 ? finalTime : '< 1'}ms ${
 			consoleColor.reset
 		}${state ? 'attempeted ' : ''}from ${
 			consoleColor.yellow
-		}${file_path.slice(0, file_path.lastIndexOf('\\') + 1)}${
+		}${file_path.slice(0, file_path.lastIndexOf('/') + 1)}${
 			consoleColor.reset
 		}`,
 	);
@@ -104,7 +104,7 @@ httpServer.listen(portNumber, async () => {
 	//let link = terminalLink(portNumber, `http://localhost:${portNumber}`);
 
 	console.clear();
-	console.log('listening on port: ', portNumber);
+	console.log('listening on port:', portNumber);
 	console.log(
 		`${consoleColor.magenta}
     _/_/_/_/  _/      _/    _/_/_/    _/_/    _/_/_/    _/_/_/_/   
