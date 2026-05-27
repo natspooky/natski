@@ -9,7 +9,7 @@ function StandardLayout({ children }) {
 				tag: 'div',
 				style: {
 					position: 'relative',
-					paddingTop: '90px',
+					paddingTop: '60px',
 					width: '100%',
 				},
 				children: [

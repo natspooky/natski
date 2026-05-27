@@ -515,7 +515,7 @@ function RetinaTests() {
 		key: {
 			active: true,
 		},
-
+		//inView: true,
 		diagnostics: true,
 		useRetina: false,
 	};
@@ -566,3 +566,7 @@ function RetinaTests() {
 
 	return { Retina, NoRetina };
 }
+
+render(document.body, () => {
+	return page();
+});

@@ -86,7 +86,7 @@ export { Page as default, GameLayout as Layout };
 render(
 	document.body,
 	(data) => {
-		data.layout.body = GameLayout;
+		data.layout = GameLayout;
 		return Page();
 	},
 	{ useIcons: true },

@@ -843,8 +843,7 @@ function MiscTests() {
 render(
 	document.body,
 	(pageRender) => {
-		//pageRender.layout.allowRenderChange = true;
-		pageRender.layout.body = ({ children }) => {
+		pageRender.layout = ({ children }) => {
 			return DIV({
 				children: BorderContainer({
 					children: [

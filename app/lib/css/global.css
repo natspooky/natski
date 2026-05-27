@@ -121,7 +121,7 @@
 	--accent: rgb(145, 141, 246);
 	--accent-sub: rgba(145, 141, 246, 0.08);
 	--background-sub: rgba(0, 0, 0, 0.035);
-	--darken: rgb(20, 20, 31);
+	--darken: rgba(20, 20, 31, 0.9);
 	--darken-text-color: rgb(255, 255, 255);
 	--darken-text-sub-color: rgb(146, 146, 146);
 	--text-color: rgb(24, 25, 37);
@@ -162,7 +162,6 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	font-family: 'Rubik', sans-serif;
 	font-optical-sizing: auto;
 	font-display: swap;
 	font-style: normal;
@@ -200,6 +199,8 @@ html {
 	-webkit-text-size-adjust: 100%;
 }
 body {
+	font-family: 'Rubik', sans-serif;
+
 	background: var(--background);
 	color: var(--text-color);
 	word-wrap: break-word;

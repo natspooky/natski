@@ -3,28 +3,17 @@ import StandardLayout from '../layouts/standardLayout.js';
 import Animator from '../components/layout/animator.js';
 import Section from '../components/layout/section.js';
 import Banner from '../components/layout/banner.js';
-import Title from '../components/layout/title.js';
 import Header from '../components/layout/header.js';
 import Grid from '../components/layout/grid.js';
 import InfographicCard from '../components/layout/infographicCard.js';
 import Card from '../components/layout/card.js';
-import Code from '../components/ui/code.js';
 import Link from '../components/ui/link.js';
+
+import Landing from '../components/layout/home/landing.js';
 
 function Page() {
 	return [
-		Animator({
-			children: Section({
-				children: Title({
-					title: 'Natski.dev',
-					description: 'home of Natski products',
-					buttons: [
-						{ title: 'The Cellar', href: '/the-cellar' },
-						{ title: 'Docs', href: '/docs' },
-					],
-				}),
-			}),
-		}),
+		Landing(),
 
 		Animator(
 			{
@@ -43,8 +32,7 @@ function Page() {
 							width: '100%',
 							height: '100%',
 							opacity: '0.5',
-							backgroundImage:
-								'linear-gradient(to bottom right, var(--PDS), var(--SSC), var(--VPS))',
+							backgroundColor: 'var(--accent)',
 						},
 					},
 					style: {
@@ -212,7 +200,7 @@ export { Page as default, StandardLayout as Layout, Meta };
 render(
 	document.body,
 	(data) => {
-		data.layout.body = StandardLayout;
+		data.layout = StandardLayout;
 		return Page();
 	},
 	{ useIcons: true },

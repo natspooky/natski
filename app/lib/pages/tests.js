@@ -6,6 +6,25 @@ import Animator from '../components/layout/animator.js';
 import Title from '../components/layout/title.js';
 
 function Page() {
+	class man {
+		constructor(name) {
+			this.prototype.name = name;
+		}
+	}
+
+	class john extends man {
+		constructor(name) {
+			super(name);
+		}
+
+		manName() {
+			return super.name;
+		}
+	}
+
+	const guy = new john('boob');
+	const dude = new john('willt');
+	console.log(guy.manName(), dude.manName());
 	return [
 		Animator({
 			children: Section({
@@ -38,3 +57,12 @@ function Page() {
 }
 
 export { Page as default, StandardLayout as Layout };
+
+render(
+	document.body,
+	(data) => {
+		data.layout = StandardLayout;
+		return Page();
+	},
+	{ useIcons: true },
+);

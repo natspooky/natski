@@ -3,7 +3,6 @@ import Build from './build.js';
 import { createServer } from 'http';
 import { StatusCodes } from 'http-status-codes';
 import { existsSync, stat as _stat, readFile as _readFile } from 'fs';
-import terminalLink from 'terminal-link';
 import { join, extname as _extname } from 'path';
 import path from 'path';
 import { parse, fileURLToPath } from 'url';
@@ -19,7 +18,7 @@ const consoleColor = {
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const portNumber = 8080;
+const portNumber = 80;
 
 const httpServer = createServer((req, res) => {
 	const parsedUrl = parse(req.url, true);
@@ -102,7 +101,7 @@ const handleError = () => {
 };
 
 httpServer.listen(portNumber, async () => {
-	let link = terminalLink(portNumber, `http://localhost:${portNumber}`);
+	//let link = terminalLink(portNumber, `http://localhost:${portNumber}`);
 
 	console.clear();
 	console.log(

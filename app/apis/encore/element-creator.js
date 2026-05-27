@@ -422,36 +422,29 @@ function useRef(initVal) {
 	return ref;
 }
 
-function useNavigate(root) {
-	if (window.elementCreator && !window.elementCreator.hasPopStateListener) {
-		window.elementCreator.hasPopStateListener = true;
+function useNavigate(root, pushState) {
+	const hookable = !!window.elementCreator;
+
+	if (hookable && !window.elementCreator.hooks.useNavigate.active) {
+		window.elementCreator.hooks.useNavigate.active = true;
 
 		window.addEventListener('popstate', async (event) => {
 			if (!event.state) return;
-			const { visited, to } = event.state;
-			if (visited) await navigate({ to, visited: true });
+			const { visited, to, scroll } = event.state;
+			if (visited) await navigate({ to, visited: true, scroll });
 		});
 	}
 
-	let renderable = !!window.elementCreator;
-	if (renderable && !window.elementCreator.navigator) {
-		window.elementCreator.navigator = {};
-	}
-
-	const storage = window.elementCreator
-		? window.elementCreator.navigator
+	const storage = hookable
+		? window.elementCreator.hooks.useNavigate.preloadStorage
 		: {};
-
-	const detectIfMultiState = ({ meta, layout }) => {
-		return true;
-	};
 
 	function formatURL(url) {
 		return `${root ?? ''}${url.replace(/.htm(l|)/g, '')}.js`;
 	}
 
 	const preload = async ({ to }) => {
-		if (!to || !renderable) return;
+		if (!to || !hookable) return;
 
 		const url = new URL(
 			to.startsWith(window.location.origin)
@@ -466,19 +459,16 @@ function useNavigate(root) {
 		const { default: page, Meta: meta, Layout: layout } = dataImport;
 
 		storage[to] = {
-			data: {
-				pageFn: page,
-				meta,
-				layout,
-			},
-			multiState: detectIfMultiState({ meta, layout }),
+			pageFn: page,
+			layoutFn: layout,
+			data: meta,
 		};
 	};
 
-	const navigate = async ({ to, target = '_self', visited }) => {
+	const navigate = async ({ to, target = '_self', visited, scroll }) => {
 		if (!to) return;
 
-		if (!renderable || target !== '_self') {
+		if (!hookable || target !== '_self') {
 			window.open(to, target);
 			return;
 		}
@@ -494,14 +484,25 @@ function useNavigate(root) {
 
 		const currentStorage = storage[to];
 
-		if (currentStorage.data.pageFn) {
-			const rawConfig = currentStorage.data.pageFn();
-			const freshPageElement = buildComponent(rawConfig);
+		if (
+			currentStorage.layoutFn &&
+			currentStorage.layoutFn !== window.elementCreator.layout.getState()
+		) {
+			const rawLayout = currentStorage.layoutFn;
 
-			window.elementCreator.setPageState(freshPageElement);
-		} else {
-			window.elementCreator.setPageState(buildComponent({}));
+			window.elementCreator.layout.setState(rawLayout);
 		}
+
+		if (currentStorage.pageFn) {
+			const rawPage = currentStorage.pageFn();
+			const reRenderedPage = buildComponent(rawPage);
+
+			window.elementCreator.page.setState(reRenderedPage);
+		} else {
+			return;
+		}
+
+		if (scroll) window.scrollTo(0, scroll);
 
 		if (!visited) {
 			window.history.pushState(
@@ -518,7 +519,7 @@ function useNavigate(root) {
 			}
 
 			document.title =
-				currentStorage.data?.meta?.title ?? window.location.href;
+				currentStorage?.meta?.title ?? window.location.href;
 		}
 	};
 
@@ -549,6 +550,8 @@ function checkState(val) {
 }
 
 function useState(fn, initVal) {
+	const stateStorage = new WeakMap(); // do t
+
 	const stateManager = {
 		element: null,
 		container: buildComponent({ tag: 'ec-state-fragment' }),
@@ -606,24 +609,43 @@ function useState(fn, initVal) {
 }
 
 function usePageState(Fn) {
-	const [pageState, getPageState, setPageState] = useState(Fn, {
-		url: window.location,
+	const [pageState, , setPageState] = useState(Fn, {
+		url: window.location.toString(),
 		title: document.title,
 	});
 
-	navigation.addEventListener('navigate', (event) => {
-		const navigateData = {
-			url: new URL(event.destination.url),
-			title: document.title,
+	const hookable = !!window.elementCreator;
+
+	if (hookable) {
+		const storage = window.elementCreator.hooks.usePageState.hookStorage;
+
+		storage[useId()] = {
+			setState: setPageState,
+			element: pageState,
 		};
 
-		console.log(navigateData); //make it so only one of these event listeneers exists
+		if (!storage.active) {
+			storage.active = true;
 
-		if (JSON.stringify(getPageState()) === JSON.stringify(navigateData))
-			return;
+			navigation.addEventListener('navigate', (event) => {
+				const navigateData = {
+					url: event.destination.url,
+					title: document.title,
+				};
 
-		setPageState(navigateData);
-	});
+				for (const [key, { element, setState }] of Object.entries(
+					storage,
+				)) {
+					if (element && !document.body.contains(element)) {
+						delete storage[key];
+						continue;
+					}
+
+					if (setState) setState(navigateData);
+				}
+			});
+		}
+	}
 
 	return pageState;
 }
@@ -700,21 +722,26 @@ function render(root, pageFn, settings) {
 	customElements.define('ec-fragment', ECFragment);
 	customElements.define('ec-state-fragment', ECState);
 	customElements.define('ec-error', ECError);
+	//customElements.define('ec-context', ECContext);
 
-	window.elementCreator = {};
+	window.elementCreator = {
+		hooks: {
+			useNavigate: {
+				preloadStorage: {},
+				active: false,
+			},
+			usePageState: {
+				hookStorage: {},
+				active: false,
+			},
+		},
+	};
 
 	if (settings?.useIcons) new IconSystem();
 
 	elementCreatorConsole.message({
 		message: 'Starting page hydration',
 	});
-
-	if (settings?.htmlElements)
-		Object.entries(settings.htmlElements).forEach(
-			([name, elementClass]) => {
-				customElements.define(name, elementClass);
-			},
-		);
 
 	const hydrate = async () => {
 		try {
@@ -759,28 +786,37 @@ function render(root, pageFn, settings) {
 
 			const renderTimer = performance.now();
 
-			const encoreSettings = { layout: {} };
+			const tempSettings = {};
 
-			const pageBody = await pageFn(encoreSettings);
-			const layout = encoreSettings.layout;
+			const pageBody = await pageFn(tempSettings);
+			const layout = tempSettings.layout;
 
-			const [pageRootState, getPageState, setPageState] = useState(
-				(content) => {
-					return content;
+			const [pageState, getPageState, setPageState] = useState((page) => {
+				return page;
+			}, pageBody);
+
+			const [layoutState, getLayoutState, setLayoutState] = useState(
+				(wrapper) => {
+					return wrapper({ children: pageState });
 				},
-				pageBody,
+				layout && typeof layout === 'function'
+					? layout
+					: ({ children }) => {
+							return children;
+						},
 			);
 
-			window.elementCreator.getPageState = getPageState;
-			window.elementCreator.setPageState = setPageState;
-			window.elementCreator.layoutData = layout;
+			window.elementCreator.layout = {
+				setState: setLayoutState,
+				getState: getLayoutState,
+			};
 
-			const renderBody =
-				layout?.body && typeof layout.body === 'function'
-					? buildComponent(layout.body({ children: pageRootState }))
-					: pageRootState;
+			window.elementCreator.page = {
+				setState: setPageState,
+				getState: getPageState,
+			};
 
-			appendChildren(rootElement, renderBody);
+			appendChildren(rootElement, layoutState);
 
 			const renderTime = Math.round(performance.now() - renderTimer);
 
@@ -789,7 +825,7 @@ function render(root, pageFn, settings) {
 			});
 		} catch (error) {
 			elementCreatorConsole.message({
-				message: 'Hydration failed:',
+				message: 'Hydration failed.',
 			});
 			console.error(error);
 		}

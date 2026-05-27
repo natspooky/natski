@@ -44,7 +44,7 @@ function Header({ chip, title, description, id }) {
 				style: {
 					margin: '0px auto 18px auto',
 					fontSize: 'var(--font-size-8)',
-					fontWeight: '500',
+					fontWeight: '700',
 					color: 'var(--text-color)',
 				},
 				children: title.split(' ').map((word) => {
@@ -57,7 +57,7 @@ function Header({ chip, title, description, id }) {
 								display: 'inline-block',
 								'.await-animate .className': {
 									transition:
-										'0.5s cubic-bezier(.47,1.53,.77,1.01)',
+										'0.5s cubic-bezier(0.35, 0, 0, 1)',
 									transitionDelay: `${headerCounter * 70}ms`,
 									opacity: '0',
 									transform: 'translateY(-10px)',
@@ -78,6 +78,7 @@ function Header({ chip, title, description, id }) {
 				style: {
 					fontSize: 'var(--font-size-3)',
 					color: 'var(--text-sub-color)',
+					fontWeight: '500',
 				},
 				children: description.split(' ').map((word) => {
 					textCounter += 1;

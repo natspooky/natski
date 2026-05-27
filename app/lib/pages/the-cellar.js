@@ -59,6 +59,16 @@ function Page() {
 						description: 'mini garden desc',
 						href: '/the-cellar/mini-garden',
 					},
+					{
+						title: 'Stratagem Hero',
+						description: 'mini garden desc',
+						href: '/the-cellar/stratagem-hero',
+					},
+					{
+						title: 'Buddydle',
+						description: 'mini garden desc',
+						href: '/the-cellar/buddydle',
+					},
 				],
 			}),
 		}),
@@ -66,3 +76,11 @@ function Page() {
 }
 
 export { Page as default, StandardLayout as Layout };
+render(
+	document.body,
+	(data) => {
+		data.layout = StandardLayout;
+		return Page();
+	},
+	{ useIcons: true },
+);

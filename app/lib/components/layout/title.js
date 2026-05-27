@@ -15,7 +15,7 @@ function Title({ title, description, buttons }) {
 				style: {
 					color: 'var(--text-color)',
 					fontSize: 'var(--font-size-10)',
-					fontWeight: '500',
+					fontWeight: '900',
 					margin: '0px auto 10px auto',
 				},
 				children: title.split(' ').map((word, index) => {
@@ -31,7 +31,8 @@ function Title({ title, description, buttons }) {
 								style: {
 									display: 'block',
 									'.await-animate .className': {
-										transition: 'transform 0.4s',
+										transition:
+											'0.4s cubic-bezier(0.35, 0, 0, 1)',
 										transitionDelay: `${index * 50}ms`,
 										transform: 'translateY(100%)',
 									},
@@ -51,6 +52,7 @@ function Title({ title, description, buttons }) {
 				style: {
 					color: 'var(--text-sub-color)',
 					fontSize: 'var(--font-size-4)',
+					fontWeight: '500',
 					position: 'relative',
 					display: 'inline-block',
 					'.await-animate .className': {
@@ -107,7 +109,7 @@ function Buttons(buttons) {
 							? 'var(--accent)'
 							: 'var(--background-sub)',
 						borderRadius: 'var(--border-radius-max)',
-						opacity: first ? '1' : '0.6',
+						opacity: first ? '1' : '0.7',
 						cornerShape: 'var(--border-shape)',
 						transition: '0.2s',
 					},

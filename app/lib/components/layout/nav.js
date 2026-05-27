@@ -17,6 +17,8 @@ function Nav() {
 			position: 'fixed',
 			height: 'fit-content',
 			backgroundColor: 'var(--darken)',
+			filter: 'blur(0px)',
+			backdropFilter: 'blur(8px)',
 			borderRadius: 'var(--border-radius-4)',
 			cornerShape: 'var(--border-shape)',
 			...(isMobile
@@ -55,6 +57,7 @@ function NavMain({ dropDownRef, navRef, dropDownContentRef }) {
 		},
 		children: [
 			Link({
+				href: '/home',
 				style: {
 					display: 'block',
 					position: 'relative',
@@ -62,17 +65,34 @@ function NavMain({ dropDownRef, navRef, dropDownContentRef }) {
 					width: 'fit-content',
 					height: 'fit-content',
 					flexGrow: '0',
+					transition: '0.4s',
 				},
-				children: Icon({
-					name: 'NATSKI',
-					style: {
-						display: 'block',
-						backgroundColor: 'var(--darken-text-color)',
-						height: '25px',
-						width: '25px',
+				children: [
+					Icon({
+						name: 'NATSKI',
+						style: {
+							display: 'block',
+							backgroundColor: 'var(--darken-text-color)',
+							height: '25px',
+							width: '25px',
+						},
+					}),
+					{
+						tag: 'span',
+						style: {
+							position: 'absolute',
+							width: '1px',
+							height: '1px',
+							padding: '0',
+							margin: '-1px',
+							overflow: 'hidden',
+							clip: 'rect(0, 0, 0, 0)',
+							whiteSpace: 'nowrap',
+							border: '0',
+						},
+						children: 'Home logo',
 					},
-				}),
-				href: '/home',
+				],
 			}),
 			{
 				tag: 'div',
@@ -141,9 +161,9 @@ function NavDropDown({ dropDownRef, dropDownContentRef }) {
 			height: '0px',
 			width: '100%',
 			overflow: 'hidden',
-			transition: '0.1s',
+			transition: '0.2s',
 			'.className.open': {
-				transition: '0.3s',
+				transition: '0.6s cubic-bezier(0.35, 0, 0, 1)',
 			},
 			'.className.open .dropdown-nav-content': {
 				filter: 'blur(0px)',
@@ -328,7 +348,7 @@ function NavDropDownButton({ dropDownRef, navRef, dropDownContentRef }) {
 				classes: 'dropdown-text',
 				style: {
 					fontSize: 'var(--font-size-2)',
-					fontWeight: '500',
+					fontWeight: '700',
 					color: 'var(--darken-text-sub-color)',
 					transition: '0.2s',
 				},

@@ -10,70 +10,105 @@ import Console from '../dependencies/console.js';
 const append = new Event('append');
 const simpleCanvasConsole = new Console('Simple Canvas', '#ec3e92ff');
 
-class SimpleCanvasUI {
-	constructor(
-		x = 0,
-		y = 0,
-		width = 10,
-		height = 10,
-		padding = 0,
-		margin = 0,
-		round = 0,
-	) {
-		this.parent = null;
-		this.children = [];
-		this.x = x;
-		this.y = y;
-		this.width = width;
-		this.height = height;
-		this.padding = padding;
-		this.margin = margin;
-		this.round = round;
+class SimpleCanvas {
+	#canvasInstances = [];
+
+	#layers = new Map();
+
+	constructor(canvasSettingArray) {}
+
+	add(canvas, settings, name) {
+		const simpleCanvas = new SimpleCanvas(canvas, settings, name);
+
+		this.#layers.set(name ?? this.#canvasInstances.length, simpleCanvas);
 	}
 
-	addChild(child) {
-		child.parent = this;
-		this.children.push(child);
+	create(type, identifiers, settings, name) {
+		let simpleCanvas;
 
-		return this;
+		switch (type) {
+			case '2d':
+				simpleCanvas = SimpleCanvas2D.create(
+					identifiers,
+					settings,
+					name,
+				);
+				break;
+
+			case 'webgl':
+			case 'webgl2':
+				simpleCanvas = SimpleCanvasGL.create(
+					identifiers,
+					settings,
+					name,
+				);
+				break;
+
+			case 'webgpu':
+				simpleCanvas = SimpleCanvasGPU.create(
+					identifiers,
+					settings,
+					name,
+				);
+				break;
+
+			case 'bitmaprenderer':
+				simpleCanvas = simpleCanvasCore.create(
+					identifiers,
+					settings,
+					name,
+				);
+		}
+
+		this.#layers.set(name ?? this.#canvasInstances.length, simpleCanvas);
 	}
 
-	get global() {
-		return {
-			x:
-				(this.parent
-					? this.parent.global.x + this.x + this.parent.padding
-					: this.x) + this.margin,
-			y:
-				(this.parent
-					? this.parent.global.y + this.y + this.parent.padding
-					: this.y) + this.margin,
-			height:
-				(this.parent
-					? this.parent.global.height + this.height
-					: this.height) + this.padding,
-			width:
-				(this.parent
-					? this.parent.global.width + this.width
-					: this.width) + this.padding,
-		};
+	disconnect() {
+		this.#canvasInstances.forEach((instance) => instance.disconnect());
+		this.#layers.clear();
 	}
 
-	draw(ctx) {
-		this.render(ctx);
-		this.children.forEach((child) => {
-			child.draw(ctx);
-		});
-	}
+	remove(id) {}
 
-	render(ctx) {
-		ctx.beginPath();
-		ctx.roundRect([this.round]);
-		ctx.fill();
+	render(id) {
+		if (!id) {
+			this.#canvasInstances.forEach((canvas) => {
+				canvas.render();
+			});
+			return;
+		}
+		const canvas = this.#layers.get(id);
+		if (!canvas) {
+			simpleCanvasConsole.message({
+				message: 'Reference error',
+				error: `The Canvas '${id}' does not exist.`,
+			});
+
+			return;
+		}
+		canvas.render();
 	}
 }
 
-export default class SimpleCanvas {
+class SimpleCanvas2D extends SimpleCanvasCore {
+	constructor() {
+		super();
+	}
+}
+
+class SimpleCanvasGL extends SimpleCanvasCore {
+	constructor() {
+		super();
+	}
+}
+
+class SimpleCanvasGPU extends SimpleCanvasCore {
+	constructor() {
+		super();
+	}
+}
+
+class SimpleCanvasTemp {
 	static #supportedEvents = [
 		//mouse
 		'mousedown',
@@ -108,7 +143,9 @@ export default class SimpleCanvas {
 		//canvas context
 		'contextlost',
 		'contextrestored',
-	].filter(SimpleCanvas.checkEventSupport); // will tell the canvas to not attach or allow any event listeners that the current document doesnt support
+	].filter(SimpleCanvasCore.checkEventSupport);
+
+	#observers = [];
 
 	#userEventListeners = {};
 
@@ -231,7 +268,7 @@ export default class SimpleCanvas {
 				if (null === canvas) {
 					simpleCanvasConsole.message({
 						message: 'Assignment error:',
-						error: 'Cannot asign canvas to NULL',
+						error: 'Cannot assign canvas to NULL',
 					});
 					return;
 				}
@@ -256,6 +293,20 @@ export default class SimpleCanvas {
 					message: 'Type error:',
 					error: 'Passed canvas is not of type HTML Node or String ID',
 				});
+		}
+
+		if (
+			!(
+				!!window.HTMLCanvasElement &&
+				!!this.#canvasState.canvas.getContext
+			)
+		) {
+			this.disconnect();
+
+			simpleCanvasConsole.message({
+				message: 'Browser error',
+				error: "Your browser doesn't support the Canvas API",
+			});
 		}
 
 		this.#canvasState.context = this.#canvasState.canvas.getContext(
@@ -348,7 +399,14 @@ export default class SimpleCanvas {
 	}
 
 	disconnect() {
-		this.#removeEvents(); //do this
+		this.#removeEvents();
+
+		this.#clearObservers();
+
+		this.#drawingState.drawing = false;
+
+		this.#canvasState.canvas = null;
+		this.#canvasState.context = null;
 	}
 
 	pause() {
@@ -406,7 +464,7 @@ export default class SimpleCanvas {
 	}
 
 	on(eventName, fn) {
-		if (!SimpleCanvas.#supportedEvents.includes(eventName)) {
+		if (!SimpleCanvasCore.#supportedEvents.includes(eventName)) {
 			simpleCanvasConsole.message({
 				message: 'Event warning:',
 				warn: `'${eventName}' is not supported in Simple Canvas`,
@@ -416,7 +474,7 @@ export default class SimpleCanvas {
 	}
 
 	removeEvent(eventName) {
-		if (!SimpleCanvas.#supportedEvents.includes(eventName)) {
+		if (!SimpleCanvasCore.#supportedEvents.includes(eventName)) {
 			console.log('uh oh');
 		}
 
@@ -472,9 +530,12 @@ export default class SimpleCanvas {
 				useScroll: false,
 				diagnostics: false,
 				pauseOnBlur: false,
+				inView: false,
+
 				useRetina: true,
 				canvas: {
 					willReadFrequently: false,
+					alpha: true,
 					failIfMajorPerformanceCaveat: false,
 				},
 			},
@@ -508,8 +569,15 @@ export default class SimpleCanvas {
 		return isSupported;
 	}
 
+	#clearObservers() {
+		this.#observers.map((observer) => {
+			observer.disconnect();
+			return null;
+		});
+	}
+
 	#buildEmbedEvent({ target, eventName, fn, options }) {
-		if (!SimpleCanvas.#supportedEvents.includes(eventName)) return;
+		if (!SimpleCanvasCore.#supportedEvents.includes(eventName)) return;
 
 		const boundEventFn = fn.bind(this);
 
@@ -532,7 +600,6 @@ export default class SimpleCanvas {
 
 	#attachEvents() {
 		//context
-
 		this.#buildEmbedEvent({
 			target: this.#canvasState.canvas,
 			eventName: 'contextlost',
@@ -655,8 +722,12 @@ export default class SimpleCanvas {
 		if (this.settings.autoResize) {
 			const resizeFn = this.#resize.bind(this);
 			const observer = new ResizeObserver(resizeFn);
+
+			this.#observers.push(observer);
+
 			observer.observe(this.#canvasState.canvas);
 		}
+
 		this.#buildEmbedEvent({
 			target: window,
 			eventName: 'resize',
@@ -678,6 +749,21 @@ export default class SimpleCanvas {
 			fn: this.#pageFocus,
 			options: { passive: true },
 		});
+
+		//intersect
+
+		if (this.settings.inView) {
+			const intersectFn = this.#intersect.bind(this);
+			const observer = new IntersectionObserver(intersectFn, {
+				rootMargin: '0px',
+				scrollMargin: '0px',
+				threshold: 0.06,
+			});
+
+			this.#observers.push(observer);
+
+			observer.observe(this.#canvasState.canvas);
+		}
 	}
 
 	#awaitAppend(element) {
@@ -705,6 +791,8 @@ export default class SimpleCanvas {
 				element.dispatchEvent(append);
 			}
 		});
+
+		this.#observers.push(observer);
 
 		observer.observe(document.body, {
 			childList: true,
@@ -755,6 +843,16 @@ export default class SimpleCanvas {
 
 	#pageFocus() {
 		if (this.settings.pauseOnBlur) this.#drawingState.paused = false;
+	}
+
+	#intersect(entries) {
+		const canvasEntry = entries[0];
+
+		if (canvasEntry.target && canvasEntry.isIntersecting) {
+			this.#drawingState.paused = false;
+		} else {
+			this.#drawingState.paused = true;
+		}
 	}
 
 	#locationUpdate() {
@@ -1012,7 +1110,7 @@ export default class SimpleCanvas {
 	}
 
 	drawFrame() {
-		if (this.settings.autoClear) this.#clear();
+		if (this.settings.autoClear) this.clear();
 
 		this.#drawingState.drawFn();
 
@@ -1046,7 +1144,7 @@ export default class SimpleCanvas {
 		}
 	}
 
-	#clear() {
+	clear() {
 		this.#transformlessWrapper((ctx) => {
 			ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 		});
@@ -1285,3 +1383,289 @@ export default class SimpleCanvas {
 		};
 	}
 }
+
+class SimpleCanvasCore {
+	static #supportedEvents = [
+		//mouse
+		'mousedown',
+		'mouseup',
+		'mousemove',
+		'mouseenter',
+		'mouseleave',
+		'contextmenu',
+
+		//touch
+		'touchstart',
+		'touchend',
+		'touchmove',
+		'touchcancel',
+
+		//key
+		'keyup',
+		'keydown',
+
+		//scroll
+		'wheel',
+		'scroll',
+		'scrollend',
+
+		//window focus
+		'blur',
+		'focus',
+
+		//resize
+		'resize',
+
+		//canvas context
+		'contextlost',
+		'contextrestored',
+		'webglcontextlost',
+		'webglcontextrestored',
+	].filter(SimpleCanvasCore.checkEventSupport);
+
+	#observers = [];
+
+	#userEventListeners = {};
+
+	#canvasEventRemovers = [];
+
+	#wheelState = {
+		scrolling: false,
+	};
+
+	#scrollState = {
+		scrolling: false,
+	};
+
+	#keyState = {
+		pressing: false,
+		pressCount: 0,
+		currentKeys: {},
+	};
+
+	#pointerState = {
+		pressing: false,
+		covering: false,
+		moving: false,
+		click: {
+			startPosition: {}, //maybe? think of a good application first i guess
+			endPosition: {},
+		},
+		motion: {
+			lastEntryTime: 0,
+			position: {
+				x: 0,
+				y: 0,
+			},
+			lastPostion: {
+				x: 0,
+				y: 0,
+			},
+			velocity: {
+				x: 0,
+				y: 0,
+			},
+			speed: 0,
+		},
+	};
+	/*
+	#touchState = {
+		pressing: false,
+		moving: false,
+		touchCount: 0,
+		motion: {
+			position: {
+				x: 0,
+				y: 0,
+			},
+			lastPostion: {
+				x: 0,
+				y: 0,
+			},
+		},
+	};
+*/
+	#canvasState = {
+		canvas: undefined,
+		context: undefined,
+		id: undefined,
+		location: {
+			top: 0,
+			left: 0,
+		},
+		elementSize: {
+			width: 0,
+			height: 0,
+		},
+		size: {
+			width: 300,
+			height: 150,
+			locked: false,
+			scale: window.devicePixelRatio || 1,
+		},
+	};
+
+	#drawingState = {
+		paused: false,
+		drawing: false,
+		renderTime: 0,
+		interval: 1000 / 60,
+		runTime: 0,
+		drawFn: undefined,
+		setupFn: undefined,
+		resizeFn: undefined,
+		appendFn: undefined,
+	};
+
+	#diagnosticsData = {
+		fps: {
+			frameBuffer: [],
+			renderBuffer: 0,
+			renderBufferTwo: 0,
+			currentFPS: 0,
+		},
+	}; // maybe make this canvas type specific
+
+	constructor(canvas, settings = {}, name = 'Unnamed Simple Canvas') {
+		this.#mergeSettings(settings);
+
+		switch (typeof canvas) {
+			case 'string':
+				this.#canvasState.canvas = document.getElementById(canvas);
+				if (!this.#canvasState.canvas)
+					simpleCanvasConsole.message({
+						message: 'Assignment error:',
+						error: `The ID '${canvas}' does not exist in the DOM`,
+					});
+				break;
+			case 'object':
+				if (null === canvas) {
+					simpleCanvasConsole.message({
+						message: 'Assignment error:',
+						error: 'Cannot assign canvas to NULL',
+					});
+					return;
+				}
+				if (
+					!(
+						canvas.tagName === 'CANVAS' &&
+						canvas.nodeType === Node.ELEMENT_NODE
+					)
+				) {
+					simpleCanvasConsole.message({
+						message: 'Assignment error:',
+						error: "HTML Node is not a 'CANVAS'",
+					});
+					return;
+				}
+
+				this.#canvasState.canvas = canvas;
+
+				break;
+			default:
+				simpleCanvasConsole.message({
+					message: 'Type error:',
+					error: 'Passed canvas is not of type HTML Node or String ID',
+				});
+		}
+
+		if (
+			!(
+				!!window.HTMLCanvasElement &&
+				!!this.#canvasState.canvas.getContext
+			)
+		) {
+			this.disconnect();
+
+			simpleCanvasConsole.message({
+				message: 'Browser error',
+				error: "Your browser doesn't support the Canvas API",
+			});
+		}
+
+		this.#canvasState.context = this.#canvasState.canvas.getContext(
+			'2d',
+			this.settings.canvas,
+		); // maybe make MOST of the canvas state data in each speccific funtuin
+
+		this.#canvasState.id = name;
+
+		this.#attachEvents();
+
+		if (!document.body.contains(this.#canvasState.canvas)) {
+			this.#canvasState.canvas.addEventListener(
+				'append',
+				() => {
+					this.#resize();
+					this.#drawingState.appendFn?.();
+				},
+				{
+					once: true,
+				},
+			);
+			this.#awaitAppend(this.#canvasState.canvas);
+			return;
+		}
+
+		this.#resize();
+	}
+
+	static checkEventSupport(eventName) {
+		if (typeof eventName != 'string' || eventName.length == 0) return false;
+		const tagNames = {
+			select: 'input',
+			change: 'input',
+			submit: 'form',
+			reset: 'form',
+			error: 'img',
+			load: 'img',
+			abort: 'img',
+		};
+		let element = document.createElement(tagNames[eventName] || 'div');
+		eventName = 'on' + eventName;
+		let isSupported = eventName in element;
+		if (!isSupported) {
+			element.setAttribute(eventName, 'return;');
+			isSupported = typeof element[eventName] == 'function';
+		}
+		element = null;
+		return isSupported;
+	}
+
+	#clearObservers() {
+		this.#observers.forEach((observer) => {
+			observer.disconnect();
+		});
+		this.#observers = null;
+	}
+
+	#buildEmbedEvent({ target, eventName, fn, options }) {
+		if (!SimpleCanvasCore.#supportedEvents.includes(eventName)) {
+			simpleCanvasConsole.message({
+				error: 'Event error',
+				message: `The event '${eventName}' isn't available.`,
+			});
+			return;
+		}
+
+		const boundEventFn = fn.bind(this);
+
+		target.addEventListener(eventName, boundEventFn, options);
+
+		this.#canvasEventRemovers.push(() =>
+			target.removeEventListener(eventName, boundEventFn),
+		);
+	}
+
+	#clearEvents(eventName) {
+		this.#canvasEventRemovers.forEach((remover) => {
+			remover();
+		});
+		this.#canvasEventRemovers = null;
+	}
+
+	create() {}
+}
+
+export { SimpleCanvas2D, SimpleCanvasGL, SimpleCanvasGPU, SimpleCanvas };
+export default SimpleCanvas;

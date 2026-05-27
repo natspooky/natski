@@ -35,20 +35,24 @@ function Link({ children, style, href, target, attributes, ...props }) {
 	return usePageState(({ url }) => {
 		return {
 			tag: 'a',
-			classes: url.pathname === href ? 'current' : null,
+			classes: url === window.location.origin + href ? 'current' : null,
 			events: {
 				click: {
 					callback: linkClickHandler,
 					param: ['event', href, target],
 				},
-				mouseover: {
-					callback: linkHoverStartHandler,
-					param: 'remover',
-				},
-				mouseout: {
-					callback: linkHoverEndHandler,
-					param: 'remover',
-				},
+				...(!preloaded
+					? {
+							mouseover: {
+								callback: linkHoverStartHandler,
+								param: 'remover',
+							},
+							mouseout: {
+								callback: linkHoverEndHandler,
+								param: 'remover',
+							},
+						}
+					: {}),
 			},
 			style: {
 				position: 'relative',

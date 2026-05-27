@@ -113,9 +113,7 @@ function Footer() {
 										{
 											tag: 'span',
 											style: {
-												color: 'var(--text-color)',
-												textDecoration:
-													'var(--text-color) underline',
+												fontWeight: 800,
 											},
 											children: 'No AI is used',
 										},
